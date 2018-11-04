@@ -1,1 +1,38 @@
-# yagpdb-docs
+---
+description: This is the documentation for YAGPDB.
+---
+
+# Yet Another General Purpose Bot - Documentation
+
+{% hint style="warning" %}
+This is the documentation, the actual configuration are not done here. Visit [yagpdb.xyz/manage ](https://yagpdb.xyz/manage)to manage your server.
+{% endhint %}
+
+## Index
+
+This is the documentation for YAGPDB. It is a work in progress. If you don't find the information you're looking for, please inform the [support server. ](https://discord.gg/0vYlUK2XBKldPSMY)
+
+## Supporting the bot
+
+{% hint style="info" %}
+Patreon is the most consistent form of support that allows us to continuously host the bot on costly servers.
+{% endhint %}
+
+There are several ways you can support YAGPDB better.
+
+* Supporting us through [Patreon](https://www.patreon.com/yagpdb)
+* Making one time donations through buying ad spaces or direct donations
+* Writing documentation. The bot needs documentation - More details below
+* Helping out other people on the support server. 
+* Writing code.
+
+Visit [Helping out](helping-out.md) and [Donating](donating.md) for more information
+
+## Reporting issues
+
+If you're having issues with the bot, check out the [Frequent Searches](reference/frequent-searches.md) page. If you do not find a solution there, you can also join the [support server](https://discord.gg/0vYlUK2XBKldPSMY) and ask for help there.
+
+## Making suggestions
+
+If you have a suggestion for a new feature or improvements, you can either send a message in the [support server](https://discord.gg/0vYlUK2XBKldPSMY) or open an issue in the [GitHub](https://github.com/jonas747/yagpdb) for the bot.
+
