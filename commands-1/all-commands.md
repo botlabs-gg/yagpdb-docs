@@ -1,37 +1,28 @@
-# All commands
-
 ## General ℹ️
 
 ### Help
 
 **Aliases:** commands/h/how/command
 
+```
 Help [command:Text]
-
-
-
+```
 Shows help about all or one specific command
 
 
 ### Info
 
-**Aliases:**
-
+```
 Info
-
-
-
+```
 Responds with bot information
 
 
 ### Invite
 
-**Aliases:**
-
+```
 Invite
-
-
-
+```
 Responds with bot invite link
 
 
@@ -39,12 +30,9 @@ Responds with bot invite link
 
 ### Prefix
 
-**Aliases:**
-
+```
 Prefix [Server ID:Whole number]
-
-
-
+```
 Shows command prefix of the current server, or the specified server
 
 
@@ -52,21 +40,17 @@ Shows command prefix of the current server, or the specified server
 
 **Aliases:** c/calculate
 
+```
 Calc <Expression:Text>
-
-
-
+```
 Calculator 2+2=5
 
 
 ### Ping
 
-**Aliases:**
-
+```
 Ping
-
-
-
+```
 I prefer tabletennis (Shows the bots ping to the discord servers)
 
 
@@ -74,13 +58,12 @@ I prefer tabletennis (Shows the bots ping to the discord servers)
 
 **Aliases:** ctime/gettime
 
+```
 CurrentTime <Offset:Whole number>
 CurrentTime <Zone:Text>
 CurrentTime
 
-
-
-
+```
 Shows current time in different timezones. [Available timezones](https://pastebin.com/ZqSPUhc7)
 
 
@@ -88,32 +71,25 @@ Shows current time in different timezones. [Available timezones](https://pastebi
 
 **Aliases:** mrole
 
+```
 MentionRole <Role:Text> [Message:Text]
-
-
-
+```
 Sets a role to mentionable, mentions the role, and then sets it back
 Requires the manage roles permission and the bot being above the mentioned role
 
 ### ListRoles
 
-**Aliases:**
-
+```
 ListRoles
-
-
-
+```
 List roles and their id's, and some other stuff on the server
 
 
 ### Poll
 
-**Aliases:**
-
+```
 Poll <Topic:Text - Description of the poll> <Option1:Text> <Option2:Text> [Option3:Text] [Option4:Text] [Option5:Text] [Option6:Text] [Option7:Text] [Option8:Text] [Option9:Text] [Option10:Text]
-
-
-
+```
 Create a reaction poll.
 
 
@@ -121,33 +97,29 @@ Create a reaction poll.
 
 **Aliases:** ud
 
+```
 Undelete
-
+```
+```
 [-a all:Switch]
 
-
+```
 Views your recent deleted messages, or all users deleted messages (with "-a" and manage messages perm) in this channel
 
 
 ### ViewPerms
 
-**Aliases:**
-
+```
 ViewPerms [target:Mention/ID]
-
-
-
+```
 Shows you or the targets permissions in this channel
 
 
 ### Stats
 
-**Aliases:**
-
+```
 Stats
-
-
-
+```
 Shows server stats (if public stats are enabled)
 
 
@@ -155,13 +127,12 @@ Shows server stats (if public stats are enabled)
 
 **Aliases:** cc
 
+```
 CustomCommands <ID:Whole number>
 CustomCommands <Trigger:Text>
 CustomCommands
 
-
-
-
+```
 Shows a custom command specified by id or trigger, or lists them all
 
 
@@ -169,10 +140,9 @@ Shows a custom command specified by id or trigger, or lists them all
 
 **Aliases:** log
 
+```
 Logs [Count:Whole number]
-
-
-
+```
 Creates a log of the last messages in the current channel
 This includes deleted messages within an hour
 
@@ -180,10 +150,9 @@ This includes deleted messages within an hour
 
 **Aliases:** whoami
 
+```
 Whois [User:User]
-
-
-
+```
 shows information about a user
 
 
@@ -191,10 +160,9 @@ shows information about a user
 
 **Aliases:** nn
 
+```
 Nicknames [User:User]
-
-
-
+```
 Shows past nicknames of a user
 
 
@@ -202,10 +170,9 @@ Shows past nicknames of a user
 
 **Aliases:** unames/un
 
+```
 Usernames [User:User]
-
-
-
+```
 Shows past usernames of a user
 
 
@@ -213,32 +180,25 @@ Shows past usernames of a user
 
 **Aliases:** remind
 
+```
 Remindme <Time:Duration> <Message:Text>
-
-
-
+```
 Schedules a reminder, example: 'remindme 1h30min are you alive still?'
 
 
 ### Reminders
 
-**Aliases:**
-
+```
 Reminders
-
-
-
+```
 Lists your active reminders
 
 
 ### CReminders
 
-**Aliases:**
-
+```
 CReminders
-
-
-
+```
 Lists reminders in channel, only users with 'manage server' permissions can use this.
 
 
@@ -246,21 +206,17 @@ Lists reminders in channel, only users with 'manage server' permissions can use 
 
 **Aliases:** rmreminder
 
+```
 Delreminder <ID:Whole number>
-
-
-
+```
 Deletes a reminder.
 
 
 ### Role
 
-**Aliases:**
-
+```
 Role [Role:Text]
-
-
-
+```
 Give yourself a role or list all available roles
 
 
@@ -270,10 +226,9 @@ Give yourself a role or list all available roles
 
 **Aliases:** df
 
+```
 Define <Topic:Text>
-
-
-
+```
 Look up an urban dictionary definition
 
 
@@ -281,21 +236,17 @@ Look up an urban dictionary definition
 
 **Aliases:** w
 
+```
 Weather <Where:Text>
-
-
-
+```
 Shows the weather somewhere (add ?m for metric: -w bergen?m)
 
 
 ### Topic
 
-**Aliases:**
-
+```
 Topic
-
-
-
+```
 Generates a chat topic
 
 
@@ -303,46 +254,36 @@ Generates a chat topic
 
 **Aliases:** cf/cat/catfacts
 
+```
 CatFact
-
-
-
+```
 Cat Facts
 
 
 ### Advice
 
-**Aliases:**
-
+```
 Advice [What:Text]
-
-
-
+```
 Get advice
 
 
 ### Throw
 
-**Aliases:**
-
+```
 Throw [Target:User]
-
-
-
+```
 Cause you are a rebel
 
 
 ### Roll
 
-**Aliases:**
-
+```
 Roll <Sides:Whole number>
 Roll <RPG Dice:Text>
 Roll
 
-
-
-
+```
 Roll dices, specify nothing for 6 sides, specify a number for max sides, or rpg dice syntax
 
 
@@ -350,10 +291,9 @@ Roll dices, specify nothing for 6 sides, specify a number for max sides, or rpg 
 
 **Aliases:** ce
 
+```
 CustomEmbed <Json:Text>
-
-
-
+```
 Creates an embed from what you give it in json form: https://discordapp.com/developers/docs/resources/channel#embed-object
 
 
@@ -361,21 +301,17 @@ Creates an embed from what you give it in json form: https://discordapp.com/deve
 
 **Aliases:** wyr
 
+```
 WouldYouRather
-
-
-
+```
 Get presented with 2 options.
 
 
 ### TopServers
 
-**Aliases:**
-
+```
 TopServers [Skip:Whole number - Entries to skip]
-
-
-
+```
 Responds with the top 15 servers I'm on
 
 
@@ -383,10 +319,9 @@ Responds with the top 15 servers I'm on
 
 **Aliases:** -/tr/trep/-rep
 
+```
 TakeRep <User:User> [Num:Whole number]
-
-
-
+```
 Takes away rep from someone
 
 
@@ -394,10 +329,9 @@ Takes away rep from someone
 
 **Aliases:** +/gr/grep/+rep
 
+```
 GiveRep <User:User> [Num:Whole number]
-
-
-
+```
 Gives rep to someone
 
 
@@ -405,21 +339,17 @@ Gives rep to someone
 
 **Aliases:** SetRepID
 
+```
 SetRep <User:Mention/ID> <Num:Whole number>
-
-
-
+```
 Sets someones rep, this is an admin command and bypasses cooldowns and other restrictions.
 
 
 ### DelRep
 
-**Aliases:**
-
+```
 DelRep <User:Mention/ID>
-
-
-
+```
 Deletes someone from the reputation list completely, this cannot be undone.
 
 
@@ -427,32 +357,25 @@ Deletes someone from the reputation list completely, this cannot be undone.
 
 **Aliases:** replogs
 
+```
 RepLog <User:Mention/ID> [Page:Whole number]
-
-
-
+```
 Shows the rep log for the specified user.
 
 
 ### Rep
 
-**Aliases:**
-
+```
 Rep [User:User]
-
-
-
+```
 Shows yours or the specified users current rep and rank
 
 
 ### TopRep
 
-**Aliases:**
-
+```
 TopRep [Offset:Whole number]
-
-
-
+```
 Shows top 15 rep on the server
 
 
@@ -460,21 +383,17 @@ Shows top 15 rep on the server
 
 **Aliases:** sent
 
+```
 sentiment [text:Text]
-
-
-
+```
 Does sentiment analysys on a message or your last 5 messages longer than 3 words
 
 
 ### 8Ball
 
-**Aliases:**
-
+```
 8Ball <What to ask:Text>
-
-
-
+```
 Wisdom
 
 
@@ -482,10 +401,9 @@ Wisdom
 
 **Aliases:** sb
 
+```
 Soundboard [Name:Text]
-
-
-
+```
 Play, or list soundboard sounds
 
 
@@ -493,44 +411,37 @@ Play, or list soundboard sounds
 
 **Aliases:** c
 
+```
 create [packs:Text - Packs seperated by space, or * for all of them]
-
+```
+```
 [-v Vote mode, players vote instead of having a cardczar:Switch]
 
-
+```
 Creates a cards against humanity game in this channel, add packs after commands, or * for all packs. (-v for vote mode without a card czar)
 
 
 ### cah end
 
-**Aliases:**
-
+```
 end
-
-
-
+```
 Ends a cards against humanity game thats ongoing in this channel
 
 
 ### cah kick
 
-**Aliases:**
-
+```
 kick <user:Mention/ID>
-
-
-
+```
 Kicks a player from the ongoing cards against humanity game in this channel
 
 
 ### cah packs
 
-**Aliases:**
-
+```
 packs
-
-
-
+```
 Lists available packs
 
 
@@ -540,10 +451,9 @@ Lists available packs
 
 **Aliases:** cshard
 
+```
 CurrentShard [serverid:Whole number]
-
-
-
+```
 Shows the current shard this server is on (or the one specified
 
 
@@ -551,10 +461,9 @@ Shows the current shard this server is on (or the one specified
 
 **Aliases:** memfetch
 
+```
 MemberFetcher
-
-
-
+```
 Shows the current status of the member fetcher
 
 
@@ -562,21 +471,17 @@ Shows the current status of the member fetcher
 
 **Aliases:** status
 
+```
 Yagstatus
-
-
-
+```
 Shows yagpdb status, version, uptime, memory stats, and so on
 
 
 ### roledbg
 
-**Aliases:**
-
+```
 roledbg
-
-
-
+```
 Debug debug debug autorole assignment
 
 
@@ -586,60 +491,50 @@ Debug debug debug autorole assignment
 
 **Aliases:** banid
 
+```
 Ban <User:Mention/ID> [Reason:Text]
-
+```
+```
 [-d Duration:Duration]
 
-
+```
 Bans a member, specify a duration with -d
 
 
 ### Kick
 
-**Aliases:**
-
+```
 Kick <User:Mention/ID> [Reason:Text]
-
-
-
+```
 Kicks a member
 
 
 ### Mute
 
-**Aliases:**
-
+```
 Mute <User:User Mention> <Duration:Duration> <Reason:Text>
 Mute <User:User Mention> <Reason:Text> <Duration:Duration>
 Mute <User:User Mention> <Duration:Duration>
 Mute <User:User Mention> <Reason:Text>
 Mute <User:User Mention>
 
-
-
-
+```
 Mutes a member
 
 
 ### Unmute
 
-**Aliases:**
-
+```
 Unmute <User:User Mention> [Reason:Text]
-
-
-
+```
 Unmutes a member
 
 
 ### Report
 
-**Aliases:**
-
+```
 Report <User:Mention/ID> <Reason:Text>
-
-
-
+```
 Reports a member to the server's staff
 
 
@@ -647,39 +542,35 @@ Reports a member to the server's staff
 
 **Aliases:** clear/cl
 
+```
 Clean <Num:Whole number>
 Clean <Num:Whole number> <User:User Mention>
 Clean <User:User Mention> <Num:Whole number>
 
-
+```
+```
 [-r Regex:Text]
 [-ma Max age:Duration]
 [-i Regex case insensitive:Switch]
 
-
+```
 Delete the last number of messages from chat, optionally filtering by user, max age and regex.
 Specify a regex with "-r regex_here" and max age with "-ma 1h10m"
 Note: Will only look in the last 1k messages
 
 ### Reason
 
-**Aliases:**
-
+```
 Reason <ID:Whole number> <Reason:Text>
-
-
-
+```
 Add/Edit a modlog reason
 
 
 ### Warn
 
-**Aliases:**
-
+```
 Warn <User:User Mention> <Reason:Text>
-
-
-
+```
 Warns a user, warnings are saved using the bot. Use -warnings to view them.
 
 
@@ -687,21 +578,17 @@ Warns a user, warnings are saved using the bot. Use -warnings to view them.
 
 **Aliases:** Warns
 
+```
 Warnings <User:Mention/ID>
-
-
-
+```
 Lists warning of a user.
 
 
 ### EditWarning
 
-**Aliases:**
-
+```
 EditWarning <Id:Whole number> <NewMessage:Text>
-
-
-
+```
 Edit a warning, id is the first number of each warning from the warnings command
 
 
@@ -709,10 +596,9 @@ Edit a warning, id is the first number of each warning from the warnings command
 
 **Aliases:** dw
 
+```
 DelWarning <Id:Whole number>
-
-
-
+```
 Deletes a warning, id is the first number of each warning from the warnings command
 
 
@@ -720,10 +606,9 @@ Deletes a warning, id is the first number of each warning from the warnings comm
 
 **Aliases:** clw
 
+```
 ClearWarnings <User:Mention/ID>
-
-
-
+```
 Clears the warnings of a user
 
 
@@ -731,10 +616,9 @@ Clears the warnings of a user
 
 **Aliases:** t
 
+```
 toggle <ruleset name:Text>
-
-
-
+```
 Toggles a ruleset on/off
 
 
@@ -744,25 +628,24 @@ Toggles a ruleset on/off
 
 **Aliases:** c
 
+```
 Create <Group:Text>
-
+```
+```
 [-m Message ID:Whole number]
 [-nodm Disable DM:Switch]
 [-rr Remove role on reaction removed:Switch]
 [-skip Number of roles to skip:Whole number]
 
-
+```
 Set up a role menu, specify a message with -m to use an existing message instead of having the bot make one
 
 
 ### RoleMenu Remove
 
-**Aliases:**
-
+```
 Remove <Message ID:Whole number>
-
-
-
+```
 Removes a rolemenu from a message, the message wont be deleted but the bot will now not do anything with reactions on that message
 
 
@@ -770,12 +653,14 @@ Removes a rolemenu from a message, the message wont be deleted but the bot will 
 
 **Aliases:** u
 
+```
 Update <Message ID:Whole number>
-
+```
+```
 [-nodm Disable DM:Switch]
 [-rr Remove role on reaction removed:Switch]
 
-
+```
 Updates a rolemenu, toggling the provided flags and adding missing options, aswell as updating the order.
 
 
@@ -783,10 +668,9 @@ Updates a rolemenu, toggling the provided flags and adding missing options, aswe
 
 **Aliases:** reset
 
+```
 ResetReactions <Message ID:Whole number>
-
-
-
+```
 Removes all reactions on this menu and re-adds them, can be used to fix the order
 
 
@@ -794,8 +678,7 @@ Removes all reactions on this menu and re-adds them, can be used to fix the orde
 
 **Aliases:** edit
 
+```
 EditOption <Message ID:Whole number>
-
-
-
+```
 Allows you to reassign the emoji of an option, tip: use ResetReactions afterwards
