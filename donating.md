@@ -1,7 +1,3 @@
----
-description: Check the links here to see how you can support YAGPDB
----
-
 # Donating
 
 Every single dollar donated is put into alleviating the cost of hosting. 

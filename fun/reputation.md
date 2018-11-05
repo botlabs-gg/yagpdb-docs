@@ -1,9 +1,3 @@
----
-description: >-
-  Reputation is a point system and a fun way for moderators to award and remove
-  points from the users.
----
-
 # Reputation
 
 ## Setup
@@ -50,7 +44,7 @@ Users with this role cannot cannot participate in the point system which they ca
 
 ## Reputation logs
 
-Besides using the command `-replog` , you can also check the logs from the control panel. Specify a user ID to check the logs affecting the points of the user. See [How to get IDs](../other-1/templates.md#how-to-get-ids) to get more information on getting the user ID.
+Besides using the command `-replog` , you can also check the logs from the control panel. Specify a user ID to check the logs affecting the points of the user. See [How to get IDs](../reference/templates.md#how-to-get-ids) to get more information on getting the user ID.
 
 ## Reset all users' reputation
 

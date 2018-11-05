@@ -1,7 +1,3 @@
----
-description: You can create custom embeds using YAGPDB.
----
-
 # Custom Embeds
 
 {% hint style="warning" %}

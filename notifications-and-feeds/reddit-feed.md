@@ -1,9 +1,3 @@
----
-description: >-
-  Setting up the bot to post a notification every time a new Reddit post is
-  posted
----
-
 # Reddit Feed
 
 ## Reddit Feed

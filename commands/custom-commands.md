@@ -1,9 +1,3 @@
----
-description: >-
-  Custom commands allow you to create your own commands with its own unique
-  input trigger and output.
----
-
 # Custom Commands
 
 Custom commands allow you to create your own commands, the custom command system in YAGPDB is somewhat complex and can be used for some advanced stuff. It is still somewhat limited in what it can do and for the the more complex and advanced operations, you should really think about making a standalone bot for it.
@@ -20,7 +14,7 @@ To create your first custom command, go to the control panel and select your ser
 * **Starts with**: When a message starts with your trigger
 * **Contains**: When a message contains your trigger
 * **Exact match**: When the entire message equals your trigger
-* **Regex**: This trigger allows you to use a regex pattern. \(Refer to the [`Regex page`](../other-1/regex.md) for help\)
+* **Regex**: This trigger allows you to use a regex pattern. \(Refer to the [`Regex page`](../reference/regex.md) for help\)
 
 #### Case Sensitivity
 
@@ -34,7 +28,7 @@ Some basic coding knowledge may be required to use some of these features.
 
 If you wish to do anything more then a _"Type in a command" -&gt; "Make the bot say something._ Such as assigning people roles, getting information on the person calling the command, writing messages in other channels, and many other. It is recommended that you check out this page:
 
-{% page-ref page="../other-1/templates.md" %}
+{% page-ref page="../reference/templates.md" %}
 
 ### Restrictions to roles or channels
 
@@ -61,5 +55,5 @@ With custom commands there are some limitations:
 
 You can find multiple examples on the YAGPDB Community & Support Server or in this list \(with explanations\):
 
-{% page-ref page="../other-1/custom-command-examples.md" %}
+{% page-ref page="../reference/custom-command-examples.md" %}
 

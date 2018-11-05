@@ -1,9 +1,3 @@
----
-description: >-
-  This page contains some answers to the most frequent searches on the
-  documentation that don't deserve their own page in the documentation.
----
-
 # Frequent Searches
 
 ## How do I invite YAGPDB.xyz to my server?

@@ -1,7 +1,3 @@
----
-description: This is a complete guide for self-hosting the bot using Docker.
----
-
 # Self Hosting with Docker
 
 {% hint style="danger" %}

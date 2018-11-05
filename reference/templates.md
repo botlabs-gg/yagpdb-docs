@@ -1,10 +1,3 @@
----
-description: >-
-  The go template engine is used for YAGPDB's custom commands and in various
-  other places with custom messages. This page aims to help you to get the most
-  out of templates and custom commands.
----
-
 # Templates
 
 {% hint style="warning" %}
@@ -81,7 +74,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `dict key1 value1 key2 value2 etc` | Creates a dictionary \(not many use cases yet\). |
 | `sdict "key1" "value1" "key2" "value2"` |  The same as `dict` but with only string keys and can be used in `cembed.` |
 | `cslice value1 value2` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
-| `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here.](../reference/custom-embeds.md#embeds-in-custom-commands) |
+| `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here.](../others/custom-embeds.md#embeds-in-custom-commands) |
 | `in list value` | Returns true if value is in list. |
 | `add x y` | Returns x + y. |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |

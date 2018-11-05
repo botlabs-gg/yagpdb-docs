@@ -1,7 +1,3 @@
----
-description: You can find all commands of the bot here.
----
-
 # Commands
 
 ## Prefix

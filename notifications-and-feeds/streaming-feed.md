@@ -1,7 +1,3 @@
----
-description: Setting up the bot to post a notification every time someone is streaming.
----
-
 # Streaming Feed
 
 ### Streaming Feed
@@ -20,7 +16,7 @@ Choose the Channel that you want to bot to post the announcement in.
 
 ### Announcement Message
 
-Write the message that you want to announcement to say. The streaming announcements accept most [templates](../other-1/templates.md), but have some additional special templates:
+Write the message that you want to announcement to say. The streaming announcements accept most [templates](../reference/templates.md), but have some additional special templates:
 
 * `{{ .URL }}` outputs the URL of the stream.
 * `{{ .Game }}` outputs the current game.
@@ -29,7 +25,7 @@ Write the message that you want to announcement to say. The streaming announceme
 
 ### Game Regex
 
-Use [regex ](../other-1/regex.md)to filter out games to post announcements and assign roles for specific games.
+Use [regex ](../reference/regex.md)to filter out games to post announcements and assign roles for specific games.
 
 ### Currently Streaming Role
 
@@ -45,5 +41,5 @@ Do not assign a role and make a announcement for people with this role.
 
 ### Stream Title Regex
 
-Use [regex ](../other-1/regex.md)to filter out streams base on the title of their stream
+Use [regex ](../reference/regex.md)to filter out streams base on the title of their stream
 

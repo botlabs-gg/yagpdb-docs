@@ -1,9 +1,3 @@
----
-description: >-
-  Setting up the bot to post a notification every time a new YouTube video is
-  posted
----
-
 # Youtube Feed
 
 ## Youtube Feed

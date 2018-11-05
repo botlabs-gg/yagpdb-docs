@@ -1,9 +1,3 @@
----
-description: >-
-  Automod allows you to set up some automated moderation on your server, like
-  banning websites, banning foul language and so on.
----
-
 # Automoderator
 
 {% hint style="danger" %}

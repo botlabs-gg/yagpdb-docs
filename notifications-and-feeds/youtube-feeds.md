@@ -1,7 +1,3 @@
----
-description: Sends a notification for new YouTube videos in a specific channel.
----
-
 # Notification Feed
 
 ## General Feed

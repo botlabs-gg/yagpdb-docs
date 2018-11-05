@@ -1,7 +1,3 @@
----
-description: This is the documentation for YAGPDB.
----
-
 # Yet Another General Purpose Bot - Documentation
 
 {% hint style="warning" %}
@@ -30,7 +26,7 @@ Visit [Helping out](helping-out.md) and [Donating](donating.md) for more informa
 
 ## Reporting issues
 
-If you're having issues with the bot, check out the [Frequent Searches](reference/frequent-searches.md) page. If you do not find a solution there, you can also join the [support server](https://discord.gg/0vYlUK2XBKldPSMY) and ask for help there.
+If you're having issues with the bot, check out the [Frequent Searches](others/frequent-searches.md) page. If you do not find a solution there, you can also join the [support server](https://discord.gg/0vYlUK2XBKldPSMY) and ask for help there.
 
 ## Making suggestions
 

@@ -1,9 +1,3 @@
----
-description: >-
-  This page provides some examples for animated emotes. You can use these
-  without having Discord Nitro.
----
-
 # Animated Emotes
 
 To use the emotes as reaction in the trigger message: `{{ addReactions "name:id" "..." "..." }}`   

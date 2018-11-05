@@ -1,9 +1,3 @@
----
-description: >-
-  Sometimes you need to get a specific set of letters or a combination of them,
-  your best choice is a regular expression (regex) trigger.
----
-
 # Using RegEx
 
 ## Basic Regex

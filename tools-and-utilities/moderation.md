@@ -1,7 +1,3 @@
----
-description: YAGPDB provides various moderation features.
----
-
 # Moderation
 
 ![](../.gitbook/assets/moderation.PNG)

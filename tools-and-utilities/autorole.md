@@ -1,7 +1,3 @@
----
-description: Set up the bot to automatically assign users a role.
----
-
 # Autorole
 
 {% hint style="info" %}

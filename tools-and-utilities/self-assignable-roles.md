@@ -1,10 +1,3 @@
----
-description: >-
-  Self-assignable-roles (or role commands as they are called on this bot) is the
-  ability the give yourself roles from a defined list, as opposed to directly
-  giving out "Manage Roles".
----
-
 # Role Commands \(Self-assignable roles\)
 
 {% hint style="danger" %}

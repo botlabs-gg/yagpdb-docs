@@ -1,7 +1,3 @@
----
-description: 'With soundboard, you can play uploaded sounds directly in voice channels.'
----
-
 # Soundboard
 
 ### Name

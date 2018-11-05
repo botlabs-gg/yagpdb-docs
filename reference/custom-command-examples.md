@@ -1,9 +1,3 @@
----
-description: >-
-  On this page you can find multiple examples of custom commands that you can
-  use on your server.
----
-
 # Custom Commands Examples
 
 {% hint style="warning" %}

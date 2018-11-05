@@ -1,7 +1,3 @@
----
-description: This page will help you quickly set up the bot.
----
-
 # Getting Started
 
 {% hint style="info" %}
@@ -25,7 +21,7 @@ For _moderation tools, auto-moderation tools, auto roles, self assigning roles_ 
 
 For a _soundboard or reputation_, check out the **fun tab**. 
 
-Click through the various pages and explore a little to see what the bot offers. If you need help read around in the control panel, the docs, or our [FAQ ](reference/frequent-searches.md)page. If you still need help, you can visit our support server. 
+Click through the various pages and explore a little to see what the bot offers. If you need help read around in the control panel, the docs, or our [FAQ ](others/frequent-searches.md)page. If you still need help, you can visit our support server. 
 
 We have a limited number of volunteer support staff and we are losing money hosting this bot for you. _If you're being rude in the support server, chances are you're gonna get banned._   
   

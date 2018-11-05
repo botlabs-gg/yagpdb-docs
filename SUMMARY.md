@@ -7,9 +7,9 @@
 
 ## Commands
 
-* [Commands](commands-1/commands.md)
-* [Custom Commands](commands-1/custom-commands.md)
-* [All commands](commands-1/all-commands.md)
+* [Commands](commands/commands.md)
+* [Custom Commands](commands/custom-commands.md)
+* [All Commands](commands/all-commands.md)
 
 ## Notifications & Feeds
 
@@ -33,15 +33,15 @@
 
 ## Reference
 
-* [Templates](other-1/templates.md)
-* [Custom Commands Examples](other-1/custom-command-examples.md)
-* [Using RegEx](other-1/regex.md)
-* [Animated Emotes](other-1/animated_emotes.md)
+* [Templates](reference/templates.md)
+* [Custom Commands Examples](reference/custom-command-examples.md)
+* [Using RegEx](reference/regex.md)
+* [Animated Emotes](reference/animated_emotes.md)
 
 ## Others
 
-* [Acknowledgement](reference/acknowledgement.md)
-* [Frequent Searches](reference/frequent-searches.md)
-* [Custom Embeds](reference/custom-embeds.md)
-* [Self Hosting with Docker](reference/self-hosting-with-docker.md)
+* [Acknowledgement](others/acknowledgement.md)
+* [Frequent Searches](others/frequent-searches.md)
+* [Custom Embeds](others/custom-embeds.md)
+* [Self Hosting with Docker](others/self-hosting-with-docker.md)
 

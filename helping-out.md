@@ -1,9 +1,3 @@
----
-description: >-
-  YAGPDB is being made and run by Jonas and a small team of support staff. So
-  any help is highly appreciated!
----
-
 # Helping out
 
 There are several ways you can help in making YAGPDB better!
