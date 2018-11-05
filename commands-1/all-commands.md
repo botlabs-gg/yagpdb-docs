@@ -367,6 +367,31 @@ Example: `-ce {"title": "hello", "description": "wew"`
 CustomEmbed <Json:Text>
 ```
 
+### SimpleEmbed
+
+**Aliases:** se
+
+A more simpler version of CustomEmbed, controlled completely using switches.
+
+
+**Usage:**
+```
+SimpleEmbed
+```
+```
+[-channel :Channel - Optional channel to send in]
+[-title :Text]
+[-desc :Text - Text in the 'description' field]
+[-color :Text - Either hex code or name]
+[-url :Text - Url of this embed]
+[-thumbnail :Text - Url to a thumbnail]
+[-author :Text - The text in the 'author' field]
+[-authoricon :Text - Url to a icon for the 'author' field]
+[-footer :Text - Text content for the footer]
+[-footericon :Text - Url to a icon for the 'footer' field]
+
+```
+
 ### WouldYouRather
 
 **Aliases:** wyr
@@ -839,3 +864,4 @@ To get the id of a message you have to turn on developer mode in discord's appea
 ```
 EditOption <Message ID:Whole number>
 ```
+
