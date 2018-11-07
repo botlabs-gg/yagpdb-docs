@@ -246,6 +246,7 @@ You may also get more specific help by typing `-help (command)` .
 | throw | N/A | N/A | \(username\) | Throws random stuff at nearby people or at the given member. |
 | roll | N/A | N/A | \(number of sides\) | Roll a dice. Specify nothing for 6 siddes, or specify a number for max. sides. |
 | customembed | ce | \(json\) | N/A | Creates an embed from what you give it in json form: [Embed Object](https://discordapp.com/developers/docs/resources/channel#embed-object). |
+| simpleembed | se | N/A | \(switches\) | A simpler version of CustomEmbed, controlled using switches. [More info](all-commands.md#simpleembed). |
 | wouldyourather | wyr | N/A | N/A | Presents you with 2 choices. Somewhat NSFW text wise. |
 | topservers | N/A | N/A | \(skip: number - entries to skip | Responds with the top 15 servers the bot is on. |
 | takerep | -, tr, trep | \(username\) | \(count\) | Takes away given number of rep from given member. Default number is 1. |
