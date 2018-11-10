@@ -5,7 +5,7 @@ Automod v2 is currently in the beta phase, please report bugs about it on GitHub
 {% endhint %}
 
 {% hint style="info" %}
-### Tips
+#### Tips
 
 Generally speaking most people want to have "ignore bots" as a ruleset condition, that way bots wont trigger any rules.
 
@@ -53,15 +53,11 @@ In each rule sets you have several options
 
 When you create a violation, you will need to assign it a name. Each violation name will act like a key which has its own separate group with its own separate count. 
 
-\(**Example\)** `+violation` with the name `links` will increment the `links` violation counter for that user.
+**Example:** `+violation` with the name `links` will increment the `links` violation counter for that user.
 
 Then you can set up a rule with the  `x violations in y minutes` trigger so that when someone increments the counter `x times within y minutes`, the rule will trigger. Using this you can set up tiered punishments where repeated violations causes stricter punishments.
 
 ## Rule Options
-
-**Example:** `+violation` with the name `links` will increment the `links` violation counter for that user.
-
-Then you can set up a rule with the `x violations in y minutes` trigger so that when someone increments the counter `x times within y minutes`, the rule will trigger. Using this you can set up tiered punishments where repeated violations causes stricter punishments.
 
 ### Trigger Types
 
@@ -299,11 +295,11 @@ Then you can set up a rule with the `x violations in y minutes` trigger so that 
 ### Slowmode 
 
 {% tabs %}
-{% tab title="Old Version" %}
+{% tab title="Old version" %}
 ![](../.gitbook/assets/slowmode1.0.PNG)
 {% endtab %}
 
-{% tab title="New Version" %}
+{% tab title="New version" %}
 ![](../.gitbook/assets/slowmode.PNG)
 {% endtab %}
 {% endtabs %}
@@ -311,11 +307,11 @@ Then you can set up a rule with the `x violations in y minutes` trigger so that 
 ### Mass Mention
 
 {% tabs %}
-{% tab title="Old Version" %}
+{% tab title="Old version" %}
 ![](../.gitbook/assets/mass-mention1.0.PNG)
 {% endtab %}
 
-{% tab title="New Version" %}
+{% tab title="New version" %}
 ![](../.gitbook/assets/mass-mention.PNG)
 {% endtab %}
 {% endtabs %}
@@ -323,13 +319,13 @@ Then you can set up a rule with the `x violations in y minutes` trigger so that 
 ### Server Invite
 
 {% tabs %}
-{% tab title="Old Version" %}
+{% tab title="Old version" %}
 
 
 ![](../.gitbook/assets/server-invite1.0.PNG)
 {% endtab %}
 
-{% tab title="New Version" %}
+{% tab title="New version" %}
 ![](../.gitbook/assets/server-invite.PNG)
 {% endtab %}
 {% endtabs %}
@@ -337,11 +333,11 @@ Then you can set up a rule with the `x violations in y minutes` trigger so that 
 ### Links
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="Old version" %}
 ![](../.gitbook/assets/links1.0.PNG)
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="New version" %}
 ![](../.gitbook/assets/links.PNG)
 {% endtab %}
 {% endtabs %}
@@ -349,11 +345,11 @@ Then you can set up a rule with the `x violations in y minutes` trigger so that 
 ### Banned Words
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="Old version" %}
 ![](../.gitbook/assets/banned-words1.0.PNG)
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="New version" %}
 ![](../.gitbook/assets/banned-words.PNG)
 {% endtab %}
 {% endtabs %}
@@ -361,11 +357,11 @@ Then you can set up a rule with the `x violations in y minutes` trigger so that 
 ### Banned Websites
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="Old version" %}
 ![](../.gitbook/assets/banned-websites1.0.PNG)
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="New version" %}
 ![](../.gitbook/assets/banned-websites.PNG)
 {% endtab %}
 {% endtabs %}
