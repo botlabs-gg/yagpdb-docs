@@ -82,7 +82,7 @@ Refer back to the [optional features ](self-assignable-roles.md#optional-feature
 ## Role Menu
 
 {% hint style="danger" %}
-Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT** work if you have done so. 
+Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT** work if you have not done so. 
 {% endhint %}
 
 The role menu makes it possible to have people assign roles by adding reactions to a message.
