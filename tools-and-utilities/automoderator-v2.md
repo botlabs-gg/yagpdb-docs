@@ -1,11 +1,11 @@
 # Automoderator V2
 
 {% hint style="warning" %}
-Automod v2 is currently in the beta phase, please report bugs about it on GitHub or discord
+Automod v2 is currently in the beta phase, please report bugs about it on GitHub or Discord
 {% endhint %}
 
 {% hint style="info" %}
-## Tips
+### Tips
 
 Generally speaking most people want to have "ignore bots" as a ruleset condition, that way bots wont trigger any rules.
 
@@ -18,7 +18,7 @@ A simple way to have it is to keep all the basic stuff \(invites, spam mentions,
 
 Automod V2 is a completely new auto-moderator system made from the ground up. When starting out you will need to create a new ruleset.
 
-If you'd rather watch a video, we made a short basic intro on [YouTube](%20https://www.youtube.com/watch?v=5dfjYJShzyw​)
+If you'd rather watch a video, we made a short basic intro on [YouTube](%20https://www.youtube.com/watch?v=5dfjYJShzyw​).
 
 #### Rulesets
 

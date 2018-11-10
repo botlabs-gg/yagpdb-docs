@@ -25,6 +25,7 @@
 * [Automoderator V2](tools-and-utilities/automoderator-v2.md)
 * [Autorole](tools-and-utilities/autorole.md)
 * [Role Commands \(Self-assignable roles\)](tools-and-utilities/self-assignable-roles.md)
+* [Logging](tools-and-utilities/logging.md)
 
 ## Fun
 

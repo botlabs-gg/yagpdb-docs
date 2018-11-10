@@ -20,7 +20,7 @@ There, we'll take a look at the **Embed Objects**. You can add a value to each o
 
 The output of this would look like the following:
 
-![](../.gitbook/assets/capture%20%285%29.PNG)
+![](../.gitbook/assets/capture%20%286%29.PNG)
 
 Let's break this down: We start of with the customembed-command `-ce`. After this, I start my object \(the embed\) with a curly brace. Then we have the name of the object \(title\) and the value of it \(This is my title\). We separate data with commas. After that we have the same thing again, but for the description. In the end we close the object \(embed\) with another curly brace.
 
@@ -155,5 +155,5 @@ Discord uses colour decimal. SpyColor is a good tool to pick colours, or convert
 
 {% embed url="https://www.spycolor.com" %}
 
-![An example of getting the colour decimal value using SpyColor](../.gitbook/assets/capture%20%284%29.PNG)
+![An example of getting the colour decimal value using SpyColor](../.gitbook/assets/capture%20%285%29.PNG)
 

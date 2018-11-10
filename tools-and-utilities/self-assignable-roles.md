@@ -137,7 +137,7 @@ If you do not want the bot to send you a DM when you are given or removed from a
 
 After you have finish editing or creating your role menu, it will display whether or not the DM is enabled.
 
-![](../.gitbook/assets/capture%20%282%29.PNG)
+![](../.gitbook/assets/capture%20%283%29.PNG)
 
 ###  Remove roles on reaction remove
 
