@@ -242,7 +242,7 @@ You may also get more specific help by typing `-help (command)` .
 | weather | w | \(location\) | N/A | Show the weather for the given location.  |
 | topic | N/A | N/A | N/A | Generates a chat topic. |
 | catfact | cf, cat, catfacts | N/A | N/A | Catfacts. What else?! |
-| advice | N/A | N/A | \(for?\) | Get some advice. **NB!** Currently not working. |
+| advice | N/A | N/A | \(for?\) | Get some advice.  |
 | throw | N/A | N/A | \(username\) | Throws random stuff at nearby people or at the given member. |
 | roll | N/A | N/A | \(number of sides\) | Roll a dice. Specify nothing for 6 siddes, or specify a number for max. sides. |
 | customembed | ce | \(json\) | N/A | Creates an embed from what you give it in json form: [Embed Object](https://discordapp.com/developers/docs/resources/channel#embed-object). |
