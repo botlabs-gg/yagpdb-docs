@@ -102,7 +102,7 @@ After you type in the command, you will be taken through the setup process. If y
 ### Step by step tutorial
 
 {% hint style="danger" %}
-Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT** work if you have done so. 
+Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT** work if you have not done so. 
 {% endhint %}
 
 Once you've made your role commands and assigned them to a role group,  
