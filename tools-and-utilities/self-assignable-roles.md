@@ -139,11 +139,11 @@ After you have finish editing or creating your role menu, it will display whethe
 
 ![](../.gitbook/assets/capture%20%283%29.PNG)
 
-###  Remove roles on reaction remove
+### Remove roles on reaction remove
 
 Remove roles on reaction remove, this means instead of the old toggling mode, adding reactions will strictly give you the role, and removing reactions will only take away the role from you. **This mode will be on by default for new menus.** 
 
- You can set old menus to use this flag using the command `rolemenu (message id) -rr`
+You can set old menus to use this flag using the command `rolemenu update (message id) -rr`
 
 ## Role Menu options
 
