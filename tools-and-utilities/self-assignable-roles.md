@@ -1,9 +1,5 @@
 # Role Commands \(Self-assignable roles\)
 
-{% hint style="danger" %}
-This docs is in need of update, please refer to the announcement of the changes for the time being.
-{% endhint %}
-
 ## Roles
 
 {% hint style="warning" %}
