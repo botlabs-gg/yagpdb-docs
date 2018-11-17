@@ -1,7 +1,7 @@
 # Templates
 
 {% hint style="warning" %}
-Put curly brackets around the templates like this: **`{{.User.Username}}`**
+Put curly brackets around the templates like this: `{{.User.Username}}`
 {% endhint %}
 
 {% hint style="info" %}
@@ -72,14 +72,14 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | :--- | :--- |
 | `adjective` | Returns a random adjective. |
 | `dict key1 value1 key2 value2 etc` | Creates a dictionary \(not many use cases yet\). |
-| `sdict "key1" "value1" "key2" "value2"` |  The same as `dict` but with only string keys and can be used in `cembed.` |
+| `sdict "key1" "value1" "key2" "value2"` |  The same as `dict` but with only string keys and can be used in `cembed`. |
 | `cslice value1 value2` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
-| `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here.](../others/custom-embeds.md#embeds-in-custom-commands) |
+| `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands). |
 | `in list value` | Returns true if value is in list. |
 | `add x y` | Returns x + y. |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
-| `joinStr seperator str1 str2` | Joins several strings into one, seperated by the first arg the separator, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}} = "123")`. |
+| `joinStr seperator str1 str2` | Joins several strings into one, seperated by the first arg \(the separator\), useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` = `123`\). |
 | `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
 | `toString` | Converts something into a string. Usage: `(toString x)`. |
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
@@ -89,29 +89,29 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `sendMessageNoEscape channel_name message` | send `message (string or embed)` in `channel_name`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `mentionEveryone` | Mentions @everyone. |
 | `escapeEveryone "input"` | Escapes everyone mentions in a string. |
-| `mentionHere` | Mentions @here |
+| `mentionHere` | Mentions @here. |
 | `escapeHere "input"` | Escapes here mentions in a string. |
 | `escapeEveryoneHere` | Escapes everyone and here mentions in a string. |
 | `mentionRoleName "rolename"` | Mentions the first role found with the provided name \(case insensitive\). |
 | `mentionRoleID "roleID"` | Mentions the role found with the provided ID. |
 | `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case insensitive\). |
 | `hasRoleID roleid` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
-| `addRoleID roleid` |  Add the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
+| `addRoleID roleid` | Add the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
 | `removeRoleID roleid` | Remove the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
 | `giveRoleName target role_name` | Gives a role by name to the target. |
 | `giveRoleID target role_ID` | Gives a role by ID to the target. |
 | `takeRoleName target role_name` | Take away a role by name from the target. |
 | `takeRoleID target role_ID` | Take away a role by ID from the target. |
-| `deleteResponse "time"` | Deletes the response after a certain time  \(1-60 seconds\). |
+| `deleteResponse "time"` | Deletes the response after a certain time \(1-60 seconds\). |
 | `deleteTrigger "time"` | Deletes the trigger after a certain time \(1-60 seconds\). |
 | `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes unicode emojis and `emojiname:emojiid`\). |
 | `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes unicode emojis and `emojiname:emojiid`\). |
-| `exec "command" "args" "args" "args"` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Max exec can be run 5 times per command.  |
+| `exec "command" "args" "args" "args"` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
 | `execAdmin "command" "args" "args" "args" etc` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve a user from a mention string or ID. |
 |  `currentTime` | Gets the current time which can be used in an custom embed. |
 | `.CmdArgs` | Get all the arguments passed to the command. |
-| `slice "string" integer` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. For slicing whole words see example below in Snippets. |
+| `slice "string" integer` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids). |
 | `lower "string"` | Convert the string to lowercase. |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
 
@@ -119,16 +119,16 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 
 | Case | Example |
 | :--- | :--- |
-| Basic if |  `{{if (condition)}}{{end}}` |
-| Not | `{{if not (condition)}}{{end}}` |
+| Basic if |  `{{if (condition)}} {{end}}` |
+| Not |  `{{if not (condition)}} {{end}}` |
 | And |  `{{if and (cond1) (cond2) (cond3)}}` |
-|  Or |  `{{if or (cond1) (cond2) (cond3)}}` |
-| Equals |  `{{if eq .Channel.ID ########}}` |
-| Not Equals |  `{{if ne .Channel.ID #######}}` |
-| Less than |  `{{if lt (len .Args) 5}}` |
-| Greater than |  `{{if gt (len .Args) 1}}` |
-| Else if |  `{{if (case statement}} {{else if (case statement}} {{end}}` |
-| Else |  `{{if (case statement}} {{else}} output here {{end}}` |
+| Or |  `{{if or (cond1) (cond2) (cond3)}} {{end}}` |
+| Equals |  `{{if eq .Channel.ID ########}} {{end}}` |
+| Not equals |  `{{if ne .Channel.ID #######}} {{end}}` |
+| Less than |  `{{if lt (len .Args) 5}} {{end}}` |
+| Greater than |  `{{if gt (len .Args) 1}} {{end}}` |
+| Else if |  `{{if (case statement)}} {{else if (case statement)}} {{end}}` |
+| Else |  `{{if (case statement)}} {{else}} output here {{end}}` |
 
 ### Snippets
 
@@ -143,20 +143,20 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 * `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
 * `{{$a := (exec "catfact")}}` Saves the response of the **catfact** command to variable `$a`. 
 * `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the argument to a variable `$allArgs`. 
-* `{{$args:= (joinStr " " (slice .CmdArgs 1))}}`  Saves all the arguments except the first one to a variable `$args`. 
+* `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
 **User IDs:** Can be found by mentioning the user then adding a \ such as `\@jonas747#0001` . Alternatively if you have developer mode on, you can right click and select Copy ID
 
-**Channel IDs** Can be found by mentioning the channel then adding a \ such as `\#announcements`. Alternatively if you have developer mode on, you can right click on the channel and select Copy ID
+**Channel IDs:** Can be found by mentioning the channel then adding a \ such as `\#announcements`. Alternatively if you have developer mode on, you can right click on the channel and select Copy ID.
 
 **Role IDs**: Use the `listroles`command.
 
 **Emote IDs:** 
 
-If it is a **custom emote**, adding a \ in front of the emote such as `\:yagpdg:` will display the name along along with the ID such as  `<:yag:277569741932068864>`.
+If it is a **custom emote**, adding a \ in front of the emote such as `\:yag:` will display the name along along with the ID such as  `<:yag:277569741932068864>`.
 
 If it is a **animated emote**, do the same steps as a normal emote. If you do not have Discord Nitro, you can have a friend or a bot use the emote and right click on the emote to open its link. The ID will be a part of the URL.
 
