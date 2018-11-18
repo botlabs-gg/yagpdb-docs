@@ -137,7 +137,7 @@ If you want to copy this custom command, you can get it from here:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-## Display an image  <a id="let-users-warn-other-users"></a>
+### Display an image 
 
 You can display an image by simply pasting the link to it in the response, or by doing it fancy this way:  
 \(make sure to replace the link with your own image ;\)\)
@@ -149,11 +149,47 @@ Trigger type: command trigger: `imageembed`
 {{ sendMessage nil $embed }}
 ```
 
-## Using colours
+### Using colors
 
-Discord uses colour decimal. SpyColor is a good tool to pick colours, or convert hex to decimal.
+Discord uses color decimal. SpyColor is a good tool to pick colors, or convert hex to decimal.
 
 {% embed url="https://www.spycolor.com" %}
 
 ![An example of getting the colour decimal value using SpyColor](../.gitbook/assets/capture%20%285%29.PNG)
+
+## The `simpleembed` command
+
+Simple embeds are easier to use than custom embeds as they do not require any knowledge of json. Their downside is that they don't support all Discord embed fields from the embed structure, for example fields. You can create a simple embed with the `simpleembed` command, `se` for short.
+
+Simple embeds work with switches, here is a list of them all:
+
+| Switch | Description |
+| :--- | :--- |
+| -channel | Optional channel to send in |
+| -title | Title field |
+| -desc | Description field |
+| -color | Color field, either in hex or a color name |
+| -url | URL field for embed |
+| -thumbnail | URL to an image for thumbnail field |
+| -author | Author field |
+| -footer | Footer field |
+| -footericon | URL to an image for footer icon field |
+
+The values for simple embeds need to bet placed within quotes:
+
+```go
+-se -title "This is my title" -desc "This is my description" -thumbnail "https://via.placeholder.com/300/"
+```
+
+This generates the following embed:
+
+![](../.gitbook/assets/image.png)
+
+You can play around with this command a bit, it's really easy to use. 
+
+{% hint style="info" %}
+Simple embeds can be used in custom commands:
+
+`{{execAdmin "se" "-desc" "This is my description"}}` 
+{% endhint %}
 
