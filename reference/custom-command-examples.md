@@ -201,3 +201,7 @@ Trigger Type: Join message in server channel
 You want your custom command here? Post it in the [Support Server ](https://discord.gg/GcpyYh3)and we'll review it.
 {% endhint %}
 
+## Highly advanced examples <a id="highly-advanced-examples"></a>
+
+You can find some highly advanced custom commands for different purposes here: [https://github.com/mrbentarikau/yagdocs\_and\_more/tree/master/cc](https://github.com/mrbentarikau/yagdocs_and_more/tree/master/cc)​
+
