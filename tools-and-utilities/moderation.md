@@ -19,13 +19,13 @@ The moderation features YAGPDB provides are:
 * Warnings
   * Assign a warning to a user, trackable through the bot. 
 
-There is also a auto-moderation feature as well.
+There is also an auto-moderation feature as well.
 
-{% page-ref page="automoderator.md" %}
+{% page-ref page="automoderator-v2.md" %}
 
 ## Clean/Clear Syntax and examples
 
- **Syntax:** `-clean (Optional -ma [time]) (Optional -r "word") (Optional -i) (Optional @user) (num)` 
+ **Syntax**`-clean (Optional -ma [time]) (Optional -r "word") (Optional -i) (Optional @user) (num)` 
 
 **Examples**  
   
@@ -36,7 +36,7 @@ Cleans 100 messages sent in the last 2 hours.
 `-clean -r pineapple 100`  
 Cleans 100 messages containing pineapple.  
 `-clean -r pineapple -i 100`   
-Cleans 100 messages containing pineapple, and ignoring case sensitivity .  
+Cleans 100 messages containing pineapple, and ignoring case sensitivity.  
 `-clean @user 100`   
 Cleans 100 messages sent by @user.  
 `-clean -ma 5h -r pineapple -i @user 100`   

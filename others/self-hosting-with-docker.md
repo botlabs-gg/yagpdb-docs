@@ -191,8 +191,6 @@ docker-compose down
 docker ps
 ```
 
-### 
-
 ## Troubleshooting
 
 Having trouble, here are the most common problems and fixes.
