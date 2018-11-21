@@ -29,7 +29,7 @@ Trigger Type: Command Trigger: `updates`
 ```go
 {{$a := (exec "role" "yagpdb")}}
 Oh hi there, I just ran the role command. 
-/*{{$a}} Remove the /* and the * / if you want the response to be displayed*/
+{{/*$a*/}} Remove the /* and the * / if you want the response to be displayed.
 ```
 
 The variable $a will store the output of running the role command and you can then just print out your own response.
