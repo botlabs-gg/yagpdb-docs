@@ -85,8 +85,8 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
 | `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). |
-| `sendMessage channel_name message` | send `message (string or embed)` in `channel_name`, channel can be either `nil`, the channel ID or the channel's name. |
-| `sendMessageNoEscape channel_name message` | send `message (string or embed)` in `channel_name`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
+| `sendMessage channel_name message` | Sends `message (string or embed)` in `channel_name`, channel can be either `nil`, the channel ID or the channel's name. |
+| `sendMessageNoEscape channel_name message` | Sends `message (string or embed)` in `channel_name`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `mentionEveryone` | Mentions @everyone. |
 | `escapeEveryone "input"` | Escapes everyone mentions in a string. |
 | `mentionHere` | Mentions @here. |
@@ -96,12 +96,12 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `mentionRoleID "roleID"` | Mentions the role found with the provided ID. |
 | `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case insensitive\). |
 | `hasRoleID roleid` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
-| `addRoleID roleid` | Add the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
-| `removeRoleID roleid` | Remove the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
+| `addRoleID roleid` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
+| `removeRoleID roleid` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
 | `giveRoleName target role_name` | Gives a role by name to the target. |
 | `giveRoleID target role_ID` | Gives a role by ID to the target. |
-| `takeRoleName target role_name` | Take away a role by name from the target. |
-| `takeRoleID target role_ID` | Take away a role by ID from the target. |
+| `takeRoleName target role_name` | Takes away a role by name from the target. |
+| `takeRoleID target role_ID` | Takes away a role by ID from the target. |
 | `deleteResponse "time"` | Deletes the response after a certain time \(1-60 seconds\). |
 | `deleteTrigger "time"` | Deletes the trigger after a certain time \(1-60 seconds\). |
 | `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes unicode emojis and `emojiname:emojiid`\). |
@@ -110,9 +110,10 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `execAdmin "command" "args" "args" "args" etc` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve a user from a mention string or ID. |
 |  `currentTime` | Gets the current time which can be used in an custom embed. |
-| `.CmdArgs` | Get all the arguments passed to the command. |
+| `.CmdArgs` | Gets all the arguments passed to the command. |
 | `slice "string" integer` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids). |
-| `lower "string"` | Convert the string to lowercase. |
+| `lower "string"` | Converts the string to lowercase. |
+| `upper "string"` | Converts the string to uppercase. |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
 
 ### Branching
