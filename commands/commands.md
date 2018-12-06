@@ -227,7 +227,7 @@ You may also get more specific help by typing `-help (command)` .
 | clean | clear, cl | \(count\) | \(username\) | Cleans the chat. |
 | reason | N/A | \(ID\) \(reason\) | N/A | Add/Edit modlog reason from given ID. |
 | warn | N/A | \(mention\) \(reason\) | N/A | Warns given member. Warnings are saved. |
-| warnings | N/A | \(mention\) | N/A | Lists warnings of given member with an ID. |
+| warnings | N/A | \(mention/ID\) | N/A | Lists warnings of given member with an ID. |
 | editwarning | N/A | \(ID\) \(Reason\) | N/A | Edit given warning. |
 | delwarning | dw | \(ID\) | N/A | Deletes the warning with the given ID. |
 | clearwarnings | clw | \(username\) or \(userID\) | N/A | Clears all warnings from given member. |
