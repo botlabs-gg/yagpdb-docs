@@ -36,7 +36,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .Guild.Region | Outputs the region of the guild. |
 | .Guild.AfkChannelID | Outputs the AFK channel ID. |
 | .Guild.OwnerID | Outputs the ID of the owner. |
-| .Guild.JoinedAt | Outputs when the user joined the guild. |
+| .Guild.JoinedAt | Outputs when YAGPDB joined the guild. |
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
 | .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
