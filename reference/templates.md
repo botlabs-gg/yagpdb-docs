@@ -98,10 +98,10 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `hasRoleID roleid` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
 | `addRoleID roleid` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
 | `removeRoleID roleid` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
-| `giveRoleName target role_name` | Gives a role by name to the target. |
-| `giveRoleID target role_ID` | Gives a role by ID to the target. |
-| `takeRoleName target role_name` | Takes away a role by name from the target. |
-| `takeRoleID target role_ID` | Takes away a role by ID from the target. |
+| `giveRoleName userID role_name` | Gives a role by name to the target. |
+| `giveRoleID userID role_ID` | Gives a role by ID to the target. |
+| `takeRoleName userID role_name` | Takes away a role by name from the target. |
+| `takeRoleID userID role_ID` | Takes away a role by ID from the target. |
 | `deleteResponse "time"` | Deletes the response after a certain time \(1-60 seconds\). |
 | `deleteTrigger "time"` | Deletes the trigger after a certain time \(1-60 seconds\). |
 | `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes unicode emojis and `emojiname:emojiid`\). |
