@@ -242,6 +242,7 @@ You may also get more specific help by typing `-help (command)` .
 | weather | w | \(location\) | N/A | Show the weather for the given location.  |
 | topic | N/A | N/A | N/A | Generates a chat topic. |
 | catfact | cf, cat, catfacts | N/A | N/A | Catfacts. What else?! |
+| dogfact | dog, dogfacts | N/A | N/A | Dogfacts. Yeah. Competitor to catfacts. |
 | advice | N/A | N/A | \(for?\) | Get some advice.  |
 | throw | N/A | N/A | \(username\) | Throws random stuff at nearby people or at the given member. |
 | roll | N/A | N/A | \(number of sides\) | Roll a dice. Specify nothing for 6 siddes, or specify a number for max. sides. |
