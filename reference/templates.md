@@ -111,7 +111,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `userArg ########` | Function that can be used to retrieve a user from a mention string or ID. |
 |  `currentTime` | Gets the current time which can be used in an custom embed. |
 | `.CmdArgs` | Gets all the arguments passed to the command. |
-| `slice "string" integer` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids). |
+| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
