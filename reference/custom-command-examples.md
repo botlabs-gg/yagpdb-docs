@@ -217,6 +217,34 @@ Trigger Type: Join message in server channel
 {{end}}
 ```
 
+### Suggestion Command
+
+> By: **Michdi\#1602**
+
+This command is to be used to replace suggestion bots. You can adapt it to your needs.
+
+Trigger Type: Command Trigger: `suggest`
+
+```go
+{{ $channel := 476178740133494784 /* Replace the ID with your suggestions Channel ID */}}
+
+{{if gt (len .Args) 1}}
+Suggestion submitted.
+{{ $embed := cembed
+"description" (joinStr " " .CmdArgs)
+"color" 9021952
+"author" (sdict "name" (joinStr "" .User.Username "#" .User.Discriminator) "url" "" "icon_url" (.User.AvatarURL "512"))
+"timestamp"  currentTime
+}}
+{{ $id := (sendMessageNoEscapeRetID $channel $embed) }}
+{{ addMessageReactions $channel $id "upvote:524907425531428864" "downvote:524907425032175638" }}
+{{else}}
+Correct usage: `-suggest <suggestion>`
+{{end}}
+{{deleteResponse 5}}
+{{deleteTrigger 5}}
+```
+
 {% hint style="info" %}
 You want your custom command here? Post it in the [Support Server ](https://discord.gg/GcpyYh3)and we'll review it.
 {% endhint %}
