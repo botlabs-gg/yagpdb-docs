@@ -85,8 +85,11 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
 | `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). |
-| `sendMessage channel_name message` | Sends `message (string or embed)` in `channel_name`, channel can be either `nil`, the channel ID or the channel's name. |
-| `sendMessageNoEscape channel_name message` | Sends `message (string or embed)` in `channel_name`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
+| `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's name. |
+| `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
+| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID for later use. Example in [Snippets](templates.md#snippets). |
+| `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID for later use. |
+| `deleteMessage channel_name messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
 | `mentionEveryone` | Mentions @everyone. |
 | `escapeEveryone "input"` | Escapes everyone mentions in a string. |
 | `mentionHere` | Mentions @here. |
@@ -146,6 +149,9 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 * `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the argument to a variable `$allArgs`. 
 * `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
+* `{{$x := sendMessageRetID nil "Hello there!" }} {{deleteMessage nil $x 5 }}`Sends message to current channel \(nil\) and gets messageID to variable $x. After 5 seconds, deletes that entry.
+
+
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
