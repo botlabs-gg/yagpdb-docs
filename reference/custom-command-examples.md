@@ -60,6 +60,26 @@ Trigger Type: Command Trigger: `dict`
 {{index $options (toString $d)}}
 ```
 
+### parseArgs example
+
+The `parseArgs` template can check if specific args are given. If not, it will return a custom error message. It also checks if specific args are of a specific type and simplifies the argument management. Available for `carg` are:
+
+* `int` \(whole number\)
+* `string` \(text\)
+* `user` \(user mentions as user type\)
+* `userid` \(mentions or the user's id, as integer\)
+* `channel` \(channel mention or id, has channel type\)
+
+Trigger Type: Command Trigger: `send` 
+
+```go
+{{$args := parseArgs 2 "Syntax is <channel> <text>"
+    (carg "channel" "channel to send to")
+    (carg "string" "text to send")}}
+
+{{sendMessage ($args.Get 0).ID ($args.Get 1)}}
+```
+
 ## User submitted custom commands
 
 ### GiveRole command for specific roles
