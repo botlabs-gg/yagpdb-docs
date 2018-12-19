@@ -89,7 +89,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID for later use. Example in [Snippets](templates.md#snippets). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID for later use. |
-| `deleteMessage channel_name messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
+| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
 | `mentionEveryone` | Mentions @everyone. |
 | `escapeEveryone "input"` | Escapes everyone mentions in a string. |
 | `mentionHere` | Mentions @here. |
