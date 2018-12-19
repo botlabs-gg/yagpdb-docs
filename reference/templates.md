@@ -97,17 +97,17 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `escapeHere "input"` | Escapes here mentions in a string. |
 | `escapeEveryoneHere` | Escapes everyone and here mentions in a string. |
 | `mentionRoleName "rolename"` | Mentions the first role found with the provided name \(case insensitive\). |
-| `mentionRoleID "roleID"` | Mentions the role found with the provided ID. |
+| `mentionRoleID roleID` | Mentions the role found with the provided ID. |
 | `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case insensitive\). |
-| `hasRoleID roleid` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
-| `addRoleID roleid` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
-| `removeRoleID roleid` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
-| `giveRoleName userID role_name` | Gives a role by name to the target. |
-| `giveRoleID userID role_ID` | Gives a role by ID to the target. |
-| `takeRoleName userID role_name` | Takes away a role by name from the target. |
-| `takeRoleID userID role_ID` | Takes away a role by ID from the target. |
-| `deleteResponse "time"` | Deletes the response after a certain time \(1-60 seconds\). |
-| `deleteTrigger "time"` | Deletes the trigger after a certain time \(1-60 seconds\). |
+| `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
+| `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
+| `removeRoleID roleID` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
+| `giveRoleName userID "rolename"` | Gives a role by name to the target. |
+| `giveRoleID userID roleID` | Gives a role by ID to the target. |
+| `takeRoleName userID "rolename"` | Takes away a role by name from the target. |
+| `takeRoleID userID "roleID"` | Takes away a role by ID from the target. |
+| `deleteResponse time` | Deletes the response after a certain time \(1-60 seconds\). |
+| `deleteTrigger time` | Deletes the trigger after a certain time \(1-60 seconds\). |
 | `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes unicode emojis and `emojiname:emojiid`\). |
 | `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes unicode emojis and `emojiname:emojiid`\). |
 | `exec "command" "args" "args" "args"` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
@@ -146,11 +146,11 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 * `{{if ne .User.ID #######}}` Will ignore if user ID \#\#\#\#\# uses command.
 * `{{$d := randInt 10}}` Store the random int into variable $d \(A random number from 0-9\).
 * `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
-* `{{$a := (exec "catfact")}}` Saves the response of the **catfact** command to variable `$a`. 
+* `{{$a := (exec "catfact")}}` Saves the response of the `catfact` ****command to variable `$a`. 
 * `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the argument to a variable `$allArgs`. 
 * `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
-* `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}` Sends message to current channel \(nil\) and gets messageID to variable $x. Also adds reaction to that message. After 5 seconds, deletes this entry.
+* `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}` Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reaction to this message. After 5 seconds, deletes the entry.
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
