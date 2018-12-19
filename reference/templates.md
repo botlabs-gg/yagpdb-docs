@@ -89,6 +89,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID for later use. Example in [Snippets](templates.md#snippets). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID for later use. |
+| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in [Snippets](templates.md#snippets). |
 | `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
 | `mentionEveryone` | Mentions @everyone. |
 | `escapeEveryone "input"` | Escapes everyone mentions in a string. |
@@ -149,9 +150,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 * `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the argument to a variable `$allArgs`. 
 * `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
-* `{{$x := sendMessageRetID nil "Hello there!" }} {{deleteMessage nil $x 5 }}`Sends message to current channel \(nil\) and gets messageID to variable $x. After 5 seconds, deletes that entry.
-
-
+* `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}` Sends message to current channel \(nil\) and gets messageID to variable $x. Also adds reaction to that message. After 5 seconds, deletes this entry.
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
