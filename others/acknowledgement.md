@@ -13,6 +13,7 @@ Thanks to the following people for contributing to the Bot on GitHub or for doin
 * [caubert\#6702](https://github.com/mrbentarikau)
 * Narutp\#4011
 * [CHamburr\#2591](https://github.com/CHamburr)
+* Blitz\#7822
 
 Also a big thanks to all the people that support YAGPDB on [Patreon](https://www.patreon.com/yagpdb)! You can find them on the [landing page of the control panel](https://yagpdb.xyz/manage). 
 
