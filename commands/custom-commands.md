@@ -51,6 +51,55 @@ With custom commands there are some limitations:
 * A Custom command itself can't be longer than 3000 characters
 * Custom Commands are limited to 5 userArg calls, 5 exec/execAdmin functions, 10 template function calls and 3 sendMessage calls
 
+### Require arguments
+
+As of v1.12 there's a simple set of functions available for you to manage arguments, they are:
+
+```text
+{{$args := parseArgs num-required-args "Custom usage text when invalid args provided"
+    (carg "int" "name of arg1")
+    (carg "string" "name of arg2")
+    (more args can be added aswell...)}}
+...
+
+{{$args.Get 0}} <- will have the first arg
+{{$args.Get 1}} <- will have the second arg
+```
+
+The execution will stop at wherever you placed "**parseArgs**" if incorrect args are passed.
+
+"**carg**" has the following syntax:
+
+```text
+{{carg "type" "name" additional-options-depending-on-type}}
+```
+
+Available types and options are:
+
+* **int -** whole numbers, you can also optionally specify min and max after the name
+* **string -** text
+* **user -** user mentions, will have the type of User \(see [templates ](../reference/templates.md#user)for more info\)
+* **userid -** user id's, this user may not exist at all, both mentions and plain id's are accepted, will have the type of int64
+* **channel -** channel mentions, will have the type of Channel \(see [templates ](../reference/templates.md#channel)for more info\)
+
+To access the parsed args you use the "**Get**" function on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
+
+There is also a "**IsSet**" function that will return true or false depending on whether the argument was set or not, if this was a optional argument.
+
+Example usage of optional args:
+
+```text
+{{$args := parseArgs 1 "Custom usage text when invalid args provided"
+    (carg "int" "name of arg1")
+    (carg "string" "name of arg2 (optional)")
+    (more args can be added aswell...)}}
+...
+
+{{$args.Get 0}} <- will have the first arg
+{{or $args.Get 1 "value if the second arg was not used"}}
+{{if $args.IsSet 1}} only runs if the second argument was provided {{end}}
+```
+
 ### Examples of custom commands
 
 You can find multiple examples on the YAGPDB Community & Support Server or in this list \(with explanations\):
