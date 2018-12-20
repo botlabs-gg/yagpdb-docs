@@ -119,8 +119,8 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
-| `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. Example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
-| `carg type name` | Defines type of argument for parseArgs. Example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
+| `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
+| `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 
 ### Branching
 
