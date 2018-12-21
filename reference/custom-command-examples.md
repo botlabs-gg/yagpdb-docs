@@ -6,7 +6,7 @@ This isn't the actual page about custom commands. A brief overview about custom 
 
 ### Controlled randomizer example
 
-YAGPDB has a built in random response system built into it custom command system but sometimes you want to control the chances of certain responses occurring. You can control this by creating a singular response and creating a Variable with randInt. Then use a if else if statement like such to print out your desired output. 
+YAGPDB has a built-in random response system for custom commands, but sometimes you may want to control the chances for certain responses to occur. You can do this by creating a singular response and creating a variable with randInt. Then use an if else if statement like this to print out your desired output. 
 
 ```go
 {{$var := randInt 1 100}}
@@ -24,7 +24,7 @@ This has a 65% chance of being triggered
 
 If you create a custom command with exec or execAdmin you might not want the response for the executed command to show. You can suppress the response of a command like the following:
 
-Trigger Type: Command Trigger: `updates`
+Trigger type: `Command` Trigger: `updates`
 
 ```go
 {{$a := (exec "role" "yagpdb")}}
@@ -32,27 +32,27 @@ Oh hi there, I just ran the role command.
 {{/*$a*/}} Remove the /* and the * / if you want the response to be displayed.
 ```
 
-The variable $a will store the output of running the role command and you can then just print out your own response.
+The variable `$a` will store the output of running the role command and you can then just print out your own response.
 
 ### Range example
 
-This command will let teach you about how the range command works. It works really well for iterating through all your inputs. 
+This command will teach you on how the range command works. It works really well for iterating through all your inputs. 
 
-This particular command will let the bot repeat everything that was being said behind the command \(careful with this one as there are ways to abuse it\). 
+This particular command will let the bot repeat everything that was being said behind the command \(be careful with this one as there are ways to abuse it\). 
 
-Trigger Type: Command Trigger: `repeat`
+Trigger type: `Command` Trigger: `repeat`
 
 ```go
 {{range $k, $v := .CmdArgs}}{{$v}}{{end}}
 ```
 
-$k is the iteration number you are on starting at 0 and $v is the current word in your input that you are on. The if statement is in there so the command doesn't include the first word in the sentence or "-repeat" in the output. If your trigger is multiple words you may need to adjust accordingly 
+`$k` is the iteration number you are on, starting at 0 and `$v` is the current word in your input that you are on. 
 
 ### Dictionary example
 
-A dictionary does not currently have a lot of piratical use as of right now as YAGPDB has a built in randomizer in its custom command now in case you ever find yourself needing to use it, here's how to set it up.
+A dictionary does not currently have a lot of piratical use, since YAGPDB has a built-in randomizer for the custom commands. In case you ever find yourself needing to use it, here's how to set it up.
 
-Trigger Type: Command Trigger: `dict`
+Trigger type: `Command` Trigger: `dict`
 
 ```go
 {{$options := (dict "0" "test" "1" "test1" "2" "test2")}}
@@ -62,15 +62,15 @@ Trigger Type: Command Trigger: `dict`
 
 ### parseArgs example
 
-The `parseArgs` template can check if specific args are given. If not, it will return a custom error message. It also checks if specific args are of a specific type and simplifies the argument management. Available for `carg` are:
+The `parseArgs` template can check if specific arguments are given. If not, it will return a custom error message. It also checks if specific args are of a specific type and simplifies the argument management. Available types for `carg` are:
 
 * `int` \(whole number\)
 * `string` \(text\)
-* `user` \(user mentions as user type\)
-* `userid` \(mentions or the user's id, as integer\)
-* `channel` \(channel mention or id, has channel type\)
+* `user` \(user mentions as type user\)
+* `userid` \(mentions or the user's ID, as integer\)
+* `channel` \(channel mention or ID, as type channel\)
 
-Trigger Type: Command Trigger: `send` 
+Trigger type: `Command` Trigger: `send` 
 
 ```go
 {{$args := parseArgs 2 "Syntax is <channel> <text>"
@@ -84,11 +84,11 @@ Trigger Type: Command Trigger: `send`
 
 ### GiveRole command for specific roles
 
-> By **GryTrean**\#8957
+> By **GryTrean\#8957**
 
-This command will allow you to give a role to someone, making sure that the role is added to a list with allowed roles. We use the {{giveRoleName &lt;user&gt; &lt;role&gt;}} template which allows us to give an user a role by name. We also make sure that the command has a correct number of arguments and if not, we give a response with the correct usage of the command. To add a new exception to the roles that can be given, you simply add another role in line 2. You could also make the command take away roles from someone instead of giving them by simply using the {{takeRoleName}} template instead of {{giveRoleName}}.
+This command will allow you to give a role to someone, making sure that the role given is in a list of allowed roles. We use the `{{giveRoleName <user> <role>}}` template which allows us to give a user a role by name. We also make sure that the command has the correct number of arguments and if not, we give a response with the correct usage of the command. To add a new exception to the roles that can be given, you simply add another role in line 2. You could also make the command take away roles from someone instead of giving them by simply using the `{{takeRoleName}}` template instead of `{{giveRoleName}}`.
 
-Trigger Type: Command Trigger: `giveRoleName` 
+Trigger type: `Command` Trigger: `giveRoleName`
 
 {% code-tabs %}
 {% code-tabs-item title="GiveRole Custom Command" %}
@@ -112,12 +112,12 @@ Trigger Type: Command Trigger: `giveRoleName`
 
 ### Broadcast command
 
-> By **GryTrean**\#8957   
-> Updated by: Timcampy\#5636
+> By **GryTrean\#8957**   
+> Updated by: **Timcampy\#5636**
 
-This command gives you the ability to send a message in another channel, it also uses embeds for this so you can see `sdict`\(dictionary but with only string keys\), `sendMessage`, and `cembed`in action.
+This command lets the bot send a message to another channel. It uses embeds so you can see `sdict`\(dictionary but with only string keys\), `sendMessage`, and `cembed`in action.
 
-Trigger Type: Command Trigger: `bc`
+Trigger type: `Command` Trigger: `bc`
 
 ```go
 {{if eq (len .Args) 3}}
@@ -147,9 +147,9 @@ Trigger Type: Command Trigger: `bc`
 
 > By:  **L-z\#7749**
 
-This command does a good job at using a little bit of everything. Which include but is not limited to, **`conditional statement`, `assigning values to variable`, `getting command arguments`, `using template code`, `creating embeds`**. If you are able to understand everything in this command, you are at a very good place in being able to make advance custom commands. 
+This command does a good job at using a little bit of everything. Which include but is not limited to, `conditional statement`, `assigning values to variable`, `getting command arguments`, `using template code`, and `creating embeds`. If you are able to understand everything in this command, you are at a very good place in being able to make advanced custom commands. 
 
-Trigger Type: Command Trigger: `avatar`
+Trigger type: `Command` Trigger: `avatar`
 
 ```go
 {{$ln := (len .Args)}}
@@ -207,7 +207,7 @@ Trigger Type: Command Trigger: `avatar`
 
 This command is to be placed in the welcome message. It filters out people with discord.gg names. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server.
 
-Trigger Type: Join message in server channel
+Trigger type: `Join message in server channel`
 
 ```go
 {{if .UsernameHasInvite}}
@@ -221,9 +221,9 @@ Trigger Type: Join message in server channel
 
 > By: **Michdi\#1602**
 
-This command is to be used to replace suggestion bots. You can adapt it to your needs.
+This command is used to replace suggestion bots. You can adapt it to your needs.
 
-Trigger Type: Command Trigger: `suggest`
+Trigger type: `Command` Trigger: `suggest`
 
 ```go
 {{ $channel := 476178740133494784 /* Replace the ID with your suggestions Channel ID */}}
