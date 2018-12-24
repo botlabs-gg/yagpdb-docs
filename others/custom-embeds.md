@@ -165,15 +165,17 @@ Simple embeds work with switches, here is a list of them all:
 
 | Switch | Description |
 | :--- | :--- |
-| -channel | Optional channel to send in |
-| -title | Title field |
-| -desc | Description field |
-| -color | Color field, either in hex or a color name |
-| -url | URL field for embed |
-| -thumbnail | URL to an image for thumbnail field |
-| -author | Author field |
-| -footer | Footer field |
-| -footericon | URL to an image for footer icon field |
+| -channel | Optional channel to send in. |
+| -title | Title field. |
+| -desc | Description field. |
+| -color | Color field, either in hex or a color name. |
+| -url | URL field for embed. |
+| -thumbnail | URL to an image for thumbnail field. |
+| -image | URL to an image. |
+| -author | Author field. |
+| -authoricon | URL for the icon in 'author' field. |
+| -footer | Footer field. |
+| -footericon | URL to an image for footer icon field. |
 
 The values for simple embeds need to bet placed within quotes:
 
