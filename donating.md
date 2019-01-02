@@ -14,8 +14,8 @@ We rent out the lower left corner of the dashboard to help pay the cost of runni
 
 Here are some details on that spot:
 
-* The control panel pages get around 100k views per week
-* The current price is fixed at **$2 per day**, we do not have any system for ad stats, such as click-through in place yet, so it's a constant for now.
+* The control panel pages get around 300k views per week
+* The current price is fixed at **$3 per day**, we do not have any system for ad stats, such as click-through in place yet, so it's a constant for now.
 * The size is 290x225
   * The reason that it is so small is that it is always visible \(it's statically positioned\).
 * We only allow a static image or a not-very-annoying video \(muted or gif\).
