@@ -96,7 +96,7 @@ Example usage of optional args:
 ...
 
 {{$args.Get 0}} <- will have the first arg
-{{or $args.Get 1 "value if the second arg was not used"}}
+{{or ($args.Get 1) "value if the second arg was not used"}}
 {{if $args.IsSet 1}} only runs if the second argument was provided {{end}}
 ```
 
