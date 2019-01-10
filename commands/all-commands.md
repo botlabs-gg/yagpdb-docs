@@ -16,9 +16,9 @@ For example with the poll command if you want the question to have multiple word
 
 Shows help about all or one specific command
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Help [command:Text]
 ```
 
@@ -26,20 +26,20 @@ Help [command:Text]
 
 Responds with bot information
 
-**Usage:**
 
-```text
-Info
+**Usage:**
+```
+Info 
 ```
 
 ### Invite
 
 Responds with bot invite link
 
-**Usage:**
 
-```text
-Invite
+**Usage:**
+```
+Invite 
 ```
 
 ## Tools & Utilities 🔨
@@ -48,9 +48,9 @@ Invite
 
 Shows command prefix of the current server, or the specified server
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Prefix [Server ID:Whole number]
 ```
 
@@ -60,20 +60,20 @@ Prefix [Server ID:Whole number]
 
 Calculator 2+2=5
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Calc <Expression:Text>
 ```
 
 ### Ping
 
-Shows the latency from the bot to the discord servers. Note that high latencies can be the fault of ratelimits and the bot itself, it's not a absolute metric.
+Shows the latency from the bot to the discord servers.
+Note that high latencies can be the fault of ratelimits and the bot itself, it's not a absolute metric.
 
 **Usage:**
-
-```text
-Ping
+```
+Ping 
 ```
 
 ### CurrentTime
@@ -82,43 +82,44 @@ Ping
 
 Shows current time in different timezones. [Available timezones](https://pastebin.com/ZqSPUhc7)
 
-**Usage:**
 
-```text
+**Usage:**
+```
 CurrentTime <Offset:Whole number>
 CurrentTime <Zone:Text>
-CurrentTime
+CurrentTime 
+
 ```
 
 ### MentionRole
 
 **Aliases:** mrole
 
-Sets a role to mentionable, mentions the role, and then sets it back Requires the manage roles permission and the bot being above the mentioned role
+Sets a role to mentionable, mentions the role, and then sets it back
+Requires the manage roles permission and the bot being above the mentioned role
 
 **Usage:**
-
-```text
+```
 MentionRole <Role:Text> [Message:Text]
 ```
 
 ### ListRoles
 
-List roles, their id's, color hex code, and 'mention everyone' perms \(usefull if you wanna double check to make sure you didn't give anyone mention everyone perms that shouldn't have it\)
+List roles, their id's, color hex code, and 'mention everyone' perms (useful if you wanna double check to make sure you didn't give anyone mention everyone perms that shouldn't have it)
+
 
 **Usage:**
-
-```text
-ListRoles
+```
+ListRoles 
 ```
 
 ### Poll
 
-Create very simple reaction poll. Example: \`poll "favorite color?" blue red pink
+Create very simple reaction poll. Example: `poll "favorite color?" blue red pink`
+
 
 **Usage:**
-
-```text
+```
 Poll <Topic:Text - Description of the poll> <Option1:Text> <Option2:Text> [Option3:Text] [Option4:Text] [Option5:Text] [Option6:Text] [Option7:Text] [Option8:Text] [Option9:Text] [Option10:Text]
 ```
 
@@ -126,36 +127,36 @@ Poll <Topic:Text - Description of the poll> <Option1:Text> <Option2:Text> [Optio
 
 **Aliases:** ud
 
-Views your recent deleted messages, or all users deleted messages \(with "-a" and manage messages perm\) in this channel
+Views your recent deleted messages, or all users deleted messages (with "-a" and manage messages perm) in this channel
+
 
 **Usage:**
-
-```text
-Undelete
 ```
-
-```text
+Undelete 
+```
+```
 [-a all:Switch]
+
 ```
 
 ### ViewPerms
 
 Shows you or the targets permissions in this channel
 
-**Usage:**
 
-```text
+**Usage:**
+```
 ViewPerms [target:Mention/ID]
 ```
 
 ### Stats
 
-Shows server stats \(if public stats are enabled\)
+Shows server stats (if public stats are enabled)
+
 
 **Usage:**
-
-```text
-Stats
+```
+Stats 
 ```
 
 ### CustomCommands
@@ -164,23 +165,24 @@ Stats
 
 Shows a custom command specified by id or trigger, or lists them all
 
-**Usage:**
 
-```text
+**Usage:**
+```
 CustomCommands <ID:Whole number>
 CustomCommands <Trigger:Text>
-CustomCommands
+CustomCommands 
+
 ```
 
 ### Logs
 
 **Aliases:** log
 
-Creates a log of the last messages in the current channel. This includes deleted messages within an hour \(or 12 hours for premium servers\)
+Creates a log of the last messages in the current channel.
+This includes deleted messages within an hour (or 12 hours for premium servers)
 
 **Usage:**
-
-```text
+```
 Logs [Count:Whole number]
 ```
 
@@ -188,11 +190,11 @@ Logs [Count:Whole number]
 
 **Aliases:** whoami
 
-shows information about a user
+Shows information about a user
+
 
 **Usage:**
-
-```text
+```
 Whois [User:User]
 ```
 
@@ -200,11 +202,11 @@ Whois [User:User]
 
 **Aliases:** nn
 
-Shows past nicknames of a user. Only shows up to the last 25 nicknames.
+Shows past nicknames of a user.
+Only shows up to the last 25 nicknames.
 
 **Usage:**
-
-```text
+```
 Nicknames [User:User]
 ```
 
@@ -212,23 +214,23 @@ Nicknames [User:User]
 
 **Aliases:** unames/un
 
-Shows past usernames of a user. Only shows up to the last 25 usernames.
+Shows past usernames of a user.
+Only shows up to the last 25 usernames.
 
 **Usage:**
-
-```text
+```
 Usernames [User:User]
 ```
 
 ### Remindme
 
-**Aliases:** remind
+**Aliases:** remind/reminder
 
 Schedules a reminder, example: 'remindme 1h30min are you alive still?'
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Remindme <Time:Duration> <Message:Text>
 ```
 
@@ -236,41 +238,41 @@ Remindme <Time:Duration> <Message:Text>
 
 Lists your active reminders
 
-**Usage:**
 
-```text
-Reminders
+**Usage:**
+```
+Reminders 
 ```
 
 ### CReminders
 
 Lists reminders in channel, only users with 'manage server' permissions can use this.
 
-**Usage:**
 
-```text
-CReminders
+**Usage:**
+```
+CReminders 
 ```
 
-### Delreminder
+### DelReminder
 
 **Aliases:** rmreminder
 
 Deletes a reminder.
 
-**Usage:**
 
-```text
-Delreminder <ID:Whole number>
+**Usage:**
+```
+DelReminder <ID:Whole number>
 ```
 
 ### Role
 
-Toggle a role on yourself or list all available roles, they have to be set up in the control panel first, under 'rolecommands'
+Toggle a role on yourself or list all available roles, they have to be set up in the control panel first, under 'rolecommands' 
+
 
 **Usage:**
-
-```text
+```
 Role [Role:Text]
 ```
 
@@ -282,9 +284,9 @@ Role [Role:Text]
 
 Look up an urban dictionary definition
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Define <Topic:Text>
 ```
 
@@ -294,9 +296,9 @@ Define <Topic:Text>
 
 Shows the weather somewhere
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Weather <Where:Text>
 ```
 
@@ -304,10 +306,10 @@ Weather <Where:Text>
 
 Generates a conversation topic to help chat get moving.
 
-**Usage:**
 
-```text
-Topic
+**Usage:**
+```
+Topic 
 ```
 
 ### CatFact
@@ -316,19 +318,31 @@ Topic
 
 Cat Facts
 
-**Usage:**
 
-```text
-CatFact
+**Usage:**
+```
+CatFact 
+```
+
+### DogFact
+
+**Aliases:** dog/dogfacts
+
+Dog Facts
+
+
+**Usage:**
+```
+DogFact 
 ```
 
 ### Advice
 
-Dont be afraid to ask for advice!
+Don't be afraid to ask for advice!
+
 
 **Usage:**
-
-```text
+```
 Advice [What:Text]
 ```
 
@@ -336,33 +350,34 @@ Advice [What:Text]
 
 Throwing things is cool.
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Throw [Target:User]
 ```
 
 ### Roll
 
-Roll dices, specify nothing for 6 sides, specify a number for max sides, or rpg dice syntax. Example: `-roll 2d6`
+Roll dices, specify nothing for 6 sides, specify a number for max sides, or rpg dice syntax.
+Example: `-roll 2d6`
 
 **Usage:**
-
-```text
+```
 Roll <Sides:Whole number>
 Roll <RPG Dice:Text>
-Roll
+Roll 
+
 ```
 
 ### CustomEmbed
 
 **Aliases:** ce
 
-Creates an embed from what you give it in json form: [https://docs.yagpdb.xyz/others/custom-embeds](https://docs.yagpdb.xyz/others/custom-embeds) Example: `-ce {"title": "hello", "description": "wew"`
+Creates an embed from what you give it in json form: https://docs.yagpdb.xyz/others/custom-embeds
+Example: `-ce {"title": "hello", "description": "wew"}`
 
 **Usage:**
-
-```text
+```
 CustomEmbed <Json:Text>
 ```
 
@@ -372,23 +387,24 @@ CustomEmbed <Json:Text>
 
 A more simpler version of CustomEmbed, controlled completely using switches.
 
+
 **Usage:**
-
-```text
-SimpleEmbed
 ```
-
-```text
+SimpleEmbed 
+```
+```
 [-channel :Channel - Optional channel to send in]
 [-title :Text]
 [-desc :Text - Text in the 'description' field]
 [-color :Text - Either hex code or name]
 [-url :Text - Url of this embed]
 [-thumbnail :Text - Url to a thumbnail]
+[-image :Text - Url to an image]
 [-author :Text - The text in the 'author' field]
 [-authoricon :Text - Url to a icon for the 'author' field]
 [-footer :Text - Text content for the footer]
 [-footericon :Text - Url to a icon for the 'footer' field]
+
 ```
 
 ### WouldYouRather
@@ -397,19 +413,19 @@ SimpleEmbed
 
 Get presented with 2 options.
 
-**Usage:**
 
-```text
-WouldYouRather
+**Usage:**
+```
+WouldYouRather 
 ```
 
 ### TopServers
 
 Responds with the top 15 servers I'm on
 
-**Usage:**
 
-```text
+**Usage:**
+```
 TopServers [Skip:Whole number - Entries to skip]
 ```
 
@@ -419,9 +435,9 @@ TopServers [Skip:Whole number - Entries to skip]
 
 Takes away rep from someone
 
-**Usage:**
 
-```text
+**Usage:**
+```
 TakeRep <User:User> [Num:Whole number]
 ```
 
@@ -431,9 +447,9 @@ TakeRep <User:User> [Num:Whole number]
 
 Gives rep to someone
 
-**Usage:**
 
-```text
+**Usage:**
+```
 GiveRep <User:User> [Num:Whole number]
 ```
 
@@ -443,9 +459,9 @@ GiveRep <User:User> [Num:Whole number]
 
 Sets someones rep, this is an admin command and bypasses cooldowns and other restrictions.
 
-**Usage:**
 
-```text
+**Usage:**
+```
 SetRep <User:Mention/ID> <Num:Whole number>
 ```
 
@@ -453,9 +469,9 @@ SetRep <User:Mention/ID> <Num:Whole number>
 
 Deletes someone from the reputation list completely, this cannot be undone.
 
-**Usage:**
 
-```text
+**Usage:**
+```
 DelRep <User:Mention/ID>
 ```
 
@@ -465,9 +481,9 @@ DelRep <User:Mention/ID>
 
 Shows the rep log for the specified user.
 
-**Usage:**
 
-```text
+**Usage:**
+```
 RepLog <User:Mention/ID> [Page:Whole number]
 ```
 
@@ -475,9 +491,9 @@ RepLog <User:Mention/ID> [Page:Whole number]
 
 Shows yours or the specified users current rep and rank
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Rep [User:User]
 ```
 
@@ -485,31 +501,31 @@ Rep [User:User]
 
 Shows top 15 rep on the server
 
-**Usage:**
 
-```text
+**Usage:**
+```
 TopRep [Offset:Whole number]
 ```
 
-### sentiment
+### Sentiment
 
 **Aliases:** sent
 
-Does sentiment analysys on a message or your last 5 messages longer than 3 words
+Does sentiment analysis on a message or your last 5 messages longer than 3 words
+
 
 **Usage:**
-
-```text
-sentiment [text:Text]
+```
+Sentiment [text:Text]
 ```
 
 ### 8Ball
 
 Wisdom
 
-**Usage:**
 
-```text
+**Usage:**
+```
 8Ball <What to ask:Text>
 ```
 
@@ -519,56 +535,56 @@ Wisdom
 
 Play, or list soundboard sounds
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Soundboard [Name:Text]
 ```
 
-### cah create
+### cah Create
 
 **Aliases:** c
 
-Creates a cards against humanity game in this channel, add packs after commands, or \* for all packs. \(-v for vote mode without a card czar\)
+Creates a Cards Against Humanity game in this channel, add packs after commands, or * for all packs. (-v for vote mode without a card czar).
+
 
 **Usage:**
+```
+Create [packs:Text - Packs seperated by space, or * for all of them.]
+```
+```
+[-v Vote mode - players vote instead of having a card czar.:Switch]
 
-```text
-create [packs:Text - Packs seperated by space, or * for all of them]
 ```
 
-```text
-[-v Vote mode - players vote instead of having a cardczar:Switch]
-```
+### cah End
 
-### cah end
+Ends a Cards Against Humanity game that is ongoing in this channel.
 
-Ends a cards against humanity game thats ongoing in this channel.
 
 **Usage:**
-
-```text
-end
+```
+End 
 ```
 
-### cah kick
+### cah Kick
 
-Kicks a player from the ongoing cards against humanity game in this channel.
+Kicks a player from the ongoing Cards Against Humanity game in this channel.
+
 
 **Usage:**
-
-```text
-kick <user:Mention/ID>
+```
+Kick <user:Mention/ID>
 ```
 
-### cah packs
+### cah Packs
 
-Lists available packs
+Lists all available packs.
+
 
 **Usage:**
-
-```text
-packs
+```
+Packs 
 ```
 
 ## Debug & Maintenance 🖥
@@ -577,11 +593,11 @@ packs
 
 **Aliases:** cshard
 
-Shows the current shard this server is on \(or the one specified
+Shows the current shard this server is on (or the one specified
+
 
 **Usage:**
-
-```text
+```
 CurrentShard [serverid:Whole number]
 ```
 
@@ -591,10 +607,10 @@ CurrentShard [serverid:Whole number]
 
 Shows the current status of the member fetcher
 
-**Usage:**
 
-```text
-MemberFetcher
+**Usage:**
+```
+MemberFetcher 
 ```
 
 ### Yagstatus
@@ -603,20 +619,20 @@ MemberFetcher
 
 Shows yagpdb status, version, uptime, memory stats, and so on
 
-**Usage:**
 
-```text
-Yagstatus
+**Usage:**
+```
+Yagstatus 
 ```
 
-### roledbg
+### Roledbg
 
 Debug debug debug autorole assignment
 
-**Usage:**
 
-```text
-roledbg
+**Usage:**
+```
+Roledbg 
 ```
 
 ## Moderation 👮
@@ -627,23 +643,23 @@ roledbg
 
 Bans a member, specify a duration with -d
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Ban <User:Mention/ID> [Reason:Text]
 ```
-
-```text
+```
 [-d Duration:Duration]
+
 ```
 
 ### Kick
 
 Kicks a member
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Kick <User:Mention/ID> [Reason:Text]
 ```
 
@@ -651,23 +667,24 @@ Kick <User:Mention/ID> [Reason:Text]
 
 Mutes a member
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Mute <User:User Mention> <Duration:Duration> <Reason:Text>
 Mute <User:User Mention> <Reason:Text> <Duration:Duration>
 Mute <User:User Mention> <Duration:Duration>
 Mute <User:User Mention> <Reason:Text>
 Mute <User:User Mention>
+
 ```
 
 ### Unmute
 
 Unmutes a member
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Unmute <User:User Mention> [Reason:Text]
 ```
 
@@ -675,9 +692,9 @@ Unmute <User:User Mention> [Reason:Text]
 
 Reports a member to the server's staff
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Report <User:Mention/ID> <Reason:Text>
 ```
 
@@ -685,29 +702,31 @@ Report <User:Mention/ID> <Reason:Text>
 
 **Aliases:** clear/cl
 
-Delete the last number of messages from chat, optionally filtering by user, max age and regex. Specify a regex with "-r regex\_here" and max age with "-ma 1h10m" Note: Will only look in the last 1k messages
+Delete the last number of messages from chat, optionally filtering by user, max age and regex.
+Specify a regex with "-r regex_here" and max age with "-ma 1h10m"
+Note: Will only look in the last 1k messages
 
 **Usage:**
-
-```text
+```
 Clean <Num:Whole number>
 Clean <Num:Whole number> <User:User Mention>
 Clean <User:User Mention> <Num:Whole number>
-```
 
-```text
+```
+```
 [-r Regex:Text]
 [-ma Max age:Duration]
 [-i Regex case insensitive:Switch]
+
 ```
 
 ### Reason
 
 Add/Edit a modlog reason
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Reason <ID:Whole number> <Reason:Text>
 ```
 
@@ -715,9 +734,9 @@ Reason <ID:Whole number> <Reason:Text>
 
 Warns a user, warnings are saved using the bot. Use -warnings to view them.
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Warn <User:User Mention> <Reason:Text>
 ```
 
@@ -727,9 +746,9 @@ Warn <User:User Mention> <Reason:Text>
 
 Lists warning of a user.
 
-**Usage:**
 
-```text
+**Usage:**
+```
 Warnings <User:Mention/ID>
 ```
 
@@ -737,9 +756,9 @@ Warnings <User:Mention/ID>
 
 Edit a warning, id is the first number of each warning from the warnings command
 
-**Usage:**
 
-```text
+**Usage:**
+```
 EditWarning <Id:Whole number> <NewMessage:Text>
 ```
 
@@ -749,9 +768,9 @@ EditWarning <Id:Whole number> <NewMessage:Text>
 
 Deletes a warning, id is the first number of each warning from the warnings command
 
-**Usage:**
 
-```text
+**Usage:**
+```
 DelWarning <Id:Whole number>
 ```
 
@@ -761,22 +780,50 @@ DelWarning <Id:Whole number>
 
 Clears the warnings of a user
 
-**Usage:**
 
-```text
+**Usage:**
+```
 ClearWarnings <User:Mention/ID>
 ```
 
-### automod toggle
+### automod Rulesets
+
+**Aliases:** r/list/l
+
+Lists all rulesets and their status
+
+
+**Usage:**
+```
+Rulesets 
+```
+
+### automod Toggle
 
 **Aliases:** t
 
 Toggles a ruleset on/off
 
-**Usage:**
 
-```text
-toggle <ruleset name:Text>
+**Usage:**
+```
+Toggle <ruleset name:Text>
+```
+
+### automod Logs
+
+**Aliases:** log
+
+Shows the log of the last triggered automod rules, optionally filtering by user
+
+
+**Usage:**
+```
+Logs [skip:Whole number]
+```
+```
+[-user :Mention/ID]
+
 ```
 
 ## Rolemenu 🔘
@@ -785,32 +832,32 @@ toggle <ruleset name:Text>
 
 **Aliases:** c
 
-Set up a role menu. Specify a message with -m to use an existing message instead of having the bot make one
+Set up a role menu.
+Specify a message with -m to use an existing message instead of having the bot make one
 
 To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
 
 **Usage:**
-
-```text
+```
 Create <Group:Text>
 ```
-
-```text
+```
 [-m Message ID:Whole number]
 [-nodm Disable DM:Switch]
 [-rr Remove role on reaction removed:Switch]
 [-skip Number of roles to skip:Whole number]
+
 ```
 
 ### RoleMenu Remove
 
-Removes a rolemenu from a message. The message won't be deleted and the bot will not do anything with reactions on that message
+Removes a rolemenu from a message.
+The message won't be deleted and the bot will not do anything with reactions on that message
 
 To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
 
 **Usage:**
-
-```text
+```
 Remove <Message ID:Whole number>
 ```
 
@@ -820,30 +867,30 @@ Remove <Message ID:Whole number>
 
 Updates a rolemenu, toggling the provided flags and adding missing options, aswell as updating the order.
 
+
 To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
 
 **Usage:**
-
-```text
+```
 Update <Message ID:Whole number>
 ```
-
-```text
+```
 [-nodm Disable DM:Switch]
 [-rr Remove role on reaction removed:Switch]
+
 ```
 
 ### RoleMenu ResetReactions
 
 **Aliases:** reset
 
-Removes all reactions on the specified menu message and re-adds them. Can be used to fix the order after updating it.
+Removes all reactions on the specified menu message and re-adds them.
+Can be used to fix the order after updating it.
 
 To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
 
 **Usage:**
-
-```text
+```
 ResetReactions <Message ID:Whole number>
 ```
 
@@ -853,11 +900,11 @@ ResetReactions <Message ID:Whole number>
 
 Allows you to reassign the emoji of an option, tip: use ResetReactions afterwards.
 
+
 To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
 
 **Usage:**
-
-```text
+```
 EditOption <Message ID:Whole number>
 ```
 
