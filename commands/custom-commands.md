@@ -100,6 +100,60 @@ Example usage of optional args:
 {{if $args.IsSet 1}} only runs if the second argument was provided {{end}}
 ```
 
+### The Message template
+
+You can fetch a message by ID or use the [trigger message](https://docs.yagpdb.xyz/reference/templates#message) and get some information about it. Message returns the following things that you can access with it:  
+
+
+#### Message
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| .Message.ID | Int | ID of the message |
+| .Message.ChannelID | Int | Channnel id this message is in |
+| .Message.Author | [User Object](https://docs.yagpdb.xyz/reference/templates#user) | Author of the message \(User object\) |
+| .Message.Timestamp | String | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\) |
+| .Message.Attachments | Array of Attachments | Attachments to this message \(slice of attachment objects\) |
+| .Message.Embeds | Array of [Embeds](../others/custom-embeds.md#embeds-in-custom-commands) | Embeds on this message \(slice of embed objects\) |
+| .Message.Mentions | Array of [User Object](https://docs.yagpdb.xyz/reference/templates#user) | Users this message mentions |
+| .Message.Reactions | Array of Reactions | Reactions on this message \(only available form getMessage\) |
+| .Message.Content | String | Text content on this message |
+
+#### Attachment
+
+Either starts with  `(index .Message.Attachments 0).` or a variable with the attachment type.
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| ID | Int | The ID of the attachment |
+| URL | String | cdn.discordapp.com URL |
+| ProxyURL | String | media.discordapp.com URL |
+| Filename | String | Filename of the attachment |
+| Width | Int | Width of the attachment \(if image\) in pixels |
+| Height | Int | Height of the attachment \(if image\) in pixels |
+| Size | Int | Size of the attachment in bytes |
+
+#### Reaction
+
+Either starts with `(index .Message.Reactions 0)` or a variable with the reaction type.
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| Count | Int | How many reactions this certain emoji has |
+| Emoji | Emoji | The emoji used in the reaction |
+
+#### Emoji
+
+Either starts with `(index .Message.Reactions 0).Emoji` or a variable of the reaction type.
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| ID | Int | ID of the emoji |
+| Name | String | Name of the emoji \(if unicode emoji this will be the emote\) |
+| Animated | Boolean | Whether the emoji is animated or not |
+
+There is [more fields ](https://godoc.org/github.com/bwmarrin/discordgo#Emoji)which can be used, but they are either obsolete or only used with Global Emotes. 
+
 ### Examples of custom commands
 
 You can find multiple examples on the YAGPDB Community & Support Server or in this list \(with explanations\):
