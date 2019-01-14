@@ -58,6 +58,20 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .Channel.Topic | The Topic of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 
+### Message
+
+| Field | Description |
+| :--- | :--- |
+| .Message.ID | ID of the message |
+| .Message.ChannelID | Channnel id this message is in |
+| .Message.Author | Author of the message \(User object\) |
+| .Message.Timestamp | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\) |
+| .Message.Attachments | Attachments to this message \(slice of attachment objects\) |
+| .Message.Embeds | Embeds on this message \(slice of embed objects\) |
+| .Message.Mentions | Users this message mentions |
+| .Message.Reactions | Reactions on this message \(only available form getMessage\) |
+| .Message.Content | Text content on this message |
+
 ### Current User
 
 | Function | Description |
