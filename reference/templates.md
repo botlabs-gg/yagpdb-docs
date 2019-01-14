@@ -73,7 +73,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .Message.Content | Text content on this message |
 
 {% hint style="info" %}
-More information about the `Message` template can be found [here](https://docs.yagpdb.xyz/commands/custom-commands#the-message-template).
+More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
 {% endhint %}
 
 ### Current User
