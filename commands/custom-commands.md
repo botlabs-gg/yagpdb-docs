@@ -102,7 +102,7 @@ Example usage of optional args:
 
 ### The Message template
 
-You can fetch a message by ID or use the [trigger message](https://docs.yagpdb.xyz/reference/templates#message) and get some information about it. Message returns the following things that you can access with it:  
+You can fetch a message by ID or use the [trigger message](../reference/templates.md#message) and get some information about it. Message returns the following things that you can access with it:  
 
 
 #### Message
@@ -111,11 +111,11 @@ You can fetch a message by ID or use the [trigger message](https://docs.yagpdb.x
 | :--- | :--- | :--- |
 | .Message.ID | Int | ID of the message |
 | .Message.ChannelID | Int | Channnel id this message is in |
-| .Message.Author | [User Object](https://docs.yagpdb.xyz/reference/templates#user) | Author of the message \(User object\) |
+| .Message.Author | [User Object](../reference/templates.md#user) | Author of the message \(User object\) |
 | .Message.Timestamp | String | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\) |
 | .Message.Attachments | Array of [Attachments](https://docs.yagpdb.xyz/commands/custom-commands#attachment) | Attachments to this message \(slice of attachment objects\) |
 | .Message.Embeds | Array of [Embeds](../others/custom-embeds.md#embeds-in-custom-commands) | Embeds on this message \(slice of embed objects\) |
-| .Message.Mentions | Array of [User Object](https://docs.yagpdb.xyz/reference/templates#user) | Users this message mentions |
+| .Message.Mentions | Array of [User Object](../reference/templates.md#user) | Users this message mentions |
 | .Message.Reactions | Array of [Reactions](https://docs.yagpdb.xyz/commands/custom-commands#reaction) | Reactions on this message \(only available form getMessage\) |
 | .Message.Content | String | Text content on this message |
 
@@ -150,10 +150,10 @@ Either starts with `(index .Message.Reactions 0).Emoji` or a variable of the rea
 | :--- | :--- | :--- |
 | ID | Int | ID of the emoji |
 | Name | String | Name of the emoji \(if unicode emoji this will be the emote\) |
-| User | [User Object](https://docs.yagpdb.xyz/reference/templates#user) |  User that created this emoji |
+| User | [User Object](../reference/templates.md#user) | [ ](../reference/templates.md#user)User that created this emoji |
 | Animated | Boolean | Whether the emoji is animated or not |
 
-There is [more fields ](https://discordapp.com/developers/docs/resources/channel#reaction-object)which can be used, but they are either obsolete or only used with Global Emotes.  
+There are [more fields ](https://discordapp.com/developers/docs/resources/channel#reaction-object)which can be used, but they are either obsolete or only used with Global Emotes.  
 Example to fetch the name of the first reaction on a message provided through the `getMessage` template:
 
 ```go

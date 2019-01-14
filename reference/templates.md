@@ -139,6 +139,7 @@ More information about the `Message` template can be found [here](../commands/cu
 | `title "string"` | Returns string with the first letter of each word capitalized. |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
+| `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object |
 
 ### Branching
 
