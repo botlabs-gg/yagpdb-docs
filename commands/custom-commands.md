@@ -169,7 +169,36 @@ Name of the first reaction: {{(index $message.Reactions 0).Emoji.Name}}
 
 ### currentTime template
 
+The currentTime template is very extensive and can be used for displaying the current time, for different time zones, or in embeds in the "timestamp" field.
 
+{% code-tabs %}
+{% code-tabs-item title="As timestamp in an embed" %}
+```go
+{{ $embed := cembed "timestamp" currentTime }}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+```go
+{{/* golang time formating is POSIX form 0 1 2 3 4 5 6 > Mon 2 Jan 15:04:05 2006 (timezone calculation is omitted) */}}
+{{/* currentTime.UTC.Format "15:04"  > gives current time in UTC */}}
+{{/* ".Add" adds time in nanoseconds, in this example 2 hours have been added for UTC+2 */}}
+{{ $marker := "void" }}
+
+{{ if gt ( toInt ( currentTime.UTC.Format "15" ) ) 12 }}
+{{ $marker = "PM" }}
+{{ else }}
+{{ $marker = "AM" }}
+{{ end }}
+
+{{/* current time in UTC+2 and in 12H format */}}
+{{ ( joinStr " " ( ( currentTime.UTC.Add 7200000000000 ).Format "3:04"  ) $marker ) }}
+
+
+It's the {{currentTime.Day}}. of {{currentTime.Month}} in the year {{currentTime.Year}}!
+{{/*Protip: you can put PM in the format string
+https://golang.org/pkg/time/#pkg-constants*/}}
+```
 
 ### Examples of custom commands
 
