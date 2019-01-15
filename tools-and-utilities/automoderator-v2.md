@@ -51,9 +51,9 @@ In each rule sets you have several options
 
 ## Violations 
 
-When you create a violation, you will need to assign it a name. Each violation name will act like a key which has its own separate group with its own separate count. 
+When you create a violation, you will need to assign it a name. Each violation name will act like a key which has its own separate count. 
 
-**Example:** `+violation` with the name `links` will increment the `links` violation counter for that user.
+**Example:** If you have two violation names`links` and `badName`, `+violation` with the name `links` will increment the `links` violation counter for that user while `badName` will remains the same.
 
 Then you can set up a rule with the  `x violations in y minutes` trigger so that when someone increments the counter `x times within y minutes`, the rule will trigger. Using this you can set up tiered punishments where repeated violations causes stricter punishments.
 
