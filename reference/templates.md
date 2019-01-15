@@ -18,7 +18,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .User | The user's username together with discriminator. |
 | .User.Username | The user's username. |
 | .User.ID | The user's ID. |
-| .User.Discriminator | The users's discriminator \(The four digits in a person's username\). |
+| .User.Discriminator | The user's discriminator \(The four digits in a person's username\). |
 | .User.Avatar | The user's avatar ID. |
 | .User.AvatarURL "256" | Gives the URL for user's avatar, argument "256" is the size of the picture  and can increase/decrease twofold \(e.g. 512, 1024 or 128, 64 etc.\). |
 | .User.Bot | Determines whether the target user is a bot - if yes, it will return True. |
@@ -63,7 +63,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | Field | Description |
 | :--- | :--- |
 | .Message.ID | ID of the message |
-| .Message.ChannelID | Channnel id this message is in |
+| .Message.ChannelID | Channel id this message is in |
 | .Message.Author | Author of the message \(User object\) |
 | .Message.Timestamp | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\) |
 | .Message.Attachments | Attachments to this message \(slice of attachment objects\) |
@@ -97,7 +97,7 @@ More information about the `Message` template can be found [here](../commands/cu
 | `add x y` | Returns x + y. |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
-| `joinStr seperator str1 str2` | Joins several strings into one, seperated by the first arg \(the separator\), useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` = `123`\). |
+| `joinStr seperator str1 str2` | Joins several strings into one, separated by the first arg \(the separator\), useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` = `123`\). |
 | `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
 | `toString` | Converts something into a string. Usage: `(toString x)`. |
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
@@ -114,9 +114,9 @@ More information about the `Message` template can be found [here](../commands/cu
 | `mentionHere` | Mentions @here. |
 | `escapeHere "input"` | Escapes here mentions in a string. |
 | `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with sendMessageNoEscape, also applies to escapeEveryone/Here. Example in [Snippets](templates.md#snippets). |
-| `mentionRoleName "rolename"` | Mentions the first role found with the provided name \(case insensitive\). |
+| `mentionRoleName "rolename"` | Mentions the first role found with the provided name \(case-insensitive\). |
 | `mentionRoleID roleID` | Mentions the role found with the provided ID. |
-| `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case insensitive\). |
+| `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
 | `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
 | `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
 | `removeRoleID roleID` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
@@ -126,12 +126,12 @@ More information about the `Message` template can be found [here](../commands/cu
 | `takeRoleID userID "roleID"` | Takes away a role by ID from the target. |
 | `deleteResponse time` | Deletes the response after a certain time \(1-60 seconds\). |
 | `deleteTrigger time` | Deletes the trigger after a certain time \(1-60 seconds\). |
-| `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes unicode emojis and `emojiname:emojiid`\). |
-| `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes unicode emojis and `emojiname:emojiid`\). |
+| `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
+| `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `exec "command" "args" "args" "args"` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
 | `execAdmin "command" "args" "args" "args" etc` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve a user from a mention string or ID. |
-|  `currentTime` | Gets the current time which can be used in an custom embed. |
+|  `currentTime` | Gets the current time which can be used in a custom embed. |
 | `.CmdArgs` | Gets all the arguments passed to the command. |
 | `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
 | `lower "string"` | Converts the string to lowercase. |
@@ -184,9 +184,9 @@ More information about the `Message` template can be found [here](../commands/cu
 
 **Emote IDs:** 
 
-If it is a **custom emote**, adding a \ in front of the emote such as `\:yag:` will display the name along along with the ID such as  `<:yag:277569741932068864>`.
+If it is a **custom emote**, adding a \ in front of the emote such as `\:yag:` will display the name along with the ID such as  `<:yag:277569741932068864>`.
 
-If it is a **animated emote**, do the same steps as a normal emote. If you do not have Discord Nitro, you can have a friend or a bot use the emote and right click on the emote to open its link. The ID will be a part of the URL.
+If it is an **animated emote**, do the same steps as a normal emote. If you do not have Discord Nitro, you can have a friend or a bot use the emote and right click on the emote to open its link. The ID will be a part of the URL.
 
-If it is a **default emote**, look up the Unicode for the emote on Google. Note that some of the more customized default emotes such as some of the the family emotes will not work in any of the YAGPDB commands. 
+If it is a **default emote**, look up the Unicode for the emote on Google. Note that some of the more customized default emotes such as some of the family emotes will not work in any of the YAGPDB commands. 
 

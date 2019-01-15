@@ -102,7 +102,7 @@ If you get the error "Command not found", try running `sudo apt-get install nano
 You may also use vi, but in this tutorial we use nano.
 {% endhint %}
 
-You will be presented with many options \(enviroment variables\), here is what they all mean and some examples:
+You will be presented with many options \(environment variables\), here is what they all mean and some examples:
 
 | Variable | Requirement | Example | Meaning |
 | :--- | :--- | :--- | :--- |
@@ -123,7 +123,7 @@ You will be presented with many options \(enviroment variables\), here is what t
 | YAGPDB\_CONNEVT\_CHANNEL | Recommended | 012345678901234567 | Channel ID for gateway event reporting |
 | YAGPDB\_CONNSTATUS\_CHANNEL | Recommended | 012345678901234567 | Channel ID for connection status reporting |
 | YAGPDB\_BOTLEAVESJOINS | Recommended | 012345678901234567 | Channel ID for reporting joins/leaves |
-| YAGPDB\_SQLSTATE\_ADDR | Optional | 127.0.0.1 | Adress of the database |
+| YAGPDB\_SQLSTATE\_ADDR | Optional | 127.0.0.1 | Address of the database |
 | YAGPDB\_SQLSTATE\_USER | Optional | yagpdb | Username of the database |
 | YAGPDB\_SQLSTATE\_PW | Optional | YHuhyt78hnb8im | Password of the database |
 | YAGPDB\_SQLSTATE\_DB | Optional | yagpdb | Name of the database |

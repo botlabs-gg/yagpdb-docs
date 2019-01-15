@@ -24,7 +24,7 @@ If you still have issue, then you can contact us at our support server.
 3. Select your server  
 4. Click on **Commands**  
 5. Click on **Command Settings**  
-6. Change the prefix in the textbox and click on **Save all Settings**
+6. Change the prefix in the text box and click on **Save all Settings**
 
 ## How do I set up role menus/role reactions/self-assignable roles?
 

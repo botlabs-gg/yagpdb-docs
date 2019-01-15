@@ -6,7 +6,7 @@ Make sure that the bot has permission to manage roles **and** that the role the 
 
 ![](../.gitbook/assets/autorole.PNG)
 
-The different parameters you can set up on this sites are:
+The different parameters you can set up on this site are:
 
 * **Automatically assign members this role**: Select the role that you want to bot to auto assign \(only one role can be auto assigned\).
 * **Minutes of membership required for role**: Requires that a member must be on the server for `x` minutes before assigning the role. 

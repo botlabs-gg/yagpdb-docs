@@ -6,11 +6,11 @@ Every single dollar donated is put into alleviating the cost of hosting.
 
 Patreon Link: [https://www.patreon.com/yagpdb](https://www.patreon.com/yagpdb)
 
-Patreon is the most consistent way for you to support the bot and the best to get rewards from us for supporting the bot; such as premium servers, priority support, and exclusive giveaways. Please take a moment to check out our patreon and consider donating. 
+Patreon is the most consistent way for you to support the bot and the best to get rewards from us for supporting the bot; such as premium servers, priority support, and exclusive giveaways. Please take a moment to check out our Patreon and consider donating. 
 
 ## Advertisement
 
-We rent out the lower left corner of the dashboard to help pay the cost of running yagpdb. If you want to rent that spot, then feel free to contact us, either by email \(jonasr747@gmail.com\) or on Discord \(Jonas747\#0001\).
+We rent out the lower left corner of the dashboard to help pay the cost of running YAGPDB. If you want to rent that spot, then feel free to contact us, either by email \(jonasr747@gmail.com\) or on Discord \(Jonas747\#0001\).
 
 Here are some details on that spot:
 
@@ -25,13 +25,13 @@ Here are some details on that spot:
 
 ## One Time Donation
 
-If you want to donate you can do so using **Paypal, Bitcoin**, **Bitcoincash**, **Etherum** and **Litecoin.**
+If you want to donate you can do so using **PayPal, Bitcoin**, **Bitcoincash**, **Etherum** and **Litecoin.**
 
-Donating gives you access to priority support and monthly giveaways, and various other perks listed on the [patreon](https://www.patreon.com/yagpdb) page.
+Donating gives you access to priority support and monthly giveaways, and various other perks listed on the [Patreon](https://www.patreon.com/yagpdb) page.
 
 Addresses and links:
 
-* Paypal: \(Please contact Jonas through Discord for paypal donations\) 
+* PayPal: \(Please contact Jonas through Discord for PayPal donations\) 
 * Bitcoin: 1Hud7HW2R6pSGupBDZkJxqkFzqTSgjnrdB
 * BitcoinCash: 1DqY2Qobefr1GqRhk3ZyP6FvU3hBbzwfg6
 * Ethereum: 0x082F1adcC1a866c75aaE8C32e2308148a0c25835

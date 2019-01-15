@@ -26,7 +26,7 @@ Rulesets are how you will group your auto moderation rules, you will need one to
 
 #### List
 
-List is where you will enter in a list of words or websites for the auto-moderation system to use such as a list of banned websites/banned words/banned names etc.
+List is where you will enter a list of words or websites for the auto-moderation system to use such as a list of banned websites/banned words/banned names etc.
 
 #### Logs
 

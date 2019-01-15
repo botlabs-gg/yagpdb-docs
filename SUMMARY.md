@@ -13,7 +13,7 @@
 
 ## Notifications & Feeds
 
-* [Notification Feed](notifications-and-feeds/youtube-feeds.md)
+* [Notification Feed](notifications-and-feeds/notification-feed.md)
 * [Reddit Feed](notifications-and-feeds/reddit-feed.md)
 * [Youtube Feed](notifications-and-feeds/youtube-feed.md)
 * [Streaming Feed](notifications-and-feeds/streaming-feed.md)

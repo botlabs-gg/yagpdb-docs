@@ -1,6 +1,6 @@
 # Custom Commands
 
-Custom commands allow you to create your own commands, the custom command system in YAGPDB is somewhat complex and can be used for some advanced stuff. It is still somewhat limited in what it can do and for the the more complex and advanced operations, you should really think about making a standalone bot for it.
+Custom commands allow you to create your own commands, the custom command system in YAGPDB is somewhat complex and can be used for some advanced stuff. It is still somewhat limited in what it can do and for the more complex and advanced operations, you should really think about making a standalone bot for it.
 
 ## Custom Commands
 
@@ -18,7 +18,7 @@ To create your first custom command, go to the control panel and select your ser
 
 #### Case Sensitivity
 
-As you might have seen there is an option called _Case sensitive_. This option makes your trigger case sensitive. The trigger heLLo with case sensitivity on will only trigger if somebody says `heLLo` but not if someone says `hello`.
+As you might have seen, there is an option called _Case sensitive_. This option makes your trigger case-sensitive. The trigger heLLo with case sensitivity on will only trigger if somebody says `heLLo` but not if someone says `hello`.
 
 ### Using templates in custom commands
 
@@ -26,7 +26,7 @@ As you might have seen there is an option called _Case sensitive_. This option m
 Some basic coding knowledge may be required to use some of these features. 
 {% endhint %}
 
-If you wish to do anything more then a _"Type in a command" -&gt; "Make the bot say something._ Such as assigning people roles, getting information on the person calling the command, writing messages in other channels, and many other. It is recommended that you check out this page:
+If you wish to do anything more than a _"Type in a command" -&gt; "Make the bot say something._ Such as assigning people roles, getting information on the person calling the command, writing messages in other channels, and many others. It is recommended that you check out this page:
 
 {% page-ref page="../reference/templates.md" %}
 
@@ -79,12 +79,12 @@ Available types and options are:
 * **int -** whole numbers, you can also optionally specify min and max after the name
 * **string -** text
 * **user -** user mentions, will have the type of User \(see [templates ](../reference/templates.md#user)for more info\)
-* **userid -** user id's, this user may not exist at all, both mentions and plain id's are accepted, will have the type of int64
+* **userid -** user ids, this user may not exist at all, both mentions and plain id's are accepted, will have the type of int64
 * **channel -** channel mentions, will have the type of Channel \(see [templates ](../reference/templates.md#channel)for more info\)
 
 To access the parsed args you use the "**Get**" function on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
 
-There is also a "**IsSet**" function that will return true or false depending on whether the argument was set or not, if this was a optional argument.
+There is also a "**IsSet**" function that will return true or false depending on whether the argument was set or not, if this was an optional argument.
 
 Example usage of optional args:
 
@@ -110,7 +110,7 @@ You can fetch a message by ID or use the [trigger message](../reference/template
 | Field | Type | Description |
 | :--- | :--- | :--- |
 | .Message.ID | Int | ID of the message |
-| .Message.ChannelID | Int | Channnel id this message is in |
+| .Message.ChannelID | Int | Channel id this message is in |
 | .Message.Author | [User Object](../reference/templates.md#user) | Author of the message \(User object\) |
 | .Message.Timestamp | String | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\) |
 | .Message.Attachments | Array of [Attachments](https://docs.yagpdb.xyz/commands/custom-commands#attachment) | Attachments to this message \(slice of attachment objects\) |
@@ -149,7 +149,7 @@ Either starts with `(index .Message.Reactions 0).Emoji` or a variable of the rea
 | Field | Type | Description |
 | :--- | :--- | :--- |
 | ID | Int | ID of the emoji |
-| Name | String | Name of the emoji \(if unicode emoji this will be the emote\) |
+| Name | String | Name of the emoji \(if Unicode emoji this will be the emote\) |
 | User | [User Object](../reference/templates.md#user) | [ ](../reference/templates.md#user)User that created this emoji |
 | Animated | Boolean | Whether the emoji is animated or not |
 
@@ -166,6 +166,10 @@ Name of the first reaction: {{(index $message.Reactions 0).Emoji.Name}}
 ```
 
  
+
+### currentTime template
+
+
 
 ### Examples of custom commands
 

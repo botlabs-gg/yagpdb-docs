@@ -16,7 +16,7 @@ Simply give the role command a name and then select which role you want the bot 
 Do **NOT** make the require role or the ignore role, the role you are assigning.
 {% endhint %}
 
-**Require role**: Requires a person to have a certain role in order for the them to give themselves this role.  
+**Require role**: Requires a person to have a certain role in order for them to give themselves this role.  
 **Ignore role**: Ignore any person who has this role.  
 **Group:** Put the role in a role group \(will be explained more further down\).
 
@@ -42,18 +42,18 @@ Role groups are useful for applying restrictions on a group of roles such as onl
 Do **NOT** make the required role or the ignored role the role you are assigning.
 {% endhint %}
 
-**Require role**: requires a person to have a certain role in order for the them to give themselves this role.  
+**Require role**: requires a person to have a certain role in order for them to give themselves this role.  
 **Ignore role**: Ignore any person who has this role.  
 **Mode**: Select between none, single, multiple to restrict the number of roles they can assign them themselves.
 
-Role groups have additional options that can be enable/disable by selecting the corresponding checkbox such as:
+Role groups have additional options that can be enabled/disabled by selecting the corresponding checkbox such as:
 
 * Requiring a user to have one of the following role at all time \(after initial assignment\).
 * Removing the previous role when they assign themselves another role from the group. 
 
 #### Example usage:
 
-Say you have a server with 3 factions and want people to be able to assign their own faction when they join. Thats simple enough all we have to do is:
+Say you have a server with 3 factions and want people to be able to assign their own faction when they join. That's simple enough all we have to do is:
 
 * Create the 3 roles
 * Create 3 role commands for those roles
@@ -63,7 +63,7 @@ Now everyone can assign themselves a faction! There are a couple of issues with 
 1. You can assign yourself more than 1 faction.
 2. People can freely jump between factions.
 
-To fix these problems we can create a new group with the mode `Single` and assign the previous role commands to that group. Great! Now we can only have 1 faction! How can we solve jumping between factions then? You can enable the `Require 1 role in group` setting, now they can't remove roles in the group, and they can have max 1 role in the group, so they can't jump around anymore!
+To fix these problems we can create a new group with the mode `Single` and assign the previous role commands to that group. Great! Now we can only have 1 faction! How can we solve jumping between factions then? You can enable the `Require 1 role in group` setting, now they can't remove roles in the group, and they can have max. 1 role in the group, so they can't jump around anymore!
 
 ### 
 
@@ -131,7 +131,7 @@ To create a custom message for your role menu like event role menu you saw above
 
 If you do not want the bot to send you a DM when you are given or removed from a role, type in the following command `-rolemenu update (message id) -nodm` 
 
-After you have finish editing or creating your role menu, it will display whether or not the DM is enabled.
+After you have finish editing or creating your role menu, it will display whether the DM is enabled or not.
 
 ![](../.gitbook/assets/capture%20%283%29.PNG)
 
@@ -153,7 +153,7 @@ If you want to change the emote for one your reaction, you can do so by typing i
 
 ### Resetting all reactions
 
-If you edit your reaction emotes or simply want to give your emote a new clean slate. you can reset all the reactions by typing in`-rolemenu resetreactions (message id)`  It will removes all reactions on this menu and re-adds them, can be used to fix the order. 
+If you edit your reaction emotes or simply want to give your emote a new clean slate. You can reset all the reactions by typing in`-rolemenu resetreactions (message id)`  It will remove all reactions on this menu and re-adds them, can be used to fix the order. 
 
 ### Updating a role menu
 

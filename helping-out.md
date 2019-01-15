@@ -26,5 +26,5 @@ Alternatively, if you think you meet the following requirements, you can fill in
 
 * Been on the server and active for at least 2 weeks
 * Able to show initiative in troubleshooting problems and handling general queries
-* Able to deal with circumstances on your own and trust your own judgements
+* Able to deal with circumstances on your own and trust your own judgments
 

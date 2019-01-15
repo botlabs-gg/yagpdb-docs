@@ -13,7 +13,7 @@ The moderation features YAGPDB provides are:
 * Mute
   * Assigns the mute role for a temporary duration.
   * You can enable to bot to set up the permissions for the mute role but you will still have to create the role yourself.
-  * If you have any roles that conflict with the mute role, you can select roles to be remove when the mute is assigned and will be given back to them after the mute is done. 
+  * If you have any roles that conflict with the mute role, you can select roles to be removed when the mute is assigned and will be given back to them after the mute is done. 
 * Clean/Clear
   * Removes last x messages, optional filtering args available. See below for more details and examples.
 * Warnings

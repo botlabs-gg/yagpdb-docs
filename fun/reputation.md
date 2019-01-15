@@ -14,9 +14,9 @@ This is an alternative way of `-giverep`.
 
 This will be displayed in the `-rep` command. On default, it is _Rep_.
 
-#### Rep cooldown in seconds
+#### Rep cool down in seconds
 
-This is the cooldown for the `-giverep` and `-takerep` commands. It does not affect the `-setrep` command. No one can bypass this cooldown, including admins.
+This is the cool down for the `-giverep` and `-takerep` commands. It does not affect the `-setrep` command. No one can bypass this cool down, including admins.
 
 ####  Maximum amount of rep that can be given/taken away in one command
 
@@ -28,7 +28,7 @@ Users with this role have access to the `-setrep` command and can freely change 
 
 #### Required role to give/remove points
 
-Users with this role have access to the `-giverep` and `-takerep` commands which is affected by the _Rep cooldown in seconds_ and the _Maximum amount of rep that can be given/taken away in one command_. If set to none, everyone will be able to use these commands.
+Users with this role have access to the `-giverep` and `-takerep` commands which is affected by the _Rep cool down in seconds_ and the _Maximum amount of rep that can be given/taken away in one command_. If set to none, everyone will be able to use these commands.
 
 #### Required role to receive/being taken away points from
 
@@ -36,11 +36,11 @@ Users with this role participates in the point system which they can be given/ta
 
 #### Blacklisted role for giving/taking away points
 
-Users with this role cannot use the `-giverep` and `-takerep` commands. This also overides the _Required role to give/remove points._
+Users with this role cannot use the `-giverep` and `-takerep` commands. This also overrides the _Required role to give/remove points._
 
 #### Blacklisted role for receiving/being taken away points from
 
-Users with this role cannot cannot participate in the point system which they can be given/taken away points from. This also overides the _Required role to receive/being taken away points from_.
+Users with this role cannot participate in the point system which they can be given/taken away points from. This also overrides the _Required role to receive/being taken away points from_.
 
 ## Reputation logs
 

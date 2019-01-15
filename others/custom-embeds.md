@@ -28,7 +28,7 @@ You can add the multiple objects to this, but keep in mind that Discord limits y
 
 #### The syntax of JSON
 
-The syntax of json is pretty easy. You start off with a curly brace \(`{`\) and end with a curly brace \(`}`\). Between this, you can add names and their according values. Data \(a name and a value\) get seperated by commas \(`,`\) . Around strings \(text\) you wrap two quotation marks \(`""`\), but nothing around integers \(whole numbers\) or booleans \(true or false statements\). You can play around with this a bit.
+The syntax of json is pretty easy. You start off with a curly brace \(`{`\) and end with a curly brace \(`}`\). Between this, you can add names and their according values. Data \(a name and a value\) get separated by commas \(`,`\) . Around strings \(text\) you wrap two quotation marks \(`""`\), but nothing around integers \(whole numbers\) or booleans \(true or false statements\). You can play around with this a bit.
 
 | Special character | Escaped output |
 | :--- | :--- |
@@ -105,7 +105,7 @@ If you try to copy and paste this command you will fail as I added line breaks t
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-In this example, we can ignore lines 1 to 4. I'm just defining some variables there which I am later using in my embed. Line 6 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `joinStr` to join two strings \(text snippets\) together. This is the case because I want to use the `.User.Username` template. cembed takes Strings, so it would convert `{{ .User.Username }}` into {{ .User.Username }} instead of the username of the user. The syntax of `joinStr` is `joinStr "seperator" "string1" "string2"...`, so we're first setting the seperator to nothing and then joining our strings "Hello there, ", the username and an exclamation mark.  
+In this example, we can ignore lines 1 to 4. I'm just defining some variables there which I am later using in my embed. Line 6 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `joinStr` to join two strings \(text snippets\) together. This is the case because I want to use the `.User.Username` template. cembed takes Strings, so it would convert `{{ .User.Username }}` into {{ .User.Username }} instead of the username of the user. The syntax of `joinStr` is `joinStr "seperator" "string1" "string2"...`, so we're first setting the separator to nothing and then joining our strings "Hello there, ", the username and an exclamation mark.  
 Next, we have the description. We can use markdown of Discord in here. After that object, I define the color. The color is given as integer and you can convert a hex color to it [here](https://www.binaryhexconverter.com/hex-to-decimal-converter).
 
 Up next, I have added some fields. This is a bit more difficult, but doable if you have understood it once. Let's break it down in this example:
