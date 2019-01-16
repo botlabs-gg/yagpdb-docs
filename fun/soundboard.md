@@ -21,7 +21,7 @@ You have two options to upload sounds:
 
 #### Upload with local files
 
-Click on _Choose file_ select an audio file to upload. All types of sound files, including videos with sound tracks, are supported.
+Click on _Choose file_ and __select an audio file to upload. All types of sound files, including videos with sound tracks, are supported.
 
 #### Specify a URL
 
