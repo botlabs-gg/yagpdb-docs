@@ -20,16 +20,6 @@ To create your first custom command, go to the control panel and select your ser
 
 As you might have seen, there is an option called _Case sensitive_. This option makes your trigger case-sensitive. The trigger heLLo with case sensitivity on will only trigger if somebody says `heLLo` but not if someone says `hello`.
 
-### Using templates in custom commands
-
-{% hint style="info" %}
-Some basic coding knowledge may be required to use some of these features. 
-{% endhint %}
-
-If you wish to do anything more than a _"Type in a command" -&gt; "Make the bot say something._ Such as assigning people roles, getting information on the person calling the command, writing messages in other channels, and many others. It is recommended that you check out this page:
-
-{% page-ref page="../reference/templates.md" %}
-
 ### Restrictions to roles or channels
 
 You can restrict or block custom commands to specific roles or channels. For this you have to select the corresponding checkbox and select the roles/channels you want it to apply too.
@@ -50,6 +40,18 @@ With custom commands there are some limitations:
 * Custom Command responses can't be longer than 2000 characters \(this is a limitation by discord\)
 * A Custom command itself can't be longer than 3000 characters
 * Custom Commands are limited to 5 userArg calls, 5 exec/execAdmin functions, 10 template function calls and 3 sendMessage calls
+
+## Advance Custom Commands 
+
+{% hint style="info" %}
+Some basic coding knowledge may be required to use some of these features. 
+{% endhint %}
+
+### Using templates in custom commands
+
+If you wish to do anything more than a _"Type in a command" -&gt; "Make the bot say something._ Such as assigning people roles, getting information on the person calling the command, writing messages in other channels, and many others. It is recommended that you check out this page:
+
+{% page-ref page="../reference/templates.md" %}
 
 ### Require arguments
 

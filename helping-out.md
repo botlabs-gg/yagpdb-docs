@@ -10,7 +10,7 @@ There are several ways you can help in making YAGPDB better!
 
 ## Writing the documentation
 
-YAGPDB is one of the more complicated bots out there. Therefore, a lot of documentation is needed for people to fully utilize and understand the features the bot provides.
+YAGPDB is one of the more complicated bots out there. Therefore, a lot of documentation is needed for people to fully utilize and understand the features the bot provides. We are also in the midst of translating some of the docs to other languages so if you can write in multiple languages let us know. 
 
 If you're interested in adding things to the documentation, contact us on our [support server](https://discord.gg/GcpyYh3).
 

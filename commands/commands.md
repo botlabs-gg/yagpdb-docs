@@ -231,9 +231,18 @@ You may also get more specific help by typing `-help (command)` .
 | editwarning | N/A | \(ID\) \(Reason\) | N/A | Edit given warning. |
 | delwarning | dw | \(ID\) | N/A | Deletes the warning with the given ID. |
 | clearwarnings | clw | \(username\) or \(userID\) | N/A | Clears all warnings from given member. |
-| automod toggle | automod t | \(Ruleset\) | N/A |  Toggles a ruleset on/off. |
 
-###  Fun
+#### Automod 
+
+Everything here starts with automod such as `-automod toggle`
+
+| Command | Aliases | Required Args | Optional Args | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| Rulesets | r,list,l | N/A | N/A |  Lists all rulesets and their status |
+| Toggle | t | \(ruleset\) | N/A |  Toggles a ruleset on/off |
+| Logs | log | N/A | \(skip x triggers\) -user \(user\) |  Shows triggered automod rules \(optionally can specify specific user's triggers as well as skip the first x triggers\) |
+
+### Fun
 
 | Command | Aliases | Required Args | Optional Args | Description |
 | :--- | :--- | :--- | :--- | :--- |
