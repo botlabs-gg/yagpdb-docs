@@ -16,6 +16,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | Field | Description |
 | :--- | :--- |
 | .User | The user's username together with discriminator. |
+| .User.String | The user's username together with discriminator as string-type. |
 | .User.Username | The user's username. |
 | .User.ID | The user's ID. |
 | .User.Discriminator | The user's discriminator \(The four digits in a person's username\). |
