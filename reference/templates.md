@@ -119,6 +119,8 @@ More information about the `Message` template can be found [here](../commands/cu
 | `mentionRoleID roleID` | Mentions the role found with the provided ID. |
 | `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
 | `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
+| `targetHasRoleName userID "rolename"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
+| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in [Snippets](templates.md#snippets). |
 | `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
 | `removeRoleID roleID` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
 | `giveRoleName userID "rolename"` | Gives a role by name to the target. |
@@ -174,6 +176,7 @@ More information about the `Message` template can be found [here](../commands/cu
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
 * `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}` Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message.
 * To demonstrate usage of escapeEveryoneHere &gt; `{{ $x := "@here Hello World! @everyone" }} {{ sendMessage nil $x }} {{ sendMessageNoEscape nil $x }} {{ sendMessageNoEscape nil ( escapeEveryoneHere $x ) }}`
+* To demonstrate usage of targetHasRoleID &gt;  `{{ $x := ( userArg ( index .Args 1) ).ID }} {{ if targetHasRoleID $x ############ }} Has the Role! {{ else }} Does not have the role! {{ end }}`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
