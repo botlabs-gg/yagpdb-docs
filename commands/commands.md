@@ -202,7 +202,7 @@ You may also get more specific help by typing `-help (command)` .
     <tr>
       <td style="text-align:left">delreminder</td>
       <td style="text-align:left">rmreminder</td>
-      <td style="text-align:left">(ID)</td>
+      <td style="text-align:left">(reminderID)</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">Deletes the reminder with the given ID.</td>
     </tr>
@@ -227,9 +227,9 @@ You may also get more specific help by typing `-help (command)` .
 | clean | clear, cl | \(count\) | \(username\) | Cleans the chat. |
 | reason | N/A | \(ID\) \(reason\) | N/A | Add/Edit modlog reason from given ID. |
 | warn | N/A | \(mention\) \(reason\) | N/A | Warns given member. Warnings are saved. |
-| warnings | N/A | \(mention/ID\) | N/A | Lists warnings of given member with an ID. |
-| editwarning | N/A | \(ID\) \(Reason\) | N/A | Edit given warning. |
-| delwarning | dw | \(ID\) | N/A | Deletes the warning with the given ID. |
+| warnings | N/A | \(mention/userID\) | N/A | Lists warnings of given member with an ID. |
+| editwarning | N/A | \(warningID\) \(Reason\) | N/A | Edit given warning. |
+| delwarning | dw | \(warningID\) | N/A | Deletes the warning with the given ID. |
 | clearwarnings | clw | \(username\) or \(userID\) | N/A | Clears all warnings from given member. |
 
 #### Automod 
@@ -262,8 +262,8 @@ Everything here starts with automod such as `-automod toggle`
 | takerep | -, tr, trep | \(username\) | \(count\) | Takes away given number of rep from given member. Default number is 1. |
 | giverep | +, gr, grep | \(username\) | \(count\) | Give given number of rep to given member. Default number is 1. |
 | setrep | setrepID | \(mention/ID\) \(number\) | N/A | Sets someones rep, by mention or ID. This is a rep admin command \(manage server perms. or rep admin role\) and bypasses cooldowns and other restrictions. |
-| delrep | N/A | \(mention/ID\) | N/A | Deletes someone from the reputation list completely. This is a rep admin command and bypasses cooldowns and other restrictions. This action cannot be undone. |
-| replog | N/A | \(mention/ID\) | \(page number\) | Shows specified user's rep log. Longer logs are divided into pages. |
+| delrep | N/A | \(mention/userID\) | N/A | Deletes someone from the reputation list completely. This is a rep admin command and bypasses cooldowns and other restrictions. This action cannot be undone. |
+| replog | N/A | \(mention/userID\) | \(page number\) | Shows specified user's rep log. Longer logs are divided into pages. |
 | rep | N/A | N/A | \(username\) | Shows your or the given member's current rep and rank. |
 | toprep | N/A | N/A | \(offset\) | Shows top 15 rep members on the server. |
 | sentiment | sent | N/A | \(text\) | Does sentiment analysis on the given text or your last 5 messages longer than 3 words. |
