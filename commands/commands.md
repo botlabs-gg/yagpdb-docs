@@ -219,18 +219,18 @@ You may also get more specific help by typing `-help (command)` .
 
 | Command | Aliases | Required Args | Optional Args | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| ban | banid | \(username\) or \(userID\) | \(reason\) | Bans given member by name mention or ID. |
-| kick | N/A | \(username\) or \(userID\) | \(reason\) | Kicks given member by name mention or ID. |
-| mute | N/A | \(username\) | \(minutes\) \(reason\) | Mutes given member. |
-| unmute | N/A | \(username\) | \(reason\) | Unmutes given member. |
-| report | N/A | \(username\)  | \(reason\) | Reports given member. |
+| ban | banid | \(mention/userID\) | \(reason\) | Bans given member by name mention or ID. |
+| kick | N/A | \(mention/userID\) | \(reason\) | Kicks given member by name mention or ID. |
+| mute | N/A | \(mention/userID\) | \(minutes\) \(reason\) | Mutes given member. |
+| unmute | N/A | \(mention/userID\) | \(reason\) | Unmutes given member. |
+| report | N/A | \(mention/userID\) | \(reason\) | Reports given member. |
 | clean | clear, cl | \(count\) | \(username\) | Cleans the chat. |
-| reason | N/A | \(ID\) \(reason\) | N/A | Add/Edit modlog reason from given ID. |
-| warn | N/A | \(mention\) \(reason\) | N/A | Warns given member. Warnings are saved. |
+| reason | N/A | \(messageID\) \(reason\) | N/A | Add/Edit modlog message's reason to given ID. |
+| warn | N/A | \(mention/userID\) \(reason\) | N/A | Warns given member. Warnings are saved. |
 | warnings | N/A | \(mention/userID\) | N/A | Lists warnings of given member with an ID. |
-| editwarning | N/A | \(warningID\) \(Reason\) | N/A | Edit given warning. |
+| editwarning | N/A | \(warningID\) \(reason\) | N/A | Edit given warning. |
 | delwarning | dw | \(warningID\) | N/A | Deletes the warning with the given ID. |
-| clearwarnings | clw | \(username\) or \(userID\) | N/A | Clears all warnings from given member. |
+| clearwarnings | clw | \(mention/userID\) | N/A | Clears all warnings from given member. |
 
 #### Automod 
 
@@ -261,7 +261,7 @@ Everything here starts with automod such as `-automod toggle`
 | topservers | N/A | N/A | \(skip: number - entries to skip | Responds with the top 15 servers the bot is on. |
 | takerep | -, tr, trep | \(username\) | \(count\) | Takes away given number of rep from given member. Default number is 1. |
 | giverep | +, gr, grep | \(username\) | \(count\) | Give given number of rep to given member. Default number is 1. |
-| setrep | setrepID | \(mention/ID\) \(number\) | N/A | Sets someones rep, by mention or ID. This is a rep admin command \(manage server perms. or rep admin role\) and bypasses cooldowns and other restrictions. |
+| setrep | setrepID | \(mention/userID\) \(number\) | N/A | Sets someones rep, by mention or ID. This is a rep admin command \(manage server perms. or rep admin role\) and bypasses cooldowns and other restrictions. |
 | delrep | N/A | \(mention/userID\) | N/A | Deletes someone from the reputation list completely. This is a rep admin command and bypasses cooldowns and other restrictions. This action cannot be undone. |
 | replog | N/A | \(mention/userID\) | \(page number\) | Shows specified user's rep log. Longer logs are divided into pages. |
 | rep | N/A | N/A | \(username\) | Shows your or the given member's current rep and rank. |
