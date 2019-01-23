@@ -125,7 +125,7 @@ You may also get more specific help by typing `-help (command)` .
     <tr>
       <td style="text-align:left">viewperms</td>
       <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(mention/ID)</td>
+      <td style="text-align:left">(mention/userID)</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">Shows you requested user's permissions in this channel.</td>
     </tr>
