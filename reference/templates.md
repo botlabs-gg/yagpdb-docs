@@ -95,6 +95,7 @@ More information about the `Message` template can be found [here](../commands/cu
 | `cslice value1 value2` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands). |
 | `in list value` | Returns true if value is in list. |
+| `inFold`  | Same as `in`, but is case insensitive. |
 | `add x y` | Returns x + y. |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
