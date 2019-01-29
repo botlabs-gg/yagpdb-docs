@@ -98,7 +98,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">rolename</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">Sets a role to mentionable, mentions the role, then sets it back to not
-        mentionable after 30 seconds.</td>
+        mentionable after 10 seconds.</td>
     </tr>
     <tr>
       <td style="text-align:left">listroles</td>
