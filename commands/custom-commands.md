@@ -38,7 +38,7 @@ With custom commands there are some limitations:
 * You can't execute more than five commands from a custom command
 * Direct Messages can be only sent with a side note from which server they're coming
 * Custom Command responses can't be longer than 2000 characters \(this is a limitation by discord\)
-* A Custom command itself can't be longer than 5000 characters
+* A Custom command itself can't be longer than 10 000 characters, also leave/join messages limit is 5000.
 * Custom Commands are limited to 5 userArg calls, 5 exec/execAdmin functions, 10 template function and regex calls and 3 sendMessage calls
 
 ## Advance Custom Commands 
