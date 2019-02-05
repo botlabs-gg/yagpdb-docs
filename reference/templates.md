@@ -96,14 +96,18 @@ More information about the `Message` template can be found [here](../commands/cu
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands). |
 | `in list value` | Returns true if value is in list. |
 | `inFold`  | Same as `in`, but is case insensitive. |
-| `add x y` | Returns x + y. |
+| `add x y z ...` | Returns x + y + z + ....`{{ add 5 4 3 2 1 }}` sums all these numbers and returns 15 |
+| `mult x y z ...` | Multiplication, detects number type; is it integer or float and based on that divides. \(use `toFloat` on the first arg to force floating point math\)  `{{ mult 3.14 2 }}` returns 6.28 |
+| `div x y z ...` | Division, like `mult`, detects number type first. `{{ div 11 3 }}` returns 3 whereas `{{ div 11.1 3 }}` returns 3.699999..... |
+| `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
 | `joinStr seperator str1 str2` | Joins several strings into one, separated by the first arg \(the separator\), useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` = `123`\). |
 | `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
-| `toString` | Converts something into a string. Usage: `(toString x)`. |
+| `toFloat` | Converts argument \(numbers of strings\) to type float64. |
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
+| `toString` | Converts something into a string. Usage: `(toString x)`. |
 | `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). |
 | `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's name. |
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
@@ -141,9 +145,13 @@ More information about the `Message` template can be found [here](../commands/cu
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
+| `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment, e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object |
+| `sleep seconds` | Pauses execution of triggered custom command for max 60 seconds. |
+| `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
+| `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern is case sensitive\). |
 
 ### Branching
 
