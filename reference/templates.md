@@ -109,10 +109,12 @@ More information about the `Message` template can be found [here](../commands/cu
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
 | `toString` | Converts something into a string. Usage: `(toString x)`. |
 | `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). |
-| `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's name. |
-| `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel name. Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
+| `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
+| `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID for later use. Example in [Snippets](templates.md#snippets). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID for later use. |
+| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". |
+| `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in [Snippets](templates.md#snippets). |
 | `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
 | `mentionEveryone` | Mentions @everyone. |
