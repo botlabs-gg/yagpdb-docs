@@ -96,8 +96,8 @@ More information about the `Message` template can be found [here](../commands/cu
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands). |
 | `in list value` | Returns true if value is in list. |
 | `inFold`  | Same as `in`, but is case insensitive. |
-| `add x y z ...` | Returns x + y + z + ....,  detects first number type; is it integer or float and based on that adds. \(use `toFloat` on the first argument to force floating point math\)`{{ add 5 4 3 2 -1 }}` sums all these numbers and returns 13. |
-| `mult x y z ...` | Multiplication, like `add` or `div`, detects first number type. `{{ mult 3.14 2 }}` returns 6.28 |
+| `add x y z ...` | Returns x + y + z + ....,  detects first number type; is it integer or float and based on that adds. \(use `toFloat` on the first argument to force floating point math.\)`{{ add 5 4 3 2 -1 }}` sums all these numbers and returns `13`. |
+| `mult x y z ...` | Multiplication, like `add` or `div`, detects first number type. `{{ mult 3.14 2 }}` returns `6.28`. |
 | `div x y z ...` | Division, like `add` or `mult`, detects number type first. `{{ div 11 3 }}` returns `3` whereas `{{ div 11.1 3 }}` returns  `3.6999999999999997` |
 | `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
