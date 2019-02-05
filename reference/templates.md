@@ -91,9 +91,9 @@ More information about the `Message` template can be found [here](../commands/cu
 | :--- | :--- |
 | `adjective` | Returns a random adjective. |
 | `dict key1 value1 key2 value2 etc` | Creates a dictionary \(not many use cases yet\). |
-| `sdict "key1" "value1" "key2" "value2"` |  The same as `dict` but with only string keys and can be used in `cembed`. |
+| `sdict "key1" "value1" "key2" "value2"` |  The same as `dict` but with only string keys and can be used in `cembed`. Has `.Get "key"` and `.Set "key"` methods, they allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#snippets). |
 | `cslice value1 value2` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
-| `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands). |
+| `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
 | `in list value` | Returns true if value is in list. |
 | `inFold`  | Same as `in`, but is case insensitive. |
 | `add x y z ...` | Returns x + y + z + ....,  detects first number type; is it integer or float and based on that adds. \(use `toFloat` on the first argument to force floating point math.\)`{{ add 5 4 3 2 -1 }}` sums all these numbers and returns `13`. |
@@ -153,6 +153,7 @@ More information about the `Message` template can be found [here](../commands/cu
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object |
 | `sleep seconds` | Pauses execution of triggered custom command for max 60 seconds. Argument`seconds`is of type integer. |
 | `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
+| `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in [Snippets](templates.md#snippets). |
 | `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern is case sensitive\). |
 | `humanizeDurationHours nanoseconds` | Returns `nanoseconds` argument of type int64 in human readable format - as how long it would take to get towards given time - e.g. `{{ humanizeDurationHours 9000000000000000000 }}` returns `285 years 20 weeks 6 days and 16 hours`. |
 | `humanizeTimeSinceDays typeTime` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
@@ -191,6 +192,8 @@ More information about the `Message` template can be found [here](../commands/cu
 * `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}` Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message.
 * To demonstrate usage of escapeEveryoneHere &gt; `{{ $x := "@here Hello World! @everyone" }} {{ sendMessage nil $x }} {{ sendMessageNoEscape nil $x }} {{ sendMessageNoEscape nil ( escapeEveryoneHere $x ) }}`
 * To demonstrate usage of targetHasRoleID &gt;  `{{ $x := ( userArg ( index .Args 1) ).ID }} {{ if targetHasRoleID $x ############ }} Has the Role! {{ else }} Does not have the role! {{ end }}`
+* To demonstrate usage of reFindAll &gt;  `Before regex: {{ $msg := "1 YAGPDB and over 100000 servers conqured." }} {{ $re2 := reFindAll "[0-9]+" $msg }} {{ $msg }}   After regex matches: {{ joinStr " " "Only" ( index $re2 0 ) "YAGPDB and already" ( index $re2 1 ) "servers captured."}}`
+* To demonstrate usage of sdict methods .Get and .Set  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }}`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
