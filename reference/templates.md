@@ -147,6 +147,7 @@ More information about the `Message` template can be found [here](../commands/cu
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
+| `split "string" "sepr"` | Slices given `"string"` to substrings separated by `"sepr"`and returns new slice/array of the substrings. Example below in [Snippets](templates.md#snippets). |
 | `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
@@ -198,6 +199,7 @@ More information about the `Message` template can be found [here](../commands/cu
 * To demonstrate usage of reFindAll. &gt;  `Before regex: {{ $msg := "1 YAGPDB and over 100000 servers conqured." }} {{ $re2 := reFindAll "[0-9]+" $msg }} {{ $msg }}   After regex matches: {{ joinStr " " "Only" ( index $re2 0 ) "YAGPDB and already" ( index $re2 1 ) "servers captured."}}`
 * To demonstrate usage of sdict methods .Get and .Set.  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }}`
 * To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
+* To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := ( split $x ", " ) }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
