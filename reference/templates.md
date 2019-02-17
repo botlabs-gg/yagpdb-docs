@@ -47,6 +47,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 
 | Field | Description |
 | :--- | :--- |
+| .Member.JoinedAt | When member joined the guild/server. |
 | .Member.Nick | The nickname for this member. |
 | .Member.Roles | A list of role IDs that the member has. |
 
