@@ -217,22 +217,107 @@ You may also get more specific help by typing `-help (command)` .
   </tbody>
 </table>###  Moderation
 
-| Command | Aliases | Required Args | Optional Args | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| ban | banid | \(mention/userID\) | \(reason\) | Bans given member by name mention or ID. |
-| kick | N/A | \(mention/userID\) | \(reason\) | Kicks given member by name mention or ID. |
-| mute | N/A | \(mention/userID\) | \(minutes\) \(reason\) | Mutes given member. |
-| unmute | N/A | \(mention/userID\) | \(reason\) | Unmutes given member. |
-| report | N/A | \(mention/userID\) | \(reason\) | Reports given member. |
-| clean | clear, cl | \(count\) | \(username\) | Cleans the chat. |
-| reason | N/A | \(messageID\) \(reason\) | N/A | Add/Edit modlog message's reason to given ID. |
-| warn | N/A | \(mention/userID\) \(reason\) | N/A | Warns given member. Warnings are saved. |
-| warnings | N/A | \(mention/userID\) | N/A | Lists warnings of given member with an ID. |
-| editwarning | N/A | \(warningID\) \(reason\) | N/A | Edit given warning. |
-| delwarning | dw | \(warningID\) | N/A | Deletes the warning with the given ID. |
-| clearwarnings | clw | \(mention/userID\) | N/A | Clears all warnings from given member. |
-
-#### Automod 
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Command</th>
+      <th style="text-align:left">Aliases</th>
+      <th style="text-align:left">Required Args</th>
+      <th style="text-align:left">Optional Args</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">ban</td>
+      <td style="text-align:left">banid</td>
+      <td style="text-align:left">(mention/userID)</td>
+      <td style="text-align:left">(reason)</td>
+      <td style="text-align:left">Bans given member by name mention or ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">kick</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(mention/userID)</td>
+      <td style="text-align:left">(reason)</td>
+      <td style="text-align:left">Kicks given member by name mention or ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">mute</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(mention/userID)</td>
+      <td style="text-align:left">(minutes) (reason)</td>
+      <td style="text-align:left">Mutes given member.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">unmute</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(mention/userID)</td>
+      <td style="text-align:left">(reason)</td>
+      <td style="text-align:left">Unmutes given member.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">report</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(mention/userID)</td>
+      <td style="text-align:left">(reason)</td>
+      <td style="text-align:left">Reports given member.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">clean</td>
+      <td style="text-align:left">clear, cl</td>
+      <td style="text-align:left">(count)</td>
+      <td style="text-align:left">
+        <p>(mention/userID)</p>
+        <p>(max age)</p>
+        <p>(regex)</p>
+      </td>
+      <td style="text-align:left">Cleans the chat. More in depth <a href="all-commands.md#clean">here</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">reason</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(messageID) (reason)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Add/Edit modlog message's reason to given ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">warn</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(mention/userID) (reason)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Warns given member. Warnings are saved.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">warnings</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(mention/userID)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Lists warnings of given member with an ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">editwarning</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(warningID) (reason)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Edit given warning.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">delwarning</td>
+      <td style="text-align:left">dw</td>
+      <td style="text-align:left">(warningID)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Deletes the warning with the given ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">clearwarnings</td>
+      <td style="text-align:left">clw</td>
+      <td style="text-align:left">(mention/userID)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Clears all warnings from given member.</td>
+    </tr>
+  </tbody>
+</table>#### Automod 
 
 Everything here starts with automod such as `-automod toggle`
 
