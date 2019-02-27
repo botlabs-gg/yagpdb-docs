@@ -43,7 +43,7 @@ The syntax of json is pretty easy. You start off with a curly brace \(`{`\) and 
 
 ### Create embeds with a generator
 
-Creating embeds with a generator can be more difficult if you don't need any difficult features. If you want your embed to be super shiny, you can use[ this embed generator](https://leovoel.github.io/embed-visualizer/). YAGPDB does not need the first part of it, so you can easily remove the following: 
+Creating embeds with a generator can be more difficult if you don't need any difficult features. If you want your embed to be super shiny, you can use[ this embed generator](https://leovoel.github.io/embed-visualizer/). YAGPDB does not use the first part of its code, so you have to remove the following: 
 
 ```javascript
 {

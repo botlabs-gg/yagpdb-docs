@@ -142,7 +142,7 @@ More information about the `Message` template can be found [here](../commands/cu
 | `exec "command" "args" "args" "args"` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
 | `execAdmin "command" "args" "args" "args" etc` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve a user from a mention string or ID. |
-|  `currentTime` | Gets the current time which can be used in a custom embed. |
+|  `currentTime` | Gets the current time which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template). |
 | `.CmdArgs` | Gets all the arguments passed to the command. |
 | `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
 | `lower "string"` | Converts the string to lowercase. |
