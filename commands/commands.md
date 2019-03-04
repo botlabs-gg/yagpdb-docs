@@ -120,14 +120,14 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">-a</td>
       <td style="text-align:left">Views your recent deleted messages, or all users deleted messages (with
-        "-a" and manage messages perm) in this channel.</td>
+        &quot;-a&quot; and manage messages perm) in this channel.</td>
     </tr>
     <tr>
       <td style="text-align:left">viewperms</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">(mention/userID)</td>
       <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Shows you requested user's permissions in this channel.</td>
+      <td style="text-align:left">Shows you requested user&apos;s permissions in this channel.</td>
     </tr>
     <tr>
       <td style="text-align:left">stats</td>
@@ -279,7 +279,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">(messageID) (reason)</td>
       <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Add/Edit modlog message's reason to given ID.</td>
+      <td style="text-align:left">Add/Edit modlog message&apos;s reason to given ID.</td>
     </tr>
     <tr>
       <td style="text-align:left">warn</td>
@@ -316,6 +316,21 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">Clears all warnings from given member.</td>
     </tr>
+    <tr>
+      <td style="text-align:left">giverole</td>
+      <td style="text-align:left">grole, arole, addrole</td>
+      <td style="text-align:left">(mention/userID) (rolename)</td>
+      <td style="text-align:left">-d (duration)</td>
+      <td style="text-align:left">Gives a role to the specified member, with optional expiry, for example <code>-d 10h5m10s.</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">removerole</td>
+      <td style="text-align:left">rrole, takerole, trole</td>
+      <td style="text-align:left">(mention/userID) (rolename)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Removes the specified role from the target.</td>
+    </tr>
   </tbody>
 </table>#### Automod 
 
@@ -323,7 +338,7 @@ Everything here starts with automod such as `-automod toggle`
 
 | Command | Aliases | Required Args | Optional Args | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| Rulesets | r,list,l | N/A | N/A |  Lists all rulesets and their status |
+| Rulesets | r, list, l | N/A | N/A |  Lists all rulesets and their status |
 | Toggle | t | \(ruleset\) | N/A |  Toggles a ruleset on/off |
 | Logs | log | N/A | \(skip x triggers\) -user \(user\) |  Shows triggered automod rules \(optionally can specify specific user's triggers as well as skip the first x triggers\) |
 
@@ -384,7 +399,7 @@ Everything here starts with rolemenu such as `-rolemenu create`
     <tr>
       <td style="text-align:left">create</td>
       <td style="text-align:left">c</td>
-      <td style="text-align:left">(rolegroup's name)</td>
+      <td style="text-align:left">(rolegroup&apos;s name)</td>
       <td style="text-align:left">
         <p>(m:messageID)(nodm)(rr)</p>
         <p>(skip:number)</p>
