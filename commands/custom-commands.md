@@ -171,7 +171,9 @@ Name of the first reaction: {{(index $message.Reactions 0).Emoji.Name}}
 
 ### currentTime template
 
-The currentTime template is very extensive and can be used for displaying the current time, for different time zones, or in embeds in the "timestamp" field.
+The currentTime template is very extensive and can be used for displaying the current time, for different time zones, or in embeds in the "timestamp" field.  
+  
+even more in depth here &gt; [https://golang.org/pkg/time/](https://golang.org/pkg/time/)
 
 {% code-tabs %}
 {% code-tabs-item title="As timestamp in an embed" %}
@@ -194,7 +196,7 @@ The currentTime template is very extensive and can be used for displaying the cu
 {{ end }}
 
 {{/* current time in UTC+2 and in 12H format */}}
-{{ ( joinStr " " ( ( currentTime.UTC.Add 7200000000000 ).Format "3:04"  ) $marker ) }}
+{{ ( joinStr " " ( ( currentTime.Add 7200000000000 ).Format "3:04"  ) $marker ) }}
 
 
 It's the {{currentTime.Day}}. of {{currentTime.Month}} in the year {{currentTime.Year}}!
