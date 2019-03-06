@@ -1,3 +1,7 @@
+---
+description: 'Available data which can be used in YAGPDB''s templating "engine":'
+---
+
 # Templates
 
 {% hint style="warning" %}
@@ -9,9 +13,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 `{{joinStr "" "Our member count is " (toString .Guild.MemberCount) "!"}}`
 {% endhint %}
 
-## Available template data:
-
-### User
+## User
 
 | Field | Description |
 | :--- | :--- |
@@ -27,7 +29,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .RealUsername | Only works with join and leave messages. This can be used to send the real username to a staff channel when invites are censored. |
 | .UsernameHasInvite | Only works with join and leave messages. It will determine does the username contain an invite link. |
 
-### Guild / Server
+## Guild / Server
 
 | Field | Description |
 | :--- | :--- |
@@ -43,7 +45,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
 | .Guild.EmbedEnabled | Outputs whether embeds are enabled or not, true / false. |
 
-### Member
+## Member
 
 | Field | Description |
 | :--- | :--- |
@@ -51,7 +53,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .Member.Nick | The nickname for this member. |
 | .Member.Roles | A list of role IDs that the member has. |
 
-### Channel
+## Channel
 
 | Field | Description |
 | :--- | :--- |
@@ -60,7 +62,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .Channel.Topic | The Topic of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 
-### Message
+## Message
 
 | Field | Description |
 | :--- | :--- |
@@ -78,15 +80,113 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
 {% endhint %}
 
-### Current User
+## Current User
 
 | Function | Description |
 | :--- | :--- |
-| currentUserCreated |  The time the current user was created. |
+| currentUserCreated |  Returns value of type time and shows when the current user was created. |
 | currentUserAgeHuman |  The account age of the current user in more human readable format  \(`3 days 2 hours`, for example\). |
 | currentUserAgeMinutes |  The account age of the current user in minutes. |
 
-### Functions
+## Time
+
+Time in general uses Golang's time package library &gt; [https://golang.org/pkg/time/](https://golang.org/pkg/time/) and also this although slightly different syntax all applies here &gt; [https://gobyexample.com/time](https://gobyexample.com/time).
+
+| Function | Description |
+| :--- | :--- |
+| `currentTime` | Gets the current time, value is of type time; which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template). |
+| `formatTime Time "arg"` | Outputs given time in RFC822 formatting, first argument `Time` shows it needs to be of type time, also with extra layout if second argument is given - e.g. `{{ formatTime currentUserCreated "3:04PM" }}` would output `11:22AM` if that would have been user's creating time. |
+| `humanizeDurationHours` | Returns `nanoseconds` argument of type int64 in human readable format - as how long it would take to get towards given time - e.g. `{{ humanizeDurationHours 9000000000000000000 }}` returns `285 years 20 weeks 6 days and 16 hours`. |
+| `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{ humanizeDurationMinutes 3500000000000 }}` would return `58 minutes`. |
+| `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{ humanizeDurationSeconds 3500000000000 }}` would return `58 minutes and 20 seconds`. |
+| `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
+| `.timeHour` | Returns 1 hour in duration based type &gt; `1h0m0s`. |
+| `.timeMinute` | Returns 1 minute in duration based type &gt; `1m0s`. |
+| `.timeSecond` | Returns 1 second in duration based type &gt; `1s`. |
+
+## Functions
+
+### Type conversion
+
+| Function | Description |
+| :--- | :--- |
+| `toString` | Converts something into a string. Usage: `(toString x)`. |
+| `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
+| `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
+| `toFloat` | Converts argument \(numbers of strings\) to type float64. |
+
+### String manipulation
+
+| Function | Description |
+| :--- | :--- |
+| `joinStr "separator" "str1" "str2"` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
+| `lower "string"` | Converts the string to lowercase. |
+| `upper "string"` | Converts the string to uppercase. |
+| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
+| `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
+| `split "string" "sepr"` | Slices given `"string"` to substrings separated by `"sepr"`arg and returns new slice/array of the substrings. Example below in [Snippets](templates.md#snippets). |
+| `title "string"` | Returns string with the first letter of each word capitalized. |
+| `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
+| `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in [Snippets](templates.md#snippets). |
+| `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern is case sensitive\). |
+
+### Math functions
+
+| Function | Description |
+| :--- | :--- |
+| `add x y z ...` | Returns x + y + z + ....,  detects first number type; is it integer or float and based on that adds. \(use `toFloat` on the first argument to force floating point math.\)`{{ add 5 4 3 2 -1 }}` sums all these numbers and returns `13`. |
+| `mult x y z ...` | Multiplication, like `add` or `div`, detects first number type. `{{ mult 3.14 2 }}` returns `6.28` |
+| `div x y z ...` | Division, like `add` or `mult`, detects number type first. `{{ div 11 3 }}` returns `3` whereas `{{ div 11.1 3 }}` returns  `3.6999999999999997` |
+| `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
+| `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
+
+### Message functions
+
+| Function | Description |
+| :--- | :--- |
+| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). random adjective. |
+| `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
+| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in [Snippets](templates.md#snippets). |
+| `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
+| `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
+| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in [Snippets](templates.md#snippets). |
+| `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
+| `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object |
+| `deleteResponse time` | Deletes the response after a certain time \(1-60 seconds\). |
+| `deleteTrigger time` | Deletes the trigger after a certain time \(1-60 seconds\). |
+| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
+| `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
+| `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
+| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in [Snippets](templates.md#snippets). |
+
+### Mentions
+
+| Function | Description |
+| :--- | :--- |
+| `mentionEveryone` | Mentions `@everyone`. |
+| `mentionHere` | Mentions `@here`. |
+| `mentionRoleName "rolename"` | Mentions the first role found with the provided name \(case-insensitive\). |
+| `mentionRoleID roleID` | Mentions the role found with the provided ID. |
+| `escapeEveryone "input"` | Escapes everyone mentions in a string. |
+| `escapeHere "input"` | Escapes here mentions in a string. |
+| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with sendMessageNoEscape, also applies to escapeEveryone/Here. Example in [Snippets](templates.md#snippets). |
+
+### Role functions
+
+| Function | Description |
+| :--- | :--- |
+| `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
+| `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
+| `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
+| `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is otional argument in seconds. |
+| `giveRoleID userID roleID` | Gives a role by ID to the target. |
+| `giveRoleName userID "roleName"` | Gives a role by name to the target. |
+| `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is otional argument in seconds. |
+| `takeRoleName userID roleName (delay)` | Takes away a role by name from the target. `Delay` is otional argument in seconds. |
+| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in [Snippets](templates.md#snippets). |
+| `targetHasRoleName userID "roleName"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
+
+### Miscellaneous
 
 | Function | Description |
 | :--- | :--- |
@@ -97,70 +197,17 @@ More information about the `Message` template can be found [here](../commands/cu
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
 | `in list value` | Returns true if value is in list. |
 | `inFold`  | Same as `in`, but is case insensitive. |
-| `add x y z ...` | Returns x + y + z + ....,  detects first number type; is it integer or float and based on that adds. \(use `toFloat` on the first argument to force floating point math.\)`{{ add 5 4 3 2 -1 }}` sums all these numbers and returns `13`. |
-| `mult x y z ...` | Multiplication, like `add` or `div`, detects first number type. `{{ mult 3.14 2 }}` returns `6.28`. |
-| `div x y z ...` | Division, like `add` or `mult`, detects number type first. `{{ div 11 3 }}` returns `3` whereas `{{ div 11.1 3 }}` returns  `3.6999999999999997` |
-| `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
-| `joinStr seperator str1 str2` | Joins several strings into one, separated by the first arg \(the separator\), useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` = `123`\). |
-| `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
-| `toFloat` | Converts argument \(numbers of strings\) to type float64. |
-| `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
-| `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
-| `toString` | Converts something into a string. Usage: `(toString x)`. |
-| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). |
-| `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
-| `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
-| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID for later use. Example in [Snippets](templates.md#snippets). |
-| `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID for later use. |
-| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in [Snippets](templates.md#snippets). |
-| `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
-| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in [Snippets](templates.md#snippets). |
-| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
-| `mentionEveryone` | Mentions @everyone. |
-| `escapeEveryone "input"` | Escapes everyone mentions in a string. |
-| `mentionHere` | Mentions @here. |
-| `escapeHere "input"` | Escapes here mentions in a string. |
-| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with sendMessageNoEscape, also applies to escapeEveryone/Here. Example in [Snippets](templates.md#snippets). |
-| `mentionRoleName "rolename"` | Mentions the first role found with the provided name \(case-insensitive\). |
-| `mentionRoleID roleID` | Mentions the role found with the provided ID. |
-| `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
-| `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
-| `targetHasRoleName userID "rolename"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
-| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in [Snippets](templates.md#snippets). |
-| `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
-| `removeRoleID roleID` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). |
-| `giveRoleName userID "rolename"` | Gives a role by name to the target. |
-| `giveRoleID userID roleID` | Gives a role by ID to the target. |
-| `takeRoleName userID "rolename"` | Takes away a role by name from the target. |
-| `takeRoleID userID "roleID"` | Takes away a role by ID from the target. |
-| `deleteResponse time` | Deletes the response after a certain time \(1-60 seconds\). |
-| `deleteTrigger time` | Deletes the trigger after a certain time \(1-60 seconds\). |
-| `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
-| `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `exec "command" "args" "args" "args"` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
 | `execAdmin "command" "args" "args" "args" etc` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve a user from a mention string or ID. |
-|  `currentTime` | Gets the current time which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template). |
 | `.CmdArgs` | Gets all the arguments passed to the command. |
-| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
-| `lower "string"` | Converts the string to lowercase. |
-| `upper "string"` | Converts the string to uppercase. |
-| `title "string"` | Returns string with the first letter of each word capitalized. |
-| `split "string" "sepr"` | Slices given `"string"` to substrings separated by `"sepr"`and returns new slice/array of the substrings. Example below in [Snippets](templates.md#snippets). |
-| `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
-| `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#snippets). |
-| `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
-| `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in [Snippets](templates.md#snippets). |
-| `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern is case sensitive\). |
-| `humanizeDurationHours nanoseconds` | Returns `nanoseconds` argument of type int64 in human readable format - as how long it would take to get towards given time - e.g. `{{ humanizeDurationHours 9000000000000000000 }}` returns `285 years 20 weeks 6 days and 16 hours`. |
-| `humanizeTimeSinceDays typeTime` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
 
-### Branching
+## Branching
 
 | Case | Example |
 | :--- | :--- |
@@ -175,7 +222,7 @@ More information about the `Message` template can be found [here](../commands/cu
 | Else if |  `{{if (case statement)}} {{else if (case statement)}} {{end}}` |
 | Else |  `{{if (case statement)}} {{else}} output here {{end}}` |
 
-### Snippets
+## Snippets
 
 * `<@{{.User.ID}}>` Outputs a mention to the user that called the command.
 * `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
