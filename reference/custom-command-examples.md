@@ -80,6 +80,46 @@ Trigger type: `Command` Trigger: `send`
 {{sendMessage ($args.Get 0).ID ($args.Get 1)}}
 ```
 
+### execCC example
+
+This example consists of two custom commands, and after copy/paste `REPLACE-WITH-...` arguments need to be replaced by actual custom command ID's in your system. This custom command is very complex, uses very many advanced functions, all it does, constructs a 10 second countdown timer command-system for given starting time.
+
+```go
+{{$args := parseArgs 2 ""
+ (carg "duration" "countdown-duration")
+ (carg "string" "countdown-message")}}
+
+{{$t := currentTime.Add ($args.Get 0)}}
+{{$mID := sendMessageRetID nil (joinStr  "" "countdown starting..." $t.String)}}
+{{execCC REPLACE-WITH-NEXT-CC-ID nil 0 (sdict "MessageID" $mID "T" $t "Message" ($args.Get 1)) }}
+```
+
+Second part of the custom commands, here we see, how `data`-part of exeCC was made in previous custom command as `sdict`and now we are calling those keys with .ExecData - for example .ExecData.MessageID sets new variable the same as stated in previous code.
+
+```go
+{{$timeLeft := .ExecData.T.Sub currentTime}}
+{{$cntDownMessageHeader := joinStr "" "Countdown Timer: " .ExecData.Message}}
+{{$formattedTimeLeft := humanizeDurationSeconds $timeLeft}}
+
+{{$t := .ExecData.T}}
+{{$mID := .ExecData.MessageID}}
+{{$ts := .TimeSecond}}
+
+{{if lt $timeLeft (mult .TimeSecond 30)}}
+  {{range seq 1 (toInt $timeLeft.Seconds) }}
+    {{$timeLeft := $t.Sub currentTime}}
+    {{$formattedTimeLeft := humanizeDurationSeconds $timeLeft}}
+
+    {{editMessage nil $mID (joinStr "" $cntDownMessageHeader "\nTime left: " $formattedTimeLeft " seconds")}}
+    {{if gt $timeLeft $ts}} {{sleep 1}} {{end}}
+  {{end}}
+  {{editMessage nil  .ExecData.MessageID (joinStr "" $cntDownMessageHeader "\nTime left: **ENDED**")}}
+{{else}}
+    {{editMessage nil .ExecData.MessageID (joinStr "" $cntDownMessageHeader "\nTime left: " $formattedTimeLeft)}}
+    {{execCC REPLACE-WITH-CURRENT-CC-ID nil 10 .ExecData}}
+{{end}}
+```
+
 ## User submitted custom commands
 
 ### GiveRole command for specific roles
