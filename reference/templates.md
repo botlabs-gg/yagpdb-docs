@@ -100,9 +100,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{ humanizeDurationMinutes 3500000000000 }}` would return `58 minutes`. |
 | `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{ humanizeDurationSeconds 3500000000000 }}` would return `58 minutes and 20 seconds`. |
 | `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
-| `.timeHour` | Returns 1 hour in duration based type &gt; `1h0m0s`. |
-| `.timeMinute` | Returns 1 minute in duration based type &gt; `1m0s`. |
-| `.timeSecond` | Returns 1 second in duration based type &gt; `1s`. |
+| `.TimeHour` | Variable of time.duration type and returns 1 hour &gt; `1h0m0s`. |
+| `.TimeMinute` | Variable of time.duration type and returns 1 minute &gt; `1m0s`. |
+| `.TimeSecond` | Variable of time.duration type and returns 1 &gt; `1s`. |
 
 ## Functions
 
@@ -206,6 +206,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#snippets). |
+| `execCC ccID channel delay data` | Function that executes another custom command specified by `ccID,`max recursion depth is 2 and it's rate-limited strictly at max 10 delayed custom commands executed per channel per minute, if you go over that it will be simply thrown away. Argument `channel` can be `nil`, channel's ID or name. The`delay` argument is execution delay of another CC is in seconds. The `data` argument is content that you pass to the other executed custom command. To retrieve that `data` you use `.ExecData.` |
 
 ## Branching
 
