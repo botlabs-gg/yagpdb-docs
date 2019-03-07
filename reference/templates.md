@@ -13,6 +13,10 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 `{{joinStr "" "Our member count is " (toString .Guild.MemberCount) "!"}}`
 {% endhint %}
 
+{% hint style="success" %}
+"Go is all about type". Many problems start with different kinds of type user has as values and what is needed. YAGPDB usually states that in error message - what went wrong with type.
+{% endhint %}
+
 ## User
 
 | Field | Description |
@@ -114,13 +118,13 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
 | `toFloat` | Converts argument \(numbers of strings\) to type float64. |
+| `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `( toString ( toInt value ) )` and certain parts of `cembed` need this for example. |
 
 ### String manipulation
 
 | Function | Description |
 | :--- | :--- |
 | `joinStr "separator" "str1" "str2"` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
-| `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `( toString ( toInt value ) )` and certain parts of `cembed` need this for example. |
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
 | `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
