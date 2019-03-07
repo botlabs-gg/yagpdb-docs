@@ -100,9 +100,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{ humanizeDurationMinutes 3500000000000 }}` would return `58 minutes`. |
 | `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{ humanizeDurationSeconds 3500000000000 }}` would return `58 minutes and 20 seconds`. |
 | `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
-| `.TimeHour` | Variable of time.duration type and returns 1 hour &gt; `1h0m0s`. |
-| `.TimeMinute` | Variable of time.duration type and returns 1 minute &gt; `1m0s`. |
-| `.TimeSecond` | Variable of time.duration type and returns 1 &gt; `1s`. |
+| `.TimeHour` | Variable of time.Duration type and returns 1 hour &gt; `1h0m0s`. |
+| `.TimeMinute` | Variable of time.Duration type and returns 1 minute &gt; `1m0s`. |
+| `.TimeSecond` | Variable of time.Duration type and returns 1 &gt; `1s`. |
 
 ## Functions
 
@@ -120,6 +120,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | Function | Description |
 | :--- | :--- |
 | `joinStr "separator" "str1" "str2"` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
+| `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `( toString ( toInt value ) )` and certain parts of `cembed` need this for example. |
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
 | `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
