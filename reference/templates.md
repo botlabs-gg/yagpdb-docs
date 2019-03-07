@@ -14,7 +14,7 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 {% endhint %}
 
 {% hint style="success" %}
-"Go is all about type". Many problems start with different kinds of type user has as values and what is needed. YAGPDB usually states that in error message - what went wrong with type.
+"Go is all about type." Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type.
 {% endhint %}
 
 ## User
