@@ -94,7 +94,7 @@ This example consists of two custom commands, and after copy/paste `REPLACE-WITH
 {{execCC REPLACE-WITH-NEXT-CC-ID nil 0 (sdict "MessageID" $mID "T" $t "Message" ($args.Get 1)) }}
 ```
 
-Second part of the custom commands, here we see, how `data`-part of exeCC was made in previous custom command as `sdict`and now we are calling those keys with .ExecData - for example .ExecData.MessageID sets new variable the same as stated in previous code.
+Second part of the custom commands, here we see, how `data`-part of exeCC was made in previous custom command as `sdict`and now we are calling those keys with `.ExecData` - for example `.ExecData.MessageID` sets new variable the same as stated in previous code.
 
 ```go
 {{$timeLeft := .ExecData.T.Sub currentTime}}
