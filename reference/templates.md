@@ -221,10 +221,12 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | Not |  `{{if not (condition)}} {{end}}` |
 | And |  `{{if and (cond1) (cond2) (cond3)}}` |
 | Or |  `{{if or (cond1) (cond2) (cond3)}} {{end}}` |
-| Equals |  `{{if eq .Channel.ID ########}} {{end}}` |
-| Not equals |  `{{if ne .Channel.ID #######}} {{end}}` |
+| Equal |  `{{if eq .Channel.ID ########}} {{end}}` |
+| Not equal |  `{{if ne .Channel.ID #######}} {{end}}` |
 | Less than |  `{{if lt (len .Args) 5}} {{end}}` |
+| Less than or equal | `{{if le (len .Args) 5}} {{end}}` |
 | Greater than |  `{{if gt (len .Args) 1}} {{end}}` |
+| Greater than or equal | `{{if ge (len .Args) 1}} {{end}}` |
 | Else if |  `{{if (case statement)}} {{else if (case statement)}} {{end}}` |
 | Else |  `{{if (case statement)}} {{else}} output here {{end}}` |
 
