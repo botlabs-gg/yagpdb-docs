@@ -11,7 +11,7 @@ Go to [yagpdb.xyz](https://yagpdb.xyz/), click on **Add to server** and follow t
 3.  Make sure that YAGPDB.xyz is online, [Discord might be having issues](https://status.discordapp.com/), or YAGPDB.xyz might be restarting \(see \#downtime-announcements\).
 4.  If none of this works, make sure that all YAGPDB commands are enabled by visiting the [control panel](https://yagpdb.xyz/), logging in and selecting your server, clicking on **Commands** and **Command Settings**. Make sure that **All commands enabled?** is checked and that there are no command overrides blocking the commands.
 
-![](../.gitbook/assets/unknown.png)
+![](../.gitbook/assets/unknown%20%281%29.png)
 
 If you still have issue, then you can contact us at our support server. 
 

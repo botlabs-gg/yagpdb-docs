@@ -120,6 +120,8 @@ Second part of the custom commands, here we see, how `data`-part of exeCC was ma
 {{end}}
 ```
 
+![Jonas&apos; using YAGPDB testing bot, same execCC custom commands.](../.gitbook/assets/unknown.png)
+
 ## User submitted custom commands
 
 ### GiveRole command for specific roles
