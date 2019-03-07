@@ -206,7 +206,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#snippets). |
-| `execCC ccID channel delay data` | Function that executes another custom command specified by `ccID,`max recursion depth is 2 and it's rate-limited strictly at max 10 delayed custom commands executed per channel per minute, if you go over that it will be simply thrown away. Argument `channel` can be `nil`, channel's ID or name. The`delay` argument is execution delay of another CC is in seconds. The `data` argument is content that you pass to the other executed custom command. To retrieve that `data` you use `.ExecData`. This example is important &gt; [execCC example](custom-command-examples.md#execcc-example). |
+| `execCC ccID channel delay data` | Function that executes another custom command specified by `ccID,`max recursion depth is 2 and it's rate-limited strictly at max 10 delayed custom commands executed per channel per minute, if you go over that it will be simply thrown away. Argument `channel` can be `nil`, channel's ID or name. The`delay` argument is execution delay of another CC is in seconds. The `data` argument is content that you pass to the other executed custom command. To retrieve that `data` you use `.ExecData`. This example is important &gt; [execCC example](custom-command-examples.md#execcc-example) also this snippet that shows you same thing run using the same custom command &gt; [Snippets](templates.md#snippets). |
 
 ## Branching
 
@@ -249,6 +249,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 * To demonstrate usage of sdict methods .Get and .Set.  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }}`
 * To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
 * To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := ( split $x ", " ) }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
+* To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := YOURNUMBER-HERE }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 ( sdict "YAGPDB" $yag "number" $ctr ) }} {{ else }} FUN'S OVER! {{ end }}`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
