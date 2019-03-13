@@ -197,14 +197,14 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | :--- | :--- |
 | `adjective` | Returns a random adjective. |
 | `dict key1 value1 key2 value2 ...` | Creates a dictionary \(not many use cases yet\). |
-| `sdict "key1" "value1" "key2" "value2"` |  The same as `dict` but with only string keys and can be used in `cembed`. Has `.Get "key"` and `.Set "key"` methods, they allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#snippets). |
+| `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has `.Get "key"` and `.Set "key"` methods, they allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#snippets). |
 | `cslice value1 value2` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
 | `in list value` | Returns true if value is in list. |
 | `inFold`  | Same as `in`, but is case insensitive. |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
-| `exec "command" "args" "args" "args"` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
+| `exec "command" "args" "args" "args" ...` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
 | `execAdmin "command" "args" "args" "args" ...` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve a user from a mention string or ID. |
 | `.CmdArgs` | Gets all the arguments passed to the command. |
