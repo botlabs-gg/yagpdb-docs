@@ -124,7 +124,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 | Function | Description |
 | :--- | :--- |
-| `joinStr "separator" "str1" "str2"` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
+| `joinStr "separator" "str1" (arg1)(arg2) "str2" ...` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
 | `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
@@ -237,9 +237,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \( [lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs \). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
 * `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only show if the member has a role with name "funrole" .
-* `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}` Assuming your trigger is a command, will display your first input if input was given.
-* `{{if eq .Channel.ID #######}}` Will only show in Channel \#\#\#\#\#.
-* `{{if ne .User.ID #######}}` Will ignore if user ID \#\#\#\#\# uses command.
+* `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}`Assuming your trigger is a command, will display your first input if input was given.
+* `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` in Channel \#\#\#\#\#.
+* `{{if ne .User.ID #######}} YAG! {{end}}`Will ignore if user ID equal to \#\#\#\#\# uses command.
 * `{{$d := randInt 10}}` Store the random int into variable $d \(A random number from 0-9\).
 * `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
 * `{{$a := (exec "catfact")}}` Saves the response of the `catfact` ****command to variable `$a`. 
