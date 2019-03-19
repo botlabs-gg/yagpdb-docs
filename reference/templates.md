@@ -94,7 +94,7 @@ More information about the `Message` template can be found [here](../commands/cu
 
 ## Time
 
-Time in general uses Golang's time package library &gt; [https://golang.org/pkg/time/](https://golang.org/pkg/time/) and also this although slightly different syntax all applies here &gt; [https://gobyexample.com/time](https://gobyexample.com/time).
+Time in general uses Golang's time package library &gt; [https://golang.org/pkg/time/\#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here &gt; [https://gobyexample.com/time](https://gobyexample.com/time).
 
 | Function | Description |
 | :--- | :--- |
