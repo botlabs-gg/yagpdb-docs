@@ -78,11 +78,12 @@ The execution will stop at wherever you placed "**parseArgs**" if incorrect args
 
 Available types and options are:
 
-* **int -** whole numbers, you can also optionally specify min and max after the name
-* **string -** text
-* **user -** user mentions, will have the type of User \(see [templates ](../reference/templates.md#user)for more info\)
-* **userid -** user ids, this user may not exist at all, both mentions and plain id's are accepted, will have the type of int64
-* **channel -** channel mentions, will have the type of Channel \(see [templates ](../reference/templates.md#channel)for more info\)
+* **int -** whole numbers, you can also optionally specify min and max after the name.
+* **string -** text.
+* **user -** user mentions, will have the type of User \(see [templates ](../reference/templates.md#user)for more info\).
+* **userid -** user ids, this user may not exist at all, both mentions and plain id's are accepted, will have the type of int64.
+* **channel -** channel mentions, will have the type of Channel \(see [templates ](../reference/templates.md#channel)for more info\).
+* **duration** - converts given integer number to Duration type.
 
 To access the parsed args you use the "**Get**" function on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
 
