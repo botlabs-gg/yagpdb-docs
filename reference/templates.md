@@ -1,8 +1,6 @@
----
-description: 'Available data which can be used in YAGPDB''s templating "engine":'
----
-
 # Templates
+
+Available data which can be used in YAGPDB's templating "engine", which is slightly modified version of Golang's stdlib text/template package; more in depth here &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
 {% hint style="warning" %}
 Put curly brackets around the templates like this: `{{.User.Username}}`
