@@ -1,6 +1,6 @@
 # Templates
 
-Available data which can be used in YAGPDB's templating "engine", which is slightly modified version of Golang's stdlib text/template package; more in depth here &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
+Available data which can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth here &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
 {% hint style="warning" %}
 Put curly brackets around the templates like this: `{{.User.Username}}`
@@ -212,6 +212,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `execCC ccID channel delay data` | Function that executes another custom command specified by `ccID,`max recursion depth is 2 and it's rate-limited strictly at max 10 delayed custom commands executed per channel per minute, if you go over that it will be simply thrown away. Argument `channel` can be `nil`, channel's ID or name. The`delay` argument is execution delay of another CC is in seconds. The `data` argument is content that you pass to the other executed custom command. To retrieve that `data` you use `.ExecData`. This example is important &gt; [execCC example](custom-command-examples.md#execcc-example) also this snippet that shows you same thing run using the same custom command &gt; [Snippets](templates.md#snippets). |
 
 ## Branching
+
+Branching using if pipeline and comparison operators.
 
 | Case | Example |
 | :--- | :--- |
