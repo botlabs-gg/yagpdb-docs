@@ -42,7 +42,7 @@ Role groups are useful for applying restrictions on a group of roles such as onl
 Do **NOT** make the required role or the ignored role the role you are assigning.
 {% endhint %}
 
-**Require role**: requires a person to have a certain role in order for them to give themselves this role.  
+**Require role**: requires a person to have a certain role in order for them to give themselves this role. That role needs to have at least manage server permissions for any of rolemenu commands to work.  
 **Ignore role**: Ignore any person who has this role.  
 **Mode**: Select between none, single, multiple to restrict the number of roles they can assign them themselves.
 
