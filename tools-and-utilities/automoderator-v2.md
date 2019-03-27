@@ -7,7 +7,7 @@ Automod v2 is currently in the beta phase, please report bugs about it on GitHub
 {% hint style="info" %}
 #### Tips
 
-Generally speaking most people want to have "ignore bots" as a ruleset condition, that way bots wont trigger any rules.
+Generally speaking most people want to have "ignore bots" as a ruleset condition, that way bots won't trigger any rules.
 
 A simple way to have it is to keep all the basic stuff \(invites, spam mentions, safebrowsing etc\) in a single rule, then have a single violation counter and a rule for each tier of punishment \(warn, kick, mute, ban\)
 {% endhint %}
