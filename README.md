@@ -1,7 +1,8 @@
 # Yet Another General Purpose Bot - Documentation
 
 {% hint style="warning" %}
-This is the documentation, the actual configuration are not done here. Visit [yagpdb.xyz/manage ](https://yagpdb.xyz/manage)to manage your server.
+This is the documentation, the actual configuration is not done here.  
+Visit [yagpdb.xyz/manage ](https://yagpdb.xyz/manage)to manage your server.
 {% endhint %}
 
 ## Index
