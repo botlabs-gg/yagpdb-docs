@@ -1,7 +1,7 @@
 # Automoderator V2
 
 {% hint style="warning" %}
-Automod v2 is currently in the beta phase, please report bugs about it on GitHub or Discord
+Automod v2 is currently in the beta phase, please report bugs about it on GitHub or Discord.
 {% endhint %}
 
 {% hint style="info" %}

@@ -9,7 +9,7 @@
 The setup for YAGPDB is pretty easy.
 
 1. Go to [yagpdb.xyz/manage](https://yagpdb.xyz/manage)
-2. click on **Login**
+2. Click on **Login**
 3. Authorize YAGPDB.xyz to know what servers you are on. 
 4. On the upper-right-corner, you can select your server by clicking on **Select a server** and selecting the server you want to add the bot to and manage.
 

@@ -3,7 +3,7 @@
 ## Roles
 
 {% hint style="warning" %}
-Make sure that the bot has the _manage role_ permissions and that the bot's role is **above** the role it is trying to assign
+Make sure that the bot has the _manage role_ permission and that the bot's role is **above** the role it is trying to assign.
 {% endhint %}
 
 Simply give the role command a name and then select which role you want the bot to assign to the person. 
@@ -13,7 +13,7 @@ Simply give the role command a name and then select which role you want the bot 
 ### Optional features
 
 {% hint style="warning" %}
-Do **NOT** make the require role or the ignore role, the role you are assigning.
+Do **NOT** set the require role or the ignore role to the role you are assigning.
 {% endhint %}
 
 **Require role**: Requires a person to have a certain role in order for them to give themselves this role.  
@@ -23,7 +23,7 @@ Do **NOT** make the require role or the ignore role, the role you are assigning.
 ## Role Groups
 
 {% hint style="info" %}
-Role groups are essential if you want to set up a role menu
+Role groups are essential if you want to set up a role menu.
 {% endhint %}
 
 Role groups are useful for applying restrictions on a group of roles such as only being able to have one or the other role etc. They're also essential if you want to create a role menu. To create one, simply give the role group a name and then select which mode you want the role group to use.
@@ -145,7 +145,7 @@ You can set old menus to use this flag using the command `rolemenu update (messa
 
 ### Removing a role menu
 
-If you want to remove a role menu from a message, you can type in `-rolemenu remove (message id)`  It will remove the rolemenu from a message. The message itself wont be deleted but the bot will now not do anything with reactions on that message. 
+If you want to remove a role menu from a message, you can type in `-rolemenu remove (message id)`  It will remove the rolemenu from a message. The message itself won't be deleted but the bot will now not do anything with reactions on that message. 
 
 ### Editing a role menu 
 
