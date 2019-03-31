@@ -198,7 +198,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has `.Get "key"` and `.Set "key"` methods, they allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#snippets). |
 | `cslice value1 value2 ...` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
-| `in list value` | Returns true if value is in list. |
+| `in list value` | Returns true if value is in list. List can be either an array or a slice. |
 | `inFold`  | Same as `in`, but is case insensitive. |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
