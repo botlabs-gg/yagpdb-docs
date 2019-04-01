@@ -448,17 +448,18 @@ Everything here starts with rolemenu such as `-rolemenu create`
         afterwards.</td>
     </tr>
   </tbody>
-</table>### Debug
+</table>### Debug & Maintenance
 
 | Command | Aliases | Optional Args | Description |
 | :--- | :--- | :--- | :--- |
-| yagstatus | status | N/A | Shows YAGPDB's status. |
-| currentshard | cshard | N/A | Shows the current shard this server is on. |
-| memberfetcher | memfetch | N/A | Shows the current status of the member fetcher. |
-| roledbg | N/A | N/A | Debug autorole assignment. |
+| topgames | N/A | \(-all\) | Shows the top games on this server. |
 | stateinfo | N/A | N/A | Responds with state debug info. |
 | topcommands | N/A | \(hours:number\) |  Shows command usage stats, defaults to last hour. |
 | topevents | N/A | \(shard:number\) | Shows gateway event processing stats for all or one shard. |
+| currentshard | cshard | N/A | Shows the current shard this server is on. |
+| memberfetcher | memfetch | N/A | Shows the current status of the member fetcher. |
+| yagstatus | status | N/A | Shows YAGPDB's status. |
+| roledbg | N/A | N/A | Debug autorole assignment. |
 
 ### Administrative \(only for self-hosting\)
 
