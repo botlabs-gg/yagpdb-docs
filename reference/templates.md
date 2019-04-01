@@ -77,6 +77,9 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .Message.Mentions | Users this message mentions |
 | .Message.Reactions | Reactions on this message \(only available form getMessage\) |
 | .Message.Content | Text content on this message |
+| .Args | List of everything that is passed to .Message.Content. |
+| .Cmd | Agument that triggers custom command. |
+| .CmdArgs | List of all the arguments passed after .Cmd. |
 
 {% hint style="info" %}
 More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
@@ -204,8 +207,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `shuffle list` | Returns a shuffled version of a list. |
 | `exec "command" "args" "args" "args" ...` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
 | `execAdmin "command" "args" "args" "args" ...` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
-| `userArg ########` | Function that can be used to retrieve a user from a mention string or ID. |
-| `.CmdArgs` | Gets all the arguments passed to the command. |
+| `userArg ########` | Function that can be used to retrieve .User method/object from a mention string or ID. |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#snippets). |
