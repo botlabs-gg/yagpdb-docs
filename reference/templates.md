@@ -78,8 +78,8 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 | .Message.Reactions | Reactions on this message \(only available form getMessage\). |
 | .Message.Content | Text content on this message. |
 | .Args | List of everything that is passed to .Message.Content. |
-| .Cmd | Argument that triggers custom command, part of .Args. |
-| .CmdArgs | List of all the arguments passed after .Cmd. |
+| .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{ index .Args 0 }}`.  |
+| .CmdArgs | List of all the arguments passed after .Cmd.  |
 
 {% hint style="info" %}
 More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
