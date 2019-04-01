@@ -211,7 +211,85 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#snippets). |
-| `execCC ccID channel delay data` | Function that executes another custom command specified by `ccID,`max recursion depth is 2 and it's rate-limited strictly at max 10 delayed custom commands executed per channel per minute, if you go over that it will be simply thrown away. Argument `channel` can be `nil`, channel's ID or name. The`delay` argument is execution delay of another CC is in seconds. The `data` argument is content that you pass to the other executed custom command. To retrieve that `data` you use `.ExecData`. This example is important &gt; [execCC example](custom-command-examples.md#execcc-example) also this snippet that shows you same thing run using the same custom command &gt; [Snippets](templates.md#snippets). |
+
+### ExecCC
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>execCC ccID channel delay data</code>
+      </td>
+      <td style="text-align:left">Function that executes another custom command specified by <code>ccID,</code>max
+        recursion depth is 2 and it&apos;s rate-limited strictly at max 10 delayed
+        custom commands executed per channel per minute, if you go over that it
+        will be simply thrown away. Argument <code>channel</code> can be <code>nil</code>,
+        channel&apos;s ID or name. The<code>delay</code> argument is execution delay
+        of another CC is in seconds. The <code>data</code> argument is content that
+        you pass to the other executed custom command. To retrieve that <code>data </code>you
+        use <code>.ExecData</code>. This example is important &gt; <a href="custom-command-examples.md#execcc-example">execCC example</a> also
+        this snippet that shows you same thing run using the same custom command
+        &gt; <a href="templates.md#snippets">Snippets</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>scheduleUniqueCC ccID channel delay key data</code>
+      </td>
+      <td style="text-align:left">
+        <p>Same as <code>execCC</code>except the can only be 1 scheduled cc execution
+          per server per key, if key is already existing then it is overwritten with
+          the new data and delay.</p>
+        <p>An example would be a mute command that schedules a unmute in the future,
+          but if you use the mute command again on the same user you dont want to
+          schedule another unmute, you wanna overwrite the next unmute event to the
+          new time, which is what this does.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>cancelScheduledUniqueCC ccID key</code>
+      </td>
+      <td style="text-align:left">Cancels a previously scheduled custom command execution using <code>scheduleUniqueCC </code>
+      </td>
+    </tr>
+  </tbody>
+</table>## Database
+
+You have access to a basic set of Database functions, this is almost a key value store ordered by the key and value combined.
+
+You can have max 50\*user\_count \(or 500\*user\_count for premium\) values in the database, if you go above this all the write functions will failed, this value is also cached so it wont detect immeditely when you go above or immeditely when you're under again.
+
+Patterns are basic postgres patterns, not regexes: An underscore `(_)`  matches any single character; a percent sign `(%)` matches any sequence of zero or more characters.
+
+Keys can be max 256 bytes long and has to be strings or numbers. Values can be anything, but if they go above 100KB they will be truncated.
+
+You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\)
+
+| Function | Descripton |
+| :--- | :--- |
+| `dbSet userID key value` | Sets the value for the specified key for the specified user to the specified value |
+| `dbSetExpire userID key value ttl` | Same as `dbSet` but with a expiration in seconds \(not that this does not work with `dbIncr` atm. |
+| `dbIncr userID key incrBy`  | Increments the value for specified key for the specified user, if there was no value then it will be set to `incrBy` |
+| `dbGet userID key`  | Retrieves a value from the database for the specified user, this retruns a DBEntry object |
+| `dbGetPattern userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database |
+| `dbDel userID key` | Deletes the specified key for the specified value from the database |
+| `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order |
+
+### DBEntry
+
+| Fields | Description |
+| :--- | :--- |
+| `ID` | Id of the entry |
+| `GuildID` | ID of the server |
+| `UserID` | ID of the user |
+| `CreatedAt` | When this entry was created |
+| `UpdatedAt` | When this entry was last updated |
+| `Key` | The key of the entry |
+| `Value` | The value of the entry |
+| `User` | A user object from the UserID |
 
 ## Branching
 
@@ -231,6 +309,10 @@ Branching using if pipeline and comparison operators.
 | Greater than or equal | `{{if ge (len .Args) 1}} {{end}}` |
 | Else if |  `{{if (case statement)}} {{else if (case statement)}} {{end}}` |
 | Else |  `{{if (case statement)}} {{else}} output here {{end}}` |
+
+## Executing other custom commands
+
+
 
 ## Snippets
 
