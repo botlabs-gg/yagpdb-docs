@@ -780,6 +780,34 @@ Clears the warnings of a user
 ClearWarnings <User:Mention/ID>
 ```
 
+### GiveRole
+
+**Aliases:** grole/arole/addrole
+
+Gives a role to the specified member, with optional expiry
+
+**Usage:**
+
+```text
+GiveRole <User:Mention/ID> <Role:Text>
+```
+
+```text
+[-d Duration:Duration]
+```
+
+### TakeRole
+
+**Aliases:** rrole/takearole/trole
+
+Removes the specified role from the target
+
+**Usage:**
+
+```text
+RemoveRole <User:Mention/ID> <Role:Text>
+```
+
 ### automod Rulesets
 
 **Aliases:** r/list/l
