@@ -347,7 +347,6 @@ Everything here starts with automod such as `-automod toggle`
 | Command | Aliases | Required Args | Optional Args | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | define | df | \(topic\) | N/A | Looks for an Urban Dictionary definition. |
-| reverse | r, rev | \(text\) | N/A | Reverse the text given. **NB! Command has been removed from the bot.** |
 | weather | w | \(location\) | N/A | Show the weather for the given location.  |
 | topic | N/A | N/A | N/A | Generates a chat topic. |
 | catfact | cf, cat, catfacts | N/A | N/A | Catfacts. What else?! |
