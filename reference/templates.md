@@ -1,9 +1,9 @@
 # Templates
 
-Available data which can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth here &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
+All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth here &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
 {% hint style="warning" %}
-Put curly brackets around the templates like this: `{{.User.Username}}`
+Put curly brackets around the data you want to formulate as template like this: `{{.User.Username}}`
 {% endhint %}
 
 {% hint style="info" %}
@@ -131,7 +131,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `upper "string"` | Converts the string to uppercase. |
 | `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example in [Snippets](templates.md#how-to-get-ids).  |
 | `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
-| `split "string" "sepr"` | Slices given `"string"` to substrings separated by `"sepr"`arg and returns new slice/array of the substrings. Example in [Snippets](templates.md#snippets). |
+| `split "string" "sepr"` | Slices given `"string"` to sub-strings separated by `"sepr"`arg and returns new slice/array of the sub-strings. Example in [Snippets](templates.md#snippets). |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
 | `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
 | `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in [Snippets](templates.md#snippets). |
@@ -241,7 +241,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
       <td style="text-align:left"><code>scheduleUniqueCC ccID channel delay key data</code>
       </td>
       <td style="text-align:left">
-        <p>Same as <code>execCC</code>except the can only be 1 scheduled cc execution
+        <p>Same as <code>execCC</code>except there can only be 1 scheduled cc execution
           per server per key, if key is already existing then it is overwritten with
           the new data and delay.</p>
         <p>An example would be a mute command that schedules a unmute in the future,
@@ -261,15 +261,15 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 You have access to a basic set of Database functions, this is almost a key value store ordered by the key and value combined.
 
-You can have max 50\*user\_count \(or 500\*user\_count for premium\) values in the database, if you go above this all the write functions will failed, this value is also cached so it wont detect immeditely when you go above or immeditely when you're under again.
+You can have max 50\*user\_count \(or 500\*user\_count for premium\) values in the database, if you go above this all new write functions will fail, this value is also cached so it won't be detected immediately when you go above nor immediately when you're under again.
 
-Patterns are basic postgres patterns, not regexes: An underscore `(_)`  matches any single character; a percent sign `(%)` matches any sequence of zero or more characters.
+Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches any single character; a percent sign `(%)` matches any sequence of zero or more characters.
 
 Keys can be max 256 bytes long and has to be strings or numbers. Values can be anything, but if they go above 100KB they will be truncated.
 
 You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\)
 
-| Function | Descripton |
+| Function | Description |
 | :--- | :--- |
 | `dbSet userID key value` | Sets the value for the specified key for the specified user to the specified value |
 | `dbSetExpire userID key value ttl` | Same as `dbSet` but with a expiration in seconds \(not that this does not work with `dbIncr` atm. |
@@ -283,7 +283,7 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 
 | Fields | Description |
 | :--- | :--- |
-| `ID` | Id of the entry |
+| `ID` | ID of the entry |
 | `GuildID` | ID of the server |
 | `UserID` | ID of the user |
 | `CreatedAt` | When this entry was created |
@@ -310,10 +310,6 @@ Branching using if pipeline and comparison operators.
 | Greater than or equal | `{{if ge (len .Args) 1}} {{end}}` |
 | Else if |  `{{if (case statement)}} {{else if (case statement)}} {{end}}` |
 | Else |  `{{if (case statement)}} {{else}} output here {{end}}` |
-
-## Executing other custom commands
-
-
 
 ## Snippets
 
