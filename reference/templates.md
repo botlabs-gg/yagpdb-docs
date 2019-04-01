@@ -118,7 +118,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `toString` | Converts something into a string. Usage: `(toString x)`. |
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
-| `toFloat` | Converts argument \(numbers of strings\) to type float64. |
+| `toFloat` | Converts argument \(number of string\) to type float64.  Usage: `(toFloat x)`. |
+| `toDuration` | Converts argument \(number or string\) to type Duration, usable in time operations. Usage:`(toDuration x)`. Example in [Snippets](templates.md#snippets).  |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `( toString ( toInt value ) )` and certain parts of `cembed` need this for example. |
 
 ### String manipulation
@@ -128,9 +129,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `joinStr "separator" "str1" (arg1)(arg2) "str2" ...` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
-| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example below in [Snippets](templates.md#how-to-get-ids).  |
+| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example in [Snippets](templates.md#how-to-get-ids).  |
 | `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
-| `split "string" "sepr"` | Slices given `"string"` to substrings separated by `"sepr"`arg and returns new slice/array of the substrings. Example below in [Snippets](templates.md#snippets). |
+| `split "string" "sepr"` | Slices given `"string"` to substrings separated by `"sepr"`arg and returns new slice/array of the substrings. Example in [Snippets](templates.md#snippets). |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
 | `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
 | `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in [Snippets](templates.md#snippets). |
@@ -341,6 +342,7 @@ Branching using if pipeline and comparison operators.
 * To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
 * To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := ( split $x ", " ) }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
 * To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := YOURNUMBER-HERE }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 ( sdict "YAGPDB" $yag "number" $ctr ) }} {{ else }} FUN'S OVER! {{ end }}`
+* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ ( currentTime.Add ( toDuration ( mult 12 .TimeHour ) ) ).Format "15:04" }}`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
