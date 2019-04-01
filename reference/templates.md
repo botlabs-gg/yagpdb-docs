@@ -68,15 +68,15 @@ If you want to put a template inside a template \(e.g. to wrap toString in joinS
 
 | Field | Description |
 | :--- | :--- |
-| .Message.ID | ID of the message |
-| .Message.ChannelID | Channel id this message is in |
-| .Message.Author | Author of the message \(User object\) |
-| .Message.Timestamp | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\) |
-| .Message.Attachments | Attachments to this message \(slice of attachment objects\) |
-| .Message.Embeds | Embeds on this message \(slice of embed objects\) |
-| .Message.Mentions | Users this message mentions |
-| .Message.Reactions | Reactions on this message \(only available form getMessage\) |
-| .Message.Content | Text content on this message |
+| .Message.ID | ID of the message. |
+| .Message.ChannelID | Channel id this message is in. |
+| .Message.Author | Author of the message \(User object\). |
+| .Message.Timestamp | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\). |
+| .Message.Attachments | Attachments to this message \(slice of attachment objects\). |
+| .Message.Embeds | Embeds on this message \(slice of embed objects\). |
+| .Message.Mentions | Users this message mentions. |
+| .Message.Reactions | Reactions on this message \(only available form getMessage\). |
+| .Message.Content | Text content on this message. |
 | .Args | List of everything that is passed to .Message.Content. |
 | .Cmd | Argument that triggers custom command, part of .Args. |
 | .CmdArgs | List of all the arguments passed after .Cmd. |
@@ -157,7 +157,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
 | `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in [Snippets](templates.md#snippets). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
-| `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object |
+| `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
 | `deleteResponse time` | Deletes the response after a certain time \(1-60 seconds\). |
 | `deleteTrigger time` | Deletes the trigger after a certain time \(1-60 seconds\). |
 | `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
