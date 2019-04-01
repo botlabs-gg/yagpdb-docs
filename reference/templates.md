@@ -7,7 +7,7 @@ Put curly brackets around the data you want to formulate as template like this: 
 {% endhint %}
 
 {% hint style="info" %}
-If you want to put a template inside a template \(e.g. to wrap toString in joinStr around .Guild.MemberCount\), you use normal braces:  
+If you want to join different data objects \(e.g. to wrap toString in joinStr around .Guild.MemberCount\), you use normal braces as delimiters:  
 `{{joinStr "" "Our member count is " (toString .Guild.MemberCount) "!"}}`
 {% endhint %}
 
