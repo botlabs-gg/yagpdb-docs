@@ -120,7 +120,48 @@ Second part of the custom commands, here we see, how `data`-part of exeCC was ma
 {{end}}
 ```
 
-![Jonas&apos; using YAGPDB testing bot, same execCC custom commands.](../.gitbook/assets/unknown.png)
+![Jonas&apos; using YAGPDB testing bot here, same execCC custom commands.](../.gitbook/assets/unknown.png)
+
+### Database example
+
+This is a simple note taking system having 3 separate custom commands. Also notice that actual name of the key inserted to database begins with "notes\_".
+
+#### Save note:
+
+```go
+{{$args := parseArgs 2 ""
+  (carg "string" "key")
+  (carg "string" "value")}}
+
+{{dbSet .User.ID (joinStr "" "notes_" ($args.Get 0)) ($args.Get 1)}}
+Saved `{{$args.Get 0}}` as `{{$args.Get 1}}`
+```
+
+#### Get note:
+
+```go
+{{$key := joinStr "" "notes_"  .StrippedMsg}}
+{{$note := dbGet .User.ID $key}}
+{{if $note}}
+
+{{$strippedKey := slice $key 6 (len $key)}}
+Note: `{{$strippedKey}}` Created {{humanizeTimeSinceDays $note.CreatedAt}} ago:
+{{$note.Value}}
+
+{{else}}Couldn't find any note like that :({{end}}
+```
+
+#### List user's notes:
+
+```go
+{{$notes := dbGetPattern .User.ID "notes_%" 100 0}}
+{{range $notes}}
+{{- $strippedKey := slice .Key 6 (len .Key)}}
+`{{$strippedKey}}` created {{humanizeTimeSinceDays .CreatedAt}} ago
+{{- else}}
+You don't have any notes :(
+{{end}}
+```
 
 ## User submitted custom commands
 

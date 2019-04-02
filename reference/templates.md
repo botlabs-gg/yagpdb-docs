@@ -268,7 +268,9 @@ Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches
 
 Keys can be max 256 bytes long and has to be strings or numbers. Values can be anything, but if they go above 100KB they will be truncated.
 
-You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\)
+You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\).  
+  
+[Example here](custom-command-examples.md#database-example).
 
 | Function | Description |
 | :--- | :--- |
