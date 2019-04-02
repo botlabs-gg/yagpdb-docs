@@ -9,7 +9,7 @@ Go to [yagpdb.xyz](https://yagpdb.xyz/), click on **Add to server** and follow t
 1.  Type `@YAGPDB.xyz#8760 ping`. If YAGPDB responds, you have set it to a different prefix. You can change it on the [control panel](https://yagpdb.xyz/manage).
 2.  Check the channel settings to see if YAGPDB.xyz has writing and reading permissions for the channel. **Please double check this**, this is the most common reason why YAGPDB isn't responding. 
 3.  Make sure that YAGPDB.xyz is online, [Discord might be having issues](https://status.discordapp.com/), or YAGPDB.xyz might be restarting \(see \#downtime-announcements\).
-4.  If none of this works, make sure that all YAGPDB commands are enabled by visiting the [control panel](https://yagpdb.xyz/), logging in and selecting your server, clicking on **Commands** and **Command Settings**. Make sure that **All commands enabled?** is checked and that there are no command overrides blocking the commands.
+4.  If none of this works, make sure that all YAGPDB commands are enabled by visiting the [control panel](https://yagpdb.xyz/), logging in and selecting your server, clicking on **Core** and **Command Settings**. Make sure that **All commands enabled?** is checked and that there are no command overrides blocking the commands.
 
 ![](../.gitbook/assets/unknown%20%281%29.png)
 
@@ -22,14 +22,14 @@ If you still have issue, then you can contact us at our support server.
 1. Visit the [control panel](https://yagpdb.xyz/manage)  
 2. Log in with your Discord account  
 3. Select your server  
-4. Click on **Commands**  
+4. Click on **Core**  
 5. Click on **Command Settings**  
 6. Change the prefix in the text box and click on **Save all Settings**
 
 ## How do I set up role menus/role reactions/self-assignable roles?
 
 There are multiple guides for this. These are our picks:   
-Video: [https://youtu.be/icAqiw6txRQ](https://youtu.be/icAqiw6txRQ)   
+Video: [https://www.youtube.com/watch?v=ENOttyXKDo8](https://www.youtube.com/watch?v=ENOttyXKDo8)  
 Documentation \(Text\): [https://docs.yagpdb.xyz/self-assignable-roles](https://docs.yagpdb.xyz/self-assignable-roles) 
 
 If you are still having difficulties setting up a role menu, you should read / watch the guide again. If you still can't figure it out, you can ask specific questions in \#help. Questions if someone can set it up for you will be ignored. 
