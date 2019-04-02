@@ -1,5 +1,9 @@
 # Role Commands \(Self-assignable roles\)
 
+## Tutorial Video
+
+{% embed url="https://www.youtube.com/watch?v=ENOttyXKDo8" %}
+
 ## Roles
 
 {% hint style="warning" %}
@@ -168,6 +172,4 @@ Make sure you have developer mode turned on in your discord settings.
 To get the ID of the message you want to set the custom role menu on, click on the three dots on the far right hand side of the message and click on `Copy ID`
 
 ![](../.gitbook/assets/aa%20%281%29.PNG)
-
-
 
