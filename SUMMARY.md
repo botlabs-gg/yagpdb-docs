@@ -7,9 +7,9 @@
 
 ## Core
 
-* [Commands](core/commands.md)
-* [Custom Commands](core/custom-commands.md)
-* [All Commands](core/all-commands.md)
+* [Commands](commands/commands.md)
+* [Custom Commands](commands/custom-commands.md)
+* [All Commands](commands/all-commands.md)
 
 ## Notifications & Feeds
 

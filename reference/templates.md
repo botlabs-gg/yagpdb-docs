@@ -82,7 +82,7 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 | .CmdArgs | List of all the arguments passed after .Cmd.  |
 
 {% hint style="info" %}
-More information about the `Message` template can be found [here](../core/custom-commands.md#the-message-template).
+More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
 {% endhint %}
 
 ## Current User
@@ -99,7 +99,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 | Function | Description |
 | :--- | :--- |
-| `currentTime` | Gets the current time, value is of type time; which can be used in a custom embed. More info [here](../core/custom-commands.md#currenttime-template). |
+| `currentTime` | Gets the current time, value is of type time; which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template). |
 | `formatTime Time "arg"` | Outputs given time in RFC822 formatting, first argument `Time` shows it needs to be of type time, also with extra layout if second argument is given - e.g. `{{ formatTime currentUserCreated "3:04PM" }}` would output `11:22AM` if that would have been user's creating time. |
 | `humanizeDurationHours` | Returns `nanoseconds` argument of type int64 in human readable format - as how long it would take to get towards given time - e.g. `{{ humanizeDurationHours 9000000000000000000 }}` returns `285 years 20 weeks 6 days and 16 hours`. |
 | `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{ humanizeDurationMinutes 3500000000000 }}` would return `58 minutes`. |
@@ -209,8 +209,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `exec "command" "args" "args" "args" ...` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
 | `execAdmin "command" "args" "args" "args" ...` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve .User method/object from a mention string or ID. |
-| `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../core/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
-| `carg type name` | Defines type of argument for parseArgs. [More in depth](../core/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
+| `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
+| `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#snippets). |
 
 ### ExecCC
@@ -316,7 +316,7 @@ Branching using if pipeline and comparison operators.
 * `<@{{.User.ID}}>` Outputs a mention to the user that called the command.
 * `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
-* `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \( [lis~~t~~roles](../core/all-commands.md#listroles) command gives roleIDs \). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
+* `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \( [lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs \). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
 * `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only show if the member has a role with name "funrole" .
 * `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}`Assuming your trigger is a command, will display your first input if input was given.
 * `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` in Channel \#\#\#\#\#.
