@@ -193,7 +193,7 @@ Shows information about a user
 **Usage:**
 
 ```text
-Whois [User:User]
+Whois [User:Member]
 ```
 
 ### Nicknames

@@ -159,7 +159,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">whois</td>
       <td style="text-align:left">whoami</td>
       <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(username)</td>
+      <td style="text-align:left">(mention/userID)</td>
       <td style="text-align:left">Shows information about given member.</td>
     </tr>
     <tr>
