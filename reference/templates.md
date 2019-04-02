@@ -136,6 +136,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
 | `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in [Snippets](templates.md#snippets). |
 | `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern is case sensitive\). |
+| `reFindAllSubmatches "regex" "string"` | Returns whole-pattern matches and also the sub-matches within those matches as slices inside a slice. `{{ reFindAllSubmatches "(?i)y([a-z]+)g" "youngish YAGPDB" }}` returns `[[young oun] [YAG A]]` \(regex pattern here is case-insensitive\). |
 
 ### Math functions
 
@@ -242,9 +243,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
       </td>
       <td style="text-align:left">
         <p>Same as <code>execCC</code>except there can only be 1 scheduled cc execution
-          per server per key, if key is already existing then it is overwritten with
-          the new data and delay.</p>
-        <p>An example would be a mute command that schedules a unmute in the future,
+          per server per key, if key already exists then it is overwritten with the
+          new data and delay.</p>
+        <p>An example would be a mute command that schedules unmute in the future,
           but if you use the mute command again on the same user you dont want to
           schedule another unmute, you wanna overwrite the next unmute event to the
           new time, which is what this does.</p>
