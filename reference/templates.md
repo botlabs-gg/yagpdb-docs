@@ -299,18 +299,18 @@ Branching using if pipeline and comparison operators.
 
 | Case | Example |
 | :--- | :--- |
-| Basic if |  `{{if (condition)}} {{end}}` |
-| Not |  `{{if not (condition)}} {{end}}` |
-| And |  `{{if and (cond1) (cond2) (cond3)}}` |
-| Or |  `{{if or (cond1) (cond2) (cond3)}} {{end}}` |
-| Equal |  `{{if eq .Channel.ID ########}} {{end}}` |
-| Not equal |  `{{if ne .Channel.ID #######}} {{end}}` |
-| Less than |  `{{if lt (len .Args) 5}} {{end}}` |
-| Less than or equal | `{{if le (len .Args) 5}} {{end}}` |
-| Greater than |  `{{if gt (len .Args) 1}} {{end}}` |
-| Greater than or equal | `{{if ge (len .Args) 1}} {{end}}` |
-| Else if |  `{{if (case statement)}} {{else if (case statement)}} {{end}}` |
-| Else |  `{{if (case statement)}} {{else}} output here {{end}}` |
+| Basic if | `{{if (condition)}} output {{end}}` |
+| Not | `{{if not (condition)}} output {{end}}` |
+| And | `{{if and (cond1) (cond2) (cond3)}} output {{ end }}` |
+| Or | `{{if or (cond1) (cond2) (cond3)}} output {{end}}` |
+| Equal | `{{if eq .Channel.ID ########}} output {{end}}` |
+| Not equal | `{{if ne .Channel.ID #######}} output {{end}}` |
+| Less than | `{{if lt (len .Args) 5}} output {{end}}` |
+| Less than or equal | `{{if le (len .Args) 5}} output {{end}}` |
+| Greater than | `{{if gt (len .Args) 1}} output {{end}}` |
+| Greater than or equal | `{{if ge (len .Args) 1}} output {{end}}` |
+| Else if | `{{if (case statement)}} output1 {{else if (case statement)}} output2 {{end}}` |
+| Else | `{{if (case statement)}} output1 {{else}} output2 {{end}}` |
 
 ## Snippets
 
