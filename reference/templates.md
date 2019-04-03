@@ -397,7 +397,7 @@ Branching using if pipeline and comparison operators.
 * `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the arguments after trigger to a variable `$allArgs`. 
 * `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
-* `{{/*- this is a multi-line comment -*/}}` Syntax for commenting things across several lines of data.
+* `{{- /* this is a multi-line comment */ -}}` Syntax for commenting things across several lines of data.
 * Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message. &gt;
 
   `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}` 
