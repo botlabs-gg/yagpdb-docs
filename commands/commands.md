@@ -1,4 +1,4 @@
-# Commands
+# Command Settings
 
 ##  Prefix
 
@@ -37,6 +37,8 @@ The prefix is by default `-` The first thing you see when you open the command p
 **New command override:** Create a command override that will apply to all the channels in the channel override. For help on creating command overrides, refer to [Command override.](commands.md#command-override) 
 
 ## Command List
+
+Full indexed list of all commands is also here  &gt; [All Commands](all-commands.md).
 
 You may get a list of every command by typing `-help` on your server.  
 You may also get more specific help by typing `-help (command)` .

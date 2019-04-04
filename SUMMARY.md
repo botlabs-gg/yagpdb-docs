@@ -7,7 +7,7 @@
 
 ## Core
 
-* [Commands](commands/commands.md)
+* [Command Settings](commands/commands.md)
 * [Custom Commands](commands/custom-commands.md)
 * [All Commands](commands/all-commands.md)
 
