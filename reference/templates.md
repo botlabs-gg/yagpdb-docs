@@ -135,8 +135,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `title "string"` | Returns string with the first letter of each word capitalized. |
 | `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
 | `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in [Snippets](templates.md#snippets). |
-| `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern is case sensitive\). |
-| `reFindAllSubmatches "regex" "string"` | Returns whole-pattern matches and also the sub-matches within those matches as slices inside a slice. `{{ reFindAllSubmatches "(?i)y([a-z]+)g" "youngish YAGPDB" }}` returns `[[young oun] [YAG A]]` \(regex pattern here is case-insensitive\). |
+| `reFindAllSubmatches "regex" "string"` | Returns whole-pattern matches and also the sub-matches within those matches as slices inside a slice. `{{ reFindAllSubmatches "(?i)y([a-z]+)g" "youngish YAGPDB" }}` returns `[[young oun] [YAG A]]` \(regex pattern here is case insensitive\). |
+| `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern here is case sensitive\). |
 
 ### Math functions
 
