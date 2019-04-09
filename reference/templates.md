@@ -23,13 +23,13 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 | .User.String | The user's username together with discriminator as string-type. |
 | .User.Username | The user's username. |
 | .User.ID | The user's ID. |
-| .User.Discriminator | The user's discriminator \(The four digits in a person's username\). |
+| .User.Discriminator | The user's discriminator \(The four digits after a person's username\). |
 | .User.Avatar | The user's avatar ID. |
 | .User.AvatarURL "256" | Gives the URL for user's avatar, argument "256" is the size of the picture  and can increase/decrease twofold \(e.g. 512, 1024 or 128, 64 etc.\). |
 | .User.Bot | Determines whether the target user is a bot - if yes, it will return True. |
 | .User.Mention | Mentions user. |
-| .RealUsername | Only works with join and leave messages. This can be used to send the real username to a staff channel when invites are censored. |
-| .UsernameHasInvite | Only works with join and leave messages. It will determine does the username contain an invite link. |
+| .RealUsername | Only works with join and leave messages \(not join dms\). This can be used to send the real username to a staff channel when invites are censored. |
+| .UsernameHasInvite | Only works with join and leave messages \(not join dms\). It will determine does the username contain an invite link. |
 
 ## Guild / Server
 
@@ -79,7 +79,7 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 | .Message.Content | Text content on this message. |
 | .Args | List of everything that is passed to .Message.Content. |
 | .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{ index .Args 0 }}`.  |
-| .CmdArgs | List of all the arguments passed after .Cmd.  |
+| .CmdArgs | List of all the arguments passed after .Cmd. \(.Cmd is the trigger\) |
 
 {% hint style="info" %}
 More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
@@ -90,7 +90,7 @@ More information about the `Message` template can be found [here](../commands/cu
 | Function | Description |
 | :--- | :--- |
 | currentUserCreated |  Returns value of type time and shows when the current user was created. |
-| currentUserAgeHuman |  The account age of the current user in more human readable format  \(`3 days 2 hours`, for example\). |
+| currentUserAgeHuman |  The account age of the current user in more human readable format  \(Eg:`3 days 2 hours`\). |
 | currentUserAgeMinutes |  The account age of the current user in minutes. |
 
 ## Time
@@ -186,11 +186,11 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
 | `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
 | `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
-| `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is otional argument in seconds. |
+| `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
 | `giveRoleID userID roleID` | Gives a role by ID to the target. |
 | `giveRoleName userID "roleName"` | Gives a role by name to the target. |
-| `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is otional argument in seconds. |
-| `takeRoleName userID roleName (delay)` | Takes away a role by name from the target. `Delay` is otional argument in seconds. |
+| `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
+| `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
 | `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in [Snippets](templates.md#snippets). |
 | `targetHasRoleName userID "roleName"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
 
@@ -211,7 +211,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `execAdmin "command" "args" "args" "args" ...` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve .User method/object from a mention string or ID. |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
-| `carg type name` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
+| `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#snippets). |
 
 ### ExecCC
