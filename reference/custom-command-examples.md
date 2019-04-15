@@ -163,6 +163,22 @@ You don't have any notes :(
 {{end}}
 ```
 
+### Custom command cooldown example
+
+A simple way to create cooldowns for your custom commands, by user and globally. Replace the 10 with the length of the cooldown.
+
+#### Global cooldown
+```go
+{{if (dbGet 0 "cooldown")}}This command is still on cooldown for {{humanizeDurationSeconds ((dbGet 0 "cooldown").ExpiresAt.Sub currentTime)}}!{{else}}{{dbSetExpire 0 "cooldown" "command cooldown" 10}}
+Command body {{/* Replace with code */}}{{end}}
+```
+
+#### Per user cooldown
+```go
+{{if (dbGet .User.ID "cooldown")}}This command is still on cooldown for {{humanizeDurationSeconds ((dbGet .User.ID "cooldown").ExpiresAt.Sub currentTime)}}!{{else}}{{dbSetExpire .User.ID "cooldown" "command cooldown" 10}}
+Command body {{/* Replace with code */}}{{end}}
+```
+
 ## User submitted custom commands
 
 ### GiveRole command for specific roles
