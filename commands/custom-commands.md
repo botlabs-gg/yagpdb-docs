@@ -199,10 +199,10 @@ even more in depth here &gt; [https://golang.org/pkg/time/](https://golang.org/p
 {{/* current time in UTC+2 and in 12H format */}}
 {{ ( joinStr " " ( ( currentTime.Add 7200000000000 ).Format "3:04"  ) $marker ) }}
 
-
 It's the {{currentTime.Day}}. of {{currentTime.Month}} in the year {{currentTime.Year}}!
-{{/*Protip: you can put PM in the format string
-https://golang.org/pkg/time/#pkg-constants*/}}
+{{/*Protip: you can put PM in the format string as "3:04PM"
+the variable $marker is there just to show if comparison as well.
+More > https://golang.org/pkg/time/#pkg-constants*/}}
 ```
 
 ### Examples of custom commands
