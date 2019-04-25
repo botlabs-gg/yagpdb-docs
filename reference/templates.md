@@ -51,7 +51,7 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 
 | Field | Description |
 | :--- | :--- |
-| .Member.JoinedAt | When member joined the guild/server. |
+| .Member.JoinedAt | When member joined the guild/server of type Timestamp. |
 | .Member.Nick | The nickname for this member. |
 | .Member.Roles | A list of role IDs that the member has. |
 
