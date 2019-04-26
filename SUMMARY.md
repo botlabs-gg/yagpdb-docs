@@ -45,5 +45,4 @@
 * [Frequent Searches](others/frequent-searches.md)
 * [Custom Embeds](others/custom-embeds.md)
 * [Self Hosting with Docker](others/self-hosting-with-docker.md)
-* [Self Hosting the Website](others/self-hosting-the-website.md)
 
