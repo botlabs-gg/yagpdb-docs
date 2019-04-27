@@ -162,7 +162,7 @@ Example to fetch the name of the first reaction on a message provided through th
 ```go
 {{$message := getMessage nil (index .Args 1)}}
 {{if $message}}
-{{if (index $message.Reactions 0) }}
+{{if $message.Reactions}}
 Name of the first reaction: {{(index $message.Reactions 0).Emoji.Name}}
 {{else}}No reactions on this message{{end}}
 {{else}}Unknown message{{end}}
