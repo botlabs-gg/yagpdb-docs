@@ -147,6 +147,10 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `div x y z ...` | Division, like `add` or `mult`, detects number type first. `{{ div 11 3 }}` returns `3` whereas `{{ div 11.1 3 }}` returns  `3.6999999999999997` |
 | `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
 | `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
+| `round` | Returns the nearest integer, rounding half away from zero. Regular rounding &gt; 10.4 is 10 and 10.5 is 11. For more complex rounding, example in [Snippets](templates.md#snippets). |
+| `roundCeil` | Returns the least integer value greater than or equal to input or rounds up.  `{{ roundCeil 1.1 }}` returns `2`. |
+| `roundFloor` | Returns the greatest integer value less than or equal to input or rounds down. `{{ roundFloor 1.9 }}` returns `1`. |
+| `roundEven` | Returns the nearest integer, rounding ties to even. `{{ roundEven 10.5 }}` returns `10 {{ roundEven 11.5 }}` returns `12`. |
 
 ### Message functions
 
@@ -343,6 +347,7 @@ Branching using if pipeline and comparison operators.
 * To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := ( split $x ", " ) }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
 * To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := YOURNUMBER-HERE }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 ( sdict "YAGPDB" $yag "number" $ctr ) }} {{ else }} FUN'S OVER! {{ end }}`
 * To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ ( currentTime.Add ( toDuration ( mult 12 .TimeHour ) ) ).Format "15:04" }}`
+* To demonstrate rounding float  to 2 decimal places. `{{ div ( round ( mult 12.3456 100 ) ) 100 }}` returns `12.35`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
