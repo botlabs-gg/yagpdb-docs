@@ -119,8 +119,12 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
 | `toFloat` | Converts argument \(number of string\) to type float64.  Usage: `(toFloat x)`. |
-| `toDuration` | Converts argument \(number or string\) to type Duration, usable in time operations. Usage:`(toDuration x)`. Example in [Snippets](templates.md#snippets).  |
+| `toDuration` | Converts argument \(number or string\) to type Duration, usable in time operations. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets).  |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `( toString ( toInt value ) )` and certain parts of `cembed` need this for example. |
+
+#### This section's snippets:
+
+* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ ( currentTime.Add ( toDuration ( mult 12 .TimeHour ) ) ).Format "15:04" }}`
 
 ### String manipulation
 
@@ -129,14 +133,20 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `joinStr "separator" "str1" (arg1)(arg2) "str2" ...` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
-| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example in [Snippets](templates.md#how-to-get-ids).  |
+| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example in section's [Snippets](templates.md#this-sections-snippets-1).  |
 | `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
-| `split "string" "sepr"` | Slices given `"string"` to sub-strings separated by `"sepr"`arg and returns new slice/array of the sub-strings. Example in [Snippets](templates.md#snippets). |
+| `split "string" "sepr"` | Slices given `"string"` to sub-strings separated by `"sepr"`arg and returns new slice/array of the sub-strings. Example in section's [Snippets](templates.md#this-sections-snippets-1). |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
 | `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
-| `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in [Snippets](templates.md#snippets). |
+| `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in section's [Snippets](templates.md#this-sections-snippets-1). |
 | `reFindAllSubmatches "regex" "string"` | Returns whole-pattern matches and also the sub-matches within those matches as slices inside a slice. `{{ reFindAllSubmatches "(?i)y([a-z]+)g" "youngish YAGPDB" }}` returns `[[young oun] [YAG A]]` \(regex pattern here is case insensitive\). |
 | `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern here is case sensitive\). |
+
+#### This section's snippets:
+
+* `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
+* To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := ( split $x ", " ) }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
+* To demonstrate usage of reFindAll. &gt;  `Before regex: {{ $msg := "1 YAGPDB and over 100000 servers conqured." }} {{ $re2 := reFindAll "[0-9]+" $msg }} {{ $msg }}   After regex matches: {{ joinStr " " "Only" ( index $re2 0 ) "YAGPDB and already" ( index $re2 1 ) "servers captured."}}`
 
 ### Math functions
 
@@ -147,10 +157,14 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `div x y z ...` | Division, like `add` or `mult`, detects number type first. `{{ div 11 3 }}` returns `3` whereas `{{ div 11.1 3 }}` returns  `3.6999999999999997` |
 | `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
 | `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
-| `round` | Returns the nearest integer, rounding half away from zero. Regular rounding &gt; 10.4 is 10 and 10.5 is 11. All round functions return type float64, so use conversion functions to get integers. For more complex rounding, example in [Snippets](templates.md#snippets). |
+| `round` | Returns the nearest integer, rounding half away from zero. Regular rounding &gt; 10.4 is 10 and 10.5 is 11. All round functions return type float64, so use conversion functions to get integers. For more complex rounding, example in section's [Snippets](templates.md#this-sections-snippets-2). |
 | `roundCeil` | Returns the least integer value greater than or equal to input or rounds up.  `{{ roundCeil 1.1 }}` returns `2`. |
 | `roundFloor` | Returns the greatest integer value less than or equal to input or rounds down. `{{ roundFloor 1.9 }}` returns `1`. |
 | `roundEven` | Returns the nearest integer, rounding ties to even. `{{ roundEven 10.5 }}` returns `10 {{ roundEven 11.5 }}` returns `12`. |
+
+#### This section's snippets:
+
+* To demonstrate rounding float to 2 decimal places. `{{ div ( round ( mult 12.3456 100 ) ) 100 }}` returns `12.35`
 
 ### Message functions
 
@@ -158,18 +172,26 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | :--- | :--- |
 | `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). random adjective. |
 | `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
-| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in [Snippets](templates.md#snippets). |
+| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-3). |
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
-| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in [Snippets](templates.md#snippets). |
+| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-3). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
 | `deleteResponse time` | Deletes the response after a certain time \(1-60 seconds\). |
 | `deleteTrigger time` | Deletes the trigger after a certain time \(1-60 seconds\). |
-| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in [Snippets](templates.md#snippets). |
+| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in section's [Snippets](templates.md#this-sections-snippets-3). |
 | `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
-| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in [Snippets](templates.md#snippets). |
+| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-3). |
+
+#### This section's snippets:
+
+* Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message. &gt;
+
+  `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}`
+
+* To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
 
 ### Mentions
 
@@ -181,7 +203,15 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `mentionRoleID roleID` | Mentions the role found with the provided ID. |
 | `escapeEveryone "input"` | Escapes everyone mentions in a string. |
 | `escapeHere "input"` | Escapes here mentions in a string. |
-| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with sendMessageNoEscape, also applies to escapeEveryone/Here. Example in [Snippets](templates.md#snippets). |
+| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with sendMessageNoEscape, also applies to escapeEveryone/Here. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
+
+#### This section's snippets:
+
+* `<@{{.User.ID}}>` Outputs a mention to the user that called the command.
+* `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
+* `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
+* `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \( [lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs \). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
+* To demonstrate usage of escapeEveryoneHere. &gt; `{{ $x := "@here Hello World! @everyone" }} {{ sendMessage nil $x }} {{ sendMessageNoEscape nil $x }} {{ sendMessageNoEscape nil ( escapeEveryoneHere $x ) }}`
 
 ### Role functions
 
@@ -195,8 +225,12 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `giveRoleName userID "roleName"` | Gives a role by name to the target. |
 | `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
-| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in [Snippets](templates.md#snippets). |
+| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-5). |
 | `targetHasRoleName userID "roleName"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
+
+#### This section's snippets:
+
+* To demonstrate usage of targetHasRoleID. &gt;  `{{ $x := ( userArg ( index .Args 1) ).ID }} {{ if targetHasRoleID $x ############ }} Has the Role! {{ else }} Does not have the role! {{ end }}`
 
 ### Miscellaneous
 
@@ -240,7 +274,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
         you pass to the other executed custom command. To retrieve that <code>data </code>you
         use <code>.ExecData</code>. This example is important &gt; <a href="custom-command-examples.md#execcc-example">execCC example</a> also
         this snippet that shows you same thing run using the same custom command
-        &gt; <a href="templates.md#snippets">Snippets</a>.</td>
+        &gt; <a href="templates.md#this-sections-snippets-6">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>scheduleUniqueCC ccID channel delay key data</code>
@@ -262,7 +296,11 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
       </td>
     </tr>
   </tbody>
-</table>## Database
+</table>#### This section's snippets:
+
+* To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := YOURNUMBER-HERE }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 ( sdict "YAGPDB" $yag "number" $ctr ) }} {{ else }} FUN'S OVER! {{ end }}`
+
+## Database
 
 You have access to a basic set of Database functions, this is almost a key value store ordered by the key and value combined.
 
@@ -319,12 +357,8 @@ Branching using if pipeline and comparison operators.
 | Else if | `{{if (case statement)}} output1 {{else if (case statement)}} output2 {{end}}` |
 | Else | `{{if (case statement)}} output1 {{else}} output2 {{end}}` |
 
-## Snippets
+## Miscellaneous snippets
 
-* `<@{{.User.ID}}>` Outputs a mention to the user that called the command.
-* `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
-* `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
-* `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \( [lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs \). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
 * `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only show if the member has a role with name "funrole" .
 * `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}`Assuming your trigger is a command, will display your first input if input was given.
 * `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` in Channel \#\#\#\#\#.
@@ -333,21 +367,9 @@ Branching using if pipeline and comparison operators.
 * `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
 * `{{$a := (exec "catfact")}}` Saves the response of the `catfact` ****command to variable `$a`. 
 * `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the arguments after trigger to a variable `$allArgs`. 
-* `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
-* Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message. &gt;
-
-  `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}` 
-
-* To demonstrate usage of escapeEveryoneHere. &gt; `{{ $x := "@here Hello World! @everyone" }} {{ sendMessage nil $x }} {{ sendMessageNoEscape nil $x }} {{ sendMessageNoEscape nil ( escapeEveryoneHere $x ) }}`
-* To demonstrate usage of targetHasRoleID. &gt;  `{{ $x := ( userArg ( index .Args 1) ).ID }} {{ if targetHasRoleID $x ############ }} Has the Role! {{ else }} Does not have the role! {{ end }}`
-* To demonstrate usage of reFindAll. &gt;  `Before regex: {{ $msg := "1 YAGPDB and over 100000 servers conqured." }} {{ $re2 := reFindAll "[0-9]+" $msg }} {{ $msg }}   After regex matches: {{ joinStr " " "Only" ( index $re2 0 ) "YAGPDB and already" ( index $re2 1 ) "servers captured."}}`
 * To demonstrate usage of sdict methods .Get and .Set.  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }}` to add to that `sdict`, simply use `.Set` again &gt;  `{{ $x.Set "YAGPDB" "is cool!" }} {{ $x }}`
 * To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
-* To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := ( split $x ", " ) }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
-* To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := YOURNUMBER-HERE }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 ( sdict "YAGPDB" $yag "number" $ctr ) }} {{ else }} FUN'S OVER! {{ end }}`
-* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ ( currentTime.Add ( toDuration ( mult 12 .TimeHour ) ) ).Format "15:04" }}`
-* To demonstrate rounding float  to 2 decimal places. `{{ div ( round ( mult 12.3456 100 ) ) 100 }}` returns `12.35`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
