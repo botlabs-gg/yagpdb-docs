@@ -164,7 +164,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 #### This section's snippets:
 
-* To demonstrate rounding float to 2 decimal places. `{{ div ( round ( mult 12.3456 100 ) ) 100 }}` returns `12.35`
+* To demonstrate rounding float to 2 decimal places. `{{ div ( round ( mult 12.3456 100 ) ) 100 }}` returns 12.35 `{{ div ( roundFloor ( mult  12.3456 100 ) ) 100 }}` returns 12.34
 
 ### Message functions
 
