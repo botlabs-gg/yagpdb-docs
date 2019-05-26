@@ -11,7 +11,8 @@
 To ensure that everything is set up, you first need to have docker and docker-compose installed. To install them run the following command:
 
 ```bash
-sudo apt-get install -y docker docker-compose
+sudo apt-get install docker
+sudo apt-get install docker-compose
 ```
 
 {% hint style="warning" %}
