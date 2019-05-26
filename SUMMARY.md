@@ -44,5 +44,9 @@
 * [Acknowledgement](others/acknowledgement.md)
 * [Frequent Searches](others/frequent-searches.md)
 * [Custom Embeds](others/custom-embeds.md)
-* [Self Hosting with Docker](others/self-hosting-with-docker.md)
+
+## Development
+
+* [Self Hosting with Docker](development/self-hosting-with-docker.md)
+* [Building the bot](development/building-the-bot.md)
 
