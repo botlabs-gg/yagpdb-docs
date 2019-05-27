@@ -384,7 +384,7 @@ Everything here starts with cah such as `-cah create`
 
 ### Rolemenu
 
-Everything here starts with rolemenu such as `-rolemenu create`
+Everything here starts with `rolemenu`such as `-rolemenu create`
 
 <table>
   <thead>
@@ -450,7 +450,20 @@ Everything here starts with rolemenu such as `-rolemenu create`
         afterwards.</td>
     </tr>
   </tbody>
-</table>### Debug & Maintenance
+</table>### Tickets
+
+Everything here starts with `ticket(s)` such as `-tickets create`
+
+| Command | Aliases | Required Args | Optional Args | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| Open | create, new, make | \(subject's name\) | N/A | Opens a new ticket.  |
+| AddUser | N/A | \(user\) | N/A | Adds a user to the ticket in this channel. |
+| RemoveUser | N/A | \(user\) | N/A | Removes a user from the ticket. |
+| Rename | N/A | \(new name\) | N/A | Renames the ticket. |
+| Close | end, delete | N/A | \(reason\) | Closes the ticket. |
+| AdminsOnly | adminonly, ao | N/A | N/A | Toggle admins only mode for this ticket. |
+
+### Debug & Maintenance
 
 | Command | Aliases | Optional Args | Description |
 | :--- | :--- | :--- | :--- |
