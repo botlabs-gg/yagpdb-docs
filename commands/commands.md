@@ -482,7 +482,7 @@ Everything here starts with `ticket(s)` such as `-tickets create`
 
 ### Events
 
-Everything here starts with `evemt(s)` such as `-events create`
+Everything here starts with `event(s)` such as `-events create`
 
 <table>
   <thead>
