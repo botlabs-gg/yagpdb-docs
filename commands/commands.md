@@ -1,6 +1,6 @@
 # Command Settings
 
-##  Prefix
+## Prefix
 
 The prefix is by default `-` The first thing you see when you open the command page is the prefix, you can replace this with your own unique prefix if you would like. Be sure to hit the save button afterward.
 
@@ -215,6 +215,23 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">(rolename)</td>
       <td style="text-align:left">Give yourself a role or list all available roles. Needs to be set up first
         on the control panel.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">settimezone</td>
+      <td style="text-align:left">setz, tzset</td>
+      <td style="text-align:left">(timezone)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Sets your timezone, used for various purposes such as auto conversion. <code>timezone</code> is
+        your country, use this &gt; <a href="http://kevalbhatt.github.io/timezone-picker/">Timezone Picker</a> ,
+        enter the <code>Area/City</code> result</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">toggletimeconversion</td>
+      <td style="text-align:left">toggletconv</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Toggles automatic time conversion for people with registered timezones
+        (setz) in current channel, its on by default</td>
     </tr>
   </tbody>
 </table>###  Moderation
@@ -456,14 +473,70 @@ Everything here starts with `ticket(s)` such as `-tickets create`
 
 | Command | Aliases | Required Args | Optional Args | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| Open | create, new, make | \(subject's name\) | N/A | Opens a new ticket.  |
-| AddUser | N/A | \(user\) | N/A | Adds a user to the ticket in this channel. |
-| RemoveUser | N/A | \(user\) | N/A | Removes a user from the ticket. |
-| Rename | N/A | \(new name\) | N/A | Renames the ticket. |
-| Close | end, delete | N/A | \(reason\) | Closes the ticket. |
-| AdminsOnly | adminonly, ao | N/A | N/A | Toggle admins only mode for this ticket. |
+| open | create, new, make | \(subject's name\) | N/A | Opens a new ticket.  |
+| addUser | N/A | \(user\) | N/A | Adds a user to the ticket in this channel. |
+| removeUser | N/A | \(user\) | N/A | Removes a user from the ticket. |
+| rename | N/A | \(new name\) | N/A | Renames the ticket. |
+| close | end, delete | N/A | \(reason\) | Closes the ticket. |
+| adminsonly | adminonly, ao | N/A | N/A | Toggle admins only mode for this ticket. |
 
-### Debug & Maintenance
+### Events
+
+Everything here starts with `evemt(s)` such as `-events create`
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Command</th>
+      <th style="text-align:left">Aliases</th>
+      <th style="text-align:left">Required Args</th>
+      <th style="text-align:left">Optional Args</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">create</td>
+      <td style="text-align:left">new, make</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Creates a new event, you will be led through an interactive setup.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">edit</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(eventID)</td>
+      <td style="text-align:left">(title)(time)(max:number)</td>
+      <td style="text-align:left">
+        <p>Edits an event. <b>List </b>will give you <code>eventID</code>.</p>
+        <p><b>-title</b> Changes event&apos;s title.</p>
+        <p><b>-time</b> Changes event&apos;s start time.</p>
+        <p><b>-max</b> Changes max number of participants.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">list</td>
+      <td style="text-align:left">ls</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Lists all events in current server.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">delete</td>
+      <td style="text-align:left">rm, del</td>
+      <td style="text-align:left">(eventID)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Deletes specified event. <b>List</b> will give you <code>eventID</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">stopsetup</td>
+      <td style="text-align:left">cancelsetup</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Force cancels the setup session in current channel.</td>
+    </tr>
+  </tbody>
+</table>### Debug & Maintenance
 
 | Command | Aliases | Optional Args | Description |
 | :--- | :--- | :--- | :--- |
