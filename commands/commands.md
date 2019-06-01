@@ -471,6 +471,13 @@ Everything here starts with `rolemenu`such as `-rolemenu create`
       <td style="text-align:left">Allows you to reassign the emoji of an option, tip: use ResetReactions
         afterwards.</td>
     </tr>
+    <tr>
+      <td style="text-align:left">complete</td>
+      <td style="text-align:left">finish</td>
+      <td style="text-align:left">(messageID)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Marks the menu as done.</td>
+    </tr>
   </tbody>
 </table>### Tickets
 
