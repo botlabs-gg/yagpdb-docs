@@ -223,7 +223,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">Sets your timezone, used for various purposes such as auto conversion. <code>timezone</code> is
         your country, use this &gt; <a href="http://kevalbhatt.github.io/timezone-picker/">Timezone Picker</a> ,
-        enter the <code>Area/City</code> result</td>
+        enter the <code>Area/City</code> result.</td>
     </tr>
     <tr>
       <td style="text-align:left">toggletimeconversion</td>
@@ -231,7 +231,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">Toggles automatic time conversion for people with registered timezones
-        (setz) in current channel, its on by default</td>
+        (setz) in current channel, its on by default.</td>
     </tr>
   </tbody>
 </table>###  Moderation
@@ -288,8 +288,9 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">(count)</td>
       <td style="text-align:left">
         <p>(mention/userID)</p>
-        <p>(max age)</p>
-        <p>(regex)</p>
+        <p>(-ma: max age)</p>
+        <p>(-r:regex)</p>
+        <p>(-i:regex case insensitive)</p>
       </td>
       <td style="text-align:left">Cleans the chat. More in depth <a href="all-commands.md#clean">here</a>.</td>
     </tr>
@@ -339,7 +340,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">giverole</td>
       <td style="text-align:left">grole, arole, addrole</td>
       <td style="text-align:left">(mention/userID) (rolename)</td>
-      <td style="text-align:left">-d (duration)</td>
+      <td style="text-align:left">(-d:duration)</td>
       <td style="text-align:left">Gives a role to the specified member, with optional expiry, for example <code>-d 10h5m10s.</code>
       </td>
     </tr>
@@ -357,9 +358,9 @@ Everything here starts with automod such as `-automod toggle`
 
 | Command | Aliases | Required Args | Optional Args | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| Rulesets | r, list, l | N/A | N/A |  Lists all rulesets and their status |
-| Toggle | t | \(ruleset\) | N/A |  Toggles a ruleset on/off |
-| Logs | log | N/A | \(skip x triggers\) -user \(user\) |  Shows triggered automod rules \(optionally can specify specific user's triggers as well as skip the first x triggers\) |
+| Rulesets | r, list, l | N/A | N/A |  Lists all rulesets and their status. |
+| Toggle | t | \(ruleset\) | N/A |  Toggles a ruleset on/off. |
+| Logs | log | N/A | \(count:number\)  |  Shows triggered automod rules \(optionally can show number of logged messages\). |
 
 ### Fun
 
@@ -419,8 +420,9 @@ Everything here starts with `rolemenu`such as `-rolemenu create`
       <td style="text-align:left">c</td>
       <td style="text-align:left">(rolegroup&apos;s name)</td>
       <td style="text-align:left">
-        <p>(m:messageID)(nodm)(rr)</p>
-        <p>(skip:number)</p>
+        <p>(-m: messageID) (-nodm)
+          <br />(-rr)</p>
+        <p>(-skip: number)</p>
       </td>
       <td style="text-align:left">
         <p>Sets up a role menu, specify a message with <b>-m</b> to use an existing
@@ -446,7 +448,8 @@ Everything here starts with `rolemenu`such as `-rolemenu create`
       <td style="text-align:left">update</td>
       <td style="text-align:left">u</td>
       <td style="text-align:left">(messageID)</td>
-      <td style="text-align:left">(nodm)(rr)</td>
+      <td style="text-align:left">(-nodm)
+        <br />(-rr)</td>
       <td style="text-align:left">Updates a rolemenu, toggling the provided flags and adding missing options,
         aswell as updating the order.</td>
     </tr>
@@ -506,7 +509,8 @@ Everything here starts with `event(s)` such as `-events create`
       <td style="text-align:left">edit</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">(eventID)</td>
-      <td style="text-align:left">(title)(time)(max:number)</td>
+      <td style="text-align:left">(-title) (-time)
+        <br />(-max: number)</td>
       <td style="text-align:left">
         <p>Edits an event. <b>List </b>will give you <code>eventID</code>.</p>
         <p><b>-title</b> Changes event&apos;s title.</p>
