@@ -229,9 +229,11 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">toggletimeconversion</td>
       <td style="text-align:left">toggletconv</td>
       <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(flags)</td>
       <td style="text-align:left">Toggles automatic time conversion for people with registered timezones
-        (setz) in current channel, its on by default.</td>
+        (setz) in current channel, its on by default. By using <code>flags</code> argument,
+        currently <code>all</code> or <code>*</code> will toggle that time conversion
+        in all channels, including newly created ones.</td>
     </tr>
   </tbody>
 </table>###  Moderation
@@ -509,7 +511,8 @@ Everything here starts with `event(s)` such as `-events create`
       <td style="text-align:left">edit</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">(eventID)</td>
-      <td style="text-align:left">(-title) (-time)
+      <td style="text-align:left">(-title)
+        <br />(-time)
         <br />(-max: number)</td>
       <td style="text-align:left">
         <p>Edits an event. <b>List </b>will give you <code>eventID</code>.</p>
