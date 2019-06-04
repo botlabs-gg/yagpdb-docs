@@ -164,9 +164,9 @@ Use the same values as the app.env or the bot will not work properly!
 The `POSTGRES_DB` value must be always `yagpdb`
 {% endhint %}
 
-Great, you are now done with the configuration. The bot should be ready!
-
 ## Building the bot
+
+Great, you are now done with the configuration. The bot should be ready!
 
 Building the bot is not required unless you want to customize the bot's functionality.
 
@@ -226,13 +226,17 @@ For nginx users, you need first to set up the bot so it uses http only on the lo
 
 #### Dockerfile \(build only\)
 
-Change `EXPOSE 80 443` to `EXPOSE 80`
-
 Change `ENV external_tls ""` to `ENV external_tls "-https=false"`
 
 #### Docker-compose
 
-Change `- "80"` to `- "8082:80"` under _build &gt; ports_
+Uncomment `- "80:80"` and change it to your desired port _\(not required if the proxy runs on the same docker network\)_
+
+Set the `command` key to the following:
+
+```yaml
+command: [ "-all", "-pa", "-exthttps=true", "-https=false" ]
+```
 
 #### Nginx configuration
 
@@ -254,8 +258,10 @@ server {
         # Basic settings
         proxy_read_timeout 360s;
         proxy_http_version 1.1;
-        proxy_pass http://localhost:8082;
-        proxy_redirect http://localhost:8082 https://$server_name;
+        
+        # Change PORT to the port you've set in the previous step
+        proxy_pass http://localhost:PORT;
+        proxy_redirect http://localhost:PORT https://$server_name;
 
         # Headers
         proxy_set_header Host $http_host;
@@ -316,7 +322,8 @@ The compose command needs to be run in the `yagpdb_docker` directory or using th
 1. Change directory to the bot's docker directory \(yagpdb\_docker\)
 2. Run `docker-compose down`
 3. Clone the latest version from GitHub by running `git pull https://github.com/jonas747/yagpdb`
-4. Compose back up by running `docker-compose up -d --build`
+4. Build the bot with `docker-compose build` 
+5. Compose up with `docker-compose up -d`
 
 {% hint style="warning" %}
 Some updates may break the bot. Make sure you always know how to restore a change or make a backup instead!
