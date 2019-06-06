@@ -77,9 +77,9 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 | .Message.Mentions | Users this message mentions. |
 | .Message.Reactions | Reactions on this message \(only available form getMessage\). |
 | .Message.Content | Text content on this message. |
-| .Args | List of everything that is passed to .Message.Content. |
+| .Args | List of everything that is passed to .Message.Content. .Args is a slice of type string. |
 | .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{ index .Args 0 }}`.  |
-| .CmdArgs | List of all the arguments passed after .Cmd. \(.Cmd is the trigger\) |
+| .CmdArgs | List of all the arguments passed after .Cmd \(.Cmd is the actual trigger\) .CmdArgs is a slice of type string. |
 
 {% hint style="info" %}
 More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
