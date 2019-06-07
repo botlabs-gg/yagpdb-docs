@@ -70,7 +70,7 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 | :--- | :--- |
 | .Message.ID | ID of the message. |
 | .Message.ChannelID | Channel id this message is in. |
-| .Message.Author | Author of the message \(User object\). |
+| .Message.Author | Author of the message \([User](templates.md#user) object\). |
 | .Message.Timestamp | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\). |
 | .Message.Attachments | Attachments to this message \(slice of attachment objects\). |
 | .Message.Embeds | Embeds on this message \(slice of embed objects\). |
