@@ -253,8 +253,13 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">ban</td>
       <td style="text-align:left">banid</td>
       <td style="text-align:left">(mention/userID)</td>
-      <td style="text-align:left">(reason)</td>
-      <td style="text-align:left">Bans given member by name mention or ID.</td>
+      <td style="text-align:left">
+        <p>(reason)</p>
+        <p>(-d:duration)</p>
+      </td>
+      <td style="text-align:left">Bans given member by name mention or ID. Duration sets how long the ban
+        lasts, default is in minutes - this can be altered <b><code>-d 2w</code></b> is
+        for two weeks.</td>
     </tr>
     <tr>
       <td style="text-align:left">kick</td>
