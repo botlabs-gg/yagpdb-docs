@@ -13,8 +13,10 @@ To create your first custom command, go to the control panel and select your ser
 * **Command**: With this trigger, the message has to start with the prefix for your server \(`-` by default\) followed by the trigger
 * **Starts with**: When a message starts with your trigger
 * **Contains**: When a message contains your trigger
+* **Regex**: This trigger allows you to use a regex pattern. \(Refer to the [Regex page](../reference/regex.md) for help\)
 * **Exact match**: When the entire message equals your trigger
-* **Regex**: This trigger allows you to use a regex pattern. \(Refer to the [`Regex page`](../reference/regex.md) for help\)
+* **Hourly interval**: This will trigger after specified time given in hours. User can exclude certain hours and also weekdays. Channel must be selected for this trigger to work.
+* **Minute interval**: Like hourly interval, the specified time is just in minutes.
 
 #### Case Sensitivity
 
