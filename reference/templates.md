@@ -320,9 +320,11 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 | `dbSetExpire userID key value ttl` | Same as `dbSet` but with a expiration in seconds \(Note: This does not work with `dbIncr` atm\). |
 | `dbIncr userID key incrBy`  | Increments the value for specified key for the specified user, if there was no value then it will be set to `incrBy .` |
 | `dbGet userID key`  | Retrieves a value from the database for the specified user, this returns a DBEntry object. |
-| `dbGetPattern userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database. |
+| `dbGetPattern userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in ascending order. |
+| `dbGetPatternReverse userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in descending order. |
 | `dbDel userID key` | Deletes the specified key for the specified value from the database. |
 | `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
+| `dbBottomEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order. |
 
 ### DBEntry
 
