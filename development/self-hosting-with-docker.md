@@ -220,30 +220,22 @@ If it is still not working, open your **docker-compose.yml** and set the ports t
 
 For that, we need to set up the bot to work with the reverse proxy.
 
-{% tabs %}
-{% tab title="Nginx" %}
-For nginx users, you need first to set up the bot so it uses http only on the local side and change the port it is running on.
+{% hint style="info" %}
+Keep in mind that these are just examples. You may need to modify them to adapt to your current setup.
+{% endhint %}
 
-#### Dockerfile \(build only\)
+**Dockerfile \(build only\)**
 
 Change `ENV external_tls ""` to `ENV external_tls "-https=false"`
 
-#### Docker-compose
+**Docker-compose**
 
 Uncomment `- "80:80"` and change it to your desired port _\(not required if the proxy runs on the same docker network\)_
 
-Set the `command` key to the following:
+Set the `command` key to the following:`command: [ "-all", "-pa", "-exthttps=true", "-https=false" ]`
 
-```yaml
-command: [ "-all", "-pa", "-exthttps=true", "-https=false" ]
-```
-
-#### Nginx configuration
-
-{% hint style="info" %}
-For this configuration to work, we recommend using Certbot
-{% endhint %}
-
+{% tabs %}
+{% tab title="Nginx" %}
 ```bash
 server {
 
@@ -274,6 +266,30 @@ server {
     }
 }
 ```
+
+{% hint style="info" %}
+For this configuration to work, we recommend using Certbot
+{% endhint %}
+{% endtab %}
+
+{% tab title="HAProxy" %}
+```text
+frontend yagpdb
+  mode http
+  # Replace PATH/TO/CERTIFICATE with your concatenated certificates 
+  # Source: https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#5.1-crt
+  bind :443 ssl crt PATH/TO/CERTIFICATE ciphers EECDH+AESGCM:EDH+AESGCM
+  use_backend yagpdb
+
+backend yagpdb
+  server yagpdb-docker localhost:PORT check inter 5000
+  # Replace host with your domain
+  option httpchk HEAD / HTTP/1.1\r\nHost:\ yagpdb.example.com
+```
+
+{% hint style="warning" %}
+This contains just the frontend and backend settings, you need to add the other required settings too. See [documentation here](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#3) for more.
+{% endhint %}
 {% endtab %}
 
 {% tab title="Apache" %}
