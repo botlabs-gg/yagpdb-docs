@@ -5,7 +5,7 @@
 * [Helping out](helping-out.md)
 * [Donating](donating.md)
 
-## Core
+## Core <a id="commands"></a>
 
 * [Command Settings](commands/commands.md)
 * [Custom Commands](commands/custom-commands.md)
@@ -49,4 +49,5 @@
 
 * [Self Hosting with Docker](development/self-hosting-with-docker.md)
 * [Building the bot](development/building-the-bot.md)
+* [Complete env var dump](development/complete-env-var-dump.md)
 
