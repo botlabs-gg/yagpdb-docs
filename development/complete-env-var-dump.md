@@ -255,7 +255,10 @@
     </tr>
     <tr>
       <td style="text-align:center">Reaction removal in single mode disable [6]</td>
-      <td style="text-align:center">YAGPDB_ROLECOMMANDS_DISABLE_REACTION_REMOVAL_SINGLE_MODE</td>
+      <td style="text-align:center">
+        <p>YAGPDB_ROLECOMMANDS_DISABLE_REACTION</p>
+        <p>_REMOVAL_SINGLE_MODE</p>
+      </td>
       <td style="text-align:center">false</td>
       <td style="text-align:center">boolean</td>
     </tr>
@@ -298,7 +301,7 @@
     <tr>
       <td style="text-align:center">YouTube websub push verify token [7]</td>
       <td style="text-align:center">YAGPDB_YOUTUBE_VERIFY_TOKEN</td>
-      <td style="text-align:center">asdkpoasdkpaoksdpako</td>
+      <td style="text-align:center">asdkpoasdkpaoks</td>
       <td style="text-align:center">string</td>
     </tr>
     <tr>
@@ -337,7 +340,7 @@
 ****\[3\] grants certain roles bot admin access  
 \[4\] will free resources when running low  
 \[5\] will put the bot into orchestration mode  
-\[6\] leaving it enabled could cause a big amount of requests  
+\[6\] leaving it enabled could cause a big amount of requests \(Variable is continuous, here on two lines\)  
 \[7\] should be set to somthing random and never change  
 \[8\] should be comma separated paths  
 
