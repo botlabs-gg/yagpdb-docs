@@ -246,7 +246,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
 | `exec "command" "args" "args" "args" ...` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
-| `execAdmin "command" "args" "args" "args" ...` | Function the same as exec but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
+| `execAdmin "command" "args" "args" "args" ...` | Functions same way as `exec` but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `userArg ########` | Function that can be used to retrieve .User method/object from a mention string or ID. |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |

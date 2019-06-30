@@ -220,10 +220,11 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">settimezone</td>
       <td style="text-align:left">setz, tzset</td>
       <td style="text-align:left">(timezone)</td>
-      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">-d, -u</td>
       <td style="text-align:left">Sets your timezone, used for various purposes such as auto conversion. <code>timezone</code> is
         your country, use this &gt; <a href="http://kevalbhatt.github.io/timezone-picker/">Timezone Picker</a> ,
-        enter the <code>Area/City</code> result.</td>
+        enter the <code>Area/City</code> result. Flag -u shows users currently set
+        time zone or server&apos;s local and -d deletes it if set.</td>
     </tr>
     <tr>
       <td style="text-align:left">toggletimeconversion</td>
