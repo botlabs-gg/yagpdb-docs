@@ -41,7 +41,7 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 | .Guild.Region | Outputs the region of the guild. |
 | .Guild.AfkChannelID | Outputs the AFK channel ID. |
 | .Guild.OwnerID | Outputs the ID of the owner. |
-| .Guild.JoinedAt | Outputs when YAGPDB joined the guild. |
+| .Guild.JoinedAt | Outputs the timestamp when YAGPDB joined the guild. To convert it to type Time, use .Parse method &gt; `.Guild.JoinedAt.Parse` |
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
 | .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
