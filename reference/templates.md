@@ -343,7 +343,7 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 
 ## Branching
 
-Branching using if pipeline and comparison operators.
+Branching using if pipeline and comparison operators - these operators don't need to be inside if branch.
 
 | Case | Example |
 | :--- | :--- |
@@ -352,11 +352,11 @@ Branching using if pipeline and comparison operators.
 | And | `{{if and (cond1) (cond2) (cond3)}} output {{ end }}` |
 | Or | `{{if or (cond1) (cond2) (cond3)}} output {{end}}` |
 | Equal | `{{if eq .Channel.ID ########}} output {{end}}` |
-| Not equal | `{{if ne .Channel.ID #######}} output {{end}}` |
+| Not equal | `{{ $x := 7 }} {{ $y := 8 }} {{ ne $x $y }}` returns true |
 | Less than | `{{if lt (len .Args) 5}} output {{end}}` |
-| Less than or equal | `{{if le (len .Args) 5}} output {{end}}` |
+| Less than or equal | `{{ $x := 7 }} {{ $y := 8 }} {{ le $x $y }}` returns true |
 | Greater than | `{{if gt (len .Args) 1}} output {{end}}` |
-| Greater than or equal | `{{if ge (len .Args) 1}} output {{end}}` |
+| Greater than or equal | `{{ $x := 7 }} {{ $y := 8 }} {{ ge $x $y }}` returns false |
 | Else if | `{{if (case statement)}} output1 {{else if (case statement)}} output2 {{end}}` |
 | Else | `{{if (case statement)}} output1 {{else}} output2 {{end}}` |
 
