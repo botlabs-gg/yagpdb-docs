@@ -12,7 +12,8 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 {% endhint %}
 
 {% hint style="success" %}
-"Go is all about type." Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type.
+"Go is all about type... Type is life." // William Kennedy   
+Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type.
 {% endhint %}
 
 ## User
