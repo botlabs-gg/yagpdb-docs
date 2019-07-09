@@ -55,6 +55,7 @@ Many problems start with different kinds of type the user has as values and what
 | .Member.JoinedAt | When member joined the guild/server of type Timestamp. |
 | .Member.Nick | The nickname for this member. |
 | .Member.Roles | A list of role IDs that the member has. |
+| .Member.User | Underlying user on which the member is based on. |
 
 ## Channel
 

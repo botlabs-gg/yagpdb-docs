@@ -85,6 +85,7 @@ Available types and options are:
 * **user -** user mentions, will have the type of User \(see [templates ](../reference/templates.md#user)for more info\).
 * **userid -** user ids, this user may not exist at all, both mentions and plain id's are accepted, will have the type of int64.
 * **channel -** channel mentions, will have the type of Channel \(see [templates ](../reference/templates.md#channel)for more info\).
+* **member** - guild's member struct \(object\) to use later with .Member methods, like .JoinedAt. \(see [templates ](../reference/templates.md#member)for more info\).
 * **duration** - converts given integer number to Duration type starting from minutes - e.g. 10 is 10m0s and 123 is 2h3m0s.
 
 To access the parsed args you use the "**Get**" function on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
