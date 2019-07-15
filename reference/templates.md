@@ -3,7 +3,9 @@
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth here &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
 {% hint style="warning" %}
-Put curly brackets around the data you want to formulate as template like this: `{{.User.Username}}`
+**Put curly brackets around the data you want to formulate as template** like this: `{{.User.Username}}`
+
+This {{ ... }} syntax is always necessary for methods and functions stated below.
 {% endhint %}
 
 {% hint style="info" %}
