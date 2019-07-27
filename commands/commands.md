@@ -385,6 +385,7 @@ Everything here starts with automod such as `-automod toggle`
 | customembed | ce | \(json\) | N/A | Creates an embed from what you give it in json form: [Embed Object](https://discordapp.com/developers/docs/resources/channel#embed-object). |
 | simpleembed | se | N/A | \(switches\) | A simpler version of CustomEmbed, controlled using switches. [More info](all-commands.md#simpleembed). |
 | wouldyourather | wyr | N/A | N/A | Presents you with 2 choices. Somewhat NSFW text wise. |
+| xkcd | N/A | N/A | number or -l:switch for latest | Gives random xkcd comic if not stated by number or -l flag meaning latest. |
 | topservers | N/A | N/A | \(skip: number - entries to skip | Responds with the top 15 servers the bot is on. |
 | takerep | -, tr, trep | \(username\) | \(count\) | Takes away given number of rep from given member. Default number is 1. |
 | giverep | +, gr, grep | \(username\) | \(count\) | Give given number of rep to given member. Default number is 1. |
