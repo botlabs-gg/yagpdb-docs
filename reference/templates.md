@@ -160,7 +160,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `mult x y z ...` | Multiplication, like `add` or `div`, detects first number type. `{{ mult 3.14 2 }}` returns `6.28` |
 | `div x y z ...` | Division, like `add` or `mult`, detects number type first. `{{ div 11 3 }}` returns `3` whereas `{{ div 11.1 3 }}` returns  `3.6999999999999997` |
 | `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
-| `mod x y` | Mod returns the floating-point remainder of x/y. `mod 17 3` returns `2` |
+| `mod x y` | Mod returns the floating-point remainder of x/y. `mod 17 3` returns `2` of type float64. |
 | `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
 | `round` | Returns the nearest integer, rounding half away from zero. Regular rounding &gt; 10.4 is 10 and 10.5 is 11. All round functions return type float64, so use conversion functions to get integers. For more complex rounding, example in section's [Snippets](templates.md#this-sections-snippets-2). |
 | `roundCeil` | Returns the least integer value greater than or equal to input or rounds up.  `{{ roundCeil 1.1 }}` returns `2`. |
