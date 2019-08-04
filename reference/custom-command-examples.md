@@ -9,7 +9,7 @@ This isn't the actual page about custom commands. A brief overview about custom 
 YAGPDB has a built-in random response system for custom commands, but sometimes you may want to control the chances for certain responses to occur. You can do this by creating a singular response and creating a variable with randInt. Then use an if else if statement like this to print out your desired output. 
 
 ```go
-{{$var := randInt 1 100}}
+{{$var := randInt 100}}
 
 {{if lt $var 10}}
 This has a 10% chance of being triggered
@@ -22,17 +22,17 @@ This has a 65% chance of being triggered
 
 ### Silent execution of commands or storage in a variable
 
-If you create a custom command with exec or execAdmin you might not want the response for the executed command to show. You can suppress the response of a command like the following:
+This command is to be placed in the welcome message. It filters out people with discord.gg names. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server. You might not want the response for the executed command to show. You can suppress the response of a command like the following:
 
-Trigger type: `Command` Trigger: `updates`
+Trigger type: `Join message in server channel`
 
 ```go
-{{$a := (exec "role" "yagpdb")}}
-Oh hi there, I just ran the role command. 
-{{/*$a*/}} Remove the /* and the * / if you want the response to be displayed.
+{{if .UsernameHasInvite}}
+{{ $silent := (execAdmin "ban" .User.ID "ad blocked") }}
+{{else}}
+{{/* Replace this with your normal join message or leave it as it is */}}
+{{end}}
 ```
-
-The variable `$a` will store the output of running the role command and you can then just print out your own response.
 
 ### Range example
 
@@ -80,7 +80,7 @@ Trigger type: `Command` Trigger: `send`
 {{sendMessage ($args.Get 0).ID ($args.Get 1)}}
 ```
 
-### execCC example
+### Countdown example \(Exec CC\)
 
 This example consists of two custom commands, and after copy/paste `REPLACE-WITH-...` arguments need to be replaced by actual custom command ID's in your system. This custom command is very complex, uses very many advanced functions, all it does, constructs a 10 second countdown timer command-system for given starting time.
 
@@ -163,7 +163,108 @@ You don't have any notes :(
 {{end}}
 ```
 
+### Cooldown Example 
+
+With YAGPDB database system, you can now add cooldowns to you custom commands. You can either make them global cooldowns or a per user cooldown.   
+
+```go
+{{/* CONFIGURATION HERE CHANGE VALUE AS NEEDED */}}
+
+{{/* 1 for Global 0 for per User */}}
+{{$isGlobal := 1}}
+{{/* name your cooldown name (anything works)*/}}
+{{$name := "replace with name here"}}
+{{/* Length of the cooldown (sec) */}}
+{{$lengthSec := 10}}
+
+
+{{/* CREATING VARIABLES DO NOT TOUCH /*}}
+{{$key := joinstr "" "cooldown_" $name}}
+{{if eq $isGlobal 1}}
+{{$id := 0}}
+{{else}}
+{{$id := .User.ID}}
+{{end}}
+
+
+{{if (dbGet $id $key)}} 
+{{/* Do nothing if cooldown exist /*}}
+{{else}}
+{{/* Create cooldown entry */}}
+{{dbSetExpire $id $name "cooldown" $lengthSec}}
+
+
+{{/* YOUR COMMAND HERE */}}
+
+
+{{end}}
+
+```
+
+### 
+
 ## User submitted custom commands
+
+### Counter Command
+
+> By **Timcampy\#5636**
+
+With YAGPDB database system, I made a command to have users count from 0 and keep counting to the next number. Relatively simple command that involves database and type conversion. 
+
+Trigger type: `Regex` Trigger: `|`
+
+`BE SURE TO RESTRICT THE COMMAND TO A SINGLE CHANNEL` 
+
+```go
+{{/* If you are not doing (no twice msg in a row)  or (role assignment for latest user)  you can remove counter_user and by extension everything to do with $lastUser*/}}
+
+{{/* First time running command, set up initial values*/}}
+{{$lastUser := dbGet 118 "counter_user"}}
+{{if $lastUser}}
+{{else}}
+{{dbSet 118 "counter_user" 0}}
+{{dbSet 118 "counter_count" "0"}}
+{{end}}
+
+{{/* OPTIONAL: this is just to prevent one person to type all the numbers themselves */}}
+{{/* If current user ID matches the user who last successfully ran command */}}
+{{if eq (toFloat $lastUser.Value) (toFloat .User.ID)}}
+{{deleteTrigger 0}}
+{{sendDM "You can not send a msg twice in a row"}}
+{{else}}
+
+
+{{$next := dbGet 118 "counter_count"}}
+
+{{/* If message is equal to the expected next number , update counter */}}
+{{if eq (toInt .StrippedMsg) (toInt ($next.Value))}}
+{{dbSet 118 "counter_count" (add (toInt ($next.Value)) 1)}}
+
+{{/* OPTIONAL count tracker per user, Delete if you don't want to use */}}
+{{$key := joinStr "" "counter_tracker_"  .User.ID}}
+{{$userCount := dbGet 118 $key}}
+{{if $userCount}}
+{{dbSet 118 $key (add (toInt ($userCount.Value)) 1)}}
+{{else}}
+{{dbSet 118 $key 1}}
+{{end}}
+
+{{/* OPTIONAL: If you don't want to give a role to the latest person delete everything but dbset */}}
+{{/* Give new user role, take role back from old user and update latest user */}}
+{{/* (UPDATE THE ROLEID) */}}
+{{giveRoleID .User.ID 606891664396648474}}
+{{$tmpUser := (userArg (toInt $lastUser.Value))}}
+{{takeRoleID ($tmpUser.ID) 606891664396648474}}
+{{dbSet 118 "counter_user" (toString .User.ID)}}
+{{else}}
+
+{{/* Message did not match expected next value */}}
+{{deleteTrigger 0}}
+{{/* Removed Because too annoying :^) */}}
+{{/*sendDM "That is not the next number, learn how to count :)"*/}}
+{{end}}
+{{end}}
+```
 
 ### GiveRole command for specific roles
 
@@ -281,22 +382,6 @@ Trigger type: `Command` Trigger: `avatar`
   {{$out := .User.AvatarURL "512"}}
   {{$emb := cembed "color" $color "image" (sdict "url" $out)}}
   {{sendMessage nil $emb}}
-{{end}}
-```
-
-### Invite / Ad blocker
-
-> By:  **Michdi\#1602**
-
-This command is to be placed in the welcome message. It filters out people with discord.gg names. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server.
-
-Trigger type: `Join message in server channel`
-
-```go
-{{if .UsernameHasInvite}}
-{{ $silent := (execAdmin "ban" .User.ID "ad blocked") }}
-{{else}}
-{{/* Replace this with your normal join message or leave it as it is */}}
 {{end}}
 ```
 
