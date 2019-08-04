@@ -22,7 +22,9 @@ This has a 65% chance of being triggered
 
 ### Silent execution of commands or storage in a variable
 
-This command is to be placed in the welcome message. It filters out people with discord.gg names. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server. You might not want the response for the executed command to show. You can suppress the response of a command like the following:
+This command is to be placed in the welcome message. It filters out people with discord.gg names. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server. 
+
+You might not want the response for the executed command to show. You can suppress the response of a command like the following:
 
 Trigger type: `Join message in server channel`
 
@@ -47,6 +49,17 @@ Trigger type: `Command` Trigger: `repeat`
 ```
 
 `$k` is the iteration number you are on, starting at 0 and `$v` is the current word in your input that you are on. 
+
+Range will work on any kind of slice/array. for example. If we wanted to look for all the entries in our database we can use range and index through them all in the following. 
+
+```go
+{{$lb := dbTopEntries "%" 100 0}}
+{{range $lb}}
+{{.UserID}} **:** {{.Key}} **:** {{.Value}}
+{{end}}
+```
+
+~~`Note that we can go through everything that is in $lb with range`~~
 
 ### Dictionary example
 
