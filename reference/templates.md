@@ -242,6 +242,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | Function | Description |
 | :--- | :--- |
 | `adjective` | Returns a random adjective. |
+| `range := "cslice/array"` | Iterate through the given cslice or array. Example usage [here](custom-command-examples.md#range-example) |
 | `dict key1 value1 key2 value2 ...` | Creates a dictionary \(not many use cases yet\). |
 | `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has `.Get "key"` and `.Set "key"` methods, they allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#snippets). |
 | `cslice value1 value2 ...` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
