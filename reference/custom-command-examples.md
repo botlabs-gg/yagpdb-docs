@@ -267,7 +267,10 @@ Trigger type: `Regex` Trigger: `|`
 {{/* (UPDATE THE ROLEID) */}}
 {{giveRoleID .User.ID 606891664396648474}}
 {{$tmpUser := (userArg (toInt $lastUser.Value))}}
+{{/* check if its a valid user or not */}}
+{{if $tmpUser}} 
 {{takeRoleID ($tmpUser.ID) 606891664396648474}}
+{{end}}
 {{dbSet 118 "counter_user" (toString .User.ID)}}
 {{else}}
 
