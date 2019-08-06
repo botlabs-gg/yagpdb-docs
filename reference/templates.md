@@ -84,6 +84,7 @@ Many problems start with different kinds of type the user has as values and what
 | .Args | List of everything that is passed to .Message.Content. .Args is a slice of type string. |
 | .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{ index .Args 0 }}`.  |
 | .CmdArgs | List of all the arguments passed after .Cmd \(.Cmd is the actual trigger\) .CmdArgs is a slice of type string. |
+| .StrippedMsg | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bare in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
 
 {% hint style="info" %}
 More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
