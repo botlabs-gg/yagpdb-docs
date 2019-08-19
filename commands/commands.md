@@ -412,7 +412,7 @@ Everything here starts with cah such as `-cah create`
 ### Rolemenu
 
 Everything here starts with `rolemenu`such as `-rolemenu creat`   
-Rolemenu commands require user to have manage server permissions.
+Rolemenu commands require user to have at least manage server permission.
 
 <table>
   <thead>
