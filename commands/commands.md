@@ -411,12 +411,13 @@ Everything here starts with cah such as `-cah create`
 
 ### Rolemenu
 
-Everything here starts with `rolemenu`such as `-rolemenu create`
+Everything here starts with `rolemenu`such as `-rolemenu creat`   
+Rolemenu commands require user to have manage server permissions.
 
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">Comment</th>
+      <th style="text-align:left">Command</th>
       <th style="text-align:left">Aliases</th>
       <th style="text-align:left">Required Args</th>
       <th style="text-align:left">Optional Args</th>
