@@ -54,7 +54,7 @@ Many problems start with different kinds of type the user has as values and what
 
 | Field | Description |
 | :--- | :--- |
-| .Member.JoinedAt | When member joined the guild/server of type Timestamp. |
+| .Member.JoinedAt | When member joined the guild/server of type Timestamp. .Parse method will convert this to of type Time. |
 | .Member.Nick | The nickname for this member. |
 | .Member.Roles | A list of role IDs that the member has. |
 | .Member.User | Underlying user on which the member is based on. |
@@ -113,6 +113,10 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `.TimeHour` | Variable of time.Duration type and returns 1 hour &gt; `1h0m0s`. |
 | `.TimeMinute` | Variable of time.Duration type and returns 1 minute &gt; `1m0s`. |
 | `.TimeSecond` | Variable of time.Duration type and returns 1 second &gt; `1s`. |
+
+#### This section's snippets:
+
+* To demonstrate humanizeDurationHours and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_. `{{ humanizeDurationHours ( currentTime.Sub .Member.JoinedAt.Parse ) }}`
 
 ## Functions
 
