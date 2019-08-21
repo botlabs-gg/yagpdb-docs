@@ -15,9 +15,10 @@ _As example, this will only match the word "Dinosaur":_ `(Dinosaur)`
 {% endtab %}
 
 {% tab title="Don\'t match" %}
-If you don't want to match something you will have to put a `?:` before it.
+Using `?:` after opening parenthesis of a capturing group creates a non-capturing group. Useful for example with template function `reFindAllSubmatches`.
 
-_As example, this will not match the word "Donkey":_ `(?:Donkey)`
+_This will not sub-match the words "red, blue, green":_   
+``{{ refindAllSubmatches `color=(?:red|blue|green)` .Message.Content }}``
 {% endtab %}
 
 {% tab title="Match A or B" %}
