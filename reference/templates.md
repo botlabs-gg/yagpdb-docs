@@ -334,6 +334,7 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 | `dbGetPattern userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in ascending order. |
 | `dbGetPatternReverse userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in descending order. |
 | `dbDel userID key` | Deletes the specified key for the specified value from the database. |
+| `dbDelById userID ID` | Deletes database entry by it's ID. |
 | `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
 | `dbBottomEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order. |
 
