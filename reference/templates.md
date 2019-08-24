@@ -128,7 +128,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
 | `toFloat` | Converts argument \(number of string\) to type float64.  Usage: `(toFloat x)`. |
-| `toDuration` | Converts argument \(number or string\) to type Duration, usable in time operations. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets).  |
+| `toDuration` | Converts argument \(number or string\) to type Duration, usable in time operations. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-1).  |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `( toString ( toInt value ) )` and certain parts of `cembed` need this for example. |
 
 #### This section's snippets:
@@ -142,12 +142,12 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `joinStr "separator" "str1" (arg1)(arg2) "str2" ...` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
-| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example in section's [Snippets](templates.md#this-sections-snippets-1).  |
+| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example in section's [Snippets](templates.md#this-sections-snippets-2).  |
 | `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
-| `split "string" "sepr"` | Slices given `"string"` to sub-strings separated by `"sepr"`arg and returns new slice/array of the sub-strings. Example in section's [Snippets](templates.md#this-sections-snippets-1). |
+| `split "string" "sepr"` | Slices given `"string"` to sub-strings separated by `"sepr"`arg and returns new slice/array of the sub-strings. Example in section's [Snippets](templates.md#this-sections-snippets-2). |
 | `title "string"` | Returns string with the first letter of each word capitalized. |
 | `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
-| `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in section's [Snippets](templates.md#this-sections-snippets-1). |
+| `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in section's [Snippets](templates.md#this-sections-snippets-2). |
 | `reFindAllSubmatches "regex" "string"` | Returns whole-pattern matches and also the sub-matches within those matches as slices inside a slice. `{{ reFindAllSubmatches "(?i)y([a-z]+)g" "youngish YAGPDB" }}` returns `[[young oun] [YAG A]]` \(regex pattern here is case insensitive\). |
 | `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern here is case sensitive\). |
 
@@ -167,7 +167,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
 | `mod x y` | Mod returns the floating-point remainder of x/y. `mod 17 3` returns `2` of type float64. |
 | `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
-| `round` | Returns the nearest integer, rounding half away from zero. Regular rounding &gt; 10.4 is 10 and 10.5 is 11. All round functions return type float64, so use conversion functions to get integers. For more complex rounding, example in section's [Snippets](templates.md#this-sections-snippets-2). |
+| `round` | Returns the nearest integer, rounding half away from zero. Regular rounding &gt; 10.4 is 10 and 10.5 is 11. All round functions return type float64, so use conversion functions to get integers. For more complex rounding, example in section's [Snippets](templates.md#this-sections-snippets-3). |
 | `roundCeil` | Returns the least integer value greater than or equal to input or rounds up.  `{{ roundCeil 1.1 }}` returns `2`. |
 | `roundFloor` | Returns the greatest integer value less than or equal to input or rounds down. `{{ roundFloor 1.9 }}` returns `1`. |
 | `roundEven` | Returns the nearest integer, rounding ties to even. `{{ roundEven 10.5 }}` returns `10 {{ roundEven 11.5 }}` returns `12`. |
@@ -182,18 +182,18 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | :--- | :--- |
 | `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). random adjective. |
 | `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
-| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-3). |
+| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
-| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-3). |
+| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-4). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
 | `deleteResponse time` | Deletes the response after a certain time \(1-60 seconds\). |
 | `deleteTrigger time` | Deletes the trigger after a certain time \(1-60 seconds\). |
-| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in section's [Snippets](templates.md#this-sections-snippets-3). |
+| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
 | `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
-| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-3). |
+| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
 
 #### This section's snippets:
 
@@ -213,7 +213,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `mentionRoleID roleID` | Mentions the role found with the provided ID. |
 | `escapeEveryone "input"` | Escapes everyone mentions in a string. |
 | `escapeHere "input"` | Escapes here mentions in a string. |
-| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with sendMessageNoEscape, also applies to escapeEveryone/Here. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
+| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with sendMessageNoEscape, also applies to escapeEveryone/Here. Example in section's [Snippets](templates.md#this-sections-snippets-5). |
 
 #### This section's snippets:
 
@@ -235,7 +235,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `giveRoleName userID "roleName"` | Gives a role by name to the target. |
 | `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
-| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-5). |
+| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `targetHasRoleName userID "roleName"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
 
 #### This section's snippets:
@@ -249,7 +249,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `adjective` | Returns a random adjective. |
 | `range slice/array` | Iterates \(loops\) over the given slice or array and sets successive elements as active data \(the dot\) to be further handled inside the range template. Example usage [here](custom-command-examples.md#range-example) |
 | `dict key1 value1 key2 value2 ...` | Creates a dictionary \(not many use cases yet\). |
-| `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has `.Get "key"` and `.Set "key"` methods, they allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#snippets). |
+| `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has `.Get "key"` and `.Set "key"` methods, they allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#miscellaneous-snippets). |
 | `cslice value1 value2 ...` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
 | `in list value` | Returns true if value is in list. List can be either an array or a slice. |
@@ -261,7 +261,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `userArg ########` | Function that can be used to retrieve .User method/object from a mention string or ID. |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
-| `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#snippets). |
+| `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#miscellaneous-snippets). |
 
 ### ExecCC
 
@@ -285,7 +285,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
         you pass to the other executed custom command. To retrieve that <code>data </code>you
         use <code>.ExecData</code>. This example is important &gt; <a href="custom-command-examples.md#execcc-example">execCC example</a> also
         this snippet that shows you same thing run using the same custom command
-        &gt; <a href="templates.md#this-sections-snippets-6">Snippets</a>.</td>
+        &gt; <a href="templates.md#this-sections-snippets-7">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>scheduleUniqueCC ccID channel delay key data</code>
