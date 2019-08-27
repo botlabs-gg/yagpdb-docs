@@ -136,15 +136,7 @@ This is available and part of the dot when reaction trigger type is used.
         removed.</td>
     </tr>
   </tbody>
-</table>## Current User
-
-| Function | Description |
-| :--- | :--- |
-| `currentUserCreated` |  Returns value of type time and shows when the current user was created. |
-| `currentUserAgeHuman` |  The account age of the current user in more human readable format  \(Eg:`3 days 2 hours`\). |
-| `currentUserAgeMinutes` |  The account age of the current user in minutes. |
-
-## Time
+</table>## Time
 
 Time in general uses Golang's time package library &gt; [https://golang.org/pkg/time/\#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here &gt; [https://gobyexample.com/time](https://gobyexample.com/time).
 
@@ -288,6 +280,14 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 #### This section's snippets:
 
 * To demonstrate usage of targetHasRoleID. &gt;  `{{ $x := ( userArg ( index .Args 1) ).ID }} {{ if targetHasRoleID $x ############ }} Has the Role! {{ else }} Does not have the role! {{ end }}`
+
+### Current User
+
+| Function | Description |
+| :--- | :--- |
+| `currentUserCreated` |  Returns value of type time and shows when the current user was created. |
+| `currentUserAgeHuman` |  The account age of the current user in more human readable format  \(Eg:`3 days 2 hours`\). |
+| `currentUserAgeMinutes` |  The account age of the current user in minutes. |
 
 ### Miscellaneous
 
