@@ -26,6 +26,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | Field | Description |
 | :--- | :--- |
 | .CCID | The ID of currently executing custom command in type of int64. |
+| .IsPremium | Returns boolean true/false whether guild is premium of YAGPDB or not. |
 
 ## User
 
