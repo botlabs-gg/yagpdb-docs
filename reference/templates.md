@@ -18,6 +18,15 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type.
 {% endhint %}
 
+## The Dot
+
+The dot `{{ . }}`  encompasses all active data available for templating system.   
+From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot", to the value at the current location in the structure as execution proceeds." Methods/Objects User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in table below.
+
+| .User | The user's username together with discriminator. |
+| :--- | :--- |
+| .CCID | The ID of currently executing custom command. |
+
 ## User
 
 | Field | Description |
@@ -67,6 +76,7 @@ Many problems start with different kinds of type the user has as values and what
 | .Channel.ID | The ID of the channel. |
 | .Channel.Topic | The Topic of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
+| `editChannelName  channel "newName"` | Function which edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. For example  &gt;`{{ editChannelName nil ( joinStr "" "YAG - " ( randInt 1000 ) ) }}` |
 
 ## Message
 
@@ -90,13 +100,49 @@ Many problems start with different kinds of type the user has as values and what
 More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
 {% endhint %}
 
-## Current User
+## Reaction
+
+This is available and part of the dot when reaction trigger type is used.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">.Reaction</td>
+      <td style="text-align:left">Returns reaction object which has following fields <code>UserID</code>, <code>MessageID</code>,
+        <br
+        /><code>Emoji.(ID/Name/...)</code>, <code>ChannelID</code>, <code>GuildID</code>.
+        Emoji.ID is the ID of the emoji for custom emojis, and Emoji.Name will
+        hold the unicode emoji if its a default one. (otherwise the name of the
+        custom emoji).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">.ReactionMessage</td>
+      <td style="text-align:left">
+        <p>Returns the message object reaction was added to. Currently not working,
+          but same as and with .Content &gt;</p>
+        <p><code>{{ ( getMessage .Reaction.ChannelID .Reaction.MessageID ).Content }}</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">.ReactionAdded</td>
+      <td style="text-align:left">Returns a boolean true/false indicating whether reaction was added or
+        removed.</td>
+    </tr>
+  </tbody>
+</table>## Current User
 
 | Function | Description |
 | :--- | :--- |
-| currentUserCreated |  Returns value of type time and shows when the current user was created. |
-| currentUserAgeHuman |  The account age of the current user in more human readable format  \(Eg:`3 days 2 hours`\). |
-| currentUserAgeMinutes |  The account age of the current user in minutes. |
+| `currentUserCreated` |  Returns value of type time and shows when the current user was created. |
+| `currentUserAgeHuman` |  The account age of the current user in more human readable format  \(Eg:`3 days 2 hours`\). |
+| `currentUserAgeMinutes` |  The account age of the current user in minutes. |
 
 ## Time
 
@@ -110,9 +156,10 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{ humanizeDurationMinutes 3500000000000 }}` would return `58 minutes`. |
 | `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{ humanizeDurationSeconds 3500000000000 }}` would return `58 minutes and 20 seconds`. |
 | `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
-| `.TimeHour` | Variable of time.Duration type and returns 1 hour &gt; `1h0m0s`. |
-| `.TimeMinute` | Variable of time.Duration type and returns 1 minute &gt; `1m0s`. |
-| `.TimeSecond` | Variable of time.Duration type and returns 1 second &gt; `1s`. |
+| `newDate year month day hour minute second` | Returns new time object in UTC using following syntax... all arguments need to be of type int, for example &gt; `{{ humanizeDurationHours ( ( newDate 2059 1 2 12 34 56 ).Sub currentTime ) }}` will give you how much time till year 2059 January 2nd 12:34:56. |
+| .TimeHour | Variable of time.Duration type and returns 1 hour &gt; `1h0m0s`. |
+| .TimeMinute | Variable of time.Duration type and returns 1 minute &gt; `1m0s`. |
+| ~~.TimeSecond~~ | Variable of time.Duration type and returns 1 second &gt; `1s`. |
 
 #### This section's snippets:
 
@@ -262,6 +309,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#miscellaneous-snippets). |
+| `onlineCount` | Returns the count of online users on current server. |
 
 ### ExecCC
 
@@ -334,9 +382,10 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 | `dbGetPattern userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in ascending order. |
 | `dbGetPatternReverse userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in descending order. |
 | `dbDel userID key` | Deletes the specified key for the specified value from the database. |
-| `dbDelById userID ID` | Deletes database entry by it's ID. |
+| `dbDelByID userID ID` | Deletes database entry by it's ID. |
 | `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
 | `dbBottomEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order. |
+| `dbCount (userID)` | Returns count of all database entries and if userID is given, for that userID. |
 
 ### DBEntry
 
