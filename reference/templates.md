@@ -25,7 +25,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 
 | Field | Description |
 | :--- | :--- |
-| .CCID | The ID of currently executing custom command. |
+| .CCID | The ID of currently executing custom command in type of int64. |
 
 ## User
 
@@ -357,7 +357,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
   </tbody>
 </table>#### This section's snippets:
 
-* To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := YOURNUMBER-HERE }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 ( sdict "YAGPDB" $yag "number" $ctr ) }} {{ else }} FUN'S OVER! {{ end }}`
+* To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := toInt .CCID }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 ( sdict "YAGPDB" $yag "number" $ctr ) }} {{ else }} FUN'S OVER! {{ end }}`
 
 ## Database
 
