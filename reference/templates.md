@@ -21,9 +21,9 @@ Many problems start with different kinds of type the user has as values and what
 ## The Dot
 
 The dot `{{ . }}`  encompasses all active data available for templating system.   
-From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot", to the value at the current location in the structure as execution proceeds." Methods/Objects User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in table below.
+From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot", to the value at the current location in the structure as execution proceeds." Following Methods/Objects like `User/Guild/Member/Channel etc` are all part of that dot-structure and there are some more in table below.
 
-| .User | The user's username together with discriminator. |
+| Field | Description |
 | :--- | :--- |
 | .CCID | The ID of currently executing custom command. |
 
