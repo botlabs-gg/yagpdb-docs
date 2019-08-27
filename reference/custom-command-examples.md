@@ -252,7 +252,8 @@ Trigger type: `Regex` Trigger: `|`
 {{/* If message is equal to the expected next number , update counter */}}
 {{if eq (toInt .StrippedMsg) (toInt ($next.Value))}}
 {{dbSet 118 "counter_count" (add (toInt ($next.Value)) 1)}}
-
+{{$name := (add (toInt ($next.Value)) 1)}}
+{{editChannelName .Channel.ID (joinStr "" "count-to-" $name )}}
 {{/* OPTIONAL count tracker per user, Delete if you don't want to use */}}
 {{$key := joinStr "" "counter_tracker_"  .User.ID}}
 {{$userCount := dbGet 118 $key}}
