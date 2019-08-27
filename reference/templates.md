@@ -108,7 +108,7 @@ This is available and part of the dot when reaction trigger type is used.
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Field</th>
       <th style="text-align:left">Description</th>
     </tr>
   </thead>
@@ -141,6 +141,12 @@ This is available and part of the dot when reaction trigger type is used.
 
 Time in general uses Golang's time package library &gt; [https://golang.org/pkg/time/\#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here &gt; [https://gobyexample.com/time](https://gobyexample.com/time).
 
+| Field | Description |
+| :--- | :--- |
+| .TimeHour | Variable of time.Duration type and returns 1 hour &gt; `1h0m0s`. |
+| .TimeMinute | Variable of time.Duration type and returns 1 minute &gt; `1m0s`. |
+| ~~.~~TimeSecond | Variable of time.Duration type and returns 1 second &gt; `1s`. |
+
 | Function | Description |
 | :--- | :--- |
 | `currentTime` | Gets the current time, value is of type time; which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template). |
@@ -150,9 +156,6 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{ humanizeDurationSeconds 3500000000000 }}` would return `58 minutes and 20 seconds`. |
 | `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
 | `newDate year month day hour minute second` | Returns new time object in UTC using following syntax... all arguments need to be of type int, for example &gt; `{{ humanizeDurationHours ( ( newDate 2059 1 2 12 34 56 ).Sub currentTime ) }}` will give you how much time till year 2059 January 2nd 12:34:56. |
-| .TimeHour | Variable of time.Duration type and returns 1 hour &gt; `1h0m0s`. |
-| .TimeMinute | Variable of time.Duration type and returns 1 minute &gt; `1m0s`. |
-| ~~.TimeSecond~~ | Variable of time.Duration type and returns 1 second &gt; `1s`. |
 
 #### This section's snippets:
 
