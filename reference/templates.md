@@ -389,7 +389,7 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 | `dbDelByID userID ID` | Deletes database entry by it's ID. |
 | `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
 | `dbBottomEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order. |
-| `dbCount (userID)` | Returns count of all database entries and if userID is given, for that userID. |
+| `dbCount (userID)` | Returns count of all database entries which are not expired, and if userID is given, only for that userID. |
 
 ### DBEntry
 
