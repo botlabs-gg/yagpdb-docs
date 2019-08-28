@@ -125,10 +125,10 @@ This is available and part of the dot when reaction trigger type is used.
     <tr>
       <td style="text-align:left">.ReactionMessage</td>
       <td style="text-align:left">
-        <p>Returns the message object reaction was added to. Currently not working,
-          but same as and with .Content &gt;</p>
-        <p><code>{{ ( getMessage .Reaction.ChannelID .Reaction.MessageID ).Content }}</code>
+        <p>Returns the message object reaction was added to.</p>
+        <p><code>{{ range .ReactionMessage.Reactions }}<br />{{ .Count }} - {{ .Emoji.Name }} <br />{{ end }}</code>
         </p>
+        <p>Returns emoji count and their name.</p>
       </td>
     </tr>
     <tr>
