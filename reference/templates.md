@@ -44,7 +44,39 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .RealUsername | Only works with join and leave messages \(not join dms\). This can be used to send the real username to a staff channel when invites are censored. |
 | .UsernameHasInvite | Only works with join and leave messages \(not join dms\). It will determine does the username contain an invite link. |
 
-## Guild / Server
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>userArg mention/userID</code>
+      </td>
+      <td style="text-align:left">
+        <p>Function that can be used to retrieve .User object from a mention or userID.</p>
+        <p><code>{{ ( userArg .User.ID ).Mention }}</code> mentions triggering user.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>pastUsernames userID offset</code>
+      </td>
+      <td style="text-align:left">
+        <p>Returns a slice of type <code>[ ]*logs.CCNameChange</code> having fields <code>.Name</code> and <code>.Time</code> of
+          previous 15 usernames and skips <code>offset</code> number in that list.</p>
+        <p><code>{{ range pastUsernames .User.ID 0 }} <br />{{ .Name }} - {{ .Time.Format &quot;Jan_2 2006&quot; }} <br />{{ end }}</code> 
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>pastNicknames userID offset</code>
+      </td>
+      <td style="text-align:left">Same as <code>pastUsernames</code>.</td>
+    </tr>
+  </tbody>
+</table>## Guild / Server
 
 | Field | Description |
 | :--- | :--- |
@@ -309,7 +341,6 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `shuffle list` | Returns a shuffled version of a list. |
 | `exec "command" "args" "args" "args" ...` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
 | `execAdmin "command" "args" "args" "args" ...` | Functions same way as `exec` but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
-| `userArg ########` | Function that can be used to retrieve .User method/object from a mention string or ID. |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#miscellaneous-snippets). |
