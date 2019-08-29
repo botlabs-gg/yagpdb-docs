@@ -434,7 +434,6 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 | `ExpiresAt` | When entry will expire. |
 | `Key` | The key of the entry. |
 | `Value` | The value of the entry. |
-| `User` | A user object from the UserID. |
 
 ## Branching
 
