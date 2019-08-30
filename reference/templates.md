@@ -66,7 +66,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       <td style="text-align:left">
         <p>Returns a slice of type <code>[ ]*logs.CCNameChange</code> having fields <code>.Name</code> and <code>.Time</code> of
           previous 15 usernames and skips <code>offset</code> number in that list.</p>
-        <p><code>{{ range pastUsernames .User.ID 0 }} <br />{{ .Name }} - {{ .Time.Format &quot;Jan_2 2006&quot; }} <br />{{ end }}</code> 
+        <p><code>{{ range pastUsernames .User.ID 0 }} <br />{{ .Name }} - {{ .Time.Format &quot;Jan _2 2006&quot; }} <br />{{ end }}</code> 
         </p>
       </td>
     </tr>
