@@ -234,20 +234,84 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 ### Math functions
 
-| Function | Description |
-| :--- | :--- |
-| `add x y z ...` | Returns x + y + z + ....,  detects first number type; is it integer or float and based on that adds. \(use `toFloat` on the first argument to force floating point math.\)`{{ add 5 4 3 2 -1 }}` sums all these numbers and returns `13`. |
-| `mult x y z ...` | Multiplication, like `add` or `div`, detects first number type. `{{ mult 3.14 2 }}` returns `6.28` |
-| `div x y z ...` | Division, like `add` or `mult`, detects number type first. `{{ div 11 3 }}` returns `3` whereas `{{ div 11.1 3 }}` returns  `3.6999999999999997` |
-| `fdiv x y z ...` | Meant specifically for floating point numbers division.  |
-| `mod x y` | Mod returns the floating-point remainder of x/y. `mod 17 3` returns `2` of type float64. |
-| `randInt (stop, or start stop)` | Returns a random integer between 0 and stop, or start - stop if two args are provided. |
-| `round` | Returns the nearest integer, rounding half away from zero. Regular rounding &gt; 10.4 is 10 and 10.5 is 11. All round functions return type float64, so use conversion functions to get integers. For more complex rounding, example in section's [Snippets](templates.md#this-sections-snippets-3). |
-| `roundCeil` | Returns the least integer value greater than or equal to input or rounds up.  `{{ roundCeil 1.1 }}` returns `2`. |
-| `roundFloor` | Returns the greatest integer value less than or equal to input or rounds down. `{{ roundFloor 1.9 }}` returns `1`. |
-| `roundEven` | Returns the nearest integer, rounding ties to even. `{{ roundEven 10.5 }}` returns `10 {{ roundEven 11.5 }}` returns `12`. |
-
-#### This section's snippets:
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>add x y z ...</code>
+      </td>
+      <td style="text-align:left">Returns x + y + z + ...., detects first number type; is it integer or
+        float and based on that adds. (use <code>toFloat</code> on the first argument
+        to force floating point math.)<code>{{ add 5 4 3 2 -1 }}</code> sums all
+        these numbers and returns <code>13</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>mult x y z ...</code>
+      </td>
+      <td style="text-align:left">Multiplication, like <code>add</code> or <code>div</code>, detects first
+        number type. <code>{{ mult 3.14 2 }}</code> returns <code>6.28</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>div x y z ...</code>
+      </td>
+      <td style="text-align:left">Division, like <code>add</code> or <code>mult</code>, detects number type
+        first. <code>{{ div 11 3 }}</code> returns <code>3</code> whereas <code>{{ div 11.1 3 }}</code> returns <code>3.6999999999999997</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>fdiv x y z ...</code>
+      </td>
+      <td style="text-align:left">Meant specifically for floating point numbers division.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>mod x y</code>
+      </td>
+      <td style="text-align:left">Mod returns the floating-point remainder of x/y. <code>mod 17 3</code> returns <code>2 </code>of
+        type float64.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>randInt (stop, or start stop)</code>
+      </td>
+      <td style="text-align:left">
+        <p>Returns a random integer between 0 and stop, or start - stop if two args
+          are provided.</p>
+        <p>Result will be <code>start &lt;= random numer &lt; stop</code>.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>round</code>
+      </td>
+      <td style="text-align:left">Returns the nearest integer, rounding half away from zero. Regular rounding
+        &gt; 10.4 is 10 and 10.5 is 11. All round functions return type float64,
+        so use conversion functions to get integers. For more complex rounding,
+        example in section&apos;s <a href="templates.md#this-sections-snippets-3">Snippets</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>roundCeil</code>
+      </td>
+      <td style="text-align:left">Returns the least integer value greater than or equal to input or rounds
+        up. <code>{{ roundCeil 1.1 }}</code> returns <code>2</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>roundFloor</code>
+      </td>
+      <td style="text-align:left">Returns the greatest integer value less than or equal to input or rounds
+        down. <code>{{ roundFloor 1.9 }}</code> returns <code>1</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>roundEven</code>
+      </td>
+      <td style="text-align:left">Returns the nearest integer, rounding ties to even.
+        <br /><code>{{ roundEven 10.5 }}</code> returns <code>10 {{ roundEven 11.5 }}</code> returns <code>12</code>.</td>
+    </tr>
+  </tbody>
+</table>#### This section's snippets:
 
 * To demonstrate rounding float to 2 decimal places. `{{ div ( round ( mult 12.3456 100 ) ) 100 }}` returns 12.35 `{{ div ( roundFloor ( mult  12.3456 100 ) ) 100 }}` returns 12.34
 
