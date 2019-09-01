@@ -101,7 +101,25 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Member.Roles | A list of role IDs that the member has. |
 | .Member.User | Underlying user on which the member is based on. |
 
-## Channel
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>getMember</code>
+      </td>
+      <td style="text-align:left">
+        <p>Function returns Member object having above methods.</p>
+        <p><code>{{ ( getMember .User.ID ).JoinedAt }}</code> is the same as <code>{{ .Member.JoinedAt }}</code>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>## Channel
 
 | Field | Description |
 | :--- | :--- |
