@@ -127,7 +127,10 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Channel.ID | The ID of the channel. |
 | .Channel.Topic | The Topic of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
-| `editChannelName  channel "newName"` | Function which edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. For example  &gt;`{{ editChannelName nil ( joinStr "" "YAG - " ( randInt 1000 ) ) }}` |
+
+| Function | Description |
+| :--- | :--- |
+| `editChannelName  channel "newName"` | Function that edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. For example  &gt;`{{ editChannelName nil ( joinStr "" "YAG - " ( randInt 1000 ) ) }}` |
 
 ## Message
 
