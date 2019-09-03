@@ -90,7 +90,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
 | .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
-| .Guild.EmbedEnabled | Outputs whether embeds are enabled or not, true / false. |
+| .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
 
 ## Member
 
