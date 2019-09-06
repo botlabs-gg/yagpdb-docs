@@ -125,6 +125,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | :--- | :--- |
 | .Channel.Name | The Name of the channel. |
 | .Channel.ID | The ID of the channel. |
+| .Channel.ParentID | The ID of the channel's parent \(category\), returns 0 if none. |
 | .Channel.Topic | The Topic of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 
