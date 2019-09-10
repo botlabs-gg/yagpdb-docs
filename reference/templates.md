@@ -91,6 +91,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
+| .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For exampe `{{ len .Server.Roles }}` gives you how many roles are there in that guild. |
 
 ## Member
 
