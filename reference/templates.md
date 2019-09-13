@@ -115,9 +115,15 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       </td>
       <td style="text-align:left">
         <p>Function returns Member object having above methods.</p>
-        <p><code>{{ ( getMember .User.ID ).JoinedAt }}</code> is the same as <code>{{ .Member.JoinedAt }}</code>
+        <p><code>{{ ( getMember .User.ID ).JoinedAt }}</code> 
+          <br />is the same as <code>{{ .Member.JoinedAt }}</code>
         </p>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>onlineCount</code>
+      </td>
+      <td style="text-align:left">Returns the count of online users/members on current server.</td>
     </tr>
   </tbody>
 </table>## Channel
@@ -431,7 +437,6 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#miscellaneous-snippets). |
-| `onlineCount` | Returns the count of online users on current server. |
 
 ### ExecCC
 
