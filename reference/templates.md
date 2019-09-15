@@ -15,7 +15,9 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 
 {% hint style="success" %}
 "Go is all about type... Type is life." // William Kennedy   
-Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type.
+Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type.  
+  
+To see of what type a variable or function's return is, use printf "%T", for example &gt; `{{ printf "%T" currentTime }}` will output the type `time.Time`.
 {% endhint %}
 
 ## The Dot
