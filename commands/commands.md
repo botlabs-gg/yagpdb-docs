@@ -2,7 +2,7 @@
 
 ## Prefix
 
-The prefix is by default `-` The first thing you see when you open the command page is the prefix, you can replace this with your own unique prefix if you would like. Be sure to hit the save button afterward.
+The prefix is by default `-` The first thing you see when you open the command page is the prefix, you can replace this with your own unique prefix if you would like. Be sure to hit the save button afterward. Only commands have designated prefix. Switches \(like rolemenu uses\) are always with a hyphen `-`.
 
 ## Command Override
 
