@@ -66,8 +66,8 @@ As of v1.12 there's a simple set of functions available for you to manage argume
     (more args can be added aswell...)}}
 ...
 
-{{$args.Get 0}} <- will have the first arg
-{{$args.Get 1}} <- will have the second arg
+{{$args.Get 0}} {{/* <- will have the first arg */}}
+{{$args.Get 1}} {{/* <- will have the second arg */}}
 ```
 
 The execution will stop at wherever you placed "**parseArgs**" if incorrect args are passed.
@@ -88,9 +88,9 @@ Available types and options are:
 * **member** - guild's member struct \(object\) to use later with .Member methods, like .JoinedAt. \(see [templates ](../reference/templates.md#member)for more info\).
 * **duration** - converts given integer number to Duration type starting from minutes - e.g. 10 is 10m0s and 123 is 2h3m0s.
 
-To access the parsed args you use the "**Get**" function on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
+To access the parsed args you use the "**Get**" method on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
 
-There is also a "**IsSet**" function that will return true or false depending on whether the argument was set or not, if this was an optional argument.
+Method "**IsSet**" will return a boolean true or false depending on whether the argument was set or not, if this was an optional argument.
 
 Example usage of optional args:
 
@@ -101,7 +101,7 @@ Example usage of optional args:
     (more args can be added aswell...)}}
 ...
 
-{{$args.Get 0}} <- will have the first arg
+{{$args.Get 0}} {{/* <- will have the first arg */}}
 {{or ($args.Get 1) "value if the second arg was not used"}}
 {{if $args.IsSet 1}} only runs if the second argument was provided {{end}}
 ```
