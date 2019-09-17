@@ -454,13 +454,14 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
       <td style="text-align:left"><code>execCC ccID channel delay data</code>
       </td>
       <td style="text-align:left">Function that executes another custom command specified by <code>ccID,</code>max
-        recursion depth is 2 and it&apos;s rate-limited strictly at max 10 delayed
-        custom commands executed per channel per minute, if you go over that it
-        will be simply thrown away. Argument <code>channel</code> can be <code>nil</code>,
-        channel&apos;s ID or name. The<code>delay</code> argument is execution delay
-        of another CC is in seconds. The <code>data</code> argument is content that
-        you pass to the other executed custom command. To retrieve that <code>data </code>you
-        use <code>.ExecData</code>. This example is important &gt; <a href="custom-command-examples.md#execcc-example">execCC example</a> also
+        recursion depth is 2 (using <code>.StackDepth</code> shows the current depth)
+        and it&apos;s rate-limited strictly at max 10 delayed custom commands executed
+        per channel per minute, if you go over that it will be simply thrown away.
+        Argument <code>channel</code> can be <code>nil</code>, channel&apos;s ID or
+        name. The<code>delay</code> argument is execution delay of another CC is
+        in seconds. The <code>data</code> argument is content that you pass to the
+        other executed custom command. To retrieve that <code>data </code>you use <code>.ExecData</code>.
+        This example is important &gt; <a href="custom-command-examples.md#execcc-example">execCC example</a> also
         this snippet that shows you same thing run using the same custom command
         &gt; <a href="templates.md#this-sections-snippets-7">Snippets</a>.</td>
     </tr>
