@@ -358,9 +358,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-4). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
-| `deleteResponse time` | Deletes the response after a certain time \(1-60 seconds\). |
-| `deleteTrigger time` | Deletes the trigger after a certain time \(1-60 seconds\). |
-| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and defaults to 10 seconds. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
+| `deleteResponse time` | Deletes the response after a certain time \(max 86400 seconds\). |
+| `deleteTrigger time` | Deletes the trigger after a certain time \(max 86400 seconds\). |
+| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and like previous two delete functions, it defaults to 10 seconds, max being 1 day. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
 | `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
