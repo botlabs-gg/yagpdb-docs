@@ -59,7 +59,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       </td>
       <td style="text-align:left">
         <p>Function that can be used to retrieve .User object from a mention or userID.</p>
-        <p><code>{{ ( userArg .User.ID ).Mention }}</code> mentions triggering user.</p>
+        <p><code>{{ (userArg .User.ID).Mention }}</code> mentions triggering user.</p>
       </td>
     </tr>
     <tr>
@@ -117,7 +117,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       </td>
       <td style="text-align:left">
         <p>Function returns Member object having above methods.</p>
-        <p><code>{{ ( getMember .User.ID ).JoinedAt }}</code> 
+        <p><code>{{ (getMember .User.ID).JoinedAt }}</code> 
           <br />is the same as <code>{{ .Member.JoinedAt }}</code>
         </p>
       </td>
@@ -140,7 +140,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 
 | Function | Description |
 | :--- | :--- |
-| `editChannelName  channel "newName"` | Function that edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. For example  &gt;`{{ editChannelName nil ( joinStr "" "YAG - " ( randInt 1000 ) ) }}` |
+| `editChannelName  channel "newName"` | Function that edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. For example  &gt;`{{ editChannelName nil (joinStr "" "YAG - " (randInt 1000) ) }}` |
 
 ## Message
 
@@ -218,11 +218,11 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{ humanizeDurationMinutes 3500000000000 }}` would return `58 minutes`. |
 | `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{ humanizeDurationSeconds 3500000000000 }}` would return `58 minutes and 20 seconds`. |
 | `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
-| `newDate year month day hour minute second` | Returns new time object in UTC using following syntax... all arguments need to be of type int, for example &gt; `{{ humanizeDurationHours ( ( newDate 2059 1 2 12 34 56 ).Sub currentTime ) }}` will give you how much time till year 2059 January 2nd 12:34:56. |
+| `newDate year month day hour minute second` | Returns new time object in UTC using following syntax... all arguments need to be of type int, for example &gt; `{{ humanizeDurationHours ( (newDate 2059 1 2 12 34 56).Sub currentTime) }}` will give you how much time till year 2059 January 2nd 12:34:56. |
 
 #### This section's snippets:
 
-* To demonstrate humanizeDurationHours and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_. `{{ humanizeDurationHours ( currentTime.Sub .Member.JoinedAt.Parse ) }}`
+* To demonstrate humanizeDurationHours and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_. `{{ humanizeDurationHours (currentTime.Sub .Member.JoinedAt.Parse) }}`
 
 ## Functions
 
@@ -235,11 +235,11 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
 | `toFloat` | Converts argument \(number of string\) to type float64.  Usage: `(toFloat x)`. |
 | `toDuration` | Converts argument \(number or string\) to type Duration, usable in time operations. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-1).  |
-| `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `( toString ( toInt value ) )` and certain parts of `cembed` need this for example. |
+| `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
 
 #### This section's snippets:
 
-* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ ( currentTime.Add ( toDuration ( mult 12 .TimeHour ) ) ).Format "15:04" }}`
+* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ (currentTime.Add (toDuration (mult 12 .TimeHour) ) ).Format "15:04" }}`
 
 ### String manipulation
 
@@ -260,8 +260,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 #### This section's snippets:
 
 * `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
-* To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := ( split $x ", " ) }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
-* To demonstrate usage of reFindAll. &gt;  `Before regex: {{ $msg := "1 YAGPDB and over 100000 servers conqured." }} {{ $re2 := reFindAll "[0-9]+" $msg }} {{ $msg }}   After regex matches: {{ joinStr " " "Only" ( index $re2 0 ) "YAGPDB and already" ( index $re2 1 ) "servers captured."}}`
+* To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := (split $x ", ") }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
+* To demonstrate usage of reFindAll. &gt;  `Before regex: {{ $msg := "1 YAGPDB and over 100000 servers conqured." }} {{ $re2 := reFindAll "[0-9]+" $msg }} {{ $msg }}   After regex matches: {{ joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
 
 ### Math functions
 
@@ -344,7 +344,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
   </tbody>
 </table>#### This section's snippets:
 
-* To demonstrate rounding float to 2 decimal places. `{{ div ( round ( mult 12.3456 100 ) ) 100 }}` returns 12.35 `{{ div ( roundFloor ( mult  12.3456 100 ) ) 100 }}` returns 12.34
+* To demonstrate rounding float to 2 decimal places. `{{ div (round (mult 12.3456 100) ) 100 }}` returns 12.35 `{{ div (roundFloor (mult  12.3456 100) ) 100 }}` returns 12.34
 
 ### Message functions
 
@@ -364,7 +364,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
-| `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
+| `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. Works from version v1.20.8 |
 
 #### This section's snippets:
 
@@ -392,7 +392,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 * `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \( [lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs \). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
-* To demonstrate usage of escapeEveryoneHere. &gt; `{{ $x := "@here Hello World! @everyone" }} {{ sendMessage nil $x }} {{ sendMessageNoEscape nil $x }} {{ sendMessageNoEscape nil ( escapeEveryoneHere $x ) }}`
+* To demonstrate usage of escapeEveryoneHere. &gt; `{{ $x := "@here Hello World! @everyone" }} {{ sendMessage nil $x }} {{ sendMessageNoEscape nil $x }} {{ sendMessageNoEscape nil (escapeEveryoneHere $x) }}`
 
 ### Role functions
 
@@ -411,7 +411,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 #### This section's snippets:
 
-* To demonstrate usage of targetHasRoleID. &gt;  `{{ $x := ( userArg ( index .Args 1) ).ID }} {{ if targetHasRoleID $x ############ }} Has the Role! {{ else }} Does not have the role! {{ end }}`
+* To demonstrate usage of targetHasRoleID. &gt;  `{{ $x := (userArg (index .Args 1) ).ID }} {{ if targetHasRoleID $x ############ }} Has the Role! {{ else }} Does not have the role! {{ end }}`
 
 ### Current User
 
@@ -488,7 +488,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
   </tbody>
 </table>#### This section's snippets:
 
-* To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := toInt .CCID }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 ( sdict "YAGPDB" $yag "number" $ctr ) }} {{ else }} FUN'S OVER! {{ end }}`
+* To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := toInt .CCID }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 (sdict "YAGPDB" $yag "number" $ctr) }} {{ else }} FUN'S OVER! {{ end }}`
 
 ## Database
 
