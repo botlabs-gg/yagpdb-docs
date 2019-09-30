@@ -149,7 +149,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Message.ID | ID of the message. |
 | .Message.ChannelID | Channel id this message is in. |
 | .Message.Author | Author of the message \([User](templates.md#user) object\). |
-| .Message.Timestamp | Timestamp of the message \(use .Message.Timestamp.Parse for a time object, otherwise string\). |
+| .Message.Timestamp | Timestamp of the message in type timestamp \(use .Message.Timestamp.Parse to get type time and .Parse.String method returns type string\). |
 | .Message.Attachments | Attachments to this message \(slice of attachment objects\). |
 | .Message.Embeds | Embeds on this message \(slice of embed objects\). |
 | .Message.Mentions | Users this message mentions. |
