@@ -22,7 +22,7 @@ You can also write code for the bot - it's open source. The bot is written in [G
 
 If you are knowledgeable about the bot and you want to help others then join the [support server](https://discord.gg/GcpyYh3) and start helping out. If you are active and helpful on the server, we may ask you to come on board as a support staff.
 
-Alternatively, if you think you meet the following requirements, you can fill in this application form [here](https://michdi.typeform.com/to/e61VMq).
+Alternatively, if you think you meet the following requirements, you can fill in this application form [here](https://forms.gle/FtnaLVcFgVFvXGQ9A).
 
 * Been on the server and active for at least 2 weeks
 * Able to show initiative in troubleshooting problems and handling general queries
