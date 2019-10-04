@@ -190,28 +190,22 @@ With YAGPDB database system, you can now add cooldowns to you custom commands. Y
 {{/* Length of the cooldown (sec) */}}
 {{$lengthSec := 10}}
 
-
-{{/* CREATING VARIABLES DO NOT TOUCH /*}}
-{{$key := joinstr "" "cooldown_" $name}}
-{{if eq $isGlobal 1}}
+{{/* CREATING VARIABLES DO NOT TOUCH */}}
 {{$id := 0}}
-{{else}}
-{{$id := .User.ID}}
+{{$key := (joinStr "" "cooldown_" $name)}}
+{{if eq $isGlobal 0}}
+{{$id = .User.ID}}
 {{end}}
 
 
-{{if (dbGet $id $key)}} 
-{{/* Do nothing if cooldown exist /*}}
+{{if (dbGet (toInt64 $id) $key)}} 
+{{/* Do nothing if cooldown exist */}}
 {{else}}
 {{/* Create cooldown entry */}}
-{{dbSetExpire $id $name "cooldown" $lengthSec}}
-
+{{dbSetExpire (toInt64 $id) $key "cooldown" $lengthSec}}
 
 {{/* YOUR COMMAND HERE */}}
-
-
 {{end}}
-
 ```
 
 ### 

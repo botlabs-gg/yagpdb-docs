@@ -156,7 +156,6 @@ Either starts with `(index .Message.Reactions 0).Emoji` or a variable of the rea
 | :--- | :--- | :--- |
 | ID | Int | ID of the emoji |
 | Name | String | Name of the emoji \(if Unicode emoji this will be the emote\) |
-| User | [User Object](../reference/templates.md#user) | [ ](../reference/templates.md#user)User that created this emoji |
 | Animated | Boolean | Whether the emoji is animated or not |
 
 There are [more fields ](https://discordapp.com/developers/docs/resources/channel#reaction-object)which can be used, but they are either obsolete or only used with Global Emotes.  
