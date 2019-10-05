@@ -1,7 +1,8 @@
 # Using RegEx
 
 Full RE2 syntax reference at &gt; [https://github.com/google/re2/wiki/Syntax](https://github.com/google/re2/wiki/Syntax)  
-Go RegExp doc at &gt; [https://golang.org/pkg/regexp/](https://golang.org/pkg/regexp/)
+Go RegExp doc at &gt; [https://golang.org/pkg/regexp/](https://golang.org/pkg/regexp/)  
+More about general concepts &gt; [http://www.regular-expressions.info](http://www.regular-expressions.info)
 
 ## Basic Regex
 
