@@ -13,6 +13,11 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 `{{joinStr "" "Our member count is " (toString .Guild.MemberCount) "!"}}`
 {% endhint %}
 
+{% hint style="info" %}
+Templating system uses standard ASCII-quotes \(0x22 &gt; `"` for straight double quotes,   
+0x27 &gt; `'`for apostrophe and 0x60 ````` for backtick\), so make sure no "smart-quotes" are being used.
+{% endhint %}
+
 {% hint style="success" %}
 "Go is all about type... Type is life." // William Kennedy   
 Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type.  
