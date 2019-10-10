@@ -14,8 +14,9 @@ If you want to join different data objects \(e.g. to wrap toString in joinStr ar
 {% endhint %}
 
 {% hint style="info" %}
-Templating system uses standard ASCII-quotes \(0x22 &gt; `"` for straight double quotes,   
-0x27 &gt; `'`for apostrophe and 0x60 ````` for backtick\), so make sure no "smart-quotes" are being used.
+Templating system uses standard ASCII quotation marks:  
+0x22 &gt; `"` for straight double quotes, 0x27 &gt; `'`for apostrophes and 0x60 ````` for backticks;   
+so make sure no "smart-quotes" are being used.
 {% endhint %}
 
 {% hint style="success" %}
