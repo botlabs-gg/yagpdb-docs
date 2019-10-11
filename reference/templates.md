@@ -500,7 +500,22 @@ With regular expression patterns - when using quotes you have to "double-escape"
   </tbody>
 </table>#### This section's snippets:
 
-* To demonstrates execCC  and .ExecData on using same CC. `{{ $yag := "YAGPDB rules! " }} {{ $ctr := 0 }} {{ $yourCCID := toInt .CCID }} {{ if .ExecData }} {{ $ctr = add .ExecData.number 1 }} {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }} {{ else }} So, someone rules. {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }} {{ end }} {{ if lt $ctr 5 }} {{ execCC $yourCCID nil 10 (sdict "YAGPDB" $yag "number" $ctr) }} {{ else }} FUN'S OVER! {{ end }}`
+* To demonstrates execCC  and .ExecData using the same CC.
+
+```go
+{{ $yag := "YAGPDB rules! " }}
+{{ $ctr := 0 }} {{ $yourCCID := toInt .CCID }}
+{{ if .ExecData }}
+    {{ $ctr = add .ExecData.number 1 }}
+    {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }}
+{{ else }} 
+    So, someone rules.
+    {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }}
+{{ end }}
+{{ if lt $ctr 5 }}
+    {{ execCC $yourCCID nil 10 (sdict "YAGPDB" $yag "number" $ctr) }}
+{{ else }} FUN'S OVER! {{ end }}
+```
 
 ## Database
 
