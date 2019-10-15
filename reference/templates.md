@@ -133,6 +133,11 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       </td>
       <td style="text-align:left">Returns the count of online users/members on current server.</td>
     </tr>
+    <tr>
+      <td style="text-align:left"><code>onlineCountBots</code>
+      </td>
+      <td style="text-align:left">Returns the count of online bots. (after v1.20.11 update)</td>
+    </tr>
   </tbody>
 </table>## Channel
 
@@ -346,10 +351,17 @@ With regular expression patterns - when using quotes you have to "double-escape"
         down. <code>{{ roundFloor 1.9 }}</code> returns <code>1</code>.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>roundEven</code>
+      <td style="text-align:left"><code>roundEven </code>
       </td>
       <td style="text-align:left">Returns the nearest integer, rounding ties to even.
         <br /><code>{{ roundEven 10.5 }}</code> returns <code>10 {{ roundEven 11.5 }}</code> returns <code>12</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>sqrt</code>
+      </td>
+      <td style="text-align:left">Returns the square root of a number. (after v1.20.11 update)
+        <br /><code>{{ sqrt 49 }}</code> returns <code>7, {{ sqrt 12.34 | printf &quot;%.4f&quot; }} returns 3.5128</code>
+      </td>
     </tr>
   </tbody>
 </table>#### This section's snippets:
