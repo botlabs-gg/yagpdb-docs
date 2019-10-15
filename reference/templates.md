@@ -459,7 +459,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `inFold`  | Same as `in`, but is case insensitive. |
 | `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
 | `shuffle list` | Returns a shuffled version of a list. |
-| `exec "command" "args" "args" "args" ...` | Execute a YAGPDB \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command.  |
+| `exec "command" "args" "args" "args" ...` | Executes a YAGPDB command \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command. If real command returns an embed - exec will return raw data of type embed, so you can use embed fields for better formatting - e.g. `{{ $resp := exec "whois" }} {{ $resp.Title }} Joined at > {{ (index $resp.Fields 4).Value }}` will return the title \(username\#discriminator\) and "Joined at" field's value from `whois` command. |
 | `execAdmin "command" "args" "args" "args" ...` | Functions same way as `exec` but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
