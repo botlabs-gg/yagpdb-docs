@@ -274,6 +274,35 @@ Toggle a role on yourself or list all available roles, they have to be set up in
 Role [Role:Text]
 ```
 
+### Settimezone
+
+**Aliases:** setz/tzset
+
+Sets your timezone, used for various purposes such as auto conversion. Give it your country.
+
+**Usage:**
+
+```text
+Settimezone [Timezone:Text]
+```
+
+```text
+[-u Display current:Switch]
+[-d Delete TZ record:Switch]
+```
+
+### ToggleTimeConversion
+
+**Aliases:** toggletconv/ttc
+
+Toggles automatic time conversion for people with registered timezones \(setz\) in this channel, its on by default, toggle all channels by giving it `all`
+
+**Usage:**
+
+```text
+ToggleTimeConversion [flags:Text]
+```
+
 ## Fun 🎉
 
 ### Define
@@ -414,6 +443,20 @@ Get presented with 2 options.
 
 ```text
 WouldYouRather
+```
+
+### Xkcd
+
+An xkcd comic, by default returns random comic strip
+
+**Usage:**
+
+```text
+Xkcd [Comic number:Whole number]
+```
+
+```text
+[-l Latest comic:Switch]
 ```
 
 ### TopServers
@@ -928,5 +971,139 @@ To get the id of a message you have to turn on developer mode in discord's appea
 
 ```text
 EditOption <Message ID:Whole number>
+```
+
+## Tickets 🎫
+
+### Tickets Open
+
+**Aliases:** create/new/make
+
+Opens a new ticket
+
+**Usage:**
+
+```text
+Open <subject:Text>
+```
+
+### Tickets AddUser
+
+Adds a user to the ticket in this channel
+
+**Usage:**
+
+```text
+AddUser <target:Member>
+```
+
+### Tickets RemoveUser
+
+Removes a user from the ticket
+
+**Usage:**
+
+```text
+RemoveUser <target:Member>
+```
+
+### Tickets Rename
+
+Renames the ticket
+
+**Usage:**
+
+```text
+Rename <new-name:Text>
+```
+
+### Tickets Close
+
+**Aliases:** end/delete
+
+Closes the ticket
+
+**Usage:**
+
+```text
+Close [reason:Text]
+```
+
+### Tickets AdminsOnly
+
+**Aliases:** adminonly/ao
+
+Toggle admins only mode for this ticket
+
+**Usage:**
+
+```text
+AdminsOnly
+```
+
+## Events 🎟
+
+### Events Create
+
+**Aliases:** new/make
+
+Creates an event, You will be led through an interactive setup
+
+**Usage:**
+
+```text
+Create
+```
+
+### Events Edit
+
+Edits an event
+
+**Usage:**
+
+```text
+Edit <ID:Whole number>
+```
+
+```text
+[-title :Text - Change the title of the event]
+[-time :Text - Change the start time of the event]
+[-max :Whole number - Change max participants]
+```
+
+### Events List
+
+**Aliases:** ls
+
+Lists all events in this server
+
+**Usage:**
+
+```text
+List 
+```
+
+### Events Delete
+
+**Aliases:** rm/del
+
+Deletes an event, specify the event ID of the event you wanna delete
+
+**Usage:**
+
+```text
+Delete <ID:Whole number>
+```
+
+### Events Delete
+
+**Aliases:** cancelsetup
+
+Force cancels the current setup session in this channel
+
+**Usage:**
+
+```text
+StopSetup
 ```
 
