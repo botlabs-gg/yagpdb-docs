@@ -1095,7 +1095,7 @@ Deletes an event, specify the event ID of the event you wanna delete
 Delete <ID:Whole number>
 ```
 
-### Events Delete
+### Events StopSetup
 
 **Aliases:** cancelsetup
 
