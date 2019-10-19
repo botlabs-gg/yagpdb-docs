@@ -3,14 +3,14 @@
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
 {% hint style="warning" %}
-**Put curly brackets around the data you want to formulate as template** like this: `{{.User.Username}}`
+**Put curly brackets around the data you want to formulate as template** like this: `{{ .User.Username }}`
 
 This {{ ... }} syntax is always necessary for methods and functions stated below.
 {% endhint %}
 
 {% hint style="info" %}
 If you want to join different data objects \(e.g. to wrap toString in joinStr around .Guild.MemberCount\), you use normal braces as delimiters:  
-`{{joinStr "" "Our member count is " (toString .Guild.MemberCount) "!"}}`
+`{{ joinStr "" "Our member count is " (toString .Guild.MemberCount) "!" }}`
 {% endhint %}
 
 {% hint style="info" %}
@@ -136,7 +136,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
     <tr>
       <td style="text-align:left"><code>onlineCountBots</code>
       </td>
-      <td style="text-align:left">Returns the count of online bots. (after v1.20.11 update)</td>
+      <td style="text-align:left">Returns the count of online bots.</td>
     </tr>
   </tbody>
 </table>## Channel
@@ -359,7 +359,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>sqrt</code>
       </td>
-      <td style="text-align:left">Returns the square root of a number. (after v1.20.11 update)
+      <td style="text-align:left">Returns the square root of a number.
         <br /><code>{{ sqrt 49 }}</code> returns <code>7, {{ sqrt 12.34 | printf &quot;%.4f&quot; }} returns 3.5128</code>
       </td>
     </tr>
@@ -486,8 +486,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
         name. The<code>delay</code> argument is execution delay of another CC is
         in seconds. The <code>data</code> argument is content that you pass to the
         other executed custom command. To retrieve that <code>data </code>you use <code>.ExecData</code>.
-        This example is important &gt; <a href="custom-command-examples.md#execcc-example">execCC example</a> also
-        this snippet that shows you same thing run using the same custom command
+        This example is important - <a href="custom-command-examples.md#execcc-example">execCC example</a> also
+        this snippet which shows you same thing run using the same custom command
         &gt; <a href="templates.md#this-sections-snippets-7">Snippets</a>.</td>
     </tr>
     <tr>
