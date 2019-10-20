@@ -451,7 +451,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | :--- | :--- |
 | `adjective` | Returns a random adjective. |
 | `range slice/array` | Iterates \(loops\) over the given slice or array and sets successive elements as active data \(the dot\) to be further handled inside the range template. Example usage [here](custom-command-examples.md#range-example) |
-| `dict key1 value1 key2 value2 ...` | Creates a dictionary \(not many use cases yet\). |
+| `dict key1 value1 key2 value2 ...` | Creates an unordered collection of key-value pairs, a dictionary so to say. The number of parameters to form key-value pairs must be even. |
 | `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has`.Get "key"` and `.Set "key" "value"` methods that'll allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#miscellaneous-snippets). |
 | `cslice value1 value2 ...` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
