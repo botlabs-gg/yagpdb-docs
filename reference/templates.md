@@ -463,7 +463,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `execAdmin "command" "args" "args" "args" ...` | Functions same way as `exec` but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
 | `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
-| `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds. Argument`seconds`is of type integer. Example in [Snippets](templates.md#miscellaneous-snippets). |
+| `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds combined. Argument`seconds`is of type integer. Example in [Snippets](templates.md#miscellaneous-snippets). |
 
 ### ExecCC
 
