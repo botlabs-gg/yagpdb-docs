@@ -570,24 +570,24 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 | `Key` | The key of the entry. |
 | `Value` | The value of the entry. |
 
-## Branching
+## Conditional branching
 
-Branching using if pipeline and comparison operators - these operators don't need to be inside if branch.
+Branching using `if` pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.
 
 | Case | Example |
 | :--- | :--- |
-| Basic if | `{{if (condition)}} output {{end}}` |
-| Not | `{{if not (condition)}} output {{end}}` |
-| And | `{{if and (cond1) (cond2) (cond3)}} output {{ end }}` |
-| Or | `{{if or (cond1) (cond2) (cond3)}} output {{end}}` |
-| Equal | `{{if eq .Channel.ID ########}} output {{end}}` |
-| Not equal | `{{ $x := 7 }} {{ $y := 8 }} {{ ne $x $y }}` returns true |
-| Less than | `{{if lt (len .Args) 5}} output {{end}}` |
-| Less than or equal | `{{ $x := 7 }} {{ $y := 8 }} {{ le $x $y }}` returns true |
-| Greater than | `{{if gt (len .Args) 1}} output {{end}}` |
-| Greater than or equal | `{{ $x := 7 }} {{ $y := 8 }} {{ ge $x $y }}` returns false |
-| Else if | `{{if (case statement)}} output1 {{else if (case statement)}} output2 {{end}}` |
-| Else | `{{if (case statement)}} output1 {{else}} output2 {{end}}` |
+| if | `{{if (condition)}} output {{end}}` |
+| else if | `{{if (case statement)}} output1 {{else if (case statement)}} output2 {{end}}` |
+| else | `{{if (case statement)}} output1 {{else}} output2 {{end}}` |
+| not | `{{if not (condition)}} output {{end}}` |
+| and | `{{if and (cond1) (cond2) (cond3)}} output {{ end }}` |
+| or | `{{if or (cond1) (cond2) (cond3)}} output {{end}}` |
+| Equal: eq | `{{if eq .Channel.ID ########}} output {{end}}` |
+| Not equal: ne | `{{ $x := 7 }} {{ $y := 8 }} {{ ne $x $y }}` returns true |
+| Less than: lt | `{{if lt (len .Args) 5}} output {{end}}` |
+| Less than or equal: le | `{{ $x := 7 }} {{ $y := 8 }} {{ le $x $y }}` returns true |
+| Greater than: gt | `{{if gt (len .Args) 1}} output {{end}}` |
+| Greater than or equal: ge | `{{ $x := 7 }} {{ $y := 8 }} {{ ge $x $y }}` returns false |
 
 ## Miscellaneous snippets
 
