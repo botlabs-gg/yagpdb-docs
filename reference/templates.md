@@ -649,7 +649,28 @@ Branching using `if` pipeline and comparison operators - these operators don't n
       <td style="text-align:left"><code>{{ $x := 7 }} {{ $y := 8 }} {{ ge $x $y }}</code> returns false</td>
     </tr>
   </tbody>
-</table>## Miscellaneous snippets
+</table>## Range action
+
+`range`iterates over element values in variety of data structures in pipeline - arrays, slices, maps or channels. The dot is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{ else }}` action is used, that section will be executed.  
+  
+`range` on arrays and slices provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.  
+  
+Like `if`, `range`is concluded with`{{ end }}`action and declared variable scope inside `range` extends to that point.  
+
+
+```go
+{{/* range over a slice */}}
+{{ range $index, $element := cslice "YAGPDB" "IS COOL!" }}
+{{ $index }} : {{ $element }} {{ end }}
+{{/* range on a map */}}
+{{ range $key, $value := dict "SO" "SAY" "WE" "ALL!" }}
+{{ $key }} : {{ $value }} {{ end }}
+{{/* range with else and variable scope */}}
+{{ range seq 1 1 }} no output {{ else }} output here {{ end }}
+{{ $x := 42 }} {{ range $x := seq 2 4 }} {{ $x }} {{ end }} {{ $x }}
+```
+
+## Miscellaneous snippets
 
 * `{{ if hasRoleName "funrole" }} Has role funrole {{ end }}`This will only show if the member has a role with name "funrole" .
 * `{{ if gt (len .Args) 0 }} {{ index .Args 1 }} {{ end }}`Assuming your trigger is a command, will display your first input if input was given.
