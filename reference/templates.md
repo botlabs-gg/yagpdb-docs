@@ -5,7 +5,7 @@ All available data that can be used in YAGPDB's templating "engine" which is sli
 {% hint style="warning" %}
 **Put curly brackets around the data you want to formulate as template** like this: `{{ .User.Username }}`
 
-This {{ ... }} syntax is always necessary for methods and functions stated below.
+This `{{ ... }}` syntax of having two braces around context is always necessary to form a template with methods and functions stated below.
 {% endhint %}
 
 {% hint style="info" %}
@@ -274,7 +274,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 #### This section's snippets:
 
-* `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
+* `{{ $args:= (joinStr " " (slice .CmdArgs 1) ) }}` Saves all the arguments except the first one to a variable `$args`. 
 * To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := (split $x ", ") }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
 * To demonstrate usage of reFindAll. &gt;  `Before regex: {{ $msg := "1 YAGPDB and over 100000 servers conqured." }} {{ $re2 := reFindAll "[0-9]+" $msg }} {{ $msg }}   After regex matches: {{ joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
 
@@ -412,7 +412,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 #### This section's snippets:
 
-* `<@{{.User.ID}}>` Outputs a mention to the user that called the command.
+* `<@{{ .User.ID }}>` Outputs a mention to the user that called the command.
 * `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \([lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs\). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
@@ -585,7 +585,7 @@ Branching using `if` pipeline and comparison operators - these operators don't n
     <tr>
       <td style="text-align:left">if</td>
       <td style="text-align:left">
-        <p><code>{{if (condition)}} output {{end}}</code>
+        <p><code>{{ if (condition) }} output {{ end }}</code>
         </p>
         <p>Initialization statement can also be inside <code>if</code> statement with
           conditional statement, limiting the initialized scope to that <code>if</code> statement. <code>{{ if eq ($x := 42) 42 }} True {{ $x }} {{ end }}</code>
@@ -594,32 +594,36 @@ Branching using `if` pipeline and comparison operators - these operators don't n
     </tr>
     <tr>
       <td style="text-align:left">else if</td>
-      <td style="text-align:left"><code>{{if (condition)}} output1 {{else if (condition)}} output2 {{end}}</code>
+      <td style="text-align:left">
+        <p><code>{{ if (condition) }} output1 {{ else if (condition) }} output2 {{ end }}</code>
+        </p>
+        <p>You can have as many<code>else if</code>statements as many different conditionals
+          you have.</p>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">else</td>
-      <td style="text-align:left"><code>{{if (condition)}} output1 {{else}} output2 {{end}}</code>
+      <td style="text-align:left"><code>{{ if (condition) }} output1 {{ else }} output2 {{ end }}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">not</td>
-      <td style="text-align:left"><code>{{if not (condition)}} output {{end}}</code>
+      <td style="text-align:left"><code>{{ if not (condition) }} output {{ end }}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">and</td>
-      <td style="text-align:left"><code>{{if and (cond1) (cond2) (cond3)}} output {{ end }}</code>
+      <td style="text-align:left"><code>{{ if and (cond1) (cond2) (cond3) }} output {{ end }}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">or</td>
-      <td style="text-align:left"><code>{{if or (cond1) (cond2) (cond3)}} output {{end}}</code>
+      <td style="text-align:left"><code>{{ if or (cond1) (cond2) (cond3) }} output {{ end }}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">Equal: eq</td>
-      <td style="text-align:left"><code>{{if eq .Channel.ID ########}} output {{end}}</code>
+      <td style="text-align:left"><code>{{ if eq .Channel.ID ######## }} output {{ end }}</code>
       </td>
     </tr>
     <tr>
@@ -628,7 +632,7 @@ Branching using `if` pipeline and comparison operators - these operators don't n
     </tr>
     <tr>
       <td style="text-align:left">Less than: lt</td>
-      <td style="text-align:left"><code>{{if lt (len .Args) 5}} output {{end}}</code>
+      <td style="text-align:left"><code>{{ if lt (len .Args) 5 }} output {{ end }}</code>
       </td>
     </tr>
     <tr>
@@ -637,7 +641,7 @@ Branching using `if` pipeline and comparison operators - these operators don't n
     </tr>
     <tr>
       <td style="text-align:left">Greater than: gt</td>
-      <td style="text-align:left"><code>{{if gt (len .Args) 1}} output {{end}}</code>
+      <td style="text-align:left"><code>{{ if gt (len .Args) 1 }} output {{ end }}</code>
       </td>
     </tr>
     <tr>
@@ -647,14 +651,14 @@ Branching using `if` pipeline and comparison operators - these operators don't n
   </tbody>
 </table>## Miscellaneous snippets
 
-* `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only show if the member has a role with name "funrole" .
-* `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}`Assuming your trigger is a command, will display your first input if input was given.
-* `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` in Channel \#\#\#\#\#.
-* `{{if ne .User.ID #######}} YAG! {{end}}`Will ignore if user ID equal to \#\#\#\#\# uses command.
-* `{{$d := randInt 10}}` Store the random int into variable $d \(A random number from 0-9\).
-* `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
-* `{{$a := (exec "catfact")}}` Saves the response of the `catfact` ****command to variable `$a`. 
-* `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the arguments after trigger to a variable `$allArgs`. 
+* `{{ if hasRoleName "funrole" }} Has role funrole {{ end }}`This will only show if the member has a role with name "funrole" .
+* `{{ if gt (len .Args) 0 }} {{ index .Args 1 }} {{ end }}`Assuming your trigger is a command, will display your first input if input was given.
+* `{{ if eq .Channel.ID ####### }} YAG! {{ end }}`Will only show `YAG!` in Channel \#\#\#\#\#.
+* `{{ if ne .User.ID ####### }} YAG! {{ end }}`Will ignore if user ID equal to \#\#\#\#\# uses command.
+* `{{ $d := randInt 10 }}` Store the random int into variable $d \(A random number from 0-9\).
+* `{{ addReactions .CmdArgs }}` Adds the emoji following a trigger as reactions.
+* `{{ $a := (exec "catfact") }}` Saves the response of the `catfact` ****command to variable `$a`. 
+* `{{ $allArgs := (joinStr " " .CmdArgs) }}` Saves all the arguments after trigger to a variable `$allArgs`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
 * To demonstrate usage of sdict methods .Get and .Set.  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }}` to add to that `sdict`, simply use `.Set` again &gt;  `{{ $x.Set "YAGPDB" "is cool!" }} {{ $x }}`
 * To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
