@@ -5,11 +5,11 @@ All available data that can be used in YAGPDB's templating "engine" which is sli
 {% hint style="warning" %}
 **Put curly brackets around the data you want to formulate as template** like this: `{{ .User.Username }}`
 
-This `{{ ... }}` syntax of having two braces around context is always necessary to form a template with methods and functions stated below.
+This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template with methods and functions stated below.
 {% endhint %}
 
 {% hint style="info" %}
-If you want to join different data objects \(e.g. to wrap toString in joinStr around .Guild.MemberCount\), you use normal braces as delimiters:  
+If you want to join different data objects \(e.g. to wrap toString in joinStr around .Guild.MemberCount\), you use round brackets aka parentheses as delimiters:  
 `{{ joinStr "" "Our member count is " (toString .Guild.MemberCount) "!" }}`
 {% endhint %}
 
