@@ -574,22 +574,78 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 
 Branching using `if` pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.
 
-| Case | Example |
-| :--- | :--- |
-| if | `{{if (condition)}} output {{end}}` |
-| else if | `{{if (case statement)}} output1 {{else if (case statement)}} output2 {{end}}` |
-| else | `{{if (case statement)}} output1 {{else}} output2 {{end}}` |
-| not | `{{if not (condition)}} output {{end}}` |
-| and | `{{if and (cond1) (cond2) (cond3)}} output {{ end }}` |
-| or | `{{if or (cond1) (cond2) (cond3)}} output {{end}}` |
-| Equal: eq | `{{if eq .Channel.ID ########}} output {{end}}` |
-| Not equal: ne | `{{ $x := 7 }} {{ $y := 8 }} {{ ne $x $y }}` returns true |
-| Less than: lt | `{{if lt (len .Args) 5}} output {{end}}` |
-| Less than or equal: le | `{{ $x := 7 }} {{ $y := 8 }} {{ le $x $y }}` returns true |
-| Greater than: gt | `{{if gt (len .Args) 1}} output {{end}}` |
-| Greater than or equal: ge | `{{ $x := 7 }} {{ $y := 8 }} {{ ge $x $y }}` returns false |
-
-## Miscellaneous snippets
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Case</th>
+      <th style="text-align:left">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">if</td>
+      <td style="text-align:left">
+        <p><code>{{if (condition)}} output {{end}}</code>
+        </p>
+        <p>Initialization statement can also be inside <code>if</code> statement with
+          conditional statement, limiting the initialized scope to that <code>if</code> statement. <code>{{ if eq ($x := 42) 42 }} True {{ $x }} {{ end }}</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">else if</td>
+      <td style="text-align:left"><code>{{if (condition)}} output1 {{else if (condition)}} output2 {{end}}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">else</td>
+      <td style="text-align:left"><code>{{if (condition)}} output1 {{else}} output2 {{end}}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">not</td>
+      <td style="text-align:left"><code>{{if not (condition)}} output {{end}}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">and</td>
+      <td style="text-align:left"><code>{{if and (cond1) (cond2) (cond3)}} output {{ end }}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">or</td>
+      <td style="text-align:left"><code>{{if or (cond1) (cond2) (cond3)}} output {{end}}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Equal: eq</td>
+      <td style="text-align:left"><code>{{if eq .Channel.ID ########}} output {{end}}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Not equal: ne</td>
+      <td style="text-align:left"><code>{{ $x := 7 }} {{ $y := 8 }} {{ ne $x $y }}</code> returns true</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Less than: lt</td>
+      <td style="text-align:left"><code>{{if lt (len .Args) 5}} output {{end}}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Less than or equal: le</td>
+      <td style="text-align:left"><code>{{ $x := 7 }} {{ $y := 8 }} {{ le $x $y }}</code> returns true</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Greater than: gt</td>
+      <td style="text-align:left"><code>{{if gt (len .Args) 1}} output {{end}}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Greater than or equal: ge</td>
+      <td style="text-align:left"><code>{{ $x := 7 }} {{ $y := 8 }} {{ ge $x $y }}</code> returns false</td>
+    </tr>
+  </tbody>
+</table>## Miscellaneous snippets
 
 * `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only show if the member has a role with name "funrole" .
 * `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}`Assuming your trigger is a command, will display your first input if input was given.
