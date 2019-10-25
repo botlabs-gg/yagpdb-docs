@@ -572,7 +572,7 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 
 ## Conditional branching
 
-Branching using `if` pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.
+Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.
 
 <table>
   <thead>
@@ -674,17 +674,17 @@ Like `if`, `range`is concluded with`{{ end }}`action and declared variable scope
 
 ## With action
 
-`with` lets you assign and carry pipeline's last object's value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{ else }}` is used, that branch is executed instead.   
+`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{ else }}` is used, that branch is executed instead.   
   
 Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure, these fields do not exists and template will error out.
 
 Like `if` and `range` actions, `with` is concluded using `{{ end }}` and variable scope extends to that point.
 
 ```go
-{{/* Shows the scope and how dot is affected by last object's value in pipeline */}}
+{{/* Shows the scope and how dot is affected by object's value in pipeline */}}
 {{ $x := "42" }} {{ with and ($z:= seq 0 5) ($x := seq 0 10) }} 
 len $x: `{{ len $x }}` 
-same as len dot: `{{ len . }}` 
+same as len dot: `{{ len . }}` {{/* "and" function uses $x as last value for dot */}}
 but len $z is `{{ len $z }}` {{ end }}
 Outer-scope $x len however: {{ len $x }}
 {{/* when there's no value, dot is unaffected */}}
