@@ -672,6 +672,25 @@ Like `if`, `range`is concluded with`{{ end }}`action and declared variable scope
 {{ $x := 42 }} {{ range $x := seq 2 4 }} {{ $x }} {{ end }} {{ $x }}
 ```
 
+## With action
+
+`with` lets you assign and carry pipeline's last object's value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{ else }}` is used, that branch is executed instead.   
+  
+Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure, these fields do not exists and template will error out.
+
+Like `if` and `range` actions, `with` is concluded using `{{ end }}` and variable scope extends to that point.
+
+```go
+{{/* Shows the scope and how dot is affected by last object's value in pipeline */}}
+{{ $x := "42" }} {{ with and ($z:= seq 0 5) ($x := seq 0 10) }} 
+len $x: `{{ len $x }}` 
+same as len dot: `{{ len . }}` 
+but len $z is `{{ len $z }}` {{ end }}
+Outer-scope $x len however: {{ len $x }}
+{{/* when there's no value, dot is unaffected */}}
+{{ with false }} dot is unaffected {{ else }} printing here {{ .CCID }} {{ end }}
+```
+
 ## Miscellaneous snippets
 
 * `{{ if hasRoleName "funrole" }} Has role funrole {{ end }}`This will only show if the member has a role with name "funrole" .
