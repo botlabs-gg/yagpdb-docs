@@ -588,7 +588,9 @@ Branching using `if` pipeline and comparison operators - these operators don't n
         <p><code>{{ if (condition) }} output {{ end }}</code>
         </p>
         <p>Initialization statement can also be inside <code>if</code> statement with
-          conditional statement, limiting the initialized scope to that <code>if</code> statement. <code>{{ if eq ($x := 42) 42 }} True {{ $x }} {{ end }}</code>
+          conditional statement, limiting the initialized scope to that <code>if</code> statement.
+          <br
+          /><code>{{ $x := 24 }} <br />{{ if eq ($x := 42) 42 }} Inside: {{ $x }} {{ end }} <br />Outside: {{ $x }}</code>
         </p>
       </td>
     </tr>
