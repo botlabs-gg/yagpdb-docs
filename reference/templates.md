@@ -168,7 +168,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Message.Content | Text content on this message. |
 | .Args | List of everything that is passed to .Message.Content. .Args is a slice of type string. |
 | .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{ index .Args 0 }}`.  |
-| .CmdArgs | List of all the arguments passed after .Cmd \(.Cmd is the actual trigger\) .CmdArgs is a slice of type string. |
+| .CmdArgs | List of all the arguments passed after `.Cmd` \(`.Cmd` is the actual trigger\) `.CmdArgs` is a slice of type string. Examples in [misc. snippets](templates.md#miscellaneous-snippets). |
 | .StrippedMsg | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bare in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
 
 {% hint style="info" %}
@@ -256,7 +256,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 | Function | Description |
 | :--- | :--- |
-| `joinStr "separator" "str1" (arg1)(arg2) "str2" ...` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\). |
+| `joinStr "separator" "str1" (arg1)(arg2) "str2" ...` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\).  |
 | `lower "string"` | Converts the string to lowercase. |
 | `upper "string"` | Converts the string to uppercase. |
 | `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example in section's [Snippets](templates.md#this-sections-snippets-2).  |
@@ -327,7 +327,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">
         <p>Returns a random integer between 0 and stop, or start - stop if two args
           are provided.</p>
-        <p>Result will be <code>start &lt;= random numer &lt; stop</code>.</p>
+        <p>Result will be <code>start &lt;= random numer &lt; stop</code>. Example
+          in section&apos;s <a href="templates.md#this-sections-snippets-3">Snippets</a>.</p>
       </td>
     </tr>
     <tr>
@@ -366,6 +367,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
   </tbody>
 </table>#### This section's snippets:
 
+* `{{ $d := randInt 10 }}` Stores random int into variable `$d` \(a random number from 0-9\).
 * To demonstrate rounding float to 2 decimal places. `{{ div (round (mult 12.3456 100) ) 100 }}` returns 12.35 `{{ div (roundFloor (mult  12.3456 100) ) 100 }}` returns 12.34
 
 ### Message functions
@@ -533,7 +535,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 You have access to a basic set of Database functions, this is almost a key value store ordered by the key and value combined.
 
-You can have max 50\*user\_count \(or 500\*user\_count for premium\) values in the database, if you go above this all new write functions will fail, this value is also cached so it won't be detected immediately when you go above nor immediately when you're under again.
+You can have max 50 \* user\_count \(or 500 \* user\_count for premium\) values in the database, if you go above this all new write functions will fail, this value is also cached so it won't be detected immediately when you go above nor immediately when you're under again.
 
 Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches any single character; a percent sign `(%)` matches any sequence of zero or more characters.
 
@@ -693,11 +695,10 @@ Outer-scope $x len however: {{ len $x }}
 
 ## Miscellaneous snippets
 
-* `{{ if hasRoleName "funrole" }} Has role funrole {{ end }}`This will only show if the member has a role with name "funrole" .
+* `{{ if hasRoleName "funrole" }} Has role funrole {{ end }}`This will only respond if the member has a role with name "funrole" .
 * `{{ if gt (len .Args) 0 }} {{ index .Args 1 }} {{ end }}`Assuming your trigger is a command, will display your first input if input was given.
-* `{{ if eq .Channel.ID ####### }} YAG! {{ end }}`Will only show `YAG!` in Channel \#\#\#\#\#.
+* `{{ if eq .Channel.ID ####### }} YAG! {{ end }}`Will only show `YAG!` if ChannelID is \#\#\#\#\#.
 * `{{ if ne .User.ID ####### }} YAG! {{ end }}`Will ignore if user ID equal to \#\#\#\#\# uses command.
-* `{{ $d := randInt 10 }}` Store the random int into variable $d \(A random number from 0-9\).
 * `{{ addReactions .CmdArgs }}` Adds the emoji following a trigger as reactions.
 * `{{ $a := (exec "catfact") }}` Saves the response of the `catfact` ****command to variable `$a`. 
 * `{{ $allArgs := (joinStr " " .CmdArgs) }}` Saves all the arguments after trigger to a variable `$allArgs`. 
