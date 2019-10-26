@@ -327,7 +327,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">
         <p>Returns a random integer between 0 and stop, or start - stop if two args
           are provided.</p>
-        <p>Result will be <code>start &lt;= random numer &lt; stop</code>. Example
+        <p>Result will be <code>start &lt;= random number &lt; stop</code>. Example
           in section&apos;s <a href="templates.md#this-sections-snippets-3">Snippets</a>.</p>
       </td>
     </tr>
@@ -452,15 +452,15 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | Function | Description |
 | :--- | :--- |
 | `adjective` | Returns a random adjective. |
-| `range slice/array` | Iterates \(loops\) over the given slice or array and sets successive elements as active data \(the dot\) to be further handled inside the range template. Example usage [here](custom-command-examples.md#range-example) |
+| `range slice/array` | Iterates \(loops\) over the given slice or array and sets successive elements as active data \(the dot\) to be further handled inside the range template. Example usage [here](custom-command-examples.md#range-example). [More in-depth here](templates.md#range-action). |
 | `dict key1 value1 key2 value2 ...` | Creates an unordered collection of key-value pairs, a dictionary so to say. The number of parameters to form key-value pairs must be even. |
 | `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has`.Get "key"` and `.Set "key" "value"` methods that'll allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#miscellaneous-snippets). |
 | `cslice value1 value2 ...` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
-| `in list value` | Returns true if value is in list. List can be either an array or a slice. |
-| `inFold`  | Same as `in`, but is case insensitive. |
-| `seq start stop` | Creates a new array of integer, starting from start and ending at stop. |
-| `shuffle list` | Returns a shuffled version of a list. |
+| `in list value` | Returns boolean true/false whether case-sensitive value is in list/slice. `{{ in (cslice "YAGPDB" "is cool") "yagpdb" }}` returns `false`. |
+| `inFold`  | Same as `in`, but is case-insensitive. `{{ inFold (cslice "YAGPDB" "is cool") "yagpdb" }}` returns `true`. |
+| `seq start stop` | Creates a new slice of type integer, beginning from start number, increasing in sequence and ending at stop \(not included\). `{{ seq -4 2 }}` returns a slice `[ -4 -3 -2 0 1 ]`. Sequence's max length is 10 000. |
+| `shuffle list` | Returns a shuffled, randomized version of a list/slice. |
 | `exec "command" "args" "args" "args" ...` | Executes a YAGPDB command \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command. If real command returns an embed - exec will return raw data of type embed, so you can use embed fields for better formatting - e.g. `{{ $resp := exec "whois" }} {{ $resp.Title }} Joined at > {{ (index $resp.Fields 4).Value }}` will return the title \(username\#discriminator\) and "Joined at" field's value from `whois` command. |
 | `execAdmin "command" "args" "args" "args" ...` | Functions same way as `exec` but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
 | `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
@@ -655,7 +655,7 @@ Branching using `if` action's pipeline and comparison operators - these operator
   </tbody>
 </table>## Range action
 
-`range`iterates over element values in variety of data structures in pipeline - arrays, slices, maps or channels. The dot is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{ else }}` action is used, that section will be executed.  
+`range`iterates over element values in variety of data structures in pipeline - arrays, slices, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{ else }}` action is used, that section will be executed.  
   
 `range` on arrays and slices provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.  
   
