@@ -411,8 +411,11 @@ Everything here starts with cah such as `-cah create`
 
 ### Rolemenu
 
-Everything here starts with `rolemenu`such as `-rolemenu creat`   
+{% hint style="warning" %}
 Rolemenu commands require user to have at least manage server permission.
+{% endhint %}
+
+Everything here starts with `rolemenu`such as `-rolemenu create` 
 
 <table>
   <thead>
