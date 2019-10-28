@@ -2,10 +2,16 @@
 
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
+
+
 {% hint style="warning" %}
 **Put curly brackets around the data you want to formulate as template** like this: `{{ .User.Username }}`
 
-This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template with methods and functions stated below.
+This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure with methods and functions stated below.
+{% endhint %}
+
+{% hint style="info" %}
+Data passed around template pipeline can be initialized as a variable to capture it &gt; \(_in EBNF syntax\)_ $variable `:=` value. Previously declared variable can also be assigned with new data &gt; $variable `=` value. Variable scope extends to the `{{ end }}` action of the control structure.
 {% endhint %}
 
 {% hint style="info" %}
