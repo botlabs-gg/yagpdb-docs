@@ -254,21 +254,92 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 ### String manipulation
 
-| Function | Description |
-| :--- | :--- |
-| `joinStr "separator" "str1" (arg1)(arg2) "str2" ...` | Joins several strings into one, separated by the first arg`"separator"`, useful for executing commands in templates \(e.g.`{{joinStr "" "1" "2" "3"}}` returns `123`\).  |
-| `lower "string"` | Converts the string to lowercase. |
-| `upper "string"` | Converts the string to uppercase. |
-| `slice "string" integer (integer2)` | Outputs the "string" after cutting/slicing off integer \(numeric\) value of symbols \(actually starting the string's index from integer through integer2\) - e.g. `{{slice "Fox runs" 2}}`outputs `x runs`. When using also integer2 - e.g. `{{slice "Fox runs" 1 7 }}`, it outputs `ox run`. For slicing whole words, see example in section's [Snippets](templates.md#this-sections-snippets-2).  |
-| `urlescape "string"` | Escapes the string so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21" |
-| `split "string" "sepr"` | Slices given `"string"` to sub-strings separated by `"sepr"`arg and returns new slice/array of the sub-strings. Example in section's [Snippets](templates.md#this-sections-snippets-2). |
-| `title "string"` | Returns string with the first letter of each word capitalized. |
-| `reFind "regex" "string"` | Compares string to regex pattern and returns first match. `{{ reFind "AG" "YAGPDB is cool!" }}`returns `AG` \(regex pattern is case sensitive\). |
-| `reFindAll "regex" "string"` | Adds all regex matches from the string to a slice. Example in section's [Snippets](templates.md#this-sections-snippets-2). |
-| `reFindAllSubmatches "regex" "string"` | Returns whole-pattern matches and also the sub-matches within those matches as slices inside a slice. `{{ reFindAllSubmatches "(?i)y([a-z]+)g" "youngish YAGPDB" }}` returns `[[young oun] [YAG A]]` \(regex pattern here is case insensitive\). |
-| `reReplace "regex" "string1" "string2"` | Replaces string1 contents with string2 at regex match point. `{{ reReplace "I am" "I am cool!" "YAGPDB is" }}`returns  `YAGPDB is cool!` \(regex pattern here is case sensitive\). |
-
-{% hint style="info" %}
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>joinStr &quot;separator&quot; &quot;str1&quot; (arg1)(arg2) &quot;str2&quot; ...</code>
+      </td>
+      <td style="text-align:left">Joins several strings into one, separated by the first arg<code>&quot;separator&quot;</code>,
+        useful for executing commands in templates (e.g.<code>{{joinStr &quot;&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot;}}</code> returns <code>123</code>).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>lower &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Converts the string to lowercase.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>upper &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Converts the string to uppercase.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>slice &quot;string&quot; integer (integer2)</code>
+      </td>
+      <td style="text-align:left">
+        <p>Outputs the &quot;string&quot; after cutting/slicing off integer (numeric)
+          value of symbols (actually starting the string&apos;s index from integer
+          through integer2) - e.g. <code>{{slice &quot;Fox runs&quot; 2}}</code>outputs <code>x runs</code>.
+          When using also integer2 - e.g. <code>{{slice &quot;Fox runs&quot; 1 7 }}</code>,
+          it outputs <code>ox run</code>. For slicing whole words, see example in
+          section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.</p>
+        <p></p>
+        <p><code>slice</code> function is not the same as basic dynamically-sized
+          slice data type discussed in this reference doc.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>urlescape &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Escapes the string so it can be safely placed inside a URL path segment
+        - e.g. &quot;Hello, YAGPDB!&quot; becomes &quot;Hello%2C%20YAGPDB%21&quot;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>split &quot;string&quot; &quot;sepr&quot;</code>
+      </td>
+      <td style="text-align:left">Splits given <code>&quot;string&quot;</code> to substrings separated by <code>&quot;sepr&quot;</code>arg
+        and returns new slice of the substrings between given separator e.g. <code>{{ split &quot;YAG, is cool!&quot; &quot;,&quot; }}</code> returns <code>[YAG  is cool!]</code> slice
+        where <code>YAG</code> is at index 0 and <code>is cool!</code> at index 1.
+        Example also in section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>title &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Returns string with the first letter of each word capitalized.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>reFind &quot;regex&quot; &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Compares string to regex pattern and returns first match. <code>{{ reFind &quot;AG&quot; &quot;YAGPDB is cool!&quot; }}</code>returns <code>AG</code> (regex
+        pattern is case sensitive).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>reFindAll &quot;regex&quot; &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Adds all regex matches from the string to a slice. Example in section&apos;s
+        <a
+        href="templates.md#this-sections-snippets-2">Snippets</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>reFindAllSubmatches &quot;regex&quot; &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Returns whole-pattern matches and also the sub-matches within those matches
+        as slices inside a slice. <code>{{ reFindAllSubmatches &quot;(?i)y([a-z]+)g&quot; &quot;youngish YAGPDB&quot; }} </code>returns<code> [[young oun] [YAG A]] </code>(regex
+        pattern here is case insensitive).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>reReplace &quot;regex&quot; &quot;string1&quot; &quot;string2&quot;</code>
+      </td>
+      <td style="text-align:left">Replaces string1 contents with string2 at regex match point. <code>{{ reReplace &quot;I am&quot; &quot;I am cool!&quot; &quot;YAGPDB is&quot; }}</code>returns <code> YAGPDB is cool!</code> (regex
+        pattern here is case sensitive).</td>
+    </tr>
+  </tbody>
+</table>{% hint style="info" %}
 With regular expression patterns - when using quotes you have to "double-escape" metacharacters starting with backslash or use backquotes/ticks to simplify this. `{{ reFind "\\d+" (toString 42) }}` versus ``{{ reFind `\d+` (toString 42) }}``
 {% endhint %}
 
@@ -655,9 +726,9 @@ Branching using `if` action's pipeline and comparison operators - these operator
   </tbody>
 </table>## Range action
 
-`range`iterates over element values in variety of data structures in pipeline - arrays, slices, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{ else }}` action is used, that section will be executed.  
+`range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{ else }}` action is used, that section will be executed.  
   
-`range` on arrays and slices provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.  
+`range` on slices/arrays provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.  
   
 Like `if`, `range`is concluded with`{{ end }}`action and declared variable scope inside `range` extends to that point.  
 
