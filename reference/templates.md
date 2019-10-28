@@ -2,15 +2,13 @@
 
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
-
-
 {% hint style="warning" %}
 **Put curly brackets around the data you want to formulate as template** like this: `{{ .User.Username }}`
 
 This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure with methods and functions stated below.
 {% endhint %}
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Data passed around template pipeline can be initialized as a variable to capture it &gt; \(_in EBNF syntax\)_ $variable `:=` value. Previously declared variable can also be assigned with new data &gt; $variable `=` value. Variable scope extends to the `{{ end }}` action of the control structure.
 {% endhint %}
 
@@ -467,8 +465,6 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
 | `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
 
-#### 
-
 #### This section's snippets:
 
 * Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message. &gt;
@@ -625,11 +621,11 @@ You can just pass a `userID`of 0 to make it global \(or any other number, but 0 
 | Function | Description |
 | :--- | :--- |
 | `dbSet userID key value` | Sets the value for the specified `key` for the specific `userID` to the specified `value`. `userID` can be any number of type int64.    Values are stored either as of type float64 \(for numbers or hex\) or as varying type in bytes \(for slices, maps, strings etc\) depending on input argument. |
-| `dbSetExpire userID key value ttl` | Same as `dbSet` but with a expiration in seconds \(Note: This does not work with `dbIncr` atm\). |
+| `dbSetExpire userID key value ttl` | Same as `dbSet` but with an expiration in seconds \(Note: This does not work with `dbIncr` atm\). |
 | `dbIncr userID key incrBy`  | Increments the value for specified key for the specified user, if there was no value then it will be set to `incrBy .` Also returns the entry's current, increased value. |
 | `dbGet userID key`  | Retrieves a value from the database for the specified user, this returns DBEntry object. |
 | `dbGetPattern userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in ascending order. |
-| `dbGetPatternReverse userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in descending order. |
+| `dbGetPatternReverse userID pattern amount nSkip` | Retrieves`amount (max 100)`entries from the database in descending order. |
 | `dbDel userID key` | Deletes the specified key for the specified value from the database. |
 | `dbDelByID userID ID` | Deletes database entry by it's ID. |
 | `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
