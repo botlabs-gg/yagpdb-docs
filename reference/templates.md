@@ -33,7 +33,7 @@ To see of what type a variable or function's return is, use printf "%T", for exa
 ## The Dot
 
 The dot `{{ . }}`  encompasses all active data available for templating system.   
-From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot", to the value at the current location in the structure as execution proceeds." Following Methods/Objects like `User/Guild/Member/Channel etc` are all part of that dot-structure and there are some more in table below.
+From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like `User/Guild/Member/Channel etc` are all part of that dot-structure and there are some more in tables below.
 
 | Field | Description |
 | :--- | :--- |
@@ -527,7 +527,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `adjective` | Returns a random adjective. |
 | `range slice/array` | Iterates \(loops\) over the given slice or array and sets successive elements as active data \(the dot\) to be further handled inside the range template. Example usage [here](custom-command-examples.md#range-example). [More in-depth here](templates.md#range-action). |
 | `dict key1 value1 key2 value2 ...` | Creates an unordered collection of key-value pairs, a dictionary so to say. The number of parameters to form key-value pairs must be even. |
-| `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has`.Get "key"` and `.Set "key" "value"` methods that'll allow to capture or change value content from given key.  Example on using those methods in [Snippets](templates.md#miscellaneous-snippets). |
+| `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has`.Get "key"`, `.Del "key"` and `Set "key" "value"` methods that'll allow to capture. delete or change value's content for given key.  Example on using those methods in [Snippets](templates.md#miscellaneous-snippets). |
 | `cslice value1 value2 ...` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
 | `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
 | `in list value` | Returns boolean true/false whether case-sensitive value is in list/slice. `{{ in (cslice "YAGPDB" "is cool") "yagpdb" }}` returns `false`. |
@@ -776,7 +776,7 @@ Outer-scope $x len however: {{ len $x }}
 * `{{ $a := (exec "catfact") }}` Saves the response of the `catfact` ****command to variable `$a`. 
 * `{{ $allArgs := (joinStr " " .CmdArgs) }}` Saves all the arguments after trigger to a variable `$allArgs`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
-* To demonstrate usage of sdict methods .Get and .Set.  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }}` to add to that `sdict`, simply use `.Set` again &gt;  `{{ $x.Set "YAGPDB" "is cool!" }} {{ $x }}`
+* To demonstrate usage of sdict methods .Get .Set .Del.  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }} {{ $x.Del "key" }}`to add to that `sdict`, simply use `.Set` again &gt;  `{{ $x.Set "YAGPDB" "is cool!" }} {{ $x }}`
 * To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
