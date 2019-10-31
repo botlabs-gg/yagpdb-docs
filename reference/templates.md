@@ -89,7 +89,9 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       <td style="text-align:left">Same as <code>pastUsernames</code>.</td>
     </tr>
   </tbody>
-</table>## Guild / Server
+</table>[User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
+
+## Guild / Server
 
 | Field | Description |
 | :--- | :--- |
@@ -105,6 +107,8 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
 | .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For exampe `{{ len .Server.Roles }}` gives you how many roles are there in that guild. |
+
+[Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
 
 ## Member
 
@@ -144,7 +148,9 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       <td style="text-align:left">Returns the count of online bots.</td>
     </tr>
   </tbody>
-</table>## Channel
+</table>[Member object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-member-object).
+
+## Channel
 
 | Field | Description |
 | :--- | :--- |
@@ -157,6 +163,8 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | Function | Description |
 | :--- | :--- |
 | `editChannelName  channel "newName"` | Function that edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. For example  &gt;`{{ editChannelName nil (joinStr "" "YAG - " (randInt 1000) ) }}` |
+
+[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
 
 ## Message
 
@@ -175,6 +183,8 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{ index .Args 0 }}`.  |
 | .CmdArgs | List of all the arguments passed after `.Cmd` \(`.Cmd` is the actual trigger\) `.CmdArgs` is a slice of type string. Examples in [misc. snippets](templates.md#miscellaneous-snippets). |
 | .StrippedMsg | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bare in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
+
+[Message object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#message-object).
 
 {% hint style="info" %}
 More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
@@ -216,7 +226,9 @@ This is available and part of the dot when reaction trigger type is used.
         removed.</td>
     </tr>
   </tbody>
-</table>## Time
+</table>[Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).
+
+## Time
 
 Time in general uses Golang's time package library &gt; [https://golang.org/pkg/time/\#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here &gt; [https://gobyexample.com/time](https://gobyexample.com/time).
 
