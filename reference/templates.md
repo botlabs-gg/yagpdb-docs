@@ -169,7 +169,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Message.Attachments | Attachments to this message \(slice of attachment objects\). |
 | .Message.Embeds | Embeds on this message \(slice of embed objects\). |
 | .Message.Mentions | Users this message mentions. |
-| .Message.Reactions | Reactions on this message \(only available form getMessage\). |
+| .Message.Reactions | Reactions on this message \(only available from getMessage\). |
 | .Message.Content | Text content on this message. |
 | .Args | List of everything that is passed to .Message.Content. .Args is a slice of type string. |
 | .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{ index .Args 0 }}`.  |
@@ -616,6 +616,8 @@ Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches
 Keys can be max 256 bytes long and has to be strings or numbers. Values can be anything, but if they go above 100KB they will be truncated.
 
 You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\).  
+  
+There can be 10 database interactions per CC, out of which dbTop/BottomEntries, dbCount and dbGetPattern may be only run once \(50,10 for premium users\).  
   
 [Example here](custom-command-examples.md#database-example).
 
