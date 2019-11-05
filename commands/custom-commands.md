@@ -10,12 +10,13 @@ To create your first custom command, go to the control panel and select your ser
 
 ### Trigger Types
 
-* **Command**: With this trigger, the message has to start with the prefix for your server \(`-` by default\) followed by the trigger
-* **Starts with**: When a message starts with your trigger
-* **Contains**: When a message contains your trigger
-* **Regex**: This trigger allows you to use a regex pattern. \(Refer to the [Regex page](../reference/regex.md) for help\)
-* **Exact match**: When the entire message equals your trigger
-* **Hourly interval**: This will trigger after specified time given in hours. User can exclude certain hours and also weekdays. Channel must be selected for this trigger to work.
+* **Command**: With this trigger, the message has to start with the prefix for your server \(`-` by default\) followed by the trigger.
+* **Starts with**: When a message starts with your trigger.
+* **Contains**: When a message contains your trigger.
+* **Regex**: This trigger allows you to use a regex pattern. \(Refer to the [Regex page](../reference/regex.md) for help\).
+* **Exact match**: When the entire message equals your trigger.
+* **Reaction:** CC is triggered by reactions.
+* **Hourly interval**: This wi~~l~~l trigger after specified time given in hours. User can exclude certain hours and also weekdays. Channel must be selected for this trigger to work.
 * **Minute interval**: Like hourly interval, the specified time is just in minutes.
 
 #### Case Sensitivity
@@ -43,7 +44,7 @@ With custom commands there are some limitations:
 * A Custom command itself can't be longer than 10 000 characters \(this is total count of characters and sum of all subset custom command's responses of 20\), also leave/join messages limit is 5000.
 * Custom Commands are limited to 5 userArg calls, 5 exec/execAdmin functions, 10 template function and regex calls.
 
-## Advance Custom Commands 
+## Advanced Custom Commands 
 
 {% hint style="info" %}
 Some basic coding knowledge may be required to use some of these features. 
