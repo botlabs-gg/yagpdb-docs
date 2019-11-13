@@ -76,8 +76,8 @@ Next, we'll take a look at this more lavish example:
 If you try to copy and paste this command you will fail as I added line breaks to make it a bit clearer. You can find the whole command to copy and paste at the end of this page.
 {% endhint %}
 
-{% code-tabs %}
-{% code-tabs-item title="Custom Command \"embed\"" %}
+{% tabs %}
+{% tab title="Custom Command \"embed\"" %}
 ```go
 {{ $advice := (execAdmin "advice") }}
 {{ $topic := (execAdmin "topic") }}
@@ -102,8 +102,8 @@ If you try to copy and paste this command you will fail as I added line breaks t
 
 {{ sendMessage nil $embed }}
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 In this example, we can ignore lines 1 to 4. I'm just defining some variables there which I am later using in my embed. Line 6 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `joinStr` to join two strings \(text snippets\) together. This is the case because I want to use the `.User.Username` template. cembed takes Strings, so it would convert `{{ .User.Username }}` into {{ .User.Username }} instead of the username of the user. The syntax of `joinStr` is `joinStr "seperator" "string1" "string2"...`, so we're first setting the separator to nothing and then joining our strings "Hello there, ", the username and an exclamation mark.  
 Next, we have the description. We can use markdown of Discord in here. After that object, I define the color. The color is given as integer and you can convert a hex color to it [here](https://www.binaryhexconverter.com/hex-to-decimal-converter).
@@ -124,8 +124,8 @@ Following the fields I have added the author. Again the author object is nested 
 
 If you want to copy this custom command, you can get it from here:
 
-{% code-tabs %}
-{% code-tabs-item title="Example Embed Code" %}
+{% tabs %}
+{% tab title="Example Embed Code" %}
 ```go
 {{ $advice := (execAdmin "advice") }}
 {{ $topic := (execAdmin "topic") }}
@@ -134,8 +134,8 @@ If you want to copy this custom command, you can get it from here:
 {{ $embed := cembed "title" (joinStr "" "Hello there, "  .User.Username "!") "description" "This is an embed in a custom command. To see the code behind it, do `-cc embed`." "color" 4645612 "fields" (cslice (sdict "name" "Advice" "value" $advice "inline" false) (sdict "name" "Topic" "value" $topic "inline" false) (sdict "name" "Cat Fact" "value" $catfact "inline" false) (sdict "name" "Member Count" "value" (toString .Guild.MemberCount) "inline" true) (sdict "name" "Guild Region" "value" .Guild.Region "inline" true) (sdict "name" "Guild ID" "value" (toString .Guild.ID) "inline" true)) "author" (sdict "name" "YAGPDB.xyz!" "url" "https://yagpdb.xyz/manage" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") "thumbnail" (sdict "url" $avatar) "footer" (sdict "text" "YAGPDB.xyz since" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") "timestamp" .Guild.JoinedAt  }}
 {{ sendMessage nil $embed }}
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Display an image 
 

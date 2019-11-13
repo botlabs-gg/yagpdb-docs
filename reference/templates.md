@@ -128,6 +128,11 @@ From official docs &gt; "Execution of the template walks the structure and sets 
   </thead>
   <tbody>
     <tr>
+      <td style="text-align:left"><code>editNickname &quot;newNick&quot;</code>
+      </td>
+      <td style="text-align:left">Edits triggering user&apos;s nickname, argument has to be of type string.</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>getMember</code>
       </td>
       <td style="text-align:left">
@@ -160,11 +165,37 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Channel.Topic | The Topic of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 
-| Function | Description |
-| :--- | :--- |
-| `editChannelName  channel "newName"` | Function that edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. For example  &gt;`{{ editChannelName nil (joinStr "" "YAG - " (randInt 1000) ) }}` |
-
-[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>editChannelName <br />channel &quot;newName&quot;</code>
+      </td>
+      <td style="text-align:left">Function edits channel&apos;s name. <code>channel</code> can be either ID,
+        &quot;name&quot; or even <code>nil</code> if triggered in that channel name
+        change is intended to happen. <code>&quot;newName&quot;</code> has to be
+        of type string. For example &gt;<code>{{ editChannelName nil (joinStr &quot;&quot; &quot;YAG - &quot; (randInt 1000) ) }}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>editChannelTopic channel &quot;newTopic&quot;</code>
+      </td>
+      <td style="text-align:left">
+        <p>Function edits channel&apos;s topic/description. <code>channel</code> can
+          be either ID, &quot;name&quot; or even <code>nil</code> if triggered in that
+          channel name change is intended to happen. <code>&quot;newTopic&quot;</code> has
+          to be of type string. For example &gt;</p>
+        <p><code>{{ editChannelTopic nil &quot;YAG is cool&quot; }}</code>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
 
 ## Message
 
@@ -379,10 +410,15 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>add x y z ...</code>
       </td>
-      <td style="text-align:left">Returns x + y + z + ...., detects first number type; is it integer or
-        float and based on that adds. (use <code>toFloat</code> on the first argument
-        to force floating point math.)<code>{{ add 5 4 3 2 -1 }}</code> sums all
-        these numbers and returns <code>13</code>.</td>
+      <td style="text-align:left">Returns x + y + z + ..., detects first number type; is it integer or float
+        and based on that adds. (use <code>toFloat</code> on the first argument to
+        force floating point math.)<code>{{ add 5 4 3 2 -1 }}</code> sums all these
+        numbers and returns <code>13</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>sub x y z ...</code>
+      </td>
+      <td style="text-align:left">Returns x - y -z - ... Works like add, just subtracts.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>mult x y z ...</code>
