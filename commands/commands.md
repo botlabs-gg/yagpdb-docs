@@ -257,10 +257,12 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">
         <p>(reason)</p>
         <p>(-d:duration)</p>
+        <p>(-ddays:number)</p>
       </td>
       <td style="text-align:left">Bans given member by name mention or ID. Duration sets how long the ban
         lasts, default is in minutes - this can be altered <b><code>-d 2w</code></b> is
-        for two weeks.</td>
+        for two weeks. <code>-ddays</code> switch determines how many days of messages
+        gets deleted - max 7 days.</td>
     </tr>
     <tr>
       <td style="text-align:left">kick</td>

@@ -691,6 +691,7 @@ Ban <User:Mention/ID> [Reason:Text]
 
 ```text
 [-d Duration:Duration]
+[-ddays Number of Days of Messages to Delete (max 7):Whole number]
 ```
 
 ### Kick
