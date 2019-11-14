@@ -509,8 +509,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `deleteResponse time` | Deletes the response after a certain time \(max 86400 seconds\). |
 | `deleteTrigger time` | Deletes the trigger after a certain time \(max 86400 seconds\). |
 | `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and like previous two delete functions, it defaults to 10 seconds, max being 1 day. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
-| `addReactions "👍" "👎"` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
-| `addResponseReactions "👍" "👎"` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
+| `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
+| `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-4). |
 | `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
 
@@ -681,7 +681,7 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
 | `dbDelByID userID ID` | Deletes database entry by it's ID. |
 | `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
 | `dbBottomEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order. |
-| `dbCount (userID)` | Returns count of all database entries which are not expired, and if userID is given, only for that userID. |
+| `dbCount (userID|key)` | Returns the count of all database entries which are not expired. Optional arguments: if `userID` is given, counts entries for that userID or if `key`, then only those keys are counted. |
 
 ### DBEntry
 
