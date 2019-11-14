@@ -130,7 +130,8 @@ From official docs &gt; "Execution of the template walks the structure and sets 
     <tr>
       <td style="text-align:left"><code>editNickname &quot;newNick&quot;</code>
       </td>
-      <td style="text-align:left">Edits triggering user&apos;s nickname, argument has to be of type string.</td>
+      <td style="text-align:left">Edits triggering user&apos;s nickname, argument has to be of type string.
+        YAGPDB must be above the roles user&apos;s having.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>getMember</code>

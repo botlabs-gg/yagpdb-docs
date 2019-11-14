@@ -285,8 +285,7 @@ This command will allow you to give a role to someone, making sure that the role
 
 Trigger type: `Command` Trigger: `giveRoleName`
 
-{% tabs %}
-{% tab title="GiveRole Custom Command" %}
+{% code title="GiveRole Custom Command" %}
 ```go
 {{if eq (len .Args) 3}}
     {{$allowedRoles := (cslice "Patron" "Quality Patron" "Paypal Donors")}}
@@ -302,8 +301,7 @@ Trigger type: `Command` Trigger: `giveRoleName`
     Correct usage of the command: -giverole <target> "<rolename>"
 {{end}}
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ### Broadcast command
 

@@ -179,13 +179,11 @@ The currentTime template is very extensive and can be used for displaying the cu
   
 even more in depth here &gt; [https://golang.org/pkg/time/](https://golang.org/pkg/time/)
 
-{% tabs %}
-{% tab title="As timestamp in an embed" %}
+{% code title="As timestamp in an embed" %}
 ```go
 {{ $embed := cembed "timestamp" currentTime }}
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ```go
 {{/* golang time formating is POSIX form 0 1 2 3 4 5 6 > Mon 2 Jan 15:04:05 2006 (timezone calculation is omitted) */}}
