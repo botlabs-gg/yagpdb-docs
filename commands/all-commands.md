@@ -756,6 +756,7 @@ Clean <User:User Mention> <Num:Whole number>
 [-r Regex:Text]
 [-ma Max age:Duration]
 [-i Regex case insensitive:Switch]
+[-nopin Ignore pinned messages:Switch]
 ```
 
 ### Reason

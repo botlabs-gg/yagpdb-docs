@@ -301,6 +301,7 @@ You may also get more specific help by typing `-help (command)` .
         <p>(-ma: max age)</p>
         <p>(-r:regex)</p>
         <p>(-i:regex case insensitive)</p>
+        <p>(-nopin: Ignore pinned messages)</p>
       </td>
       <td style="text-align:left">Cleans the chat. More in depth <a href="all-commands.md#clean">here</a>.</td>
     </tr>
