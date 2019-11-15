@@ -26,6 +26,7 @@ so make sure no "smart-quotes" are being used.
 {% hint style="success" %}
 "Go is all about type... Type is life." // William Kennedy   
   
+Everything in Go is passed by value, as in C and in all languages descending from C.  
 Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type e.g. `CC #42:24:123 ... error calling lt: incompatible types for comparison` tells you that CC \#42 has an error on line 24 and at entry point position 123 due to different types presented for comparison action.  
   
 To see of what type a variable or function's return is, use printf "%T", for example &gt; `{{ printf "%T" currentTime }}` will output the type `time.Time`.
