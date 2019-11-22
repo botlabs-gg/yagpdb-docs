@@ -294,8 +294,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `toString` | Converts something into a string. Usage: `(toString x)`. |
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
-| `toFloat` | Converts argument \(number or string\) to type float64.  Usage: `(toFloat x)`. |
-| `toDuration` | Converts argument \(number or string\) to type Duration, usable in time operations. Usage:`(toDuration "42")`. Example in section's [Snippets](templates.md#this-sections-snippets-1).  |
+| `toFloat` | Converts argument \(number or string form of a number\) to type float64.  Usage: `(toFloat x)`. |
+| `toDuration` | Converts argument \(number or string form of a number\) to type Duration, usable in time operations. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-1).  |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
 
 #### This section's snippets:
