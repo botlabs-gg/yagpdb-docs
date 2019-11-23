@@ -37,7 +37,7 @@ If you select the**`Require at least one of the`**or**`Only run in the`** Option
 
 With custom commands there are some limitations:
 
-* You can't create more than 100 custom commands \(250 with YAGPDB Premium\)
+* You can't create more than 100 active custom commands \(250 with YAGPDB Premium\)
 * You can't execute more than five commands from a custom command
 * Direct Messages can be only sent with a side note from which server they're coming
 * Custom Command responses can't be longer than 2000 characters \(this is a limitation by discord\)
