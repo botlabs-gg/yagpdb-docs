@@ -196,6 +196,12 @@ From official docs &gt; "Execution of the template walks the structure and sets 
         </p>
       </td>
     </tr>
+    <tr>
+      <td style="text-align:left"><code>getChannel channel</code>
+      </td>
+      <td style="text-align:left">Function returns full channel object of given <code>channel</code> argument
+        which can be either ID or it&apos;s name, and is of type *dstate.ChannelState.</td>
+    </tr>
   </tbody>
 </table>[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
 
