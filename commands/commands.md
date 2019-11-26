@@ -98,9 +98,10 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">mentionrole</td>
       <td style="text-align:left">mrole</td>
       <td style="text-align:left">rolename</td>
-      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(-channel: channelName/ID)</td>
       <td style="text-align:left">Sets a role to mentionable, mentions the role, then sets it back to not
-        mentionable after 10 seconds.</td>
+        mentionable after 10 seconds. -channel switch makes it possible to send
+        a mention to some other channel defined by ID or name.</td>
     </tr>
     <tr>
       <td style="text-align:left">listroles</td>
@@ -367,13 +368,68 @@ You may also get more specific help by typing `-help (command)` .
 
 Everything here starts with automod such as `-automod toggle`
 
-| Command | Aliases | Required Args | Optional Args | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| Rulesets | r, list, l | N/A | N/A |  Lists all rulesets and their status. |
-| Toggle | t | \(ruleset\) | N/A |  Toggles a ruleset on/off. |
-| Logs | log | N/A | \(count:number\)  |  Shows triggered automod rules \(optionally can show number of logged messages\). |
-
-### Fun
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Command</th>
+      <th style="text-align:left">Aliases</th>
+      <th style="text-align:left">Required Args</th>
+      <th style="text-align:left">Optional Args</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Rulesets</td>
+      <td style="text-align:left">r, list, l</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Lists all rulesets and their status.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Toggle</td>
+      <td style="text-align:left">t</td>
+      <td style="text-align:left">(ruleset)</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Toggles a ruleset on/off.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Logs</td>
+      <td style="text-align:left">log</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">(count: number)</td>
+      <td style="text-align:left">Shows triggered automod rules (optionally can show number of logged messages).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ListViolations</td>
+      <td style="text-align:left">Violations/ViolationLogs/
+        <br />VLogs/VLog</td>
+      <td style="text-align:left">(Mention/ID)</td>
+      <td style="text-align:left">
+        <p>(page :numer)</p>
+        <p>(-old)</p>
+      </td>
+      <td style="text-align:left">Lists Violations of specified user -old flag posts oldest violations in
+        first page (from oldest to newest).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ListViolationsCount</td>
+      <td style="text-align:left">
+        <p>ViolationsCount/</p>
+        <p>VCount</p>
+      </td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">
+        <p>(mention/ID)</p>
+        <p>(-ma: duration)</p>
+        <p>(-skip: number)</p>
+      </td>
+      <td style="text-align:left">Lists Violations summary in entire server or of specified user optionally
+        filtered by max violation age. Specify number of violations to skip while
+        fetching using -skip flag ; max entries fetched 500</td>
+    </tr>
+  </tbody>
+</table>### Fun
 
 | Command | Aliases | Required Args | Optional Args | Description |
 | :--- | :--- | :--- | :--- | :--- |

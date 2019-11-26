@@ -102,6 +102,10 @@ Sets a role to mentionable, mentions the role, and then sets it back Requires th
 MentionRole <Role:Text> [Message:Text]
 ```
 
+```text
+[-channel:Channel - Optional channel to send in]
+```
+
 ### ListRoles
 
 List roles, their id's, color hex code, and 'mention everyone' perms \(useful if you wanna double check to make sure you didn't give anyone mention everyone perms that shouldn't have it\)
@@ -891,6 +895,39 @@ Logs [skip:Whole number]
 
 ```text
 [-user :Mention/ID]
+```
+
+### automod ListViolations
+
+**Aliases:**  Violations/ViolationLogs/VLogs/VLog
+
+Lists Violations of specified user /n old flag posts oldest violations in first page \( from oldest to newest \).
+
+**Usage:**
+
+```text
+ListViolations <User:Mention/ID> [Page Number:Whole number]
+```
+
+```text
+[-old Oldest First:Switch]
+```
+
+### automod ListViolationsCount
+
+**Aliases:**  ViolationsCount/VCount
+
+Lists Violations summary in entire server or of specified user optionally filtered by max violation age. Specify number of violations to skip while fetching using -skip flag ; max entries fetched 500
+
+**Usage:**
+
+```text
+ListViolationsCount [User:Mention/ID]
+```
+
+```text
+[-ma Max Violation Age:Duration]
+[-skip Amount Skipped:Whole number]
 ```
 
 ## Rolemenu 🔘
