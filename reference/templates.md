@@ -1,6 +1,6 @@
 # Templates
 
-All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
+All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
 {% hint style="warning" %}
 **Put curly brackets around the data you want to formulate as template** like this: `{{ .User.Username }}`
@@ -293,6 +293,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 ## Functions
 
+Functions are underappreciated. In general, not just in templates. // Rob Pike
+
 ### Type conversion
 
 | Function | Description |
@@ -301,12 +303,12 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
 | `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
 | `toFloat` | Converts argument \(number or string form of a number\) to type float64.  Usage: `(toFloat x)`. |
-| `toDuration` | Converts argument \(number or string form of a number\) to type Duration, usable in time operations. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-1).  |
+| `toDuration` | Converts the argument, number or string to type Duration. Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-1).  |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type string. For example `{{ json .TimeHour }}` outputs type string; before this `.TimeHour` was of type time.Duration. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
 
 #### This section's snippets:
 
-* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ (currentTime.Add (toDuration (mult 12 .TimeHour) ) ).Format "15:04" }}`
+* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ (currentTime.Add (toDuration (mult 12 .TimeHour) ) ).Format "15:04" }}`is the same as`{{ (currentTime.Add (toDuration "12h") ).Format "15:04" }}` or`{{ (currentTime.Add (toDuration 43200000000000) ).Format "15:04" }}`
 
 ### String manipulation
 
