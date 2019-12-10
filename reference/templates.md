@@ -495,7 +495,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>sqrt</code>
       </td>
-      <td style="text-align:left">Returns the square root of a number.
+      <td style="text-align:left">Returns the square root of a number as type float64.
         <br /><code>{{ sqrt 49 }}</code> returns <code>7, {{ sqrt 12.34 | printf &quot;%.4f&quot; }} returns 3.5128</code>
       </td>
     </tr>
