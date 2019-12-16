@@ -584,25 +584,128 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 ### Miscellaneous
 
-| Function | Description |
-| :--- | :--- |
-| `adjective` | Returns a random adjective. |
-| `range slice/array` | Iterates \(loops\) over the given slice or array and sets successive elements as active data \(the dot\) to be further handled inside the range template. Example usage [here](custom-command-examples.md#range-example). [More in-depth here](templates.md#range-action). |
-| `dict key1 value1 key2 value2 ...` | Creates an unordered collection of key-value pairs, a dictionary so to say. The number of parameters to form key-value pairs must be even. |
-| `sdict "key1" "value1" "key2" "value2" ...` |  The same as `dict` but with only string keys and can be used in `cembed`. Has`.Get "key"`, `.Del "key"` and `Set "key" "value"` methods that'll allow to capture. delete or change value's content for given key.  Example on using those methods in [Snippets](templates.md#miscellaneous-snippets). |
-| `cslice value1 value2 ...` | Creates a slice \(similar to array\) that can be used elsewhere \(`cembed` and `sdict` for example\). |
-| `cembed "list of embed values"` | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).  |
-| `in list value` | Returns boolean true/false whether case-sensitive value is in list/slice. `{{ in (cslice "YAGPDB" "is cool") "yagpdb" }}` returns `false`. |
-| `inFold`  | Same as `in`, but is case-insensitive. `{{ inFold (cslice "YAGPDB" "is cool") "yagpdb" }}` returns `true`. |
-| `seq start stop` | Creates a new slice of type integer, beginning from start number, increasing in sequence and ending at stop \(not included\). `{{ seq -4 2 }}` returns a slice `[ -4 -3 -2 0 1 ]`. Sequence's max length is 10 000. |
-| `shuffle list` | Returns a shuffled, randomized version of a list/slice. |
-| `exec "command" "args" "args" "args" ...` | Executes a YAGPDB command \(e.g. reverse, roll, kick etc\) in a custom command. Exec can be run max 5 times per command. If real command returns an embed - exec will return raw data of type embed, so you can use embed fields for better formatting - e.g. `{{ $resp := exec "whois" }} {{ $resp.Title }} Joined at > {{ (index $resp.Fields 4).Value }}` will return the title \(username\#discriminator\) and "Joined at" field's value from `whois` command. |
-| `execAdmin "command" "args" "args" "args" ...` | Functions same way as `exec` but will override any permission requirement \(such as the kick permission to use kick command etc.\). |
-| `parseArgs required_args error_message ...carg` | Checks the arguments for a specific type. [More in depth here](../commands/custom-commands.md#require-arguments) and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
-| `carg "type" "name"` | Defines type of argument for parseArgs. [More in depth](../commands/custom-commands.md#require-arguments) here and an example in [Custom Command Examples.](custom-command-examples.md#parseargs-example) |
-| `sleep seconds` | Pauses execution of template inside custom command for max 60 seconds combined. Argument`seconds`is of type integer. Example in [Snippets](templates.md#miscellaneous-snippets). |
-
-### ExecCC
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>adjective</code>
+      </td>
+      <td style="text-align:left">Returns a random adjective.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>range slice/array</code>
+      </td>
+      <td style="text-align:left">Iterates (loops) over the given slice or array and sets successive elements
+        as active data (the dot) to be further handled inside the range template.
+        Example usage <a href="custom-command-examples.md#range-example">here</a>.
+        <a
+        href="templates.md#range-action">More in-depth here</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dict key1 value1 key2 value2 ...</code>
+      </td>
+      <td style="text-align:left">Creates an unordered collection of key-value pairs, a dictionary so to
+        say. The number of parameters to form key-value pairs must be even.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>sdict &quot;key1&quot; &quot;value1&quot; &quot;key2&quot; &quot;value2&quot; ...</code>
+      </td>
+      <td style="text-align:left">The same as <code>dict</code> but with only string keys and can be used
+        in <code>cembed</code>. Has<code>.Get &quot;key&quot;</code>, <code>.Del &quot;key&quot; </code>and<code> Set &quot;key&quot; &quot;value&quot; </code>methods
+        that&apos;ll allow to capture. delete or change value&apos;s content for
+        given key. Example on using those methods in <a href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>cslice value1 value2 ...</code>
+      </td>
+      <td style="text-align:left">Creates a slice (similar to array) that can be used elsewhere (<code>cembed</code> and <code>sdict</code> for
+        example).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>cembed &quot;list of embed values&quot;</code>
+      </td>
+      <td style="text-align:left">Function to generate embed inside custom command. <a href="../others/custom-embeds.md#embeds-in-custom-commands">More in-depth here</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>in list value</code>
+      </td>
+      <td style="text-align:left">Returns boolean true/false whether case-sensitive value is in list/slice. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>inFold </code>
+      </td>
+      <td style="text-align:left">Same as <code>in</code>, but is case-insensitive. <code>{{ inFold (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>true</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>seq start stop</code>
+      </td>
+      <td style="text-align:left">Creates a new slice of type integer, beginning from start number, increasing
+        in sequence and ending at stop (not included). <code>{{ seq -4 2 }}</code> returns
+        a slice <code>[ -4 -3 -2 0 1 ]</code>. Sequence&apos;s max length is 10
+        000.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>shuffle list</code>
+      </td>
+      <td style="text-align:left">Returns a shuffled, randomized version of a list/slice.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>exec &quot;command&quot; &quot;args&quot; &quot;args&quot; &quot;args&quot; ...</code>
+      </td>
+      <td style="text-align:left">
+        <p>Executes a YAGPDB command (e.g. reverse, roll, kick etc) in a custom command.
+          Exec can be run max 5 times per command. If real command returns an embed
+          - exec will return raw data of type embed, so you can use embed fields
+          for better formatting - e.g. <code>{{ $resp := exec &quot;whois&quot; }} {{ $resp.Title }} Joined at &gt; {{ (index $resp.Fields 4).Value }}</code> will
+          return the title (username#discriminator) and &quot;Joined at&quot; field&apos;s
+          value from <code>whois</code> command.</p>
+        <p>exec syntax is <code>exec &quot;command&quot; arguments</code> - this means
+          you format it the same way as you would type the command regularly, e.g.
+          if you want to clear 2 messages without touching the pinned message &gt; <code>{{ exec &quot;clear 2 -nopin&quot; }}</code>,
+          where <code>&quot;command&quot;</code> part is whole <code>&quot;clear 2 -nopin&quot;</code>.
+          If you change that number inside CC somewhere then you have to use argument
+          part of exec formatting &gt; <code>{{ $x := 2 }} {{ exec &quot;clear&quot; $x &quot;-nopin&quot; }}</code> Here <code>&quot;clear&quot;</code> is
+          the <code>&quot;command&quot;</code> and it is followed by <code>arguments</code>,
+          one variable <code>$x</code> and one string <code>&quot;-nopin&quot;</code>.
+          Last template is the same as <code>{{ exec (joinStr &quot;&quot; &quot;clear &quot; $x &quot; -nopin&quot;) }}</code>(also
+          notice the spaces).</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>execAdmin &quot;command&quot; &quot;args&quot; &quot;args&quot; &quot;args&quot; ...</code>
+      </td>
+      <td style="text-align:left">Functions same way as <code>exec</code> but will override any permission
+        requirement (such as the kick permission to use kick command etc.).</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>parseArgs required_args error_message ...carg</code>
+      </td>
+      <td style="text-align:left">Checks the arguments for a specific type. <a href="../commands/custom-commands.md#require-arguments">More in depth here</a> and
+        an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>carg &quot;type&quot; &quot;name&quot;</code>
+      </td>
+      <td style="text-align:left">Defines type of argument for parseArgs. <a href="../commands/custom-commands.md#require-arguments">More in depth</a> here
+        and an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>sleep seconds</code>
+      </td>
+      <td style="text-align:left">Pauses execution of template inside custom command for max 60 seconds
+        combined. Argument<code>seconds</code>is of type integer. Example in
+        <a
+        href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
+    </tr>
+  </tbody>
+</table>### ExecCC
 
 <table>
   <thead>
