@@ -200,7 +200,9 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       <td style="text-align:left"><code>getChannel channel</code>
       </td>
       <td style="text-align:left">Function returns full channel object of given <code>channel</code> argument
-        which can be either ID or it&apos;s name, and is of type *dstate.ChannelState.</td>
+        which can be either it&apos;s ID, name or <code>nil</code> for triggering
+        channel, and is of type *dstate.ChannelState. For example &gt; <code>{{ (getChannel nil).Name }}</code> returns
+        the name of the channel command was triggered in.</td>
     </tr>
   </tbody>
 </table>[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
@@ -547,7 +549,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 #### This section's snippets:
 
-* `<@{{ .User.ID }}>` Outputs a mention to the user that called the command.
+* `<@{{ .User.ID }}>` Outputs a mention to the user that called the command and is the same as `{{ .User.Mention }}`
 * `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \([lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs\). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
