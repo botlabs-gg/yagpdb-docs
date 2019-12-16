@@ -658,18 +658,20 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>exec &quot;command&quot; &quot;args&quot; &quot;args&quot; &quot;args&quot; ...</code>
       </td>
       <td style="text-align:left">
-        <p>Executes a YAGPDB command (e.g. reverse, roll, kick etc) in a custom command.
-          Exec can be run max 5 times per command. If real command returns an embed
-          - exec will return raw data of type embed, so you can use embed fields
-          for better formatting - e.g. <code>{{ $resp := exec &quot;whois&quot; }} {{ $resp.Title }} Joined at &gt; {{ (index $resp.Fields 4).Value }}</code> will
+        <p>Executes a YAGPDB command (e.g. roll, kick etc) in a custom command. Exec
+          can be run max 5 times per command. If real command returns an embed -
+          exec will return raw data of type embed, so you can use embed fields for
+          better formatting - e.g. <code>{{ $resp := exec &quot;whois&quot; }} {{ $resp.Title }} Joined at &gt; {{ (index $resp.Fields 4).Value }}</code> will
           return the title (username#discriminator) and &quot;Joined at&quot; field&apos;s
           value from <code>whois</code> command.</p>
+        <p></p>
         <p>exec syntax is <code>exec &quot;command&quot; arguments</code> - this means
-          you format it the same way as you would type the command regularly, e.g.
-          if you want to clear 2 messages without touching the pinned message &gt; <code>{{ exec &quot;clear 2 -nopin&quot; }}</code>,
+          you format it the same way as you would type the command regularly, just
+          without the prefix, e.g. if you want to clear 2 messages and avoiding the
+          pinned message &gt; <code>{{ exec &quot;clear 2 -nopin&quot; }}</code>,
           where <code>&quot;command&quot;</code> part is whole <code>&quot;clear 2 -nopin&quot;</code>.
-          If you change that number inside CC somewhere then you have to use argument
-          part of exec formatting &gt; <code>{{ $x := 2 }} {{ exec &quot;clear&quot; $x &quot;-nopin&quot; }}</code> Here <code>&quot;clear&quot;</code> is
+          If you change that number inside CC somewhere then you have to use <code>arguments</code> part
+          of exec formatting &gt; <code>{{ $x := 2 }} {{ exec &quot;clear&quot; $x &quot;-nopin&quot; }}</code> Here <code>&quot;clear&quot;</code> is
           the <code>&quot;command&quot;</code> and it is followed by <code>arguments</code>,
           one variable <code>$x</code> and one string <code>&quot;-nopin&quot;</code>.
           Last template is the same as <code>{{ exec (joinStr &quot;&quot; &quot;clear &quot; $x &quot; -nopin&quot;) }}</code>(also
