@@ -9,7 +9,7 @@ This `{{ ... }}` syntax of having two curly brackets aka braces around context i
 {% endhint %}
 
 {% hint style="warning" %}
-Data passed around template pipeline can be initialized as a variable to capture it &gt; \(_in EBNF syntax\)_ $variable `:=` value. Previously declared variable can also be assigned with new data &gt; $variable `=` value. Variable scope extends to the `{{ end }}` action of the control structure.
+Data passed around template pipeline can be initialized as a variable to capture it &gt; \(_in EBNF syntax\)_ $variable `:=` value. Previously declared variable can also be assigned with new data &gt; $variable `=` value, it has to have a whitespace before it or control panel will error out. Variable scope extends to the `{{ end }}` action of the control structure.
 {% endhint %}
 
 {% hint style="info" %}
