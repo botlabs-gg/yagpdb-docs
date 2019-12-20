@@ -3,18 +3,18 @@
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
 {% hint style="warning" %}
-**Put curly brackets around the data you want to formulate as template** like this: `{{ .User.Username }}`
+**Put curly brackets around the data you want to formulate as template** like this: `{{.User.Username}}`
 
 This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure with methods and functions stated below.
 {% endhint %}
 
 {% hint style="warning" %}
-Data passed around template pipeline can be initialized as a variable to capture it &gt; \(_in EBNF syntax\)_ $variable `:=` value. Previously declared variable can also be assigned with new data &gt; $variable `=` value, it has to have a whitespace before it or control panel will error out. Variable scope extends to the `{{ end }}` action of the control structure.
+Data passed around template pipeline can be initialized as a variable to capture it &gt; \(_in EBNF syntax\)_ $variable `:=` value. Previously declared variable can also be assigned with new data &gt; $variable `=` value, it has to have a whitespace before it or control panel will error out. Variable scope extends to the `{{end}}` action of the control structure.
 {% endhint %}
 
 {% hint style="info" %}
 If you want to join different data objects \(e.g. to wrap toString in joinStr around .Guild.MemberCount\), you use round brackets aka parentheses as delimiters:  
-`{{ joinStr "" "Our member count is " (toString .Guild.MemberCount) "!" }}`
+`{{joinStr "" "Our member count is " (toString .Guild.MemberCount) "!"}}`
 {% endhint %}
 
 {% hint style="info" %}
@@ -71,7 +71,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       </td>
       <td style="text-align:left">
         <p>Function that can be used to retrieve .User object from a mention or userID.</p>
-        <p><code>{{ (userArg .User.ID).Mention }}</code> mentions triggering user.</p>
+        <p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user.</p>
       </td>
     </tr>
     <tr>
@@ -80,7 +80,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       <td style="text-align:left">
         <p>Returns a slice of type <code>[ ]*logs.CCNameChange</code> having fields <code>.Name</code> and <code>.Time</code> of
           previous 15 usernames and skips <code>offset</code> number in that list.</p>
-        <p><code>{{ range pastUsernames .User.ID 0 }} <br />{{ .Name }} - {{ .Time.Format &quot;Jan _2 2006&quot; }} <br />{{ end }}</code> 
+        <p><code>{{range pastUsernames .User.ID 0}} <br />{{.Name}} - {{.Time.Format &quot;Jan _2 2006&quot;}} <br />{{end}}</code> 
         </p>
       </td>
     </tr>
@@ -139,8 +139,8 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       </td>
       <td style="text-align:left">
         <p>Function returns Member object having above methods.</p>
-        <p><code>{{ (getMember .User.ID).JoinedAt }}</code> 
-          <br />is the same as <code>{{ .Member.JoinedAt }}</code>
+        <p><code>{{(getMember .User.ID).JoinedAt}}</code> 
+          <br />is the same as <code>{{.Member.JoinedAt}}</code>
         </p>
       </td>
     </tr>
@@ -181,7 +181,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       <td style="text-align:left">Function edits channel&apos;s name. <code>channel</code> can be either ID,
         &quot;name&quot; or even <code>nil</code> if triggered in that channel name
         change is intended to happen. <code>&quot;newName&quot;</code> has to be
-        of type string. For example &gt;<code>{{ editChannelName nil (joinStr &quot;&quot; &quot;YAG - &quot; (randInt 1000) ) }}</code>
+        of type string. For example &gt;<code>{{editChannelName nil (joinStr &quot;&quot; &quot;YAG - &quot; (randInt 1000))}}</code>
       </td>
     </tr>
     <tr>
@@ -192,7 +192,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
           be either ID, &quot;name&quot; or even <code>nil</code> if triggered in that
           channel name change is intended to happen. <code>&quot;newTopic&quot;</code> has
           to be of type string. For example &gt;</p>
-        <p><code>{{ editChannelTopic nil &quot;YAG is cool&quot; }}</code>
+        <p><code>{{editChannelTopic nil &quot;YAG is cool&quot;}}</code>
         </p>
       </td>
     </tr>
@@ -201,7 +201,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       </td>
       <td style="text-align:left">Function returns full channel object of given <code>channel</code> argument
         which can be either it&apos;s ID, name or <code>nil</code> for triggering
-        channel, and is of type *dstate.ChannelState. For example &gt; <code>{{ (getChannel nil).Name }}</code> returns
+        channel, and is of type *dstate.ChannelState. For example &gt; <code>{{(getChannel nil).Name}}</code> returns
         the name of the channel command was triggered in.</td>
     </tr>
   </tbody>
@@ -221,7 +221,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Message.Reactions | Reactions on this message \(only available from getMessage\). |
 | .Message.Content | Text content on this message. |
 | .Args | List of everything that is passed to .Message.Content. .Args is a slice of type string. |
-| .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{ index .Args 0 }}`.  |
+| .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{index .Args 0}}`.  |
 | .CmdArgs | List of all the arguments passed after `.Cmd` \(`.Cmd` is the actual trigger\) `.CmdArgs` is a slice of type string. Examples in [misc. snippets](templates.md#miscellaneous-snippets). |
 | .StrippedMsg | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bare in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
 
@@ -256,7 +256,7 @@ This is available and part of the dot when reaction trigger type is used.
       <td style="text-align:left">.ReactionMessage</td>
       <td style="text-align:left">
         <p>Returns the message object reaction was added to.</p>
-        <p><code>{{ range .ReactionMessage.Reactions }}<br />{{ .Count }} - {{ .Emoji.Name }} <br />{{ end }}</code>
+        <p><code>{{range .ReactionMessage.Reactions}}<br />{{.Count}} - {{.Emoji.Name}} <br />{{end}}</code>
         </p>
         <p>Returns emoji count and their name.</p>
       </td>
@@ -282,17 +282,17 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | Function | Description |
 | :--- | :--- |
 | `currentTime` | Gets the current time, value is of type time; which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template). |
-| `formatTime Time "arg"` | Outputs given time in RFC822 formatting, first argument `Time` shows it needs to be of type time, also with extra layout if second argument is given - e.g. `{{ formatTime currentUserCreated "3:04PM" }}` would output `11:22AM` if that would have been user's creating time. |
-| `humanizeDurationHours` | Returns `nanoseconds` argument of type int64 in human readable format - as how long it would take to get towards given time - e.g. `{{ humanizeDurationHours 9000000000000000000 }}` returns `285 years 20 weeks 6 days and 16 hours`. More in [snippets](templates.md#this-sections-snippets). |
-| `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{ humanizeDurationMinutes 3500000000000 }}` would return `58 minutes`. |
-| `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{ humanizeDurationSeconds 3500000000000 }}` would return `58 minutes and 20 seconds`. |
-| `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{ humanizeTimeSinceDays currentUserCreated }}` |
-| `newDate year month day hour minute second` | Returns new time object in UTC using following syntax... all arguments need to be of type int, for example &gt; `{{ humanizeDurationHours ( (newDate 2059 1 2 12 34 56).Sub currentTime) }}` will give you how much time till year 2059 January 2nd 12:34:56. More examples in [snippets](templates.md#this-sections-snippets).  |
+| `formatTime Time "arg"` | Outputs given time in RFC822 formatting, first argument `Time` shows it needs to be of type time, also with extra layout if second argument is given - e.g. `{{formatTime currentUserCreated "3:04PM"}}` would output `11:22AM` if that would have been user's creating time. |
+| `humanizeDurationHours` | Returns `nanoseconds` argument of type int64 in human readable format - as how long it would take to get towards given time - e.g. `{{humanizeDurationHours 9000000000000000000}}` returns `285 years 20 weeks 6 days and 16 hours`. More in [snippets](templates.md#this-sections-snippets). |
+| `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{humanizeDurationMinutes 3500000000000}}` would return `58 minutes`. |
+| `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{humanizeDurationSeconds 3500000000000}}` would return `58 minutes and 20 seconds`. |
+| `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{humanizeTimeSinceDays currentUserCreated}}` |
+| `newDate year month day hour minute second` | Returns new time object in UTC using following syntax... all arguments need to be of type int, for example &gt; `{{humanizeDurationHours ((newDate 2059 1 2 12 34 56).Sub currentTime)}}` will give you how much time till year 2059 January 2nd 12:34:56. More examples in [snippets](templates.md#this-sections-snippets).  |
 
 #### This section's snippets:
 
-* To demonstrate humanizeDurationHours and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_. `{{ humanizeDurationHours (currentTime.Sub .Member.JoinedAt.Parse) }}`
-* To demonstrate newDate to get Epoch times. `{{ $unixEpoch := newDate 1970 1 1 0 0 0 }} in seconds > {{ $unixEpoch.Unix }} {{ $discordEpoch := newDate 2015 1 1 0 0 0 }} in seconds > {{ $discordEpoch.Unix }}`
+* To demonstrate humanizeDurationHours and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_. `{{humanizeDurationHours (currentTime.Sub .Member.JoinedAt.Parse)}}`
+* To demonstrate newDate to get Epoch times. `{{$unixEpoch := newDate 1970 1 1 0 0 0}} in seconds > {{$unixEpoch.Unix}} {{$discordEpoch := newDate 2015 1 1 0 0 0}} in seconds > {{$discordEpoch.Unix}}`
 
 ## Functions
 
@@ -311,7 +311,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 
 #### This section's snippets:
 
-* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{ (currentTime.Add (toDuration (mult 12 .TimeHour) ) ).Format "15:04" }}`is the same as`{{ (currentTime.Add (toDuration "12h") ).Format "15:04" }}` or`{{ (currentTime.Add (toDuration 43200000000000) ).Format "15:04" }}`
+* To demonstrate toDuration, outputs 12 hours from current time in UTC. `{{(currentTime.Add (toDuration (mult 12 .TimeHour))).Format "15:04"}}`is the same as`{{(currentTime.Add (toDuration "12h")).Format "15:04"}}` or`{{(currentTime.Add (toDuration 43200000000000)).Format "15:04"}}`
 
 ### String manipulation
 
@@ -346,7 +346,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
         <p>Outputs the &quot;string&quot; after cutting/slicing off integer (numeric)
           value of symbols (actually starting the string&apos;s index from integer
           through integer2) - e.g. <code>{{slice &quot;Fox runs&quot; 2}}</code>outputs <code>x runs</code>.
-          When using also integer2 - e.g. <code>{{slice &quot;Fox runs&quot; 1 7 }}</code>,
+          When using also integer2 - e.g. <code>{{slice &quot;Fox runs&quot; 1 7}}</code>,
           it outputs <code>ox run</code>. For slicing whole words, see example in
           section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.</p>
         <p></p>
@@ -364,7 +364,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
       <td style="text-align:left"><code>split &quot;string&quot; &quot;sepr&quot;</code>
       </td>
       <td style="text-align:left">Splits given <code>&quot;string&quot;</code> to substrings separated by <code>&quot;sepr&quot;</code>arg
-        and returns new slice of the substrings between given separator e.g. <code>{{ split &quot;YAG, is cool!&quot; &quot;,&quot; }}</code> returns <code>[YAG  is cool!]</code> slice
+        and returns new slice of the substrings between given separator e.g. <code>{{split &quot;YAG, is cool!&quot; &quot;,&quot;}}</code> returns <code>[YAG  is cool!]</code> slice
         where <code>YAG</code> is at index 0 and <code>is cool!</code> at index 1.
         Example also in section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.</td>
     </tr>
@@ -376,7 +376,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
     <tr>
       <td style="text-align:left"><code>reFind &quot;regex&quot; &quot;string&quot;</code>
       </td>
-      <td style="text-align:left">Compares string to regex pattern and returns first match. <code>{{ reFind &quot;AG&quot; &quot;YAGPDB is cool!&quot; }}</code>returns <code>AG</code> (regex
+      <td style="text-align:left">Compares string to regex pattern and returns first match. <code>{{reFind &quot;AG&quot; &quot;YAGPDB is cool!&quot;}}</code>returns <code>AG</code> (regex
         pattern is case sensitive).</td>
     </tr>
     <tr>
@@ -390,25 +390,25 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
       <td style="text-align:left"><code>reFindAllSubmatches &quot;regex&quot; &quot;string&quot;</code>
       </td>
       <td style="text-align:left">Returns whole-pattern matches and also the sub-matches within those matches
-        as slices inside a slice. <code>{{ reFindAllSubmatches &quot;(?i)y([a-z]+)g&quot; &quot;youngish YAGPDB&quot; }} </code>returns<code> [[young oun] [YAG A]] </code>(regex
+        as slices inside a slice. <code>{{reFindAllSubmatches &quot;(?i)y([a-z]+)g&quot; &quot;youngish YAGPDB&quot;}} </code>returns<code> [[young oun] [YAG A]] </code>(regex
         pattern here is case insensitive).</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>reReplace &quot;regex&quot; &quot;string1&quot; &quot;string2&quot;</code>
       </td>
-      <td style="text-align:left">Replaces string1 contents with string2 at regex match point. <code>{{ reReplace &quot;I am&quot; &quot;I am cool!&quot; &quot;YAGPDB is&quot; }}</code>returns <code> YAGPDB is cool!</code> (regex
+      <td style="text-align:left">Replaces string1 contents with string2 at regex match point. <code>{{reReplace &quot;I am&quot; &quot;I am cool!&quot; &quot;YAGPDB is&quot;}}</code>returns <code> YAGPDB is cool!</code> (regex
         pattern here is case sensitive).</td>
     </tr>
   </tbody>
 </table>{% hint style="info" %}
-With regular expression patterns - when using quotes you have to "double-escape" metacharacters starting with backslash or use backquotes/ticks to simplify this. `{{ reFind "\\d+" (toString 42) }}` versus ``{{ reFind `\d+` (toString 42) }}``
+With regular expression patterns - when using quotes you have to "double-escape" metacharacters starting with backslash or use backquotes/ticks to simplify this. `{{reFind "\\d+" (toString 42)}}` versus ``{{reFind `\d+` (toString 42)}}``
 {% endhint %}
 
 #### This section's snippets:
 
-* `{{ $args:= (joinStr " " (slice .CmdArgs 1) ) }}` Saves all the arguments except the first one to a variable `$args`. 
-* To demonstrate usage of split function. &gt; `{{ $x := "Hello, World, YAGPDB, here!" }} {{ range $k, $v := (split $x ", ") }}Word {{ $k }}: __{{ $v }}__ {{ end }}`
-* To demonstrate usage of reFindAll. &gt;  `Before regex: {{ $msg := "1 YAGPDB and over 100000 servers conqured." }} {{ $re2 := reFindAll "[0-9]+" $msg }} {{ $msg }}   After regex matches: {{ joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
+* `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
+* To demonstrate usage of split function. &gt; `{{$x := "Hello, World, YAGPDB, here!"}} {{range $k, $v := (split $x ", ")}}Word {{$k}}: __{{$v}}__ {{end}}`
+* To demonstrate usage of reFindAll. &gt;  `Before regex: {{$msg := "1 YAGPDB and over 100000 servers conqured."}} {{$re2 := reFindAll "[0-9]+" $msg}} {{$msg}}   After regex matches: {{joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
 
 ### Math functions
 
@@ -425,7 +425,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
       <td style="text-align:left">Returns x + y + z + ..., detects first number type; is it integer or float
         and based on that adds. (use <code>toFloat</code> on the first argument to
-        force floating point math.)<code>{{ add 5 4 3 2 -1 }}</code> sums all these
+        force floating point math.)<code>{{add 5 4 3 2 -1}}</code> sums all these
         numbers and returns <code>13</code>.</td>
     </tr>
     <tr>
@@ -437,14 +437,14 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>mult x y z ...</code>
       </td>
       <td style="text-align:left">Multiplication, like <code>add</code> or <code>div</code>, detects first
-        number type. <code>{{ mult 3.14 2 }}</code> returns <code>6.28</code>
+        number type. <code>{{mult 3.14 2}}</code> returns <code>6.28</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left"><code>div x y z ...</code>
       </td>
       <td style="text-align:left">Division, like <code>add</code> or <code>mult</code>, detects number type
-        first. <code>{{ div 11 3 }}</code> returns <code>3</code> whereas <code>{{ div 11.1 3 }}</code> returns <code>3.6999999999999997</code>
+        first. <code>{{div 11 3}}</code> returns <code>3</code> whereas <code>{{div 11.1 3}}</code> returns <code>3.6999999999999997</code>
       </td>
     </tr>
     <tr>
@@ -480,32 +480,32 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>roundCeil</code>
       </td>
       <td style="text-align:left">Returns the least integer value greater than or equal to input or rounds
-        up. <code>{{ roundCeil 1.1 }}</code> returns <code>2</code>.</td>
+        up. <code>{{roundCeil 1.1}}</code> returns <code>2</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>roundFloor</code>
       </td>
       <td style="text-align:left">Returns the greatest integer value less than or equal to input or rounds
-        down. <code>{{ roundFloor 1.9 }}</code> returns <code>1</code>.</td>
+        down. <code>{{roundFloor 1.9}}</code> returns <code>1</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>roundEven </code>
       </td>
       <td style="text-align:left">Returns the nearest integer, rounding ties to even.
-        <br /><code>{{ roundEven 10.5 }}</code> returns <code>10 {{ roundEven 11.5 }}</code> returns <code>12</code>.</td>
+        <br /><code>{{roundEven 10.5}}</code> returns <code>10 {{roundEven 11.5}}</code> returns <code>12</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>sqrt</code>
       </td>
       <td style="text-align:left">Returns the square root of a number as type float64.
-        <br /><code>{{ sqrt 49 }}</code> returns <code>7, {{ sqrt 12.34 | printf &quot;%.4f&quot; }} returns 3.5128</code>
+        <br /><code>{{sqrt 49}}</code> returns <code>7, {{sqrt 12.34 | printf &quot;%.4f&quot;}} returns 3.5128</code>
       </td>
     </tr>
   </tbody>
 </table>#### This section's snippets:
 
-* `{{ $d := randInt 10 }}` Stores random int into variable `$d` \(a random number from 0-9\).
-* To demonstrate rounding float to 2 decimal places. `{{ div (round (mult 12.3456 100) ) 100 }}` returns 12.35 `{{ div (roundFloor (mult  12.3456 100) ) 100 }}` returns 12.34
+* `{{$d := randInt 10}}` Stores random int into variable `$d` \(a random number from 0-9\).
+* To demonstrate rounding float to 2 decimal places. `{{div (round (mult 12.3456 100)) 100}}` returns 12.35 `{{div (roundFloor (mult  12.3456 100)) 100}}` returns 12.34
 
 ### Message functions
 
@@ -531,9 +531,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 * Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message. &gt;
 
-  `{{ $x := sendMessageRetID nil "Hello there!" }} {{ addMessageReactions nil $x "👍" "👎" }} {{ deleteMessage nil $x 5 }}`
+  `{{$x := sendMessageRetID nil "Hello there!"}} {{addMessageReactions nil $x "👍" "👎"}} {{deleteMessage nil $x 5}}`
 
-* To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
+* To demonstrate sleep and slightly also editMessage functions. &gt; `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 5}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
 
 ### Mentions
 
@@ -549,11 +549,11 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 #### This section's snippets:
 
-* `<@{{ .User.ID }}>` Outputs a mention to the user that called the command and is the same as `{{ .User.Mention }}`
+* `<@{{.User.ID}}>` Outputs a mention to the user that called the command and is the same as `{{.User.Mention}}`
 * `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
-* `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \([lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs\). This is usable for example with `{{ sendMessageNoEscape nil "Welcome to role <@&11111111...>" }}`. Mentioning that role has to be enabled server- side in Discord.
-* To demonstrate usage of escapeEveryoneHere. &gt; `{{ $x := "@here Hello World! @everyone" }} {{ sendMessage nil $x }} {{ sendMessageNoEscape nil $x }} {{ sendMessageNoEscape nil (escapeEveryoneHere $x) }}`
+* `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \([lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs\). This is usable for example with `{{sendMessageNoEscape nil "Welcome to role <@&11111111...>"}}`. Mentioning that role has to be enabled server- side in Discord.
+* To demonstrate usage of escapeEveryoneHere. &gt; `{{$x := "@here Hello World! @everyone"}} {{sendMessage nil $x}} {{sendMessageNoEscape nil $x}} {{sendMessageNoEscape nil (escapeEveryoneHere $x)}}`
 
 ### Role functions
 
@@ -572,7 +572,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 #### This section's snippets:
 
-* To demonstrate usage of targetHasRoleID. &gt;  `{{ $x := (userArg (index .Args 1) ).ID }} {{ if targetHasRoleID $x ############ }} Has the Role! {{ else }} Does not have the role! {{ end }}`
+* To demonstrate usage of targetHasRoleID. &gt;  `{{$x := (userArg (index .Args 1)).ID}} {{if targetHasRoleID $x ############}} Has the Role! {{else}} Does not have the role! {{end}}`
 
 ### Current User
 
@@ -639,13 +639,13 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>inFold </code>
       </td>
-      <td style="text-align:left">Same as <code>in</code>, but is case-insensitive. <code>{{ inFold (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>true</code>.</td>
+      <td style="text-align:left">Same as <code>in</code>, but is case-insensitive. <code>{{inFold (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot;}}</code> returns <code>true</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>seq start stop</code>
       </td>
       <td style="text-align:left">Creates a new slice of type integer, beginning from start number, increasing
-        in sequence and ending at stop (not included). <code>{{ seq -4 2 }}</code> returns
+        in sequence and ending at stop (not included). <code>{{seq -4 2}}</code> returns
         a slice <code>[ -4 -3 -2 0 1 ]</code>. Sequence&apos;s max length is 10
         000.</td>
     </tr>
@@ -661,20 +661,20 @@ With regular expression patterns - when using quotes you have to "double-escape"
         <p>Executes a YAGPDB command (e.g. roll, kick etc) in a custom command. Exec
           can be run max 5 times per command. If real command returns an embed -
           exec will return raw data of type embed, so you can use embed fields for
-          better formatting - e.g. <code>{{ $resp := exec &quot;whois&quot; }} {{ $resp.Title }} Joined at &gt; {{ (index $resp.Fields 4).Value }}</code> will
+          better formatting - e.g. <code>{{$resp := exec &quot;whois&quot;}} {{$resp.Title}} Joined at &gt; {{(index $resp.Fields 4).Value}}</code> will
           return the title (username#discriminator) and &quot;Joined at&quot; field&apos;s
           value from <code>whois</code> command.</p>
         <p></p>
         <p>exec syntax is <code>exec &quot;command&quot; arguments</code> - this means
           you format it the same way as you would type the command regularly, just
           without the prefix, e.g. if you want to clear 2 messages and avoiding the
-          pinned message &gt; <code>{{ exec &quot;clear 2 -nopin&quot; }}</code>,
-          where <code>&quot;command&quot;</code> part is whole <code>&quot;clear 2 -nopin&quot;</code>.
-          If you change that number inside CC somewhere then you have to use <code>arguments</code> part
-          of exec formatting &gt; <code>{{ $x := 2 }} {{ exec &quot;clear&quot; $x &quot;-nopin&quot; }}</code> Here <code>&quot;clear&quot;</code> is
+          pinned message &gt; <code>{{exec &quot;clear 2 -nopin&quot;}}</code>, where <code>&quot;command&quot;</code> part
+          is whole <code>&quot;clear 2 -nopin&quot;</code>. If you change that number
+          inside CC somewhere then you have to use <code>arguments</code> part of exec
+          formatting &gt; <code>{{$x := 2}} {{exec &quot;clear&quot; $x &quot;-nopin&quot;}}</code> Here <code>&quot;clear&quot;</code> is
           the <code>&quot;command&quot;</code> and it is followed by <code>arguments</code>,
           one variable <code>$x</code> and one string <code>&quot;-nopin&quot;</code>.
-          Last template is the same as <code>{{ exec (joinStr &quot;&quot; &quot;clear &quot; $x &quot; -nopin&quot;) }}</code>(also
+          Last template is the same as <code>{{exec (joinStr &quot;&quot; &quot;clear &quot; $x &quot; -nopin&quot;)}}</code>(also
           notice the spaces).</p>
       </td>
     </tr>
@@ -829,19 +829,19 @@ Branching using `if` action's pipeline and comparison operators - these operator
     <tr>
       <td style="text-align:left">if</td>
       <td style="text-align:left">
-        <p><code>{{ if (condition) }} output {{ end }}</code>
+        <p><code>{{if (condition)}} output {{end}}</code>
         </p>
         <p>Initialization statement can also be inside <code>if</code> statement with
           conditional statement, limiting the initialized scope to that <code>if</code> statement.
           <br
-          /><code>{{ $x := 24 }} <br />{{ if eq ($x := 42) 42 }} Inside: {{ $x }} {{ end }} <br />Outside: {{ $x }}</code>
+          /><code>{{$x := 24}} <br />{{if eq ($x := 42) 42}} Inside: {{$x}} {{end}} <br />Outside: {{$x}}</code>
         </p>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">else if</td>
       <td style="text-align:left">
-        <p><code>{{ if (condition) }} output1 {{ else if (condition) }} output2 {{ end }}</code>
+        <p><code>{{if (condition)}} output1 {{else if (condition)}} output2 {{end}}</code>
         </p>
         <p>You can have as many<code>else if</code>statements as many different conditionals
           you have.</p>
@@ -849,59 +849,59 @@ Branching using `if` action's pipeline and comparison operators - these operator
     </tr>
     <tr>
       <td style="text-align:left">else</td>
-      <td style="text-align:left"><code>{{ if (condition) }} output1 {{ else }} output2 {{ end }}</code>
+      <td style="text-align:left"><code>{{if (condition)}} output1 {{else}} output2 {{end}}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">not</td>
-      <td style="text-align:left"><code>{{ if not (condition) }} output {{ end }}</code>
+      <td style="text-align:left"><code>{{if not (condition)}} output {{end}}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">and</td>
-      <td style="text-align:left"><code>{{ if and (cond1) (cond2) (cond3) }} output {{ end }}</code>
+      <td style="text-align:left"><code>{{if and (cond1) (cond2) (cond3)}} output {{end}}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">or</td>
-      <td style="text-align:left"><code>{{ if or (cond1) (cond2) (cond3) }} output {{ end }}</code>
+      <td style="text-align:left"><code>{{if or (cond1) (cond2) (cond3)}} output {{end}}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">Equal: eq</td>
-      <td style="text-align:left"><code>{{ if eq .Channel.ID ######## }} output {{ end }}</code>
+      <td style="text-align:left"><code>{{if eq .Channel.ID ########}} output {{end}}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">Not equal: ne</td>
-      <td style="text-align:left"><code>{{ $x := 7 }} {{ $y := 8 }} {{ ne $x $y }}</code> returns true</td>
+      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{ne $x $y}}</code> returns true</td>
     </tr>
     <tr>
       <td style="text-align:left">Less than: lt</td>
-      <td style="text-align:left"><code>{{ if lt (len .Args) 5 }} output {{ end }}</code>
+      <td style="text-align:left"><code>{{if lt (len .Args) 5}} output {{end}}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">Less than or equal: le</td>
-      <td style="text-align:left"><code>{{ $x := 7 }} {{ $y := 8 }} {{ le $x $y }}</code> returns true</td>
+      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{le $x $y}}</code> returns true</td>
     </tr>
     <tr>
       <td style="text-align:left">Greater than: gt</td>
-      <td style="text-align:left"><code>{{ if gt (len .Args) 1 }} output {{ end }}</code>
+      <td style="text-align:left"><code>{{if gt (len .Args) 1}} output {{end}}</code>
       </td>
     </tr>
     <tr>
       <td style="text-align:left">Greater than or equal: ge</td>
-      <td style="text-align:left"><code>{{ $x := 7 }} {{ $y := 8 }} {{ ge $x $y }}</code> returns false</td>
+      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{ge $x $y}}</code> returns false</td>
     </tr>
   </tbody>
 </table>## Range action
 
-`range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{ else }}` action is used, that section will be executed.  
+`range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.  
   
 `range` on slices/arrays provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.  
   
-Like `if`, `range`is concluded with`{{ end }}`action and declared variable scope inside `range` extends to that point.  
+Like `if`, `range`is concluded with`{{end}}`action and declared variable scope inside `range` extends to that point.  
 
 
 ```go
@@ -918,11 +918,11 @@ Like `if`, `range`is concluded with`{{ end }}`action and declared variable scope
 
 ## With action
 
-`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{ else }}` is used, that branch is executed instead.   
+`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{else}}` is used, that branch is executed instead.   
   
 Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure, these fields do not exists and template will error out.
 
-Like `if` and `range` actions, `with` is concluded using `{{ end }}` and variable scope extends to that point.
+Like `if` and `range` actions, `with` is concluded using `{{end}}` and variable scope extends to that point.
 
 ```go
 {{/* Shows the scope and how dot is affected by object's value in pipeline */}}
@@ -937,17 +937,17 @@ Outer-scope $x len however: {{ len $x }}
 
 ## Miscellaneous snippets
 
-* `{{ if hasRoleName "funrole" }} Has role funrole {{ end }}`This will only respond if the member has a role with name "funrole" .
-* `{{ if gt (len .Args) 0 }} {{ index .Args 1 }} {{ end }}`Assuming your trigger is a command, will display your first input if input was given.
-* `{{ if eq .Channel.ID ####### }} YAG! {{ end }}`Will only show `YAG!` if ChannelID is \#\#\#\#\#.
-* `{{ if ne .User.ID ####### }} YAG! {{ end }}`Will ignore if user ID equal to \#\#\#\#\# uses command.
-* `{{ addReactions .CmdArgs }}` Adds the emoji following a trigger as reactions.
-* `{{ $a := (exec "catfact") }}` Saves the response of the `catfact` ****command to variable `$a`. 
-* `{{ $allArgs := (joinStr " " .CmdArgs) }}` Saves all the arguments after trigger to a variable `$allArgs`. 
+* `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only respond if the member has a role with name "funrole" .
+* `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}`Assuming your trigger is a command, will display your first input if input was given.
+* `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` if ChannelID is \#\#\#\#\#.
+* `{{if ne .User.ID #######}} YAG! {{end}}`Will ignore if user ID equal to \#\#\#\#\# uses command.
+* `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
+* `{{$a := (exec "catfact")}}` Saves the response of the `catfact` ****command to variable `$a`. 
+* `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the arguments after trigger to a variable `$allArgs`. 
 * `{{/* this is a comment */}}`For commenting something inside a template, use this syntax. May contain newlines. Comments do not nest and they start and end at the the delimiters. 
 * To trim spaces, for example &gt;`{{- /* this is a multi-line  comment with white space trimmed from  preceding and following text */ -}}` Using`{{- ... -}}` is also handy inside`range` actions, because white spaces and newlines are rendered there as output.
-* To demonstrate usage of sdict methods .Get .Set .Del.  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }} {{ $x.Del "key" }}`to add to that `sdict`, simply use `.Set` again &gt;  `{{ $x.Set "YAGPDB" "is cool!" }} {{ $x }}`
-* To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
+* To demonstrate usage of sdict methods .Get .Set .Del.  &gt;  `{{$x := sdict "key" "value"}} {{$x.Get "key"}} {{$x.Set "key" "eulav"}} {{$x.Get "key"}} {{$x.Del "key"}}`to add to that `sdict`, simply use `.Set` again &gt;  `{{$x.Set "YAGPDB" "is cool!"}} {{$x}}`
+* To demonstrate sleep and slightly also editMessage functions. &gt; `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 5}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
 
 ## How to get IDs <a id="how-to-get-ids"></a>
 
