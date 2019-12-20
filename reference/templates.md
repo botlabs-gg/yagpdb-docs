@@ -616,8 +616,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>sdict &quot;key1&quot; &quot;value1&quot; &quot;key2&quot; &quot;value2&quot; ...</code>
       </td>
       <td style="text-align:left">The same as <code>dict</code> but with only string keys and can be used
-        in <code>cembed</code>. Has<code>.Get &quot;key&quot;</code>, <code>.Del &quot;key&quot; </code>and<code> Set &quot;key&quot; &quot;value&quot; </code>methods
-        that&apos;ll allow to capture. delete or change value&apos;s content for
+        in <code>cembed</code>. Has<code>.Get &quot;key&quot;</code>, <code>.Del &quot;key&quot; </code>and<code> .Set &quot;key&quot; &quot;value&quot; </code>methods
+        that&apos;ll allow to capture, delete or change value&apos;s content for
         given key. Example on using those methods in <a href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
     </tr>
     <tr>
