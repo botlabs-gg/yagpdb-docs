@@ -944,7 +944,8 @@ Outer-scope $x len however: {{ len $x }}
 * `{{ addReactions .CmdArgs }}` Adds the emoji following a trigger as reactions.
 * `{{ $a := (exec "catfact") }}` Saves the response of the `catfact` ****command to variable `$a`. 
 * `{{ $allArgs := (joinStr " " .CmdArgs) }}` Saves all the arguments after trigger to a variable `$allArgs`. 
-* `{{/* this is a comment */}}`For commenting something inside a template, use this syntax.
+* `{{/* this is a comment */}}`For commenting something inside a template, use this syntax. May contain newlines. Comments do not nest and they start and end at the the delimiters. 
+* To trim spaces, for example &gt;`{{- /* this is a multi-line  comment with white space trimmed from  preceding and following text */ -}}` Using`{{- ... -}}` is also handy inside`range` actions, because white spaces and newlines are rendered there as output.
 * To demonstrate usage of sdict methods .Get .Set .Del.  &gt;  `{{ $x := sdict "key" "value" }} {{ $x.Get "key" }} {{ $x.Set "key" "eulav" }} {{ $x.Get "key" }} {{ $x.Del "key" }}`to add to that `sdict`, simply use `.Set` again &gt;  `{{ $x.Set "YAGPDB" "is cool!" }} {{ $x }}`
 * To demonstrate sleep and slightly also editMessage functions. &gt; `{{ $x := sendMessageRetID nil "Hello" }} {{ sleep 3 }} {{ editMessage nil $x "There" }} {{ sleep 5 }} {{ sendMessage nil "We all know, that" }} {{ sleep 3 }} YAGPDB rules!`
 
