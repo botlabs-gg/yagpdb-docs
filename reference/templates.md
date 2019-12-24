@@ -29,7 +29,7 @@ so make sure no "smart-quotes" are being used.
 Everything in Go is passed by value, as in C and in all languages descending from C.  
 Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type e.g. `CC #42:24:123 ... error calling lt: incompatible types for comparison` tells you that CC \#42 has an error on line 24 and at entry point position 123 due to different types presented for comparison action.  
   
-To see of what type a variable or function's return is, use printf "%T", for example &gt; `{{ printf "%T" currentTime }}` will output the type `time.Time`.
+To see of what type a variable or function's return is, use printf "%T", for example &gt; `{{printf "%T" currentTime}}` will output the type `time.Time`.
 {% endhint %}
 
 ## The Dot
@@ -674,8 +674,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
           formatting &gt; <code>{{$x := 2}} {{exec &quot;clear&quot; $x &quot;-nopin&quot;}}</code> Here <code>&quot;clear&quot;</code> is
           the <code>&quot;command&quot;</code> and it is followed by <code>arguments</code>,
           one variable <code>$x</code> and one string <code>&quot;-nopin&quot;</code>.
-          Last template is the same as <code>{{exec (joinStr &quot;&quot; &quot;clear &quot; $x &quot; -nopin&quot;)}}</code>(also
-          notice the spaces).</p>
+          Last template is the same as <code>{{exec (joinStr &quot; &quot; &quot;clear&quot; $x &quot;-nopin&quot;)}}</code>(also
+          notice the space in joinStr separator).</p>
       </td>
     </tr>
     <tr>
