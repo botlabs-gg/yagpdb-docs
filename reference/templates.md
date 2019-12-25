@@ -212,14 +212,19 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | Field | Description |
 | :--- | :--- |
 | .Message.ID | ID of the message. |
-| .Message.ChannelID | Channel id this message is in. |
-| .Message.Author | Author of the message \([User](templates.md#user) object\). |
+| .Message.ChannelID | Channel ID this message is in. |
+| .Message.GuildID | Guild ID in which the message is. |
+| .Message.Content | Text content on this message. |
 | .Message.Timestamp | Timestamp of the message in type timestamp \(use .Message.Timestamp.Parse to get type time and .Parse.String method returns type string\). |
+| .Message.EditedTimestamp | The time at which the last edit of the message occurred, if it has been edited. |
+| .Message.MentionRoles | The roles mentioned in the message. |
+| .Message.MentionEveryone | Whether the message mentions everyone. |
+| .Message.Author | Author of the message \([User](templates.md#user) object\). |
 | .Message.Attachments | Attachments to this message \(slice of attachment objects\). |
 | .Message.Embeds | Embeds on this message \(slice of embed objects\). |
 | .Message.Mentions | Users this message mentions. |
 | .Message.Reactions | Reactions on this message \(only available from getMessage\). |
-| .Message.Content | Text content on this message. |
+| .Message.Type | The [type](https://discordapp.com/developers/docs/resources/channel#message-object-message-types) of the message. |
 | .Args | List of everything that is passed to .Message.Content. .Args is a slice of type string. |
 | .Cmd | .Cmd is of type string and shows all arguments that trigger custom command, part of .Args. Starting from `{{index .Args 0}}`.  |
 | .CmdArgs | List of all the arguments passed after `.Cmd` \(`.Cmd` is the actual trigger\) `.CmdArgs` is a slice of type string. Examples in [misc. snippets](templates.md#miscellaneous-snippets). |
