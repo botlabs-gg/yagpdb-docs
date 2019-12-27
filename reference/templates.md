@@ -406,6 +406,10 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
     </tr>
   </tbody>
 </table>{% hint style="info" %}
+Special information we can include in the string is _escape sequences_. Escape sequences are two \(or more\) characters, the first of which is a backslash `\`, which gives the remaining characters special meaning - let's call them metacharacters. The most common escape sequence you will encounter is `\n`, which means "newline". 
+{% endhint %}
+
+{% hint style="info" %}
 With regular expression patterns - when using quotes you have to "double-escape" metacharacters starting with backslash or use backquotes/ticks to simplify this. `{{reFind "\\d+" (toString 42)}}` versus ``{{reFind `\d+` (toString 42)}}``
 {% endhint %}
 
