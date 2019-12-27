@@ -405,6 +405,18 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
       <td style="text-align:left">Replaces string1 contents with string2 at regex match point. <code>{{reReplace &quot;I am&quot; &quot;I am cool!&quot; &quot;YAGPDB is&quot;}}</code>returns <code> YAGPDB is cool!</code> (regex
         pattern here is case sensitive).</td>
     </tr>
+    <tr>
+      <td style="text-align:left"><code>print, printf, println</code>
+      </td>
+      <td style="text-align:left">These are template package&apos;s predefined functions and are aliases
+        for <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprint</a>, <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprintf</a> and
+        <a
+        href="https://golang.org/pkg/fmt/#Sprintln">fmt.Sprintln</a>. Formatting is also discussed <a href="https://golang.org/pkg/fmt/#hdr-Printing">here</a>.
+          <br
+          /><code>printf</code> is usable for example to determine the type of the
+          value &gt; <code>{{printf &quot;%T&quot; currentTime}} </code>outputs <code>currentTime </code>functions
+          output value type of<code> time.Time</code>.</td>
+    </tr>
   </tbody>
 </table>{% hint style="info" %}
 Special information we can include in the string is _escape sequences_. Escape sequences are two \(or more\) characters, the first of which is a backslash `\`, which gives the remaining characters special meaning - let's call them metacharacters. The most common escape sequence you will encounter is `\n`, which means "newline". 
