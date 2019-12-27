@@ -345,17 +345,18 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
       <td style="text-align:left">Converts the string to uppercase.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>slice &quot;string&quot; integer (integer2)</code>
+      <td style="text-align:left"><code>slice &quot;string&quot;|slice integer (integer2)</code>
       </td>
       <td style="text-align:left">
+        <p>Function&apos;s first argument must be of type string or slice.</p>
         <p>Outputs the &quot;string&quot; after cutting/slicing off integer (numeric)
           value of symbols (actually starting the string&apos;s index from integer
           through integer2) - e.g. <code>{{slice &quot;Fox runs&quot; 2}}</code>outputs <code>x runs</code>.
           When using also integer2 - e.g. <code>{{slice &quot;Fox runs&quot; 1 7}}</code>,
-          it outputs <code>ox run</code>. For slicing whole words, see example in
-          section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.</p>
+          it outputs <code>ox run</code>. For slicing whole arguments, let&apos;s
+          say words, see example in section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.</p>
         <p></p>
-        <p><code>slice</code> function is not the same as basic dynamically-sized
+        <p>This<code> slice</code> function is not the same as basic dynamically-sized
           slice data type discussed in this reference doc.</p>
       </td>
     </tr>
