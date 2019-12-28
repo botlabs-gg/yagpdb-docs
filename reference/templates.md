@@ -288,9 +288,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | :--- | :--- |
 | `currentTime` | Gets the current time, value is of type time; which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template). |
 | `formatTime Time "arg"` | Outputs given time in RFC822 formatting, first argument `Time` shows it needs to be of type time, also with extra layout if second argument is given - e.g. `{{formatTime currentUserCreated "3:04PM"}}` would output `11:22AM` if that would have been user's creating time. |
-| `humanizeDurationHours` | Returns `nanoseconds` argument of type int64 in human readable format - as how long it would take to get towards given time - e.g. `{{humanizeDurationHours 9000000000000000000}}` returns `285 years 20 weeks 6 days and 16 hours`. More in [snippets](templates.md#this-sections-snippets). |
-| `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is given in minutes - e.g. `{{humanizeDurationMinutes 3500000000000}}` would return `58 minutes`. |
-| `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is given in seconds - e.g. `{{humanizeDurationSeconds 3500000000000}}` would return `58 minutes and 20 seconds`. |
+| `humanizeDurationHours` | Returns given integer or time.Duration argument in nanoseconds in human readable format - as how long it would take to get towards given time - e.g. `{{humanizeDurationHours 9000000000000000000}}` returns `285 years 20 weeks 6 days and 16 hours`. More in [snippets](templates.md#this-sections-snippets). |
+| `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is returned in minutes - e.g. `{{humanizeDurationMinutes 3500000000000}}` would return `58 minutes`. |
+| `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is returned in seconds - e.g. `{{humanizeDurationSeconds 3500000000000}}` would return `58 minutes and 20 seconds`. |
 | `humanizeTimeSinceDays` | Returns time has passed since given argument of type Time in human readable format - e.g. `{{humanizeTimeSinceDays currentUserCreated}}` |
 | `newDate year month day hour minute second` | Returns new time object in UTC using following syntax... all arguments need to be of type int, for example &gt; `{{humanizeDurationHours ((newDate 2059 1 2 12 34 56).Sub currentTime)}}` will give you how much time till year 2059 January 2nd 12:34:56. More examples in [snippets](templates.md#this-sections-snippets).  |
 
