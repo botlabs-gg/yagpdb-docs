@@ -685,7 +685,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
           exec will return raw data of type embed, so you can use embed fields for
           better formatting - e.g. <code>{{$resp := exec &quot;whois&quot;}} {{$resp.Title}} Joined at &gt; {{(index $resp.Fields 4).Value}}</code> will
           return the title (username#discriminator) and &quot;Joined at&quot; field&apos;s
-          value from <code>whois</code> command.</p>
+          value from <code>whois</code> command. <b>NB!</b> This will not work for un/nn
+          commands!</p>
         <p></p>
         <p>exec syntax is <code>exec &quot;command&quot; arguments</code> - this means
           you format it the same way as you would type the command regularly, just

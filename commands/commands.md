@@ -304,10 +304,7 @@ You may also get more specific help by typing `-help (command)` .
         <p>(-i:regex case insensitive)</p>
         <p>(-nopin: Ignore pinned messages)</p>
       </td>
-      <td style="text-align:left">
-        <p>Cleans the chat. More in depth <a href="all-commands.md#clean">here</a>.</p>
-        <p>Also disclaimer by Discord <a href="https://discordapp.com/developers/docs/resources/channel#bulk-delete-messages">here</a>.</p>
-      </td>
+      <td style="text-align:left">Cleans the chat. More in depth <a href="all-commands.md#clean">here</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left">reason</td>
