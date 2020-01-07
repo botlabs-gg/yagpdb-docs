@@ -751,8 +751,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
         name. The<code>delay</code> argument is execution delay of another CC is
         in seconds. The <code>data</code> argument is content that you pass to the
         other executed custom command. To retrieve that <code>data </code>you use <code>.ExecData</code>.
-        This example is important - <a href="custom-command-examples.md#execcc-example">execCC example</a> also
-        this snippet which shows you same thing run using the same custom command
+        This example is important &gt; <a href="https://docs.yagpdb.xyz/reference/custom-command-examples#countdown-example-exec-cc">execCC example</a> also
+        next snippet which shows you same thing run using the same custom command
         &gt; <a href="templates.md#this-sections-snippets-7">Snippets</a>.</td>
     </tr>
     <tr>
@@ -781,7 +781,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 ```go
 {{ $yag := "YAGPDB rules! " }}
-{{ $ctr := 0 }} {{ $yourCCID := toInt .CCID }}
+{{ $ctr := 0 }} {{ $yourCCID := .CCID }}
 {{ if .ExecData }}
     {{ $ctr = add .ExecData.number 1 }}
     {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }}
