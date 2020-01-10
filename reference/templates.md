@@ -95,7 +95,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 
 #### This section's snippets:
 
-`{{(userArg .Guild.OwnerID).String}}` this template returns Guild/Server owner's username and discriminator as of type string. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does explained below\). The parentheses surrounding them make `userArg` function return `.User` as one object which is handled further by `.String` method \(ref`.User.String`\), giving a result like &gt; YAGPDB\#8760.
+`{{(userArg .Guild.OwnerID).String}}` this template returns Guild/Server owner's username and discriminator as of type string. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does, explained below\). The parentheses surrounding them make `userArg` function's return `.User` as .User object which is handled further by `.String` method \(ref`.User.String`\), giving a result like &gt; YAGPDB\#8760.
 
 ## Guild / Server
 
