@@ -71,7 +71,8 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       </td>
       <td style="text-align:left">
         <p>Function that can be used to retrieve .User object from a mention or userID.</p>
-        <p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user.</p>
+        <p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user. Explained
+          more in <a href="templates.md#this-sections-snippets">this section&apos;s snippets</a>.</p>
       </td>
     </tr>
     <tr>
@@ -91,6 +92,10 @@ From official docs &gt; "Execution of the template walks the structure and sets 
     </tr>
   </tbody>
 </table>[User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
+
+#### This section's snippets:
+
+`{{(userArg .Guild.OwnerID).String}}` this template returns Guild/Server owner's username and discriminator as of type string. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does explained below\). The parentheses surrounding them make `userArg` function return `.User` as one object which is handled further by `.String` method \(ref`.User.String`\), giving a result like &gt; YAGPDB\#8760.
 
 ## Guild / Server
 
