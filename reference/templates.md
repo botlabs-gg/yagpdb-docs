@@ -287,7 +287,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | :--- | :--- |
 | .TimeHour | Variable of time.Duration type and returns 1 hour &gt; `1h0m0s`. |
 | .TimeMinute | Variable of time.Duration type and returns 1 minute &gt; `1m0s`. |
-| ~~.~~TimeSecond | Variable of time.Duration type and returns 1 second &gt; `1s`. |
+| .TimeSecond | Variable of time.Duration type and returns 1 second &gt; `1s`. |
 
 | Function | Description |
 | :--- | :--- |
