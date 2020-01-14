@@ -1,5 +1,7 @@
 # Templates
 
+"Go is all about type... Type is life." // William Kennedy
+
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
 {% hint style="warning" %}
@@ -24,9 +26,7 @@ so make sure no "smart-quotes" are being used.
 {% endhint %}
 
 {% hint style="success" %}
-"Go is all about type... Type is life." // William Kennedy   
-  
-Everything in Go is passed by value, as in C and in all languages descending from C.  
+Everything in Go is passed by value \(even errors\), as in C and in all languages descending from C. Types carry values.  
 Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type e.g. `CC #42:24:123 ... error calling lt: incompatible types for comparison` tells you that CC \#42 has an error on line 24 and at entry point position 123 due to different types presented for comparison action.  
   
 To see of what type a variable or function's return is, use printf "%T", for example &gt; `{{printf "%T" currentTime}}` will output the type `time.Time`.
