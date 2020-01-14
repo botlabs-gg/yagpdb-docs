@@ -26,8 +26,8 @@ so make sure no "smart-quotes" are being used.
 {% endhint %}
 
 {% hint style="success" %}
-Everything in Go is passed by value \(even errors\), as in C and in all languages descending from C. Types carry values.  
-Many problems start with different kinds of type the user has as values and what is needed for arguments. YAGPDB usually states that in error message - what went wrong with type e.g. `CC #42:24:123 ... error calling lt: incompatible types for comparison` tells you that CC \#42 has an error on line 24 and at entry point position 123 due to different types presented for comparison action.  
+Everything in Go is passed by value \(even errors\) as in C and in all languages descending from C. Values are carried by types.  
+Many problems start with different kinds of type user has as value and what is needed for argument. YAGPDB usually states that in error message - what went wrong with type e.g. `CC #42:24:123 ... error calling lt: incompatible types for comparison` tells you that CC \#42 has an error on line 24 and at entry point position 123 due to different types presented for comparison action.  
   
 To see of what type a variable or function's return is, use printf "%T", for example &gt; `{{printf "%T" currentTime}}` will output the type `time.Time`.
 {% endhint %}
@@ -715,8 +715,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>parseArgs required_args error_message ...carg</code>
       </td>
-      <td style="text-align:left">Checks the arguments for a specific type. <a href="../commands/custom-commands.md#require-arguments">More in depth here</a> and
-        an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
+      <td style="text-align:left">Checks the arguments for a specific type. Has methods <code>.Get</code> and <code>.IsSet</code>.
+        <a
+        href="../commands/custom-commands.md#require-arguments">More in depth here</a>and example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
       </td>
     </tr>
     <tr>
