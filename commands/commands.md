@@ -300,11 +300,15 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">
         <p>(mention/userID)</p>
         <p>(-ma: max age)</p>
+        <p>(-minage: min age)</p>
         <p>(-r:regex)</p>
         <p>(-i:regex case insensitive)</p>
         <p>(-nopin: Ignore pinned messages)</p>
       </td>
-      <td style="text-align:left">Cleans the chat. More in depth <a href="all-commands.md#clean">here</a>.</td>
+      <td style="text-align:left">
+        <p>Cleans the chat. More in depth <a href="all-commands.md#clean">here</a>.</p>
+        <p>Also disclaimer by Discord <a href="https://discordapp.com/developers/docs/resources/channel#bulk-delete-messages">here</a>.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">reason</td>
@@ -347,6 +351,14 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">(mention/userID)</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">Clears all warnings from given member.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">topwarnings</td>
+      <td style="text-align:left">topwans</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">-id:switch</td>
+      <td style="text-align:left">Shows ranked list of warnings on the server. -id switch switches their
+        username to IDs.</td>
     </tr>
     <tr>
       <td style="text-align:left">giverole</td>
@@ -402,8 +414,11 @@ Everything here starts with automod such as `-automod toggle`
     </tr>
     <tr>
       <td style="text-align:left">ListViolations</td>
-      <td style="text-align:left">Violations/ViolationLogs/
-        <br />VLogs/VLog</td>
+      <td style="text-align:left">
+        <p>Violations/</p>
+        <p>ViolationLogs/
+          <br />VLogs/VLog</p>
+      </td>
       <td style="text-align:left">(Mention/ID)</td>
       <td style="text-align:left">
         <p>(page :numer)</p>
@@ -427,6 +442,40 @@ Everything here starts with automod such as `-automod toggle`
       <td style="text-align:left">Lists Violations summary in entire server or of specified user optionally
         filtered by max violation age. Specify number of violations to skip while
         fetching using -skip flag ; max entries fetched 500</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">DeleteViolation</td>
+      <td style="text-align:left">
+        <p>DelViolation/</p>
+        <p>DelV/DV</p>
+      </td>
+      <td style="text-align:left">ID</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Deletes a Violation with the specified ID. ID is the first number of each
+        Violation in the ListViolations command.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ClearViolations</td>
+      <td style="text-align:left">
+        <p>ClearV/</p>
+        <p>ClrViolations/ClrV</p>
+      </td>
+      <td style="text-align:left">(Mention/ID)</td>
+      <td style="text-align:left">
+        <p>(Violation Name:text)</p>
+        <p>(-ma, -mina: duration)
+          <br />(-num, -skip: number)
+          <br />(-old: switch)</p>
+        <p></p>
+      </td>
+      <td style="text-align:left">
+        <p>Clears Violations of specified user optionally filtered by Name, Min/Max
+          age and other conditions. By default, more recent violations are preferentially
+          cleared.</p>
+        <p>-ma and -mina are max and min violation age; -num is the max number of
+          violations to be cleared; -old is a switch for clearing older violations;
+          -skip the amount to be skipped.</p>
+      </td>
     </tr>
   </tbody>
 </table>### Fun

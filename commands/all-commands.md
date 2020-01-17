@@ -759,7 +759,6 @@ Clean <User:User Mention> <Num:Whole number>
 ```text
 [-r Regex:Text]
 [-ma Max age:Duration]
-[-minage Min age:Duration]
 [-i Regex case insensitive:Switch]
 [-nopin Ignore pinned messages:Switch]
 ```
@@ -828,22 +827,6 @@ Clears the warnings of a user
 
 ```text
 ClearWarnings <User:Mention/ID>
-```
-
-### TopWarnings
-
-**Aliases:** topwarns
-
-Shows ranked list of warnings on the server.
-
-**Usage:**
-
-```text
-TopWarnings [Page:Whole number]
-```
-
-```text
-[-id List UserIDs:Switch]
 ```
 
 ### GiveRole
@@ -934,7 +917,7 @@ ListViolations <User:Mention/ID> [Page Number:Whole number]
 
 **Aliases:**  ViolationsCount/VCount
 
-Lists Violations summary in entire server or of specified user optionally filtered by max violation age. Specify number of violations to skip while fetching using -skip flag ; max entries fetched 500.
+Lists Violations summary in entire server or of specified user optionally filtered by max violation age. Specify number of violations to skip while fetching using -skip flag ; max entries fetched 500
 
 **Usage:**
 
@@ -944,38 +927,6 @@ ListViolationsCount [User:Mention/ID]
 
 ```text
 [-ma Max Violation Age:Duration]
-[-skip Amount Skipped:Whole number]
-```
-
-### automod DeleteViolation
-
-**Aliases:**  DelViolation/DelV/DV
-
-Deletes a Violation with the specified ID. ID is the first number of each Violation in the ListViolations command.
-
-**Usage:**
-
-```text
-DeleteViolation <ID:Whole number>
-```
-
-### automod ClearViolations
-
-**Aliases:**  ClearV/ClrViolations/ClrV
-
-Clears Violations of specified user optionally filtered by Name, Min/Max age and other conditions. By default, more recent violations are preferentially cleared.
-
-**Usage:**
-
-```text
-ClearViolations <User:Mention/ID> [Violation Name:Text]
-```
-
-```text
-[-ma Max Violation Age:Duration]
-[-mina Min Violation Age:Duration]
-[-num Max Violations Cleared:Whole number]
-[-old Preferentially Clear Older Violations:Switch]
 [-skip Amount Skipped:Whole number]
 ```
 
