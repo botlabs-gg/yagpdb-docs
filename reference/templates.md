@@ -312,7 +312,7 @@ YAGPDB's templating "engine" has currently two user-defined, custom data types -
   
 Custom Types section discusses functions that initialize values carrying those _templates.Slice_ \(abridged to _cslice_\), _templates.SDict_ \(abridged to _sdict_\) types and their methods. Both types handle type _interface{}_ element. It's called an empty interface which allows a value to be of any type. So any argument of any type given is handled. \(In "custom commands"-wise mainly primitive data types, but _slices_ as well.\)
 
-### templates.Slice
+### templates.Slice \(v1.22\)
 
 `[]interface{}` - This is a custom composite data type of a _slice_ \(similar to _array_\) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
 
