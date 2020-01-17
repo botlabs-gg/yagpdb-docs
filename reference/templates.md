@@ -408,10 +408,10 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 
 | Function | Description |
 | :--- | :--- |
-| `toString` | Converts something into a string. Usage: `(toString x)`. |
-| `toInt` | Converts something into an integer. Usage: `(toInt x)`. |
-| `toInt64` | Converts something into an int64. Usage: `(toInt64 x)`. |
-| `toFloat` | Converts argument \(number or string form of a number\) to type _float64_.  Usage: `(toFloat x)`. |
+| `toString` | Converts something into a _string_. Usage: `(toString x)`. |
+| `toInt` | Converts something into an integer _int_. Usage: `(toInt x)`. |
+| `toInt64` | Converts something into an _int64_. Usage: `(toInt64 x)`. |
+| `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. |
 | `toDuration` | Converts the argument, number or string to type _time.Duration_. Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-2).  |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type _string_. For example `{{json .TimeHour}}` outputs type _string_; before this `.TimeHour` was of type _time.Duration_. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
 
