@@ -377,7 +377,11 @@ Type of variable: **{{ printf "%T" $x }}**
       </td>
       <td style="text-align:left">
         <p>Like dict function, creating a <em>templates.SDict</em> type map, key must
-          be of type <em>string</em>. Can be used for example in <code>cembed</code>.</p>
+          be of type <em>string</em>. Can be used for example in <code>cembed</code>.
+          Starting v1.22: If Only one argument is passed to <code>sdict </code>function
+          having type <em>map[string]interface{}; </em>for example .ExecData and data
+          retrieved from database can be of such type if <em>sdict</em> was used, it
+          is converted back to <em>sdict</em>.</p>
         <p></p>
         <p>Example: <code>sdict &quot;one&quot; 1 &quot;two&quot; 2 &quot;three&quot; (cslice 3 4) &quot;five&quot; 5.5</code> returns
           unordered <code>map[five:5.5 one:1 three:[3 4] two:2]</code>, having length
