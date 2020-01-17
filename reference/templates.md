@@ -41,6 +41,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | :--- | :--- |
 | .CCID | The ID of currently executing custom command in type of _int64_. |
 | .IsPremium | Returns boolean true/false whether guild is premium of YAGPDB or not. |
+| .CCRunCount | Starting v1.22: Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes. |
 
 ## User
 
