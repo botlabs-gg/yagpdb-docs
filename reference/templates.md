@@ -41,7 +41,7 @@ To see of what type a variable or function's return is, use printf "%T", for exa
 ## The Dot
 
 The dot `{{ . }}`  encompasses all active data available for templating system.   
-From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.
+From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.
 
 | Field | Description |
 | :--- | :--- |
@@ -1067,7 +1067,8 @@ Like `if` and `range` actions, `with` is concluded using `{{end}}` and variable 
 {{/* Shows the scope and how dot is affected by object's value in pipeline */}}
 {{ $x := "42" }} {{ with and ($z:= seq 0 5) ($x := seq 0 10) }} 
 len $x: `{{ len $x }}` 
-same as len dot: `{{ len . }}` {{/* "and" function uses $x as last value for dot */}}
+{{/* "and" function uses $x as last value for dot */}}
+same as len dot: `{{ len . }}` 
 but len $z is `{{ len $z }}` {{ end }}
 Outer-scope $x len however: {{ len $x }}
 {{/* when there's no value, dot is unaffected */}}
