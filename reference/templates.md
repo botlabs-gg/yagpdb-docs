@@ -1,8 +1,12 @@
+---
+description: '"Go is all about type... Type is life." // William Kennedy'
+---
+
 # Templates
 
-"Go is all about type... Type is life." // William Kennedy
-
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len,`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
+
+**Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields \(e.g. .Append, .User\) are usually kept in standard formatting.
 
 {% hint style="warning" %}
 **Put curly brackets around the data you want to formulate as template** like this: `{{.User.Username}}`
@@ -35,7 +39,7 @@ To see of what type a variable or function's return is, use printf "%T", for exa
 ## The Dot
 
 The dot `{{ . }}`  encompasses all active data available for templating system.   
-From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like `User/Guild/Member/Channel etc` are all part of that dot-structure and there are some more in tables below.
+From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.
 
 | Field | Description |
 | :--- | :--- |
@@ -80,8 +84,9 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       <td style="text-align:left"><code>pastUsernames userID offset</code>
       </td>
       <td style="text-align:left">
-        <p>Returns a <em>slice </em>of type <em>[ ]*logs.CCNameChange</em> having fields <code>.Name</code> and <code>.Time</code> of
-          previous 15 usernames and skips <code>offset</code> number in that list.</p>
+        <p>Returns a <em>slice </em>of type <em>[ ]*logs.CCNameChange</em> having fields
+          .Name and .Time of previous 15 usernames and skips <code>offset</code> number
+          in that list.</p>
         <p><code>{{range pastUsernames .User.ID 0}} <br />{{.Name}} - {{.Time.Format &quot;Jan _2 2006&quot;}} <br />{{end}}</code> 
         </p>
       </td>
@@ -96,7 +101,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 
 #### This section's snippets:
 
-`{{(userArg .Guild.OwnerID).String}}` this template returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does, explained below\). The parentheses surrounding them make `userArg` function return `.User` as .User object which is handled further by `.String` method \(ref`.User.String`\), giving a result like &gt; YAGPDB\#8760.
+`{{(userArg .Guild.OwnerID).String}}` this template returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does, explained below\). The parentheses surrounding them make `userArg` function return `.User` as .User object which is handled further by `.String` method \(ref.`.User.String`\), giving a result like &gt; `YAGPDB#8760`.
 
 ## Guild / Server
 
