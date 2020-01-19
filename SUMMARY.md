@@ -36,6 +36,7 @@
 
 * [Templates](reference/templates.md)
 * [Custom Commands Examples](reference/custom-command-examples.md)
+* [How to Get IDs](reference/how-to-get-ids.md)
 * [Using RegEx](reference/regex.md)
 * [Animated Emotes](reference/animated_emotes.md)
 
