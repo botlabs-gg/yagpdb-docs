@@ -41,6 +41,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | :--- | :--- |
 | .CCID | The ID of currently executing custom command in type of _int64_. |
 | .IsPremium | Returns boolean true/false whether guild is premium of YAGPDB or not. |
+| .CCRunCount | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes. |
 
 ## User
 
@@ -312,7 +313,7 @@ YAGPDB's templating "engine" has currently two user-defined, custom data types -
   
 Custom Types section discusses functions that initialize values carrying those _templates.Slice_ \(abridged to _cslice_\), _templates.SDict_ \(abridged to _sdict_\) types and their methods. Both types handle type _interface{}_ element. It's called an empty interface which allows a value to be of any type. So any argument of any type given is handled. \(In "custom commands"-wise mainly primitive data types, but _slices_ as well.\)
 
-### templates.Slice \(v1.22\)
+### templates.Slice
 
 `[]interface{}` - This is a custom composite data type of a _slice_ \(similar to _array_\) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
 
@@ -378,10 +379,9 @@ Type of variable: **{{ printf "%T" $x }}**
       <td style="text-align:left">
         <p>Like dict function, creating a <em>templates.SDict</em> type map, key must
           be of type <em>string</em>. Can be used for example in <code>cembed</code>.
-          Starting v1.22: If only one argument is passed to <code>sdict </code>function
-          having type <em>map[string]interface{}; </em>for example .ExecData and data
-          retrieved from database can be of such type if <em>sdict</em> was used, it
-          is converted back to <em>sdict</em>.</p>
+          If only one argument is passed to <code>sdict </code>function having type <em>map[string]interface{}; </em>for
+          example .ExecData and data retrieved from database can be of such type
+          if <code>sdict</code> was used, it is converted to a new <em>sdict</em>.</p>
         <p></p>
         <p>Example: <code>sdict &quot;one&quot; 1 &quot;two&quot; 2 &quot;three&quot; (cslice 3 4) &quot;five&quot; 5.5</code> returns
           unordered <code>map[five:5.5 one:1 three:[3 4] two:2]</code>, having length

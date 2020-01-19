@@ -30,9 +30,7 @@ Do **NOT** set the require role or the ignore role to the role you are assigning
 Role groups are essential if you want to set up a role menu.
 {% endhint %}
 
-Role groups are useful for applying restrictions on a group of roles such as only being able to have one or the other role etc. They're also essential if you want to create a role menu. To create one, simply give the role group a name and then select which mode you want the role group to use
-
-Every role group, even Ungrouped has the option to delete all roles inside that group, other groups will not be affected. Be careful with that, it's permanent and can't be undone.
+Role groups are useful for applying restrictions on a group of roles such as only being able to have one or the other role etc. They're also essential if you want to create a role menu. To create one, simply give the role group a name and then select which mode you want the role group to use.
 
 ![](../.gitbook/assets/aa.PNG)
 
