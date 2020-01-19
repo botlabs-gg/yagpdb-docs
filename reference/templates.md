@@ -944,14 +944,14 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
 
 | Fields | Description |
 | :--- | :--- |
-| `ID` | ID of the entry. |
-| `GuildID` | ID of the server. |
-| `UserID` | ID of the user. |
-| `CreatedAt` | When this entry was created. |
-| `UpdatedAt` | When this entry was last updated. |
-| `ExpiresAt` | When entry will expire. |
-| `Key` | The key of the entry. |
-| `Value` | The value of the entry. |
+| .ID | ID of the entry. |
+| .GuildID | ID of the server. |
+| .UserID | ID of the user. |
+| .CreatedAt | When this entry was created. |
+| .UpdatedAt | When this entry was last updated. |
+| .ExpiresAt | When entry will expire. |
+| .Key | The key of the entry. |
+| .Value | The value of the entry. |
 
 ## Conditional branching
 
