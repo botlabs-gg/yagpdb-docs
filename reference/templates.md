@@ -469,7 +469,8 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
           say words, see example in section&apos;s <a href="templates.md#this-sections-snippets-3">Snippets</a>.</p>
         <p></p>
         <p>This<code> slice</code> function is not the same as basic dynamically-sized <em>slice</em> data
-          type discussed in this reference doc.</p>
+          type discussed in this reference doc. Also it&apos;s custom, not having
+          3-indices as the default one from text/template package.</p>
       </td>
     </tr>
     <tr>
