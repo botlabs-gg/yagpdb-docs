@@ -608,9 +608,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>round</code>
       </td>
       <td style="text-align:left">Returns the nearest integer, rounding half away from zero. Regular rounding
-        &gt; 10.4 is 10 and 10.5 is 11. All round functions return type <em>float64</em>,
-        so use conversion functions to get integers. For more complex rounding,
-        example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
+        &gt; 10.4 is <code>10</code> and 10.5 is <code>11</code>. All round functions
+        return type <em>float64</em>, so use conversion functions to get integers.
+        For more complex rounding, example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>roundCeil</code>
@@ -1014,7 +1014,8 @@ Branching using `if` action's pipeline and comparison operators - these operator
     </tr>
     <tr>
       <td style="text-align:left">Not equal: ne</td>
-      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{ne $x $y}}</code> returns true</td>
+      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{ne $x $y}}</code> returns <code>true</code>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">Less than: lt</td>
@@ -1023,7 +1024,8 @@ Branching using `if` action's pipeline and comparison operators - these operator
     </tr>
     <tr>
       <td style="text-align:left">Less than or equal: le</td>
-      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{le $x $y}}</code> returns true</td>
+      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{le $x $y}}</code> returns <code>true</code>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">Greater than: gt</td>
@@ -1032,7 +1034,8 @@ Branching using `if` action's pipeline and comparison operators - these operator
     </tr>
     <tr>
       <td style="text-align:left">Greater than or equal: ge</td>
-      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{ge $x $y}}</code> returns false</td>
+      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{ge $x $y}}</code> returns <code>false</code>
+      </td>
     </tr>
   </tbody>
 </table>## Range action
