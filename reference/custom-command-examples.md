@@ -82,6 +82,7 @@ The `parseArgs` template can check if specific arguments are given. If not, it w
 * `user` \(user mentions as type user\)
 * `userid` \(mentions or the user's ID, as integer\)
 * `channel` \(channel mention or ID, as type channel\)
+* `duration` \(duration as integer or string with optional time modifier - s,m,h, etc...\)
 
 Trigger type: `Command` Trigger: `send` 
 
