@@ -948,6 +948,7 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
 | .ID | ID of the entry. |
 | .GuildID | ID of the server. |
 | .UserID | ID of the user. |
+| .User | [user object](templates.md#user). |
 | .CreatedAt | When this entry was created. |
 | .UpdatedAt | When this entry was last updated. |
 | .ExpiresAt | When entry will expire. |
