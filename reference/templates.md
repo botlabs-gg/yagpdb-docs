@@ -40,7 +40,7 @@ To see of what type a variable or function's return is, use printf "%T", for exa
 
 ## The Dot
 
-The dot `{{ . }}`  encompasses all active data available for templating system.   
+The dot `{{ . }}`  encompasses all active data available for use in the templating system.   
 From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.
 
 | Field | Description |
@@ -120,7 +120,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
-| .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Server.Roles}}` gives you how many roles are there in that guild. |
+| .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. |
 
 [Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
 
@@ -145,7 +145,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
       <td style="text-align:left"><code>editNickname &quot;newNick&quot;</code>
       </td>
       <td style="text-align:left">Edits triggering user&apos;s nickname, argument has to be of type <em>string</em>.
-        YAGPDB must be above the roles user&apos;s having.</td>
+        YAGPDB&apos;s highest role has to be above the highest role of the member.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>getMember</code>
@@ -174,10 +174,10 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 
 | Field | Description |
 | :--- | :--- |
-| .Channel.Name | The Name of the channel. |
+| .Channel.Name | The name of the channel. |
 | .Channel.ID | The ID of the channel. |
 | .Channel.ParentID | The ID of the channel's parent \(category\), returns 0 if none. |
-| .Channel.Topic | The Topic of the channel. |
+| .Channel.Topic | The topic of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 
 <table>
@@ -241,7 +241,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .Args | List of everything that is passed to .Message.Content. .Args is a _slice_ of type _string_. |
 | .Cmd | .Cmd is of type _string_ and shows all arguments that trigger custom command, part of .Args. Starting from `{{index .Args 0}}`.  |
 | .CmdArgs | List of all the arguments passed after `.Cmd` \(`.Cmd` is the actual trigger\) `.CmdArgs` is a _slice_ of type _string_. Examples in [misc. snippets](templates.md#miscellaneous-snippets). |
-| .StrippedMsg | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bare in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
+| .StrippedMsg | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bear in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
 
 [Message object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#message-object).
 
@@ -544,7 +544,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 * `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
 * To demonstrate usage of `split` function. &gt; `{{$x := "Hello, World, YAGPDB, here!"}} {{range $k, $v := (split $x ", ")}}Word {{$k}}: __{{$v}}__ {{end}}`
-* To demonstrate usage of `reFindAll`. &gt;  `Before regex: {{$msg := "1 YAGPDB and over 100000 servers conqured."}} {{$re2 := reFindAll "[0-9]+" $msg}} {{$msg}}   After regex matches: {{joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
+* To demonstrate usage of `reFindAll`. &gt;  `Before regex: {{$msg := "1 YAGPDB and over 100000 servers conquered."}} {{$re2 := reFindAll "[0-9]+" $msg}} {{$msg}}   After regex matches: {{joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
 
 ### Math functions
 
@@ -879,10 +879,10 @@ With regular expression patterns - when using quotes you have to "double-escape"
         <p>Same as <code>execCC</code>except there can only be 1 scheduled cc execution
           per server per key, if key already exists then it is overwritten with the
           new data and delay.</p>
-        <p>An example would be a mute command that schedules unmute in the future,
-          but if you use the mute command again on the same user you dont want to
-          schedule another unmute, you wanna overwrite the next unmute event to the
-          new time, which is what this does.</p>
+        <p>An example would be a mute command that schedules the unmute action sometime
+          in the future. However, let&apos;s say you use the unmute command again
+          on the same user, you would want to override the last scheduled unmute
+          to the new one. This can be used for that.</p>
       </td>
     </tr>
     <tr>

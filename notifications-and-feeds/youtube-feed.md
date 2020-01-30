@@ -18,7 +18,7 @@ To get notifications from a YouTube channel, simply go to the YouTuber's channel
 If your channel looks like this  `youtube.com/user/h3h3Productions` then you would go into the username line and type in h3h3Productions.  
 If your channel looks like this   `youtube.com/channel/UCt-ERbX-2yA6cAqfdKOlUwQ` then you would go into the ID line and type in UCt-ERbX-2yA6cAqfdKOlUwQ.
 
-You can change the channel that the notifications are posted to via the dropdown-menu
+You can change the channel that the notifications are posted to via the dropdown menu.
 
-You can also mention everyone by clicking the checkbox under the dropdown-menu that says Mention everyone.
+You can also mention everyone by clicking the checkbox under the dropdown menu that says Mention everyone.
 

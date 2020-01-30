@@ -4,18 +4,18 @@
 
 The moderation features YAGPDB provides are:
 
-* Modlog that logs all the moderation actions.
+* Modlog that logs all moderation actions
 * Generation of a message log for all mod action
   * For example: if you use the `-ban` command, the bot will also log the last 100 messages in the channel the command was executed, including deleted messages.
 * Kick and ban commands
   * You can use the default message or create your own.
   * You can delete the last 100 messages of the user when they get kicked/banned.
-* Mute
+* Mute command
   * Assigns the mute role for a temporary duration.
   * You can enable to bot to set up the permissions for the mute role but you will still have to create the role yourself.
   * If you have any roles that conflict with the mute role, you can select roles to be removed when the mute is assigned and will be given back to them after the mute is done. 
-* Clean/Clear
-  * Removes last x messages, optional filtering args available. See below for more details and examples.
+* Clean/Clear command
+  * Removes last x messages with optional filtering arguments available. See below for more details and examples.
 * Warnings
   * Assign a warning to a user, trackable through the bot. 
 
