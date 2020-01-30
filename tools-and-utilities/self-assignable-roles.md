@@ -17,7 +17,7 @@ Simply give the role command a name and then select which role you want the bot 
 ### Optional features
 
 {% hint style="warning" %}
-Do **NOT** set the require role or the ignore role to the role you are assigning.
+Do **NOT** set the require role to the role you are assigning. You generally will not want to set the ignore role to the role you are assigning either _unless_ you wish to prevent the user from removing that role through the rolemenu.
 {% endhint %}
 
 **Require role**: Requires a person to have a certain role in order for them to give themselves this role.  
@@ -30,7 +30,9 @@ Do **NOT** set the require role or the ignore role to the role you are assigning
 Role groups are essential if you want to set up a role menu.
 {% endhint %}
 
-Role groups are useful for applying restrictions on a group of roles such as only being able to have one or the other role etc. They're also essential if you want to create a role menu. To create one, simply give the role group a name and then select which mode you want the role group to use.
+Role groups are useful for applying restrictions on a group of roles such as only being able to have one or the other role etc. They're also essential if you want to create a role menu. To create one, simply give the role group a name and then select which mode you want the role group to use
+
+Every role group, even Ungrouped has the option to delete all roles inside that group, other groups will not be affected. Be careful with that, it's permanent and can't be undone.
 
 ![](../.gitbook/assets/aa.PNG)
 
@@ -43,10 +45,10 @@ Role groups are useful for applying restrictions on a group of roles such as onl
 ### Optional features
 
 {% hint style="warning" %}
-Do **NOT** make the required role or the ignored role the role you are assigning.
+Do **NOT** set the require role to the role you are assigning. You generally will not want to set the ignore role to the role you are assigning either _unless_ you wish to prevent the user from removing that role through the rolemenu.
 {% endhint %}
 
-**Require role**: requires a person to have a certain role in order for them to give themselves this role. That role needs to have at least manage server permissions for any of rolemenu commands to work.  
+**Require role**: requires a person to have a certain role in order for them to give them this role.  
 **Ignore role**: Ignore any person who has this role.  
 **Mode**: Select between none, single, multiple to restrict the number of roles they can assign them themselves.
 
@@ -57,7 +59,7 @@ Role groups have additional options that can be enabled/disabled by selecting th
 
 #### Example usage:
 
-Say you have a server with 3 factions and want people to be able to assign their own faction when they join. That's simple enough all we have to do is:
+Say you have a server with 3 factions and want people to be able to assign their own faction when they join. That's simple enough - all we have to do is:
 
 * Create the 3 roles
 * Create 3 role commands for those roles
@@ -93,11 +95,11 @@ The role menu makes it possible to have people assign roles by adding reactions 
 A role menu can only support up to 20 roles due to the reaction limit discord places on messages. If your role group has more then twenty, the role menu will not work. 
 {% endhint %}
 
-To set up a role menu, the related roles **have to be added to a role group**, then you invoke the command `-rolemenu create Group_Name_Here`
+To set up a role menu, the related roles **have to be added to a role group**, then you invoke the command `-rolemenu create (role group name)`
 
 The group mode and other restrictions from the role group and role still apply to the roles in the role menu.  
   
-After you type in the command, you will be taken through the setup process. If you want to disable DM/create a custom message/add new role to your role menu, be sure to read until the end.
+After you type in the command, you will be taken through the setup process. If you want to disable DMs, create a custom message, or add new role to your role menu, be sure to read until the end.
 
 ### Step by step tutorial
 
@@ -106,13 +108,11 @@ Make sure you created your [role commands ](self-assignable-roles.md#roles)and a
 {% endhint %}
 
 Once you've made your role commands and assigned them to a role group,  
-go to the channel in Discord where you want the role menu to be created. There you type `-rolemenu create Gender`.
-
-Make sure to replace **Gender** with the name of your role group
+go to the channel in Discord where you want the role menu to be created. There you type `-rolemenu create (role group name)` \(in my example, the role group name is "Gender"\).
 
 ![](../.gitbook/assets/sar1.PNG)
 
-As you can see the bot started creating the menu. It'll asks you to add the emoji for a role. In this case the role is the **Female** role. I'll react on the message with emote I want associated with the female role. 
+As you can see the bot started creating the menu. It'll ask you to add the emoji for a role. In this case the role is the **Female** role. I'll react on the message with emote I want associated with the female role. 
 
 ![](../.gitbook/assets/sar2.PNG)
 
@@ -135,9 +135,13 @@ To create a custom message for your role menu like event role menu you saw above
 
 If you do not want the bot to send you a DM when you are given or removed from a role, type in the following command `-rolemenu update (message id) -nodm` 
 
-After you have finish editing or creating your role menu, it will display whether the DM is enabled or not.
+After you have finish editing or creating your role menu, it will display whether DM notifications are enabled or not.
 
 ![](../.gitbook/assets/capture%20%283%29.PNG)
+
+{% hint style="warning" %}
+Note that YAGPDB does not allow you to disable warning DMs such as cooldown messages with the `nodm` flag or any other method.
+{% endhint %}
 
 ### Remove roles on reaction remove
 
@@ -166,10 +170,10 @@ If you added a new role to your role group, you can update your role menu you ca
 ## How to get a message ID \(Desktop\)
 
 {% hint style="info" %}
-Make sure you have developer mode turned on in your discord settings.
+Make sure you have [developer mode turned on in your discord settings.](https://support.discordapp.com/hc/en-us/articles/206346498) 
 {% endhint %}
 
-To get the ID of the message you want to set the custom role menu on, click on the three dots on the far right hand side of the message and click on `Copy ID`
+To get the ID of the message you want to set the custom role menu on, click on the three dots on the far right hand side of the message and click on `Copy ID.`
 
 ![](../.gitbook/assets/aa%20%281%29.PNG)
 

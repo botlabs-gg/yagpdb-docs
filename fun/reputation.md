@@ -12,11 +12,11 @@ This is an alternative way of `-giverep`.
 
 #### Name for reputation points
 
-This will be displayed in the `-rep` command. On default, it is _Rep_.
+This will be displayed in the `-rep` command. By default, it is _Rep_.
 
-#### Rep cool down in seconds
+#### Rep cooldown in seconds
 
-This is the cool down for the `-giverep` and `-takerep` commands. It does not affect the `-setrep` command. No one can bypass this cool down, including admins.
+This is the cooldown for the `-giverep` and `-takerep` commands. It does not affect the `-setrep` command. No one can bypass this cooldown, including admins.
 
 ####  Maximum amount of rep that can be given/taken away in one command
 
@@ -46,7 +46,7 @@ Users with this role cannot participate in the point system which they can be gi
 
 Besides using the command `-replog` , you can also check the logs from the control panel. Specify a user ID to check the logs affecting the points of the user. See [How to get IDs](../reference/templates.md#how-to-get-ids) to get more information on getting the user ID.
 
-## Reset all users' reputation
+## Reset all user's reputation
 
 This command is irreversible, and will reset everyone's reputation point to 0.
 

@@ -2,7 +2,7 @@
 
 ## General Feed
 
-![Select the Checkbox for each of the notification you want to enable.](../.gitbook/assets/notification.PNG)
+![Make sure to enable the feeds you want to use!](../.gitbook/assets/notification.PNG)
 
 ### Join Message
 
