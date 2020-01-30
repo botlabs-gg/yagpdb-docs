@@ -22,7 +22,7 @@ This has a 65% chance of being triggered
 
 ### Silent execution of commands or storage in a variable
 
-This command is to be placed in the welcome message. It filters out people with discord.gg names. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server. 
+This command is to be placed in the welcome message. It filters out people with invites in their name. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server. 
 
 You might not want the response for the executed command to show. You can suppress the response of a command like the following:
 
@@ -63,7 +63,7 @@ Range will work on any kind of slice/array. for example. If we wanted to look fo
 
 ### Dictionary example
 
-A dictionary does not currently have a lot of piratical use, since YAGPDB has a built-in randomizer for the custom commands. In case you ever find yourself needing to use it, here's how to set it up.
+A dictionary does not currently have a lot of practical use, since YAGPDB has a built-in randomizer for the custom commands. In case you ever find yourself needing to use it, here's how to set it up.
 
 Trigger type: `Command` Trigger: `dict`
 
@@ -134,11 +134,11 @@ Second part of the custom commands, here we see, how `data`-part of exeCC was ma
 {{end}}
 ```
 
-![Jonas&apos; using YAGPDB testing bot here, same execCC custom commands.](../.gitbook/assets/unknown.png)
+![Jonas using YAGPDB testing bot here, same execCC custom commands.](../.gitbook/assets/unknown.png)
 
 ### Database example
 
-This is a simple note taking system having 3 separate custom commands. Also notice that actual name of the key inserted to database begins with "notes\_".
+This is a simple note taking system containing 3 separate custom commands. Also note that the actual name of the key inserted to database begins with "notes\_".
 
 #### Save note:
 
@@ -179,7 +179,7 @@ You don't have any notes :(
 
 ### Cooldown Example 
 
-With YAGPDB database system, you can now add cooldowns to you custom commands. You can either make them global cooldowns or a per user cooldown.   
+With YAGPDB's database system, you can now add cooldowns to you custom commands. You can either make them global cooldowns or a per user cooldown.
 
 ```go
 {{/* CONFIGURATION HERE CHANGE VALUE AS NEEDED */}}
@@ -217,7 +217,7 @@ With YAGPDB database system, you can now add cooldowns to you custom commands. Y
 
 > By **Timcampy\#5636**
 
-With YAGPDB database system, I made a command to have users count from 0 and keep counting to the next number. Relatively simple command that involves database and type conversion. 
+With YAGPDB's database system, I made a command to have users count from 0 and keep counting to the next number. Relatively simple command that involves database and type conversion. 
 
 Trigger type: `Regex` Trigger: `|`
 
