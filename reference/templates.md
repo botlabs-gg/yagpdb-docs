@@ -589,10 +589,27 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Meant specifically for floating point numbers division.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>log x base</code>
+      </td>
+      <td style="text-align:left">Log is a logarithm function for templates using (log base of x). Arguments
+        can be any type of numbers, as long as they follow logarithm logic. Return
+        value is of type <em>float64</em>. If base argument is not given It is using
+        natural logarithm (base e - The Euler&apos;s constant) as default, also
+        is the default to change the base.<code>{{ log &quot;123&quot; 2 }}</code> will
+        return <code>6.94251450533924</code>. To be released in version v1.22.3.</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>mod x y</code>
       </td>
       <td style="text-align:left">Mod returns the floating-point remainder of x/y. <code>mod 17 3</code> returns <code>2 </code>of
         type <em>float64</em>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>pow x y</code>
+      </td>
+      <td style="text-align:left">Pow returns x**y, the base-x exponential of y which have to be both numbers.
+        Type is returned as <em>float64</em>. <code>{{ pow 2 3 }}</code> returns <code>8</code>.
+        To be released in version v1.22.3.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>randInt (stop, or start stop)</code>
@@ -652,6 +669,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-5). |
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
+| `complexMessage (sdict "content" args "embed" args "file" args)`  | `complexMessage` creates a so-called bundle of different messages for `sendMessage...` functions to send them out all together. Its arguments need to be inside `sdict`and sdict's keys `"content"` for regular text, `"embed"` for embeds, `"file"` for printing out content as a file \(max 10 000 characters\) are predefined. Example in this section's [Snippets](templates.md#message-functions). To be released in v1.22.3. |
 | `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-5). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
@@ -670,6 +688,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
   `{{$x := sendMessageRetID nil "Hello there!"}} {{addMessageReactions nil $x "👍" "👎"}} {{deleteMessage nil $x 5}}`
 
 * To demonstrate `sleep` and slightly also `editMessage` functions. &gt; `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 5}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
+* To demonstrate usage of `complexMessage` with `sendMessage`. `{{sendMessage nil (complexMessage (sdict "content" "Who rules?" "embed" (cembed "description" "YAGPDB of course" "color" 0x89aa00) "file" "Here we print something nice - you all are doing awesome!"))}}`
 
 ### Mentions
 
