@@ -19,7 +19,10 @@ _As example, this will only match the word "Dinosaur":_ `(Dinosaur)`
 Using `?:` after opening parenthesis of a capturing group creates a non-capturing group. Useful for example with template function `reFindAllSubmatches`.
 
 _This will not sub-match the words "red, blue, green":_   
-``{{ reFindAllSubmatches `color=(?:red|blue|green)` .Message.Content }}``
+``{{ reFindAllSubmatches `(?:color=)(red|blue|green)` "color=red beautiful" }}`` 
+
+To clarify more - it will not show `dateid,` because it's a whole match:  
+``{{ slice (index (reFindAllSubmatches `(?:dateid=)([0-9]{5})` "dateid=12345") 0) 1 }}``
 {% endtab %}
 
 {% tab title="Match A or B" %}
