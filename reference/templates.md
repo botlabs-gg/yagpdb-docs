@@ -384,8 +384,7 @@ Custom Types section discusses functions that initialize values carrying those _
         <p>If strict-flag is set to <em>true </em>it will return a <em>[]string</em> only
           if <b>all</b> elements are pure <em>string</em>, else <code>&lt;no value&gt;</code> is
           returned.</p>
-        <p>Example in this section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.
-          Will be available in v1.22.X.</p>
+        <p>Example in this section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.</p>
       </td>
     </tr>
   </tbody>
@@ -637,7 +636,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
         value is of type <em>float64</em>. If base argument is not given It is using
         natural logarithm (base e - The Euler&apos;s constant) as default, also
         is the default to change the base.<code>{{ log &quot;123&quot; 2 }}</code> will
-        return <code>6.94251450533924</code>. To be released in version v1.22.X.</td>
+        return <code>6.94251450533924</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>mod x y</code>
@@ -649,8 +648,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>pow x y</code>
       </td>
       <td style="text-align:left">Pow returns x**y, the base-x exponential of y which have to be both numbers.
-        Type is returned as <em>float64</em>. <code>{{ pow 2 3 }}</code> returns <code>8</code>.
-        To be released in version v1.22.X.</td>
+        Type is returned as <em>float64</em>. <code>{{ pow 2 3 }}</code> returns <code>8</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>randInt (stop, or start stop)</code>
@@ -710,7 +708,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
-| `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 10 000 characters\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). To be released in v1.22.X. |
+| `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 10 000 characters\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
 | `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
