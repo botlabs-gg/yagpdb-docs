@@ -393,6 +393,8 @@ Custom Types section discusses functions that initialize values carrying those _
 
 * To demonstrate .StringSlice `{{(cslice currentTime.Month 42 "YAPGDB").StringSlice}}` will return a slice `[February YAGPDB]`. If the flag would have been set to true - {{...\).StringSlice true}}, all elements in that slice were not strings and `<no value>` is returned.
 
+General example:
+
 ```go
 Creating a new cslice: {{ $x := (cslice "red" "red") }} **{{ $x }}**
 Appending to current cslice data 
