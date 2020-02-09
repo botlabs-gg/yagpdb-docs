@@ -505,6 +505,7 @@ Everything here starts with automod such as `-automod toggle`
 | sentiment | sent | N/A | \(text\) | Does sentiment analysis on the given text or your last 5 messages longer than 3 words. |
 | 8ball | N/A | \(question\) | N/A | Wisdom. |
 | soundboard | sb | N/A | \(soundname\) | Play or list soundboard sounds. |
+| soundboardreset | sbclose/ sbreset | N/A | N/A | Resets Soundboard Player |
 
 ####  Cards Against Humanity
 
