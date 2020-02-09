@@ -532,6 +532,32 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
           output value type of<code> time.Time</code>.</td>
     </tr>
   </tbody>
+</table><table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Method</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">.StringSlice strict-flag</td>
+      <td style="text-align:left">
+        <p>Compares <em>slice</em> contents - are they of type <em>string, </em>based
+          on the strict-flag which is <em>boolean </em>and is by default <em>false. </em>Under
+          these circumstances if the element is a <em>string</em> then those elements
+          will be included as a part of the <em>[]string</em> slice and rest simply
+          ignored. Also <em>time.Time</em> elements - their default <em>string</em> notation
+          will be included. If none are <em>string</em> an empty <em>[]string</em> slice
+          is returned.</p>
+        <p>If strict-flag is set to <em>true </em>it will return a <em>[]string</em> only
+          if <b>all</b> elements are pure <em>string</em>, else <code>&lt;no value&gt;</code> is
+          returned.</p>
+        <p>Example in this section&apos;s <a href="templates.md#this-sections-snippets-3">Snippets</a>.
+          Will be available in v1.22.3.</p>
+      </td>
+    </tr>
+  </tbody>
 </table>{% hint style="info" %}
 Special information we can include in the string is _escape sequences_. Escape sequences are two \(or more\) characters, the first of which is a backslash `\`, which gives the remaining characters special meaning - let's call them metacharacters. The most common escape sequence you will encounter is `\n`, which means "newline". 
 {% endhint %}
@@ -545,6 +571,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 * `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
 * To demonstrate usage of `split` function. &gt; `{{$x := "Hello, World, YAGPDB, here!"}} {{range $k, $v := (split $x ", ")}}Word {{$k}}: __{{$v}}__ {{end}}`
 * To demonstrate usage of `reFindAll`. &gt;  `Before regex: {{$msg := "1 YAGPDB and over 100000 servers conquered."}} {{$re2 := reFindAll "[0-9]+" $msg}} {{$msg}}   After regex matches: {{joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
+* To demonstrate .StringSlice `{{(cslice currentTime.Month 42 "YAPGDB").StringSlice}}` will return a slice `[February YAGPDB]`. If the flag would have been set to true - {{...\).StringSlice true}}, all elements in that slice were not strings and `<no value>` is returned.
 
 ### Math functions
 
