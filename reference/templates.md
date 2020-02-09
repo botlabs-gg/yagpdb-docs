@@ -462,7 +462,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 | `toInt` | Converts something into an integer _int_. Usage: `(toInt x)`. Function will return 0, if type can't be converted to _int._ |
 | `toInt64` | Converts something into an _int64_. Usage: `(toInt64 x)`.  Function will return 0, if type can't be converted to _int64._ |
 | `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_. |
-| `toDuration` | Converts the argument, number or string to type _time.Duration_. Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-2).  |
+| `toDuration` | Converts the argument, number or string to type _time.Duration_. Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-3).  |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type _string_. For example `{{json .TimeHour}}` outputs type _string_; before this `.TimeHour` was of type _time.Duration_. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
 
 #### This section's snippets:
@@ -505,7 +505,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
           through integer2) - e.g. <code>{{slice &quot;Fox runs&quot; 2}}</code>outputs <code>x runs</code>.
           When using also integer2 - e.g. <code>{{slice &quot;Fox runs&quot; 1 7}}</code>,
           it outputs <code>ox run</code>. For slicing whole arguments, let&apos;s
-          say words, see example in section&apos;s <a href="templates.md#this-sections-snippets-3">Snippets</a>.</p>
+          say words, see example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</p>
         <p></p>
         <p>This<code> slice</code> function is not the same as basic dynamically-sized <em>slice</em> data
           type discussed in this reference doc. Also it&apos;s custom, not having
@@ -525,7 +525,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
         and returns new <em>slice </em>of the substrings between given separator
         e.g. <code>{{split &quot;YAG, is cool!&quot; &quot;,&quot;}}</code> returns <code>[YAG  is cool!]</code>  <em>slice</em> where <code>YAG</code> is
         at <code>index</code> position 0 and <code>is cool!</code> at <code>index</code> position
-        1. Example also in section&apos;s <a href="templates.md#this-sections-snippets-3">Snippets</a>.</td>
+        1. Example also in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>title &quot;string&quot;</code>
@@ -542,7 +542,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
       <td style="text-align:left"><code>reFindAll &quot;regex&quot; &quot;string&quot;</code>
       </td>
       <td style="text-align:left">Adds all regex matches from the &quot;string&quot; to a <em>slice</em>.
-        Example in section&apos;s <a href="templates.md#this-sections-snippets-3">Snippets</a>.</td>
+        Example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>reFindAllSubmatches &quot;regex&quot; &quot;string&quot;</code>
@@ -657,7 +657,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
         <p>Returns a random integer between 0 and stop, or start - stop if two args
           are provided.</p>
         <p>Result will be <code>start &lt;= random number &lt; stop</code>. Example
-          in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</p>
+          in section&apos;s <a href="templates.md#this-sections-snippets-5">Snippets</a>.</p>
       </td>
     </tr>
     <tr>
@@ -666,7 +666,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Returns the nearest integer, rounding half away from zero. Regular rounding
         &gt; 10.4 is <code>10</code> and 10.5 is <code>11</code>. All round functions
         return type <em>float64</em>, so use conversion functions to get integers.
-        For more complex rounding, example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
+        For more complex rounding, example in section&apos;s <a href="templates.md#this-sections-snippets-5">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>roundCeil</code>
@@ -705,19 +705,19 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | :--- | :--- |
 | `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). random adjective. |
 | `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
-| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-5). |
+| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
-| `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 10 000 characters\). Example in this section's [Snippets](templates.md#this-sections-snippets-5). To be released in v1.22.3. |
-| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-5). |
+| `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 10 000 characters\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). To be released in v1.22.3. |
+| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
 | `deleteResponse time` | Deletes the response after a certain time \(max 86400 seconds\). |
 | `deleteTrigger time` | Deletes the trigger after a certain time \(max 86400 seconds\). |
-| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and like previous two delete functions, it defaults to 10 seconds, max being 1 day. Example in section's [Snippets](templates.md#this-sections-snippets-5). |
+| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and like previous two delete functions, it defaults to 10 seconds, max being 1 day. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
 | `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
-| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-5). |
+| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
 
 #### This section's snippets:
@@ -739,7 +739,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `mentionRoleID roleID` | Mentions the role found with the provided ID. |
 | `escapeEveryone "input"` | Escapes everyone mentions in a string. |
 | `escapeHere "input"` | Escapes here mentions in a string. |
-| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with `sendMessageNoEscape`, also applies to escapeEveryone/Here. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
+| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with `sendMessageNoEscape`, also applies to escapeEveryone/Here. Example in section's [Snippets](templates.md#this-sections-snippets-7). |
 
 #### This section's snippets:
 
@@ -761,7 +761,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `giveRoleName userID "roleName"` | Gives a role by name to the target. |
 | `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
-| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-7). |
+| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-8). |
 | `targetHasRoleName userID "roleName"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
 
 #### This section's snippets:
