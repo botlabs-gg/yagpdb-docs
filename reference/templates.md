@@ -459,7 +459,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 
 | Function | Description |
 | :--- | :--- |
-| `toString` | Converts something into a _string_. Usage: `(toString x)`. |
+| `toString` | Has also alias `str`. Converts something into a _string_. Usage: `(toString x)`. |
 | `toInt` | Converts something into an integer _int_. Usage: `(toInt x)`. Function will return 0, if type can't be converted to _int._ |
 | `toInt64` | Converts something into an _int64_. Usage: `(toInt64 x)`.  Function will return 0, if type can't be converted to _int64._ |
 | `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_. |
