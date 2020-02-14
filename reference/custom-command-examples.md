@@ -425,58 +425,30 @@ Correct usage: `-suggest <suggestion>`
 
 ### Big emote command
 
-> By: **CHamburr\#2591**
+> By: **CHamburr\#2591**  
+> Updated by: **Joe\_\#2447**
 
-This super advanced command make use of range and indexing for strings, and will enlarge custom emotes, whether still or animated. This will also work for emotes that are from the servers YAGPDB is not in, as it gets the emote file directly from Discord's database.
+This command uses the `reFindAllSubmatches` template as well as the `printf` template, and will enlarge custom emotes, whether still or animated. This will also work for emotes that are from the servers YAGPDB is not in, as it gets the emote file directly from Discord's database.
 
 Trigger type: `Command` Trigger: `bigemote`
 
 ```go
-{{ if eq (len .CmdArgs) 1 }}
-{{ $d := index .CmdArgs 0 }}
-{{ $ext := ".png" }}
-{{ if eq (index $d 1) 97 }}
-{{ $ext = ".gif" }}
-{{ end }}
-{{ $n := add (len $d) -19 }}
-{{ $d = slice $d $n }}
-{{ $r := "" }}
-{{ $e := 1 }}
-{{ range $k, $kk := seq 0 (len $d) }}
-{{ if $e }}
-{{ $v := index $d $k }}
-{{ $a := "" }}
-{{ if eq $v 48 }}
-{{ $a = "0" }}
-{{ else if eq $v 49 }}
-{{ $a = "1" }}
-{{ else if eq $v 50 }}
-{{ $a = "2" }}
-{{ else if eq $v 51}}
-{{ $a = "3" }}
-{{ else if eq $v 52 }}
-{{ $a = "4" }}
-{{ else if eq $v 53 }}
-{{ $a = "5" }}
-{{ else if eq $v 54 }}
-{{ $a = "6" }}
-{{ else if eq $v 55 }}
-{{ $a = "7" }}
-{{ else if eq $v 56 }}
-{{ $a = "8" }}
-{{ else if eq $v 57 }}
-{{ $a = "9" }}
+{{ $matches := reFindAllSubmatches `<(a)?:.*?:(\d+)>` .StrippedMsg }}
+{{ if $matches }}
+	{{ $animated := index $matches 0 1 }}
+	{{ $id := index $matches 0 2 }}
+	{{ $ext := ".png" }}
+	{{ if $animated }} {{ $ext = ".gif" }} {{ end }}
+	{{ $url := printf "https://cdn.discordapp.com/emojis/%s%s" $id $ext }}
+	{{ sendMessage nil (cembed
+		"title" "❯ Big Emoji"
+		"url" $url
+		"color" 14232643
+		"image" (sdict "url" $url)
+		"footer" (sdict "text" (joinStr "" "Emoji ID: " $id))
+	) }}
 {{ else }}
-{{ $e = 0 }}
-{{ end }}
-{{ $r = joinStr "" $r $a }}
-{{ end }}
-{{ end }}
-{{ $color := randInt 111111 16777216 }}
-{{ $embed := cembed "title" "Big Emote" "image" (sdict "url" (joinStr "" "https://cdn.discordapp.com/emojis/" $r $ext)) "color" $color }}
-{{ sendMessage nil $embed }}
-{{ else }}
-Wrong use of command. Correct usage: `-bigemote <emote>`.
+	**Usage:** `-bigemoji <custom emoji>`.
 {{ end }}
 ```
 
