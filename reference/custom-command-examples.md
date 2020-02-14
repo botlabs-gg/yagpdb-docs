@@ -38,17 +38,27 @@ Trigger type: `Join message in server channel`
 
 ### Range example
 
-This command will teach you on how the range command works. It works really well for iterating through all your inputs. 
+This command will teach you on how the range function works. It can iterate over many items including but not limited to a `cslice`, slice, `sdict`, and `dict`
 
-This particular command will let the bot repeat everything that was being said behind the command \(be careful with this one as there are ways to abuse it\). 
+This particular command loops over a cslice and a sdict.
 
-Trigger type: `Command` Trigger: `repeat`
+Trigger type: `Command` Trigger: `range`
 
 ```go
-{{range $k, $v := .CmdArgs}}{{$v}}{{end}}
+{{/* range can iterate over many things, let's start with slice */}}
+{{ $slice := cslice "YAGPDB " "is " "cool!" }}
+{{/* Here, we range over with 1 argument, meaning the dot will be set to current iteration value */}}
+{{ range $slice -}}
+    {{ . }} 
+{{- end -}}
+{{ $map := sdict "foo" "bar" "hello" "world" }}
+{{- /* Now, we range with two arguments - $k will be the KEY, $v will be VALUE (note dot is still set to current iteration value */}}
+{{- range $k, $v := $map }}
+{{ $k }} - {{ $v }}
+{{- end }}
 ```
 
-`$k` is the iteration number you are on, starting at 0 and `$v` is the current word in your input that you are on. 
+`$k` is the index for arrays / cslices \(starting at 0\) or the key for maps and sdicts, while `$v` is the current word in your input that you are on. 
 
 Range will work on any kind of slice/array. for example. If we wanted to look for all the entries in our database we can use range and index through them all in the following. 
 
@@ -59,7 +69,7 @@ Range will work on any kind of slice/array. for example. If we wanted to look fo
 {{end}}
 ```
 
-~~`Note that we can go through everything that is in $lb with range`~~
+Note that we can go through everything that is in $lb with range.
 
 ### Dictionary example
 
