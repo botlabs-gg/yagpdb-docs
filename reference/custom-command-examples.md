@@ -404,7 +404,7 @@ This command is used to replace suggestion bots. You can adapt it to your needs.
 Trigger type: `Command` Trigger: `suggest`
 
 ```go
-{{ $channel := 476178740133494784 /* Replace the ID with your suggestions Channel ID */}}
+{{ $channel := 476178740133494784 }} {{/* Replace this with your suggestion channel ID */}}
 
 {{if gt (len .Args) 1}}
 Suggestion submitted.
