@@ -1,16 +1,16 @@
 # Custom Embeds
 
 {% hint style="warning" %}
-Custom Embeds with the -customembed command don't work in custom commands. If you want to know how you can use embeds in custom commands, scroll down to [Embeds in Custom Commands](https://docs.yagpdb.xyz/custom-embeds#embeds-in-custom-commands).
+Custom Embeds with the `-customembed` command don't work in custom commands. If you want to know how you can use embeds in custom commands, scroll down to [Embeds in Custom Commands](https://docs.yagpdb.xyz/custom-embeds#embeds-in-custom-commands).
 {% endhint %}
 
 ## The `customembed` command
 
-You always send an embed with YAGPDB by using the command `customembed` \(or for short, `ce`\). 
+One method of sending an embed with YAGPDB is using the command `customembed` \(or for short, `ce`\). 
 
 ### Create embeds by hand
 
-YAGPDB accepts embeds in json following the rules of [this format](https://discordapp.com/developers/docs/resources/channel#embed-object). 
+YAGPDB accepts embeds in JSON following the rules of [this format](https://discordapp.com/developers/docs/resources/channel#embed-object). 
 
 There, we'll take a look at the **Embed Objects**. You can add a value to each of these objects. A very simple embed would look like this:
 
@@ -22,7 +22,7 @@ The output of this would look like the following:
 
 ![](../.gitbook/assets/capture%20%286%29.PNG)
 
-Let's break this down: We start of with the customembed-command `-ce`. After this, I start my object \(the embed\) with a curly brace. Then we have the name of the object \(title\) and the value of it \(This is my title\). We separate data with commas. After that we have the same thing again, but for the description. In the end we close the object \(embed\) with another curly brace.
+Let's break this down: We start of with the customembed command `-ce`. After this, I start my object \(the embed\) with a curly brace. Then we have the name of the object \(title\) and the value of it \(This is my title\). We separate data with commas. After that we have the same thing again, but for the description. In the end we close the object \(embed\) with another curly brace.
 
 You can add the multiple objects to this, but keep in mind that Discord limits your message to 2000 characters. 
 
@@ -58,7 +58,7 @@ and the last curly brace \(`}`\). After this you can just copy and paste it into
 ## Embeds in Custom Commands
 
 {% hint style="warning" %}
-Embeds in custom commands are a little more difficult. Also, there is no generator that you could use for this. **Please only proceed if you know about custom commands and templating in general.**
+Embeds in custom commands are a little more difficult. Also, there is no generator that you could use for this. **Please only proceed if you have a good amount of knowledge about custom commands and templates in general.**
 {% endhint %}
 
 To start off, we'll take a look at this example and break it down:
@@ -181,7 +181,7 @@ The values for simple embeds need to bet placed within quotes:
 
 This generates the following embed:
 
-![](../.gitbook/assets/image.png)
+![](../.gitbook/assets/image%20%285%29.png)
 
 You can play around with this command a bit, it's really easy to use. 
 
