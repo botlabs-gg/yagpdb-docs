@@ -2,7 +2,11 @@
 
 ## Prefix
 
-The prefix is by default `-` The first thing you see when you open the command page is the prefix, you can replace this with your own unique prefix if you would like. Be sure to hit the save button afterward. Only commands have designated prefix. Switches/flags \(like rolemenu uses\) are always with a hyphen `-`.
+The prefix is by default `-` The first thing you see when you open the command page is the prefix, you can replace this with your own unique prefix if you would like. Be sure to hit the save button afterwards. Only commands have a designated prefix.
+
+{% hint style="warning" %}
+**Flags and switches** are _not_ affected by prefixes. For example, if you were using the `rolemenu create` command with the prefix `+`, it would be`+rolemenu create (group name) -m (message id)`. Note that we used the `+` prefix but `-m` stayed as `-m`, not `+m`.
+{% endhint %}
 
 ## Command Override
 
