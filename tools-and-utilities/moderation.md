@@ -25,7 +25,7 @@ There is also an auto-moderation feature as well.
 
 ## Clean/Clear Syntax and examples
 
- **Syntax**`-clean (Optional -ma [time]) (Optional -minage [time]) (Optional -nopin) (Optional -r "word") (Optional -i) (Optional @user) (num)` 
+ **Syntax**`-clean (Optional -ma [time]) (Optional -r "word") (Optional -i) (Optional @user) (num)` 
 
 **Examples**  
   
@@ -40,7 +40,5 @@ Cleans 100 messages containing pineapple, and ignoring case sensitivity.
 `-clean @user 100`   
 Cleans 100 messages sent by @user.  
 `-clean -ma 5h -r pineapple -i @user 100`   
-Cleans 100 messages sent by @user in the last 5 hours containing pineapple, ignoring case sensitivity.  
-`-clean -ma 30m -minage 10m -nopin 100`  
-Cleans 100 messages with a maximum age of 30 minutes and a minimum age of 10 minutes, ignoring pinned messages.
+Cleans 100 messages sent by @user in the last 5 hours containing pineapple, ignoring case sensitivity.
 
