@@ -910,7 +910,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
       <td style="text-align:left">
         <p>This function places comma to separate groups of thousands of a number. <code>arg </code>can
-          be <em>int</em> of <em>string</em>, has to be a whole number, e.g. <code>{{humanizeThousands &quot;1234567890&quot;}}</code> will
+          be <em>int</em> or <em>string</em>, has to be a whole number, e.g. <code>{{humanizeThousands &quot;1234567890&quot;}}</code> will
           return <code>1,234,567,890</code>
         </p>
         <p>Available from v1.22.4</p>
