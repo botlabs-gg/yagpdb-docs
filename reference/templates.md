@@ -715,10 +715,11 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `deleteResponse time` | Deletes the response after a certain time \(max 86400 seconds\). |
 | `deleteTrigger time` | Deletes the trigger after a certain time \(max 86400 seconds\). |
 | `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and like previous two delete functions, it defaults to 10 seconds, max being 1 day. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
-| `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiname:emojiid`\). |
-| `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiname:emojiid`\). |
-| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. Channel can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
+| `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiName:emojiID`\). |
+| `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiName:emojiID`\). |
+| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
+| `deleteMessageReaction channel messageID userID emojis` | Deletes reaction\(s\) from a message. `channel` can be ID, "name" or `nil`.  `emojis` argument can be up to 10 emojis, syntax is `emojiName` for Unicode/Discord's default emojis and `emojiName:emojiID` for custom emotes.   Example: `{{deleteMessageReaction nil (index .Args 1) .User.ID "👍" "👎"}}` will delete current user's reactions with thumbsUp/Down emotes from current running channel's message which ID is given to command as first argument \(index .Args 1\). Also usable with [Reaction trigger](templates.md#reaction). Available from v1.22.4 |
 
 #### This section's snippets:
 
@@ -903,6 +904,17 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>cslice, sdict</code>
       </td>
       <td style="text-align:left">These functions are covered in their own section <a href="templates.md#custom-types">here</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>humanizeThousands arg</code>
+      </td>
+      <td style="text-align:left">
+        <p>This function places comma to separate groups of thousands of a number. <code>arg </code>can
+          be <em>int</em> of <em>string</em>, has to be a whole number, e.g. <code>{{humanizeThousands &quot;1234567890&quot;}}</code> will
+          return <code>1,234,567,890</code>
+        </p>
+        <p>Available from v1.22.4</p>
+      </td>
     </tr>
   </tbody>
 </table>### ExecCC
