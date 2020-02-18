@@ -942,7 +942,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
         other executed custom command. To retrieve that <code>data </code>you use <code>.ExecData</code>.
         This example is important &gt; <a href="https://docs.yagpdb.xyz/reference/custom-command-examples#countdown-example-exec-cc">execCC example</a> also
         next snippet which shows you same thing run using the same custom command
-        &gt; <a href="templates.md#this-sections-snippets-8">Snippets</a>.</td>
+        &gt; <a href="templates.md#this-sections-snippets-9">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>scheduleUniqueCC ccID channel delay key data</code>
