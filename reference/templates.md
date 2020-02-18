@@ -816,7 +816,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>dict key1 value1 key2 value2 ...</code>
       </td>
       <td style="text-align:left">Creates an unordered collection of key-value pairs, a dictionary so to
-        say. The number of parameters to form key-value pairs must be even.</td>
+        say. The number of parameters to form key-value pairs must be even. Example
+        <a
+        href="https://docs.yagpdb.xyz/reference/custom-command-examples#dictionary-example">here</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>cembed &quot;list of embed values&quot;</code>
@@ -826,7 +828,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>in list value</code>
       </td>
-      <td style="text-align:left">Returns boolean true/false whether case-sensitive value is in list/slice. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
+      <td style="text-align:left">Returns boolean true/false whether case-sensitive value is in list/<em>slice</em>. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>inFold </code>
