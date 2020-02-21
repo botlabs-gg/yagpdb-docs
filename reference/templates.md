@@ -719,7 +719,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiName:emojiID`\). |
 | `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
-| `deleteMessageReaction channel messageID userID emojis` | Deletes reaction\(s\) from a message. `channel` can be ID, "name" or `nil`.  `emojis` argument can be up to 10 emojis, syntax is `emojiName` for Unicode/Discord's default emojis and `emojiName:emojiID` for custom emotes.   Example: `{{deleteMessageReaction nil (index .Args 1) .User.ID "👍" "👎"}}` will delete current user's reactions with thumbsUp/Down emotes from current running channel's message which ID is given to command as first argument \(index .Args 1\). Also usable with [Reaction trigger](templates.md#reaction). Available from v1.22.4 |
+| `deleteMessageReaction channel messageID userID emojis` | Deletes reaction\(s\) from a message. `channel` can be ID, "name" or `nil`.  `emojis` argument can be up to 10 emojis, syntax is `emojiName` for Unicode/Discord's default emojis and `emojiName:emojiID` for custom emotes.   Example: `{{deleteMessageReaction nil (index .Args 1) .User.ID "👍" "👎"}}` will delete current user's reactions with thumbsUp/Down emotes from current running channel's message which ID is given to command as first argument \(index .Args 1\). Also usable with [Reaction trigger](templates.md#reaction). |
 
 #### This section's snippets:
 
@@ -910,12 +910,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>humanizeThousands arg</code>
       </td>
-      <td style="text-align:left">
-        <p>This function places comma to separate groups of thousands of a number. <code>arg </code>can
-          be <em>int</em> or <em>string</em>, has to be a whole number, e.g. <code>{{humanizeThousands &quot;1234567890&quot;}}</code> will
-          return <code>1,234,567,890</code>
-        </p>
-        <p>Available from v1.22.4</p>
+      <td style="text-align:left">This function places comma to separate groups of thousands of a number. <code>arg </code>can
+        be <em>int</em> or <em>string</em>, has to be a whole number, e.g. <code>{{humanizeThousands &quot;1234567890&quot;}}</code> will
+        return <code>1,234,567,890</code>
       </td>
     </tr>
   </tbody>
