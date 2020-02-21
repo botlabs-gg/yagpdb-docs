@@ -2,11 +2,7 @@
 
 ## Prefix
 
-The prefix is by default `-` The first thing you see when you open the command page is the prefix, you can replace this with your own unique prefix if you would like. Be sure to hit the save button afterwards. Only commands have a designated prefix.
-
-{% hint style="warning" %}
-**Flags and switches** are _not_ affected by prefixes. For example, if you were using the `rolemenu create` command with the prefix `+`, it would be`+rolemenu create (group name) -m (message id)`. Note that we used the `+` prefix but `-m` stayed as `-m`, not `+m`.
-{% endhint %}
+The prefix is by default `-` The first thing you see when you open the command page is the prefix, you can replace this with your own unique prefix if you would like. Be sure to hit the save button afterward. Only commands have designated prefix. Switches/flags \(like rolemenu uses\) are always with a hyphen `-`.
 
 ## Command Override
 
@@ -484,195 +480,34 @@ Everything here starts with automod such as `-automod toggle`
   </tbody>
 </table>### Fun
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Command</th>
-      <th style="text-align:left">Aliases</th>
-      <th style="text-align:left">Required Args</th>
-      <th style="text-align:left">Optional Args</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">define</td>
-      <td style="text-align:left">df</td>
-      <td style="text-align:left">(topic)</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Looks for an Urban Dictionary definition.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">weather</td>
-      <td style="text-align:left">w</td>
-      <td style="text-align:left">(location)</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Show the weather for the given location.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">topic</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Generates a chat topic.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">catfact</td>
-      <td style="text-align:left">cf, cat, catfacts</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Catfacts. What else?!</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">dogfact</td>
-      <td style="text-align:left">dog, dogfacts</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Dogfacts. Yeah. Competitor to catfacts.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">advice</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(for?)</td>
-      <td style="text-align:left">Get some advice.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">throw</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(username)</td>
-      <td style="text-align:left">Throws random stuff at nearby people or at the given member.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">roll</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(number of sides)</td>
-      <td style="text-align:left">Roll a dice. Specify nothing for 6 siddes, or specify a number for max.
-        sides.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">customembed</td>
-      <td style="text-align:left">ce</td>
-      <td style="text-align:left">(json)</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Creates an embed from what you give it in json form: <a href="https://discordapp.com/developers/docs/resources/channel#embed-object">Embed Object</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">simpleembed</td>
-      <td style="text-align:left">se</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(switches)</td>
-      <td style="text-align:left">A simpler version of CustomEmbed, controlled using switches. <a href="all-commands.md#simpleembed">More info</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">wouldyourather</td>
-      <td style="text-align:left">wyr</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Presents you with 2 choices. Somewhat NSFW text wise.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">xkcd</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">number or -l:switch for latest</td>
-      <td style="text-align:left">Gives random xkcd comic if not stated by number or -l flag meaning latest.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">topservers</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">
-        <p>(skip: number - entries to skip</p>
-        <p>-id: serverID)</p>
-      </td>
-      <td style="text-align:left">Responds with the top 15 servers the bot is on.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">takerep</td>
-      <td style="text-align:left">-, tr, trep</td>
-      <td style="text-align:left">(username)</td>
-      <td style="text-align:left">(count)</td>
-      <td style="text-align:left">Takes away given number of rep from given member. Default number is 1.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">giverep</td>
-      <td style="text-align:left">+, gr, grep</td>
-      <td style="text-align:left">(username)</td>
-      <td style="text-align:left">(count)</td>
-      <td style="text-align:left">Give given number of rep to given member. Default number is 1.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">setrep</td>
-      <td style="text-align:left">setrepID</td>
-      <td style="text-align:left">(mention/userID) (number)</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Sets someones rep, by mention or ID. This is a rep admin command (manage
-        server perms. or rep admin role) and bypasses cooldowns and other restrictions.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">delrep</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(mention/userID)</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Deletes someone from the reputation list completely. This is a rep admin
-        command and bypasses cooldowns and other restrictions. This action cannot
-        be undone.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">replog</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(mention/userID)</td>
-      <td style="text-align:left">(page number)</td>
-      <td style="text-align:left">Shows specified user&apos;s rep log. Longer logs are divided into pages.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">rep</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(username)</td>
-      <td style="text-align:left">Shows your or the given member&apos;s current rep and rank.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">toprep</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(offset)</td>
-      <td style="text-align:left">Shows top 15 rep members on the server.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">sentiment</td>
-      <td style="text-align:left">sent</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(text)</td>
-      <td style="text-align:left">Does sentiment analysis on the given text or your last 5 messages longer
-        than 3 words.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">8ball</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(question)</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Wisdom.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">soundboard</td>
-      <td style="text-align:left">sb</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">(soundname)</td>
-      <td style="text-align:left">Play or list soundboard sounds.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">soundboardreset</td>
-      <td style="text-align:left">sbclose/ sbreset</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Resets Soundboard Player</td>
-    </tr>
-  </tbody>
-</table>####  Cards Against Humanity
+| Command | Aliases | Required Args | Optional Args | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| define | df | \(topic\) | N/A | Looks for an Urban Dictionary definition. |
+| weather | w | \(location\) | N/A | Show the weather for the given location.  |
+| topic | N/A | N/A | N/A | Generates a chat topic. |
+| catfact | cf, cat, catfacts | N/A | N/A | Catfacts. What else?! |
+| dogfact | dog, dogfacts | N/A | N/A | Dogfacts. Yeah. Competitor to catfacts. |
+| advice | N/A | N/A | \(for?\) | Get some advice.  |
+| throw | N/A | N/A | \(username\) | Throws random stuff at nearby people or at the given member. |
+| roll | N/A | N/A | \(number of sides\) | Roll a dice. Specify nothing for 6 siddes, or specify a number for max. sides. |
+| customembed | ce | \(json\) | N/A | Creates an embed from what you give it in json form: [Embed Object](https://discordapp.com/developers/docs/resources/channel#embed-object). |
+| simpleembed | se | N/A | \(switches\) | A simpler version of CustomEmbed, controlled using switches. [More info](all-commands.md#simpleembed). |
+| wouldyourather | wyr | N/A | N/A | Presents you with 2 choices. Somewhat NSFW text wise. |
+| xkcd | N/A | N/A | number or -l:switch for latest | Gives random xkcd comic if not stated by number or -l flag meaning latest. |
+| topservers | N/A | N/A | \(skip: number - entries to skip | Responds with the top 15 servers the bot is on. |
+| takerep | -, tr, trep | \(username\) | \(count\) | Takes away given number of rep from given member. Default number is 1. |
+| giverep | +, gr, grep | \(username\) | \(count\) | Give given number of rep to given member. Default number is 1. |
+| setrep | setrepID | \(mention/userID\) \(number\) | N/A | Sets someones rep, by mention or ID. This is a rep admin command \(manage server perms. or rep admin role\) and bypasses cooldowns and other restrictions. |
+| delrep | N/A | \(mention/userID\) | N/A | Deletes someone from the reputation list completely. This is a rep admin command and bypasses cooldowns and other restrictions. This action cannot be undone. |
+| replog | N/A | \(mention/userID\) | \(page number\) | Shows specified user's rep log. Longer logs are divided into pages. |
+| rep | N/A | N/A | \(username\) | Shows your or the given member's current rep and rank. |
+| toprep | N/A | N/A | \(offset\) | Shows top 15 rep members on the server. |
+| sentiment | sent | N/A | \(text\) | Does sentiment analysis on the given text or your last 5 messages longer than 3 words. |
+| 8ball | N/A | \(question\) | N/A | Wisdom. |
+| soundboard | sb | N/A | \(soundname\) | Play or list soundboard sounds. |
+| soundboardreset | sbclose/ sbreset | N/A | N/A | Resets Soundboard Player |
+
+####  Cards Against Humanity
 
 Everything here starts with cah such as `-cah create`
 

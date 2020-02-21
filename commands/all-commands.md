@@ -473,10 +473,6 @@ Responds with the top 15 servers I'm on
 TopServers [Skip:Whole number - Entries to skip]
 ```
 
-```text
-[-id serverID:Whole number]
-```
-
 ### TakeRep
 
 **Aliases:** -/tr/trep/-rep

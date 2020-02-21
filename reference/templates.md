@@ -709,6 +709,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
 | `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 100 000 characters ~100kB\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
+| `complexMessageEdit "content" args "embed" args` | Special case for `editMessage` function, if `complexMessage` is involved, has two parameters `"content"` and `"embed"` to edit either regular text part of a complex message or embed part. Example in this section's Snippets. |
 | `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
@@ -727,8 +728,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
   `{{$x := sendMessageRetID nil "Hello there!"}} {{addMessageReactions nil $x "👍" "👎"}} {{deleteMessage nil $x 5}}`
 
-* To demonstrate `sleep` and slightly also `editMessage` functions. &gt; `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 5}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
+* To demonstrate `sleep` and slightly also `editMessage` functions. &gt; `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 3}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
 * To demonstrate usage of `complexMessage` with `sendMessage`. `{{sendMessage nil (complexMessage "content" "Who rules?" "embed" (cembed "description" "YAGPDB of course!" "color" 0x89aa00) "file" "Here we print something nice - you all are doing awesome!")}}`
+* To demonstrate usage of `complexMessageEdit` with `editMessage`. `{{$mID := sendMessageRetID nil (complexMessage "content" "You know what is..." "embed" (cembed "title" "FUN!?" "color" 0xaa8900) ) }} {{sleep 3}} {{editMessage nil $mID (complexMessageEdit "embed" (cembed "title" "YAGPDB!" "color" 0x89aa00) "content" "Yes, it's always working with..." )}}`
 
 ### Mentions
 
