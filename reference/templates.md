@@ -795,6 +795,11 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Returns a random adjective.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>noun</code>
+      </td>
+      <td style="text-align:left">Returns a random noun.</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>index</code>
       </td>
       <td style="text-align:left">
@@ -830,7 +835,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>in list value</code>
       </td>
-      <td style="text-align:left">Returns boolean true/false whether case-sensitive value is in list/<em>slice</em>. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
+      <td style="text-align:left">Returns <em>bool</em> true/false whether case-sensitive value is in list/<em>slice</em>. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>inFold </code>
@@ -892,7 +897,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>carg &quot;type&quot; &quot;name&quot;</code>
       </td>
-      <td style="text-align:left">Defines type of argument for parseArgs. <a href="../commands/custom-commands.md#require-arguments">More in depth</a> here
+      <td style="text-align:left">Defines type of argument for <code>parseArgs</code>. <a href="../commands/custom-commands.md#require-arguments">More in depth</a> here
         and an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
       </td>
     </tr>
