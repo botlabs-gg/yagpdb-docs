@@ -40,8 +40,9 @@ To see of what type a variable or function's return is, use printf "%T", for exa
 
 ## The Dot
 
-The dot `{{ . }}`  encompasses all active data available for use in the templating system.   
-From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.
+The dot `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context.   
+From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.  
+`$` has a special significance in templates, it is set to the [starting value of a dot](https://golang.org/pkg/text/template/#hdr-Variables). This means you have access to the global context from anywhere - e.g., inside `range`/`with` actions. `$` for global context would cease to work if you redefine it inside template, to recover it `{{ $ := .  }}`.
 
 | Field | Description |
 | :--- | :--- |
@@ -293,6 +294,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 | Field | Description |
 | :--- | :--- |
+| .DiscordEpoch | Gives you Discord Epoch time in _time.Time._ `{{.DiscordEpoch.Unix}}` would return in seconds &gt; 1420070400. |
+| .UnixEpoch | Gives you Unix Epoch time in _time.Time._ |
 | .TimeHour | Variable of _time.Duration_ type and returns 1 hour &gt; `1h0m0s`. |
 | .TimeMinute | Variable of _time.Duration_ type and returns 1 minute &gt; `1m0s`. |
 | .TimeSecond | Variable of _time.Duration_ type and returns 1 second &gt; `1s`. |
@@ -1117,7 +1120,9 @@ Branching using `if` action's pipeline and comparison operators - these operator
   </tbody>
 </table>## Range action
 
-`range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.  
+`range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.
+
+Affected dot inside `range` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `range` control structure directly, these fields do not exists and template will error out. Getting those values inside `range` and also `with` action would need `$.User.ID` for example.  
   
 `range` on slices/arrays provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.  
   
@@ -1140,7 +1145,7 @@ Like `if`, `range`is concluded with`{{end}}`action and declared variable scope i
 
 `with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{else}}` is used, that branch is executed instead.   
   
-Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure, these fields do not exists and template will error out.
+Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure directly, these fields do not exists and template will error out. Getting those values inside `with` and also `range` action would need `$.User.ID` for example.
 
 Like `if` and `range` actions, `with` is concluded using `{{end}}` and variable scope extends to that point.
 
