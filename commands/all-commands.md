@@ -116,6 +116,10 @@ List roles, their id's, color hex code, and 'mention everyone' perms \(useful if
 ListRoles
 ```
 
+```text
+[-nomanaged Don't list managed/bot roles:Switch]
+```
+
 ### Poll
 
 Create very simple reaction poll. Example: `poll "favorite color?" blue red pink`
@@ -471,6 +475,10 @@ Responds with the top 15 servers I'm on
 
 ```text
 TopServers [Skip:Whole number - Entries to skip]
+```
+
+```text
+[-id serverID:Whole number]
 ```
 
 ### TakeRep

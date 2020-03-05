@@ -300,17 +300,74 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 | .TimeMinute | Variable of _time.Duration_ type and returns 1 minute &gt; `1m0s`. |
 | .TimeSecond | Variable of _time.Duration_ type and returns 1 second &gt; `1s`. |
 
-| Function | Description |
-| :--- | :--- |
-| `currentTime` | Gets the current time, value is of type _time.Time_ which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template). |
-| `formatTime Time "arg"` | Outputs given time in RFC822 formatting, first argument `Time` shows it needs to be of type _time.Time_, also with extra layout if second argument is given - e.g. `{{formatTime currentUserCreated "3:04PM"}}` would output `11:22AM` if that would have been user's creating time. |
-| `humanizeDurationHours` | Returns given integer or _time.Duration_ argument in nanoseconds in human readable format - as how long it would take to get towards given time - e.g. `{{humanizeDurationHours 9000000000000000000}}` returns `285 years 20 weeks 6 days and 16 hours`. More in [Snippets](templates.md#this-sections-snippets-1). |
-| `humanizeDurationMinutes` | Sames as `humanizeDurationHours`, this time duration is returned in minutes - e.g. `{{humanizeDurationMinutes 3500000000000}}` would return `58 minutes`. |
-| `humanizeDurationSeconds` | Sames as both humanize functions above, this time duration is returned in seconds - e.g. `{{humanizeDurationSeconds 3500000000000}}` would return `58 minutes and 20 seconds`. |
-| `humanizeTimeSinceDays` | Returns time passed since given argument of type _time.Time_ in human readable format - e.g. `{{humanizeTimeSinceDays currentUserCreated}}` |
-| `newDate year month day hour minute second` | Returns new type _time.Time_ object in UTC using given syntax \(all arguments need to be of type _int_\), for example &gt; `{{humanizeDurationHours ((newDate 2059 1 2 12 34 56).Sub currentTime)}}` will give you how much time till year 2059 January 2nd 12:34:56. More examples in [Snippets](templates.md#this-sections-snippets-1).  |
-
-#### This section's snippets:
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>currentTime</code>
+      </td>
+      <td style="text-align:left">Gets the current time, value is of type <em>time.Time</em> which can be
+        used in a custom embed. More info <a href="../commands/custom-commands.md#currenttime-template">here</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>formatTime Time &quot;arg&quot;</code>
+      </td>
+      <td style="text-align:left">Outputs given time in RFC822 formatting, first argument <code>Time</code> shows
+        it needs to be of type <em>time.Time</em>, also with extra layout if second
+        argument is given - e.g. <code>{{formatTime currentUserCreated &quot;3:04PM&quot;}}</code> would
+        output <code>11:22AM</code> if that would have been user&apos;s creating
+        time.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>humanizeDurationHours</code>
+      </td>
+      <td style="text-align:left">Returns given integer or <em>time.Duration</em> argument in nanoseconds
+        in human readable format - as how long it would take to get towards given
+        time - e.g. <code>{{humanizeDurationHours 9000000000000000000}}</code> returns <code>285 years 20 weeks 6 days and 16 hours</code>.
+        More in <a href="templates.md#this-sections-snippets-1">Snippets</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>humanizeDurationMinutes</code>
+      </td>
+      <td style="text-align:left">Sames as <code>humanizeDurationHours</code>, this time duration is returned
+        in minutes - e.g. <code>{{humanizeDurationMinutes 3500000000000}}</code> would
+        return <code>58 minutes</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>humanizeDurationSeconds</code>
+      </td>
+      <td style="text-align:left">Sames as both humanize functions above, this time duration is returned
+        in seconds - e.g. <code>{{humanizeDurationSeconds 3500000000000}}</code> would
+        return <code>58 minutes and 20 seconds</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>humanizeTimeSinceDays</code>
+      </td>
+      <td style="text-align:left">Returns time passed since given argument of type <em>time.Time</em> in human
+        readable format - e.g. <code>{{humanizeTimeSinceDays currentUserCreated}}</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>newDate year month day hour minute second [timezone]</code>
+      </td>
+      <td style="text-align:left">
+        <p>Returns new type <em>time.Time</em> object in UTC using given syntax (all
+          arguments need to be of type <em>int</em>), for example &gt; <code>{{humanizeDurationHours ((newDate 2059 1 2 12 34 56).Sub currentTime)}}</code> will
+          give you how much time till year 2059 January 2nd 12:34:56. More examples
+          in <a href="templates.md#this-sections-snippets-1">Snippets</a>.</p>
+        <p><code>timezone </code>is an optional string argument which uses golang&apos;s
+          <a
+          href="https://golang.org/pkg/time/#LoadLocation">LoadLocation</a>function and <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">ZONEINFO syntax</a> -
+            available starting v1.23.3.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>#### This section's snippets:
 
 * To demonstrate `humanizeDurationHours` and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_. `{{humanizeDurationHours (currentTime.Sub .Member.JoinedAt.Parse)}}`
 * To demonstrate `newDate` to get Epoch times. `{{$unixEpoch := newDate 1970 1 1 0 0 0}} in seconds > {{$unixEpoch.Unix}} {{$discordEpoch := newDate 2015 1 1 0 0 0}} in seconds > {{$discordEpoch.Unix}}`
