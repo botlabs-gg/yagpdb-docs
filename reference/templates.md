@@ -362,8 +362,8 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
           in <a href="templates.md#this-sections-snippets-1">Snippets</a>.</p>
         <p><code>timezone </code>is an optional string argument which uses golang&apos;s
           <a
-          href="https://golang.org/pkg/time/#LoadLocation">LoadLocation</a>function and <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">ZONEINFO syntax</a> -
-            available starting v1.23.3. For example <code>{{newDate 2020 4 20 12 34 56 &quot;Atlantic/Reykjavik&quot;}}</code> would
+          href="https://golang.org/pkg/time/#LoadLocation">LoadLocation</a>function and <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">ZONEINFO syntax.</a> For
+            example: <code>{{newDate 2020 4 20 12 34 56 &quot;Atlantic/Reykjavik&quot;}}</code> would
             return that time in GMT+0.</p>
       </td>
     </tr>

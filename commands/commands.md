@@ -113,8 +113,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">-nomanaged</td>
       <td style="text-align:left">List roles and their IDs, and some other stuff on the server. <code>-nomanaged </code>is
-        a switch that does not display managed/bot roles in <code>listroles</code> return
-        - available starting v1.23.3</td>
+        a switch that does not display managed/bot roles in <code>listroles</code> return.</td>
     </tr>
     <tr>
       <td style="text-align:left">poll</td>
