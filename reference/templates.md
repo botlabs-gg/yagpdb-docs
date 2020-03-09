@@ -11,9 +11,9 @@ All available data that can be used in YAGPDB's templating "engine" which is sli
 **Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields \(e.g. .Append, .User\) are usually kept in standard formatting. If argument for a function is optional, it's enclosed in parenthesis `( )`. If there are many optional arguments possible, it's usually denoted by 3-dot `...`ellipsis.
 
 {% hint style="warning" %}
-**Put curly brackets around the data you want to formulate as template** like this: `{{.User.Username}}`
+**Always put curly brackets around the data and "actions you perform" you want to formulate as template** like this: `{{.User.Username}}`
 
-This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure with methods and functions stated below.
+This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure aka a template with methods and functions stated below.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -49,6 +49,11 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | .CCID | The ID of currently executing custom command in type of _int64_. |
 | .IsPremium | Returns boolean true/false whether guild is premium of YAGPDB or not. |
 | .CCRunCount | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes. |
+
+## Pipes
+
+A powerful component of templates is the ability to stack actions, like function calls together - chaining one after another. This is done by using pipes `|`. Borrowed from Unix pipes, the concept is simple: each pipeline’s output becomes the input of the following pipe. One limitation of the pipes is that they can only work with a single value and that value becomes the last parameter of the next pipeline.   
+**Example**: `{{randInt 41 | add 2}}` would output whatever `randInt` function returns to addition `add` as second parameter and it would be added to 2; this more simplified would be like `{{40 | add 2 }}` with return 42.
 
 ## User
 
@@ -104,7 +109,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 
 #### This section's snippets:
 
-`{{(userArg .Guild.OwnerID).String}}` this template returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does, explained below\). The parentheses surrounding them make `userArg` function return `.User` as .User object which is handled further by `.String` method \(ref.`.User.String`\), giving a result like &gt; `YAGPDB#8760`.
+`{{(userArg .Guild.OwnerID).String}}` this template structure returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does, explained below\). The parentheses surrounding them make `userArg` function return `.User` as .User object which is handled further by `.String` method \(ref.`.User.String`\), giving a result like &gt; `YAGPDB#8760`.
 
 ## Guild / Server
 
@@ -247,7 +252,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 [Message object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#message-object).
 
 {% hint style="info" %}
-More information about the `Message` template can be found [here](../commands/custom-commands.md#the-message-template).
+More information about the `Message` object can be found [here](../commands/custom-commands.md#the-message-template).
 {% endhint %}
 
 ## Reaction
@@ -375,7 +380,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 ## Custom Types
 
-Golang has built-in primitive data types \(_int_, _string_, _bool_, _float64_, ...\) and built-in composite data types \(_array_, _slice_, _map_, ...\) which also are used in templates.   
+Golang has built-in primitive data types \(_int_, _string_, _bool_, _float64_, ...\) and built-in composite data types \(_array_, _slice_, _map_, ...\) which also are used in CC-templates.   
   
 YAGPDB's templating "engine" has currently two user-defined, custom data types - _templates.Slice_ and _templates.SDict_. There are other custom data types used like _discordgo.Timestamp_, __but these are outside  of the main code of YAGPDB, so not explained here further. Type _time.Time_ is covered in it's own [section](templates.md#time).  
   
@@ -623,7 +628,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
     <tr>
       <td style="text-align:left"><code>print, printf, println</code>
       </td>
-      <td style="text-align:left">These are template package&apos;s predefined functions and are aliases
+      <td style="text-align:left">These are GO template package&apos;s predefined functions and are aliases
         for <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprint</a>, <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprintf</a> and
         <a
         href="https://golang.org/pkg/fmt/#Sprintln">fmt.Sprintln</a>. Formatting is also discussed <a href="https://golang.org/pkg/fmt/#hdr-Printing">here</a>.
@@ -764,7 +769,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 | Function | Description |
 | :--- | :--- |
-| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per template \(accepts embed objects\). random adjective. |
+| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per custom command \(accepts embed objects\). |
 | `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
 | `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
@@ -876,7 +881,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
       <td style="text-align:left">Iterates (loops) over the given <em>slice </em>or <em>array </em>and sets
         successive elements as active data (the dot) to be further handled inside
-        the range template. Example usage <a href="custom-command-examples.md#range-example">here</a>.
+        the <code>range</code> action. Example usage <a href="custom-command-examples.md#range-example">here</a>.
         <a
         href="templates.md#range-action">More in-depth here</a>.</td>
     </tr>
@@ -937,8 +942,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
           formatting &gt; <code>{{$x := 2}} {{exec &quot;clear&quot; $x &quot;-nopin&quot;}}</code> Here <code>&quot;clear&quot;</code> is
           the <code>&quot;command&quot;</code> and it is followed by <code>arguments</code>,
           one variable <code>$x</code> and one string <code>&quot;-nopin&quot;</code>.
-          Last template is the same as <code>{{exec (joinStr &quot; &quot; &quot;clear&quot; $x &quot;-nopin&quot;)}}</code>(also
-          notice the space in joinStr separator).</p>
+          Last example is the same as <code>{{exec (joinStr &quot; &quot; &quot;clear&quot; $x &quot;-nopin&quot;)}}</code>(also
+          notice the space in <code>joinStr</code> separator).</p>
       </td>
     </tr>
     <tr>
