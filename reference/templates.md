@@ -53,7 +53,7 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 ## Pipes
 
 A powerful component of templates is the ability to stack actions, like function calls together - chaining one after another. This is done by using pipes `|`. Borrowed from Unix pipes, the concept is simple: each pipeline’s output becomes the input of the following pipe. One limitation of the pipes is that they can only work with a single value and that value becomes the last parameter of the next pipeline.   
-**Example**: `{{randInt 41 | add 2}}` would output whatever `randInt` function returns to addition `add` as second parameter and it would be added to 2; this more simplified would be like `{{40 | add 2 }}` with return 42.
+**Example**: `{{randInt 41 | add 2}}` would pipeline`randInt` function's return to addition `add` as second parameter and it would be added to 2; this more simplified would be like `{{40 | add 2}}` with return 42. Same pipline but using a variable is also useful one -`{{$x:=40 | add 2}}` would not return anything as printout, 40 still goes through pipeline to addition and 42 is stored to varibale `$x`.
 
 ## User
 
