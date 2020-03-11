@@ -10,7 +10,6 @@ Thanks to the following people for contributing to the Bot on GitHub or for doin
 * [Timcampy118\#5636](https://github.com/timcampy118)
 * [caskd\#6769](https://github.com/casKd-dev)
 * MartijnTim\#9543
-* [caubert\#6702](https://github.com/mrbentarikau)
 * Narutp\#4011
 * [CHamburr\#2591](https://github.com/CHamburr)
 * Blitz\#7822
