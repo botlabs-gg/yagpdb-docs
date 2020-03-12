@@ -16,10 +16,6 @@ All available data that can be used in YAGPDB's templating "engine" which is sli
 This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure aka a template with methods and functions stated below.
 {% endhint %}
 
-{% hint style="warning" %}
-Data passed around template pipeline can be initialized as a variable to capture it &gt; \(_in EBNF syntax\)_ $variable `:=` value. Previously declared variable can also be assigned with new data &gt; $variable `=` value, it has to have a whitespace before it or control panel will error out. Variable scope extends to the `{{end}}` action of the control structure.
-{% endhint %}
-
 {% hint style="info" %}
 If you want to join different data objects \(e.g. to wrap `toString` in `joinStr` around .Guild.MemberCount\), you use round brackets aka parentheses as delimiters:  
 `{{joinStr "" "Our member count is " (toString .Guild.MemberCount) "!"}}`
@@ -38,11 +34,12 @@ Many problems start with different kinds of type user has as value and what is n
 To see of what type a variable or function's return is, use printf "%T", for example &gt; `{{printf "%T" currentTime}}` will output the type _time.Time_.
 {% endhint %}
 
-## The Dot
+## The Dot and Variables
 
 The dot `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context.   
 From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.  
-`$` has a special significance in templates, it is set to the [starting value of a dot](https://golang.org/pkg/text/template/#hdr-Variables). This means you have access to the global context from anywhere - e.g., inside `range`/`with` actions. `$` for global context would cease to work if you redefine it inside template, to recover it `{{ $ := .  }}`.
+`$` has a special significance in templates, it is set to the [starting value of a dot](https://golang.org/pkg/text/template/#hdr-Variables). This means you have access to the global context from anywhere - e.g., inside `range`/`with` actions. `$` for global context would cease to work if you redefine it inside template, to recover it `{{ $ := .  }}`.  
+`$` also denotes the beginning of a variable, which maybe be initialized inside a template action. So data passed around template pipeline can be initialized using syntax &gt; `$variable := value`. Previously declared variable can also be assigned with new data &gt; `$variable = value`, it has to have a white-space before it or control panel will error out. Variable scope extends to the `end` action of the control structure \(`if`, `with`, or `range`\) in which it is declared, or to the end of custom command if there are no control structures - call it global scope. 
 
 | Field | Description |
 | :--- | :--- |
