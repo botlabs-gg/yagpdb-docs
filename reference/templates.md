@@ -8,12 +8,12 @@ description: '"Go is all about type... Type is life." // William Kennedy'
 
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len,`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/)
 
-**Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields \(e.g. .Append, .User\) are usually kept in standard formatting. If argument for a function is optional, it's enclosed in parenthesis `( )`. If there are many optional arguments possible, it's usually denoted by 3-dot `...`ellipsis.
+**Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template-structure or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields \(e.g. .Append, .User\) are usually kept in standard formatting. If argument for a function is optional, it's enclosed in parenthesis `( )`. If there are many optional arguments possible, it's usually denoted by 3-dot `...`ellipsis.
 
 {% hint style="warning" %}
-**Always put curly brackets around the data and "actions you perform" you want to formulate as a template** like this: `{{.User.Username}}`
+**Always put curly brackets around the data and "actions you perform" you want to formulate as a template-structure** like this: `{{.User.Username}}`
 
-This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure aka a template with methods and functions stated below.
+This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure aka an action with methods and functions stated below.
 {% endhint %}
 
 {% hint style="info" %}
@@ -106,7 +106,7 @@ A powerful component of templates is the ability to stack actions - like functio
 
 #### This section's snippets:
 
-`{{(userArg .Guild.OwnerID).String}}` this template structure returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does, explained below\). The parentheses surrounding them make `userArg` function return `.User` as .User object which is handled further by `.String` method \(ref.`.User.String`\), giving a result like &gt; `YAGPDB#8760`.
+`{{(userArg .Guild.OwnerID).String}}` this template-structure returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does, explained below\). The parentheses surrounding them make `userArg` function return `.User` as .User object which is handled further by `.String` method \(ref.`.User.String`\), giving a result like &gt; `YAGPDB#8760`.
 
 ## Guild / Server
 
@@ -377,7 +377,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 ## Custom Types
 
-Golang has built-in primitive data types \(_int_, _string_, _bool_, _float64_, ...\) and built-in composite data types \(_array_, _slice_, _map_, ...\) which also are used in CC-templates.   
+Golang has built-in primitive data types \(_int_, _string_, _bool_, _float64_, ...\) and built-in composite data types \(_array_, _slice_, _map_, ...\) which also are used in custom commands.   
   
 YAGPDB's templating "engine" has currently two user-defined, custom data types - _templates.Slice_ and _templates.SDict_. There are other custom data types used like _discordgo.Timestamp_, __but these are outside  of the main code of YAGPDB, so not explained here further. Type _time.Time_ is covered in it's own [section](templates.md#time).  
   
@@ -546,8 +546,8 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
     <tr>
       <td style="text-align:left"><code>joinStr &quot;separator&quot; &quot;str1&quot; (arg1)(arg2) &quot;str2&quot; ...</code>
       </td>
-      <td style="text-align:left">Joins several strings into one, separated by the first arg<code>&quot;separator&quot;</code>,
-        useful for executing commands in templates (e.g.<code>{{joinStr &quot;&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot;}}</code> returns <code>123</code>).</td>
+      <td style="text-align:left">Joins several strings into one, separated by the first argument<code>&quot;separator&quot;</code>,
+        useful for executing commands in template (e.g.<code>{{joinStr &quot;&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot;}}</code> returns <code>123</code>).</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>lower &quot;string&quot;</code>
@@ -573,7 +573,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
         <p></p>
         <p>This<code> slice</code> function is not the same as basic dynamically-sized <em>slice</em> data
           type discussed in this reference doc. Also it&apos;s custom, not having
-          3-indices as the default one from text/template package.</p>
+          3-indices as the default one from <a href="https://golang.org/pkg/text/template/#hdr-Functions">text/template</a> package.</p>
       </td>
     </tr>
     <tr>
@@ -694,11 +694,11 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>log x base</code>
       </td>
-      <td style="text-align:left">Log is a logarithm function for templates using (log base of x). Arguments
-        can be any type of numbers, as long as they follow logarithm logic. Return
-        value is of type <em>float64</em>. If base argument is not given It is using
-        natural logarithm (base e - The Euler&apos;s constant) as default, also
-        is the default to change the base.<code>{{ log &quot;123&quot; 2 }}</code> will
+      <td style="text-align:left">Log is a logarithm function using (log base of x). Arguments can be any
+        type of numbers, as long as they follow logarithm logic. Return value is
+        of type <em>float64</em>. If base argument is not given It is using natural
+        logarithm (base e - The Euler&apos;s constant) as default, also is the
+        default to change the base.<code>{{ log &quot;123&quot; 2 }}</code> will
         return <code>6.94251450533924</code>.</td>
     </tr>
     <tr>
@@ -967,10 +967,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>sleep seconds</code>
       </td>
-      <td style="text-align:left">Pauses execution of template inside custom command for max 60 seconds
-        combined. Argument<code>seconds</code>is of type integer. Example in
-        <a
-        href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
+      <td style="text-align:left">Pauses execution of template-structure inside custom command for max 60
+        seconds combined. Argument<code>seconds</code>is of type integer. Example
+        in <a href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>cslice, sdict</code>
