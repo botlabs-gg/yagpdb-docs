@@ -11,7 +11,7 @@ All available data that can be used in YAGPDB's templating "engine" which is sli
 **Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields \(e.g. .Append, .User\) are usually kept in standard formatting. If argument for a function is optional, it's enclosed in parenthesis `( )`. If there are many optional arguments possible, it's usually denoted by 3-dot `...`ellipsis.
 
 {% hint style="warning" %}
-**Always put curly brackets around the data and "actions you perform" you want to formulate as template** like this: `{{.User.Username}}`
+**Always put curly brackets around the data and "actions you perform" you want to formulate as a template** like this: `{{.User.Username}}`
 
 This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure aka a template with methods and functions stated below.
 {% endhint %}
