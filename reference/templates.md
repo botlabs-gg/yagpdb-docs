@@ -989,6 +989,25 @@ With regular expression patterns - when using quotes you have to "double-escape"
         return <code>1,234,567,890</code>
       </td>
     </tr>
+    <tr>
+      <td style="text-align:left"><code>sendTemplate channel name data</code>
+      </td>
+      <td style="text-align:left">
+        <p>Function sends a formulated template to another channel.
+          <br />Channel is like always either name, number ir nil.</p>
+        <p>Example:</p>
+        <p><code>{{define &quot;logsTemplate&quot;}}This text will output on different channel, you can also use functions like {{currentTime}}. {{.TemplateArgs}} would be additional data sent out. {{end}}</code>
+        </p>
+        <p>Now we call that &quot;logs&quot; in the same custom command.<code>{{sendTemplate &quot;logs&quot; &quot;logsTemplate&quot; &quot;YAG rules!&quot;}}</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>sendTemplateDM name data</code>
+      </td>
+      <td style="text-align:left">Works the same way as function above. Only channel&apos;s name is missing.
+        You can only DM triggering users.</td>
+    </tr>
   </tbody>
 </table>### ExecCC
 
