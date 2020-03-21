@@ -528,6 +528,8 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 | `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_. |
 | `toDuration` | Converts the argument, number or string to type _time.Duration_. Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-3).  |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type _string_. For example `{{json .TimeHour}}` outputs type _string_; before this `.TimeHour` was of type _time.Duration_. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
+| `toByte "arg"` | Functions converts input to a slice of bytes - meaning _\[\]uint8_. `{{toByte "YAG€"}}` would output `[89 65 71 226 130 172]`. |
+| `toRune "arg"` | Functions converts input to a slice of runes - meaning _\[\]int32_. `{{toRune "YAG€"}}`would output `[89 65 71 8364]`. These two functions - the one above, are good for further analysis of Unicode strings. |
 
 #### This section's snippets:
 
