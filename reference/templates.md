@@ -816,8 +816,6 @@ With regular expression patterns - when using quotes you have to "double-escape"
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \([lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs\). This is usable for example with `{{sendMessageNoEscape nil "Welcome to role <@&11111111...>"}}`. Mentioning that role has to be enabled server- side in Discord.
 
-
-
 ### Role functions
 
 | Function | Description |
