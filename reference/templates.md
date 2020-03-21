@@ -808,9 +808,6 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `mentionHere` | Mentions `@here`. |
 | `mentionRoleName "rolename"` | Mentions the first role found with the provided name \(case-insensitive\). |
 | `mentionRoleID roleID` | Mentions the role found with the provided ID. |
-| `escapeEveryone "input"` | Escapes everyone mentions in a string. |
-| `escapeHere "input"` | Escapes here mentions in a string. |
-| `escapeEveryoneHere "input"` | Escapes everyone and here mentions in a string. Useful with `sendMessageNoEscape`, also applies to escapeEveryone/Here. Example in section's [Snippets](templates.md#this-sections-snippets-7). |
 
 #### This section's snippets:
 
@@ -818,7 +815,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
 * `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
 * `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \([lis~~t~~roles](../commands/all-commands.md#listroles) command gives roleIDs\). This is usable for example with `{{sendMessageNoEscape nil "Welcome to role <@&11111111...>"}}`. Mentioning that role has to be enabled server- side in Discord.
-* To demonstrate usage of `escapeEveryoneHere`. &gt; `{{$x := "@here Hello World! @everyone"}} {{sendMessage nil $x}} {{sendMessageNoEscape nil $x}} {{sendMessageNoEscape nil (escapeEveryoneHere $x)}}`
+
+
 
 ### Role functions
 
