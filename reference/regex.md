@@ -32,7 +32,7 @@ _As example, this will match if either "Cat" or "Dog" is present:_ `(Cat|Dog)`
 {% endtab %}
 {% endtabs %}
 
-To match anything of any length, use `(?)`.
+To match anything of any length, use `.*`.
 
 **Character classes**
 

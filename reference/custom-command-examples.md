@@ -231,7 +231,7 @@ With YAGPDB's database system, you can now add cooldowns to you custom commands.
 
 With YAGPDB's database system, I made a command to have users count from 0 and keep counting to the next number. Relatively simple command that involves database and type conversion. 
 
-Trigger type: `Regex` Trigger: `|`
+Trigger type: `Regex` Trigger: `\A`
 
 `BE SURE TO RESTRICT THE COMMAND TO A SINGLE CHANNEL` 
 
