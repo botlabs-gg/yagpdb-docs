@@ -37,8 +37,11 @@ To see of what type a variable or function's return is, use printf "%T", for exa
 ## The Dot and Variables
 
 The dot `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context.   
+  
 From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.  
+  
 `$` has a special significance in templates, it is set to the [starting value of a dot](https://golang.org/pkg/text/template/#hdr-Variables). This means you have access to the global context from anywhere - e.g., inside `range`/`with` actions. `$` for global context would cease to work if you redefine it inside template, to recover it `{{ $ := .  }}`.  
+  
 `$` also denotes the beginning of a variable, which maybe be initialized inside a template action. So data passed around template pipeline can be initialized using syntax &gt; `$variable := value`. Previously declared variable can also be assigned with new data &gt; `$variable = value`, it has to have a white-space before it or control panel will error out. Variable scope extends to the `end` action of the control structure \(`if`, `with`, or `range`\) in which it is declared, or to the end of custom command if there are no control structures - call it global scope. 
 
 | Field | Description |
@@ -50,7 +53,12 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 ## Pipes
 
 A powerful component of templates is the ability to stack actions - like function calls, together - chaining one after another. This is done by using pipes `|`. Borrowed from Unix pipes, the concept is simple: each pipeline’s output becomes the input of the following pipe. One limitation of the pipes is that they can only work with a single value and that value becomes the last parameter of the next pipeline.   
-**Example**: `{{randInt 41 | add 2}}` would pipeline`randInt` function's return to addition `add` as second parameter and it would be added to 2; this more simplified would be like `{{40 | add 2}}` with return 42. Same pipline but using a variable is also useful one -`{{$x:=40 | add 2}}` would not return anything as printout, 40 still goes through pipeline to addition and 42 is stored to varibale `$x`.
+  
+**Example**: `{{randInt 41 | add 2}}` would pipeline`randInt` function's return to addition `add` as second parameter and it would be added to 2; this more simplified would be like `{{40 | add 2}}` with return 42. If written normally, it would be `{{ add 2 (randInt 41) }}`. Same pipeline but using a variable is also useful one -`{{$x:=40 | add 2}}` would not return anything as printout, 40 still goes through pipeline to addition and 42 is stored to variable `$x`.
+
+{% hint style="warning" %}
+Pipes are useful in select cases to shorten code and in some cases improve readability, but they **should not be overused**. In most cases, pipes are unnecessary and cause a dip in readability that helps nobody.
+{% endhint %}
 
 ## User
 
@@ -432,7 +440,8 @@ Custom Types section discusses functions that initialize values carrying those _
     <tr>
       <td style="text-align:left">.Set int value</td>
       <td style="text-align:left">Changes/sets given <em>int </em>argument as index position of current <em>cslice </em>to
-        new value.</td>
+        new value. Note that .Set can only set indexes which already exist in the
+        slice.</td>
     </tr>
     <tr>
       <td style="text-align:left">.StringSlice strict-flag</td>
@@ -522,7 +531,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 
 | Function | Description |
 | :--- | :--- |
-| `toString` | Has also alias `str`. Converts something into a _string_. Usage: `(toString x)`. |
+| `toString` | Has alias `str`. Converts something into a _string_. Usage: `(toString x)`. |
 | `toInt` | Converts something into an integer _int_. Usage: `(toInt x)`. Function will return 0, if type can't be converted to _int._ |
 | `toInt64` | Converts something into an _int64_. Usage: `(toInt64 x)`.  Function will return 0, if type can't be converted to _int64._ |
 | `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_. |
@@ -635,9 +644,11 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
         <a
         href="https://golang.org/pkg/fmt/#Sprintln">fmt.Sprintln</a>. Formatting is also discussed <a href="https://golang.org/pkg/fmt/#hdr-Printing">here</a>.
           <br
-          /><code>printf</code> is usable for example to determine the type of the
+          />
+          <br /><code>printf</code> is usable for example to determine the type of the
           value &gt; <code>{{printf &quot;%T&quot; currentTime}} </code>outputs <code>currentTime </code>functions
-          output value type of<code> time.Time</code>.</td>
+          output value type of<code> time.Time</code>. In many cases, <code>printf</code> is
+          a great alternative to <code>joinStr</code> for concanating strings.</td>
     </tr>
   </tbody>
 </table>{% hint style="info" %}
@@ -645,7 +656,7 @@ Special information we can include in the string is _escape sequences_. Escape s
 {% endhint %}
 
 {% hint style="info" %}
-With regular expression patterns - when using quotes you have to "double-escape" metacharacters starting with backslash or use backquotes/ticks to simplify this. `{{reFind "\\d+" (toString 42)}}` versus ``{{reFind `\d+` (toString 42)}}``
+With regular expression patterns - when using quotes you have to "double-escape" metacharacters starting with backslash. You can use backquotes/ticks to simplify this:`{{reFind "\\d+" (toString 42)}}` versus ``{{reFind `\d+` (toString 42)}}``
 {% endhint %}
 
 #### This section's snippets:
@@ -1116,6 +1127,10 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
 ## Conditional branching
 
 Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.
+
+{% hint style="info" %}
+Comparison operators always require the same type: i.e comparing `1.23` and `1` would throw **`incompatible types for comparison`** error as they are not the same type \(one is float, the other int\). To fix this, you should convert both to the same type -&gt; for example, `toFloat 1`.
+{% endhint %}
 
 <table>
   <thead>

@@ -6,6 +6,10 @@
 There is currently some issues with the streaming announcement and it may not always give the announcement. It will however, always assign the streamer role. 
 {% endhint %}
 
+{% hint style="danger" %}
+The streaming role will be **automatically removed** from a member that is not streaming if it is given manually, so be careful! If YAGPDB is removing member's roles without apparent reason, this may well be the cause.
+{% endhint %}
+
 ![](../.gitbook/assets/streaming.PNG)
 
 Steaming notification goes off base on your Discord streaming status \(When you go purple, AKA steaming\). You can either have announcements, just be assigned the streaming role or both. 
@@ -41,5 +45,5 @@ Do not assign a role and make a announcement for people with this role.
 
 ### Stream Title Regex
 
-Use [regex ](../reference/regex.md)to filter out streams base on the title of their stream
+Use [regex ](../reference/regex.md)to filter out streams based on the title of their stream
 

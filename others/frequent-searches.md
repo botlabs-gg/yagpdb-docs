@@ -55,7 +55,7 @@ The bot can only assign roles that are below it in the role hierarchy, check tha
 
 ## How do I unban people?
 
-You can unban people through Discord. YAGPDB does not offer any further commands for this and does not plan to do so.
+You can unban people through Discord. YAGPDB does not offer any further commands for this and does not plan to do so. However, if you really want, `-ban <user> -d 1s` may be useful - it "bans" for 1 second and unbans, effectively unbanning a given user. Be careful with this, as it's a "hack" / workaround and not an unban command.
 
 ## How do I enable developer mode?
 

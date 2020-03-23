@@ -72,8 +72,8 @@ First off, I start creating my embed by defining it in a variable called `embed`
 
 Next, we'll take a look at this more lavish example:
 
-{% hint style="warning" %}
-If you try to copy and paste this command you will fail as I added line breaks to make it a bit clearer. You can find the whole command to copy and paste at the end of this page.
+{% hint style="success" %}
+To make your code readable, especially for large embeds, **indents** may be used, as YAGPDB's templating system allows this sort of formatting.
 {% endhint %}
 
 {% code title="Custom Command \"embed\"" %}
@@ -84,20 +84,21 @@ If you try to copy and paste this command you will fail as I added line breaks t
 {{ $avatar := (joinStr "" "https://cdn.discordapp.com/avatars/" (toString .User.ID) "/" .User.Avatar ".png") }}
 
 {{$embed := cembed 
-"title" (joinStr "" "Hello there, "  .User.Username "!") 
-"description" "This is an embed in a custom command. To see the code behind it, do `-cc embed`." 
-"color" 4645612 
-"fields" (cslice 
-    (sdict "name" "Advice" "value" $advice "inline" false) 
-    (sdict "name" "Topic" "value" $topic "inline" false) 
-    (sdict "name" "Cat Fact" "value" $catfact "inline" false) 
-    (sdict "name" "Member Count" "value" (toString .Guild.MemberCount) "inline" true) 
-    (sdict "name" "Guild Region" "value" .Guild.Region "inline" true) 
-    (sdict "name" "Guild ID" "value" (toString .Guild.ID) "inline" true)) 
-"author" (sdict "name" "YAGPDB.xyz!" "url" "https://yagpdb.xyz/manage" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") 
-"thumbnail" (sdict "url" $avatar) 
-"footer" (sdict "text" "YAGPDB.xyz since" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") 
-"timestamp" .Guild.JoinedAt  }}
+    "title" (joinStr "" "Hello there, "  .User.Username "!") 
+    "description" "This is an embed in a custom command. To see the code behind it, do `-cc embed`." 
+    "color" 4645612 
+    "fields" (cslice 
+        (sdict "name" "Advice" "value" $advice "inline" false) 
+        (sdict "name" "Topic" "value" $topic "inline" false) 
+        (sdict "name" "Cat Fact" "value" $catfact "inline" false) 
+        (sdict "name" "Member Count" "value" (toString .Guild.MemberCount) "inline" true) 
+        (sdict "name" "Guild Region" "value" .Guild.Region "inline" true) 
+        (sdict "name" "Guild ID" "value" (toString .Guild.ID) "inline" true)) 
+    "author" (sdict "name" "YAGPDB.xyz!" "url" "https://yagpdb.xyz/manage" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") 
+    "thumbnail" (sdict "url" $avatar) 
+    "footer" (sdict "text" "YAGPDB.xyz since" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") 
+    "timestamp" .Guild.JoinedAt
+}}
 
 {{ sendMessage nil $embed }}
 ```
@@ -119,19 +120,6 @@ This would add two fields being displayed under each other. If you set inline to
 Following the fields I have added the author. Again the author object is nested and can have up to four fields. For this, we use sdict again. I define the name, the url and the icon url for it. The same applies to the avatar and footer. In the end I use `.Guild.JoinedAt` as timestamp to display when the first person joined this server and close the template. After this we just have to send the embed using `SendMessage` or `SendDM`. Here is our result:
 
 ![](../.gitbook/assets/grafik.png)
-
-If you want to copy this custom command, you can get it from here:
-
-{% code title="Example Embed Code" %}
-```go
-{{ $advice := (execAdmin "advice") }}
-{{ $topic := (execAdmin "topic") }}
-{{ $catfact := (execAdmin "catfact") }}
-{{ $avatar := (joinStr "" "https://cdn.discordapp.com/avatars/" (toString .User.ID) "/" .User.Avatar ".png") }}
-{{ $embed := cembed "title" (joinStr "" "Hello there, "  .User.Username "!") "description" "This is an embed in a custom command. To see the code behind it, do `-cc embed`." "color" 4645612 "fields" (cslice (sdict "name" "Advice" "value" $advice "inline" false) (sdict "name" "Topic" "value" $topic "inline" false) (sdict "name" "Cat Fact" "value" $catfact "inline" false) (sdict "name" "Member Count" "value" (toString .Guild.MemberCount) "inline" true) (sdict "name" "Guild Region" "value" .Guild.Region "inline" true) (sdict "name" "Guild ID" "value" (toString .Guild.ID) "inline" true)) "author" (sdict "name" "YAGPDB.xyz!" "url" "https://yagpdb.xyz/manage" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") "thumbnail" (sdict "url" $avatar) "footer" (sdict "text" "YAGPDB.xyz since" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") "timestamp" .Guild.JoinedAt  }}
-{{ sendMessage nil $embed }}
-```
-{% endcode %}
 
 ### Display an image 
 

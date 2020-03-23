@@ -2,7 +2,7 @@
 
 Custom commands - abbreviated as CCs, allow you to create your own commands. The CC-system in YAGPDB is somewhat complex and can be used for some advanced stuff. It is still somewhat limited in what it can do and for the more complex and advanced operations, you should really think about making a standalone bot for it.
 
-## Custom Commands 
+## Custom Commands
 
 To create your first custom command, go to the control panel and select your server. There you click on Commands and Custom Commands. 
 
