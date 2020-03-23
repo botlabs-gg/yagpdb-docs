@@ -15,7 +15,7 @@ This is the documentation page for YAGPDB. It is a work in progress. If you don'
 
 ## Learning Center
 
-This is another work in progres site, located [here](https://learn.yagpdb.xyz/). And tries to introduce you everything you need to know about YAGPDB step-by-step fashion.
+This is another work in progress site, located [here](https://learn.yagpdb.xyz/) and tries to introduce you everything you need to know about coding in YAGPDB in step-by-step fashion.
 
 ## Supporting the bot
 
