@@ -13,6 +13,10 @@ Visit [yagpdb.xyz/manage ](https://yagpdb.xyz/manage)to manage your server.
 
 This is the documentation page for YAGPDB. It is a work in progress. If you don't find the information you're looking for, please inform the [support server. ](https://discord.gg/0vYlUK2XBKldPSMY)
 
+## Learning Center
+
+This is another work in progres site, located [here](https://learn.yagpdb.xyz/). And tries to introduce you everything you need to know about YAGPDB step-by-step fashion.
+
 ## Supporting the bot
 
 {% hint style="info" %}
