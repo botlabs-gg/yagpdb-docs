@@ -1098,7 +1098,7 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
 
 | Function | Description |
 | :--- | :--- |
-| `dbSet userID key value` | Sets the value for the specified `key` for the specific `userID` to the specified `value`. `userID` can be any number of type _int64_.    Values are stored either as of type _float64_ \(for numbers or hex\) or as varying type in bytes \(for _slices_, _maps_, _strings_ etc\) depending on input argument. |
+| `dbSet userID key value` | Sets the value for the specified `key` for the specific `userID` to the specified `value`. `userID` can be any number of type _int64_.    Values are stored either as of type _float64_ \(for numbers, oct or hex\) or as varying type in bytes \(for _slices_, _maps_, _strings_ etc\) depending on input argument. |
 | `dbSetExpire userID key value ttl` | Same as `dbSet` but with an expiration in seconds. |
 | `dbIncr userID key incrBy`  | Increments the value for specified key for the specified user, if there was no value then it will be set to `incrBy .` Also returns the entry's current, increased value. |
 | `dbGet userID key`  | Retrieves a value from the database for the specified user, this returns DBEntry object. |
