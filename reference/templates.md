@@ -1018,6 +1018,10 @@ With regular expression patterns - when using quotes you have to "double-escape"
   </tbody>
 </table>### ExecCC
 
+{% hint style="warning" %}
+`execCC` calls are limited to 1 / CC for non-premium users and 10 / CC for premium users.
+{% endhint %}
+
 <table>
   <thead>
     <tr>
