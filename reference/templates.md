@@ -125,6 +125,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
 | .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
+| .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _\*discordgo.VoiceState._ |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
 | .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. |
 
