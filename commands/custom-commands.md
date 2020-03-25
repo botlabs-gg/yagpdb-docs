@@ -38,11 +38,12 @@ If you select the**`Require at least one of the`**or**`Only run in the`** Option
 With custom commands there are some limitations:
 
 * You can't create more than 100 active custom commands \(250 with YAGPDB Premium\)
-* You can't execute more than five commands from a custom command
+* You can't execute more than five commands from a custom command using `execAdmin` or `exec`
 * Direct Messages can be only sent with a side note from which server they're coming
 * Custom Command responses can't be longer than 2000 characters \(this is a limitation by discord\)
 * A Custom command itself can't be longer than 10 000 characters \(this is total count of characters and sum of all subset custom command's responses of 20\), also leave/join messages limit is 5000.
 * Custom Commands are limited to 5 userArg calls, 5 exec/execAdmin functions, 10 template function and regex calls.
+* No more than 3 custom commands may be executed from a single message for non-premium. The limit is 5 for premium servers.
 
 ## Advanced Custom Commands 
 
