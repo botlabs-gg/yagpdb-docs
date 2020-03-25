@@ -17,11 +17,6 @@ This `{{ ... }}` syntax of having two curly brackets aka braces around context i
 {% endhint %}
 
 {% hint style="info" %}
-If you want to join different data objects \(e.g. to wrap `toString` in `joinStr` around .Guild.MemberCount\), you use round brackets aka parentheses as delimiters:  
-`{{joinStr "" "Our member count is " (toString .Guild.MemberCount) "!"}}`
-{% endhint %}
-
-{% hint style="info" %}
 Templating system uses standard ASCII quotation marks:  
 0x22 &gt; `"` for straight double quotes, 0x27 &gt; `'`for apostrophes and 0x60 ````` for backticks;   
 so make sure no "smart-quotes" are being used.
