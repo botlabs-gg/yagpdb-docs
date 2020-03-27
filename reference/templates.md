@@ -22,13 +22,6 @@ Templating system uses standard ASCII quotation marks:
 so make sure no "smart-quotes" are being used.
 {% endhint %}
 
-{% hint style="success" %}
-Everything in Go is passed by value \(even errors\) as in C and in all languages descending from C. Values are carried by types.  
-Many problems start with different kinds of type user has as value and what is needed for argument. YAGPDB usually states that in error message - what went wrong with type e.g. `CC #42:24:123 ... error calling lt: incompatible types for comparison` tells you that CC \#42 has an error on line 24 and at entry point position 123 due to different types presented for comparison action.  
-  
-To see of what type a variable or function's return is, use printf "%T", for example &gt; `{{printf "%T" currentTime}}` will output the type _time.Time_.
-{% endhint %}
-
 ## The Dot and Variables
 
 The dot `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context.   
