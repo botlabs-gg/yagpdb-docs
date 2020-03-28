@@ -8,7 +8,7 @@
 
 **Emote IDs:** 
 
-If it is a **custom emote**, adding a \ in front of the emote such as `\:yag:` will display the name along with the ID such as  `<:yag:277569741932068864>`.
+If it is a **custom emote**, adding a \ in front of the emote such as `\:yag:` will display the name along with the ID such as  `<:yag:277569741932068864>`. On an Android device remove backslash and enclose `:yag:` inside back-ticks ```:yag:`.``
 
 If it is an **animated emote**, do the same steps as a normal emote. If you do not have Discord Nitro, you can have a friend or a bot use the emote and right click on the emote to open its link. The ID will be a part of the URL.
 
