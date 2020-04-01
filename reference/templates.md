@@ -889,7 +889,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Creates an unordered collection of key-value pairs, a dictionary so to
         say. The number of parameters to form key-value pairs must be even. Example
         <a
-        href="https://docs.yagpdb.xyz/reference/custom-command-examples#dictionary-example">here</a>.</td>
+        href="https://docs.yagpdb.xyz/reference/custom-command-examples#dictionary-example">here</a>. Keys and values can be of any type. Key is not restricted to <em>string </em>only
+          as in case with <code>sdict</code>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>cembed &quot;list of embed values&quot;</code>
