@@ -383,7 +383,7 @@ You may also get more specific help by typing `-help (command)` .
   </tbody>
 </table>#### Automod 
 
-Everything here starts with automod such as `-automod toggle`
+Everything here starts with `automod` or `amod` such as `-automod toggle`
 
 <table>
   <thead>
@@ -675,7 +675,7 @@ Everything here starts with automod such as `-automod toggle`
   </tbody>
 </table>####  Cards Against Humanity
 
-Everything here starts with cah such as `-cah create`
+Everything here starts with `cah` such as `-cah create`
 
 | Command | Aliases | Required Args | Optional Args | Description |
 | :--- | :--- | :--- | :--- | :--- |
@@ -690,7 +690,7 @@ Everything here starts with cah such as `-cah create`
 Rolemenu commands require user to have at least manage server permission.
 {% endhint %}
 
-Everything here starts with `rolemenu`such as `-rolemenu create` 
+Everything here starts with `rolemenu`or `rmenu` such as `-rolemenu create` 
 
 <table>
   <thead>

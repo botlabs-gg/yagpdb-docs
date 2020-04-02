@@ -1001,6 +1001,8 @@ ClearViolations <User:Mention/ID> [Violation Name:Text]
 
 ## Rolemenu 🔘
 
+alias: `rmenu`
+
 ### RoleMenu Create
 
 **Aliases:** c
@@ -1083,6 +1085,8 @@ EditOption <Message ID:Whole number>
 
 ## Tickets 🎫
 
+alias: `ticket`
+
 ### Tickets Open
 
 **Aliases:** create/new/make
@@ -1150,6 +1154,8 @@ AdminsOnly
 ```
 
 ## Events 🎟
+
+alias: `event`
 
 ### Events Create
 
