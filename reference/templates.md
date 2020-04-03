@@ -120,7 +120,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
 | .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _\*discordgo.VoiceState._ |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
-| .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. |
+| .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. Role struct has [following fields](https://discordapp.com/developers/docs/topics/permissions#role-object). |
 
 [Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
 
