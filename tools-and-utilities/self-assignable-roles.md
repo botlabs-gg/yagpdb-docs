@@ -170,7 +170,7 @@ If you edit your reaction emotes or simply want to give your emote a new clean s
 
 ### Updating a role menu
 
-If you added a new role to your role group, you can update your role menu you can update it by typing in`-rolemenu update (message id)`and following the instructions given. If you removed a role, you will have to delete it and make a new one from scratch. 
+If you added a new role to your role group, you can update your role menu. Update it by typing in`-rolemenu update (message id)`and follow the instructions given. If you removed a role, you will have to delete it and make a new one from scratch. 
 
 ## How to get a message ID \(Desktop\)
 
