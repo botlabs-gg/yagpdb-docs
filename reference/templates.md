@@ -771,24 +771,24 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 | Function | Description |
 | :--- | :--- |
-| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per custom command \(accepts embed objects\). |
-| `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
-| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
-| `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
-| `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
+| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channel's ID or its name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
+| `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiName:emojiID`\). |
+| `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiName:emojiID`\). |
 | `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 100 000 characters ~100kB\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
 | `complexMessageEdit "content" args "embed" args` | Special case for `editMessage` function - either if `complexMessage` is involved or works even with regular message. Has two parameters `"content"` and `"embed"` to edit regular text part or embed part. If `"embed"` is set to `nil`, it deletes whole embed. Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
+| `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
+| `deleteMessageReaction channel messageID userID emojis` | Deletes reaction\(s\) from a message. `channel` can be ID, "name" or `nil`.  `emojis` argument can be up to 10 emojis, syntax is `emojiName` for Unicode/Discord's default emojis and `emojiName:emojiID` for custom emotes.   Example: `{{deleteMessageReaction nil (index .Args 1) .User.ID "👍" "👎"}}` will delete current user's reactions with thumbsUp/Down emotes from current running channel's message which ID is given to command as first argument `(index .Args 1)`. Also usable with [Reaction trigger](templates.md#reaction). |
+| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and like previous two delete functions, it defaults to 10 seconds, max being 1 day. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
+| `deleteResponse time` | Deletes the response after a certain time \(max 86400 seconds\). Defaults to 10 seconds. |
+| `deleteTrigger time` | Deletes the trigger after a certain time \(max 86400 seconds\). Defaults to 10 seconds. |
 | `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
-| `deleteResponse time` | Deletes the response after a certain time \(max 86400 seconds\). |
-| `deleteTrigger time` | Deletes the trigger after a certain time \(max 86400 seconds\). |
-| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channelID or channel's name. `(Delay)` is optional and like previous two delete functions, it defaults to 10 seconds, max being 1 day. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
-| `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiName:emojiID`\). |
-| `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiName:emojiID`\). |
-| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channelID or channel's name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
-| `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
-| `deleteMessageReaction channel messageID userID emojis` | Deletes reaction\(s\) from a message. `channel` can be ID, "name" or `nil`.  `emojis` argument can be up to 10 emojis, syntax is `emojiName` for Unicode/Discord's default emojis and `emojiName:emojiID` for custom emotes.   Example: `{{deleteMessageReaction nil (index .Args 1) .User.ID "👍" "👎"}}` will delete current user's reactions with thumbsUp/Down emotes from current running channel's message which ID is given to command as first argument \(index .Args 1\). Also usable with [Reaction trigger](templates.md#reaction). |
+| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per custom command \(accepts embed objects\). |
+| `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
+| `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
+| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
+| `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
 
 #### This section's snippets:
 
