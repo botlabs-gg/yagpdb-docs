@@ -22,7 +22,7 @@ Simply give the role command a name and then select which role you want the bot 
 ### Optional features
 
 {% hint style="warning" %}
-Do **NOT** set the require role to the role you are assigning. You generally will not want to set the ignore role to the role you are assigning either _unless_ you wish to prevent the user from removing that role through the rolemenu.
+Do **NOT** set the require role to the role you are assigning. You generally will not want to set the ignore role to the role you are assigning either _unless_ you wish to prevent the user from removing that role through the role-menu.
 {% endhint %}
 
 **Require role**: Requires a person to have a certain role in order for them to give themselves this role.  
@@ -97,7 +97,7 @@ The role menu makes it possible to have people assign roles by adding reactions 
 ![Example of a role menu](../.gitbook/assets/aa%20%283%29.PNG)
 
 {% hint style="warning" %}
-A role menu can only support up to 20 roles due to the reaction limit discord places on messages. If your role group has more then twenty you have to use finish subcommand and then add the rest of roles to a new message with -skip flag.
+A role menu can only support up to 20 roles due to the reaction limit discord places on messages. If your role group has more then twenty you have to use finish sub-command and then add the rest of roles to a new message with -skip flag.
 {% endhint %}
 
 To set up a role menu, the related roles **have to be added to a role group**, then you invoke the command `-rolemenu create (role group name)`
@@ -109,7 +109,7 @@ After you type in the command, you will be taken through the setup process. If y
 ### Step by step tutorial
 
 {% hint style="danger" %}
-Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT** work if you have not done so. 
+Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT** work if you have not done so. All switches and flags \(nodm, rr, etc...\) start with hyphen symbol `-`, not your prefix.
 {% endhint %}
 
 Once you've made your role commands and assigned them to a role group,  
@@ -145,20 +145,20 @@ After you have finish editing or creating your role menu, it will display whethe
 ![](../.gitbook/assets/capture%20%283%29.PNG)
 
 {% hint style="warning" %}
-Note that YAGPDB does not allow you to disable warning DMs such as cooldown messages with the `nodm` flag or any other method.
+Note that YAGPDB does not allow you to disable warning DMs such as cool-down messages with the `nodm` switach or any other method.
 {% endhint %}
 
 ### Remove roles on reaction remove
 
 Remove roles on reaction remove, this means instead of the old toggling mode, adding reactions will strictly give you the role, and removing reactions will only take away the role from you. **This mode will be on by default for new menus.** 
 
-You can set old menus to use this flag using the command `rolemenu update (message id) -rr`
+You can set old menus to use this switch using the command `rolemenu update (message id) -rr`
 
 ## Role Menu options
 
 ### Removing a role menu
 
-If you want to remove a role menu from a message, you can type in `-rolemenu remove (message id)`  It will remove the rolemenu from a message. The message itself won't be deleted but the bot will now not do anything with reactions on that message. 
+If you want to remove a role menu from a message, you can type in `-rolemenu remove (message id)`  It will remove the role-menu from a message. The message itself won't be deleted but the bot will now not do anything with reactions on that message. 
 
 ### Editing a role menu 
 
