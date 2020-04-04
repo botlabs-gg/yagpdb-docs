@@ -820,12 +820,12 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 | Function | Description |
 | :--- | :--- |
-| `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
-| `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
-| `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the listroles command for a list of roles\). |
-| `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
+| `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the `listroles` command for a list of roles\). |
 | `giveRoleID userID roleID` | Gives a role by ID to the target. |
 | `giveRoleName userID "roleName"` | Gives a role by name to the target. |
+| `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
+| `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
+| `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
 | `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
 | `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-8). |
@@ -833,7 +833,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 #### This section's snippets:
 
-* To demonstrate usage of targetHasRoleID. &gt;  `{{$x := (userArg (index .Args 1)).ID}} {{if targetHasRoleID $x ############}} Has the Role! {{else}} Does not have the role! {{end}}`
+* To demonstrate usage of `targetHasRoleID`. &gt;  `{{$x := (userArg (index .Args 1)).ID}} {{if targetHasRoleID $x ############}} Has the Role! {{else}} Does not have the role! {{end}}`
 
 ### Current User
 
