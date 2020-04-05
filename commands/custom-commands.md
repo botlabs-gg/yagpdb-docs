@@ -83,9 +83,10 @@ The execution will stop at wherever you placed "**parseArgs**" if incorrect args
 Available types and options are:
 
 * **int -** whole numbers, you can also optionally specify min and max after the name. For example `{{carg "int" "integer" 2 9}}` required argument has to be a number from 2 to 9.
+* **float -** decimal numbers, you can also optionally specify min and max after the name similar to **int**. It is parsed as _float64_ datatype.
 * **string -** text.
 * **user -** user mentions, will have the type of User \(see [templates ](../reference/templates.md#user)for more info\).
-* **userid -** user IDs, this user may not exist at all, both mentions and plain IDs are accepted, will have the type of int64.
+* **userid -** user IDs, this user may not exist at all, both mentions and plain IDs are accepted, will have the type of _int64_.
 * **channel -** channel mentions, will have the type of Channel \(see [templates ](../reference/templates.md#channel)for more info\).
 * **member** - guild's member struct \(object\) to use later with .Member methods, like .JoinedAt. \(see [templates ](../reference/templates.md#member)for more info\).
 * **duration** - converts given integer number starting from minutes or string with modifier \(s, m, h, w etc\)  to type Duration - e.g. 10 is 10m0s and 123s is 2m3s. Has additional options after the name for min and max range of duration presented in nanoseconds.
