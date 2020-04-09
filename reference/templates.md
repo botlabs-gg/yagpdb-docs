@@ -238,6 +238,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Message.Mentions | Users this message mentions. |
 | .Message.Reactions | Reactions on this message \(only available from getMessage\). |
 | .Message.Type | The [type](https://discordapp.com/developers/docs/resources/channel#message-object-message-types) of the message. |
+| .Message.Pinned | Whether this message is pinned. |
 | .Args | List of everything that is passed to .Message.Content. .Args is a _slice_ of type _string_. |
 | .Cmd | .Cmd is of type _string_ and shows all arguments that trigger custom command, part of .Args. Starting from `{{index .Args 0}}`.  |
 | .CmdArgs | List of all the arguments passed after `.Cmd` \(`.Cmd` is the actual trigger\) `.CmdArgs` is a _slice_ of type _string_. Examples in [misc. snippets](templates.md#miscellaneous-snippets). |
