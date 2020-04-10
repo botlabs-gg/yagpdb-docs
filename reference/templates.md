@@ -326,9 +326,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
     <tr>
       <td style="text-align:left"><code>humanizeDurationHours</code>
       </td>
-      <td style="text-align:left">Returns given integer or <em>time.Duration</em> argument in nanoseconds
-        in human readable format - as how long it would take to get towards given
-        time - e.g. <code>{{humanizeDurationHours 9000000000000000000}}</code> returns <code>285 years 20 weeks 6 days and 16 hours</code>.
+      <td style="text-align:left">Returns given integer (whole number) or <em>time.Duration</em> argument
+        in nanoseconds in human readable format - as how long it would take to
+        get towards given time - e.g. <code>{{humanizeDurationHours 9000000000000000000}}</code> returns <code>285 years 20 weeks 6 days and 16 hours</code>.
         More in <a href="templates.md#this-sections-snippets-1">Snippets</a>.</td>
     </tr>
     <tr>
@@ -525,7 +525,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 | `toByte "arg"` | Function converts input to a slice of bytes - meaning _\[\]uint8_. `{{toByte "YAG€"}}` would output `[89 65 71 226 130 172]`. `toString` is capable of converting that slice back to _string_. |
 | `toDuration` | Converts the argument, number or string to type _time.Duration_. Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-3).  |
 | `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_. |
-| `toInt` | Converts something into an integer _int_. Usage: `(toInt x)`. Function will return 0, if type can't be converted to _int._ |
+| `toInt` | Converts something into an integer of type _int_. Usage: `(toInt x)`. Function will return 0, if type can't be converted to _int._ |
 | `toInt64` | Converts something into an _int64_. Usage: `(toInt64 x)`.  Function will return 0, if type can't be converted to _int64._ |
 | `toRune "arg"` | Function converts input to a slice of runes - meaning _\[\]int32_. `{{toRune "YAG€"}}`would output `[89 65 71 8364]`. These two functions - the one above, are good for further analysis of Unicode strings. `toString` is capable of converting that slice back to _string_. |
 | `toString` | Has alias `str`. Converts some other type into a _string_. Usage: `(toString x)`. |
@@ -971,8 +971,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>sleep seconds</code>
       </td>
       <td style="text-align:left">Pauses execution of template&apos;s action-structure inside custom command
-        for max 60 seconds combined. Argument<code>seconds</code>is of type integer.
-        Example in <a href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
+        for max 60 seconds combined. Argument<code>seconds</code>is an integer
+        (whole number). Example in <a href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>cslice, sdict</code>
