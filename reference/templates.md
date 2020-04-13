@@ -992,7 +992,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
       <td style="text-align:left">
         <p>Function sends a formulated template to another channel.
-          <br />Channel is like always either name, number or nil.</p>
+          <br />Channel is like always either name, number or nil. Also returns messageID.</p>
         <p>Example:</p>
         <p><code>{{define &quot;logsTemplate&quot;}}This text will output on different channel, you can also use functions like {{currentTime}}. {{.TemplateArgs}} would be additional data sent out. {{end}}</code>
         </p>
