@@ -113,13 +113,13 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 * Triggers on messages containing links that are flagged by Google Safe browsing as unsafe
 
-#### **X user message in Y seconds**
+#### **X channel message in Y seconds**
 
 * Triggers when a channel has more than x messages in y seconds.
   * **Messages:** Number of "X" messages needed to trigger the rule
   * **Within \(seconds\):** The "Y" number of minutes that the word needs to occur within.
 
-#### X channel **message** in Y seconds
+#### X user **message** in Y seconds
 
 * Triggers when a user has more than x messages in y seconds in a single channel.
   * **Messages:** Number of "X" messages needed to trigger the rule
