@@ -785,7 +785,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
 | `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
-| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per custom command \(accepts embed objects\). |
+| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per custom command \(accepts embed objects\). YAG will only DM triggering user. |
 | `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
 | `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
 | `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
@@ -1004,7 +1004,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left"><code>sendTemplateDM name data</code>
       </td>
       <td style="text-align:left">Works the same way as function above. Only channel&apos;s name is missing
-        from arguments. Bot will only DM triggering user.</td>
+        from arguments. YAG will only DM triggering user.</td>
     </tr>
   </tbody>
 </table>### ExecCC
