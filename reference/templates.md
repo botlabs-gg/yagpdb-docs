@@ -638,7 +638,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
           <br /><code>printf</code> is usable for example to determine the type of the
           value &gt; <code>{{printf &quot;%T&quot; currentTime}} </code>outputs <code>currentTime </code>functions
           output value type of<code> time.Time</code>. In many cases, <code>printf</code> is
-          a great alternative to <code>joinStr</code> for concanating strings.</td>
+          a great alternative to <code>joinStr</code> for concatenate strings.</td>
     </tr>
   </tbody>
 </table>{% hint style="info" %}
