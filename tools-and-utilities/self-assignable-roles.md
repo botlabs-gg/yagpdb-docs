@@ -145,7 +145,7 @@ After you have finish editing or creating your role menu, it will display whethe
 ![](../.gitbook/assets/capture%20%283%29.PNG)
 
 {% hint style="warning" %}
-Note that YAGPDB does not allow you to disable warning DMs such as cool-down messages with the `nodm` switach or any other method.
+Note that YAGPDB does not allow you to disable warning DMs such as cool-down messages with the `nodm` switch or any other method.
 {% endhint %}
 
 ### Remove roles on reaction remove
