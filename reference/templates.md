@@ -126,6 +126,8 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.SystemChannelID | The id of the channel where guild notices such as welcome messages and boost events are posted. |
 | .Guild.MfaLevel | required [MFA level](https://discordapp.com/developers/docs/resources/guild#guild-object-mfa-level) for the guild. If enabled, members with moderation powers will be required to have 2-factor authentication enabled in order to exercise moderation powers. |
 | .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. Role struct has [following fields](https://discordapp.com/developers/docs/topics/permissions#role-object). |
+| .Guild.WidgetEnabled | Outputs whether or not the Server Widget is enabled or not. |
+| .Guild.WidgetChannelID | Outputs the channel id for the server widget. |
 
 [Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
 
