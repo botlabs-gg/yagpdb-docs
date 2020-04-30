@@ -111,6 +111,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.ID | Outputs the ID of the guild. |
 | .Guild.Name | Outputs the name of the guild. |
 | .Guild.Icon | Outputs the [icon hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's icon. |
+| .Guild.Splash | Outputs the [splash hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's splash. |
 | .Guild.Region | Outputs the region of the guild. |
 | .Guild.AfkChannelID | Outputs the AFK channel ID. |
 | .Guild.OwnerID | Outputs the ID of the owner. |
@@ -118,8 +119,12 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
 | .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
+| .Guild.ExplicitContentFilter | Outputs the explicit content [filter level](https://discordapp.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level) for the guild. |
+| .Guild.DefaultMessageNotifications | Outputs the default message [notification setting](https://discordapp.com/developers/docs/resources/guild#guild-object-default-message-notification-level) for the guild. |
 | .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _\*discordgo.VoiceState._ |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
+| .Guild.SystemChannelID | The id of the channel where guild notices such as welcome messages and boost events are posted. |
+| .Guild.MfaLevel | required [MFA level](https://discordapp.com/developers/docs/resources/guild#guild-object-mfa-level) for the guild. If enabled, members with moderation powers will be required to have 2-factor authentication enabled in order to exercise moderation powers. |
 | .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. Role struct has [following fields](https://discordapp.com/developers/docs/topics/permissions#role-object). |
 
 [Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
