@@ -400,6 +400,16 @@ To use the emotes as text-form entry inside a custom command: &lt;a:name:id&gt;
         <img src="../.gitbook/assets/100.gif" alt/>
       </td>
     </tr>
+    <tr>
+      <td style="text-align:left">load_windows10</td>
+      <td style="text-align:left">
+        <p>load_windows10:705481616092430366</p>
+        <p>&lt;a:load_windows10:705481616092430366&gt;</p>
+      </td>
+      <td style="text-align:left">
+        <img src="../.gitbook/assets/705481616092430366.gif" alt/>
+      </td>
+    </tr>
   </tbody>
 </table>
 

@@ -48,7 +48,7 @@ Violations are separate / different for each rule, meaning that a violation for 
 
 This one is rather self-explanatory - you can ignore given channels or roles from triggering the rule. For example, let's say we ignore the role `Staff` from triggering the **Slowmode** rule and ignore the channel `counting` from triggering the rule like below:
 
-![](../.gitbook/assets/image%20%2810%29.png)
+![](../.gitbook/assets/image%20%2811%29.png)
 
 If we configured everything else correctly, anyone with the `Staff` role would not trigger slowmode. Any message sent in the `#counting` channel would also be ignored.
 
@@ -103,7 +103,7 @@ Banned words only work on words - meaning not phrases. This translates to "you c
 
 ### Banned websites
 
-![Unique options for Banned websites](../.gitbook/assets/image%20%288%29.png)
+![Unique options for Banned websites](../.gitbook/assets/image%20%289%29.png)
 
 There are also two options that you can set for this rule - `Google safebrowsing` integration and `Banned sites`. The former is again a simple checkbox. This automatically detects sites that contain malware using Google safebrowsing in addition to the ones provided.
 

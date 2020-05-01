@@ -6,7 +6,7 @@ Custom commands - abbreviated as CCs, allow you to create your own commands. The
 
 To create your first custom command, go to the control panel and select your server. There you click on Commands and Custom Commands. 
 
-![The Custom Command Page](../.gitbook/assets/image%20%287%29.png)
+![The Custom Command Page](../.gitbook/assets/image%20%288%29.png)
 
 ### Trigger Types
 
@@ -27,7 +27,7 @@ As you might have seen, there is an option called _Case sensitive_. This option 
 
 You can restrict or block custom commands to specific roles or channels. For this you have to select the corresponding checkbox and select the roles/channels you want it to apply too.
 
-![This custom command can be executed by people that either have Coll Dog, Guy-in-charge or both.](../.gitbook/assets/image%20%286%29.png)
+![This custom command can be executed by people that either have Coll Dog, Guy-in-charge or both.](../.gitbook/assets/image%20%287%29.png)
 
 {% hint style="warning" %}
 If you select the**`Require at least one of the`**or**`Only run in the`** Options, make sure to always have a role/channel selected otherwise the bot won't respond to your commands.
