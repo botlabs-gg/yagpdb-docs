@@ -195,25 +195,25 @@ You don't have any notes :(
 With YAGPDB's database system, you can now add cooldowns to you custom commands. You can either make them global cooldowns or a per user cooldown.
 
 ```go
-{{/* CONFIGURATION HERE CHANGE VALUE AS NEEDED */}}
+{{/* CONFIGURATION HERE CHANGE VALUES AS NEEDED */}}
 
-{{/* 1 for Global 0 for per User */}}
+{{/* 0 for per user, 1 for global */}}
 {{$isGlobal := 1}}
-{{/* name your cooldown name (anything works)*/}}
+{{/* name your cooldown name (anything works) */}}
 {{$name := "replace with name here"}}
-{{/* Length of the cooldown (sec) */}}
+{{/* Length of the cooldown (in seconds) */}}
 {{$lengthSec := 10}}
 
 {{/* CREATING VARIABLES DO NOT TOUCH */}}
 {{$id := 0}}
-{{$key := (joinStr "" "cooldown_" $name)}}
+{{$key := joinStr "" "cooldown_" $name}}
 {{if eq $isGlobal 0}}
 {{$id = .User.ID}}
 {{end}}
 
 
-{{if (dbGet (toInt64 $id) $key)}} 
-{{/* Do nothing if cooldown exist */}}
+{{if dbGet (toInt64 $id) $key}} 
+{{/* Code to execute when cooldown is active */}}
 {{else}}
 {{/* Create cooldown entry */}}
 {{dbSetExpire (toInt64 $id) $key "cooldown" $lengthSec}}
