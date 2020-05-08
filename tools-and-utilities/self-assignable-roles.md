@@ -2,7 +2,7 @@
 
 ## Tutorial Video
 
-{% embed url="https://www.youtube.com/watch?v=ENOttyXKDo8" %}
+{% embed url="https://www.youtube.com/watch?v=IaTfJ4vqHhc" %}
 
 ## Roles
 

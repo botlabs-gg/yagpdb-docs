@@ -29,7 +29,7 @@ The prefix is what the bot responds to for commands. The default prefix is `-` \
 ## How do I set up role menus/role reactions/self-assignable roles?
 
 There are multiple guides for this. These are our picks:   
-**Video:** [https://www.youtube.com/watch?v=ENOttyXKDo8](https://www.youtube.com/watch?v=ENOttyXKDo8)  
+**Video:** [**https://www.youtube.com/watch?v=IaTfJ4vqHhc**](https://www.youtube.com/watch?v=IaTfJ4vqHhc)  
 **Documentation \(Text\):** [https://docs.yagpdb.xyz/self-assignable-roles](https://docs.yagpdb.xyz/self-assignable-roles) 
 
 If you are still having difficulties setting up a role menu, you should read / watch the guide again. If you still can't figure it out, you can ask specific questions in \#help. Questions if someone can set it up for you will be ignored. 

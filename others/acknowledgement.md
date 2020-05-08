@@ -6,7 +6,7 @@ Thanks to the following people for contributing to the Bot on GitHub or for doin
 * [Sebastian R. "Ryvid"\#5701](https://github.com/Ryvid)
 * [Michdi\#1602](https://github.com/michelhn)
 * [LoganK\#1321](https://github.com/LoganK)
-* [Nate \[ACA30\]\#3971](https://github.com/ACA30)
+* [Nate \[ACA30\]\#0001](https://github.com/ACA30)
 * [Timcampy118\#5636](https://github.com/timcampy118)
 * [caskd\#6769](https://github.com/casKd-dev)
 * MartijnTim\#9543
