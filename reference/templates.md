@@ -390,7 +390,7 @@ Custom Types section discusses functions that initialize values carrying those _
 
 ### templates.Slice
 
-`[]interface{}` - This is a custom composite data type of a _slice_ \(similar to _array_\) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
+`templates.Slice` - This is a custom composite data type defined using an underlying datatype _\[\]interface{}_ . It is of kind _slice_ \(similar to _array_\) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
 
 <table>
   <thead>
@@ -479,7 +479,7 @@ Type of variable: **{{ printf "%T" $x }}**
 
 ### templates.SDict
 
-`map[string]interface{}` - This is a custom composite data type of a _map_ having _string_ type as its key and _interface{}_ type as that key's value and can be  initialized ****using `sdict` function. A map is key-value store. This means you store value and you access that value by a key. Map is an unordered list and the number of parameters to form key-value pairs must be even. Retrieving specific element inside _templates.Sdict_ is by indexing its key.
+`templates.SDict` - This is a custom composite data type defined on an underlying datatype _map\[string\]interface{}._ This is of kind _map_ having _string_ type as its key and _interface{}_ type as that key's value and can be  initialized ****using `sdict` function. A map is key-value store. This means you store value and you access that value by a key. Map is an unordered list and the number of parameters to form key-value pairs must be even. Retrieving specific element inside _templates.Sdict_ is by indexing its key.
 
 <table>
   <thead>
@@ -519,6 +519,26 @@ Changing "color2" to "yellow": {{ $x.Set "color2" "yellow" }} **{{ $x }}**
 Adding "color3" as "blue": {{ $x.Set "color3" "blue" }} **{{ $x }}**
 Deleteing key "color1" {{$x.Del "color1"}} and whole sdict: **{{$x}}**
 ```
+
+{% hint style="danger" %}
+Since both _templates.SDict_ \(_sdict_\) and _templates.Slice_ \(_cslice_\) are custom composite datatypes, this type information is lost while saving to a database or passing as an argument to scheduled execCC\(which internally involves saving to database\). Thus, they are converted to their underlying datatypes _map\[string\]interface{}_ and _\[\]interface{}_ respectively.   
+  
+They can be converted back to templates.SDict and templates.Slice as follows :  
+  
+For _sdict_ -  
+`{{$sdict := sdict "a" 1 "b" "two"}}    
+{{dbSet 0 "example" $sdict}}  
+{{$map := (dbGet 0 "example").Value}}  
+{{$sdict_converted := sdict $map}}`  
+  
+For _cslice_ -  
+`{{$cslice := cslice 1 "two" 3.0}}    
+{{dbSet 0 "example" $cslice}}  
+{{$slice := (dbGet 0 "example").Value}}  
+{{$cslice_converted := (cslice).AppendSlice $slice}}`
+
+The above examples use some database specific functions which are explained [here](https://docs.yagpdb.xyz/reference/templates#database).
+{% endhint %}
 
 ## Functions
 
