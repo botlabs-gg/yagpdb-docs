@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Yet Another General Purpose Bot - Documentation](README.md)
+* [Yet Another General Purpose Discord Bot - Documentation](README.md)
 * [Getting Started](getting-started.md)
 * [Helping out](helping-out.md)
 * [Donating](donating.md)

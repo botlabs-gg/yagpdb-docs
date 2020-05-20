@@ -2,7 +2,7 @@
 description: '"Documentation is for users." // Rob Pike'
 ---
 
-# Yet Another General Purpose Bot - Documentation
+# Yet Another General Purpose Discord Bot - Documentation
 
 {% hint style="warning" %}
 This is the documentation, the actual configuration is not done here.  
