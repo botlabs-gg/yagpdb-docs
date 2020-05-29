@@ -12,7 +12,7 @@ The streaming role will be **automatically removed** from a member that is not s
 
 ![](../.gitbook/assets/streaming.PNG)
 
-Steaming notification goes off base on your Discord streaming status \(When you go purple, AKA steaming\). You can either have announcements, just be assigned the streaming role or both. 
+Steaming notification is triggered based on your Discord streaming status \(When you go purple, AKA steaming\). You can either have announcements, be assigned the streaming role or both. 
 
 ### **Announce Channel**
 
@@ -41,7 +41,7 @@ Only assign a role and make announcement for the people with this role.
 
 ### Ignore role
 
-Do not assign a role and make a announcement for people with this role. 
+Do not assign a role and make an announcement for people with this role. 
 
 ### Stream Title Regex
 
