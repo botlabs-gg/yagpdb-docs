@@ -98,7 +98,9 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
       <td style="text-align:left">Same as <code>pastUsernames</code>.</td>
     </tr>
   </tbody>
-</table>[User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
+</table>
+
+[User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
 
 #### This section's snippets:
 
@@ -175,7 +177,9 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
       <td style="text-align:left">Returns the count of online bots.</td>
     </tr>
   </tbody>
-</table>[Member object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-member-object).
+</table>
+
+[Member object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-member-object).
 
 ## Channel
 
@@ -225,7 +229,9 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
         the name of the channel command was triggered in.</td>
     </tr>
   </tbody>
-</table>[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
+</table>
+
+[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
 
 ## Message
 
@@ -293,7 +299,9 @@ This is available and part of the dot when reaction trigger type is used.
         was added or removed.</td>
     </tr>
   </tbody>
-</table>[Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).
+</table>
+
+[Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).
 
 ## Time
 
@@ -375,7 +383,9 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
       </td>
     </tr>
   </tbody>
-</table>#### This section's snippets:
+</table>
+
+#### This section's snippets:
 
 * To demonstrate `humanizeDurationHours` and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_. `{{humanizeDurationHours (currentTime.Sub .Member.JoinedAt.Parse)}}`
 * To demonstrate `newDate` to get Epoch times. `{{$unixEpoch := newDate 1970 1 1 0 0 0}} in seconds > {{$unixEpoch.Unix}} {{$discordEpoch := newDate 2015 1 1 0 0 0}} in seconds > {{$discordEpoch.Unix}}`
@@ -416,7 +426,9 @@ Custom Types section discusses functions that initialize values carrying those _
       </td>
     </tr>
   </tbody>
-</table><table>
+</table>
+
+<table>
   <thead>
     <tr>
       <th style="text-align:left">Method</th>
@@ -457,7 +469,9 @@ Custom Types section discusses functions that initialize values carrying those _
       </td>
     </tr>
   </tbody>
-</table>#### This section's snippets:
+</table>
+
+#### This section's snippets:
 
 * To demonstrate .StringSlice `{{(cslice currentTime.Month 42 "YAPGDB").StringSlice}}` will return a slice `[February YAGPDB]`. If the flag would have been set to true - {{...\).StringSlice true}}, all elements in that slice were not strings and `<no value>` is returned.
 
@@ -506,7 +520,9 @@ Type of variable: **{{ printf "%T" $x }}**
       </td>
     </tr>
   </tbody>
-</table>| Method | Description |
+</table>
+
+| Method | Description |
 | :--- | :--- |
 | .Del "key" | Deletes given key from _sdict_. |
 | .Get "key" | Retrieves given key from _sdict_. |
@@ -668,7 +684,9 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
           a great alternative to <code>joinStr</code> for concatenate strings.</td>
     </tr>
   </tbody>
-</table>{% hint style="info" %}
+</table>
+
+{% hint style="info" %}
 Special information we can include in the string is _escape sequences_. Escape sequences are two \(or more\) characters, the first of which is a backslash `\`, which gives the remaining characters special meaning - let's call them metacharacters. The most common escape sequence you will encounter is `\n`, which means "newline". 
 {% endhint %}
 
@@ -790,7 +808,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
     </tr>
   </tbody>
-</table>#### This section's snippets:
+</table>
+
+#### This section's snippets:
 
 * `{{$d := randInt 10}}` Stores random _int_ into variable `$d` \(a random number from 0-9\).
 * To demonstrate rounding float to 2 decimal places. `{{div (round (mult 12.3456 100)) 100}}` returns 12.35 `{{div (roundFloor (mult  12.3456 100)) 100}}` returns 12.34
@@ -1034,7 +1054,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
         from arguments. YAG will only DM triggering user.</td>
     </tr>
   </tbody>
-</table>### ExecCC
+</table>
+
+### ExecCC
 
 {% hint style="warning" %}
 `execCC` calls are limited to 1 / CC for non-premium users and 10 / CC for premium users.
@@ -1083,7 +1105,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
     </tr>
   </tbody>
-</table>#### This section's snippets:
+</table>
+
+#### This section's snippets:
 
 * To demonstrates execCC  and .ExecData using the same CC.
 
@@ -1234,7 +1258,9 @@ Comparison operators always require the same type: i.e comparing `1.23` and `1` 
       </td>
     </tr>
   </tbody>
-</table>## Range action
+</table>
+
+## Range action
 
 `range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.
 
@@ -1286,7 +1312,7 @@ Outer-scope $x len however: {{ len $x }}
 * `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
 * `{{$a := (exec "catfact")}}` Saves the response of the `catfact` ****command to variable `$a`. 
 * `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the arguments after trigger to a variable `$allArgs`. 
-* `{{/* this is a comment */}}`For commenting something inside a template, use this syntax. May contain newlines. Comments do not nest and they start and end at the the delimiters. 
+* `{{/* this is a comment */}}`For commenting something inside a template, use this syntax. May contain newlines. Comments do not nest and they start and end at the delimiters. 
 * To trim spaces, for example &gt;`{{- /* this is a multi-line  comment with whitespace trimmed from  preceding and following text */ -}}`  Using`{{- ... -}}` is also handy inside`range` actions, because whitespaces and newlines are rendered there as output.
 * To demonstrate sleep and slightly also editMessage functions. &gt; `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 5}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
 

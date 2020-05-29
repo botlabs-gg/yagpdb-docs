@@ -338,7 +338,9 @@
       <td style="text-align:center">integer</td>
     </tr>
   </tbody>
-</table>\[1\] known to help against network issues  
+</table>
+
+\[1\] known to help against network issues  
 \[2\] ****only when using Let's Encrypt companion  
 ****\[3\] grants certain roles bot admin access  
 \[4\] will free resources when running low  

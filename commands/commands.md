@@ -243,7 +243,9 @@ You may also get more specific help by typing `-help (command)` .
         in all channels, including newly created ones.</td>
     </tr>
   </tbody>
-</table>###  Moderation
+</table>
+
+###  Moderation
 
 <table>
   <thead>
@@ -381,7 +383,9 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">Removes the specified role from the target.</td>
     </tr>
   </tbody>
-</table>#### Automod 
+</table>
+
+#### Automod 
 
 Everything here starts with `automod` or `amod` such as `-automod toggle`
 
@@ -483,7 +487,9 @@ Everything here starts with `automod` or `amod` such as `-automod toggle`
       </td>
     </tr>
   </tbody>
-</table>### Fun
+</table>
+
+### Fun
 
 <table>
   <thead>
@@ -673,7 +679,9 @@ Everything here starts with `automod` or `amod` such as `-automod toggle`
       <td style="text-align:left">Resets Soundboard Player</td>
     </tr>
   </tbody>
-</table>####  Cards Against Humanity
+</table>
+
+####  Cards Against Humanity
 
 Everything here starts with `cah` such as `-cah create`
 
@@ -765,7 +773,9 @@ Everything here starts with `rolemenu`or `rmenu` such as `-rolemenu create`
       <td style="text-align:left">Marks the menu as done.</td>
     </tr>
   </tbody>
-</table>### Tickets
+</table>
+
+### Tickets
 
 Everything here starts with `ticket(s)` such as `-tickets create`
 
@@ -836,7 +846,9 @@ Everything here starts with `event(s)` such as `-events create`
       <td style="text-align:left">Force cancels the setup session in current channel.</td>
     </tr>
   </tbody>
-</table>### Debug & Maintenance
+</table>
+
+### Debug & Maintenance
 
 | Command | Aliases | Optional Args | Description |
 | :--- | :--- | :--- | :--- |
