@@ -361,7 +361,7 @@ You may also get more specific help by typing `-help (command)` .
     </tr>
     <tr>
       <td style="text-align:left">topwarnings</td>
-      <td style="text-align:left">topwans</td>
+      <td style="text-align:left">topwarns</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">-id:switch</td>
       <td style="text-align:left">Shows ranked list of warnings on the server. -id switch switches their
