@@ -595,7 +595,7 @@ Everything here starts with `automod` or `amod` such as `-automod toggle`
         <p>(skip: number - entries to skip</p>
         <p>-id: serverID)</p>
       </td>
-      <td style="text-align:left">Responds with the top 15 servers the bot is on.</td>
+      <td style="text-align:left">Responds with the top servers list YAGPDB is on.</td>
     </tr>
     <tr>
       <td style="text-align:left">takerep</td>
