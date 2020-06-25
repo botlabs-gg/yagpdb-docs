@@ -1091,7 +1091,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">
         <p>Same as <code>execCC</code>except there can only be 1 scheduled cc execution
           per server per key, if key already exists then it is overwritten with the
-          new data and delay.</p>
+          new data and delay (as above, in seconds).</p>
         <p>An example would be a mute command that schedules the unmute action sometime
           in the future. However, let&apos;s say you use the unmute command again
           on the same user, you would want to override the last scheduled unmute
