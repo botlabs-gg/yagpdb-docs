@@ -539,7 +539,7 @@ Deleteing key "color1" {{$x.Del "color1"}} and whole sdict: **{{$x}}**
 {% hint style="danger" %}
 Since both _templates.SDict_ \(_sdict_\) and _templates.Slice_ \(_cslice_\) are custom composite datatypes, this type information is lost while saving to a database or passing as data to scheduled `execCC` or `scheduleUniqueCC`\(which internally involves saving to database\). Thus, they are converted to their underlying datatypes _map\[string\]interface{}_ and _\[\]interface{}_ respectively.   
   
-They can be converted back to templates.SDict and templates.Slice as follows :  
+They can be converted back to _templates.SDict_ and _templates.Slice_ as follows :  
   
 For _sdict_ -  
 `{{$sdict := sdict "a" 1 "b" "two"}}    
