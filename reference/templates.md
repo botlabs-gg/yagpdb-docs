@@ -6,7 +6,7 @@ description: '"Go is all about type... Type is life." // William Kennedy'
 
 ## Preface
 
-All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len,`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/) . This section is meant to be a concise and to the point reference document for all available templates/functions. For detailed explanations and syntax guide refer the [learning resource](https://learn.yagpdb.xyz/).
+All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len,`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/) . This section is meant to be a concise and to the point reference document for all available templates/functions. For detailed explanations and syntax guide refer to the [learning resource](https://learn.yagpdb.xyz/).
 
 **Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template's action-structure or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields \(e.g. .Append, .User\) are usually kept in standard formatting. If argument for a function is optional, it's enclosed in parenthesis `( )`. If there are many optional arguments possible, it's usually denoted by 3-dot `...`ellipsis.
 
@@ -24,7 +24,7 @@ so make sure no "smart-quotes" are being used.
 
 ## The Dot and Variables
 
-The dot `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context.   
+The dot \(also known as cursor\) `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context.   
   
 From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.  
   
@@ -139,7 +139,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | :--- | :--- |
 | .Member.JoinedAt | When member joined the guild/server of type _discordgo.Timestamp_. Method .Parse will convert this to of type _time.Time_. |
 | .Member.Nick | The nickname for this member. |
-| .Member.Roles | A list of role IDs that the member has. |
+| .Member.Roles | A _slice_ of role IDs that the member has. |
 | .Member.User | Underlying user on which the member is based on. |
 
 <table>
@@ -242,7 +242,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Message.GuildID | Guild ID in which the message is. |
 | .Message.Content | Text content on this message. |
 | .Message.Timestamp | Timestamp of the message in type _discordgo.Timestamp_ \(use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_\). |
-| .Message.EditedTimestamp | The time at which the last edit of the message occurred, if it has been edited. |
+| .Message.EditedTimestamp | The time at which the last edit of the message occurred, if it has been edited. As with .Message.Timestamp, it is of type _discordgo.Timestamp._  |
 | .Message.MentionRoles | The roles mentioned in the message. |
 | .Message.MentionEveryone | Whether the message mentions everyone. |
 | .Message.Author | Author of the message \([User](templates.md#user) object\). |
@@ -571,7 +571,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 | `toInt` | Converts something into an integer of type _int_. Usage: `(toInt x)`. Function will return 0, if type can't be converted to _int._ |
 | `toInt64` | Converts something into an _int64_. Usage: `(toInt64 x)`.  Function will return 0, if type can't be converted to _int64._ |
 | `toRune "arg"` | Function converts input to a slice of runes - meaning _\[\]int32_. `{{toRune "YAG€"}}`would output `[89 65 71 8364]`. These two functions - the one above, are good for further analysis of Unicode strings. `toString` is capable of converting that slice back to _string_. |
-| `toString` | Has alias `str`. Converts some other type into a _string_. Usage: `(toString x)`. |
+| `toString` | Has alias `str`. Converts some other types into a _string_. Usage: `(toString x)`. |
 
 #### This section's snippets:
 
@@ -912,7 +912,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Returns a random noun.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>index</code>
+      <td style="text-align:left"><code>index arg ...keys</code>
       </td>
       <td style="text-align:left">
         <p>Returns the result of indexing its first argument by the following arguments.
@@ -1172,7 +1172,12 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
 
 ## Conditional branching
 
-Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.
+Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.  
+
+
+{% hint style="success" %}
+`eq` , though often used with 2 arguments \(`eq x y`\) can actually be used with more than 2. If there are more than 2 arguments, it checks whether the first argument is equal to any one of the following arguments. This behaviour is unique to `eq`.
+{% endhint %}
 
 {% hint style="info" %}
 Comparison operators always require the same type: i.e comparing `1.23` and `1` would throw **`incompatible types for comparison`** error as they are not the same type \(one is float, the other int\). To fix this, you should convert both to the same type -&gt; for example, `toFloat 1`.
