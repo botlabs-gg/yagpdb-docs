@@ -429,6 +429,7 @@ SimpleEmbed
 
 ```text
 [-channel :Channel - Optional channel to send in]
+[-content :Text - Text content for the message]
 [-title :Text]
 [-desc :Text - Text in the 'description' field]
 [-color :Text - Either hex code or name]
@@ -437,6 +438,7 @@ SimpleEmbed
 [-image :Text - Url to an image]
 [-author :Text - The text in the 'author' field]
 [-authoricon :Text - Url to a icon for the 'author' field]
+[-authorurl :Text - Url of the 'author' field]
 [-footer :Text - Text content for the footer]
 [-footericon :Text - Url to a icon for the 'footer' field]
 ```
@@ -782,6 +784,7 @@ Clean <User:User Mention> <Num:Whole number>
 [-minage Min age:Duration]
 [-i Regex case insensitive:Switch]
 [-nopin Ignore pinned messages:Switch]
+[-to Stop at this msg ID:Whole number]
 ```
 
 ### Reason

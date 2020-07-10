@@ -311,6 +311,7 @@ You may also get more specific help by typing `-help (command)` .
         <p>(-r:regex)</p>
         <p>(-i:regex case insensitive)</p>
         <p>(-nopin: Ignore pinned messages)</p>
+        <p>(-to: whole number, stops deleting at that message ID)</p>
       </td>
       <td style="text-align:left">
         <p>Cleans the chat. More in depth <a href="all-commands.md#clean">here</a>.</p>

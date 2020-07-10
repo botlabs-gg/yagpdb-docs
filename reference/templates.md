@@ -291,6 +291,7 @@ This is available and part of the dot when reaction trigger type is used.
         <p><code>{{range .ReactionMessage.Reactions}}<br />{{.Count}} - {{.Emoji.Name}} <br />{{end}}</code>
         </p>
         <p>Returns emoji count and their name.</p>
+        <p>Has an alias .Message and works it works the same way.</p>
       </td>
     </tr>
     <tr>
@@ -400,7 +401,7 @@ Custom Types section discusses functions that initialize values carrying those _
 
 ### templates.Slice
 
-`templates.Slice` - This is a custom composite data type defined using an underlying datatype _\[\]interface{}_ . It is of kind _slice_ \(similar to _array_\) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
+`templates.Slice` - This is a custom composite data type defined using an underlying data type _\[\]interface{}_ . It is of kind _slice_ \(similar to _array_\) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
 
 <table>
   <thead>
@@ -493,7 +494,7 @@ Type of variable: **{{ printf "%T" $x }}**
 
 ### templates.SDict
 
-`templates.SDict` - This is a custom composite data type defined on an underlying datatype _map\[string\]interface{}._ This is of kind _map_ having _string_ type as its key and _interface{}_ type as that key's value and can be  initialized ****using `sdict` function. A map is key-value store. This means you store value and you access that value by a key. Map is an unordered list and the number of parameters to form key-value pairs must be even. Retrieving specific element inside _templates.Sdict_ is by indexing its key.
+`templates.SDict` - This is a custom composite data type defined on an underlying data type _map\[string\]interface{}._ This is of kind _map_ having _string_ type as its key and _interface{}_ type as that key's value and can be  initialized ****using `sdict` function. A map is key-value store. This means you store value and you access that value by a key. Map is an unordered list and the number of parameters to form key-value pairs must be even. Retrieving specific element inside _templates.Sdict_ is by indexing its key.
 
 <table>
   <thead>
@@ -537,7 +538,7 @@ Deleteing key "color1" {{$x.Del "color1"}} and whole sdict: **{{$x}}**
 ```
 
 {% hint style="danger" %}
-Since both _templates.SDict_ \(_sdict_\) and _templates.Slice_ \(_cslice_\) are custom composite datatypes, this type information is lost while saving to a database or passing as data to scheduled `execCC` or `scheduleUniqueCC`\(which internally involves saving to database\). Thus, they are converted to their underlying datatypes _map\[string\]interface{}_ and _\[\]interface{}_ respectively.   
+Since both _templates.SDict_ \(_sdict_\) and _templates.Slice_ \(_cslice_\) are custom composite data types, this type information is lost while saving to a database or passing as data to scheduled `execCC` or `scheduleUniqueCC`\(which internally involves saving to database\). Thus, they are converted to their underlying data types _map\[string\]interface{}_ and _\[\]interface{}_ respectively.   
   
 They can be converted back to _templates.SDict_ and _templates.Slice_ as follows :  
   
@@ -553,7 +554,7 @@ For _cslice_ -
 {{$slice := (dbGet 0 "example").Value}}  
 {{$cslice_converted := (cslice).AppendSlice $slice}}`
 
-The above examples use some database specific functions which are explained [here](https://docs.yagpdb.xyz/reference/templates#database).
+The above examples use some database specific functions which are explained [here](templates.md#database).
 {% endhint %}
 
 ## Functions
@@ -565,6 +566,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 | Function | Description |
 | :--- | :--- |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type _string_. For example `{{json .TimeHour}}` outputs type _string_; before this `.TimeHour` was of type _time.Duration_. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
+| `structToSdict struct` | Function converts exported field-value pairs of a _struct_ to an _sdict_. For example it is useful for editing embeds, rather than having to reconstruct the embed field by field manually. Exampe: `{{$x := cembed "title" "Something rules!" "color" 0x89aa00}} {{$x.Title}} {{$x = structToSdict $x}} {{- x.Set "Title" "No, YAGPDB rules!!!" -}} {{$x.Title}} {{$x}}` will return No, YAGPDB rules!!! and whole sdict-mapped _cembed_. |
 | `toByte "arg"` | Function converts input to a slice of bytes - meaning _\[\]uint8_. `{{toByte "YAG€"}}` would output `[89 65 71 226 130 172]`. `toString` is capable of converting that slice back to _string_. |
 | `toDuration` | Converts the argument, number or string to type _time.Duration_. Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-3).  |
 | `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_. |
@@ -869,11 +871,13 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | Function | Description |
 | :--- | :--- |
 | `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the `listroles` command for a list of roles\). |
+| `addRoleName roleName` | Adds the role with given name to the user that triggered the command \(use the `listroles` command for a list of roles\). |
 | `giveRoleID userID roleID` | Gives a role by ID to the target. |
 | `giveRoleName userID "roleName"` | Gives a role by name to the target. |
 | `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
 | `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
 | `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
+| `removeRoleName roleName (delay)` | Removes the role with given name from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
 | `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
 | `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-8). |
@@ -907,29 +911,14 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Returns a random adjective.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>noun</code>
+      <td style="text-align:left"><code>cembed &quot;list of embed values&quot;</code>
       </td>
-      <td style="text-align:left">Returns a random noun.</td>
+      <td style="text-align:left">Function to generate embed inside custom command. <a href="../others/custom-embeds.md#embeds-in-custom-commands">More in-depth here</a>.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>index arg ...keys</code>
+      <td style="text-align:left"><code>cslice, sdict</code>
       </td>
-      <td style="text-align:left">
-        <p>Returns the result of indexing its first argument by the following arguments.
-          Each indexed item must be a <em>map</em>, <em>slice </em>or <em>array</em>.</p>
-        <p></p>
-        <p>Example: <code>{{index .Args 1}}</code> returns first argument after trigger
-          which is always at position 0.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>range slice/array</code>
-      </td>
-      <td style="text-align:left">Iterates (loops) over the given <em>slice </em>or <em>array </em>and sets
-        successive elements as active data (the dot) to be further handled inside
-        the <code>range</code> action. Example usage <a href="custom-command-examples.md#range-example">here</a>.
-        <a
-        href="templates.md#range-action">More in-depth here</a>.</td>
+      <td style="text-align:left">These functions are covered in their own section <a href="templates.md#custom-types">here</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>dict key1 value1 key2 value2 ...</code>
@@ -938,35 +927,9 @@ With regular expression patterns - when using quotes you have to "double-escape"
         say. The number of parameters to form key-value pairs must be even. Example
         <a
         href="https://docs.yagpdb.xyz/reference/custom-command-examples#dictionary-example">here</a>. Keys and values can be of any type. Key is not restricted to <em>string </em>only
-          as in case with <code>sdict</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>cembed &quot;list of embed values&quot;</code>
-      </td>
-      <td style="text-align:left">Function to generate embed inside custom command. <a href="../others/custom-embeds.md#embeds-in-custom-commands">More in-depth here</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>in list value</code>
-      </td>
-      <td style="text-align:left">Returns <em>bool</em> true/false whether case-sensitive value is in list/<em>slice</em>. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>inFold </code>
-      </td>
-      <td style="text-align:left">Same as <code>in</code>, but is case-insensitive. <code>{{inFold (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot;}}</code> returns <code>true</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>seq start stop</code>
-      </td>
-      <td style="text-align:left">Creates a new <em>slice</em> of type <em>int</em>, beginning from start number,
-        increasing in sequence and ending at stop (not included). <code>{{seq -4 2}}</code> returns
-        a <em>slice</em>  <code>[ -4 -3 -2 0 1 ]</code>. Sequence&apos;s max length
-        is 10 000.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>shuffle list</code>
-      </td>
-      <td style="text-align:left">Returns a shuffled, randomized version of a list/<em>slice</em>.</td>
+          as in case with <code>sdict</code>. <code>dict </code>also has helper functions
+          .Del, .Del and .Set and they function the same way as <code>sdict</code> ones
+          discussed <a href="templates.md#templates-sdict">here</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>exec &quot;command&quot; &quot;args&quot; &quot;args&quot; &quot;args&quot; ...</code>
@@ -1000,6 +963,49 @@ With regular expression patterns - when using quotes you have to "double-escape"
         requirement (such as the kick permission to use kick command etc.).</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>humanizeThousands arg</code>
+      </td>
+      <td style="text-align:left">This function places comma to separate groups of thousands of a number. <code>arg </code>can
+        be <em>int</em> or <em>string</em>, has to be a whole number, e.g. <code>{{humanizeThousands &quot;1234567890&quot;}}</code> will
+        return <code>1,234,567,890</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>in list value</code>
+      </td>
+      <td style="text-align:left">Returns <em>bool</em> true/false whether case-sensitive value is in list/<em>slice</em>. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>index arg ...keys</code>
+      </td>
+      <td style="text-align:left">
+        <p>Returns the result of indexing its first argument by the following arguments.
+          Each indexed item must be a <em>map</em>, <em>slice </em>or <em>array</em>.</p>
+        <p></p>
+        <p>Example: <code>{{index .Args 1}}</code> returns first argument after trigger
+          which is always at position 0.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>inFold </code>
+      </td>
+      <td style="text-align:left">Same as <code>in</code>, but is case-insensitive. <code>{{inFold (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot;}}</code> returns <code>true</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>kindOf value (flag)</code>
+      </td>
+      <td style="text-align:left">This function helps to determine what kind of data type we are dealing
+        with. <code>flag</code> part is a <em>bool </em> and if set as <b>true </b>(<b>false </b>is
+        optional)<b> </b>returns the value where given <code>value</code> points
+        to. Example: <code>{{kindOf cembed false}} {{kindOf cembed true}} </code>will
+        return <code>ptr </code>and <code>struct</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>noun</code>
+      </td>
+      <td style="text-align:left">Returns a random noun.</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>parseArgs required_args error_message ...carg</code>
       </td>
       <td style="text-align:left">Checks the arguments for a specific type. Has methods <code>.Get</code> and <code>.IsSet</code>.
@@ -1010,29 +1016,19 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>carg &quot;type&quot; &quot;name&quot;</code>
       </td>
-      <td style="text-align:left">Defines type of argument for <code>parseArgs</code>. <a href="../commands/custom-commands.md#require-arguments">More in depth</a> here
-        and an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
+      <td style="text-align:left">Required by <code>parseArgs</code> and it defines the type of argument for <code>parseArgs</code>.
+        <a
+        href="../commands/custom-commands.md#require-arguments">More in depth</a>here and an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>sleep seconds</code>
+      <td style="text-align:left"><code>range slice/array</code>
       </td>
-      <td style="text-align:left">Pauses execution of template&apos;s action-structure inside custom command
-        for max 60 seconds combined. Argument<code>seconds</code>is an integer
-        (whole number). Example in <a href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>cslice, sdict</code>
-      </td>
-      <td style="text-align:left">These functions are covered in their own section <a href="templates.md#custom-types">here</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>humanizeThousands arg</code>
-      </td>
-      <td style="text-align:left">This function places comma to separate groups of thousands of a number. <code>arg </code>can
-        be <em>int</em> or <em>string</em>, has to be a whole number, e.g. <code>{{humanizeThousands &quot;1234567890&quot;}}</code> will
-        return <code>1,234,567,890</code>
-      </td>
+      <td style="text-align:left">Iterates (loops) over the given <em>slice </em>or <em>array </em>and sets
+        successive elements as active data (the dot) to be further handled inside
+        the <code>range</code> action. Example usage <a href="custom-command-examples.md#range-example">here</a>.
+        <a
+        href="templates.md#range-action">More in-depth here</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>sendTemplate channel name data</code>
@@ -1052,6 +1048,26 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
       <td style="text-align:left">Works the same way as function above. Only channel&apos;s name is missing
         from arguments. YAG will only DM triggering user.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>seq start stop</code>
+      </td>
+      <td style="text-align:left">Creates a new <em>slice</em> of type <em>int</em>, beginning from start number,
+        increasing in sequence and ending at stop (not included). <code>{{seq -4 2}}</code> returns
+        a <em>slice</em>  <code>[ -4 -3 -2 0 1 ]</code>. Sequence&apos;s max length
+        is 10 000.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>shuffle list</code>
+      </td>
+      <td style="text-align:left">Returns a shuffled, randomized version of a list/<em>slice</em>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>sleep seconds</code>
+      </td>
+      <td style="text-align:left">Pauses execution of template&apos;s action-structure inside custom command
+        for max 60 seconds combined. Argument<code>seconds</code>is an integer
+        (whole number). Example in <a href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
     </tr>
   </tbody>
 </table>
