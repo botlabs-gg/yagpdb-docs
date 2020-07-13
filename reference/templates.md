@@ -928,7 +928,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
         say. The number of parameters to form key-value pairs must be even. Example
         <a
         href="https://docs.yagpdb.xyz/reference/custom-command-examples#dictionary-example">here</a>. Keys and values can be of any type. Key is not restricted to <em>string </em>only
-          as in case with <code>sdict</code>. <code>*dict </code>also has helper methids
+          as in case with <code>sdict</code>. <code>*dict </code>also has helper methods
           .Del, .Del and .Set and they function the same way as <code>sdict</code> ones
           discussed <a href="templates.md#templates-sdict">here</a>.</td>
     </tr>
