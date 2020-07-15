@@ -17,7 +17,7 @@ To create your first custom command, go to the control panel and select your ser
 * **Exact match**: When the entire message equals your trigger.
 * **Reaction:** CC is triggered by reactions.
 * **Hourly interval**: This wi~~l~~l trigger after specified time given in hours. User can exclude certain hours and also weekdays. Channel must be selected for this trigger to work.
-* **Minute interval**: Like hourly interval, the specified time is just in minutes.
+* **Minute interval**: Like hourly interval, the specified time is just in minutes starting from 5 min as minimum.
 
 #### Case Sensitivity
 
