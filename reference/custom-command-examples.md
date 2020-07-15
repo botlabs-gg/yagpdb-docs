@@ -73,7 +73,7 @@ Note that we can go through everything that is in $lb with range.
 
 ### Dictionary example
 
-A dictionary does not currently have a lot of practical use, because YAGPDB has a data type more suited for most use cases - `sdict`. However, sdict only supports string keys, which means that in the case you want non-string keys, you will have to use `dict`. Note that dict does not have all the handy helper methods like `.Set` and `.Get` on sdict.
+A dictionary does not currently have a lot of practical use, because YAGPDB has a data type more suited for most use cases - `sdict`. However, sdict only supports string keys, which means that in the case you want non-string keys, you will have to use `dict`.
 
 Trigger type: `Command` Trigger: `dict`
 
