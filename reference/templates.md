@@ -9,7 +9,7 @@ description: '"Go is all about type... Type is life." // William Kennedy'
 All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len,`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/) . This section is meant to be a concise and to the point reference document for all available templates/functions. For detailed explanations and syntax guide refer to the [learning resource](https://learn.yagpdb.xyz/).
 
 **Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template's action-structure or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields \(e.g. .Append, .User\) are usually kept in standard formatting. If argument for a function is optional, it's enclosed in parenthesis `( )`. If there are many optional arguments possible, it's usually denoted by 3-dot `...`ellipsis.   
-If functions or methods are denoted with an asterisk/star `*`,they are not yet deployed in actual YAGPDB bot but are already in master code branch.
+If functions or methods are denoted with an accent, tilde ~, they are not yet deployed in actual YAGPDB bot but are already in master code branch.
 
 {% hint style="warning" %}
 **Always put curly brackets around the data and "actions you perform" you want to formulate as a template's action-structure** like this: `{{.User.Username}}`
@@ -292,7 +292,7 @@ This is available and part of the dot when reaction trigger type is used.
         <p><code>{{range .ReactionMessage.Reactions}}<br />{{.Count}} - {{.Emoji.Name}} <br />{{end}}</code>
         </p>
         <p>Returns emoji count and their name.</p>
-        <p>Has an alias *.Message and works it works the same way.</p>
+        <p>Has an alias .Message and works it works the same way.</p>
       </td>
     </tr>
     <tr>
@@ -567,7 +567,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 | Function | Description |
 | :--- | :--- |
 | `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type _string_. For example `{{json .TimeHour}}` outputs type _string_; before this `.TimeHour` was of type _time.Duration_. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
-| `*structToSdict struct` | Function converts exported field-value pairs of a _struct_ to an _sdict_. For example it is useful for editing embeds, rather than having to reconstruct the embed field by field manually. Exampe: `{{$x := cembed "title" "Something rules!" "color" 0x89aa00}} {{$x.Title}} {{$x = structToSdict $x}} {{- x.Set "Title" "No, YAGPDB rules!!!" -}} {{$x.Title}} {{$x}}` will return No, YAGPDB rules!!! and whole sdict-mapped _cembed_. |
+| `structToSdict struct` | Function converts exported field-value pairs of a _struct_ to an _sdict_. For example it is useful for editing embeds, rather than having to reconstruct the embed field by field manually. Exampe: `{{$x := cembed "title" "Something rules!" "color" 0x89aa00}} {{$x.Title}} {{$x = structToSdict $x}} {{- x.Set "Title" "No, YAGPDB rules!!!" -}} {{$x.Title}} {{$x}}` will return No, YAGPDB rules!!! and whole sdict-mapped _cembed_. |
 | `toByte "arg"` | Function converts input to a slice of bytes - meaning _\[\]uint8_. `{{toByte "YAG€"}}` would output `[89 65 71 226 130 172]`. `toString` is capable of converting that slice back to _string_. |
 | `toDuration` | Converts the argument, number or string to type _time.Duration_. Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-3).  |
 | `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_. |
@@ -825,7 +825,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channel's ID or its name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiName:emojiID`\). |
 | `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiName:emojiID`\). |
-| `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 100 000 characters ~100kB\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
+| `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 100 000 characters ca100kB\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
 | `complexMessageEdit "content" args "embed" args` | Special case for `editMessage` function - either if `complexMessage` is involved or works even with regular message. Has two parameters `"content"` and `"embed"` to edit regular text part or embed part. If `"embed"` is set to `nil`, it deletes whole embed. Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
 | `deleteAllMessageReactions channel messageID` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. |
 | `deleteMessageReaction channel messageID userID emojis` | Deletes reaction\(s\) from a message. `channel` can be ID, "name" or `nil`.  `emojis` argument can be up to 10 emojis, syntax is `emojiName` for Unicode/Discord's default emojis and `emojiName:emojiID` for custom emotes.   Example: `{{deleteMessageReaction nil (index .Args 1) .User.ID "👍" "👎"}}` will delete current user's reactions with thumbsUp/Down emotes from current running channel's message which ID is given to command as first argument `(index .Args 1)`. Also usable with [Reaction trigger](templates.md#reaction). |
@@ -872,13 +872,13 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | Function | Description |
 | :--- | :--- |
 | `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the `listroles` command for a list of roles\). |
-| `*addRoleName roleName` | Adds the role with given name to the user that triggered the command \(use the `listroles` command for a list of roles\). |
+| `addRoleName roleName` | Adds the role with given name to the user that triggered the command \(use the `listroles` command for a list of roles\). |
 | `giveRoleID userID roleID` | Gives a role by ID to the target. |
 | `giveRoleName userID "roleName"` | Gives a role by name to the target. |
 | `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
 | `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
 | `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
-| `*removeRoleName roleName (delay)` | Removes the role with given name from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
+| `removeRoleName roleName (delay)` | Removes the role with given name from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
 | `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
 | `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-8). |
@@ -928,7 +928,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
         say. The number of parameters to form key-value pairs must be even. Example
         <a
         href="https://docs.yagpdb.xyz/reference/custom-command-examples#dictionary-example">here</a>. Keys and values can be of any type. Key is not restricted to <em>string </em>only
-          as in case with <code>sdict</code>. <code>*dict </code>also has helper methods
+          as in case with <code>sdict</code>. <code>dict </code>also has helper methods
           .Del, .Del and .Set and they function the same way as <code>sdict</code> ones
           discussed <a href="templates.md#templates-sdict">here</a>.</td>
     </tr>
@@ -993,7 +993,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Same as <code>in</code>, but is case-insensitive. <code>{{inFold (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot;}}</code> returns <code>true</code>.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>*kindOf value (flag)</code>
+      <td style="text-align:left"><code>kindOf value (flag)</code>
       </td>
       <td style="text-align:left">This function helps to determine what kind of data type we are dealing
         with. <code>flag</code> part is a <em>bool </em> and if set as <b>true </b>(<b>false </b>is
