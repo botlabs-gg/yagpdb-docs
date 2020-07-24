@@ -93,7 +93,8 @@ To make your code readable, especially for large embeds, **indents** may be used
         (sdict "name" "Cat Fact" "value" $catfact "inline" false) 
         (sdict "name" "Member Count" "value" (toString .Guild.MemberCount) "inline" true) 
         (sdict "name" "Guild Region" "value" .Guild.Region "inline" true) 
-        (sdict "name" "Guild ID" "value" (toString .Guild.ID) "inline" true)) 
+        (sdict "name" "Guild ID" "value" (toString .Guild.ID) "inline" true)
+    ) 
     "author" (sdict "name" "YAGPDB.xyz!" "url" "https://yagpdb.xyz/manage" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") 
     "thumbnail" (sdict "url" $avatar) 
     "footer" (sdict "text" "YAGPDB.xyz since" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") 
@@ -112,7 +113,8 @@ Up next, I have added some fields. This is a bit more difficult, but doable if y
 ```go
 "fields" (cslice 
     (sdict "name" "Title of field 1" "value" "Description of field 1" "inline" false) 
-    (sdict "name" "Title of field 2" "value" "Description of field 2" "inline" false) 
+    (sdict "name" "Title of field 2" "value" "Description of field 2" "inline" false)
+) 
 ```
 
 This would add two fields being displayed under each other. If you set inline to true, they would try to get displayed next to each other. You can add multiple fields with sdict.
