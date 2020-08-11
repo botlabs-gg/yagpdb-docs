@@ -1055,7 +1055,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
       <td style="text-align:left">Creates a new <em>slice</em> of type <em>int</em>, beginning from start number,
         increasing in sequence and ending at stop (not included). <code>{{seq -4 2}}</code> returns
-        a <em>slice</em>  <code>[ -4 -3 -2 0 1 ]</code>. Sequence&apos;s max length
+        a <em>slice</em>  <code>[ -4 -3 -2 -1 0 1 ]</code>. Sequence&apos;s max length
         is 10 000.</td>
     </tr>
     <tr>
