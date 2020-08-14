@@ -96,6 +96,10 @@ The role menu makes it possible to have people assign roles by adding reactions 
 
 ![Example of a role menu](../.gitbook/assets/aa%20%283%29.PNG)
 
+{% hint style="info" %}
+If you'd like to create a message like the above to create a rolemenu on, take a look at the [Custom Embeds](../others/custom-embeds.md) chapter.
+{% endhint %}
+
 {% hint style="warning" %}
 A role menu can only support up to 20 roles due to the reaction limit discord places on messages. If your role group has more then twenty you have to use finish sub-command and then add the rest of roles to a new message with -skip flag.
 {% endhint %}
