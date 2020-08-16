@@ -347,7 +347,6 @@
 \[5\] will put the bot into orchestration mode  
 \[6\] leaving it enabled could cause a big amount of requests \(Variable is continuous, here on two lines\)  
 \[7\] should be set to somthing random and never change  
-\[8\] should be comma separated paths  
   
 If variable goes to two lines due to Gitbook's layout in this table, it's still one line in real environment config.  
 
