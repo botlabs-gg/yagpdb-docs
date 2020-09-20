@@ -1,8 +1,10 @@
 # Self Hosting with Docker
 
-
-
 {% hint style="danger" %}
+ **Warning: The Development parts of the documentation are DEPRECATED.** It is no longer being maintained, contains outdated and incorrect information, and will eventually be shut down.
+{% endhint %}
+
+{% hint style="info" %}
 **This tutorial requires you to have little amount of knowledge regarding hosting websites and servers!**
 {% endhint %}
 
