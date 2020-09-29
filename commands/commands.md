@@ -185,6 +185,13 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">Shows past usernames of given member.</td>
     </tr>
     <tr>
+      <td style="text-align:left">resetpastnames</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">N/A</td>
+      <td style="text-align:left">Resets your past usernames &amp; nicknames.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">remindme</td>
       <td style="text-align:left">remind</td>
       <td style="text-align:left">(time) (message)</td>

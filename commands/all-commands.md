@@ -228,6 +228,16 @@ Shows past usernames of a user. Only shows up to the last 25 usernames.
 Usernames [User:User]
 ```
 
+### ResetPastNames
+
+Reset your past usernames/nicknames.
+
+**Usage:**
+
+```text
+ResetPastNames
+```
+
 ### Remindme
 
 **Aliases:** remind/reminder
