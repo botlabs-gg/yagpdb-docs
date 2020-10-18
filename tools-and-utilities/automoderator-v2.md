@@ -288,7 +288,23 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### **Set Nickname**
 
 * Sets the nickname of the user
+
   * **New Nickname \(empty for removal\):** Set a new nickname for the user, if you leave it empty, it will reset the nickname.
+
+## Limitations
+
+There are some limitations you need to be aware of when using Automoderator V2, which are listed below.
+
+{% hint style="info" %}
+**Note:** 'Normal' here means a normal server without YAGPDB Premium, 'Premium' means one with YAGPDB Premium.
+{% endhint %}
+
+* **Max message-based triggers:** 20 for normal, 100 for premium.
+* **Max violation triggers:** 20 for normal, 100 for premium.
+* **Max total rules:** 25 for normal, 150 for premium.
+* **Max lists:** 5 for normal, 25 for premium.
+* **Max rule parts:** This means the maximum amount of triggers, conditions, and effect in total you may have per rule. These will be truncated if they go over the limited.  __20 for both normal and premium.
+* **Max rulesets:** 10 for normal, 25 for premium.
 
 ## Automoderator 1.0 to 2.0
 
