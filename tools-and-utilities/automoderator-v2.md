@@ -303,7 +303,7 @@ There are some limitations you need to be aware of when using Automoderator V2, 
 * **Max violation triggers:** 20 for normal, 100 for premium.
 * **Max total rules:** 25 for normal, 150 for premium.
 * **Max lists:** 5 for normal, 25 for premium.
-* **Max rule parts:** This means the maximum amount of triggers, conditions, and effect in total you may have per rule. These will be truncated if they go over the limited.  __20 for both normal and premium.
+* **Max rule parts:** This means the maximum amount of triggers, conditions, and effect in total you may have per rule. These will be truncated if they go over the limit.  __20 for both normal and premium.
 * **Max rulesets:** 10 for normal, 25 for premium.
 
 ## Automoderator 1.0 to 2.0
