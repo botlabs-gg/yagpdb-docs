@@ -138,13 +138,6 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">Shows you requested user&apos;s permissions in this channel.</td>
     </tr>
     <tr>
-      <td style="text-align:left">stats</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Shows server stats (only if public stats are enabled).</td>
-    </tr>
-    <tr>
       <td style="text-align:left">customcommands</td>
       <td style="text-align:left">cc</td>
       <td style="text-align:left">N/A</td>

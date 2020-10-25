@@ -158,7 +158,7 @@ ViewPerms [target:Mention/ID]
 
 ### Stats
 
-Shows server stats \(if public stats are enabled\)
+Shows server stats \(if public stats are enabled\). This command is only available if collecting statistics is enabled bot not user side.
 
 **Usage:**
 
