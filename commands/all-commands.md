@@ -711,6 +711,16 @@ Debug debug debug autorole assignment
 Roledbg
 ```
 
+### IsGuildUnavailable
+
+Returns wether the specified guild is unavilable or not
+
+**Usage:**
+
+```text
+IsGuildUnavailable <guildid:Whole number>
+```
+
 ## Moderation 👮
 
 ### Ban
