@@ -580,6 +580,10 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 
 * To demonstrate `toDuration`, outputs 12 hours from current time in UTC. `{{(currentTime.Add (toDuration (mult 12 .TimeHour))).Format "15:04"}}`is the same as`{{(currentTime.Add (toDuration "12h")).Format "15:04"}}` or`{{(currentTime.Add (toDuration 43200000000000)).Format "15:04"}}`
 
+{% hint style="success" %}
+**Tip:** You can convert a Unicode code point back to its string equivalent using `printf "%c"`.  For example, `printf "%c" 99` would result in the string `c` as `99` is the Unicode code point for `c`.`printf` is briefly covered later on in the next section, further documentation can be found [here.](https://golang.org/pkg/fmt/)
+{% endhint %}
+
 ### String manipulation
 
 <table>
