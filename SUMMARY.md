@@ -46,9 +46,3 @@
 * [Frequent Searches](others/frequent-searches.md)
 * [Custom Embeds](others/custom-embeds.md)
 
-## Development
-
-* [Self Hosting with Docker](development/self-hosting-with-docker.md)
-* [Building the bot](development/building-the-bot.md)
-* [Complete enviroment variable list](development/complete-env-var-dump.md)
-
