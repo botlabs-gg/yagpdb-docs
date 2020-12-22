@@ -964,8 +964,13 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>execAdmin &quot;command&quot; &quot;args&quot; &quot;args&quot; &quot;args&quot; ...</code>
       </td>
-      <td style="text-align:left">Functions same way as <code>exec</code> but will override any permission
-        requirement (such as the kick permission to use kick command etc.).</td>
+      <td style="text-align:left">Functions same way as <code>exec</code> but effectively runs the command
+        as the bot user (YAGPDB). This has essentially the same effect as if a
+        user with the same permissions and roles as YAGPDB ran the command: for
+        example, if YAGPDB had ban members permission but the user which ran the
+        command did not, <code>{{exec &quot;ban&quot; 12345}}</code> would error
+        due to insufficient permissions but <code>{{execAdmin &quot;ban&quot; 12345}}</code> would
+        succeed.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>humanizeThousands arg</code>
