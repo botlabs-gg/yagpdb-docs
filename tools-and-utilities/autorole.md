@@ -5,7 +5,7 @@ Make sure that the bot has permission to manage roles **and** that the role the 
 {% endhint %}
 
 {% hint style="warning" %}
-**Warning:** Be careful when using autorole to automatically give new members an "unverified role". This may render Discord's in-built new member verification level useless, as it only applies if the member does not have a role.
+**Warning:** Be careful when using autorole to automatically give new members roles. Discord's in-built new member verification only works on members with no roles, rendering it useless if members are given roles right after they join. 
 {% endhint %}
 
 ![](../.gitbook/assets/autorole.PNG)
