@@ -4,6 +4,10 @@
 Make sure that the bot has permission to manage roles **and** that the role the bot is assigning is below the highest role the bot has. 
 {% endhint %}
 
+{% hint style="warning" %}
+**Warning:** Be careful when using autorole to automatically give new members an "unverified role". This may render Discord's in-built new member verification level useless, as it only applies if the member does not have a role.
+{% endhint %}
+
 ![](../.gitbook/assets/autorole.PNG)
 
 The different parameters you can set up on this site are:
