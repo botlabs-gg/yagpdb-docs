@@ -532,10 +532,10 @@ Type of variable: **{{ printf "%T" $x }}**
 
 ```go
 Creating sdict: {{ $x := sdict "color1" "green" "color2" "red" }} **{{ $x }}**
-Retrieving key "color2": **{{$x.Get "color2"}}**
+Retrieving key "color2": **{{ $x.Get "color2" }}**
 Changing "color2" to "yellow": {{ $x.Set "color2" "yellow" }} **{{ $x }}**
 Adding "color3" as "blue": {{ $x.Set "color3" "blue" }} **{{ $x }}**
-Deleteing key "color1" {{$x.Del "color1"}} and whole sdict: **{{$x}}**
+Deleting key "color1" {{ $x.Del "color1" }} and whole sdict: **{{ $x }}**
 ```
 
 {% hint style="danger" %}
