@@ -565,14 +565,16 @@ Everything here starts with `automod` or `amod` such as `-automod toggle`
       <td style="text-align:left">ce</td>
       <td style="text-align:left">(json)</td>
       <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Creates an embed from what you give it in json form: <a href="https://discordapp.com/developers/docs/resources/channel#embed-object">Embed Object</a>.</td>
+      <td style="text-align:left">Creates an embed from what you give it in json form: <a href="https://discordapp.com/developers/docs/resources/channel#embed-object">Embed Object</a>.
+        Requires Manage Messages permission.</td>
     </tr>
     <tr>
       <td style="text-align:left">simpleembed</td>
       <td style="text-align:left">se</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">(switches)</td>
-      <td style="text-align:left">A simpler version of CustomEmbed, controlled using switches. <a href="all-commands.md#simpleembed">More info</a>.</td>
+      <td style="text-align:left">A simpler version of CustomEmbed, controlled using switches. Requires
+        Manage Messages permission. <a href="all-commands.md#simpleembed">More info</a>.</td>
     </tr>
     <tr>
       <td style="text-align:left">wouldyourather</td>
