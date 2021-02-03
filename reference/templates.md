@@ -1313,6 +1313,16 @@ Like `if`, `range`is concluded with`{{end}}`action and declared variable scope i
 {{ $x := 42 }} {{ range $x := seq 2 4 }} {{ $x }} {{ end }} {{ $x }}
 ```
 
+{% hint style="danger" %}
+**Custom command response was longer than 2k \(contact an admin on the server...\)**  
+This is quite common error users will get whilst using range. Simple example to reproduce it:  
+_{{ range seq 0 400 }}  
+{{ $x := . }}  
+{{ end }}  
+HELLO!_  
+This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _{{- $x := . -}}_
+{% endhint %}
+
 ## With action
 
 `with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{else}}` is used, that branch is executed instead.   
