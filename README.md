@@ -4,9 +4,7 @@ description: '"Documentation is for users." // Rob Pike'
 
 # Yet Another General Purpose Discord Bot - Documentation
 
-{% hint style="success" %}
 Copyright © 2017-2021 YAGPDB Community's Documentation Authors
-{% endhint %}
 
 {% hint style="warning" %}
 This is the documentation, the actual configuration is not done here.  
