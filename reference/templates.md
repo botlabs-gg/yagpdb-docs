@@ -986,6 +986,18 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Returns <em>bool</em> true/false whether case-sensitive value is in list/<em>slice</em>. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>len arg</code>
+      </td>
+      <td style="text-align:left">
+        <p>Returns the integer length of its argument. arg can be an <em>array</em>, <em>slice</em>, <em>map</em>,
+          or <em>string.</em>
+        </p>
+        <p><code>{{ len (cslice 1 2 3) }}</code>
+        </p>
+        <p>returns <code>3</code>.</p>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>index arg ...keys</code>
       </td>
       <td style="text-align:left">
