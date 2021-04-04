@@ -1188,7 +1188,7 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
 | `dbGetPattern userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in ascending order. |
 | `dbGetPatternReverse userID pattern amount nSkip` | Retrieves`amount (max 100)`entries from the database in descending order. |
 | `dbDel userID key` | Deletes the specified key for the specified value from the database. |
-| `dbDelByID userID ID` | Deletes database entry by it's ID. |
+| `dbDelByID userID ID` | Deletes database entry by its ID. |
 | `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
 | `dbBottomEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order. |
 | `dbCount (userID|key)` | Returns the count of all database entries which are not expired. Optional arguments: if `userID` is given, counts entries for that userID or if `key`, then only those keys are counted. |
