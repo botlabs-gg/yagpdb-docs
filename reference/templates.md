@@ -225,8 +225,8 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
       <td style="text-align:left"><code>getChannel channel</code>
       </td>
       <td style="text-align:left">Function returns full channel object of given <code>channel</code> argument
-        which can be either it&apos;s ID, name or <code>nil</code> for triggering
-        channel, and is of type <em>*dstate.ChannelState</em>. For example &gt; <code>{{(getChannel nil).Name}}</code> returns
+        which can be either its ID, name or <code>nil</code> for triggering channel,
+        and is of type <em>*dstate.ChannelState</em>. For example &gt; <code>{{(getChannel nil).Name}}</code> returns
         the name of the channel command was triggered in.</td>
     </tr>
   </tbody>
@@ -396,7 +396,7 @@ Time in general uses Golang's time package library &gt; [https://golang.org/pkg/
 
 Golang has built-in primitive data types \(_int_, _string_, _bool_, _float64_, ...\) and built-in composite data types \(_array_, _slice_, _map_, ...\) which also are used in custom commands.   
   
-YAGPDB's templating "engine" has currently two user-defined, custom data types - _templates.Slice_ and _templates.SDict_. There are other custom data types used like _discordgo.Timestamp_, __but these are outside  of the main code of YAGPDB, so not explained here further. Type _time.Time_ is covered in it's own [section](templates.md#time).  
+YAGPDB's templating "engine" has currently two user-defined, custom data types - _templates.Slice_ and _templates.SDict_. There are other custom data types used like _discordgo.Timestamp_, __but these are outside  of the main code of YAGPDB, so not explained here further. Type _time.Time_ is covered in its own [section](templates.md#time).  
   
 Custom Types section discusses functions that initialize values carrying those _templates.Slice_ \(abridged to _cslice_\), _templates.SDict_ \(abridged to _sdict_\) types and their methods. Both types handle type _interface{}_ element. It's called an empty interface which allows a value to be of any type. So any argument of any type given is handled. \(In "custom commands"-wise mainly primitive data types, but _slices_ as well.\)
 
