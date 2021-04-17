@@ -36,8 +36,8 @@ From official docs &gt; "Execution of the template walks the structure and sets 
 | Field | Description |
 | :--- | :--- |
 | .CCID | The ID of currently executing custom command in type of _int64_. |
-| .IsPremium | Returns boolean true/false whether guild is premium of YAGPDB or not. |
 | .CCRunCount | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes. |
+| .IsPremium | Returns boolean true/false whether guild is premium of YAGPDB or not. |
 
 ## Pipes
 
@@ -54,16 +54,16 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | Field | Description |
 | :--- | :--- |
 | .User | The user's username together with discriminator. |
-| .User.String | The user's username together with discriminator as _string_ type. |
-| .User.Username | The user's username. |
-| .User.ID | The user's ID. |
-| .User.Discriminator | The user's discriminator \(The four digits after a person's username\). |
 | .User.Avatar | The user's avatar ID. |
 | .User.AvatarURL "256" | Gives the URL for user's avatar, argument "256" is the size of the picture  and can increase/decrease twofold \(e.g. 512, 1024 or 128, 64 etc.\). |
-| .User.Bot | Determines whether the target user is a bot - if yes, it will return True. |
+| .User.Bot | Determines whether the target user is a bot - if yes, it will return `true`. |
+| .User.Discriminator | The user's discriminator \(The four digits after a person's username\). |
+| .User.ID | The user's ID. |
 | .User.Mention | Mentions user. |
-| .RealUsername | Only works with join and leave messages \(not join dms\). This can be used to send the real username to a staff channel when invites are censored. |
+| .User.String | The user's username together with discriminator as _string_ type. |
+| .User.Username | The user's username. |
 | .UsernameHasInvite | Only works with join and leave messages \(not join dms\). It will determine does the username contain an invite link. |
+| .RealUsername | Only works with join and leave messages \(not join DMs\). This can be used to send the real username to a staff channel when invites are censored. |
 
 <table>
   <thead>
@@ -111,24 +111,24 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 | Field | Description |
 | :--- | :--- |
-| .Guild.ID | Outputs the ID of the guild. |
-| .Guild.Name | Outputs the name of the guild. |
-| .Guild.Icon | Outputs the [icon hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's icon. |
-| .Guild.Splash | Outputs the [splash hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's splash. |
-| .Guild.Region | Outputs the region of the guild. |
 | .Guild.AfkChannelID | Outputs the AFK channel ID. |
-| .Guild.OwnerID | Outputs the ID of the owner. |
-| .Guild.JoinedAt | Outputs the timestamp when YAGPDB joined the guild. To convert it to type _time.Time_, use .Parse method &gt; `.Guild.JoinedAt.Parse` |
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
-| .Guild.MemberCount | Outputs the number of users on a guild. |
-| .Guild.VerificationLevel | Outputs the required verification level for the guild. |
-| .Guild.ExplicitContentFilter | Outputs the explicit content [filter level](https://discordapp.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level) for the guild. |
 | .Guild.DefaultMessageNotifications | Outputs the default message [notification setting](https://discordapp.com/developers/docs/resources/guild#guild-object-default-message-notification-level) for the guild. |
-| .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _\*discordgo.VoiceState._ |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
-| .Guild.SystemChannelID | The id of the channel where guild notices such as welcome messages and boost events are posted. |
+| .Guild.ExplicitContentFilter | Outputs the explicit content [filter level](https://discordapp.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level) for the guild. |
+| .Guild.Icon | Outputs the [icon hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's icon. |
+| .Guild.ID | Outputs the ID of the guild. |
+| .Guild.JoinedAt | Outputs the timestamp when YAGPDB joined the guild. To convert it to type _time.Time_, use .Parse method &gt; `.Guild.JoinedAt.Parse` |
+| .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.MfaLevel | required [MFA level](https://discordapp.com/developers/docs/resources/guild#guild-object-mfa-level) for the guild. If enabled, members with moderation powers will be required to have 2-factor authentication enabled in order to exercise moderation powers. |
+| .Guild.Name | Outputs the name of the guild. |
+| .Guild.OwnerID | Outputs the ID of the owner. |
+| .Guild.Region | Outputs the region of the guild. |
 | .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. Role struct has [following fields](https://discordapp.com/developers/docs/topics/permissions#role-object). |
+| .Guild.Splash | Outputs the [splash hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's splash. |
+| .Guild.SystemChannelID | The id of the channel where guild notices such as welcome messages and boost events are posted. |
+| .Guild.VerificationLevel | Outputs the required verification level for the guild. |
+| .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _\*discordgo.VoiceState._ |
 | .Guild.WidgetEnabled | Outputs whether or not the Server Widget is enabled or not. |
 | .Guild.WidgetChannelID | Outputs the channel id for the server widget. |
 
@@ -186,11 +186,11 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 | Field | Description |
 | :--- | :--- |
-| .Channel.Name | The name of the channel. |
 | .Channel.ID | The ID of the channel. |
+| .Channel.Name | The name of the channel. |
+| .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 | .Channel.ParentID | The ID of the channel's parent \(category\), returns 0 if none. |
 | .Channel.Topic | The topic of the channel. |
-| .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 
 <table>
   <thead>
@@ -238,21 +238,21 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 | Field | Description |
 | :--- | :--- |
-| .Message.ID | ID of the message. |
-| .Message.ChannelID | Channel ID this message is in. |
-| .Message.GuildID | Guild ID in which the message is. |
-| .Message.Content | Text content on this message. |
-| .Message.Timestamp | Timestamp of the message in type _discordgo.Timestamp_ \(use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_\). |
-| .Message.EditedTimestamp | The time at which the last edit of the message occurred, if it has been edited. As with .Message.Timestamp, it is of type _discordgo.Timestamp._  |
-| .Message.MentionRoles | The roles mentioned in the message. |
-| .Message.MentionEveryone | Whether the message mentions everyone. |
+| .Message.Attachments | Attachments of this message \(_slice_ of attachment objects\). |
 | .Message.Author | Author of the message \([User](templates.md#user) object\). |
-| .Message.Attachments | Attachments to this message \(_slice_ of attachment objects\). |
-| .Message.Embeds | Embeds on this message \(_slice_ of embed objects\). |
+| .Message.ChannelID | Channel ID this message is in. |
+| .Message.Content | Text content on this message. |
+| .Message.EditedTimestamp | The time at which the last edit of the message occurred, if it has been edited. As with .Message.Timestamp, it is of type _discordgo.Timestamp._  |
+| .Message.Embeds | Embeds of this message \(_slice_ of embed objects\). |
+| .Message.GuildID | Guild ID in which the message is. |
+| .Message.ID | ID of the message. |
+| .Message.MentionEveryone | Whether the message mentions everyone. |
+| .Message.MentionRoles | The roles mentioned in the message. |
 | .Message.Mentions | Users this message mentions. |
-| .Message.Reactions | Reactions on this message \(only available from getMessage\). |
-| .Message.Type | The [type](https://discordapp.com/developers/docs/resources/channel#message-object-message-types) of the message. |
 | .Message.Pinned | Whether this message is pinned. |
+| .Message.Reactions | Reactions on this message \(only available from getMessage\). |
+| .Message.Timestamp | Timestamp of the message in type _discordgo.Timestamp_ \(use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_\). |
+| .Message.Type | The [type](https://discordapp.com/developers/docs/resources/channel#message-object-message-types) of the message. |
 | .Args | List of everything that is passed to .Message.Content. .Args is a _slice_ of type _string_. |
 | .Cmd | .Cmd is of type _string_ and shows all arguments that trigger custom command, part of .Args. Starting from `{{index .Args 0}}`.  |
 | .CmdArgs | List of all the arguments passed after `.Cmd` \(`.Cmd` is the actual trigger\) `.CmdArgs` is a _slice_ of type _string_. Examples in [misc. snippets](templates.md#miscellaneous-snippets). |
@@ -286,6 +286,11 @@ This is available and part of the dot when reaction trigger type is used.
         custom emoji).</td>
     </tr>
     <tr>
+      <td style="text-align:left">.ReactionAdded</td>
+      <td style="text-align:left">Returns a boolean type <em>bool </em>true/false indicating whether reaction
+        was added or removed.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">.ReactionMessage</td>
       <td style="text-align:left">
         <p>Returns the message object reaction was added to.</p>
@@ -294,11 +299,6 @@ This is available and part of the dot when reaction trigger type is used.
         <p>Returns emoji count and their name.</p>
         <p>Has an alias .Message and works it works the same way.</p>
       </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">.ReactionAdded</td>
-      <td style="text-align:left">Returns a boolean type <em>bool </em>true/false indicating whether reaction
-        was added or removed.</td>
     </tr>
   </tbody>
 </table>
