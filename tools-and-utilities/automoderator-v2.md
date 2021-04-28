@@ -366,7 +366,7 @@ There are some limitations you need to be aware of when using Automoderator V2, 
 {% endtab %}
 
 {% tab title="New version" %}
-![](../.gitbook/assets/banned-words.PNG)
+![](../.gitbook/assets/image%20%2818%29.png)
 {% endtab %}
 {% endtabs %}
 
