@@ -45,10 +45,6 @@ This is a mistake many people make. Go back to the control panel and make sure t
 
 ![](../.gitbook/assets/rolee.PNG)
 
-## Why am I able to kick/ban someone higher than me with the bot?
-
-If you have the correct permission \(Kick/Ban\) or the correct role. The bot will kick indiscriminately. Meaning, the bot does not care about your role hierarchy as long as the bot itself has the power to do the kick/ban. **It is advised that you place the highest role of the bot just below those of your staff.**
-
 ## Why is the bot not giving the role when I use the role command?
 
 The bot can only assign roles that are below it in the role hierarchy, check that the bot's highest role is above the role you wish to assign.
