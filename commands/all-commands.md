@@ -800,6 +800,7 @@ Clean <User:User Mention> <Num:Whole number>
 
 ```text
 [-r Regex:Text]
+[-im Invert regex match:Swich}
 [-ma Max age:Duration]
 [-minage Min age:Duration]
 [-i Regex case insensitive:Switch]

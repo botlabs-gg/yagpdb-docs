@@ -306,6 +306,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">(count)</td>
       <td style="text-align:left">
         <p>(mention/userID)</p>
+        <p>(-im: invert regex match)</p>
         <p>(-ma: max age)</p>
         <p>(-minage: min age)</p>
         <p>(-r:regex)</p>
