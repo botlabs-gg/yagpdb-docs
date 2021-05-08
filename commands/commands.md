@@ -273,6 +273,13 @@ You may also get more specific help by typing `-help (command)` .
         gets deleted - max 7 days.</td>
     </tr>
     <tr>
+      <td style="text-align:left">Unban</td>
+      <td style="text-align:left">unbanid</td>
+      <td style="text-align:left">(mention/userID)</td>
+      <td style="text-align:left">(reason)</td>
+      <td style="text-align:left">Unbans a user. Reason requirement is same as ban command setting.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">kick</td>
       <td style="text-align:left">N/A</td>
       <td style="text-align:left">(mention/userID)</td>

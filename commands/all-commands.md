@@ -740,6 +740,18 @@ Ban <User:Mention/ID> [Reason:Text]
 [-ddays Days:Whole number]
 ```
 
+### Unban
+
+**Aliases:** unbanid
+
+Unbans a user. Reason requirement is same as ban command setting.
+
+**Usage:**
+
+```text
+Unban <User:Mention/ID> [Reason:Text]
+```
+
 ### Kick
 
 Kicks a member
