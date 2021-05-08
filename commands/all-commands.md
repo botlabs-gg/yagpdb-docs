@@ -274,12 +274,16 @@ CReminders
 
 **Aliases:** rmreminder
 
-Deletes a reminder.
+Deletes a reminder. You can delete reminders from other users provided you are running this command in the same guild the reminder was created in and have the Manage Channel permission in the channel the reminder was created in.
 
 **Usage:**
 
 ```text
 DelReminder <ID:Whole number>
+```
+
+```text
+[-a All:Switch]
 ```
 
 ### Role

@@ -211,8 +211,8 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">delreminder</td>
       <td style="text-align:left">rmreminder</td>
       <td style="text-align:left">(reminderID)</td>
-      <td style="text-align:left">N/A</td>
-      <td style="text-align:left">Deletes the reminder with the given ID.</td>
+      <td style="text-align:left">-a</td>
+      <td style="text-align:left">Deletes the reminder with the given ID. Switch -a deletes all reminders.</td>
     </tr>
     <tr>
       <td style="text-align:left">role</td>
