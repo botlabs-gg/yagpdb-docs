@@ -89,6 +89,7 @@ Available types and options are:
 * **userid -** user IDs, this user may not exist at all, both mentions and plain IDs are accepted, will have the type of _int64_.
 * **channel -** channel mentions, will have the type of Channel \(see [templates ](../reference/templates.md#channel)for more info\).
 * **member** - guild's member struct \(object\) to use later with .Member methods, like .JoinedAt. \(see [templates ](../reference/templates.md#member)for more info\).
+* **role** - matches an id or name of a role and returns a _discordgo.Role_ type role object.
 * **duration** - converts given integer number starting from minutes or string with modifier \(s, m, h, w etc\)  to type Duration - e.g. 10 is 10m0s and 123s is 2m3s. Has additional options after the name for min and max range of duration presented in nanoseconds.
 
 To access the parsed args you use the "**Get**" method on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
