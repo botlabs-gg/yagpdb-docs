@@ -144,6 +144,7 @@ You may also get more specific help by typing `-help (command)` .
       <td style="text-align:left">
         <p>(commandID)</p>
         <p>(trigger string)</p>
+        <p>-file, -color</p>
       </td>
       <td style="text-align:left">Shows a custom command specified by id or trigger or lists them all.
         <a

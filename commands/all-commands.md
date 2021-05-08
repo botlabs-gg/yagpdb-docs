@@ -180,6 +180,11 @@ CustomCommands <Trigger:Text>
 CustomCommands
 ```
 
+```text
+[-file Sends responses in a file:Switch]
+[-color Use syntax highlighting (GO):Switch]
+```
+
 ### Logs
 
 **Aliases:** log
