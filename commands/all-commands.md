@@ -782,6 +782,16 @@ Returns the number of concurrent requests currently going on
 ccreqs
 ```
 
+### Createinvite
+
+Maintenance command, creates a invite for the specified server
+
+**Usage:**
+
+```text
+createinvite <server:Whole number>
+```
+
 ## Moderation 👮
 
 ### Ban
