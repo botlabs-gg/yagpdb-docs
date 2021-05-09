@@ -863,6 +863,16 @@ setstatus [status:Text]
 [-url url:Text]
 ```
 
+### Sleep
+
+Maintenance command, used to test command queueing
+
+**Usage:**
+
+```text
+sleep
+```
+
 ## Moderation 👮
 
 ### Ban
