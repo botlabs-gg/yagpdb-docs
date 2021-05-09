@@ -8,6 +8,8 @@ Text arguments containing multiple words needs be to put in quotes \("arg here"\
 
 For example with the poll command if you want the question to have multiple words: `-poll "whats your favorite color" red blue green2`
 
+Most Debug & Maintenance commands are meant for bot's owner only!
+
 ## General ℹ️
 
 ### Help
