@@ -686,16 +686,6 @@ Shows yagpdb status, version, uptime, memory stats, and so on
 Yagstatus
 ```
 
-### Roledbg
-
-Debug debug debug autorole assignment
-
-**Usage:**
-
-```text
-Roledbg
-```
-
 ### Testreddit
 
 Tests the reddit feeds in this server by checking the specified post
@@ -847,6 +837,30 @@ MemberFetcher
 
 ```text
 memstats
+```
+
+### Roledbg
+
+Debug debug debug autorole assignment
+
+**Usage:**
+
+```text
+Roledbg
+```
+
+### Setstatus
+
+Sets the bot's status and streaming url
+
+**Usage:**
+
+```text
+setstatus [status:Text]
+```
+
+```text
+[-url url:Text]
 ```
 
 ## Moderation 👮
