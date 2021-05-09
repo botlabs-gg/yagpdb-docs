@@ -893,6 +893,16 @@ Toggles Debug Logging
 toggledbg
 ```
 
+### Topcommands
+
+Shows command usage stats
+
+**Usage:**
+
+```text
+topcommands [hours:Whole number]
+```
+
 ## Moderation 👮
 
 ### Ban
