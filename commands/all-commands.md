@@ -674,18 +674,6 @@ Packs
 
 ## Debug & Maintenance 🖥
 
-### Yagstatus
-
-**Aliases:** status
-
-Shows yagpdb status, version, uptime, memory stats, and so on
-
-**Usage:**
-
-```text
-Yagstatus
-```
-
 ### Allocstat
 
 Memory statistics.
@@ -935,6 +923,28 @@ topgames
 
 ```text
 unbanserver <server:Text>
+```
+
+### Viewperms
+
+Shows you or the targets permissions in this channel
+
+**Usage:**
+
+```text
+ViewPerms [target:Mention/ID]
+```
+
+### Yagstatus
+
+**Aliases:** status
+
+Shows yagpdb status, version, uptime, memory stats, and so on
+
+**Usage:**
+
+```text
+Yagstatus
 ```
 
 ## Moderation 👮
