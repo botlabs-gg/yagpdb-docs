@@ -742,6 +742,16 @@ Generates premium codes
 generatepremiumcode <Duration:Duration> <NumCodes:Whole number> <Message:Text>
 ```
 
+### Testreddit
+
+Tests the reddit feeds in this server by checking the specified post
+
+**Usage:**
+
+```text
+testreddit <post-id:Text>
+```
+
 ## Moderation 👮
 
 ### Ban
