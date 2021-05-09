@@ -674,18 +674,6 @@ Packs
 
 ## Debug & Maintenance 🖥
 
-### CurrentShard
-
-**Aliases:** cshard
-
-Shows the current shard this server is on \(or the one specified
-
-**Usage:**
-
-```text
-CurrentShard [serverid:Whole number]
-```
-
 ### MemberFetcher
 
 **Aliases:** memfetch
@@ -790,6 +778,28 @@ Maintenance command, creates a invite for the specified server
 
 ```text
 createinvite <server:Whole number>
+```
+
+### CurrentShard
+
+**Aliases:** cshard
+
+Shows the current shard this server is on \(or the one specified
+
+**Usage:**
+
+```text
+CurrentShard [serverid:Whole number]
+```
+
+### Dcallvoice
+
+Disconnects from all the voice channels the bot is in
+
+**Usage:**
+
+```text
+dcallvoice
 ```
 
 ## Moderation 👮
