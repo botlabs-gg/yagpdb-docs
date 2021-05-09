@@ -883,6 +883,16 @@ Tests the reddit feeds in this server by checking the specified post
 testreddit <post-id:Text>
 ```
 
+### Toggledbg
+
+Toggles Debug Logging
+
+**Usage:**
+
+```text
+toggledbg
+```
+
 ## Moderation 👮
 
 ### Ban
