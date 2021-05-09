@@ -772,6 +772,16 @@ allocstat
 banserver <server:Whole number>
 ```
 
+### Ccreqs
+
+Returns the number of concurrent requests currently going on
+
+**Usage:**
+
+```text
+ccreqs
+```
+
 ## Moderation 👮
 
 ### Ban
