@@ -1065,7 +1065,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>sendTemplateDM temlateName data</code>
+      <td style="text-align:left"><code>sendTemplateDM templateName data</code>
       </td>
       <td style="text-align:left">Works the same way as function above. Only channel&apos;s name is not
         in the arguments. YAGPDB <b>will only </b>DM the triggering user.</td>
