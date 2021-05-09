@@ -802,6 +802,23 @@ Disconnects from all the voice channels the bot is in
 dcallvoice
 ```
 
+### Findserver
+
+**Aliases:** findservers
+
+Looks for a server by server name or the servers a user owns
+
+**Usage:**
+
+```text
+findserver
+```
+
+```text
+[-name name:Text]
+[-user user:Mention/ID]
+```
+
 ## Moderation 👮
 
 ### Ban
