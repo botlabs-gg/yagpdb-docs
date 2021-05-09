@@ -762,6 +762,16 @@ Memory statistics.
 allocstat
 ```
 
+### Banserver
+
+;\)\)
+
+**Usage:**
+
+```text
+banserver <server:Whole number>
+```
+
 ## Moderation 👮
 
 ### Ban
