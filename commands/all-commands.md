@@ -903,6 +903,16 @@ Shows command usage stats
 topcommands [hours:Whole number]
 ```
 
+### Topevents
+
+Shows gateway event processing stats for all or one shard
+
+**Usage:**
+
+```text
+topevents [shard:Whole number]
+```
+
 ## Moderation 👮
 
 ### Ban
