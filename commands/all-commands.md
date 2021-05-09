@@ -927,6 +927,16 @@ topgames
 [-all all:Switch]
 ```
 
+### Unbanserver
+
+;\)\)
+
+**Usage:**
+
+```text
+unbanserver <server:Text>
+```
+
 ## Moderation 👮
 
 ### Ban
