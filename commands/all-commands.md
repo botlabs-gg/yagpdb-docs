@@ -708,28 +708,6 @@ Debug debug debug autorole assignment
 Roledbg
 ```
 
-### IsGuildUnavailable
-
-Returns wether the specified guild is unavilable or not
-
-**Usage:**
-
-```text
-IsGuildUnavailable <guildid:Whole number>
-```
-
-### Generatepremiumcode
-
-**Aliases:** gpc
-
-Generates premium codes
-
-**Usage:**
-
-```text
-generatepremiumcode <Duration:Duration> <NumCodes:Whole number> <Message:Text>
-```
-
 ### Testreddit
 
 Tests the reddit feeds in this server by checking the specified post
@@ -817,6 +795,38 @@ findserver
 ```text
 [-name name:Text]
 [-user user:Mention/ID]
+```
+
+### Generatepremiumcode
+
+**Aliases:** gpc
+
+Generates premium codes
+
+**Usage:**
+
+```text
+generatepremiumcode <Duration:Duration> <NumCodes:Whole number> <Message:Text>
+```
+
+### Globalrl
+
+Tests the global ratelimit functionality
+
+**Usage:**
+
+```text
+globalrl
+```
+
+### IsGuildUnavailable
+
+Returns wether the specified guild is unavilable or not
+
+**Usage:**
+
+```text
+IsGuildUnavailable <guildid:Whole number>
 ```
 
 ## Moderation 👮
