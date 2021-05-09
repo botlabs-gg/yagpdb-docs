@@ -730,6 +730,18 @@ Returns wether the specified guild is unavilable or not
 IsGuildUnavailable <guildid:Whole number>
 ```
 
+### Generatepremiumcode
+
+**Aliases:** gpc
+
+Generates premium codes
+
+**Usage:**
+
+```text
+generatepremiumcode <Duration:Duration> <NumCodes:Whole number> <Message:Text>
+```
+
 ## Moderation 👮
 
 ### Ban
