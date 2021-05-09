@@ -686,16 +686,6 @@ Shows yagpdb status, version, uptime, memory stats, and so on
 Yagstatus
 ```
 
-### Testreddit
-
-Tests the reddit feeds in this server by checking the specified post
-
-**Usage:**
-
-```text
-testreddit <post-id:Text>
-```
-
 ### Allocstat
 
 Memory statistics.
@@ -871,6 +861,26 @@ Maintenance command, used to test command queueing
 
 ```text
 sleep
+```
+
+### Stateinfo
+
+Responds with state debug info
+
+**Usage:**
+
+```text
+stateinfo
+```
+
+### Testreddit
+
+Tests the reddit feeds in this server by checking the specified post
+
+**Usage:**
+
+```text
+testreddit <post-id:Text>
 ```
 
 ## Moderation 👮
