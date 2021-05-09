@@ -839,6 +839,16 @@ Shows the current status of the member fetcher
 MemberFetcher
 ```
 
+### Memstats
+
+;\)\)
+
+**Usage:**
+
+```text
+memstats
+```
+
 ## Moderation 👮
 
 ### Ban
