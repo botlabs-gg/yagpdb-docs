@@ -674,18 +674,6 @@ Packs
 
 ## Debug & Maintenance 🖥
 
-### MemberFetcher
-
-**Aliases:** memfetch
-
-Shows the current status of the member fetcher
-
-**Usage:**
-
-```text
-MemberFetcher
-```
-
 ### Yagstatus
 
 **Aliases:** status
@@ -827,6 +815,28 @@ Returns wether the specified guild is unavilable or not
 
 ```text
 IsGuildUnavailable <guildid:Whole number>
+```
+
+### Leaveserver
+
+;\)\)
+
+**Usage:**
+
+```text
+leaveserver <server:Whole number>
+```
+
+### MemberFetcher
+
+**Aliases:** memfetch
+
+Shows the current status of the member fetcher
+
+**Usage:**
+
+```text
+MemberFetcher
 ```
 
 ## Moderation 👮
