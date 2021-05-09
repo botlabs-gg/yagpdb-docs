@@ -913,6 +913,20 @@ Shows gateway event processing stats for all or one shard
 topevents [shard:Whole number]
 ```
 
+### Topgames
+
+Shows the top games on this server
+
+**Usage:**
+
+```text
+topgames
+```
+
+```text
+[-all all:Switch]
+```
+
 ## Moderation 👮
 
 ### Ban
