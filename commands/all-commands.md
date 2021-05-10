@@ -46,16 +46,6 @@ Invite
 
 ## Tools & Utilities 🔨
 
-### Prefix
-
-Shows command prefix of the current server, or the specified server
-
-**Usage:**
-
-```text
-Prefix [Server ID:Whole number]
-```
-
 ### Calc
 
 **Aliases:** c/calculate
@@ -68,14 +58,14 @@ Calculator 2+2=5
 Calc <Expression:Text>
 ```
 
-### Ping
+### CReminders
 
-Shows the latency from the bot to the discord servers. Note that high latencies can be the fault of ratelimits and the bot itself, it's not a absolute metric.
+Lists reminders in channel, only users with 'manage server' permissions can use this.
 
 **Usage:**
 
 ```text
-Ping
+CReminders
 ```
 
 ### CurrentTime
@@ -90,82 +80,6 @@ Shows current time in different timezones. [Available timezones](https://pastebi
 CurrentTime <Offset:Whole number>
 CurrentTime <Zone:Text>
 CurrentTime
-```
-
-### MentionRole
-
-**Aliases:** mrole
-
-Sets a role to mentionable, mentions the role, and then sets it back Requires the manage roles permission and the bot being above the mentioned role
-
-**Usage:**
-
-```text
-MentionRole <Role:Text> [Message:Text]
-```
-
-```text
-[-channel:Channel - Optional channel to send in]
-```
-
-### ListRoles
-
-List roles, their id's, color hex code, and 'mention everyone' perms \(useful if you wanna double check to make sure you didn't give anyone mention everyone perms that shouldn't have it\)
-
-**Usage:**
-
-```text
-ListRoles
-```
-
-```text
-[-nomanaged Don't list managed/bot roles:Switch]
-```
-
-### Poll
-
-Create very simple reaction poll. Example: `poll "favorite color?" blue red pink`
-
-**Usage:**
-
-```text
-Poll <Topic:Text - Description of the poll> <Option1:Text> <Option2:Text> [Option3:Text] [Option4:Text] [Option5:Text] [Option6:Text] [Option7:Text] [Option8:Text] [Option9:Text] [Option10:Text]
-```
-
-### Undelete
-
-**Aliases:** ud
-
-Views your recent deleted messages, or all users deleted messages \(with "-a" and manage messages perm\) in this channel
-
-**Usage:**
-
-```text
-Undelete
-```
-
-```text
-[-a all:Switch]
-```
-
-### ViewPerms
-
-Shows you or the targets permissions in this channel
-
-**Usage:**
-
-```text
-ViewPerms [target:Mention/ID]
-```
-
-### Stats
-
-Shows server stats \(if public stats are enabled\). This command is only available if collecting statistics is enabled bot not user side.
-
-**Usage:**
-
-```text
-Stats
 ```
 
 ### CustomCommands
@@ -187,96 +101,6 @@ CustomCommands
 [-color Use syntax highlighting (GO):Switch]
 ```
 
-### Logs
-
-**Aliases:** log
-
-Creates a log of the last messages in the current channel. This includes deleted messages within an hour \(or 12 hours for premium servers\)
-
-**Usage:**
-
-```text
-Logs [Count:Whole number]
-```
-
-### Whois
-
-**Aliases:** whoami
-
-Shows information about a user
-
-**Usage:**
-
-```text
-Whois [User:Member]
-```
-
-### Nicknames
-
-**Aliases:** nn
-
-Shows past nicknames of a user. Only shows up to the last 25 nicknames.
-
-**Usage:**
-
-```text
-Nicknames [User:User]
-```
-
-### Usernames
-
-**Aliases:** unames/un
-
-Shows past usernames of a user. Only shows up to the last 25 usernames.
-
-**Usage:**
-
-```text
-Usernames [User:User]
-```
-
-### ResetPastNames
-
-Reset your past usernames/nicknames.
-
-**Usage:**
-
-```text
-ResetPastNames
-```
-
-### Remindme
-
-**Aliases:** remind/reminder
-
-Schedules a reminder, example: 'remindme 1h30min are you alive still?'
-
-**Usage:**
-
-```text
-Remindme <Time:Duration> <Message:Text>
-```
-
-### Reminders
-
-Lists your active reminders
-
-**Usage:**
-
-```text
-Reminders
-```
-
-### CReminders
-
-Lists reminders in channel, only users with 'manage server' permissions can use this.
-
-**Usage:**
-
-```text
-CReminders
-```
-
 ### DelReminder
 
 **Aliases:** rmreminder
@@ -291,6 +115,132 @@ DelReminder <ID:Whole number>
 
 ```text
 [-a All:Switch]
+```
+
+### Fixscheduledccs
+
+???
+
+**Usage:**
+
+```text
+fixscheduledccs
+```
+
+### ListRoles
+
+List roles, their id's, color hex code, and 'mention everyone' perms \(useful if you wanna double check to make sure you didn't give anyone mention everyone perms that shouldn't have it\)
+
+**Usage:**
+
+```text
+ListRoles
+```
+
+```text
+[-nomanaged Don't list managed/bot roles:Switch]
+```
+
+### Logs
+
+**Aliases:** log
+
+Creates a log of the last messages in the current channel. This includes deleted messages within an hour \(or 12 hours for premium servers\)
+
+**Usage:**
+
+```text
+Logs [Count:Whole number]
+```
+
+### MentionRole
+
+**Aliases:** mrole
+
+Sets a role to mentionable, mentions the role, and then sets it back Requires the manage roles permission and the bot being above the mentioned role
+
+**Usage:**
+
+```text
+MentionRole <Role:Text> [Message:Text]
+```
+
+```text
+[-channel:Channel - Optional channel to send in]
+```
+
+### Nicknames
+
+**Aliases:** nn
+
+Shows past nicknames of a user. Only shows up to the last 25 nicknames.
+
+**Usage:**
+
+```text
+Nicknames [User:User]
+```
+
+### Ping
+
+Shows the latency from the bot to the discord servers. Note that high latencies can be the fault of ratelimits and the bot itself, it's not a absolute metric.
+
+**Usage:**
+
+```text
+Ping
+```
+
+### Poll
+
+Create very simple reaction poll. Example: `poll "favorite color?" blue red pink`
+
+**Usage:**
+
+```text
+Poll <Topic:Text - Description of the poll> <Option1:Text> <Option2:Text> [Option3:Text] [Option4:Text] [Option5:Text] [Option6:Text] [Option7:Text] [Option8:Text] [Option9:Text] [Option10:Text]
+```
+
+### Prefix
+
+Shows command prefix of the current server, or the specified server
+
+**Usage:**
+
+```text
+Prefix [Server ID:Whole number]
+```
+
+### Reminders
+
+Lists your active reminders
+
+**Usage:**
+
+```text
+Reminders
+```
+
+### Remindme
+
+**Aliases:** remind/reminder
+
+Schedules a reminder, example: 'remindme 1h30min are you alive still?'
+
+**Usage:**
+
+```text
+Remindme <Time:Duration> <Message:Text>
+```
+
+### ResetPastNames
+
+Reset your past usernames/nicknames.
+
+**Usage:**
+
+```text
+ResetPastNames
 ```
 
 ### Role
@@ -320,6 +270,16 @@ Settimezone [Timezone:Text]
 [-d Delete TZ record:Switch]
 ```
 
+### Stats
+
+Shows server stats \(if public stats are enabled\). This command is only available if collecting statistics is enabled bot not user side.
+
+**Usage:**
+
+```text
+Stats
+```
+
 ### ToggleTimeConversion
 
 **Aliases:** toggletconv/ttc
@@ -330,6 +290,56 @@ Toggles automatic time conversion for people with registered timezones \(setz\) 
 
 ```text
 ToggleTimeConversion [flags:Text]
+```
+
+### Undelete
+
+**Aliases:** ud
+
+Views your recent deleted messages, or all users deleted messages \(with "-a" and manage messages perm\) in this channel
+
+**Usage:**
+
+```text
+Undelete
+```
+
+```text
+[-a all:Switch]
+```
+
+### Usernames
+
+**Aliases:** unames/un
+
+Shows past usernames of a user. Only shows up to the last 25 usernames.
+
+**Usage:**
+
+```text
+Usernames [User:User]
+```
+
+### ViewPerms
+
+Shows you or the targets permissions in this channel
+
+**Usage:**
+
+```text
+ViewPerms [target:Mention/ID]
+```
+
+### Whois
+
+**Aliases:** whoami
+
+Shows information about a user
+
+**Usage:**
+
+```text
+Whois [User:Member]
 ```
 
 ## Fun 🎉
