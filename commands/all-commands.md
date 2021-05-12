@@ -807,18 +807,6 @@ IsGuildUnavailable <guildid:Whole number>
 leaveserver <server:Whole number>
 ```
 
-### MemberFetcher
-
-**Aliases:** memfetch
-
-Shows the current status of the member fetcher
-
-**Usage:**
-
-```text
-MemberFetcher
-```
-
 ### Memstats
 
 ;\)\)
