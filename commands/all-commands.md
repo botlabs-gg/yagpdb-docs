@@ -500,6 +500,23 @@ Xkcd [Comic number:Whole number]
 [-l Latest comic:Switch]
 ```
 
+### Howlongtobeat
+
+**Aliases:** hltb
+
+Game information based on query from howlongtobeat.com. Results are sorted by popularity, it's their default. Without -p returns the first result. Switch -p gives paginated output using Levenshtein distance sorting max 20 results.
+
+**Usage:**
+
+```text
+HowLongToBeat <Game-Title:Text>
+```
+
+```text
+[-c c:Switch - Compact output]
+[-p p:Switch - Paginated output]
+```
+
 ### TopServers
 
 Responds with the top 15 servers I'm on
