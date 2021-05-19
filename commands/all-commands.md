@@ -296,7 +296,7 @@ ToggleTimeConversion [flags:Text]
 
 **Aliases:** ud
 
-Views your recent deleted messages, or all users deleted messages \(with "-a" and manage messages perm\) in this channel
+ Views the first 10 recent deleted messages. By default, only the current user's deleted messages will show. You can use the `-a` flag to view all users delete messages, or `-u` to view a specified user's deleted messages. Both `-a` and `-u` require Manage Messages permission. Note: `-u` overrides `-a` meaning even though `-a` might've been specified along with `-u` only messages from the user provided using `-u` will be shown.
 
 **Usage:**
 
@@ -305,7 +305,9 @@ Undelete
 ```
 
 ```text
-[-a all:Switch]
+[-a a:Switch - from all users]
+[-u u:Mention/ID - from a specific user]
+[-channel channel:Channel - Optional target channel]
 ```
 
 ### Usernames
@@ -596,7 +598,7 @@ Shows yours or the specified users current rep and rank
 **Usage:**
 
 ```text
-Rep [User:User]
+Rep [User:User]c
 ```
 
 ### TopRep
@@ -1041,9 +1043,11 @@ Report <User:Mention/ID> <Reason:Text>
 
 ### Clean
 
-**Aliases:** clear/cl
-
-Delete the last number of messages from chat, optionally filtering by user, max age and regex. Specify a regex with "-r regex\_here" and max age with "-ma 1h10m" Note: Will only look in the last 1k messages
+**Aliases:** clear/cl  
+  
+Delete the last number of messages from chat, optionally filtering by user, max age and regex or ignoring pinned messages.  
+**Warning:** Using `clean <userId> <amount>` does not work. This is because the user ID is interpreted as the amount. As it is over the limit of 100, it is treated as invalid. You can use `clean <amount> <userId>` instead or mention the user. Specify a regex with "-r regex\_here" and max age with "-ma 1h10m" You can invert the regex match \(i.e. only clear messages that do not match the given regex\) by supplying the `-im` flag.  
+Note: Will only look in the last 1k messages
 
 **Usage:**
 
@@ -1054,13 +1058,14 @@ Clean <User:User Mention> <Num:Whole number>
 ```
 
 ```text
-[-r Regex:Text]
-[-im Invert regex match:Swich}
-[-ma Max age:Duration]
-[-minage Min age:Duration]
-[-i Regex case insensitive:Switch]
-[-nopin Ignore pinned messages:Switch]
-[-to Stop at this msg ID:Whole number]
+[-r r:Text - Regex]
+[-im im:Switch - Invert regex match]
+[-ma ma:Duration - Max age]
+[-minage minage:Duration - Min age]
+[-i i:Switch - Regex case insensitive]
+[-nopin nopin:Switch - Ignore pinned messages]
+[-a a:Switch - Only remove messages with attachments]
+[-to to:Whole number - Stop at this msg ID]
 ```
 
 ### Reason
