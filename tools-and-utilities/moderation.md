@@ -25,7 +25,7 @@ There is also an auto-moderation feature as well.
 
 ## Clean/Clear Syntax and examples
 
- **Syntax**`-clean (Optional -ma [time]) (Optional -minage [time]) (Optional -nopin) (Optional -r "word") (Optional -i) (Optional @user) (num)` 
+ **Syntax**`-clean (Optional -ma [time]) (Optional -minage [time]) (Optional -nopin) (Optional -r "word") (Optional -i) (optional -im) (Optional -a) (Optional -to) (Optional @user) (num)` 
 
 **Examples**  
 `-clean 100`   
@@ -39,6 +39,15 @@ Cleans 100 messages containing pineapple.
   
 `-clean -r pineapple -i 100`   
 Cleans 100 messages containing pineapple, and ignoring case sensitivity.  
+  
+`-clean -r pineapple -im 100`  
+Cleans  100 messages _not_ containing pineapple.  
+  
+`-clean 100 -to 268748318664949760`  
+Cleans 100 messages until it reaches a message with an ID less than or equal to`268748318664949760`.  
+  
+`-clean 100 -a`  
+Cleans 100 messages that contain attachments.  
   
 `-clean @user 100`   
 Cleans 100 messages sent by @user.  
