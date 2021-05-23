@@ -270,9 +270,9 @@ Settimezone [Timezone:Text]
 [-d Delete TZ record:Switch]
 ```
 
-### Stats
+### Stats 
 
-Shows server stats \(if public stats are enabled\). This command is only available if collecting statistics is enabled bot not user side.
+Shows server stats \(if public stats are enabled\). This command is only available if collecting statistics is enabled bot not user side. Disabled for YAGPDB.
 
 **Usage:**
 
