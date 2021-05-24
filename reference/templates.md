@@ -677,6 +677,22 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
         pattern here is case sensitive).</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>reSplit &quot;regex&quot; &quot;string&quot; &quot;count&quot;</code>
+      </td>
+      <td style="text-align:left">
+        <p>reSplit slices <code>string </code>into substrings separated by the <code>regex</code> expression
+          and returns a <em>slice</em> of the substrings between those expression matches.
+          The <code>count </code>determines the number of substrings to return. If <code>count </code>is
+          negative returns all substrings, if 0 then none. If <code>count </code>is
+          bigger then 0 it returns at most n substrings, the last substring being
+          the unsplit remainder.</p>
+        <p><b>Example:</b>  <code>{{ $x := reSplit &quot;a&quot; &quot;yagpdb has a lot of fame&quot; 5}}</code>
+        </p>
+        <p><code>{{$x}} {{index $x 3}} </code>would return <code>[y gpdb h s lot of f me]</code> and <code>lot of f</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>print, printf, println</code>
       </td>
       <td style="text-align:left">These are GO template package&apos;s predefined functions and are aliases
