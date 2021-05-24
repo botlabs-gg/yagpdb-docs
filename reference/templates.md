@@ -657,17 +657,23 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
         pattern is case sensitive).</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>reFindAll &quot;regex&quot; &quot;string&quot;</code>
+      <td style="text-align:left"><code>reFindAll &quot;regex&quot; &quot;string&quot; [count]</code>
       </td>
       <td style="text-align:left">Adds all regex matches from the &quot;string&quot; to a <em>slice</em>.
-        Example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
+        Example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.
+        Optional <code>count </code>determines how many matches are made. <b>Example: </b><code>{{reFindAll &quot;a*&quot; &quot;abaabaccadaaae&quot; 4}}</code> would
+        return <code>[a aa a ].</code>
+      </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>reFindAllSubmatches &quot;regex&quot; &quot;string&quot;</code>
+      <td style="text-align:left"><code>reFindAllSubmatches &quot;regex&quot; &quot;string&quot; [count]</code>
       </td>
       <td style="text-align:left">Returns whole-pattern matches and also the sub-matches within those matches
         as <em>slices</em> inside a <em>slice</em>. <code>{{reFindAllSubmatches &quot;(?i)y([a-z]+)g&quot; &quot;youngish YAGPDB&quot;}} </code>returns<code> [[young oun] [YAG A]] </code>(regex
-        pattern here is case insensitive).</td>
+        pattern here is case insensitive). Optional <code>count </code>works the
+        same way as for <code>reFindAll</code>. So example above with <code>count</code> set
+        to 1 would return <code>[[young oun]].</code>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><code>reReplace &quot;regex&quot; &quot;string1&quot; &quot;string2&quot;</code>
@@ -689,7 +695,7 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
           the unsplit remainder.</p>
         <p><b>Example:</b>  <code>{{ $x := reSplit &quot;a&quot; &quot;yagpdb has a lot of fame&quot; 5}}</code>
         </p>
-        <p><code>{{$x}} {{index $x 3}} </code>would return <code>[y gpdb h s lot of f me]</code> and <code>lot of f</code>
+        <p><code>{{$x}} {{index $x 3}} </code>would return <code>[y gpdb h s lot of f me]</code> and <code>lot of f.</code>
         </p>
       </td>
     </tr>
