@@ -187,6 +187,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | Field | Description |
 | :--- | :--- |
 | .Channel.ID | The ID of the channel. |
+| .Channel.Mention | Mentions the channel object. |
 | .Channel.Name | The name of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 | .Channel.ParentID | The ID of the channel's parent \(category\), returns 0 if none. |
