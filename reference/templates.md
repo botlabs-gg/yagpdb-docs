@@ -1204,7 +1204,7 @@ Ticket functions are limited to 1 call per custom command for both normal and pr
 | .ChannelID | Channel ID of the ticket. |
 | .Title | Title of the ticket. |
 | .CreatedAt | Time that the ticket was created. |
-| .ClosedAt | Time that the ticket was closed, of type _null.Time._ This is mostly useless in custom commands. |
+| .ClosedAt | Time that the ticket was closed, of type _null.Time._ This is, for the most part, useless in custom commands. |
 | .LogsID | Log ID of the ticket. |
 | .AuthorID | Author ID of the ticket. |
 | .AuthorUsernameDiscrim | The Discord tag of the author of the ticket, formatted like `username#discrim`. |
