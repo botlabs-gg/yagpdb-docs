@@ -1191,7 +1191,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 Ticket functions are limited to 1 call per custom command for both normal and premium guilds.
 {% endhint %}
 
-|  |  |
+| **Function** | **Description** |
 | :--- | :--- |
 | `createTicket author topic` | Creates a new ticket with the author and topic provided. Author can be user ID in form of a string or an integer, a user struct, or a member struct. The topic must be a string. Returns a template ticket entry on success. |
 
