@@ -162,6 +162,11 @@ Either starts with `(index .Message.Reactions 0).Emoji` or a variable of the rea
 | Name | String | Name of the emoji \(if Unicode emoji this will be the emote\) |
 | Animated | Boolean | Whether the emoji is animated or not |
 
+| **Method** | **Description** |
+| :--- | :--- |
+| `APIName` | Returns a correctly formatted API name for use with reaction functions. Example output: `emojiname:id` |
+| `MessageFormat` | Returns a correctly formatted emoji for use in message content. |
+
 There are [more fields ](https://discordapp.com/developers/docs/resources/channel#reaction-object)which can be used, but they are either obsolete or only used with Global Emotes.  
 Example to fetch the name of the first reaction on a message provided through the `getMessage` template:
 

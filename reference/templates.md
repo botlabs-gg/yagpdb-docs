@@ -128,9 +128,19 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.Splash | Outputs the [splash hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's splash. |
 | .Guild.SystemChannelID | The id of the channel where guild notices such as welcome messages and boost events are posted. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
-| .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _\*discordgo.VoiceState._ |
+| .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _discordgo.VoiceState._ |
+| .Guild.Channels | Outputs a list of channels in the guild with type _dstate.ChannelState._ |
+| .Guild.Emojis | Outputs a list of emojis in the guild with type _discordgo.Emoji._ |
 | .Guild.WidgetEnabled | Outputs whether or not the Server Widget is enabled or not. |
 | .Guild.WidgetChannelID | Outputs the channel id for the server widget. |
+
+| **Method** | **Description** |
+| :--- | :--- |
+| `.Guild.GetMemberPermissions channelID memberID memberRoles` | Computes the permissions that the member has in the channel provided, taking into account the roles of the member. Example: `{{.Guild.GetMemberPermissions .Channel.ID .Member.User.ID .Member.Roles}}` would retrieve the permission bit the triggering member has in the context channel. |
+| `.Guild.GetChannel id` | Gets the channel with the ID provided, returning a _\*dstate.ChannelState_. |
+| `.Guild.GetRole id` | Gets the role with the ID provided, returning a _\*discordgo.Role._ |
+| `.Guild.GetVoiceState userID` | Gets the voice state of the user ID provided, returning a _\*discordgo.VoiceState_. Example code to show if user is in VC or not: `{{if .Guild.GetVoiceState .User.ID}} user is in voice channel {{else}} user is not in voice channel {{end}}` |
+| `.Guild.GetEmoji id` | Gets the guild emoji with the ID provided, returning a _\*discordgo.Emoji._ |
 
 [Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
 
@@ -175,7 +185,10 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
     <tr>
       <td style="text-align:left"><code>onlineCountBots</code>
       </td>
-      <td style="text-align:left">Returns the count of online bots.</td>
+      <td style="text-align:left"><b>DEPRECATED. </b>This will no longer work properly and will likely be
+        removed in a future update.
+        <br />
+        <br />Returns the count of online bots.</td>
     </tr>
   </tbody>
 </table>
@@ -539,24 +552,8 @@ Adding "color3" as "blue": {{ $x.Set "color3" "blue" }} **{{ $x }}**
 Deleting key "color1" {{ $x.Del "color1" }} and whole sdict: **{{ $x }}**
 ```
 
-{% hint style="danger" %}
-Since both _templates.SDict_ \(_sdict_\) and _templates.Slice_ \(_cslice_\) are custom composite data types, this type information is lost while saving to a database or passing as data to scheduled `execCC` or `scheduleUniqueCC`\(which internally involves saving to database\). Thus, they are converted to their underlying data types _map\[string\]interface{}_ and _\[\]interface{}_ respectively.   
-  
-They can be converted back to _templates.SDict_ and _templates.Slice_ as follows :  
-  
-For _sdict_ -  
-`{{$sdict := sdict "a" 1 "b" "two"}}    
-{{dbSet 0 "example" $sdict}}  
-{{$map := (dbGet 0 "example").Value}}  
-{{$sdict_converted := sdict $map}}`  
-  
-For _cslice_ -  
-`{{$cslice := cslice 1 "two" 3.0}}    
-{{dbSet 0 "example" $cslice}}  
-{{$slice := (dbGet 0 "example").Value}}  
-{{$cslice_converted := (cslice).AppendSlice $slice}}`
-
-The above examples use some database specific functions which are explained [here](templates.md#database).
+{% hint style="success" %}
+**Tip:** Previously, when saving cslices, sdicts, and dicts into database, they were serialized into their underlying native types - slices and maps. This meant that if you wanted to get the custom type back, you needed to convert manually, e.g. `{{cslice.AppendSlice $dbSlice}}` or `{{sdict $dbDict}}`. Recent changes to YAG have changed this: values with custom types are now serialized properly, making manual conversion unnecessary.
 {% endhint %}
 
 ## Functions
@@ -911,6 +908,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
 | `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-8). |
 | `targetHasRoleName userID "roleName"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
+| `setRoles userID roles` | Overwrites the roles of the given user using the slice of roles provided, which should be a slice of role IDs. IDs can be ints or strings. Example: `{{setRoles .User.ID cslice}}` would clear the roles of the triggering user. |
 
 #### This section's snippets:
 
@@ -1187,6 +1185,30 @@ With regular expression patterns - when using quotes you have to "double-escape"
 {{ else }} FUN'S OVER! {{ end }}
 ```
 
+### Tickets
+
+{% hint style="warning" %}
+Ticket functions are limited to 1 call per custom command for both normal and premium guilds.
+{% endhint %}
+
+|  |  |
+| :--- | :--- |
+| `createTicket author topic` | Creates a new ticket with the author and topic provided. Author can be user ID in form of a string or an integer, a user struct, or a member struct. The topic must be a string. Returns a template ticket entry on success. |
+
+#### Template Ticket
+
+| **Field** | **Description** |
+| :--- | :--- |
+| .GuildID | Guild ID of the ticket. |
+| .LocalID | Local ID of the ticket. |
+| .ChannelID | Channel ID of the ticket. |
+| .Title | Title of the ticket. |
+| .CreatedAt | Time that the ticket was created. |
+| .ClosedAt | Time that the ticket was closed, of type _null.Time._ This is mostly useless in custom commands. |
+| .LogsID | Log ID of the ticket. |
+| .AuthorID | Author ID of the ticket. |
+| .AuthorUsernameDiscrim | The Discord tag of the author of the ticket, formatted like `username#discrim`. |
+
 ## Database
 
 You have access to a basic set of Database functions, this is almost a key value store ordered by the key and value combined.
@@ -1216,6 +1238,10 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
 | `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
 | `dbBottomEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order. |
 | `dbCount (userID|key)` | Returns the count of all database entries which are not expired. Optional arguments: if `userID` is given, counts entries for that userID or if `key`, then only those keys are counted. |
+
+{% hint style="info" %}
+**Note about saving numbers into database:** As stated above, database stores numbers as type _float64_. If you save a large number into database like an _int64_ \(which IDs are\), the value will be truncated. To avoid this behavior, you can stringify the number before saving and convert it back to its original type when retrieving it. Example: `{{$v := .User.ID}} {{dbSet 0 "userid" (str $v)}} {{$fromDB := toInt (dbGet 0 "user_id").Value}}`
+{% endhint %}
 
 ### DBEntry
 
