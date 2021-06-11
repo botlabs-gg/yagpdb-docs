@@ -206,6 +206,10 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Channel.ParentID | The ID of the channel's parent \(category\), returns 0 if none. |
 | .Channel.Topic | The topic of the channel. |
 
+| **Method** | **Description** |
+| :--- | :--- |
+| `.Channel.Mention` | Mentions this channel using the Discord format for channel mentions `<#channelid>`. |
+
 <table>
   <thead>
     <tr>
