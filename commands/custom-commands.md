@@ -135,13 +135,13 @@ Either starts with  `(index .Message.Attachments 0).` or a variable with the att
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
-| ID | Int | The ID of the attachment |
-| URL | String | cdn.discordapp.com URL |
-| ProxyURL | String | media.discordapp.com URL |
-| Filename | String | Filename of the attachment |
-| Width | Int | Width of the attachment \(if image\) in pixels |
-| Height | Int | Height of the attachment \(if image\) in pixels |
-| Size | Int | Size of the attachment in bytes |
+| .ID | Int | The ID of the attachment |
+| .URL | String | cdn.discordapp.com URL |
+| .ProxyURL | String | media.discordapp.com URL |
+| .Filename | String | Filename of the attachment |
+| .Width | Int | Width of the attachment \(if image\) in pixels |
+| .Height | Int | Height of the attachment \(if image\) in pixels |
+| .Size | Int | Size of the attachment in bytes |
 
 #### Reaction
 
@@ -149,8 +149,8 @@ Either starts with `(index .Message.Reactions 0)` or a variable with the reactio
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
-| Count | Int | Times this emoji has been used to react |
-| Emoji | [Emoji](https://docs.yagpdb.xyz/commands/custom-commands#emoji) | The emoji used in the reaction |
+| .Count | Int | Times this emoji has been used to react |
+| .Emoji | [Emoji](https://docs.yagpdb.xyz/commands/custom-commands#emoji) | The emoji used in the reaction |
 
 #### Emoji
 
@@ -158,14 +158,14 @@ Either starts with `(index .Message.Reactions 0).Emoji` or a variable of the rea
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
-| ID | Int | ID of the emoji |
-| Name | String | Name of the emoji \(if Unicode emoji this will be the emote\) |
-| Animated | Boolean | Whether the emoji is animated or not |
+| .ID | Int | ID of the emoji |
+| .Name | String | Name of the emoji \(if Unicode emoji this will be the emote\) |
+| .Animated | Boolean | Whether the emoji is animated or not |
 
 | **Method** | **Description** |
 | :--- | :--- |
-| `APIName` | Returns a correctly formatted API name for use with reaction functions. Example output: `emojiname:id` |
-| `MessageFormat` | Returns a correctly formatted emoji for use in message content. |
+| `.APIName` | Returns a correctly formatted API name for use with reaction functions. Example output: `emojiname:id` |
+| `.MessageFormat` | Returns a correctly formatted emoji for use in message content. |
 
 There are [more fields ](https://discordapp.com/developers/docs/resources/channel#reaction-object)which can be used, but they are either obsolete or only used with Global Emotes.  
 Example to fetch the name of the first reaction on a message provided through the `getMessage` template:
