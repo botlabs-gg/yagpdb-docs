@@ -1193,14 +1193,14 @@ Ticket functions are limited to 1 call per custom command for both normal and pr
 
 | **Function** | **Description** |
 | :--- | :--- |
-| `createTicket author topic` | Creates a new ticket with the author and topic provided. Author can be `nil` \(to use the triggering member\); user ID in form of a string or an integer; a user struct; or a member struct. The topic must be a string. Returns a [template ticket](https://docs.yagpdb.xyz/reference/templates#template-ticket) struct on success. |
+| `createTicket author topic` | Creates a new ticket with the author and topic provided. Author can be `nil` \(to use the triggering member\); user ID in form of a string or an integer; a user struct; or a member struct. The topic must be a string. Returns a [template ticket](templates.md#template-ticket) struct on success. |
 
 #### Template Ticket
 
 | **Field** | **Description** |
 | :--- | :--- |
 | .GuildID | Guild ID of the ticket. |
-| .LocalID | Local ID of the ticket. |
+| .LocalID | The ticket ID. |
 | .ChannelID | Channel ID of the ticket. |
 | .Title | Title of the ticket. |
 | .CreatedAt | Time that the ticket was created. |
