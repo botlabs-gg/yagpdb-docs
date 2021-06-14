@@ -153,22 +153,6 @@ Creates a log of the last messages in the current channel. This includes deleted
 Logs [Count:Whole number]
 ```
 
-### MentionRole
-
-**Aliases:** mrole
-
-Sets a role to mentionable, mentions the role, and then sets it back Requires the manage roles permission and the bot being above the mentioned role
-
-**Usage:**
-
-```text
-MentionRole <Role:Text> [Message:Text]
-```
-
-```text
-[-channel:Channel - Optional channel to send in]
-```
-
 ### Nicknames
 
 **Aliases:** nn
