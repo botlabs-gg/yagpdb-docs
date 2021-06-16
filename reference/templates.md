@@ -1199,15 +1199,15 @@ Ticket functions are limited to 1 call per custom command for both normal and pr
 
 | **Field** | **Description** |
 | :--- | :--- |
-| .GuildID | Guild ID of the ticket. |
-| .LocalID | The ticket ID. |
-| .ChannelID | Channel ID of the ticket. |
-| .Title | Title of the ticket. |
-| .CreatedAt | Time that the ticket was created. |
-| .ClosedAt | Time that the ticket was closed, of type _null.Time._ This is, for the most part, useless in custom commands. |
-| .LogsID | Log ID of the ticket. |
 | .AuthorID | Author ID of the ticket. |
 | .AuthorUsernameDiscrim | The Discord tag of the author of the ticket, formatted like `username#discrim`. |
+| .ChannelID | Channel ID of the ticket. |
+| .ClosedAt | Time that the ticket was closed, of type _null.Time._ This is, for the most part, useless in custom commands. |
+| .CreatedAt | Time that the ticket was created. |
+| .GuildID | Guild ID of the ticket. |
+| .LocalID | The ticket ID. |
+| .LogsID | Log ID of the ticket. |
+| .Title | Title of the ticket. |
 
 ## Database
 
