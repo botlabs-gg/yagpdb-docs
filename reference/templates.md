@@ -1008,18 +1008,6 @@ With regular expression patterns - when using quotes you have to "double-escape"
       <td style="text-align:left">Returns <em>bool</em> true/false whether case-sensitive value is in list/<em>slice</em>. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>len arg</code>
-      </td>
-      <td style="text-align:left">
-        <p>Returns the integer length of its argument. arg can be an <em>array</em>, <em>slice</em>, <em>map</em>,
-          or <em>string.</em>
-        </p>
-        <p><code>{{ len (cslice 1 2 3) }}</code>
-        </p>
-        <p>returns <code>3</code>.</p>
-      </td>
-    </tr>
-    <tr>
       <td style="text-align:left"><code>index arg ...keys</code>
       </td>
       <td style="text-align:left">
@@ -1031,7 +1019,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>inFold </code>
+      <td style="text-align:left"><code>inFold list value</code>
       </td>
       <td style="text-align:left">Same as <code>in</code>, but is case-insensitive. <code>{{inFold (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot;}}</code> returns <code>true</code>.</td>
     </tr>
@@ -1045,6 +1033,18 @@ With regular expression patterns - when using quotes you have to "double-escape"
         return <code>ptr </code>and <code>struct</code>.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>len arg</code>
+      </td>
+      <td style="text-align:left">
+        <p>Returns the integer length of its argument. arg can be an <em>array</em>, <em>slice</em>, <em>map</em>,
+          or <em>string.</em>
+        </p>
+        <p><code>{{ len (cslice 1 2 3) }}</code>
+        </p>
+        <p>returns <code>3</code>.</p>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>noun</code>
       </td>
       <td style="text-align:left">Returns a random noun.</td>
@@ -1052,17 +1052,14 @@ With regular expression patterns - when using quotes you have to "double-escape"
     <tr>
       <td style="text-align:left"><code>parseArgs required_args error_message ...carg</code>
       </td>
-      <td style="text-align:left">Checks the arguments for a specific type. Has methods <code>.Get</code> and <code>.IsSet</code>.
-        <a
-        href="../commands/custom-commands.md#require-arguments">More in depth here</a>and example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>carg &quot;type&quot; &quot;name&quot;</code>
-      </td>
-      <td style="text-align:left">Required by <code>parseArgs</code> and it defines the type of argument for <code>parseArgs</code>.
-        <a
-        href="../commands/custom-commands.md#require-arguments">More in depth</a>here and an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
+      <td style="text-align:left">
+        <p>Checks the arguments for a specific type. Has methods <code>.Get</code> and <code>.IsSet</code>.</p>
+        <p><code><br />carg &quot;type&quot; &quot;name&quot;</code> is required by <code>parseArgs</code> and
+          it defines the type of argument for <code>parseArgs</code>.</p>
+        <p></p>
+        <p><a href="../commands/custom-commands.md#require-arguments">More in depth</a> here
+          and an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
+        </p>
       </td>
     </tr>
     <tr>
