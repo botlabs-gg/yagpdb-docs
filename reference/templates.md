@@ -1057,8 +1057,8 @@ With regular expression patterns - when using quotes you have to "double-escape"
         <p><code><br />carg &quot;type&quot; &quot;name&quot;</code> is required by <code>parseArgs</code> and
           it defines the type of argument for <code>parseArgs</code>.</p>
         <p></p>
-        <p><a href="../commands/custom-commands.md#require-arguments">More in depth</a> here
-          and an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
+        <p><a href="https://docs.yagpdb.xyz/commands/custom-commands#require-arguments">More in depth here</a> and
+          an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
         </p>
       </td>
     </tr>
