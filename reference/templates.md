@@ -113,8 +113,10 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | :--- | :--- |
 | .Guild.AfkChannelID | Outputs the AFK channel ID. |
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
+| .Guild.Channels | Outputs a list of channels in the guild with type _dstate.ChannelState._ |
 | .Guild.DefaultMessageNotifications | Outputs the default message [notification setting](https://discordapp.com/developers/docs/resources/guild#guild-object-default-message-notification-level) for the guild. |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
+| .Guild.Emojis | Outputs a list of emojis in the guild with type _discordgo.Emoji._ |
 | .Guild.ExplicitContentFilter | Outputs the explicit content [filter level](https://discordapp.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level) for the guild. |
 | .Guild.Icon | Outputs the [icon hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's icon. |
 | .Guild.ID | Outputs the ID of the guild. |
@@ -129,18 +131,16 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.SystemChannelID | The id of the channel where guild notices such as welcome messages and boost events are posted. |
 | .Guild.VerificationLevel | Outputs the required verification level for the guild. |
 | .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _discordgo.VoiceState._ |
-| .Guild.Channels | Outputs a list of channels in the guild with type _dstate.ChannelState._ |
-| .Guild.Emojis | Outputs a list of emojis in the guild with type _discordgo.Emoji._ |
-| .Guild.WidgetEnabled | Outputs whether or not the Server Widget is enabled or not. |
 | .Guild.WidgetChannelID | Outputs the channel id for the server widget. |
+| .Guild.WidgetEnabled | Outputs whether or not the Server Widget is enabled or not. |
 
 | **Method** | **Description** |
 | :--- | :--- |
-| `.Guild.GetMemberPermissions channelID memberID memberRoles` | Computes the permissions that the member has in the channel provided, taking into account the roles of the member. Example: `{{.Guild.GetMemberPermissions .Channel.ID .Member.User.ID .Member.Roles}}` would retrieve the permission bit the triggering member has in the context channel. |
 | `.Guild.GetChannel id` | Gets the channel with the ID provided, returning a _\*dstate.ChannelState_. |
+| `.Guild.GetEmoji id` | Gets the guild emoji with the ID provided, returning a _\*discordgo.Emoji._ |
+| `.Guild.GetMemberPermissions channelID memberID memberRoles` | Computes the permissions that the member has in the channel provided, taking into account the roles of the member. Example: `{{.Guild.GetMemberPermissions .Channel.ID .Member.User.ID .Member.Roles}}` would retrieve the permission bit the triggering member has in the context channel. |
 | `.Guild.GetRole id` | Gets the role with the ID provided, returning a _\*discordgo.Role._ |
 | `.Guild.GetVoiceState userID` | Gets the voice state of the user ID provided, returning a _\*discordgo.VoiceState_. Example code to show if user is in VC or not: `{{if .Guild.GetVoiceState .User.ID}} user is in voice channel {{else}} user is not in voice channel {{end}}` |
-| `.Guild.GetEmoji id` | Gets the guild emoji with the ID provided, returning a _\*discordgo.Emoji._ |
 
 [Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
 
