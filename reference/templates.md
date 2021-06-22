@@ -118,6 +118,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
 | .Guild.Emojis | Outputs a list of emojis in the guild with type _discordgo.Emoji._ |
 | .Guild.ExplicitContentFilter | Outputs the explicit content [filter level](https://discordapp.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level) for the guild. |
+| .Guild.Features | The list of enabled guild features of type _\[\]string_. |
 | .Guild.Icon | Outputs the [icon hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's icon. |
 | .Guild.ID | Outputs the ID of the guild. |
 | .Guild.JoinedAt | Outputs the timestamp when YAGPDB joined the guild. To convert it to type _time.Time_, use .Parse method &gt; `.Guild.JoinedAt.Parse` |
