@@ -905,11 +905,11 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
 | `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
 | `removeRoleName roleName (delay)` | Removes the role with given name from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
+| `setRoles userID roles` | Overwrites the roles of the given user using the slice of roles provided, which should be a slice of role IDs. IDs can be ints or strings. Example: `{{setRoles .User.ID cslice}}` would clear the roles of the triggering user. |
 | `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
 | `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-8). |
 | `targetHasRoleName userID "roleName"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
-| `setRoles userID roles` | Overwrites the roles of the given user using the slice of roles provided, which should be a slice of role IDs. IDs can be ints or strings. Example: `{{setRoles .User.ID cslice}}` would clear the roles of the triggering user. |
 
 #### This section's snippets:
 
