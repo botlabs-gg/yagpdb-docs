@@ -1166,7 +1166,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 #### This section's snippets:
 
-* To demonstrates execCC  and .ExecData using the same CC.
+* To demonstrate execCC  and .ExecData using the same CC.
 
 ```go
 {{ $yag := "YAGPDB rules! " }}
