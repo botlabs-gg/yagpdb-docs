@@ -1077,7 +1077,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
       </td>
       <td style="text-align:left">
         <p>Function sends a formulated template to another channel.
-          <br />Channel is like always either name, number or nil. Also returns messageID.</p>
+          <br />Channel is like always either name, number or nil; and returns messageID.</p>
         <p>Example: <code>{{define &quot;logsTemplate&quot;}}This text will output on different channel, you can also use functions like {{currentTime}}. {{.TemplateArgs}} would be additional data sent out. {{end}}</code>
         </p>
         <p>Now we call that &quot;logs&quot; in the same custom command.<code>{{sendTemplate &quot;logs&quot; &quot;logsTemplate&quot; &quot;YAG rules!&quot;}}</code>
