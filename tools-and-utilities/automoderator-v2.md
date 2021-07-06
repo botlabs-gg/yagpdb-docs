@@ -123,14 +123,14 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 * Triggers when a user has more than x messages in y seconds in a single channel.
   * **Messages:** Number of "X" messages needed to trigger the rule
-  * **Within \(seconds\):** The "Y" number of minutes that the word needs to occur within
+  * **Within \(seconds\):** The "Y" number of seconds that the word needs to occur within
 
 #### User: X mentions within Y seconds
 
 * Triggers when a user has sent more than x unique mentions in y seconds in a single channel
   * **Mentions:** Number of "X" mentions needed to trigger the rule
   * **Within \(seconds\):** The "Y" number of minutes that the word needs to occur within
-  *  **Count multiple mentions to the same user**: Will count a mention to a user even if I it was previously mention before withing the Y seconds.
+  *  **Count multiple mentions of the same user**: Will count a mention to a user even if I it was previously mention before within the Y seconds.
 
 #### Channel: X mentions within Y seconds
 
