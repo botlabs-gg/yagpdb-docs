@@ -23,18 +23,3 @@ Here are some details on that spot:
 
 ![](.gitbook/assets/ads.PNG)
 
-## One Time Donation
-
-If you want to donate you can do so using **Bitcoin**, **Bitcoincash**, **Etherum** and **Litecoin.**
-
-Donating gives you access to priority support and monthly giveaways, and various other perks listed on the [Patreon](https://www.patreon.com/yagpdb) page.
-
-Addresses and links:
-
-* Bitcoin: 1Hud7HW2R6pSGupBDZkJxqkFzqTSgjnrdB
-* BitcoinCash: 1DqY2Qobefr1GqRhk3ZyP6FvU3hBbzwfg6
-* Ethereum: 0x082F1adcC1a866c75aaE8C32e2308148a0c25835
-* Litecoin: LL66LAKxd9QqWgrHx7Xk1t59skEDRoyeJV
-
-Contact **Jonas747\#0001** if you want the donor role in the Discord server.
-
