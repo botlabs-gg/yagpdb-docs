@@ -1277,7 +1277,7 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
         <p>Returns the count of all database entries which are not expired. Optional
           arguments: if <code>userID</code> is given, counts entries for that userID;
           if <code>key</code>, only those keys are counted; and if <code>query</code> is
-          provided, it should be a map with the following options:</p>
+          provided, it should be a sdict with the following options:</p>
         <ul>
           <li><code>userID</code> - only counts entries with that user ID, defaults to
             counting entries with any user ID</li>
@@ -1301,7 +1301,7 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
       </td>
       <td style="text-align:left">
         <p>Deletes <code>amount (max 100)</code> entries from the database matching
-          the criteria provided. <code>query</code> should be a map with the following
+          the criteria provided. <code>query</code> should be a sdict with the following
           options:</p>
         <ul>
           <li><code>userID</code> - only deletes entries with the user ID provided, defaults
@@ -1345,7 +1345,7 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
       <td style="text-align:left">
         <p>Returns the rank of the entry specified by the user ID and key provided
           in the set of entries matching the criteria provided. <code>query</code> specifies
-          the set of entries that should be considered, and should be a map with
+          the set of entries that should be considered, and should be a sdict with
           the following options:</p>
         <ul>
           <li><code>userID</code> - only includes entries with that user ID, defaults
