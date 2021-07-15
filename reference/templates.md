@@ -996,6 +996,21 @@ With regular expression patterns - when using quotes you have to "double-escape"
         succeed.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>hasPrefix string prefix</code>
+      </td>
+      <td style="text-align:left"><code>hasPrefix</code> tests whether the given <code>string </code>begins
+        with <code>prefix </code>and returns <em>bool</em>. Example &gt; <code>{{hasPrefix &quot;YAGPDB&quot; &quot;YAG&quot;}}</code> returns <code>true</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>hasSuffix string suffix</code>
+      </td>
+      <td style="text-align:left">
+        <p>hasSuffix tests whether the given <code>string </code>ends with <code>suffix </code>and
+          returns <em>bool</em>.</p>
+        <p>Example &gt; <code>{{hasSuffix &quot;YAGPDB&quot; &quot;YAG&quot;}}</code> returns <code>false</code>.</p>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>humanizeThousands arg</code>
       </td>
       <td style="text-align:left">This function places comma to separate groups of thousands of a number. <code>arg </code>can
