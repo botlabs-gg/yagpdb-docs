@@ -899,6 +899,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 | :--- | :--- |
 | `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the `listroles` command for a list of roles\). |
 | `addRoleName roleName` | Adds the role with given name to the user that triggered the command \(use the `listroles` command for a list of roles\). |
+| `getRole role` | Returns a [role object](https://discord.com/developers/docs/topics/permissions#role-object) of type _\*discordgo.Role._ `role`  can be either role's ID or role's name. |
 | `giveRoleID userID roleID` | Gives a role by ID to the target. |
 | `giveRoleName userID "roleName"` | Gives a role by name to the target. |
 | `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
