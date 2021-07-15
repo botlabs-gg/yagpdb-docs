@@ -1114,6 +1114,23 @@ With regular expression patterns - when using quotes you have to "double-escape"
         is 10 000.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>sort slice ...args</code>
+      </td>
+      <td style="text-align:left">
+        <p>Sorts a slice with optional arguments. Numbers are sorted before strings.
+          Arguments are presented in a <code>sdict</code> as keys having bool values.
+          Example &gt; <code>{{sort (cslice &quot;YAGPDB&quot; 42 &quot;Alphabet&quot; 111 33.3) (sdict &quot;reverse&quot; true &quot;subslices&quot; true &quot;emptyslices&quot; false)}}</code>would
+          return<code> [111 42 33.3 YAGPDB Alphabet]</code>
+        </p>
+        <p>Argument keys:</p>
+        <p><code>&quot;reverse&quot;</code> reverses the order if <code>true</code>.</p>
+        <p><code>&quot;subslices&quot;</code> makes the function return a set of subslices
+          based on input type/kind if <code>true</code>.</p>
+        <p><code>&quot;Emptyslices&quot;</code> returns all possible slices if <code>true</code>,
+          helpful for indexing.</p>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>shuffle list</code>
       </td>
       <td style="text-align:left">Returns a shuffled, randomized version of a list/<em>slice</em>.</td>
