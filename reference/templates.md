@@ -1115,7 +1115,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
         is 10 000.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>sort slice ...args</code>
+      <td style="text-align:left"><code>sort slice (...args)</code>
       </td>
       <td style="text-align:left">
         <p>Sorts a slice with optional arguments. Numbers are sorted before strings.
