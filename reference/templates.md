@@ -1252,23 +1252,135 @@ Keys can be max 256 bytes long and has to be strings or numbers. Values can be a
 
 You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\).  
   
-There can be 10 database interactions per CC, out of which dbTop/BottomEntries, dbCount and dbGetPattern may be only run twice. \(50,10 for premium users\).  
+There can be 10 database interactions per CC, out of which dbTop/BottomEntries, dbCount, dbGetPattern, and dbDelMultiple may be only run twice. \(50,10 for premium users\).  
   
 [Example here](custom-command-examples.md#database-example).
 
-| Function | Description |
-| :--- | :--- |
-| `dbSet userID key value` | Sets the value for the specified `key` for the specific `userID` to the specified `value`. `userID` can be any number of type _int64_.    Values are stored either as of type _float64_ \(for numbers, oct or hex\) or as varying type in bytes \(for _slices_, _maps_, _strings_ etc\) depending on input argument. |
-| `dbSetExpire userID key value ttl` | Same as `dbSet` but with an expiration in seconds. |
-| `dbIncr userID key incrBy`  | Increments the value for specified key for the specified user, if there was no value then it will be set to `incrBy .` Also returns the entry's current, increased value. |
-| `dbGet userID key`  | Retrieves a value from the database for the specified user, this returns DBEntry object. |
-| `dbGetPattern userID pattern amount nSkip` | Retrieves up to`amount (max 100)`entries from the database in ascending order. |
-| `dbGetPatternReverse userID pattern amount nSkip` | Retrieves`amount (max 100)`entries from the database in descending order. |
-| `dbDel userID key` | Deletes the specified key for the specified value from the database. |
-| `dbDelByID userID ID` | Deletes database entry by its ID. |
-| `dbTopEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order. |
-| `dbBottomEntries pattern amount nSkip` | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order. |
-| `dbCount (userID|key)` | Returns the count of all database entries which are not expired. Optional arguments: if `userID` is given, counts entries for that userID or if `key`, then only those keys are counted. |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Function</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>dbSet userID key value</code>
+      </td>
+      <td style="text-align:left">Sets the value for the specified <code>key</code> for the specific <code>userID</code> to
+        the specified <code>value</code>. <code>userID</code> can be any number of
+        type <em>int64</em>.
+        <br />
+        <br />Values are stored either as of type <em>float64 </em>(for numbers, oct
+        or hex) or as varying type in bytes (for <em>slices</em>, <em>maps</em>, <em>strings </em>etc)
+        depending on input argument.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbSetExpire userID key value ttl</code>
+      </td>
+      <td style="text-align:left">Same as <code>dbSet </code>but with an expiration in seconds.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbIncr userID key incrBy </code>
+      </td>
+      <td style="text-align:left">Increments the value for specified key for the specified user, if there
+        was no value then it will be set to <code>incrBy . </code>Also returns the
+        entry&apos;s current, increased value.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbGet userID key </code>
+      </td>
+      <td style="text-align:left">Retrieves a value from the database for the specified user, this returns
+        DBEntry object.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbGetPattern userID pattern amount nSkip</code>
+      </td>
+      <td style="text-align:left">Retrieves up to<code>amount (max 100)</code>entries from the database
+        in ascending order.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbGetPatternReverse userID pattern amount nSkip</code>
+      </td>
+      <td style="text-align:left">Retrieves<code>amount (max 100)</code>entries from the database in descending
+        order.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbDel userID key</code>
+      </td>
+      <td style="text-align:left">Deletes the specified key for the specified value from the database.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbDelByID userID ID</code>
+      </td>
+      <td style="text-align:left">Deletes database entry by its ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbDelMultiple query amount skip</code>
+      </td>
+      <td style="text-align:left">
+        <p>Deletes <code>amount (max 100)</code> entries from the database matching
+          the criteria provided. <code>query</code> should be a map with the following
+          options:</p>
+        <ul>
+          <li><code>userID</code> - only deletes entries with the user ID provided, defaults
+            to deleting entries with any ID.</li>
+          <li><code>pattern</code> - only deletes entries with a name matching the pattern
+            given.</li>
+          <li><code>reverse</code> - if true, starts deleting entries with the lowest
+            values first; otherwise starts deleting entries with the highest values
+            first. Default is <code>false</code>.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbTopEntries pattern amount nSkip</code>
+      </td>
+      <td style="text-align:left">Returns <code>amount (max 100)</code>top entries from the database, sorted
+        by the value in a descending order.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbBottomEntries pattern amount nSkip</code>
+      </td>
+      <td style="text-align:left">Returns <code>amount (max 100)</code>top entries from the database, sorted
+        by the value in a ascending order.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbCount (userID|key|query)</code>
+      </td>
+      <td style="text-align:left">
+        <p>Returns the count of all database entries which are not expired. Optional
+          arguments: if <code>userID</code> is given, counts entries for that userID;
+          if <code>key</code>, only those keys are counted; and if <code>query</code> is
+          provided, it should be a map with the following options:</p>
+        <ul>
+          <li><code>userID</code> - only counts entries with that user ID, defaults to
+            counting entries with any user ID</li>
+          <li><code>pattern</code> - only counts entries with names matching the pattern
+            given, defaults to counting entries with any name.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbRank query userID key</code>
+      </td>
+      <td style="text-align:left">
+        <p>Returns the rank of the entry specified by the user ID and key provided
+          in the set of entries matching the criteria provided. <code>query</code> specifies
+          the set of entries that should be considered, and should be a map with
+          the following options:</p>
+        <ul>
+          <li><code>userID</code> - only includes entries with that user ID, defaults
+            to including entries with any user ID</li>
+          <li><code>pattern</code> - only includes entries with names matching the pattern
+            given, defaults to counting entries with any name</li>
+          <li><code>reverse</code> - if true, entries with lower value have higher rank;
+            otherwise entries with higher value have higher rank. Default is <code>false</code>.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 {% hint style="info" %}
 **Note about saving numbers into database:** As stated above, database stores numbers as type _float64_. If you save a large number into database like an _int64_ \(which IDs are\), the value will be truncated. To avoid this behavior, you can stringify the number before saving and convert it back to its original type when retrieving it. Example: `{{$v := .User.ID}} {{dbSet 0 "userid" (str $v)}} {{$fromDB := toInt (dbGet 0 "user_id").Value}}`
