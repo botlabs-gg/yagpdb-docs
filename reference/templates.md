@@ -1265,45 +1265,26 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><code>dbSet userID key value</code>
+      <td style="text-align:left"><code>dbBottomEntries pattern amount nSkip</code>
       </td>
-      <td style="text-align:left">Sets the value for the specified <code>key</code> for the specific <code>userID</code> to
-        the specified <code>value</code>. <code>userID</code> can be any number of
-        type <em>int64</em>.
-        <br />
-        <br />Values are stored either as of type <em>float64 </em>(for numbers, oct
-        or hex) or as varying type in bytes (for <em>slices</em>, <em>maps</em>, <em>strings </em>etc)
-        depending on input argument.</td>
+      <td style="text-align:left">Returns <code>amount (max 100)</code>top entries from the database, sorted
+        by the value in a ascending order.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>dbSetExpire userID key value ttl</code>
+      <td style="text-align:left"><code>dbCount (userID|key|query)</code>
       </td>
-      <td style="text-align:left">Same as <code>dbSet </code>but with an expiration in seconds.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbIncr userID key incrBy </code>
+      <td style="text-align:left">
+        <p>Returns the count of all database entries which are not expired. Optional
+          arguments: if <code>userID</code> is given, counts entries for that userID;
+          if <code>key</code>, only those keys are counted; and if <code>query</code> is
+          provided, it should be a map with the following options:</p>
+        <ul>
+          <li><code>userID</code> - only counts entries with that user ID, defaults to
+            counting entries with any user ID</li>
+          <li><code>pattern</code> - only counts entries with names matching the pattern
+            given, defaults to counting entries with any name.</li>
+        </ul>
       </td>
-      <td style="text-align:left">Increments the value for specified key for the specified user, if there
-        was no value then it will be set to <code>incrBy . </code>Also returns the
-        entry&apos;s current, increased value.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbGet userID key </code>
-      </td>
-      <td style="text-align:left">Retrieves a value from the database for the specified user, this returns
-        DBEntry object.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbGetPattern userID pattern amount nSkip</code>
-      </td>
-      <td style="text-align:left">Retrieves up to<code>amount (max 100)</code>entries from the database
-        in ascending order.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbGetPatternReverse userID pattern amount nSkip</code>
-      </td>
-      <td style="text-align:left">Retrieves<code>amount (max 100)</code>entries from the database in descending
-        order.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>dbDel userID key</code>
@@ -1334,32 +1315,29 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>dbTopEntries pattern amount nSkip</code>
+      <td style="text-align:left"><code>dbGet userID key </code>
       </td>
-      <td style="text-align:left">Returns <code>amount (max 100)</code>top entries from the database, sorted
-        by the value in a descending order.</td>
+      <td style="text-align:left">Retrieves a value from the database for the specified user, this returns
+        DBEntry object.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>dbBottomEntries pattern amount nSkip</code>
+      <td style="text-align:left"><code>dbGetPattern userID pattern amount nSkip</code>
       </td>
-      <td style="text-align:left">Returns <code>amount (max 100)</code>top entries from the database, sorted
-        by the value in a ascending order.</td>
+      <td style="text-align:left">Retrieves up to<code>amount (max 100)</code>entries from the database
+        in ascending order.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>dbCount (userID|key|query)</code>
+      <td style="text-align:left"><code>dbGetPatternReverse userID pattern amount nSkip</code>
       </td>
-      <td style="text-align:left">
-        <p>Returns the count of all database entries which are not expired. Optional
-          arguments: if <code>userID</code> is given, counts entries for that userID;
-          if <code>key</code>, only those keys are counted; and if <code>query</code> is
-          provided, it should be a map with the following options:</p>
-        <ul>
-          <li><code>userID</code> - only counts entries with that user ID, defaults to
-            counting entries with any user ID</li>
-          <li><code>pattern</code> - only counts entries with names matching the pattern
-            given, defaults to counting entries with any name.</li>
-        </ul>
+      <td style="text-align:left">Retrieves<code>amount (max 100)</code>entries from the database in descending
+        order.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbIncr userID key incrBy </code>
       </td>
+      <td style="text-align:left">Increments the value for specified key for the specified user, if there
+        was no value then it will be set to <code>incrBy . </code>Also returns the
+        entry&apos;s current, increased value.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>dbRank query userID key</code>
@@ -1378,6 +1356,28 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
             otherwise entries with higher value have higher rank. Default is <code>false</code>.</li>
         </ul>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbSet userID key value</code>
+      </td>
+      <td style="text-align:left">Sets the value for the specified <code>key</code> for the specific <code>userID</code> to
+        the specified <code>value</code>. <code>userID</code> can be any number of
+        type <em>int64</em>.
+        <br />
+        <br />Values are stored either as of type <em>float64 </em>(for numbers, oct
+        or hex) or as varying type in bytes (for <em>slices</em>, <em>maps</em>, <em>strings </em>etc)
+        depending on input argument.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbSetExpire userID key value ttl</code>
+      </td>
+      <td style="text-align:left">Same as <code>dbSet </code>but with an expiration in seconds.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>dbTopEntries pattern amount nSkip</code>
+      </td>
+      <td style="text-align:left">Returns <code>amount (max 100)</code>top entries from the database, sorted
+        by the value in a descending order.</td>
     </tr>
   </tbody>
 </table>
