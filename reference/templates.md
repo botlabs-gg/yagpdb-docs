@@ -1350,8 +1350,9 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
         <ul>
           <li><code>userID</code> - only includes entries with that user ID, defaults
             to including entries with any user ID</li>
-          <li><code>pattern</code> - only includes entries with names matching the pattern
-            given, defaults to counting entries with any name</li>
+          <li><code>pattern</code> - only includes database&apos;s <code>key</code> entries
+            with names matching the pattern given, defaults to counting entries with
+            any name</li>
           <li><code>reverse</code> - if true, entries with lower value have higher rank;
             otherwise entries with higher value have higher rank. Default is <code>false</code>.</li>
         </ul>
