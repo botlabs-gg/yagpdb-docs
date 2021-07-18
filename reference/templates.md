@@ -312,7 +312,7 @@ This is available and part of the dot when reaction trigger type is used.
         <p><code>{{range .ReactionMessage.Reactions}}<br />{{.Count}} - {{.Emoji.Name}} <br />{{end}}</code>
         </p>
         <p>Returns emoji count and their name.</p>
-        <p>Has an alias .Message and works it works the same way.</p>
+        <p>Has an alias .Message and it works the same way.</p>
       </td>
     </tr>
   </tbody>
