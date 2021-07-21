@@ -259,6 +259,8 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 ### Effect Types
 
+Effects with ability to add custom messages are capped to 150 characters.
+
 #### **Delete Message**
 
 * Deletes the message
