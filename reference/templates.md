@@ -121,7 +121,6 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.Features | The list of enabled guild features of type _\[\]string_. |
 | .Guild.Icon | Outputs the [icon hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's icon. |
 | .Guild.ID | Outputs the ID of the guild. |
-| .Guild.JoinedAt | Outputs the timestamp when YAGPDB joined the guild. To convert it to type _time.Time_, use .Parse method &gt; `.Guild.JoinedAt.Parse` |
 | .Guild.MemberCount | Outputs the number of users on a guild. |
 | .Guild.MfaLevel | required [MFA level](https://discordapp.com/developers/docs/resources/guild#guild-object-mfa-level) for the guild. If enabled, members with moderation powers will be required to have 2-factor authentication enabled in order to exercise moderation powers. |
 | .Guild.Name | Outputs the name of the guild. |
