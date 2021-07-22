@@ -847,7 +847,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 | Function | Description |
 | :--- | :--- |
-| `addMessageReactions channel messageID reactions` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channel's ID or its name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
+| `addMessageReactions channel messageID emojis...` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channel's ID or its name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
 | `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiName:emojiID`\). |
 | `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiName:emojiID`\). |
 | `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 100 000 characters ca100kB\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
