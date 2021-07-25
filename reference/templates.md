@@ -113,7 +113,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | :--- | :--- |
 | .Guild.AfkChannelID | Outputs the AFK channel ID. |
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
-| .Guild.Channels | Outputs a list of channels in the guild with type _dstate.ChannelState._ |
+| .Guild.Channels | Outputs a slice of channels in the guild with type _\[\]dstate.ChannelState._ |
 | .Guild.DefaultMessageNotifications | Outputs the default message [notification setting](https://discordapp.com/developers/docs/resources/guild#guild-object-default-message-notification-level) for the guild. |
 | .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
 | .Guild.Emojis | Outputs a list of emojis in the guild with type _discordgo.Emoji._ |
@@ -261,8 +261,8 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Message.GuildID | Guild ID in which the message is. |
 | .Message.ID | ID of the message. |
 | .Message.MentionEveryone | Whether the message mentions everyone. |
-| .Message.MentionRoles | The roles mentioned in the message. |
-| .Message.Mentions | Users this message mentions. |
+| .Message.MentionRoles | The roles mentioned in the message, returned as a slice of type _discordgo.IDSlice._ |
+| .Message.Mentions | Users this message mentions, returned as a slice of type _\[\]\*discordgo.User._ |
 | .Message.Pinned | Whether this message is pinned. |
 | .Message.Reactions | Reactions on this message \(only available from getMessage\). |
 | .Message.Timestamp | Timestamp of the message in type _discordgo.Timestamp_ \(use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_\). |
