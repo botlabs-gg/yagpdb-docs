@@ -260,6 +260,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Message.Embeds | Embeds of this message \(_slice_ of embed objects\). |
 | .Message.GuildID | Guild ID in which the message is. |
 | .Message.ID | ID of the message. |
+| .Message.Link | Discord link to the message. |
 | .Message.MentionEveryone | Whether the message mentions everyone. |
 | .Message.MentionRoles | The roles mentioned in the message, returned as a slice of type _discordgo.IDSlice._ |
 | .Message.Mentions | Users this message mentions, returned as a slice of type _\[\]\*discordgo.User._ |
