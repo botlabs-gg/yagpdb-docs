@@ -3,7 +3,6 @@
 There are several ways you can help in making YAGPDB better!
 
 * Supporting us through Patreon
-* Donating through buying ad spaces or donations
 * Writing documentation. The bot needs documentation - More details below
 * Help out other people on Discord
 * Writing code.
