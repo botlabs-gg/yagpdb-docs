@@ -1312,6 +1312,7 @@ There can be 10 database interactions per CC, out of which dbTop/BottomEntries, 
             values first; otherwise starts deleting entries with the highest values
             first. Default is <code>false</code>.</li>
         </ul>
+        <p>Returns the number of rows that got deleted or an error.</p>
       </td>
     </tr>
     <tr>
