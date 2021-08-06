@@ -1248,7 +1248,7 @@ You can have max 50 \* user\_count \(or 500 \* user\_count for premium\) values 
 
 Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches any single character; a percent sign `(%)` matches any sequence of zero or more characters.
 
-Keys can be max 256 bytes long and has to be strings or numbers. Values can be anything, but if they go above 100KB they will be truncated.
+Keys can be max 256 bytes long and has to be strings or numbers. Values can be anything, but if their serialized representation go above 100kB they will be truncated.
 
 You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\).  
   
