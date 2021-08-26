@@ -1523,7 +1523,7 @@ Like `if`, `range`is concluded with`{{end}}`action and declared variable scope i
 {% hint style="danger" %}
 **Custom command response was longer than 2k \(contact an admin on the server...\)**  
 This is quite common error users will get whilst using range. Simple example to reproduce it:  
-_{{ range seq 0 500 }}  
+_{{ range seq 0 1000 }}  
 {{ $x := . }}  
 {{ end }}  
 HELLO!_  
