@@ -168,11 +168,10 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
         YAGPDB&apos;s highest role has to be above the highest role of the member.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>getMember arg</code>
+      <td style="text-align:left"><code>getMember mention/userID</code>
       </td>
       <td style="text-align:left">
-        <p>Function returns Member object having above methods. <code>arg </code>can
-          be a mention or ID.</p>
+        <p>Function returns Member object having above methods.</p>
         <p><code>{{(getMember .User.ID).JoinedAt}}</code> 
           <br />is the same as <code>{{.Member.JoinedAt}}</code>
         </p>
