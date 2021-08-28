@@ -608,46 +608,19 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
       <td style="text-align:left">Converts the string to lowercase.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>upper &quot;string&quot;</code>
+      <td style="text-align:left"><code>print, printf, println</code>
       </td>
-      <td style="text-align:left">Converts the string to uppercase.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>slice &quot;string&quot;|slice integer (integer2)</code>
-      </td>
-      <td style="text-align:left">
-        <p>Function&apos;s first argument must be of type <em>string </em>or <em>slice</em>.</p>
-        <p>Outputs the &quot;string&quot; after cutting/slicing off integer (numeric)
-          value of symbols (actually starting the string&apos;s index from integer
-          through integer2) - e.g. <code>{{slice &quot;Fox runs&quot; 2}}</code>outputs <code>x runs</code>.
-          When using also integer2 - e.g. <code>{{slice &quot;Fox runs&quot; 1 7}}</code>,
-          it outputs <code>ox run</code>. For slicing whole arguments, let&apos;s
-          say words, see example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</p>
-        <p></p>
-        <p>This<code> slice</code> function is not the same as basic dynamically-sized <em>slice</em> data
-          type discussed in this reference doc. Also it&apos;s custom, not having
-          3-indices as the default one from <a href="https://golang.org/pkg/text/template/#hdr-Functions">text/template</a> package.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>urlescape &quot;string&quot;</code>
-      </td>
-      <td style="text-align:left">Escapes the <em>string</em> so it can be safely placed inside a URL path
-        segment - e.g. &quot;Hello, YAGPDB!&quot; becomes &quot;Hello%2C%20YAGPDB%21&quot;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>split &quot;string&quot; &quot;sepr&quot;</code>
-      </td>
-      <td style="text-align:left">Splits given <code>&quot;string&quot;</code> to substrings separated by <code>&quot;sepr&quot;</code>arg
-        and returns new <em>slice </em>of the substrings between given separator
-        e.g. <code>{{split &quot;YAG, is cool!&quot; &quot;,&quot;}}</code> returns <code>[YAG  is cool!]</code>  <em>slice</em> where <code>YAG</code> is
-        at <code>index</code> position 0 and <code>is cool!</code> at <code>index</code> position
-        1. Example also in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>title &quot;string&quot;</code>
-      </td>
-      <td style="text-align:left">Returns string with the first letter of each word capitalized.</td>
+      <td style="text-align:left">These are GO template package&apos;s predefined functions and are aliases
+        for <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprint</a>, <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprintf</a> and
+        <a
+        href="https://golang.org/pkg/fmt/#Sprintln">fmt.Sprintln</a>. Formatting is also discussed <a href="https://golang.org/pkg/fmt/#hdr-Printing">here</a>. <code>printf</code> cheat
+          sheet <a href="https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/">here</a>.
+          <br
+          />
+          <br /><code>printf</code> is usable for example to determine the type of the
+          value &gt; <code>{{printf &quot;%T&quot; currentTime}} </code>outputs <code>currentTime </code>functions
+          output value type of<code> time.Time</code>. In many cases, <code>printf</code> is
+          a great alternative to <code>joinStr</code> for concatenate strings.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>reFind &quot;regex&quot; &quot;string&quot;</code>
@@ -699,18 +672,46 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>print, printf, println</code>
+      <td style="text-align:left"><code>slice &quot;string&quot;|slice integer (integer2)</code>
       </td>
-      <td style="text-align:left">These are GO template package&apos;s predefined functions and are aliases
-        for <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprint</a>, <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprintf</a> and
-        <a
-        href="https://golang.org/pkg/fmt/#Sprintln">fmt.Sprintln</a>. Formatting is also discussed <a href="https://golang.org/pkg/fmt/#hdr-Printing">here</a>.
-          <br
-          />
-          <br /><code>printf</code> is usable for example to determine the type of the
-          value &gt; <code>{{printf &quot;%T&quot; currentTime}} </code>outputs <code>currentTime </code>functions
-          output value type of<code> time.Time</code>. In many cases, <code>printf</code> is
-          a great alternative to <code>joinStr</code> for concatenate strings.</td>
+      <td style="text-align:left">
+        <p>Function&apos;s first argument must be of type <em>string </em>or <em>slice</em>.</p>
+        <p>Outputs the &quot;string&quot; after cutting/slicing off integer (numeric)
+          value of symbols (actually starting the string&apos;s index from integer
+          through integer2) - e.g. <code>{{slice &quot;Fox runs&quot; 2}}</code>outputs <code>x runs</code>.
+          When using also integer2 - e.g. <code>{{slice &quot;Fox runs&quot; 1 7}}</code>,
+          it outputs <code>ox run</code>. For slicing whole arguments, let&apos;s
+          say words, see example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</p>
+        <p></p>
+        <p>This<code> slice</code> function is not the same as basic dynamically-sized <em>slice</em> data
+          type discussed in this reference doc. Also it&apos;s custom, not having
+          3-indices as the default one from <a href="https://golang.org/pkg/text/template/#hdr-Functions">text/template</a> package.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>split &quot;string&quot; &quot;sepr&quot;</code>
+      </td>
+      <td style="text-align:left">Splits given <code>&quot;string&quot;</code> to substrings separated by <code>&quot;sepr&quot;</code>arg
+        and returns new <em>slice </em>of the substrings between given separator
+        e.g. <code>{{split &quot;YAG, is cool!&quot; &quot;,&quot;}}</code> returns <code>[YAG  is cool!]</code>  <em>slice</em> where <code>YAG</code> is
+        at <code>index</code> position 0 and <code>is cool!</code> at <code>index</code> position
+        1. Example also in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>title &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Returns string with the first letter of each word capitalized.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>upper &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Converts the string to uppercase.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>urlescape &quot;string&quot;</code>
+      </td>
+      <td style="text-align:left">Escapes the <em>string</em> so it can be safely placed inside a URL path
+        segment - e.g. &quot;Hello, YAGPDB!&quot; becomes &quot;Hello%2C%20YAGPDB%21&quot;</td>
     </tr>
   </tbody>
 </table>
