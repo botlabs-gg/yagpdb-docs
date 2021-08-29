@@ -1253,7 +1253,7 @@ Keys can be max 256 bytes long and has to be strings or numbers. Values can be a
 
 You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\).  
   
-There can be 10 database interactions per CC, out of which dbTop/BottomEntries, dbCount, dbGetPattern, and dbDelMultiple may be only run twice. \(50,10 for premium users\).  
+There can be 10 database interactions per CC, out of which dbTop/BottomEntries, dbCount, dbGetPattern, and dbDelMultiple may only be run twice. \(50,10 for premium users\).  
   
 [Example here](custom-command-examples.md#database-example).
 
