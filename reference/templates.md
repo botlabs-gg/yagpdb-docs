@@ -317,6 +317,11 @@ This is available and part of the dot when reaction trigger type is used.
         custom emoji).</td>
     </tr>
     <tr>
+      <td style="text-align:left">.Reaction.Emoji.APIName</td>
+      <td style="text-align:left">Returns type <em>string</em>, an correctly formatted API name for use in
+        the MessageReactions endpoints. For custom emojis it is <code>emojiname:ID</code>.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">.ReactionAdded</td>
       <td style="text-align:left">Returns a boolean type <em>bool </em>true/false indicating whether reaction
         was added or removed.</td>
