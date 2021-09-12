@@ -14,7 +14,7 @@ If functions or methods are denoted with an accent, tilde ~, they are not yet de
 {% hint style="warning" %}
 **Always put curly brackets around the data and "actions you perform" you want to formulate as a template's action-structure** like this: `{{.User.Username}}`
 
-This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure aka an action with methods and functions stated below.
+This `{{ ... }}` syntax of having two curly brackets aka braces around context is always necessary to form a template's control structure also known as an action with methods and functions stated below.
 {% endhint %}
 
 {% hint style="info" %}
