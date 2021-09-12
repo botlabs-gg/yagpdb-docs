@@ -199,12 +199,18 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 | Field | Description |
 | :--- | :--- |
+| .Channel.Bitrate | If voice channel, what bitrate is used. |
+| .Channel.GuidID | Channels' guildID. |
 | .Channel.ID | The ID of the channel. |
+| .Channel.IsPrivate | Is the channel private channel. |
+| .Channel.IsThread | Is the channel a thread. |
 | .Channel.Mention | Mentions the channel object. |
 | .Channel.Name | The name of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
 | .Channel.ParentID | The ID of the channel's parent \(category\), returns 0 if none. |
+| .Channel.Position | Channel position from top-down. |
 | .Channel.Topic | The topic of the channel. |
+| .Channel.Type | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types) |
 
 <table>
   <thead>
@@ -242,6 +248,16 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
         which can be either its ID, name or <code>nil</code> for triggering channel,
         and is of type <em>*dstate.ChannelState</em>. For example &gt; <code>{{(getChannel nil).Name}}</code> returns
         the name of the channel command was triggered in.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>getChannelOrThread channel</code>
+      </td>
+      <td style="text-align:left">Returns type<em>*templates.CtxChannel </em>corresponding to <a href="templates.md#channel">Channel</a> object.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>getThread channel</code>
+      </td>
+      <td style="text-align:left">Returns type <em>*templates.CtxChannel </em>corresponding to <a href="templates.md#channel">Channel</a> object.</td>
     </tr>
   </tbody>
 </table>
