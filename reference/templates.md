@@ -115,7 +115,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
 | .Guild.Channels | Outputs a slice of channels in the guild with type _\[\]dstate.ChannelState._ |
 | .Guild.DefaultMessageNotifications | Outputs the default message [notification setting](https://discordapp.com/developers/docs/resources/guild#guild-object-default-message-notification-level) for the guild. |
-| .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. |
+| .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. **DEPRECATED.** |
 | .Guild.Emojis | Outputs a list of emojis in the guild with type _discordgo.Emoji._ |
 | .Guild.ExplicitContentFilter | Outputs the explicit content [filter level](https://discordapp.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level) for the guild. |
 | .Guild.Features | The list of enabled guild features of type _\[\]string_. |
@@ -553,7 +553,7 @@ Type of variable: **{{ printf "%T" $x }}**
         <p></p>
         <p>Example: <code>sdict &quot;one&quot; 1 &quot;two&quot; 2 &quot;three&quot; (cslice 3 4) &quot;five&quot; 5.5</code> returns
           unordered <code>map[five:5.5 one:1 three:[3 4] two:2]</code>, having length
-          of four and index positions are its keys. Notice that thanks to type <em>interface{}</em> value, <em>templates.SDict</em> elements&apos;
+          of four and index positions are its keys. Notice that thanks to type <em>interface{}</em> value, <em>templates.SmDict</em> elements&apos;
           inherent type does not change.</p>
       </td>
     </tr>
