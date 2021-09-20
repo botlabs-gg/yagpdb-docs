@@ -1055,6 +1055,10 @@ With regular expression patterns - when using quotes you have to "double-escape"
         <p></p>
         <p>Example: <code>{{index .Args 1}}</code> returns first argument after trigger
           which is always at position 0.</p>
+        <p></p>
+        <p>More than one positional keys can be used, in pseudo-code:</p>
+        <p><code>index X 0 1</code> is equivalent to calling <code>index (index X 0) 1</code>
+        </p>
       </td>
     </tr>
     <tr>
