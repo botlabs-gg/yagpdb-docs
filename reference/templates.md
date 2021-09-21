@@ -199,11 +199,11 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 | Field | Description |
 | :--- | :--- |
-| .Channel.Bitrate | If voice channel, what bitrate is used. |
-| .Channel.GuidID | Channels' guildID. |
+| .Channel.Bitrate | Bitrate used; only set on voice channels. |
+| .Channel.GuildID | Guild ID of the channel. |
 | .Channel.ID | The ID of the channel. |
-| .Channel.IsPrivate | Is the channel private channel. |
-| .Channel.IsThread | Is the channel a thread. |
+| .Channel.IsPrivate | Whether the channel is private. |
+| .Channel.IsThread | Whether the channel is a thread. |
 | .Channel.Mention | Mentions the channel object. |
 | .Channel.Name | The name of the channel. |
 | .Channel.NSFW | Outputs whether this channel is NSFW or not. |
