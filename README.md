@@ -28,8 +28,6 @@ Patreon is the most consistent form of support that allows us to continuously ho
 There are several ways you can support YAGPDB better.
 
 * Supporting us through [Patreon](https://www.patreon.com/yagpdb)
-* Making one time donations through buying ad spaces or direct donations
-* Writing documentation. The bot needs documentation - More details below
 * Helping out other people on the support server. 
 * Writing code.
 
