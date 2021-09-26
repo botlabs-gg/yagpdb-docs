@@ -436,6 +436,29 @@ YAGPDB's templating "engine" has currently two user-defined, custom data types -
   
 Custom Types section discusses functions that initialize values carrying those _templates.Slice_ \(abridged to _cslice_\), _templates.SDict_ \(abridged to _sdict_\) types and their methods. Both types handle type _interface{}_ element. It's called an empty interface which allows a value to be of any type. So any argument of any type given is handled. \(In "custom commands"-wise mainly primitive data types, but _slices_ as well.\)
 
+{% hint style="warning" %}
+**Reference type-like behaviour:** Slices and dictionaries in CC exhibit reference-type like behavior, which may be undesirable in certain situations. That is, if you have a variable `$x` that holds a slice/dictionary, writing `$y := $x` and then mutating `$y` via `Append`/`Set`/`Del`/etc. will modify `$x` as well. For example:
+
+```text
+{{ $x := sdict "k" "v" }}
+{{ $y := $x }}
+{{ $y.Set "k" "v2" }} {{/* modify $y */}}
+{{ $x }} {{/* k has value v2 on $x as well - that is, modifying $y changed $x too. */}}
+```
+
+If this behaviour is undesirable, copy the slice/dictionary via `cslice.AppendSlice` or a `range` + `Set` call .
+
+```text
+{{ $x := sdict "k" "v" }}
+{{ $y := sdict }}
+{{ range $k, $v := $x }} {{- $y.Set $k $v -}} {{ end }}
+{{ $y.Set "k" "v2" }}
+{{ $x }} {{/* $x is unmodified - k still has value v */}}
+```
+
+Note that this performs a shallow copy, not a deep copy - if you want the latter you will need to perform the aforementioned operation recursively.
+{% endhint %}
+
 ### templates.Slice
 
 `templates.Slice` - This is a custom composite data type defined using an underlying data type _\[\]interface{}_ . It is of kind _slice_ \(similar to _array_\) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
