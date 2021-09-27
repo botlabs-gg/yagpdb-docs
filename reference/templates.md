@@ -322,6 +322,12 @@ This is available and part of the dot when reaction trigger type is used.
         the MessageReactions endpoints. For custom emojis it is <code>emojiname:ID</code>.</td>
     </tr>
     <tr>
+      <td style="text-align:left">.Reaction.Emoji.MessageFormat</td>
+      <td style="text-align:left">Returns a correctly formatted emoji for use in Message content and embeds.
+        It&apos;s equal to <code>&lt;:.Reaction.Emoji.APIName&gt;</code> and <code>&lt;a:.Reaction.Emoji.APIName&gt;</code> for
+        animated emojis.</td>
+    </tr>
+    <tr>
       <td style="text-align:left">.ReactionAdded</td>
       <td style="text-align:left">Returns a boolean type <em>bool </em>true/false indicating whether reaction
         was added or removed.</td>
