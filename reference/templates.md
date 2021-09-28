@@ -345,7 +345,8 @@ This is available and part of the dot when reaction trigger type is used.
   </tbody>
 </table>
 
-[Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).
+[Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).  
+[Emoji object in Discord documentation.](https://discord.com/developers/docs/resources/emoji)
 
 ## Time
 
