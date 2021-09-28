@@ -649,8 +649,8 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
       </td>
       <td style="text-align:left">Joins several strings into one, separated by the first argument<code>&quot;separator&quot;</code>,
         example:<code>{{joinStr &quot;&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot;}}</code> returns <code>123</code>.
-        Also if functions have <em>string</em> or easily convertible return, they
-        can be used inside <code>joinStr</code> e.g. <code>{{joinStr &quot;&quot; &quot;Let&apos;s calculate &quot; (add (mult 13 3) 1 2) &quot;, was returned at &quot; (currentTime.Format &quot;15:04&quot;) &quot;.&quot;}}</code>
+        Also if functions have <em>string, []string</em> or easily convertible return,
+        they can be used inside <code>joinStr</code> e.g. <code>{{joinStr &quot;&quot; &quot;Let&apos;s calculate &quot; (add (mult 13 3) 1 2) &quot;, was returned at &quot; (currentTime.Format &quot;15:04&quot;) &quot;.&quot;}}</code>
       </td>
     </tr>
     <tr>
