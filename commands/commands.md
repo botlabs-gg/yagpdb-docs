@@ -10,13 +10,13 @@ The prefix is by default `-` The first thing you see when you open the command p
 
 ## Command Override
 
-![To create a command override look for the box that says New command override](../.gitbook/assets/commandoverride.PNG)
+![To create a command override look for the box that says New command override](../.gitbook/assets/CommandOverride.PNG)
 
-**Apply to the following commands:** Once you are in the box, you can select which command you want to override to apply to.  __
+**Apply to the following commands:** Once you are in the box, you can select which command you want to override to apply to. _ _
 
-**Specific commands enabled in this command override:** You can then toggle whether or not to enable or disable the command with this override. \(Enable this if you have the command disabled in the global settings\)
+**Specific commands enabled in this command override:** You can then toggle whether or not to enable or disable the command with this override. (Enable this if you have the command disabled in the global settings)
 
-**Auto delete trigger/response:** Toggle to enable/disable the auto delete for the trigger and response respectively and assign it a time to wait until deleting \(1-60 Seconds\).
+**Auto delete trigger/response:** Toggle to enable/disable the auto delete for the trigger and response respectively and assign it a time to wait until deleting (1-60 Seconds).
 
 **Require one of these roles:** Choose to require someone to have a role in order to use the commands.
 
@@ -24,9 +24,9 @@ The prefix is by default `-` The first thing you see when you open the command p
 
 ## Channel Override
 
-![Look to the top right on your screen for a box that says New channel override.](../.gitbook/assets/channeloverride.PNG)
+![Look to the top right on your screen for a box that says New channel override.](../.gitbook/assets/ChannelOverride.PNG)
 
-**Channels this override affects:** Select which channels you want the override to apply to. 
+**Channels this override affects: **Select which channels you want the override to apply to.&#x20;
 
 **Include current and future channels from the following categories:** By picking a category, you apply this override to all the channels in the category which includes future channels .
 
@@ -36,7 +36,6 @@ The prefix is by default `-` The first thing you see when you open the command p
 
 **All commands enabled**: Enable all the commands for this override, you can create command override for the channel overrides below if you wish to customize further.
 
-**Auto delete trigger/response:** Toggle to enable/disable the auto delete for the trigger and response respectively and assign it a time to wait until deleting \(1-60 Seconds\).
+**Auto delete trigger/response:** Toggle to enable/disable the auto delete for the trigger and response respectively and assign it a time to wait until deleting (1-60 Seconds).
 
-**New command override:** Create a command override that will apply to all the channels in the channel override. For help on creating command overrides, refer to [Command override.](commands.md#command-override) 
-
+**New command override: **Create a command override that will apply to all the channels in the channel override. For help on creating command overrides, refer to [Command override.](commands.md#command-override)&#x20;

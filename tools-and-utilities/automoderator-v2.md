@@ -9,16 +9,16 @@ Automod v2 is currently in the beta phase, please report bugs about it on GitHub
 
 Generally speaking most people want to have "ignore bots" as a ruleset condition, that way bots won't trigger any rules.
 
-A simple way to have it is to keep all the basic stuff \(invites, spam mentions, safebrowsing etc\) in a single rule, then have a single violation counter and a rule for each tier of punishment \(warn, kick, mute, ban\)
+A simple way to have it is to keep all the basic stuff (invites, spam mentions, safebrowsing etc) in a single rule, then have a single violation counter and a rule for each tier of punishment (warn, kick, mute, ban)
 {% endhint %}
 
 ## Introduction
 
-![](../.gitbook/assets/automod2.0_2.PNG)
+![](../.gitbook/assets/AutoMod2.0\_2.PNG)
 
 Automod V2 is a completely new auto-moderator system made from the ground up. When starting out you will need to create a new ruleset.
 
-If you'd rather watch a video, we made a short basic intro on [YouTube](%20https://www.youtube.com/watch?v=5dfjYJShzyw​).
+If you'd rather watch a video, we made a short basic intro on [YouTube](https://www.youtube.com/watch?v=5dfjYJShzyw%E2%80%8B).
 
 #### Rulesets
 
@@ -36,24 +36,24 @@ Every time a rule is triggered, a log will be posted with the Date, User, Rule, 
 
 In each rule sets you have several options
 
-* **Name:** You can edit the name of your rule
-* **Enable rule set:** You can toggle the rule set on and off 
-* **Ruleset scoped condition:** Assigned conditions that will apply to every rule\` in the rule set. 
-* **Create a new rule:** Create a new rule in the ruleset
+* **Name: **You can edit the name of your rule
+* **Enable rule set:** You can toggle the rule set on and off&#x20;
+* **Ruleset scoped condition:** Assigned conditions that will apply to every rule\` in the rule set.&#x20;
+* **Create a new rule: **Create a new rule in the ruleset
 
-## Rule Setting 
+## Rule Setting&#x20;
 
-![Each rule will have a combination of Trigger, Condition, and Effects. ](../.gitbook/assets/automod2.0.PNG)
+![Each rule will have a combination of Trigger, Condition, and Effects. ](../.gitbook/assets/AutoMod2.0.PNG)
 
-**Triggers:** A variety of different parameters that can configured to trigger the rule. Multiple parameters can be set but only one needs to activate to trigger the rule.   
-**Conditions**: Restrictions or parameters set to limit who can trigger the rule. Multiple conditions can be set and all must be valid in order to allow the trigger.  
+**Triggers: **A variety of different parameters that can configured to trigger the rule. Multiple parameters can be set but only one needs to activate to trigger the rule. \
+**Conditions**: Restrictions or parameters set to limit who can trigger the rule. Multiple conditions can be set and all must be valid in order to allow the trigger.\
 **Effects**: The effect that the rule will cause. Multiple effects can be added and all of them will be activated whenever the trigger is activated
 
-## Violations 
+## Violations&#x20;
 
-When you create a violation, you will need to assign it a name. Each violation name will act like a key which has its own separate count. 
+When you create a violation, you will need to assign it a name. Each violation name will act like a key which has its own separate count.&#x20;
 
-**Example:** If you have two violation names`links` and `badName`, `+violation` with the name `links` will increment the `links` violation counter for that user while `badName` will remains the same.
+**Example: **If you have two violation names`links `and `badName`, `+violation` with the name `links` will increment the `links` violation counter for that user while `badName` will remains the same.
 
 Then you can set up a rule with the  `x violations in y minutes` trigger so that when someone increments the counter `x times within y minutes`, the rule will trigger. Using this you can set up tiered punishments where repeated violations causes stricter punishments.
 
@@ -64,14 +64,14 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### **All caps**
 
 * Triggers when a message contains more than x% of just capitalized letters.
-  * **Min number of all caps:** Min number of caps needed to trigger
-  * **Percentage of all caps:** Percent of the message needed to be made up of caps. 
-* Both condition needs to be met to cause the trigger. 
+  * **Min number of all caps: **Min number of caps needed to trigger
+  * **Percentage of all caps: **Percent of the message needed to be made up of caps.&#x20;
+* Both condition needs to be met to cause the trigger.&#x20;
 
 #### **Message mentions**
 
-* Triggers when a message includes more than x unique mentions 
-  * **Threshold:** The number of unique mentions needed to trigger the rule.
+* Triggers when a message includes more than x unique mentions&#x20;
+  * **Threshold: **The number of unique mentions needed to trigger the rule.
 
 #### **Any links**
 
@@ -80,15 +80,15 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### **X violation in Y minutes**
 
 * Triggers when a user has more than x violations within y minutes.
-  * **Violation name:** The violation key that we need to check 
+  * **Violation name: **The violation key that we need to check&#x20;
   * **Number of violation:** The "x" number of violation needed to trigger the rule
-  * **Within \(minutes\):** The "y" number of minutes that the violation needs to occur within. 
-  * **Ignore if a higher violation trigger of this name was activated:**  Will be ignore if another violation trigger was activated that was higher up in punishment. Such as a ban violation if this was a kick violation. 
+  * **Within (minutes): **The "y" number of minutes that the violation needs to occur within.&#x20;
+  * **Ignore if a higher violation trigger of this name was activated:  **Will be ignore if another violation trigger was activated that was higher up in punishment. Such as a ban violation if this was a kick violation.&#x20;
 
 #### Word blacklist
 
 * Triggers on messages containing words in the specified list
-  * **List:** The list you want the rule to check against
+  * **List: **The list you want the rule to check against
 
 #### Word whitelist
 
@@ -116,27 +116,27 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### **X channel message in Y seconds**
 
 * Triggers when a channel has more than x messages in y seconds.
-  * **Messages:** Number of "X" messages needed to trigger the rule
-  * **Within \(seconds\):** The "Y" number of seconds that the word needs to occur within.
+  * **Messages: **Number of "X" messages needed to trigger the rule
+  * **Within (seconds): **The "Y" number of seconds that the word needs to occur within.
 
-#### X user **message** in Y seconds
+#### X user **message **in Y seconds
 
 * Triggers when a user has more than x messages in y seconds in a single channel.
   * **Messages:** Number of "X" messages needed to trigger the rule
-  * **Within \(seconds\):** The "Y" number of seconds that the word needs to occur within
+  * **Within (seconds):** The "Y" number of seconds that the word needs to occur within
 
 #### User: X mentions within Y seconds
 
 * Triggers when a user has sent more than x unique mentions in y seconds in a single channel
   * **Mentions:** Number of "X" mentions needed to trigger the rule
-  * **Within \(seconds\):** The "Y" number of seconds that the word needs to occur within
-  *  **Count multiple mentions of the same user**: Will count a mention to a user even if I it was previously mention before within the Y seconds.
+  * **Within (seconds):** The "Y" number of seconds that the word needs to occur within
+  * &#x20;**Count multiple mentions of the same user**: Will count a mention to a user even if I it was previously mention before within the Y seconds.
 
 #### Channel: X mentions within Y seconds
 
 * Triggers when a channel has more than x unique mentions in y seconds
   * **Mentions:** Number of "X" mentions needed to trigger the rule
-  * **Within \(seconds\):** The "Y" number of seconds that the word needs to occur within
+  * **Within (seconds):** The "Y" number of seconds that the word needs to occur within
 
 #### Message matches Regex
 
@@ -165,18 +165,18 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 #### Nickname word blacklist
 
-* Triggers when a member has a nickname containing words in the specified list \(This is currently very easy to circumvent at the moment, and will likely be improved in the future\)
+* Triggers when a member has a nickname containing words in the specified list (This is currently very easy to circumvent at the moment, and will likely be improved in the future)
   * **List:** The list you want the rule to check against
 
 #### **Nickname word whitelist**
 
-* Triggers when a member has a nickname not containing words in the specified list \(This is currently very easy to circumvent at the moment, and will likely be improved in the future\)
+* Triggers when a member has a nickname not containing words in the specified list (This is currently very easy to circumvent at the moment, and will likely be improved in the future)
   * **List:** The list you want the rule to check against
 
 #### Join username matches regex
 
 * Triggers when a member's username matches the provided regex
-  * **Regex:** The regex to trigger the rule
+  * **Regex: **The regex to trigger the rule
 
 #### Join username not matching regex
 
@@ -185,44 +185,44 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 #### Join username word blacklist
 
-* Triggers when a member has a username containing words in the specified list \(This is currently very easy to circumvent at the moment, and will likely be improved in the future\)
+* Triggers when a member has a username containing words in the specified list (This is currently very easy to circumvent at the moment, and will likely be improved in the future)
   * **List:** The list you want the rule to check against
 
 #### Join username word whitelist
 
-* Triggers when a member has a nickname not containing words in the specified list \(This is currently very easy to circumvent at the moment, and will likely be improved in the future\)
+* Triggers when a member has a nickname not containing words in the specified list (This is currently very easy to circumvent at the moment, and will likely be improved in the future)
   * **List:** The list you want the rule to check against
 
 #### Join username invite
 
-*  Triggers when a member joins with a username that contains a server invite
+* &#x20;Triggers when a member joins with a username that contains a server invite
 
 ### Condition Types
 
 #### **Ignore roles**
 
-* Ignore users with at ****least one of these roles from this rule
-  * **Role:** The list of roles to ignore. 
+* Ignore users with at** **least one of these roles from this rule
+  * **Role: **The list of roles to ignore.&#x20;
 
 #### **Require roles**
 
-* Require at ****least one of these roles on the user to trigger the rule
-  * **Role:** The list of roles to ignore. 
+* Require at** **least one of these roles on the user to trigger the rule
+  * **Role: **The list of roles to ignore.&#x20;
 
 #### **Ignore channels**
 
 * Ignore the following channels
-  * **Channel:** The list of channels to ignore. 
+  * **Channel: **The list of channels to ignore.&#x20;
 
 #### **Whitelist channels**
 
 * Only check the following channel
-  * **Channel:** The list of channels ****to check. 
+  * **Channel: **The list of channels** **to check.&#x20;
 
 #### **Account age above**
 
 * Ignore users whose accounts age is less than the specified threshold
-  * **Age in minutes:** The age specified to check upon
+  * **Age in minutes: **The age specified to check upon
 
 #### **Account age below**
 
@@ -247,15 +247,15 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 * Only trigger on bots
 
-#### **Ignore categories** 
+#### **Ignore categories **
 
 * Ignore channels in the following categories
-  * **Categories:** The list of categories to check
+  * **Categories: **The list of categories to check
 
-#### **Active in categories** 
+#### **Active in categories **
 
 * Only check channels in the following categories
-  * **Categories:** The list of categories to check
+  * **Categories: **The list of categories to check
 
 ### Effect Types
 
@@ -267,8 +267,8 @@ Effects with ability to add custom messages are capped to 150 characters.
 
 #### **+Violation**
 
-* Adds a violation ****\(use with violation trigger\)
-  * **Name:** The violation key you are adding a violation too.
+* Adds a violation** **(use with violation trigger)
+  * **Name: **The violation key you are adding a violation too.
 
 #### **Kick user**
 
@@ -281,7 +281,7 @@ Effects with ability to add custom messages are capped to 150 characters.
 #### **Mute user**
 
 * Mutes the user
-  * **Duration \(Minute\):** Duration to mute the user for.
+  * **Duration (Minute): **Duration to mute the user for.
 
 #### **Warn user**
 
@@ -289,32 +289,36 @@ Effects with ability to add custom messages are capped to 150 characters.
 
 #### **Set Nickname**
 
-* Sets the nickname of the user
+*   Sets the nickname of the user
 
-  * **New Nickname \(empty for removal\):** Set a new nickname for the user, if you leave it empty, it will reset the nickname.
+    * **New Nickname (empty for removal):** Set a new nickname for the user, if you leave it empty, it will reset the nickname.
+
+
 
 ## Limitations
 
 There are some limitations you need to be aware of when using Automoderator V2, which are listed below.
 
 {% hint style="info" %}
-**Note:** 'Normal' here means a normal server without YAGPDB Premium, 'Premium' means one with YAGPDB Premium.
+**Note: **'Normal' here means a normal server without YAGPDB Premium, 'Premium' means one with YAGPDB Premium.
 {% endhint %}
 
-* **Max message-based triggers:** 20 for normal, 100 for premium.
-* **Max violation triggers:** 20 for normal, 100 for premium.
-* **Max total rules:** 25 for normal, 150 for premium.
-* **Max lists:** 5 for normal, 25 for premium.
-* **Max rule parts:** This means the maximum amount of triggers, conditions, and effect in total you may have per rule. These will be truncated if they go over the limit.  __20 for both normal and premium.
-* **Max rulesets:** 10 for normal, 25 for premium.
+* **Max message-based triggers: **20 for normal, 100 for premium.
+* **Max violation triggers: **20 for normal, 100 for premium.
+* **Max total rules: **25 for normal, 150 for premium.
+* **Max lists: **5 for normal, 25 for premium.
+* **Max rule parts: **This means the maximum amount of triggers, conditions, and effect in total you may have per rule. These will be truncated if they go over the limit.\
+  __\
+  __20 for both normal and premium.
+* **Max rulesets: **10 for normal, 25 for premium.
 
 ## Automoderator 1.0 to 2.0
 
-### Slowmode 
+### Slowmode&#x20;
 
 {% tabs %}
 {% tab title="Old version" %}
-![](../.gitbook/assets/slowmode1.0.PNG)
+![](../.gitbook/assets/Slowmode1.0.PNG)
 {% endtab %}
 
 {% tab title="New version" %}
@@ -326,11 +330,11 @@ There are some limitations you need to be aware of when using Automoderator V2, 
 
 {% tabs %}
 {% tab title="Old version" %}
-![](../.gitbook/assets/mass-mention1.0.PNG)
+![](<../.gitbook/assets/Mass mention1.0.PNG>)
 {% endtab %}
 
 {% tab title="New version" %}
-![](../.gitbook/assets/mass-mention.PNG)
+![](<../.gitbook/assets/Mass mention.PNG>)
 {% endtab %}
 {% endtabs %}
 
@@ -340,11 +344,11 @@ There are some limitations you need to be aware of when using Automoderator V2, 
 {% tab title="Old version" %}
 
 
-![](../.gitbook/assets/server-invite1.0.PNG)
+![](<../.gitbook/assets/Server Invite1.0.PNG>)
 {% endtab %}
 
 {% tab title="New version" %}
-![](../.gitbook/assets/server-invite.PNG)
+![](<../.gitbook/assets/Server Invite.PNG>)
 {% endtab %}
 {% endtabs %}
 
@@ -352,11 +356,11 @@ There are some limitations you need to be aware of when using Automoderator V2, 
 
 {% tabs %}
 {% tab title="Old version" %}
-![](../.gitbook/assets/links1.0.PNG)
+![](../.gitbook/assets/Links1.0.PNG)
 {% endtab %}
 
 {% tab title="New version" %}
-![](../.gitbook/assets/links.PNG)
+![](../.gitbook/assets/Links.PNG)
 {% endtab %}
 {% endtabs %}
 
@@ -364,11 +368,11 @@ There are some limitations you need to be aware of when using Automoderator V2, 
 
 {% tabs %}
 {% tab title="Old version" %}
-![](../.gitbook/assets/banned-words1.0.PNG)
+![](<../.gitbook/assets/Banned Words1.0.PNG>)
 {% endtab %}
 
 {% tab title="New version" %}
-![](../.gitbook/assets/image%20%2818%29.png)
+![](<../.gitbook/assets/image (18).png>)
 {% endtab %}
 {% endtabs %}
 
@@ -376,11 +380,10 @@ There are some limitations you need to be aware of when using Automoderator V2, 
 
 {% tabs %}
 {% tab title="Old version" %}
-![](../.gitbook/assets/banned-websites1.0.PNG)
+![](<../.gitbook/assets/Banned Websites1.0.PNG>)
 {% endtab %}
 
 {% tab title="New version" %}
-![](../.gitbook/assets/banned-websites.PNG)
+![](<../.gitbook/assets/Banned Websites.PNG>)
 {% endtab %}
 {% endtabs %}
-

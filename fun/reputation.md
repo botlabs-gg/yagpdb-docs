@@ -2,9 +2,9 @@
 
 ## Setup
 
-![](../.gitbook/assets/rep.PNG)
+![](../.gitbook/assets/Rep.PNG)
 
-Reputation is not enabled by default. To enable it, please go to the [control panel](https://yagpdb.xyz/manage) and check _Reputation enabled._
+Reputation is not enabled by default. To enable it, please go to the [control panel](https://yagpdb.xyz/manage) and check_ Reputation enabled._
 
 #### Enable giving rep when someone says "thanks @user"?
 
@@ -18,7 +18,7 @@ This will be displayed in the `-rep` command. By default, it is _Rep_.
 
 This is the cooldown for the `-giverep` and `-takerep` commands. It does not affect the `-setrep` command. No one can bypass this cooldown, including admins.
 
-####  Maximum amount of rep that can be given/taken away in one command
+#### &#x20;Maximum amount of rep that can be given/taken away in one command
 
 This affects the `-giverep` and `-takrep` commands which users can choose to specify the number of points to be given/taken away.
 
@@ -49,4 +49,3 @@ Besides using the command `-replog` , you can also check the logs from the contr
 ## Reset all user's reputation
 
 This command is irreversible, and will reset everyone's reputation point to 0.
-

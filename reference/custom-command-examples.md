@@ -10,7 +10,7 @@ This isn't the actual page about custom commands. A brief overview about custom 
 
 ### Controlled randomizer example
 
-YAGPDB has a built-in random response system for custom commands, but sometimes you may want to control the chances for certain responses to occur. You can do this by creating a singular response and creating a variable with randInt. Then use an if else if statement like this to print out your desired output. 
+YAGPDB has a built-in random response system for custom commands, but sometimes you may want to control the chances for certain responses to occur. You can do this by creating a singular response and creating a variable with randInt. Then use an if else if statement like this to print out your desired output.&#x20;
 
 ```go
 {{$var := randInt 100}}
@@ -26,7 +26,7 @@ This has a 65% chance of being triggered
 
 ### Silent execution of commands or storage in a variable
 
-This command is to be placed in the welcome message. It filters out people with invites in their name. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server. 
+This command is to be placed in the welcome message. It filters out people with invites in their name. Make sure that the checkbox **Censor server invites in usernames?** and the ban command are enabled on your server.&#x20;
 
 You might not want the response for the executed command to show. You can suppress the response of a command like the following:
 
@@ -62,9 +62,9 @@ Trigger type: `Command` Trigger: `range`
 {{- end }}
 ```
 
-`$k` is the index for arrays / cslices \(starting at 0\) or the key for maps and sdicts, while `$v` is the current word in your input that you are on. 
+`$k` is the index for arrays / cslices (starting at 0) or the key for maps and sdicts, while `$v` is the current word in your input that you are on.&#x20;
 
-Range will work on any kind of slice/array. for example. If we wanted to look for all the entries in our database we can use range and index through them all in the following. 
+Range will work on any kind of slice/array. for example. If we wanted to look for all the entries in our database we can use range and index through them all in the following.&#x20;
 
 ```go
 {{$lb := dbTopEntries "%" 100 0}}
@@ -93,16 +93,16 @@ hello - {{ $dict.hello }}
 
 The `parseArgs` template can check if specific arguments are given. If not, it will return a custom error message. It also checks if specific args are of a specific type and simplifies the argument management. Available types for `carg` are:
 
-* `int` \(whole number\)
-* `string` \(text\)
-* `user` \(user mentions as type user\)
-* `userid` \(mentions or the user's ID, as integer\)
-* `channel` \(channel mention or ID, as type channel\)
-* `role` \(role name or ID, as type _\*discordgo.Role_\)
-* `duration` \(duration as integer or string with optional time modifier - s,m,h, etc...\)
-* `member` \(mentions or the user's ID, as type member\)
+* `int` (whole number)
+* `string` (text)
+* `user` (user mentions as type user)
+* `userid` (mentions or the user's ID, as integer)
+* `channel` (channel mention or ID, as type channel)
+* `role `(role name or ID, as type _\*discordgo.Role_)
+* `duration` (duration as integer or string with optional time modifier - s,m,h, etc...)
+* `member` (mentions or the user's ID, as type member)
 
-Trigger type: `Command` Trigger: `send` 
+Trigger type: `Command` Trigger: `send`&#x20;
 
 ```go
 {{$args := parseArgs 2 "Syntax is <channel> <text>"
@@ -112,7 +112,7 @@ Trigger type: `Command` Trigger: `send`
 {{sendMessage ($args.Get 0).ID ($args.Get 1)}}
 ```
 
-### Countdown example \(Exec CC\)
+### Countdown example (Exec CC)
 
 This example consists of two custom commands, and after copy/paste `REPLACE-WITH-...` arguments need to be replaced by actual custom command ID's in your system. This custom command is very complex, uses very many advanced functions, all it does, constructs a 10 second countdown timer command-system for given starting time.
 
@@ -152,7 +152,7 @@ Second part of the custom commands, here we see, how `data`-part of exeCC was ma
 {{end}}
 ```
 
-![Jonas using YAGPDB testing bot here, same execCC custom commands.](../.gitbook/assets/unknown.png)
+![Jonas using YAGPDB testing bot here, same execCC custom commands.](<../.gitbook/assets/unknown (1).png>)
 
 ### Database example
 
@@ -195,7 +195,7 @@ You don't have any notes :(
 {{end}}
 ```
 
-### Cooldown Example 
+### Cooldown Example&#x20;
 
 With YAGPDB's database system, you can now add cooldowns to you custom commands. You can either make them global cooldowns or a per user cooldown.
 
@@ -227,19 +227,19 @@ With YAGPDB's database system, you can now add cooldowns to you custom commands.
 {{end}}
 ```
 
-### 
+###
 
 ## User submitted custom commands
 
 ### Counter Command
 
-> By **Timcampy\#5636**
+> By **Timcampy#5636**
 
-With YAGPDB's database system, I made a command to have users count from 0 and keep counting to the next number. Relatively simple command that involves database and type conversion. 
+With YAGPDB's database system, I made a command to have users count from 0 and keep counting to the next number. Relatively simple command that involves database and type conversion.&#x20;
 
 Trigger type: `Regex` Trigger: `\A`
 
-`BE SURE TO RESTRICT THE COMMAND TO A SINGLE CHANNEL` 
+`BE SURE TO RESTRICT THE COMMAND TO A SINGLE CHANNEL `
 
 ```go
 {{/* If you are not doing (no twice msg in a row)  or (role assignment for latest user)  you can remove counter_user and by extension everything to do with $lastUser*/}}
@@ -298,7 +298,7 @@ Trigger type: `Regex` Trigger: `\A`
 
 ### GiveRole command for specific roles
 
-> By **GryTrean\#8957**
+> By **GryTrean#8957**
 
 This command will allow you to give a role to someone, making sure that the role given is in a list of allowed roles. We use the `{{giveRoleName <user> <role>}}` template which allows us to give a user a role by name. We also make sure that the command has the correct number of arguments and if not, we give a response with the correct usage of the command. To add a new exception to the roles that can be given, you simply add another role in line 2. You could also make the command take away roles from someone instead of giving them by simply using the `{{takeRoleName}}` template instead of `{{giveRoleName}}`.
 
@@ -324,10 +324,10 @@ Trigger type: `Command` Trigger: `giveRoleName`
 
 ### Broadcast command
 
-> By **GryTrean\#8957**   
-> Updated by: **Timcampy\#5636**
+> By **GryTrean#8957 **\
+> Updated by: **Timcampy#5636**
 
-This command lets the bot send a message to another channel. It uses embeds so you can see `sdict`\(dictionary but with only string keys\), `sendMessage`, and `cembed`in action.
+This command lets the bot send a message to another channel. It uses embeds so you can see `sdict`(dictionary but with only string keys), `sendMessage`, and `cembed`in action.
 
 Trigger type: `Command` Trigger: `bc`
 
@@ -357,9 +357,9 @@ Trigger type: `Command` Trigger: `bc`
 
 ### Avatar command
 
-> By:  **L-z\#7749**
+> By:  **L-z#7749**
 
-This command does a good job at using a little bit of everything. Which include but is not limited to, `conditional statement`, `assigning values to variable`, `getting command arguments`, `using template code`, and `creating embeds`. If you are able to understand everything in this command, you are at a very good place in being able to make advanced custom commands. 
+This command does a good job at using a little bit of everything. Which include but is not limited to, `conditional statement`, `assigning values to variable`, `getting command arguments`, `using template code`, and `creating embeds`. If you are able to understand everything in this command, you are at a very good place in being able to make advanced custom commands.&#x20;
 
 Trigger type: `Command` Trigger: `avatar`
 
@@ -415,7 +415,7 @@ Trigger type: `Command` Trigger: `avatar`
 
 ### Suggestion command
 
-> By: **Michdi\#1602**
+> By: **Michdi#1602**
 
 This command is used to replace suggestion bots. You can adapt it to your needs.
 
@@ -443,8 +443,8 @@ Correct usage: `-suggest <suggestion>`
 
 ### Big emote command
 
-> By: **CHamburr\#2591**  
-> Updated by: **Joe\_\#2447**
+> By: **CHamburr#2591**\
+> ****Updated by: **Joe\_#2447**
 
 This command uses the `reFindAllSubmatches` template as well as the `printf` template, and will enlarge custom emotes, whether still or animated. This will also work for emotes that are from the servers YAGPDB is not in, as it gets the emote file directly from Discord's database.
 
@@ -473,6 +473,4 @@ Trigger type: `Command` Trigger: `bigemote`
 {% hint style="info" %}
 You want your custom command here? Post it in the [Support Server ](https://discord.gg/GcpyYh3)and we'll review it.
 {% endhint %}
-
-
 

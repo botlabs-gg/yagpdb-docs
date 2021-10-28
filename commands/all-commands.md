@@ -4,9 +4,9 @@
 
 `<required arg>` `[optional arg]`
 
-Text arguments containing multiple words needs be to put in quotes \("arg here"\) or code ticks \(`arg here`\) if it's not the last argument and there's more than 1 text argument.
+Text arguments containing multiple words needs be to put in quotes ("arg here") or backticks (\`arg here\`) if it's not the last argument and there's more than 1 text argument.
 
-For example with the poll command if you want the question to have multiple words: `-poll "whats your favorite color" red blue green2`
+For example with the poll command if you want the question to have multiple words: `-poll "what's your favourite colour" red blue green2`
 
 Most Debug & Maintenance commands, or commands without any meaningful description are meant for bot owner or serverAdmin only!
 
@@ -20,7 +20,7 @@ Shows help about all or one specific command
 
 **Usage:**
 
-```text
+```
 Help [command:Text]
 ```
 
@@ -30,7 +30,7 @@ Responds with bot information
 
 **Usage:**
 
-```text
+```
 Info
 ```
 
@@ -40,7 +40,7 @@ Responds with bot invite link
 
 **Usage:**
 
-```text
+```
 Invite
 ```
 
@@ -54,7 +54,7 @@ Calculator 2+2=5
 
 **Usage:**
 
-```text
+```
 Calc <Expression:Text>
 ```
 
@@ -64,7 +64,7 @@ Lists reminders in channel, only users with 'manage server' permissions can use 
 
 **Usage:**
 
-```text
+```
 CReminders
 ```
 
@@ -76,7 +76,7 @@ Shows current time in different timezones. [Available timezones](https://pastebi
 
 **Usage:**
 
-```text
+```
 CurrentTime <Offset:Whole number>
 CurrentTime <Zone:Text>
 CurrentTime
@@ -90,13 +90,13 @@ Shows a custom command specified by id or trigger, or lists them all
 
 **Usage:**
 
-```text
+```
 CustomCommands <ID:Whole number>
 CustomCommands <Trigger:Text>
 CustomCommands
 ```
 
-```text
+```
 [-file Sends responses in a file:Switch]
 [-color Use syntax highlighting (GO):Switch]
 ```
@@ -109,11 +109,11 @@ Deletes a reminder. You can delete reminders from other users provided you are r
 
 **Usage:**
 
-```text
+```
 DelReminder <ID:Whole number>
 ```
 
-```text
+```
 [-a All:Switch]
 ```
 
@@ -123,21 +123,21 @@ DelReminder <ID:Whole number>
 
 **Usage:**
 
-```text
+```
 fixscheduledccs
 ```
 
 ### ListRoles
 
-List roles, their id's, color hex code, and 'mention everyone' perms \(useful if you wanna double check to make sure you didn't give anyone mention everyone perms that shouldn't have it\)
+List roles, their id's, color hex code, and 'mention everyone' perms (useful if you wanna double check to make sure you didn't give anyone mention everyone perms that shouldn't have it)
 
 **Usage:**
 
-```text
+```
 ListRoles
 ```
 
-```text
+```
 [-nomanaged Don't list managed/bot roles:Switch]
 ```
 
@@ -145,11 +145,11 @@ ListRoles
 
 **Aliases:** log
 
-Creates a log of the last messages in the current channel. This includes deleted messages within an hour \(or 12 hours for premium servers\)
+Creates a log of the last messages in the current channel. This includes deleted messages within an hour (or 12 hours for premium servers)
 
 **Usage:**
 
-```text
+```
 Logs [Count:Whole number]
 ```
 
@@ -161,7 +161,7 @@ Shows past nicknames of a user. Only shows up to the last 25 nicknames.
 
 **Usage:**
 
-```text
+```
 Nicknames [User:User]
 ```
 
@@ -171,7 +171,7 @@ Shows the latency from the bot to the discord servers. Note that high latencies 
 
 **Usage:**
 
-```text
+```
 Ping
 ```
 
@@ -181,7 +181,7 @@ Create very simple reaction poll. Example: `poll "favorite color?" blue red pink
 
 **Usage:**
 
-```text
+```
 Poll <Topic:Text - Description of the poll> <Option1:Text> <Option2:Text> [Option3:Text] [Option4:Text] [Option5:Text] [Option6:Text] [Option7:Text] [Option8:Text] [Option9:Text] [Option10:Text]
 ```
 
@@ -191,7 +191,7 @@ Shows command prefix of the current server, or the specified server
 
 **Usage:**
 
-```text
+```
 Prefix [Server ID:Whole number]
 ```
 
@@ -201,7 +201,7 @@ Lists your active reminders
 
 **Usage:**
 
-```text
+```
 Reminders
 ```
 
@@ -213,7 +213,7 @@ Schedules a reminder, example: 'remindme 1h30min are you alive still?'
 
 **Usage:**
 
-```text
+```
 Remindme <Time:Duration> <Message:Text>
 ```
 
@@ -223,7 +223,7 @@ Reset your past usernames/nicknames.
 
 **Usage:**
 
-```text
+```
 ResetPastNames
 ```
 
@@ -233,7 +233,7 @@ Toggle a role on yourself or list all available roles, they have to be set up in
 
 **Usage:**
 
-```text
+```
 Role [Role:Text]
 ```
 
@@ -245,22 +245,22 @@ Sets your timezone, used for various purposes such as auto conversion. Give it y
 
 **Usage:**
 
-```text
+```
 Settimezone [Timezone:Text]
 ```
 
-```text
+```
 [-u Display current:Switch]
 [-d Delete TZ record:Switch]
 ```
 
-### Stats 
+### Stats&#x20;
 
-Shows server stats \(if public stats are enabled\). This command is only available if collecting statistics is enabled bot not user side. Disabled for YAGPDB.
+Shows server stats (if public stats are enabled). This command is only available if collecting statistics is enabled bot not user side. Disabled for YAGPDB.
 
 **Usage:**
 
-```text
+```
 Stats
 ```
 
@@ -268,11 +268,11 @@ Stats
 
 **Aliases:** toggletconv/ttc
 
-Toggles automatic time conversion for people with registered timezones \(setz\) in this channel, its on by default, toggle all channels by giving it `all`
+Toggles automatic time conversion for people with registered timezones (setz) in this channel, its on by default, toggle all channels by giving it `all`
 
 **Usage:**
 
-```text
+```
 ToggleTimeConversion [flags:Text]
 ```
 
@@ -280,15 +280,15 @@ ToggleTimeConversion [flags:Text]
 
 **Aliases:** ud
 
- Views the first 10 recent deleted messages. By default, only the current user's deleted messages will show. You can use the `-a` flag to view all users delete messages, or `-u` to view a specified user's deleted messages. Both `-a` and `-u` require Manage Messages permission. Note: `-u` overrides `-a` meaning even though `-a` might've been specified along with `-u` only messages from the user provided using `-u` will be shown.
+&#x20;Views the first 10 recent deleted messages. By default, only the current user's deleted messages will show. You can use the `-a` flag to view all users delete messages, or `-u` to view a specified user's deleted messages. Both `-a` and `-u` require Manage Messages permission. Note: `-u` overrides `-a` meaning even though `-a` might've been specified along with `-u` only messages from the user provided using `-u` will be shown.
 
 **Usage:**
 
-```text
+```
 Undelete
 ```
 
-```text
+```
 [-a a:Switch - from all users]
 [-u u:Mention/ID - from a specific user]
 [-channel channel:Channel - Optional target channel]
@@ -302,7 +302,7 @@ Shows past usernames of a user. Only shows up to the last 25 usernames.
 
 **Usage:**
 
-```text
+```
 Usernames [User:User]
 ```
 
@@ -312,7 +312,7 @@ Shows you or the targets permissions in this channel
 
 **Usage:**
 
-```text
+```
 ViewPerms [target:Mention/ID]
 ```
 
@@ -324,7 +324,7 @@ Shows information about a user
 
 **Usage:**
 
-```text
+```
 Whois [User:Member]
 ```
 
@@ -334,12 +334,16 @@ Whois [User:Member]
 
 **Aliases:** df
 
-Look up an urban dictionary definition
+Look up an urban dictionary definition, default paginated view.
 
 **Usage:**
 
-```text
+```
 Define <Topic:Text>
+```
+
+```
+[-raw raw:Switch - Raw output]
 ```
 
 ### Weather
@@ -350,7 +354,7 @@ Shows the weather somewhere
 
 **Usage:**
 
-```text
+```
 Weather <Where:Text>
 ```
 
@@ -360,7 +364,7 @@ Generates a conversation topic to help chat get moving.
 
 **Usage:**
 
-```text
+```
 Topic
 ```
 
@@ -372,7 +376,7 @@ Cat Facts
 
 **Usage:**
 
-```text
+```
 CatFact
 ```
 
@@ -384,7 +388,7 @@ Dog Facts
 
 **Usage:**
 
-```text
+```
 DogFact
 ```
 
@@ -394,7 +398,7 @@ Don't be afraid to ask for advice!
 
 **Usage:**
 
-```text
+```
 Advice [What:Text]
 ```
 
@@ -404,7 +408,7 @@ Throwing things is cool.
 
 **Usage:**
 
-```text
+```
 Throw [Target:User]
 ```
 
@@ -414,7 +418,7 @@ Roll dices, specify nothing for 6 sides, specify a number for max sides, or rpg 
 
 **Usage:**
 
-```text
+```
 Roll <Sides:Whole number>
 Roll <RPG Dice:Text>
 Roll
@@ -428,7 +432,7 @@ Creates an embed from what you give it in json form: [https://docs.yagpdb.xyz/ot
 
 **Usage:**
 
-```text
+```
 CustomEmbed <Json:Text>
 ```
 
@@ -440,11 +444,11 @@ A more simpler version of CustomEmbed, controlled completely using switches.
 
 **Usage:**
 
-```text
+```
 SimpleEmbed
 ```
 
-```text
+```
 [-channel :Channel - Optional channel to send in]
 [-content :Text - Text content for the message]
 [-title :Text]
@@ -468,7 +472,7 @@ Get presented with 2 options.
 
 **Usage:**
 
-```text
+```
 WouldYouRather
 ```
 
@@ -478,11 +482,11 @@ An xkcd comic, by default returns random comic strip
 
 **Usage:**
 
-```text
+```
 Xkcd [Comic number:Whole number]
 ```
 
-```text
+```
 [-l Latest comic:Switch]
 ```
 
@@ -494,11 +498,11 @@ Game information based on query from howlongtobeat.com. Results are sorted by po
 
 **Usage:**
 
-```text
+```
 HowLongToBeat <Game-Title:Text>
 ```
 
-```text
+```
 [-c c:Switch - Compact output]
 [-p p:Switch - Paginated output]
 ```
@@ -509,11 +513,11 @@ Responds with the top 15 servers I'm on
 
 **Usage:**
 
-```text
+```
 TopServers [Skip:Whole number - Entries to skip]
 ```
 
-```text
+```
 [-id serverID:Whole number]
 ```
 
@@ -525,7 +529,7 @@ Takes away rep from someone
 
 **Usage:**
 
-```text
+```
 TakeRep <User:User> [Num:Whole number]
 ```
 
@@ -537,7 +541,7 @@ Gives rep to someone
 
 **Usage:**
 
-```text
+```
 GiveRep <User:User> [Num:Whole number]
 ```
 
@@ -549,7 +553,7 @@ Sets someones rep, this is an admin command and bypasses cooldowns and other res
 
 **Usage:**
 
-```text
+```
 SetRep <User:Mention/ID> <Num:Whole number>
 ```
 
@@ -559,7 +563,7 @@ Deletes someone from the reputation list completely, this cannot be undone.
 
 **Usage:**
 
-```text
+```
 DelRep <User:Mention/ID>
 ```
 
@@ -571,7 +575,7 @@ Shows the rep log for the specified user.
 
 **Usage:**
 
-```text
+```
 RepLog <User:Mention/ID> [Page:Whole number]
 ```
 
@@ -581,7 +585,7 @@ Shows yours or the specified users current rep and rank
 
 **Usage:**
 
-```text
+```
 Rep [User:User]c
 ```
 
@@ -591,7 +595,7 @@ Shows top 15 rep on the server
 
 **Usage:**
 
-```text
+```
 TopRep [Offset:Whole number]
 ```
 
@@ -603,7 +607,7 @@ Does sentiment analysis on a message or your last 5 messages longer than 3 words
 
 **Usage:**
 
-```text
+```
 Sentiment [text:Text]
 ```
 
@@ -613,7 +617,7 @@ Wisdom
 
 **Usage:**
 
-```text
+```
 8Ball <What to ask:Text>
 ```
 
@@ -625,7 +629,7 @@ Play, or list soundboard sounds
 
 **Usage:**
 
-```text
+```
 Soundboard [Name:Text]
 ```
 
@@ -637,7 +641,7 @@ Reset Soundboard Player
 
 **Usage:**
 
-```text
+```
 SoundboardReset
 ```
 
@@ -645,15 +649,15 @@ SoundboardReset
 
 **Aliases:** c
 
-Creates a Cards Against Humanity game in this channel, add packs after commands, or \* for all packs. \(-v for vote mode without a card czar\).
+Creates a Cards Against Humanity game in this channel, add packs after commands, or \* for all packs. (-v for vote mode without a card czar).
 
 **Usage:**
 
-```text
+```
 Create [packs:Text - Packs seperated by space, or * for all of them.]
 ```
 
-```text
+```
 [-v Vote mode - players vote instead of having a card czar.:Switch]
 ```
 
@@ -663,7 +667,7 @@ Ends a Cards Against Humanity game that is ongoing in this channel.
 
 **Usage:**
 
-```text
+```
 End
 ```
 
@@ -673,7 +677,7 @@ Kicks a player from the ongoing Cards Against Humanity game in this channel.
 
 **Usage:**
 
-```text
+```
 Kick <user:Mention/ID>
 ```
 
@@ -683,7 +687,7 @@ Lists all available packs.
 
 **Usage:**
 
-```text
+```
 Packs
 ```
 
@@ -695,17 +699,17 @@ Memory statistics.
 
 **Usage:**
 
-```text
+```
 allocstat
 ```
 
 ### Banserver
 
-;\)\)
+;))
 
 **Usage:**
 
-```text
+```
 banserver <server:Whole number>
 ```
 
@@ -715,7 +719,7 @@ Returns the number of concurrent requests currently going on
 
 **Usage:**
 
-```text
+```
 ccreqs
 ```
 
@@ -725,7 +729,7 @@ Maintenance command, creates a invite for the specified server
 
 **Usage:**
 
-```text
+```
 createinvite <server:Whole number>
 ```
 
@@ -733,11 +737,11 @@ createinvite <server:Whole number>
 
 **Aliases:** cshard
 
-Shows the current shard this server is on \(or the one specified
+Shows the current shard this server is on (or the one specified
 
 **Usage:**
 
-```text
+```
 CurrentShard [serverid:Whole number]
 ```
 
@@ -747,7 +751,7 @@ Disconnects from all the voice channels the bot is in
 
 **Usage:**
 
-```text
+```
 dcallvoice
 ```
 
@@ -759,11 +763,11 @@ Looks for a server by server name or the servers a user owns
 
 **Usage:**
 
-```text
+```
 findserver
 ```
 
-```text
+```
 [-name name:Text]
 [-user user:Mention/ID]
 ```
@@ -776,7 +780,7 @@ Generates premium codes
 
 **Usage:**
 
-```text
+```
 generatepremiumcode <Duration:Duration> <NumCodes:Whole number> <Message:Text>
 ```
 
@@ -786,7 +790,7 @@ Tests the global ratelimit functionality
 
 **Usage:**
 
-```text
+```
 globalrl
 ```
 
@@ -796,27 +800,27 @@ Returns wether the specified guild is unavilable or not
 
 **Usage:**
 
-```text
+```
 IsGuildUnavailable <guildid:Whole number>
 ```
 
 ### Leaveserver
 
-;\)\)
+;))
 
 **Usage:**
 
-```text
+```
 leaveserver <server:Whole number>
 ```
 
 ### Memstats
 
-;\)\)
+;))
 
 **Usage:**
 
-```text
+```
 memstats
 ```
 
@@ -826,7 +830,7 @@ Debug debug debug autorole assignment
 
 **Usage:**
 
-```text
+```
 Roledbg
 ```
 
@@ -836,11 +840,11 @@ Sets the bot's status and streaming url
 
 **Usage:**
 
-```text
+```
 setstatus [status:Text]
 ```
 
-```text
+```
 [-url url:Text]
 ```
 
@@ -850,7 +854,7 @@ Maintenance command, used to test command queueing
 
 **Usage:**
 
-```text
+```
 sleep
 ```
 
@@ -860,7 +864,7 @@ Responds with state debug info
 
 **Usage:**
 
-```text
+```
 stateinfo
 ```
 
@@ -870,7 +874,7 @@ Tests the reddit feeds in this server by checking the specified post
 
 **Usage:**
 
-```text
+```
 testreddit <post-id:Text>
 ```
 
@@ -880,7 +884,7 @@ Toggles Debug Logging
 
 **Usage:**
 
-```text
+```
 toggledbg
 ```
 
@@ -890,7 +894,7 @@ Shows command usage stats
 
 **Usage:**
 
-```text
+```
 topcommands [hours:Whole number]
 ```
 
@@ -900,7 +904,7 @@ Shows gateway event processing stats for all or one shard
 
 **Usage:**
 
-```text
+```
 topevents [shard:Whole number]
 ```
 
@@ -910,21 +914,21 @@ Shows the top games on this server
 
 **Usage:**
 
-```text
+```
 topgames
 ```
 
-```text
+```
 [-all all:Switch]
 ```
 
 ### Unbanserver
 
-;\)\)
+;))
 
 **Usage:**
 
-```text
+```
 unbanserver <server:Text>
 ```
 
@@ -934,7 +938,7 @@ Shows you or the targets permissions in this channel
 
 **Usage:**
 
-```text
+```
 ViewPerms [target:Mention/ID]
 ```
 
@@ -946,7 +950,7 @@ Shows yagpdb status, version, uptime, memory stats, and so on
 
 **Usage:**
 
-```text
+```
 Yagstatus
 ```
 
@@ -956,15 +960,15 @@ Yagstatus
 
 **Aliases:** banid
 
-Bans a member, specify a duration with -d
+Bans a member, specify a duration with -d and specify number of days of messages to delete with -ddays (0 to 7)
 
 **Usage:**
 
-```text
+```
 Ban <User:Mention/ID> [Reason:Text]
 ```
 
-```text
+```
 [-d Duration:Duration]
 [-ddays Days:Whole number]
 ```
@@ -977,7 +981,7 @@ Unbans a user. Reason requirement is same as ban command setting.
 
 **Usage:**
 
-```text
+```
 Unban <User:Mention/ID> [Reason:Text]
 ```
 
@@ -987,7 +991,7 @@ Kicks a member
 
 **Usage:**
 
-```text
+```
 Kick <User:Mention/ID> [Reason:Text]
 ```
 
@@ -997,7 +1001,7 @@ Mutes a member
 
 **Usage:**
 
-```text
+```
 Mute <User:User Mention> <Duration:Duration> <Reason:Text>
 Mute <User:User Mention> <Reason:Text> <Duration:Duration>
 Mute <User:User Mention> <Duration:Duration>
@@ -1011,7 +1015,7 @@ Unmutes a member
 
 **Usage:**
 
-```text
+```
 Unmute <User:User Mention> [Reason:Text]
 ```
 
@@ -1021,27 +1025,27 @@ Reports a member to the server's staff
 
 **Usage:**
 
-```text
+```
 Report <User:Mention/ID> <Reason:Text>
 ```
 
 ### Clean
 
-**Aliases:** clear/cl  
-  
-Delete the last number of messages from chat, optionally filtering by user, max age and regex or ignoring pinned messages.  
-**Warning:** Using `clean <userId> <amount>` does not work. This is because the user ID is interpreted as the amount. As it is over the limit of 100, it is treated as invalid. You can use `clean <amount> <userId>` instead or mention the user. Specify a regex with "-r regex\_here" and max age with "-ma 1h10m" You can invert the regex match \(i.e. only clear messages that do not match the given regex\) by supplying the `-im` flag.  
+**Aliases:** clear/cl\
+\
+Delete the last number of messages from chat, optionally filtering by user, max age and regex or ignoring pinned messages.\
+**Warning:** Using `clean <userId> <amount>` does not work. This is because the user ID is interpreted as the amount. As it is over the limit of 100, it is treated as invalid. You can use `clean <amount> <userId>` instead or mention the user. Specify a regex with "-r regex\_here" and max age with "-ma 1h10m" You can invert the regex match (i.e. only clear messages that do not match the given regex) by supplying the `-im` flag.\
 Note: Will only look in the last 1k messages
 
 **Usage:**
 
-```text
+```
 Clean <Num:Whole number>
 Clean <Num:Whole number> <User:User Mention>
 Clean <User:User Mention> <Num:Whole number>
 ```
 
-```text
+```
 [-r r:Text - Regex]
 [-im im:Switch - Invert regex match]
 [-ma ma:Duration - Max age]
@@ -1058,7 +1062,7 @@ Add/Edit a modlog reason
 
 **Usage:**
 
-```text
+```
 Reason <ID:Whole number> <Reason:Text>
 ```
 
@@ -1068,7 +1072,7 @@ Warns a user, warnings are saved using the bot. Use -warnings to view them.
 
 **Usage:**
 
-```text
+```
 Warn <User:User Mention> <Reason:Text>
 ```
 
@@ -1080,7 +1084,7 @@ Lists warning of a user.
 
 **Usage:**
 
-```text
+```
 Warnings <User:Mention/ID>
 ```
 
@@ -1090,7 +1094,7 @@ Edit a warning, id is the first number of each warning from the warnings command
 
 **Usage:**
 
-```text
+```
 EditWarning <Id:Whole number> <NewMessage:Text>
 ```
 
@@ -1102,7 +1106,7 @@ Deletes a warning, id is the first number of each warning from the warnings comm
 
 **Usage:**
 
-```text
+```
 DelWarning <Id:Whole number>
 ```
 
@@ -1114,7 +1118,7 @@ Clears the warnings of a user
 
 **Usage:**
 
-```text
+```
 ClearWarnings <User:Mention/ID>
 ```
 
@@ -1126,11 +1130,11 @@ Shows ranked list of warnings on the server.
 
 **Usage:**
 
-```text
+```
 TopWarnings [Page:Whole number]
 ```
 
-```text
+```
 [-id List UserIDs:Switch]
 ```
 
@@ -1142,11 +1146,11 @@ Gives a role to the specified member, with optional expiry
 
 **Usage:**
 
-```text
+```
 GiveRole <User:Mention/ID> <Role:Text>
 ```
 
-```text
+```
 [-d Duration:Duration]
 ```
 
@@ -1158,7 +1162,7 @@ Removes the specified role from the target
 
 **Usage:**
 
-```text
+```
 RemoveRole <User:Mention/ID> <Role:Text>
 ```
 
@@ -1170,7 +1174,7 @@ Lists all rulesets and their status
 
 **Usage:**
 
-```text
+```
 Rulesets
 ```
 
@@ -1182,7 +1186,7 @@ Toggles a ruleset on/off
 
 **Usage:**
 
-```text
+```
 Toggle <ruleset name:Text>
 ```
 
@@ -1194,11 +1198,11 @@ Shows the log of the last triggered automod rules, optionally filtering by user
 
 **Usage:**
 
-```text
+```
 Logs [skip:Whole number]
 ```
 
-```text
+```
 [-user :Mention/ID]
 ```
 
@@ -1206,15 +1210,15 @@ Logs [skip:Whole number]
 
 **Aliases:**  Violations/ViolationLogs/VLogs/VLog
 
-Lists Violations of specified user /n old flag posts oldest violations in first page \( from oldest to newest \).
+Lists Violations of specified user /n old flag posts oldest violations in first page ( from oldest to newest ).
 
 **Usage:**
 
-```text
+```
 ListViolations <User:Mention/ID> [Page Number:Whole number]
 ```
 
-```text
+```
 [-old Oldest First:Switch]
 ```
 
@@ -1226,11 +1230,11 @@ Lists Violations summary in entire server or of specified user optionally filter
 
 **Usage:**
 
-```text
+```
 ListViolationsCount [User:Mention/ID]
 ```
 
-```text
+```
 [-ma Max Violation Age:Duration]
 [-skip Amount Skipped:Whole number]
 ```
@@ -1243,7 +1247,7 @@ Deletes a Violation with the specified ID. ID is the first number of each Violat
 
 **Usage:**
 
-```text
+```
 DeleteViolation <ID:Whole number>
 ```
 
@@ -1255,11 +1259,11 @@ Clears Violations of specified user optionally filtered by Name, Min/Max age and
 
 **Usage:**
 
-```text
+```
 ClearViolations <User:Mention/ID> [Violation Name:Text]
 ```
 
-```text
+```
 [-ma Max Violation Age:Duration]
 [-mina Min Violation Age:Duration]
 [-num Max Violations Cleared:Whole number]
@@ -1281,11 +1285,11 @@ To get the id of a message you have to turn on developer mode in discord's appea
 
 **Usage:**
 
-```text
+```
 Create <Group:Text>
 ```
 
-```text
+```
 [-m Message ID:Whole number]
 [-nodm Disable DM:Switch]
 [-rr Remove role on reaction removed:Switch]
@@ -1300,7 +1304,7 @@ To get the id of a message you have to turn on developer mode in discord's appea
 
 **Usage:**
 
-```text
+```
 Remove <Message ID:Whole number>
 ```
 
@@ -1314,11 +1318,11 @@ To get the id of a message you have to turn on developer mode in discord's appea
 
 **Usage:**
 
-```text
+```
 Update <Message ID:Whole number>
 ```
 
-```text
+```
 [-nodm Disable DM:Switch]
 [-rr Remove role on reaction removed:Switch]
 ```
@@ -1333,7 +1337,7 @@ To get the id of a message you have to turn on developer mode in discord's appea
 
 **Usage:**
 
-```text
+```
 ResetReactions <Message ID:Whole number>
 ```
 
@@ -1347,7 +1351,7 @@ To get the id of a message you have to turn on developer mode in discord's appea
 
 **Usage:**
 
-```text
+```
 EditOption <Message ID:Whole number>
 ```
 
@@ -1363,7 +1367,7 @@ Opens a new ticket
 
 **Usage:**
 
-```text
+```
 Open <subject:Text>
 ```
 
@@ -1373,7 +1377,7 @@ Adds a user to the ticket in this channel
 
 **Usage:**
 
-```text
+```
 AddUser <target:Member>
 ```
 
@@ -1383,7 +1387,7 @@ Removes a user from the ticket
 
 **Usage:**
 
-```text
+```
 RemoveUser <target:Member>
 ```
 
@@ -1393,7 +1397,7 @@ Renames the ticket
 
 **Usage:**
 
-```text
+```
 Rename <new-name:Text>
 ```
 
@@ -1405,7 +1409,7 @@ Closes the ticket
 
 **Usage:**
 
-```text
+```
 Close [reason:Text]
 ```
 
@@ -1417,7 +1421,7 @@ Toggle admins only mode for this ticket
 
 **Usage:**
 
-```text
+```
 AdminsOnly
 ```
 
@@ -1433,7 +1437,7 @@ Creates an event, You will be led through an interactive setup
 
 **Usage:**
 
-```text
+```
 Create
 ```
 
@@ -1443,11 +1447,11 @@ Edits an event
 
 **Usage:**
 
-```text
+```
 Edit <ID:Whole number>
 ```
 
-```text
+```
 [-title :Text - Change the title of the event]
 [-time :Text - Change the start time of the event]
 [-max :Whole number - Change max participants]
@@ -1461,7 +1465,7 @@ Lists all events in this server
 
 **Usage:**
 
-```text
+```
 List 
 ```
 
@@ -1473,7 +1477,7 @@ Deletes an event, specify the event ID of the event you wanna delete
 
 **Usage:**
 
-```text
+```
 Delete <ID:Whole number>
 ```
 
@@ -1485,7 +1489,6 @@ Force cancels the current setup session in this channel
 
 **Usage:**
 
-```text
+```
 StopSetup
 ```
-

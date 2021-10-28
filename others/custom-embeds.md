@@ -6,11 +6,11 @@ Custom Embeds with the `-customembed` command don't work in custom commands. If 
 
 ## The `customembed` command
 
-One method of sending an embed with YAGPDB is using the command `customembed` \(or for short, `ce`\). 
+One method of sending an embed with YAGPDB is using the command `customembed `(or for short, `ce`).&#x20;
 
 ### Create embeds by hand
 
-YAGPDB accepts embeds in JSON following the rules of [this format](https://discordapp.com/developers/docs/resources/channel#embed-object). 
+YAGPDB accepts embeds in JSON following the rules of [this format](https://discordapp.com/developers/docs/resources/channel#embed-object).&#x20;
 
 There, we'll take a look at the **Embed Objects**. You can add a value to each of these objects. A very simple embed would look like this:
 
@@ -20,38 +20,38 @@ There, we'll take a look at the **Embed Objects**. You can add a value to each o
 
 The output of this would look like the following:
 
-![](../.gitbook/assets/capture%20%286%29.PNG)
+![](<../.gitbook/assets/Capture (2).PNG>)
 
-Let's break this down: We start of with the customembed command `-ce`. After this, I start my object \(the embed\) with a curly brace. Then we have the name of the object \(title\) and the value of it \(This is my title\). We separate data with commas. After that we have the same thing again, but for the description. In the end we close the object \(embed\) with another curly brace.
+Let's break this down: We start of with the customembed command `-ce`. After this, I start my object (the embed) with a curly brace. Then we have the name of the object (title) and the value of it (This is my title). We separate data with commas. After that we have the same thing again, but for the description. In the end we close the object (embed) with another curly brace.
 
-You can add the multiple objects to this, but keep in mind that Discord limits your message to 2000 characters. 
+You can add the multiple objects to this, but keep in mind that Discord limits your message to 2000 characters.&#x20;
 
 #### The syntax of JSON
 
-The syntax of json is pretty easy. You start off with a curly brace \(`{`\) and end with a curly brace \(`}`\). Between this, you can add names and their according values. Data \(a name and a value\) get separated by commas \(`,`\) . Around strings \(text\) you wrap two quotation marks \(`""`\), but nothing around integers \(whole numbers\) or booleans \(true or false statements\). You can play around with this a bit.
+The syntax of json is pretty easy. You start off with a curly brace (`{`) and end with a curly brace (`}`). Between this, you can add names and their according values. Data (a name and a value) get separated by commas (`,`) . Around strings (text) you wrap two quotation marks (`""`), but nothing around integers (whole numbers) or booleans (true or false statements). You can play around with this a bit.
 
-| Special character | Escaped output |
-| :--- | :--- |
-| Quotation mark \("\) | \" |
-| Backslash \(\\) | \\ |
-| Slash \(/\) | \/ |
-| Backspace | \b |
-| Form feed | \f |
-| New line | \n |
-| Carriage return | \r |
-| Horizontal tab | \t |
+| Special character  | Escaped output |
+| ------------------ | -------------- |
+| Quotation mark (") | \\"            |
+| Backslash (\\)     | \\\\           |
+| Slash (/)          | \\/            |
+| Backspace          | \b             |
+| Form feed          | \f             |
+| New line           | \n             |
+| Carriage return    | \r             |
+| Horizontal tab     | \t             |
 
 ### Create embeds with a generator
 
-Creating embeds with a generator can be more difficult if you don't need any difficult features. If you want your embed to be super shiny, you can use[ this embed generator](https://leovoel.github.io/embed-visualizer/). YAGPDB does not use the first part of its code, so you have to remove the following: 
+Creating embeds with a generator can be more difficult if you don't need any difficult features. If you want your embed to be super shiny, you can use[ this embed generator](https://leovoel.github.io/embed-visualizer/). YAGPDB does not use the first part of its code, so you have to remove the following:&#x20;
 
-```javascript
+````javascript
 {
   "content": "this `supports` __a__ **subset** *of* ~~markdown~~ 😃 ```js\nfunction foo(bar) {\n  console.log(bar);\n}\n\nfoo(1);```",
   "embed": 
-```
+````
 
-and the last curly brace \(`}`\). After this you can just copy and paste it into Discord:
+and the last curly brace (`}`). After this you can just copy and paste it into Discord:
 
 ![](../.gitbook/assets/capture2.PNG)
 
@@ -68,15 +68,15 @@ To start off, we'll take a look at this example and break it down:
 {{ sendMessage nil $embed }}
 ```
 
-First off, I start creating my embed by defining it in a variable called `embed` in the well-known templating curly braces. This makes it a bit clearer as your embed can get difficult to read. After this I start my embed object with `cembed` \(custom embed\) to indicate what the following strings mean. We don't follow the json syntax here and only define everything one after the other \("`name`" "`value`" et cetera\). Now we use the objects for discord embeds from the [developer page](https://discordapp.com/developers/docs/resources/channel#embed-object) again. So far, so good. In the end we send our embed with the sendMessage template. `nil` sends it in the same channel, but you could also replace it with a channel name or ID \(or send the embed with sendDM as a direct message\). 
+First off, I start creating my embed by defining it in a variable called `embed` in the well-known templating curly braces. This makes it a bit clearer as your embed can get difficult to read. After this I start my embed object with `cembed` (custom embed) to indicate what the following strings mean. We don't follow the json syntax here and only define everything one after the other ("`name`" "`value`" et cetera). Now we use the objects for discord embeds from the [developer page](https://discordapp.com/developers/docs/resources/channel#embed-object) again. So far, so good. In the end we send our embed with the sendMessage template. `nil` sends it in the same channel, but you could also replace it with a channel name or ID (or send the embed with sendDM as a direct message).&#x20;
 
 Next, we'll take a look at this more lavish example:
 
 {% hint style="success" %}
-To make your code readable, especially for large embeds, **indents** may be used, as YAGPDB's templating system allows this sort of formatting.
+To make your code readable, especially for large embeds,** indents** may be used, as YAGPDB's templating system allows this sort of formatting.
 {% endhint %}
 
-{% code title="Custom Command \"embed\"" %}
+{% code title="Custom Command "embed"" %}
 ```go
 {{ $advice := (execAdmin "advice") }}
 {{ $topic := (execAdmin "topic") }}
@@ -95,17 +95,17 @@ To make your code readable, especially for large embeds, **indents** may be used
         (sdict "name" "Guild Region" "value" .Guild.Region "inline" true) 
         (sdict "name" "Guild ID" "value" (toString .Guild.ID) "inline" true)
     ) 
-    "author" (sdict "name" "YAGPDB.xyz!" "url" "https://yagpdb.xyz/manage" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") 
+    "author" (sdict "name" "YAGPDB.xyz!" "url" "https://yagpdb.xyz/manage" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/2fa57b425415134d4f8b279174131ad6.png") 
     "thumbnail" (sdict "url" $avatar) 
-    "footer" (sdict "text" "YAGPDB.xyz since" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/a1f1318a1127b054bfffdeecaece5f15.png") 
-    "timestamp" .Guild.JoinedAt
+    "footer" (sdict "text" "YAGPDB.xyz since" "icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/2fa57b425415134d4f8b279174131ad6.png") 
+    "timestamp" .Member.JoinedAt
 }}
 
 {{ sendMessage nil $embed }}
 ```
 {% endcode %}
 
-In this example, we can ignore lines 1 to 4. I'm just defining some variables there which I am later using in my embed. Line 6 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `joinStr` to join two strings \(text snippets\) together. This is the case because I want to use the `.User.Username` template. cembed takes Strings, so it would convert `{{ .User.Username }}` into {{ .User.Username }} instead of the username of the user. The syntax of `joinStr` is `joinStr "seperator" "string1" "string2"...`, so we're first setting the separator to nothing and then joining our strings "Hello there, ", the username and an exclamation mark.  
+In this example, we can ignore lines 1 to 4. I'm just defining some variables there which I am later using in my embed. Line 6 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `joinStr` to join two strings (text snippets) together. This is the case because I want to use the `.User.Username` template. cembed takes Strings, so it would convert `{{ .User.Username }}` into {{ .User.Username }} instead of the username of the user. The syntax of `joinStr` is `joinStr "seperator" "string1" "string2"...`, so we're first setting the separator to nothing and then joining our strings "Hello there, ", the username and an exclamation mark.\
 Next, we have the description. We can use markdown of Discord in here. After that object, I define the color. The color is given as integer and you can convert a hex color to it [here](https://www.binaryhexconverter.com/hex-to-decimal-converter).
 
 Up next, I have added some fields. This is a bit more difficult, but doable if you have understood it once. Let's break it down in this example:
@@ -123,10 +123,10 @@ Following the fields I have added the author. Again the author object is nested 
 
 ![](../.gitbook/assets/grafik.png)
 
-### Display an image 
+### Display an image&#x20;
 
-You can display an image by simply pasting the link to it in the response, or by doing it fancy this way:  
-\(make sure to replace the link with your own image ;\)\)
+You can display an image by simply pasting the link to it in the response, or by doing it fancy this way:\
+(make sure to replace the link with your own image ;))
 
 Trigger type: command trigger: `imageembed`
 
@@ -141,27 +141,27 @@ Discord uses color decimal. SpyColor is a good tool to pick colors, or convert h
 
 {% embed url="https://www.spycolor.com" %}
 
-![An example of getting the colour decimal value using SpyColor](../.gitbook/assets/capture%20%285%29.PNG)
+![An example of getting the colour decimal value using SpyColor](<../.gitbook/assets/Capture (6).PNG>)
 
-## The `simpleembed` command
+## The `simpleembed `command
 
 Simple embeds are easier to use than custom embeds as they do not require any knowledge of json. Their downside is that they don't support all Discord embed fields from the embed structure, for example fields. You can create a simple embed with the `simpleembed` command, `se` for short.
 
 Simple embeds work with switches, here is a list of them all:
 
-| Switch | Description |
-| :--- | :--- |
-| -channel | Optional channel to send in. |
-| -title | Title field. |
-| -desc | Description field. |
-| -color | Color field, either in hex or a color name. |
-| -url | URL field for embed. |
-| -thumbnail | URL to an image for thumbnail field. |
-| -image | URL to an image. |
-| -author | Author field. |
-| -authoricon | URL for the icon in 'author' field. |
-| -footer | Footer field. |
-| -footericon | URL to an image for footer icon field. |
+| Switch      | Description                                 |
+| ----------- | ------------------------------------------- |
+| -channel    | Optional channel to send in.                |
+| -title      | Title field.                                |
+| -desc       | Description field.                          |
+| -color      | Color field, either in hex or a color name. |
+| -url        | URL field for embed.                        |
+| -thumbnail  | URL to an image for thumbnail field.        |
+| -image      | URL to an image.                            |
+| -author     | Author field.                               |
+| -authoricon | URL for the icon in 'author' field.         |
+| -footer     | Footer field.                               |
+| -footericon | URL to an image for footer icon field.      |
 
 The values for simple embeds need to bet placed within quotes:
 
@@ -171,13 +171,12 @@ The values for simple embeds need to bet placed within quotes:
 
 This generates the following embed:
 
-![](../.gitbook/assets/image%20%285%29.png)
+![](<../.gitbook/assets/image (7).png>)
 
-You can play around with this command a bit, it's really easy to use. 
+You can play around with this command a bit, it's really easy to use.&#x20;
 
 {% hint style="info" %}
 Simple embeds can be used in custom commands:
 
-`{{execAdmin "se" "-desc" "This is my description"}}` 
+`{{execAdmin "se" "-desc" "This is my description"}} `
 {% endhint %}
-

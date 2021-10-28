@@ -1,8 +1,8 @@
 # Using RegEx
 
-Full RE2 syntax reference at &gt; [https://github.com/google/re2/wiki/Syntax](https://github.com/google/re2/wiki/Syntax)  
-Go RegExp doc at &gt; [https://golang.org/pkg/regexp/](https://golang.org/pkg/regexp/)  
-More about general concepts &gt; [http://www.regular-expressions.info](http://www.regular-expressions.info)
+Full RE2 syntax reference at > [https://github.com/google/re2/wiki/Syntax](https://github.com/google/re2/wiki/Syntax)\
+Go RegExp doc at > [https://golang.org/pkg/regexp/](https://golang.org/pkg/regexp/)\
+More about general concepts > [http://www.regular-expressions.info](http://www.regular-expressions.info)
 
 ## Basic Regex
 
@@ -12,23 +12,23 @@ More about general concepts &gt; [http://www.regular-expressions.info](http://ww
 {% tab title="Match" %}
 You can match a word by putting it between two brackets.
 
-_As example, this will only match the word "Dinosaur":_ `(Dinosaur)`
+_As example, this will only match the word "Dinosaur": _`(Dinosaur)`
 {% endtab %}
 
-{% tab title="Don\'t match" %}
+{% tab title="Don't match" %}
 Using `?:` after opening parenthesis of a capturing group creates a non-capturing group. Useful for example with template function `reFindAllSubmatches`.
 
-_This will not sub-match the words "red, blue, green":_   
-``{{ reFindAllSubmatches `(?:color=)(red|blue|green)` "color=red beautiful" }}`` 
+_This will not sub-match the words "red, blue, green": _\
+__``{{ reFindAllSubmatches `(?:color=)(red|blue|green)` "color=red beautiful" }} ``
 
-To clarify more - it will not show `dateid,` because it's a whole match:  
+To clarify more - it will not show `dateid, `because it's a whole match:\
 ``{{ slice (index (reFindAllSubmatches `(?:dateid=)([0-9]{5})` "dateid=12345") 0) 1 }}``
 {% endtab %}
 
 {% tab title="Match A or B" %}
 You may also want to catch multiple options, for that we use a _"Vertical bar"_ or also known as a _"Pipe"_ between linux users.
 
-_As example, this will match if either "Cat" or "Dog" is present:_ `(Cat|Dog)`
+_As example, this will match if either "Cat" or "Dog" is present: _`(Cat|Dog)`
 {% endtab %}
 {% endtabs %}
 
@@ -38,7 +38,7 @@ To match anything of any length, use `.*`.
 
 {% tabs %}
 {% tab title="Words" %}
-To match a word, you put it between two brackets. 
+To match a word, you put it between two brackets.&#x20;
 
 Example: `(Banana)`
 {% endtab %}
@@ -66,7 +66,7 @@ For example, this is a star that doesn't interfere with other matches `\*`.
 
 ## Understanding Regex
 
-If you still do not know what Regex are or want to know more. Check out the cheat sheet on the site below. 
+If you still do not know what Regex are or want to know more. Check out the cheat sheet on the site below.&#x20;
 
 {% embed url="https://www.computerhope.com/jargon/r/regex.htm" %}
 
@@ -75,6 +75,4 @@ If you still do not know what Regex are or want to know more. Check out the chea
 {% embed url="https://regex-golang.appspot.com/" %}
 
 {% embed url="https://regex101.com/" %}
-
-
 

@@ -6,10 +6,10 @@ description: '"Go is all about type... Type is life." // William Kennedy'
 
 ## Preface
 
-All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len,`etc &gt; [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/) . This section is meant to be a concise and to the point reference document for all available templates/functions. For detailed explanations and syntax guide refer to the [learning resource](https://learn.yagpdb.xyz/).
+All available data that can be used in YAGPDB's templating "engine" which is slightly modified version of Golang's stdlib text/template package; more in depth and info about actions, pipelines and global functions like `printf, index, len,`etc > [https://golang.org/pkg/text/template/](https://golang.org/pkg/text/template/) . This section is meant to be a concise and to the point reference document for all available templates/functions. For detailed explanations and syntax guide refer to the [learning resource](https://learn.yagpdb.xyz).
 
-**Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template's action-structure or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields \(e.g. .Append, .User\) are usually kept in standard formatting. If argument for a function is optional, it's enclosed in parenthesis `( )`. If there are many optional arguments possible, it's usually denoted by 3-dot `...`ellipsis.   
-If functions or methods are denoted with an accent, tilde ~, they are not yet deployed in actual YAGPDB bot but are already in master code branch.
+**Legend**: at current state this is still prone to formatting errors, but everything in a `code block` should refer to a function, parts of a template's action-structure or output returned by YAGPDB; single word/literal-structure in _italics_ refers to type. Methods and fields (e.g. .Append, .User) are usually kept in standard formatting. If argument for a function is optional, it's enclosed in parenthesis `( )`. If there are many optional arguments possible, it's usually denoted by 3-dot `...`ellipsis. \
+If functions or methods are denoted with an accent, tilde \~, they are not yet deployed in actual YAGPDB bot but are already in master code branch.
 
 {% hint style="warning" %}
 **Always put curly brackets around the data and "actions you perform" you want to formulate as a template's action-structure** like this: `{{.User.Username}}`
@@ -18,32 +18,32 @@ This `{{ ... }}` syntax of having two curly brackets aka braces around context i
 {% endhint %}
 
 {% hint style="info" %}
-Templating system uses standard ASCII quotation marks:  
-0x22 &gt; `"` for straight double quotes, 0x27 &gt; `'`for apostrophes and 0x60 ````` for backticks;   
+Templating system uses standard ASCII quotation marks:\
+0x22 > `"` for straight double quotes, 0x27 > `'`for apostrophes and 0x60 `` ` `` for backticks; \
 so make sure no "smart-quotes" are being used.
 {% endhint %}
 
 ## The Dot and Variables
 
-The dot \(also known as cursor\) `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context.   
-  
-From official docs &gt; "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.  
-  
-`$` has a special significance in templates, it is set to the [starting value of a dot](https://golang.org/pkg/text/template/#hdr-Variables). This means you have access to the global context from anywhere - e.g., inside `range`/`with` actions. `$` for global context would cease to work if you redefine it inside template, to recover it `{{ $ := .  }}`.  
-  
-`$` also denotes the beginning of a variable, which maybe be initialized inside a template action. So data passed around template pipeline can be initialized using syntax &gt; `$variable := value`. Previously declared variable can also be assigned with new data &gt; `$variable = value`, it has to have a white-space before it or control panel will error out. Variable scope extends to the `end` action of the control structure \(`if`, `with`, or `range`\) in which it is declared, or to the end of custom command if there are no control structures - call it global scope. 
+The dot (also known as cursor) `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context. \
+\
+From official docs > "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.\
+\
+`$` has a special significance in templates, it is set to the [starting value of a dot](https://golang.org/pkg/text/template/#hdr-Variables). This means you have access to the global context from anywhere - e.g., inside `range`/`with` actions. `$` for global context would cease to work if you redefine it inside template, to recover it `{{ $ := .  }}`.\
+\
+`$` also denotes the beginning of a variable, which maybe be initialized inside a template action. So data passed around template pipeline can be initialized using syntax > `$variable := value`. Previously declared variable can also be assigned with new data > `$variable = value`, it has to have a white-space before it or control panel will error out. Variable scope extends to the `end` action of the control structure (`if`, `with`, or `range`) in which it is declared, or to the end of custom command if there are no control structures - call it global scope.&#x20;
 
-| Field | Description |
-| :--- | :--- |
-| .CCID | The ID of currently executing custom command in type of _int64_. |
+| Field       | Description                                                                                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| .CCID       | The ID of currently executing custom command in type of _int64_.                                                             |
 | .CCRunCount | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes. |
-| .IsPremium | Returns boolean true/false whether guild is premium of YAGPDB or not. |
+| .IsPremium  | Returns boolean true/false whether guild is premium of YAGPDB or not.                                                        |
 
 ## Pipes
 
-A powerful component of templates is the ability to stack actions - like function calls, together - chaining one after another. This is done by using pipes `|`. Borrowed from Unix pipes, the concept is simple: each pipeline’s output becomes the input of the following pipe. One limitation of the pipes is that they can only work with a single value and that value becomes the last parameter of the next pipeline.   
-  
-**Example**: `{{randInt 41 | add 2}}` would pipeline`randInt` function's return to addition `add` as second parameter and it would be added to 2; this more simplified would be like `{{40 | add 2}}` with return 42. If written normally, it would be `{{ add 2 (randInt 41) }}`. Same pipeline but using a variable is also useful one -`{{$x:=40 | add 2}}` would not return anything as printout, 40 still goes through pipeline to addition and 42 is stored to variable `$x` whereas `{{($x:=40) | add 2}}` would return 42 and store 40 to `$x`.
+A powerful component of templates is the ability to stack actions - like function calls, together - chaining one after another. This is done by using pipes `|`. Borrowed from Unix pipes, the concept is simple: each pipeline’s output becomes the input of the following pipe. One limitation of the pipes is that they can only work with a single value and that value becomes the last parameter of the next pipeline. \
+\
+**Example**: `{{randInt 41 | add 2}}` would pipeline`randInt` function's return to addition `add` as second parameter and it would be added to 2; this more simplified would be like `{{40 | add 2}}` with return 42. If written normally, it would be `{{ add 2 (randInt 41) }}`. Same pipeline but using a variable is also useful one -`{{$x:=40 | add 2}}` would not return anything as printout, 40 still goes through pipeline to addition and 42 is stored to variable `$x `whereas `{{($x:=40) | add 2}} `would return 42 and store 40 to` $x`.
 
 {% hint style="warning" %}
 Pipes are useful in select cases to shorten code and in some cases improve readability, but they **should not be overused**. In most cases, pipes are unnecessary and cause a dip in readability that helps nobody.
@@ -51,243 +51,138 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 ## User
 
-| Field | Description |
-| :--- | :--- |
-| .User | The user's username together with discriminator. |
-| .User.Avatar | The user's avatar ID. |
-| .User.AvatarURL "256" | Gives the URL for user's avatar, argument "256" is the size of the picture  and can increase/decrease twofold \(e.g. 512, 1024 or 128, 64 etc.\). |
-| .User.Bot | Determines whether the target user is a bot - if yes, it will return `true`. |
-| .User.Discriminator | The user's discriminator \(The four digits after a person's username\). |
-| .User.ID | The user's ID. |
-| .User.Mention | Mentions user. |
-| .User.String | The user's username together with discriminator as _string_ type. |
-| .User.Username | The user's username. |
-| .UsernameHasInvite | Only works with join and leave messages \(not join dms\). It will determine does the username contain an invite link. |
-| .RealUsername | Only works with join and leave messages \(not join DMs\). This can be used to send the real username to a staff channel when invites are censored. |
+| Field                 | Description                                                                                                                                               |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .User                 | The user's username together with discriminator.                                                                                                          |
+| .User.Avatar          | The user's avatar ID.                                                                                                                                     |
+| .User.AvatarURL "256" | <p>Gives the URL for user's avatar, argument "256" is the size of the picture <br>and can increase/decrease twofold (e.g. 512, 1024 or 128, 64 etc.).</p> |
+| .User.Bot             | Determines whether the target user is a bot - if yes, it will return `true`.                                                                              |
+| .User.Discriminator   | The user's discriminator (The four digits after a person's username).                                                                                     |
+| .User.ID              | The user's ID.                                                                                                                                            |
+| .User.Mention         | Mentions user.                                                                                                                                            |
+| .User.String          | The user's username together with discriminator as _string_ type.                                                                                         |
+| .User.Username        | The user's username.                                                                                                                                      |
+| .UsernameHasInvite    | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                                       |
+| .RealUsername         | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored.          |
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>userArg mention/userID</code>
-      </td>
-      <td style="text-align:left">
-        <p>Function that can be used to retrieve .User object from a mention or userID.</p>
-        <p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user. Explained
-          more in <a href="templates.md#this-sections-snippets">this section&apos;s snippets</a>.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>pastUsernames userID offset</code>
-      </td>
-      <td style="text-align:left">
-        <p>Returns a <em>slice </em>of type <em>[ ]*logs.CCNameChange</em> having fields
-          .Name and .Time of previous 15 usernames and skips <code>offset</code> number
-          in that list.</p>
-        <p><code>{{range pastUsernames .User.ID 0}} <br />{{.Name}} - {{.Time.Format &quot;Jan _2 2006&quot;}} <br />{{end}}</code> 
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>pastNicknames userID offset</code>
-      </td>
-      <td style="text-align:left">Same as <code>pastUsernames</code>.</td>
-    </tr>
-  </tbody>
-</table>
+| Function                      | Description                                                                                                                                                                                                                                                                                                                  |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `userArg mention/userID`      | <p>Function that can be used to retrieve .User object from a mention or userID.</p><p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user. Explained more in <a href="templates.md#this-sections-snippets">this section's snippets</a>.</p>                                                                 |
+| `pastUsernames userID offset` | <p>Returns a <em>slice </em>of type <em>[ ]*logs.CCNameChange</em> having fields .Name and .Time of previous 15 usernames and skips <code>offset</code> number in that list.</p><p><code>{{range pastUsernames .User.ID 0}} </code><br><code>{{.Name}} - {{.Time.Format "Jan _2 2006"}} </code><br><code>{{end}}</code> </p> |
+| `pastNicknames userID offset` | Same as `pastUsernames`.                                                                                                                                                                                                                                                                                                     |
 
 [User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
 
 #### This section's snippets:
 
-`{{(userArg .Guild.OwnerID).String}}` this template's action-structure returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument \(what it does, explained below\). The parentheses surrounding them make `userArg` function return `.User` as .User object which is handled further by `.String` method \(ref.`.User.String`\), giving a result like &gt; `YAGPDB#8760`.
+`{{(userArg .Guild.OwnerID).String}}` this template's action-structure returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument (what it does, explained below). The parentheses surrounding them make `userArg `function return `.User` as .User object which is handled further by `.String` method (ref.`.User.String`), giving a result like > `YAGPDB#8760`.
 
 ## Guild / Server
 
-| Field | Description |
-| :--- | :--- |
-| .Guild.AfkChannelID | Outputs the AFK channel ID. |
-| .Guild.AfkTimeout | Outputs the time when a user gets moved into the AFK channel while not being active. |
-| .Guild.Channels | Outputs a slice of channels in the guild with type _\[\]dstate.ChannelState._ |
-| .Guild.DefaultMessageNotifications | Outputs the default message [notification setting](https://discordapp.com/developers/docs/resources/guild#guild-object-default-message-notification-level) for the guild. |
-| .Guild.EmbedEnabled | Outputs whether guild is embeddable \(e.g. widget\) or not, true / false. **DEPRECATED.** |
-| .Guild.Emojis | Outputs a list of emojis in the guild with type _discordgo.Emoji._ |
-| .Guild.ExplicitContentFilter | Outputs the explicit content [filter level](https://discordapp.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level) for the guild. |
-| .Guild.Features | The list of enabled guild features of type _\[\]string_. |
-| .Guild.Icon | Outputs the [icon hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's icon. Setting full icon URL is explained [here](https://discord.com/developers/docs/reference#image-formatting). |
-| .Guild.ID | Outputs the ID of the guild. |
-| .Guild.MemberCount | Outputs the number of users on a guild. |
-| .Guild.MfaLevel | required [MFA level](https://discordapp.com/developers/docs/resources/guild#guild-object-mfa-level) for the guild. If enabled, members with moderation powers will be required to have 2-factor authentication enabled in order to exercise moderation powers. |
-| .Guild.Name | Outputs the name of the guild. |
-| .Guild.OwnerID | Outputs the ID of the owner. |
-| .Guild.Region | Outputs the region of the guild. |
-| .Guild.Roles | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. Role struct has [following fields](https://discordapp.com/developers/docs/topics/permissions#role-object). |
-| .Guild.Splash | Outputs the [splash hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's splash. |
-| .Guild.SystemChannelID | The id of the channel where guild notices such as welcome messages and boost events are posted. |
-| .Guild.VerificationLevel | Outputs the required verification level for the guild. |
-| .Guild.VoiceStates | Outputs a list of voice states \(users connected to VCs\) with type _discordgo.VoiceState._ |
-| .Guild.WidgetChannelID | Outputs the channel id for the server widget. |
-| .Guild.WidgetEnabled | Outputs whether or not the Server Widget is enabled or not. |
+| Field                              | Description                                                                                                                                                                                                                                                                |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Guild.AfkChannelID                | Outputs the AFK channel ID.                                                                                                                                                                                                                                                |
+| .Guild.AfkTimeout                  | Outputs the time when a user gets moved into the AFK channel while not being active.                                                                                                                                                                                       |
+| .Guild.Channels                    | Outputs a slice of channels in the guild with type _\[]dstate.ChannelState._                                                                                                                                                                                               |
+| .Guild.DefaultMessageNotifications | Outputs the default message [notification setting](https://discordapp.com/developers/docs/resources/guild#guild-object-default-message-notification-level) for the guild.                                                                                                  |
+| .Guild.EmbedEnabled                | Outputs whether guild is embeddable (e.g. widget) or not, true / false. **DEPRECATED.**                                                                                                                                                                                    |
+| .Guild.Emojis                      | Outputs a list of emojis in the guild with type _discordgo.Emoji._                                                                                                                                                                                                         |
+| .Guild.ExplicitContentFilter       | Outputs the explicit content [filter level](https://discordapp.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level) for the guild.                                                                                                              |
+| .Guild.Features                    | The list of enabled guild features of type _\[]string_.                                                                                                                                                                                                                    |
+| .Guild.Icon                        | Outputs the [icon hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's icon. Setting full icon URL is explained [here](https://discord.com/developers/docs/reference#image-formatting).                                              |
+| .Guild.ID                          | Outputs the ID of the guild.                                                                                                                                                                                                                                               |
+| .Guild.MemberCount                 | Outputs the number of users on a guild.                                                                                                                                                                                                                                    |
+| .Guild.MfaLevel                    | required [MFA level](https://discordapp.com/developers/docs/resources/guild#guild-object-mfa-level) for the guild. If enabled, members with moderation powers will be required to have 2-factor authentication enabled in order to exercise moderation powers.             |
+| .Guild.Name                        | Outputs the name of the guild.                                                                                                                                                                                                                                             |
+| .Guild.OwnerID                     | Outputs the ID of the owner.                                                                                                                                                                                                                                               |
+| .Guild.Region                      | Outputs the region of the guild.                                                                                                                                                                                                                                           |
+| .Guild.Roles                       | Outputs all roles and indexing them gives more information about the role. For example `{{len .Guild.Roles}}` gives you how many roles are there in that guild. Role struct has [following fields](https://discordapp.com/developers/docs/topics/permissions#role-object). |
+| .Guild.Splash                      | Outputs the [splash hash](https://discordapp.com/developers/docs/reference#image-formatting) ID of the guild's splash.                                                                                                                                                     |
+| .Guild.SystemChannelID             | The id of the channel where guild notices such as welcome messages and boost events are posted.                                                                                                                                                                            |
+| .Guild.VerificationLevel           | Outputs the required verification level for the guild.                                                                                                                                                                                                                     |
+| .Guild.VoiceStates                 | Outputs a list of voice states (users connected to VCs) with type _discordgo.VoiceState._                                                                                                                                                                                  |
+| .Guild.WidgetChannelID             | Outputs the channel id for the server widget.                                                                                                                                                                                                                              |
+| .Guild.WidgetEnabled               | Outputs whether or not the Server Widget is enabled or not.                                                                                                                                                                                                                |
 
-| **Method** | **Description** |
-| :--- | :--- |
-| `.Guild.GetChannel id` | Gets the channel with the ID provided, returning a _\*dstate.ChannelState_. |
-| `.Guild.GetEmoji id` | Gets the guild emoji with the ID provided, returning a _\*discordgo.Emoji._ |
+| **Method**                                                   | **Description**                                                                                                                                                                                                                                                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.Guild.GetChannel id`                                       | Gets the channel with the ID provided, returning a _\*dstate.ChannelState_.                                                                                                                                                                                                                 |
+| `.Guild.GetEmoji id`                                         | Gets the guild emoji with the ID provided, returning a _\*discordgo.Emoji._                                                                                                                                                                                                                 |
 | `.Guild.GetMemberPermissions channelID memberID memberRoles` | Computes the permissions that the member has in the channel provided, taking into account the roles of the member. Example: `{{.Guild.GetMemberPermissions .Channel.ID .Member.User.ID .Member.Roles}}` would retrieve the permission bit the triggering member has in the context channel. |
-| `.Guild.GetRole id` | Gets the role with the ID provided, returning a _\*discordgo.Role._ |
-| `.Guild.GetVoiceState userID` | Gets the voice state of the user ID provided, returning a _\*discordgo.VoiceState_. Example code to show if user is in VC or not: `{{if .Guild.GetVoiceState .User.ID}} user is in voice channel {{else}} user is not in voice channel {{end}}` |
+| `.Guild.GetRole id`                                          | Gets the role with the ID provided, returning a _\*discordgo.Role._                                                                                                                                                                                                                         |
+| `.Guild.GetVoiceState userID`                                | Gets the voice state of the user ID provided, returning a _\*discordgo.VoiceState_. Example code to show if user is in VC or not: `{{if .Guild.GetVoiceState .User.ID}} user is in voice channel {{else}} user is not in voice channel {{end}}`                                             |
 
 [Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
 
 ## Member
 
-| Field | Description |
-| :--- | :--- |
+| Field            | Description                                                                                                                |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | .Member.JoinedAt | When member joined the guild/server of type _discordgo.Timestamp_. Method .Parse will convert this to of type _time.Time_. |
-| .Member.Nick | The nickname for this member. |
-| .Member.Roles | A _slice_ of role IDs that the member has. |
-| .Member.User | Underlying user on which the member is based on. |
+| .Member.Nick     | The nickname for this member.                                                                                              |
+| .Member.Roles    | A _slice_ of role IDs that the member has.                                                                                 |
+| .Member.User     | Underlying user on which the member is based on.                                                                           |
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>editNickname &quot;newNick&quot;</code>
-      </td>
-      <td style="text-align:left">Edits triggering user&apos;s nickname, argument has to be of type <em>string</em>.
-        YAGPDB&apos;s highest role has to be above the highest role of the member.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>getMember mention/userID</code>
-      </td>
-      <td style="text-align:left">
-        <p>Function returns Member object having above methods.</p>
-        <p><code>{{(getMember .User.ID).JoinedAt}}</code> 
-          <br />is the same as <code>{{.Member.JoinedAt}}</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>onlineCount</code>
-      </td>
-      <td style="text-align:left">Returns the count of online users/members on current server.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>onlineCountBots</code>
-      </td>
-      <td style="text-align:left"><b>DEPRECATED. </b>This will no longer work properly and will likely be
-        removed in a future update.
-        <br />
-        <br />Returns the count of online bots.</td>
-    </tr>
-  </tbody>
-</table>
+| Function                   | Description                                                                                                                                                            |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `editNickname "newNick"`   | Edits triggering user's nickname, argument has to be of type _string_. YAGPDB's highest role has to be above the highest role of the member.                           |
+| `getMember mention/userID` | <p>Function returns Member object having above methods. </p><p><code>{{(getMember .User.ID).JoinedAt}}</code> <br>is the same as <code>{{.Member.JoinedAt}}</code></p> |
+| `onlineCount`              | Returns the count of online users/members on current server.                                                                                                           |
+| `onlineCountBots`          | <p><strong>DEPRECATED. </strong>This will no longer work properly and will likely be removed in a future update.<br><br>Returns the count of online bots.</p>          |
 
 [Member object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-member-object).
 
 ## Channel
 
-| Field | Description |
-| :--- | :--- |
-| .Channel.Bitrate | Bitrate used; only set on voice channels. |
-| .Channel.GuildID | Guild ID of the channel. |
-| .Channel.ID | The ID of the channel. |
-| .Channel.IsPrivate | Whether the channel is private. |
-| .Channel.IsThread | Whether the channel is a thread. |
-| .Channel.Mention | Mentions the channel object. |
-| .Channel.Name | The name of the channel. |
-| .Channel.NSFW | Outputs whether this channel is NSFW or not. |
-| .Channel.ParentID | The ID of the channel's parent \(category\), returns 0 if none. |
-| .Channel.Position | Channel position from top-down. |
-| .Channel.Topic | The topic of the channel. |
-| .Channel.Type | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types) |
+| Field              | Description                                                                                                                    |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| .Channel.Bitrate   | Bitrate used; only set on voice channels.                                                                                      |
+| .Channel.GuildID   | Guild ID of the channel.                                                                                                       |
+| .Channel.ID        | The ID of the channel.                                                                                                         |
+| .Channel.IsPrivate | Whether the channel is private.                                                                                                |
+| .Channel.IsThread  | Whether the channel is a thread.                                                                                               |
+| .Channel.Mention   | Mentions the channel object.                                                                                                   |
+| .Channel.Name      | The name of the channel.                                                                                                       |
+| .Channel.NSFW      | Outputs whether this channel is NSFW or not.                                                                                   |
+| .Channel.ParentID  | The ID of the channel's parent (category), returns 0 if none.                                                                  |
+| .Channel.Position  | Channel position from top-down.                                                                                                |
+| .Channel.Topic     | The topic of the channel.                                                                                                      |
+| .Channel.Type      | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types) |
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>editChannelName <br />channel &quot;newName&quot;</code>
-      </td>
-      <td style="text-align:left">Function edits channel&apos;s name. <code>channel</code> can be either ID,
-        &quot;name&quot; or even <code>nil</code> if triggered in that channel name
-        change is intended to happen. <code>&quot;newName&quot;</code> has to be
-        of type <em>string</em>. For example &gt;<code>{{editChannelName nil (joinStr &quot;&quot; &quot;YAG - &quot; (randInt 1000))}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>editChannelTopic channel &quot;newTopic&quot;</code>
-      </td>
-      <td style="text-align:left">
-        <p>Function edits channel&apos;s topic/description. <code>channel</code> can
-          be either ID, &quot;name&quot; or even <code>nil</code> if triggered in that
-          channel name change is intended to happen. <code>&quot;newTopic&quot;</code> has
-          to be of type <em>string</em>. For example &gt;</p>
-        <p><code>{{editChannelTopic nil &quot;YAG is cool&quot;}}</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>getChannel channel</code>
-      </td>
-      <td style="text-align:left">Function returns full channel object of given <code>channel</code> argument
-        which can be either its ID, name or <code>nil</code> for triggering channel,
-        and is of type <em>*dstate.ChannelState</em>. For example &gt; <code>{{(getChannel nil).Name}}</code> returns
-        the name of the channel command was triggered in.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>getChannelOrThread channel</code>
-      </td>
-      <td style="text-align:left">Returns type<em>*templates.CtxChannel </em>corresponding to <a href="templates.md#channel">Channel</a> object.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>getThread channel</code>
-      </td>
-      <td style="text-align:left">Returns type <em>*templates.CtxChannel </em>corresponding to <a href="templates.md#channel">Channel</a> object.</td>
-    </tr>
-  </tbody>
-</table>
+| Function                                                               | Description                                                                                                                                                                                                                                                                                                                   |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><code>editChannelName </code><br><code>channel "newName"</code></p> | Function edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. `"newName"` has to be of type _string_. For example  >`{{editChannelName nil (joinStr "" "YAG - " (randInt 1000))}}`                                                          |
+| `editChannelTopic channel "newTopic"`                                  | <p>Function edits channel's topic/description. <code>channel</code> can be either ID, "name" or even <code>nil</code> if triggered in that channel name change is intended to happen.  <code>"newTopic"</code> has to be of type <em>string</em>. For example ></p><p><code>{{editChannelTopic nil "YAG is cool"}}</code></p> |
+| `getChannel channel`                                                   | Function returns full channel object of given `channel` argument which can be either its ID, name or `nil` for triggering channel, and is of type _\*dstate.ChannelState_. For example > `{{(getChannel nil).Name}}` returns the name of the channel command was triggered in.                                                |
+| `getChannelOrThread channel`                                           | Returns type_\*templates.CtxChannel _corresponding to [Channel](templates.md#channel) object.                                                                                                                                                                                                                                 |
+| `getThread channel`                                                    | Returns type _\*templates.CtxChannel _corresponding to [Channel](templates.md#channel) object.                                                                                                                                                                                                                                |
 
 [Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
 
 ## Message
 
-| Field | Description |
-| :--- | :--- |
-| .Message.Attachments | Attachments of this message \(_slice_ of attachment objects\). |
-| .Message.Author | Author of the message \([User](templates.md#user) object\). |
-| .Message.ChannelID | Channel ID this message is in. |
-| .Message.Content | Text content on this message. |
-| .Message.EditedTimestamp | The time at which the last edit of the message occurred, if it has been edited. As with .Message.Timestamp, it is of type _discordgo.Timestamp._  |
-| .Message.Embeds | Embeds of this message \(_slice_ of embed objects\). |
-| .Message.GuildID | Guild ID in which the message is. |
-| .Message.ID | ID of the message. |
-| .Message.Link | Discord link to the message. |
-| .Message.MentionEveryone | Whether the message mentions everyone. |
-| .Message.MentionRoles | The roles mentioned in the message, returned as a slice of type _discordgo.IDSlice._ |
-| .Message.Mentions | Users this message mentions, returned as a slice of type _\[\]\*discordgo.User._ |
-| .Message.Pinned | Whether this message is pinned. |
-| .Message.Reactions | Reactions on this message \(only available from getMessage\). |
-| .Message.Timestamp | Timestamp of the message in type _discordgo.Timestamp_ \(use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_\). |
-| .Message.Type | The [type](https://discordapp.com/developers/docs/resources/channel#message-object-message-types) of the message. |
-| .Args | List of everything that is passed to .Message.Content. .Args is a _slice_ of type _string_. |
-| .Cmd | .Cmd is of type _string_ and shows all arguments that trigger custom command, part of .Args. Starting from `{{index .Args 0}}`.  |
-| .CmdArgs | List of all the arguments passed after `.Cmd` \(`.Cmd` is the actual trigger\) `.CmdArgs` is a _slice_ of type _string_. Examples in [misc. snippets](templates.md#miscellaneous-snippets). |
-| .StrippedMsg | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bear in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
+| Field                    | Description                                                                                                                                                                                                                                                                 |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Message.Attachments     | Attachments of this message (_slice _of attachment objects).                                                                                                                                                                                                                |
+| .Message.Author          | Author of the message ([User](templates.md#user) object).                                                                                                                                                                                                                   |
+| .Message.ChannelID       | Channel ID this message is in.                                                                                                                                                                                                                                              |
+| .Message.Content         | Text content on this message.                                                                                                                                                                                                                                               |
+| .Message.EditedTimestamp | The time at which the last edit of the message occurred, if it has been edited. As with .Message.Timestamp, it is of type _discordgo.Timestamp. _                                                                                                                           |
+| .Message.Embeds          | Embeds of this message (_slice_ of embed objects).                                                                                                                                                                                                                          |
+| .Message.GuildID         | Guild ID in which the message is.                                                                                                                                                                                                                                           |
+| .Message.ID              | ID of the message.                                                                                                                                                                                                                                                          |
+| .Message.Link            | Discord link to the message.                                                                                                                                                                                                                                                |
+| .Message.MentionEveryone | Whether the message mentions everyone.                                                                                                                                                                                                                                      |
+| .Message.MentionRoles    | The roles mentioned in the message, returned as a slice of type _discordgo.IDSlice._                                                                                                                                                                                        |
+| .Message.Mentions        | Users this message mentions, returned as a slice of type _\[]\*discordgo.User._                                                                                                                                                                                             |
+| .Message.Pinned          | Whether this message is pinned.                                                                                                                                                                                                                                             |
+| .Message.Reactions       | Reactions on this message (only available from getMessage).                                                                                                                                                                                                                 |
+| .Message.Timestamp       | Timestamp of the message in type _discordgo.Timestamp_ (use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_).                                                                                                               |
+| .Message.Type            | The [type](https://discordapp.com/developers/docs/resources/channel#message-object-message-types) of the message.                                                                                                                                                           |
+| .Args                    | List of everything that is passed to .Message.Content. .Args is a _slice _of type _string_.                                                                                                                                                                                 |
+| .Cmd                     | .Cmd is of type _string _and shows all arguments that trigger custom command, part of .Args. Starting from `{{index .Args 0}}`.                                                                                                                                             |
+| .CmdArgs                 | List of all the arguments passed after `.Cmd` (`.Cmd` is the actual trigger) `.CmdArgs` is a _slice _of type _string_. Examples in [misc. snippets](templates.md#miscellaneous-snippets).                                                                                   |
+| .StrippedMsg             | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bear in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
 
 [Message object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#message-object).
 
@@ -299,154 +194,65 @@ More information about the `Message` object can be found [here](../commands/cust
 
 This is available and part of the dot when reaction trigger type is used.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Field</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">.Reaction</td>
-      <td style="text-align:left">Returns reaction object which has following fields <code>UserID</code>, <code>MessageID</code>,
-        <br
-        /><code>Emoji.(ID/Name/...)</code>, <code>ChannelID</code>, <code>GuildID</code>.
-        Emoji.ID is the ID of the emoji for custom emojis, and Emoji.Name will
-        hold the unicode emoji if its a default one. (otherwise the name of the
-        custom emoji).</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">.Reaction.Emoji.APIName</td>
-      <td style="text-align:left">Returns type <em>string</em>, an correctly formatted API name for use in
-        the MessageReactions endpoints. For custom emojis it is <code>emojiname:ID</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">.Reaction.Emoji.MessageFormat</td>
-      <td style="text-align:left">Returns a correctly formatted emoji for use in Message content and embeds.
-        It&apos;s equal to <code>&lt;:.Reaction.Emoji.APIName&gt;</code> and <code>&lt;a:.Reaction.Emoji.APIName&gt;</code> for
-        animated emojis.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">.ReactionAdded</td>
-      <td style="text-align:left">Returns a boolean type <em>bool </em>true/false indicating whether reaction
-        was added or removed.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">.ReactionMessage</td>
-      <td style="text-align:left">
-        <p>Returns the message object reaction was added to.</p>
-        <p><code>{{range .ReactionMessage.Reactions}}<br />{{.Count}} - {{.Emoji.Name}} <br />{{end}}</code>
-        </p>
-        <p>Returns emoji count and their name.</p>
-        <p>Has an alias .Message and it works the same way.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Field                         | Description                                                                                                                                                                                                                                                                                                                                               |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Reaction                     | <p> Returns reaction object which has following fields <code>UserID</code>, <code>MessageID</code>, <br><code>Emoji.(ID/Name/...)</code>, <code>ChannelID</code>, <code>GuildID</code>. Emoji.ID is the ID of the emoji for custom emojis, and Emoji.Name will hold the unicode emoji if its a default one. (otherwise the name of the custom emoji).</p> |
+| .Reaction.Emoji.APIName       | Returns type _string_, an correctly formatted API name for use in the MessageReactions endpoints. For custom emojis it is `emojiname:ID`.                                                                                                                                                                                                                 |
+| .Reaction.Emoji.MessageFormat | Returns a correctly formatted emoji for use in Message content and embeds. It's equal to `<:.Reaction.Emoji.APIName>` and `<a:.Reaction.Emoji.APIName>` for animated emojis.                                                                                                                                                                              |
+| .ReactionAdded                | Returns a boolean type _bool _true/false indicating whether reaction was added or removed.                                                                                                                                                                                                                                                                |
+| .ReactionMessage              | <p>Returns the message object reaction was added to. </p><p><code>{{range .ReactionMessage.Reactions}}</code><br><code>{{.Count}} - {{.Emoji.Name}} </code><br><code>{{end}}</code></p><p>Returns emoji count and their name.</p><p>Has an alias .Message and it works the same way.</p>                                                                  |
 
-[Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).  
+[Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).\
 [Emoji object in Discord documentation.](https://discord.com/developers/docs/resources/emoji)
 
 ## Time
 
-Time in general uses Golang's time package library &gt; [https://golang.org/pkg/time/\#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here &gt; [https://gobyexample.com/time](https://gobyexample.com/time).
+Time in general uses Golang's time package library > [https://golang.org/pkg/time/#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here > [https://gobyexample.com/time](https://gobyexample.com/time).
 
-| Field | Description |
-| :--- | :--- |
-| .DiscordEpoch | Gives you Discord Epoch time in _time.Time._ `{{.DiscordEpoch.Unix}}` would return in seconds &gt; 1420070400. |
-| .UnixEpoch | Gives you Unix Epoch time in _time.Time._ |
-| .TimeHour | Variable of _time.Duration_ type and returns 1 hour &gt; `1h0m0s`. |
-| .TimeMinute | Variable of _time.Duration_ type and returns 1 minute &gt; `1m0s`. |
-| .TimeSecond | Variable of _time.Duration_ type and returns 1 second &gt; `1s`. |
+| Field         | Description                                                                                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------------- |
+| .DiscordEpoch | Gives you Discord Epoch time in _time.Time. _`{{.DiscordEpoch.Unix}}` would return in seconds > 1420070400. |
+| .UnixEpoch    | Gives you Unix Epoch time in _time.Time._                                                                   |
+| .TimeHour     | Variable of _time.Duration_ type and returns 1 hour > `1h0m0s`.                                             |
+| .TimeMinute   | Variable of _time.Duration_ type and returns 1 minute > `1m0s`.                                             |
+| .TimeSecond   | Variable of _time.Duration_ type and returns 1 second > `1s`.                                               |
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>currentTime</code>
-      </td>
-      <td style="text-align:left">Gets the current time, value is of type <em>time.Time</em> which can be
-        used in a custom embed. More info <a href="../commands/custom-commands.md#currenttime-template">here</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>formatTime Time &quot;arg&quot;</code>
-      </td>
-      <td style="text-align:left">Outputs given time in RFC822 formatting, first argument <code>Time</code> shows
-        it needs to be of type <em>time.Time</em>, also with extra layout if second
-        argument is given - e.g. <code>{{formatTime currentUserCreated &quot;3:04PM&quot;}}</code> would
-        output <code>11:22AM</code> if that would have been user&apos;s creating
-        time.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>humanizeDurationHours</code>
-      </td>
-      <td style="text-align:left">Returns given integer (whole number) or <em>time.Duration</em> argument
-        in nanoseconds in human readable format - as how long it would take to
-        get towards given time - e.g. <code>{{humanizeDurationHours 9000000000000000000}}</code> returns <code>285 years 20 weeks 6 days and 16 hours</code>.
-        More in <a href="templates.md#this-sections-snippets-1">Snippets</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>humanizeDurationMinutes</code>
-      </td>
-      <td style="text-align:left">Sames as <code>humanizeDurationHours</code>, this time duration is returned
-        in minutes - e.g. <code>{{humanizeDurationMinutes 3500000000000}}</code> would
-        return <code>58 minutes</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>humanizeDurationSeconds</code>
-      </td>
-      <td style="text-align:left">Sames as both humanize functions above, this time duration is returned
-        in seconds - e.g. <code>{{humanizeDurationSeconds 3500000000000}}</code> would
-        return <code>58 minutes and 20 seconds</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>humanizeTimeSinceDays</code>
-      </td>
-      <td style="text-align:left">Returns time passed since given argument of type <em>time.Time</em> in human
-        readable format - e.g. <code>{{humanizeTimeSinceDays currentUserCreated}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>newDate year month day hour minute second [timezone]</code>
-      </td>
-      <td style="text-align:left">
-        <p>Returns new type <em>time.Time</em> object in UTC using given syntax (all
-          arguments need to be of type <em>int</em>), for example &gt; <code>{{humanizeDurationHours ((newDate 2059 1 2 12 34 56).Sub currentTime)}}</code> will
-          give you how much time till year 2059 January 2nd 12:34:56. More examples
-          in <a href="templates.md#this-sections-snippets-1">Snippets</a>.</p>
-        <p><code>timezone </code>is an optional string argument which uses golang&apos;s
-          <a
-          href="https://golang.org/pkg/time/#LoadLocation">LoadLocation</a>function and <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">ZONEINFO syntax.</a> For
-            example: <code>{{newDate 2020 4 20 12 34 56 &quot;Atlantic/Reykjavik&quot;}}</code> would
-            return that time in GMT+0.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Function                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currentTime`                                          | Gets the current time, value is of type _time.Time_ which can be used in a custom embed. More info [here](../commands/custom-commands.md#currenttime-template).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `formatTime Time "arg"`                                | Outputs given time in RFC822 formatting, first argument `Time` shows it needs to be of type _time.Time_, also with extra layout if second argument is given - e.g. `{{formatTime currentUserCreated "3:04PM"}}` would output `11:22AM` if that would have been user's creating time.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `humanizeDurationHours`                                | Returns given integer (whole number) or _time.Duration_ argument in nanoseconds in human readable format - as how long it would take to get towards given time - e.g. `{{humanizeDurationHours 9000000000000000000}}` returns `285 years 20 weeks 6 days and 16 hours`. More in [Snippets](templates.md#this-sections-snippets-1).                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `humanizeDurationMinutes`                              | Sames as `humanizeDurationHours`, this time duration is returned in minutes - e.g. `{{humanizeDurationMinutes 3500000000000}}` would return `58 minutes`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `humanizeDurationSeconds`                              | Sames as both humanize functions above, this time duration is returned in seconds - e.g. `{{humanizeDurationSeconds 3500000000000}}` would return `58 minutes and 20 seconds`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `humanizeTimeSinceDays`                                | Returns time passed since given argument of type _time.Time_ in human readable format - e.g. `{{humanizeTimeSinceDays currentUserCreated}}`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `newDate year month day hour minute second [timezone]` | <p>Returns new type <em>time.Time</em> object in UTC using given syntax (all arguments need to be of type <em>int</em>), for example > <code>{{humanizeDurationHours ((newDate 2059 1 2 12 34 56).Sub currentTime)}}</code> will give you how much time till year 2059 January 2nd 12:34:56. More examples in <a href="templates.md#this-sections-snippets-1">Snippets</a>. </p><p><code>timezone </code>is an optional string argument which uses golang's <a href="https://golang.org/pkg/time/#LoadLocation">LoadLocation </a>function and <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">ZONEINFO syntax.</a>  For example: <code>{{newDate 2020 4 20 12 34 56 "Atlantic/Reykjavik"}}</code> would return that time in GMT+0.</p> |
+
+{% hint style="info" %}
+Discord Timestamp Styles referenced [here](https://discord.com/developers/docs/reference#message-formatting-timestamp-styles) can be done using `print` function e.g.
+
+`{{print "<t:" currentTime.Unix ":F>"}}` for "Long Date/Time" formatting.
+{% endhint %}
 
 #### This section's snippets:
 
-* To demonstrate `humanizeDurationHours` and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_. `{{humanizeDurationHours (currentTime.Sub .Member.JoinedAt.Parse)}}`
-* To demonstrate `newDate` to get Epoch times. `{{$unixEpoch := newDate 1970 1 1 0 0 0}} in seconds > {{$unixEpoch.Unix}} {{$discordEpoch := newDate 2015 1 1 0 0 0}} in seconds > {{$discordEpoch.Unix}}`
+* To demonstrate `humanizeDurationHours` and also how to parse a timestamp, output will be like `whois` command shows user's _join server age_.\
+  `{{humanizeDurationHours (currentTime.Sub .Member.JoinedAt.Parse)}}`
+* To demonstrate `newDate` to get Epoch times.\
+  `{{$unixEpoch := newDate 1970 1 1 0 0 0}} in seconds > {{$unixEpoch.Unix}}`\
+  `{{$discordEpoch := newDate 2015 1 1 0 0 0}} in seconds > {{$discordEpoch.Unix}}`
 
 ## Custom Types
 
-Golang has built-in primitive data types \(_int_, _string_, _bool_, _float64_, ...\) and built-in composite data types \(_array_, _slice_, _map_, ...\) which also are used in custom commands.   
-  
-YAGPDB's templating "engine" has currently two user-defined, custom data types - _templates.Slice_ and _templates.SDict_. There are other custom data types used like _discordgo.Timestamp_, __but these are outside  of the main code of YAGPDB, so not explained here further. Type _time.Time_ is covered in its own [section](templates.md#time).  
-  
-Custom Types section discusses functions that initialize values carrying those _templates.Slice_ \(abridged to _cslice_\), _templates.SDict_ \(abridged to _sdict_\) types and their methods. Both types handle type _interface{}_ element. It's called an empty interface which allows a value to be of any type. So any argument of any type given is handled. \(In "custom commands"-wise mainly primitive data types, but _slices_ as well.\)
+Golang has built-in primitive data types (_int_, _string_, _bool_, _float64_, ...) and built-in composite data types (_array_, _slice_, _map_, ...) which also are used in custom commands. \
+\
+YAGPDB's templating "engine" has currently two user-defined, custom data types - _templates.Slice_ and _templates.SDict_. There are other custom data types used like _discordgo.Timestamp_,_ _but these are outside  of the main code of YAGPDB, so not explained here further. Type _time.Time_ is covered in its own [section](templates.md#time).\
+\
+Custom Types section discusses functions that initialize values carrying those _templates.Slice_ (abridged to _cslice_), _templates.SDict _(abridged to _sdict_) types and their methods. Both types handle type _interface{}_ element. It's called an empty interface which allows a value to be of any type. So any argument of any type given is handled. (In "custom commands"-wise mainly primitive data types, but _slices_ as well.)
 
 {% hint style="warning" %}
-**Reference type-like behaviour:** Slices and dictionaries in CC exhibit reference-type like behavior, which may be undesirable in certain situations. That is, if you have a variable `$x` that holds a slice/dictionary, writing `$y := $x` and then mutating `$y` via `Append`/`Set`/`Del`/etc. will modify `$x` as well. For example:
+**Reference type-like behaviour: **Slices and dictionaries in CC exhibit reference-type like behavior, which may be undesirable in certain situations. That is, if you have a variable `$x` that holds a slice/dictionary, writing `$y := $x` and then mutating `$y` via `Append`/`Set`/`Del`/etc. will modify `$x` as well. For example:
 
-```text
+```
 {{ $x := sdict "k" "v" }}
 {{ $y := $x }}
 {{ $y.Set "k" "v2" }} {{/* modify $y */}}
@@ -455,7 +261,7 @@ Custom Types section discusses functions that initialize values carrying those _
 
 If this behaviour is undesirable, copy the slice/dictionary via `cslice.AppendSlice` or a `range` + `Set` call .
 
-```text
+```
 {{ $x := sdict "k" "v" }}
 {{ $y := sdict }}
 {{ range $k, $v := $x }} {{- $y.Set $k $v -}} {{ end }}
@@ -468,80 +274,22 @@ Note that this performs a shallow copy, not a deep copy - if you want the latter
 
 ### templates.Slice
 
-`templates.Slice` - This is a custom composite data type defined using an underlying data type _\[\]interface{}_ . It is of kind _slice_ \(similar to _array_\) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
+`templates.Slice` - This is a custom composite data type defined using an underlying data type _\[]interface{}_ . It is of kind _slice _(similar to _array_) having _interface{}_ type as its value and can be initialized using `cslice` function. Retrieving specific element inside _templates.Slice_ is by indexing its position number.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>cslice value1 value2 ...</code>
-      </td>
-      <td style="text-align:left">
-        <p>Function creates a slice of type <em>templates.Slice</em> that can be used
-          elsewhere (as an argument for <code>cembed</code> and <code>sdict</code> for
-          example).
-          <br />
-        </p>
-        <p>Example: <code>cslice 1 &quot;2&quot; (dict &quot;three&quot; 3) 4.5</code> returns <code>[1 2 map[three:3] 4.5]</code>,
-          having length of 4 and index positions from 0 to 3. Notice that thanks
-          to type <em>interface{}</em> value, <em>templates.Slice</em> elements&apos;
-          inherent type does not change.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Function                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cslice value1 value2 ...` | <p>Function creates a slice of type <em>templates.Slice</em> that can be used elsewhere (as an argument for <code>cembed</code> and <code>sdict</code> for example).<br></p><p>Example: <code>cslice 1 "2" (dict "three" 3) 4.5</code> returns <code>[1 2 map[three:3] 4.5]</code>, having length of 4 and index positions from 0 to 3. Notice that thanks to type <em>interface{}</em> value, <em>templates.Slice</em> elements' inherent type does not change.</p> |
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Method</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">.Append arg</td>
-      <td style="text-align:left">Creates a new <em>cslice</em> having given argument appended fully by its
-        type to current value. Has max size of 10 000 length.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">.AppendSlice arg</td>
-      <td style="text-align:left">Creates a new <em>cslice </em>from argument of type <em>slice </em>appended/joined
-        with current value. Has max size of 10 000 length.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">.Set int value</td>
-      <td style="text-align:left">Changes/sets given <em>int </em>argument as index position of current <em>cslice </em>to
-        new value. Note that .Set can only set indexes which already exist in the
-        slice.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">.StringSlice strict-flag</td>
-      <td style="text-align:left">
-        <p>Compares <em>slice</em> contents - are they of type <em>string, </em>based
-          on the strict-flag which is <em>boolean </em>and is by default <em>false. </em>Under
-          these circumstances if the element is a <em>string</em> then those elements
-          will be included as a part of the <em>[]string</em> slice and rest simply
-          ignored. Also <em>time.Time</em> elements - their default <em>string</em> notation
-          will be included. If none are <em>string</em> an empty <em>[]string</em> slice
-          is returned.</p>
-        <p>If strict-flag is set to <em>true </em>it will return a <em>[]string</em> only
-          if <b>all</b> elements are pure <em>string</em>, else <code>&lt;no value&gt;</code> is
-          returned.</p>
-        <p>Example in this section&apos;s <a href="templates.md#this-sections-snippets-2">Snippets</a>.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Method                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Append arg              | Creates a new _cslice_ having given argument appended fully by its type to current value. Has max size of 10 000 length.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| .AppendSlice arg         | Creates a new _cslice _from argument of type _slice _appended/joined with current value. Has max size of 10 000 length.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| .Set int value           | Changes/sets given _int _argument as index position of current _cslice _to new value. Note that .Set can only set indexes which already exist in the slice.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| .StringSlice strict-flag | <p>Compares <em>slice</em> contents - are they of type <em>string, </em>based on the strict-flag which is <em>boolean </em>and is by default <em>false. </em>Under these circumstances if the element is a <em>string</em> then those elements will be included as a part of the <em>[]string</em> slice and rest simply ignored. Also <em>time.Time</em> elements - their default <em>string</em> notation will be included. If none are <em>string</em> an empty <em>[]string</em> slice is returned.</p><p>If strict-flag is set to <em>true </em>it will return a <em>[]string</em> only if <strong>all</strong> elements are pure <em>string</em>, else <code>&#x3C;no value></code> is returned.</p><p>Example in this section's <a href="templates.md#this-sections-snippets-2">Snippets</a>.</p> |
 
 #### This section's snippets:
 
-* To demonstrate .StringSlice `{{(cslice currentTime.Month 42 "YAPGDB").StringSlice}}` will return a slice `[February YAGPDB]`. If the flag would have been set to true - {{...\).StringSlice true}}, all elements in that slice were not strings and `<no value>` is returned.
+* To demonstrate .StringSlice `{{(cslice currentTime.Month 42 "YAPGDB").StringSlice}}` will return a slice `[February YAGPDB]`. If the flag would have been set to true - {{...).StringSlice true}}, all elements in that slice were not strings and `<no value>` is returned.
 
 General example:
 
@@ -561,39 +309,16 @@ Type of variable: **{{ printf "%T" $x }}**
 
 ### templates.SDict
 
-`templates.SDict` - This is a custom composite data type defined on an underlying data type _map\[string\]interface{}._ This is of kind _map_ having _string_ type as its key and _interface{}_ type as that key's value and can be  initialized ****using `sdict` function. A map is key-value store. This means you store value and you access that value by a key. Map is an unordered list and the number of parameters to form key-value pairs must be even. Retrieving specific element inside _templates.Sdict_ is by indexing its key.
+`templates.SDict` - This is a custom composite data type defined on an underlying data type _map\[string]interface{}. _This is of kind _map _having _string_ type as its key and _interface{}_ type as that key's value and can be  initialized** **using `sdict` function. A map is key-value store. This means you store value and you access that value by a key. Map is an unordered list and the number of parameters to form key-value pairs must be even. Retrieving specific element inside _templates.Sdict_ is by indexing its key.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>sdict &quot;key1&quot; value1 &quot;key2&quot; value2 ...</code>
-      </td>
-      <td style="text-align:left">
-        <p>Like dict function, creating a <em>templates.SDict</em> type map, key must
-          be of type <em>string</em>. Can be used for example in <code>cembed</code>.
-          If only one argument is passed to <code>sdict </code>function having type <em>map[string]interface{}; </em>for
-          example .ExecData and data retrieved from database can be of such type
-          if <code>sdict</code> was used, it is converted to a new <em>sdict</em>.</p>
-        <p></p>
-        <p>Example: <code>sdict &quot;one&quot; 1 &quot;two&quot; 2 &quot;three&quot; (cslice 3 4) &quot;five&quot; 5.5</code> returns
-          unordered <code>map[five:5.5 one:1 three:[3 4] two:2]</code>, having length
-          of four and index positions are its keys. Notice that thanks to type <em>interface{}</em> value, <em>templates.SmDict</em> elements&apos;
-          inherent type does not change.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Function                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sdict "key1" value1 "key2" value2 ...` | <p>Like dict function, creating a <em>templates.SDict</em> type map, key must be of type <em>string</em>. Can be used for example in <code>cembed</code>. If only one argument is passed to <code>sdict </code>function having type <em>map[string]interface{}; </em>for example .ExecData and data retrieved from database can be of such type if <code>sdict</code> was used, it is converted to a new <em>sdict</em>.</p><p></p><p>Example: <code>sdict "one" 1 "two" 2 "three" (cslice 3 4) "five" 5.5</code> returns unordered <code>map[five:5.5 one:1 three:[3 4] two:2]</code>, having length of four and index positions are its keys. Notice that thanks to type <em>interface{}</em> value, <em>templates.SmDict</em> elements' inherent type does not change.</p> |
 
-| Method | Description |
-| :--- | :--- |
-| .Del "key" | Deletes given key from _sdict_. |
-| .Get "key" | Retrieves given key from _sdict_. |
+| Method           | Description                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| .Del "key"       | Deletes given key from _sdict_.                                                             |
+| .Get "key"       | Retrieves given key from _sdict_.                                                           |
 | .Set "key" value | Changes/sets given key to a new value or creates new one, if no such key exists in _sdict_. |
 
 ```go
@@ -605,7 +330,7 @@ Deleting key "color1" {{ $x.Del "color1" }} and whole sdict: **{{ $x }}**
 ```
 
 {% hint style="success" %}
-**Tip:** Previously, when saving cslices, sdicts, and dicts into database, they were serialized into their underlying native types - slices and maps. This meant that if you wanted to get the custom type back, you needed to convert manually, e.g. `{{cslice.AppendSlice $dbSlice}}` or `{{sdict $dbDict}}`. Recent changes to YAG have changed this: values with custom types are now serialized properly, making manual conversion unnecessary.
+**Tip: **Previously, when saving cslices, sdicts, and dicts into database, they were serialized into their underlying native types - slices and maps. This meant that if you wanted to get the custom type back, you needed to convert manually, e.g. `{{cslice.AppendSlice $dbSlice}}` or `{{sdict $dbDict}}`. Recent changes to YAG have changed this: values with custom types are now serialized properly, making manual conversion unnecessary.
 {% endhint %}
 
 ## Functions
@@ -614,161 +339,47 @@ Functions are underappreciated. In general, not just in templates. // Rob Pike
 
 ### Type conversion
 
-| Function | Description |
-| :--- | :--- |
-| `json value` | Traverses given `value` through MarshalJSON \([more here](%20https://golang.org/pkg/encoding/json/#Marshal)\) and returns it as type _string_. For example `{{json .TimeHour}}` outputs type _string_; before this `.TimeHour` was of type _time.Duration_. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed` need this for example. |
+| Function               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `json value`           | Traverses given `value `through MarshalJSON ([more here](https://golang.org/pkg/encoding/json/#Marshal)) and returns it as type _string_. For example` {{json .TimeHour}}` outputs type _string_; before this `.TimeHour` was of type _time.Duration_. Basically it's good to use if multistep type conversion is needed `(toString (toInt value) )` and certain parts of `cembed `need this for example.                                   |
 | `structToSdict struct` | Function converts exported field-value pairs of a _struct_ to an _sdict_. For example it is useful for editing embeds, rather than having to reconstruct the embed field by field manually. Exampe: `{{$x := cembed "title" "Something rules!" "color" 0x89aa00}} {{$x.Title}} {{$x = structToSdict $x}} {{- $x.Set "Title" "No, YAGPDB rules!!!" -}} {{$x.Title}} {{$x}}` will return No, YAGPDB rules!!! and whole sdict-mapped _cembed_. |
-| `toByte "arg"` | Function converts input to a slice of bytes - meaning _\[\]uint8_. `{{toByte "YAG€"}}` would output `[89 65 71 226 130 172]`. `toString` is capable of converting that slice back to _string_. |
-| `toDuration` | Converts the argument, number or string to type _time.Duration_ - __more duration related methods [here](https://pkg.go.dev/time#Duration). Number represents nanoseconds. String can be with time modifier \(second, minute, hour, day etc\) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-3).  |
-| `toFloat` | Converts argument \(_int_ or _string_ type of a number\) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_. |
-| `toInt` | Converts something into an integer of type _int_. Usage: `(toInt x)`. Function will return 0, if type can't be converted to _int._ |
-| `toInt64` | Converts something into an _int64_. Usage: `(toInt64 x)`.  Function will return 0, if type can't be converted to _int64._ |
-| `toRune "arg"` | Function converts input to a slice of runes - meaning _\[\]int32_. `{{toRune "YAG€"}}`would output `[89 65 71 8364]`. These two functions - the one above, are good for further analysis of Unicode strings. `toString` is capable of converting that slice back to _string_. |
-| `toString` | Has alias `str`. Converts some other types into a _string_. Usage: `(toString x)`. |
+| `toByte "arg"`         | Function converts input to a slice of bytes - meaning _\[]uint8_. `{{toByte "YAG€"}}` would output `[89 65 71 226 130 172]`. `toString `is capable of converting that slice back to _string_.                                                                                                                                                                                                                                               |
+| `toDuration`           | Converts the argument, number or string to type _time.Duration _-_ _more duration related methods [here](https://pkg.go.dev/time#Duration). Number represents nanoseconds. String can be with time modifier (second, minute, hour, day etc) `s, m, h, d, w, mo, y`,without a modifier string will be converted to minutes. Usage:`(toDuration x)`. Example in section's [Snippets](templates.md#this-sections-snippets-3).                  |
+| `toFloat`              | Converts argument (_int_ or _string _type of a number) to type _float64_.  Usage: `(toFloat x)`. Function will return 0, if type can't be converted to _float64_.                                                                                                                                                                                                                                                                           |
+| `toInt`                | Converts something into an integer of type _int_. Usage: `(toInt x)`. Function will return 0, if type can't be converted to _int._                                                                                                                                                                                                                                                                                                          |
+| `toInt64`              | Converts something into an _int64_. Usage: `(toInt64 x)`.  Function will return 0, if type can't be converted to _int64._                                                                                                                                                                                                                                                                                                                   |
+| `toRune "arg"`         | Function converts input to a slice of runes - meaning _\[]int32_. `{{toRune "YAG€"}}`would output `[89 65 71 8364]`. These two functions - the one above, are good for further analysis of Unicode strings. `toString` is capable of converting that slice back to _string_.                                                                                                                                                                |
+| `toString`             | Has alias `str`. Converts some other types into a _string_. Usage: `(toString x)`.                                                                                                                                                                                                                                                                                                                                                          |
 
 #### This section's snippets:
 
-* To demonstrate `toDuration`, outputs 12 hours from current time in UTC. `{{(currentTime.Add (toDuration (mult 12 .TimeHour))).Format "15:04"}}`is the same as`{{(currentTime.Add (toDuration "12h")).Format "15:04"}}` or`{{(currentTime.Add (toDuration 43200000000000)).Format "15:04"}}`
+* To demonstrate `toDuration`, outputs 12 hours from current time in UTC.\
+  `{{(currentTime.Add (toDuration (mult 12 .TimeHour))).Format "15:04"}}`is the same as`{{(currentTime.Add (toDuration "12h")).Format "15:04"}} `or`{{(currentTime.Add (toDuration 43200000000000)).Format "15:04"}}`
 
 {% hint style="success" %}
-**Tip:** You can convert a Unicode code point back to its string equivalent using `printf "%c"`.  For example, `printf "%c" 99` would result in the string `c` as `99` is the Unicode code point for `c`.`printf` is briefly covered later on in the next section, further documentation can be found [here.](https://golang.org/pkg/fmt/) Cheat sheet [here](https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/).
+**Tip: **You can convert a Unicode code point back to its string equivalent using `printf "%c"`.  For example, `printf "%c" 99` would result in the string `c` as `99` is the Unicode code point for `c`.`printf` is briefly covered later on in the next section, further documentation can be found [here.](https://golang.org/pkg/fmt/) Cheat sheet [here](https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/).
 {% endhint %}
 
 ### String manipulation
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>joinStr &quot;separator&quot; &quot;str1&quot; (arg1)(arg2) &quot;str2&quot; ...</code>
-      </td>
-      <td style="text-align:left">Joins several strings into one, separated by the first argument<code>&quot;separator&quot;</code>,
-        example:<code>{{joinStr &quot;&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot;}}</code> returns <code>123</code>.
-        Also if functions have <em>string, []string</em> or easily convertible return,
-        they can be used inside <code>joinStr</code> e.g. <code>{{joinStr &quot;&quot; &quot;Let&apos;s calculate &quot; (add (mult 13 3) 1 2) &quot;, was returned at &quot; (currentTime.Format &quot;15:04&quot;) &quot;.&quot;}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>lower &quot;string&quot;</code>
-      </td>
-      <td style="text-align:left">Converts the string to lowercase.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>print, printf, println</code>
-      </td>
-      <td style="text-align:left">These are GO template package&apos;s predefined functions and are aliases
-        for <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprint</a>, <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprintf</a> and
-        <a
-        href="https://golang.org/pkg/fmt/#Sprintln">fmt.Sprintln</a>. Formatting is also discussed <a href="https://golang.org/pkg/fmt/#hdr-Printing">here</a>. <code>printf</code> cheat
-          sheet <a href="https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/">here</a>.
-          <br
-          />
-          <br /><code>printf</code> is usable for example to determine the type of the
-          value &gt; <code>{{printf &quot;%T&quot; currentTime}} </code>outputs <code>currentTime </code>functions
-          output value type of<code> time.Time</code>. In many cases, <code>printf</code> is
-          a great alternative to <code>joinStr</code> for concatenate strings.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>reFind &quot;regex&quot; &quot;string&quot;</code>
-      </td>
-      <td style="text-align:left">Compares &quot;string&quot; to regex pattern and returns first match. <code>{{reFind &quot;AG&quot; &quot;YAGPDB is cool!&quot;}}</code>returns <code>AG</code> (regex
-        pattern is case sensitive).</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>reFindAll &quot;regex&quot; &quot;string&quot; [count]</code>
-      </td>
-      <td style="text-align:left">Adds all regex matches from the &quot;string&quot; to a <em>slice</em>.
-        Example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.
-        Optional <code>count </code>determines how many matches are made. <b>Example: </b><code>{{reFindAll &quot;a*&quot; &quot;abaabaccadaaae&quot; 4}}</code> would
-        return <code>[a aa a ].</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>reFindAllSubmatches &quot;regex&quot; &quot;string&quot; [count]</code>
-      </td>
-      <td style="text-align:left">Returns whole-pattern matches and also the sub-matches within those matches
-        as <em>slices</em> inside a <em>slice</em>. <code>{{reFindAllSubmatches &quot;(?i)y([a-z]+)g&quot; &quot;youngish YAGPDB&quot;}} </code>returns<code> [[young oun] [YAG A]] </code>(regex
-        pattern here is case insensitive). Optional <code>count </code>works the
-        same way as for <code>reFindAll</code>. So example above with <code>count</code> set
-        to 1 would return <code>[[young oun]].</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>reReplace &quot;regex&quot; &quot;string1&quot; &quot;string2&quot;</code>
-      </td>
-      <td style="text-align:left">Replaces &quot;string1&quot; contents with &quot;string2&quot; at regex
-        match point. <code>{{reReplace &quot;I am&quot; &quot;I am cool!&quot; &quot;YAGPDB is&quot;}}</code>returns <code> YAGPDB is cool!</code> (regex
-        pattern here is case sensitive).</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>reSplit &quot;regex&quot; &quot;string&quot; [count]</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>reSplit</code> slices <code>string </code>into substrings separated
-          by the <code>regex</code> expression and returns a <em>slice</em> of the substrings
-          between those expression matches. The optional <code>count </code>determines
-          the number of substrings to return. If <code>count </code>is negative number
-          the function returns all substrings, if 0 then none. If <code>count </code>is
-          bigger than 0 it returns at most n substrings, the last substring being
-          the unsplit remainder.</p>
-        <p><b>Example:</b>  <code>{{ $x := reSplit &quot;a&quot; &quot;yagpdb has a lot of fame&quot; 5}}</code>
-        </p>
-        <p><code>{{$x}} {{index $x 3}} </code>would return <code>[y gpdb h s lot of f me]</code> and <code>lot of f.</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>slice &quot;string&quot;|slice integer (integer2)</code>
-      </td>
-      <td style="text-align:left">
-        <p>Function&apos;s first argument must be of type <em>string </em>or <em>slice</em>.</p>
-        <p>Outputs the &quot;string&quot; after cutting/slicing off integer (numeric)
-          value of symbols (actually starting the string&apos;s index from integer
-          through integer2) - e.g. <code>{{slice &quot;Fox runs&quot; 2}}</code>outputs <code>x runs</code>.
-          When using also integer2 - e.g. <code>{{slice &quot;Fox runs&quot; 1 7}}</code>,
-          it outputs <code>ox run</code>. For slicing whole arguments, let&apos;s
-          say words, see example in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</p>
-        <p></p>
-        <p>This<code> slice</code> function is not the same as basic dynamically-sized <em>slice</em> data
-          type discussed in this reference doc. Also it&apos;s custom, not having
-          3-indices as the default one from <a href="https://golang.org/pkg/text/template/#hdr-Functions">text/template</a> package.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>split &quot;string&quot; &quot;sepr&quot;</code>
-      </td>
-      <td style="text-align:left">Splits given <code>&quot;string&quot;</code> to substrings separated by <code>&quot;sepr&quot;</code>arg
-        and returns new <em>slice </em>of the substrings between given separator
-        e.g. <code>{{split &quot;YAG, is cool!&quot; &quot;,&quot;}}</code> returns <code>[YAG  is cool!]</code>  <em>slice</em> where <code>YAG</code> is
-        at <code>index</code> position 0 and <code>is cool!</code> at <code>index</code> position
-        1. Example also in section&apos;s <a href="templates.md#this-sections-snippets-4">Snippets</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>title &quot;string&quot;</code>
-      </td>
-      <td style="text-align:left">Returns string with the first letter of each word capitalized.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>upper &quot;string&quot;</code>
-      </td>
-      <td style="text-align:left">Converts the string to uppercase.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>urlescape &quot;string&quot;</code>
-      </td>
-      <td style="text-align:left">Escapes the <em>string</em> so it can be safely placed inside a URL path
-        segment - e.g. &quot;Hello, YAGPDB!&quot; becomes &quot;Hello%2C%20YAGPDB%21&quot;</td>
-    </tr>
-  </tbody>
-</table>
+| Function                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `joinStr "separator" "str1" (arg1)(arg2) "str2" ...` | Joins several strings into one, separated by the first argument`"separator"`, example:`{{joinStr "" "1" "2" "3"}}` returns `123`. Also if functions have _string, \[]string_ or easily convertible return, they can be used inside `joinStr` e.g. `{{joinStr "" "Let's calculate " (add (mult 13 3) 1 2) ", was returned at " (currentTime.Format "15:04") "."}}`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `lower "string"`                                     | Converts the string to lowercase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `print, printf, println`                             | <p>These are GO template package's predefined functions and are aliases for <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprint</a>, <a href="https://golang.org/pkg/fmt/#Sprint">fmt.Sprintf</a> and <a href="https://golang.org/pkg/fmt/#Sprintln">fmt.Sprintln</a>. Formatting is also discussed <a href="https://golang.org/pkg/fmt/#hdr-Printing">here</a>. <code>printf</code> cheat sheet <a href="https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/">here</a>.<br><br><code>printf</code> is usable for example to determine the type of the value > <code>{{printf "%T" currentTime}} </code>outputs <code>currentTime </code>functions output value type of<code> time.Time</code>. In many cases, <code>printf</code> is a great alternative to <code>joinStr</code> for concatenate strings.</p>                                                   |
+| `reFind "regex" "string"`                            | Compares "string" to regex pattern and returns first match. `{{reFind "AG" "YAGPDB is cool!"}}`returns `AG` (regex pattern is case sensitive).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `reFindAll "regex" "string" [count]`                 | Adds all regex matches from the "string" to a _slice_. Example in section's [Snippets](templates.md#this-sections-snippets-4). Optional `count `determines how many matches are made. **Example: **`{{reFindAll "a*" "abaabaccadaaae" 4}}` would return `[a aa a ].`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `reFindAllSubmatches "regex" "string" [count]`       | Returns whole-pattern matches and also the sub-matches within those matches as _slices_ inside a _slice_. `{{reFindAllSubmatches "(?i)y([a-z]+)g" "youngish YAGPDB"}} `returns`  [[young oun] [YAG A]]  `(regex pattern here is case insensitive). Optional `count `works the same way as for `reFindAll`. So example above with `count` set to 1 would return `[[young oun]].`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `reReplace "regex" "string1" "string2"`              | Replaces "string1" contents with "string2" at regex match point. `{{reReplace "I am" "I am cool!" "YAGPDB is"}}`returns ` YAGPDB is cool!` (regex pattern here is case sensitive).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `reSplit "regex" "string" [count]`                   | <p><code>reSplit</code> slices <code>string </code>into substrings separated by the <code>regex</code> expression and returns a <em>slice</em> of the substrings between those expression matches. The optional <code>count </code>determines the number of substrings to return. If <code>count </code>is negative number the function returns all substrings, if 0 then none. If <code>count </code>is bigger than 0 it returns at most n substrings, the last substring being the unsplit remainder.</p><p><strong>Example:</strong> <code>{{ $x := reSplit "a" "yagpdb has a lot of fame" 5}}</code></p><p><code>{{$x}} {{index $x 3}} </code>would return <code>[y gpdb h s lot of f me]</code> and <code>lot of f.</code></p>                                                                                                                                             |
+| `slice "string"\|slice integer (integer2)`           | <p>Function's first argument must be of type <em>string </em>or <em>slice</em>.</p><p>Outputs the "string" after cutting/slicing off integer (numeric) value of symbols (actually starting the string's index from integer through integer2) - e.g. <code>{{slice "Fox runs" 2}}</code>outputs <code>x runs</code>. When using also integer2 - e.g. <code>{{slice "Fox runs" 1 7}}</code>, it outputs <code>ox run</code>. For slicing whole arguments, let's say words, see example in section's <a href="templates.md#this-sections-snippets-4">Snippets</a>. </p><p></p><p>This<code> slice</code> function is not the same as basic dynamically-sized <em>slice</em> data type discussed in this reference doc. Also it's custom, not having 3-indices as the default one from <a href="https://golang.org/pkg/text/template/#hdr-Functions">text/template</a> package.</p> |
+| `split "string" "sepr"`                              | Splits given `"string"` to substrings separated by `"sepr"`arg and returns new _slice _of the substrings between given separator e.g. `{{split "YAG, is cool!" ","}}` returns `[YAG  is cool!]` _slice_ where `YAG` is at `index` position 0 and `is cool!` at `index` position 1. Example also in section's [Snippets](templates.md#this-sections-snippets-4).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `title "string"`                                     | Returns string with the first letter of each word capitalized.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `upper "string"`                                     | Converts the string to uppercase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `urlescape "string"`                                 | Escapes the _string_ so it can be safely placed inside a URL path segment - e.g. "Hello, YAGPDB!" becomes "Hello%2C%20YAGPDB%21"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 {% hint style="info" %}
-Special information we can include in the string is _escape sequences_. Escape sequences are two \(or more\) characters, the first of which is a backslash `\`, which gives the remaining characters special meaning - let's call them metacharacters. The most common escape sequence you will encounter is `\n`, which means "newline". 
+Special information we can include in the string is _escape sequences_. Escape sequences are two (or more) characters, the first of which is a backslash `\`, which gives the remaining characters special meaning - let's call them metacharacters. The most common escape sequence you will encounter is `\n`, which means "newline".&#x20;
 {% endhint %}
 
 {% hint style="info" %}
@@ -777,430 +388,148 @@ With regular expression patterns - when using quotes you have to "double-escape"
 
 #### This section's snippets:
 
-* `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`. 
-* To demonstrate usage of `split` function. &gt; `{{$x := "Hello, World, YAGPDB, here!"}} {{range $k, $v := (split $x ", ")}}Word {{$k}}: __{{$v}}__ {{end}}`
-* To demonstrate usage of `reFindAll`. &gt;  `Before regex: {{$msg := "1 YAGPDB and over 100000 servers conquered."}} {{$re2 := reFindAll "[0-9]+" $msg}} {{$msg}}   After regex matches: {{joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
+* `{{$args:= (joinStr " " (slice .CmdArgs 1))}}` Saves all the arguments except the first one to a variable `$args`.&#x20;
+* To demonstrate usage of `split` function. >\
+  `{{$x := "Hello, World, YAGPDB, here!"}} {{range $k, $v := (split $x ", ")}}Word {{$k}}: __{{$v}}__ {{end}}`
+* To demonstrate usage of `reFindAll`. > \
+  `Before regex: {{$msg := "1 YAGPDB and over 100000 servers conquered."}} {{$re2 := reFindAll "[0-9]+" $msg}} {{$msg}}  `\
+  `After regex matches: {{joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
 
 ### Math functions
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>add x y z ...</code>
-      </td>
-      <td style="text-align:left">Returns x + y + z + ..., detects first number&apos;s type - is it <em>int</em> or <em>float</em> and
-        based on that adds. (use <code>toFloat</code> on the first argument to force
-        floating point math.)<code>{{add 5 4 3 2 -1}}</code> sums all these numbers
-        and returns <code>13</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>sub x y z ...</code>
-      </td>
-      <td style="text-align:left">Returns x - y -z - ... Works like add, just subtracts.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>mult x y z ...</code>
-      </td>
-      <td style="text-align:left">Multiplication, like <code>add</code> or <code>div</code>, detects first
-        number&apos;s type. <code>{{mult 3.14 2}}</code> returns <code>6.28</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>div x y z ...</code>
-      </td>
-      <td style="text-align:left">Division, like <code>add</code> or <code>mult</code>, detects number&apos;s
-        type first. <code>{{div 11 3}}</code> returns <code>3</code> whereas <code>{{div 11.1 3}}</code> returns <code>3.6999999999999997</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>fdiv x y z ...</code>
-      </td>
-      <td style="text-align:left">Meant specifically for floating point numbers division.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>log x base</code>
-      </td>
-      <td style="text-align:left">Log is a logarithm function using (log base of x). Arguments can be any
-        type of numbers, as long as they follow logarithm logic. Return value is
-        of type <em>float64</em>. If base argument is not given It is using natural
-        logarithm (base e - The Euler&apos;s constant) as default, also is the
-        default to change the base.<code>{{ log &quot;123&quot; 2 }}</code> will
-        return <code>6.94251450533924</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>mod x y</code>
-      </td>
-      <td style="text-align:left">Mod returns the floating-point remainder of x/y. <code>mod 17 3</code> returns <code>2 </code>of
-        type <em>float64</em>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>pow x y</code>
-      </td>
-      <td style="text-align:left">Pow returns x**y, the base-x exponential of y which have to be both numbers.
-        Type is returned as <em>float64</em>. <code>{{ pow 2 3 }}</code> returns <code>8</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>randInt (stop, or start stop)</code>
-      </td>
-      <td style="text-align:left">
-        <p>Returns a random integer between 0 and stop, or start - stop if two args
-          are provided.</p>
-        <p>Result will be <code>start &lt;= random number &lt; stop</code>. Example
-          in section&apos;s <a href="templates.md#this-sections-snippets-5">Snippets</a>.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>round</code>
-      </td>
-      <td style="text-align:left">Returns the nearest integer, rounding half away from zero. Regular rounding
-        &gt; 10.4 is <code>10</code> and 10.5 is <code>11</code>. All round functions
-        return type <em>float64</em>, so use conversion functions to get integers.
-        For more complex rounding, example in section&apos;s <a href="templates.md#this-sections-snippets-5">Snippets</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>roundCeil</code>
-      </td>
-      <td style="text-align:left">Returns the least integer value greater than or equal to input or rounds
-        up. <code>{{roundCeil 1.1}}</code> returns <code>2</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>roundFloor</code>
-      </td>
-      <td style="text-align:left">Returns the greatest integer value less than or equal to input or rounds
-        down. <code>{{roundFloor 1.9}}</code> returns <code>1</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>roundEven </code>
-      </td>
-      <td style="text-align:left">Returns the nearest integer, rounding ties to even.
-        <br /><code>{{roundEven 10.5}}</code> returns <code>10 {{roundEven 11.5}}</code> returns <code>12</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>sqrt</code>
-      </td>
-      <td style="text-align:left">Returns the square root of a number as type <em>float64</em>.
-        <br /><code>{{sqrt 49}}</code> returns <code>7, {{sqrt 12.34 | printf &quot;%.4f&quot;}} returns 3.5128</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Function                        | Description                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `add x y z ...`                 | Returns x + y + z + ...,  detects first number's type - is it _int_ or _float_ and based on that adds. (use `toFloat` on the first argument to force floating point math.)`{{add 5 4 3 2 -1}}` sums all these numbers and returns `13`.                                                                                                                                |
+| `sub x y z ...`                 | Returns x - y -z - ... Works like add, just subtracts.                                                                                                                                                                                                                                                                                                                 |
+| `mult x y z ...`                | Multiplication, like `add` or `div`, detects first number's type. `{{mult 3.14 2}}` returns `6.28`                                                                                                                                                                                                                                                                     |
+| `div x y z ...`                 | Division, like `add` or `mult`, detects first number's type first. `{{div 11 3}}` returns `3` whereas `{{div 11.1 3}}` returns  `3.6999999999999997`                                                                                                                                                                                                                   |
+| `fdiv x y z ...`                | Meant specifically for floating point numbers division.                                                                                                                                                                                                                                                                                                                |
+| `log x base`                    | Log is a logarithm function using (log base of x). Arguments can be any type of numbers, as long as they follow logarithm logic. Return value is of type _float64_. If base argument is not given It is using natural logarithm (base e - The Euler's constant) as default, also is the default to change the base.`{{ log "123" 2 }}` will return `6.94251450533924`. |
+| `mod x y`                       | Mod returns the floating-point remainder of x/y. `mod 17 3` returns `2 `of type _float64_.                                                                                                                                                                                                                                                                             |
+| `pow x y`                       | Pow returns x\*\*y, the base-x exponential of y which have to be both numbers. Type is returned as _float64_. `{{ pow 2 3 }}` returns `8`.                                                                                                                                                                                                                             |
+| `randInt (stop, or start stop)` | <p>Returns a random integer between 0 and stop, or start - stop if two args are provided.</p><p>Result will be <code>start &#x3C;= random number &#x3C; stop</code>. Example in section's <a href="templates.md#this-sections-snippets-5">Snippets</a>.</p>                                                                                                            |
+| `round`                         | Returns the nearest integer, rounding half away from zero. Regular rounding > 10.4 is `10` and 10.5 is `11`. All round functions return type _float64_, so use conversion functions to get integers. For more complex rounding, example in section's [Snippets](templates.md#this-sections-snippets-5).                                                                |
+| `roundCeil`                     | Returns the least integer value greater than or equal to input or rounds up.  `{{roundCeil 1.1}}` returns `2`.                                                                                                                                                                                                                                                         |
+| `roundFloor`                    | Returns the greatest integer value less than or equal to input or rounds down. `{{roundFloor 1.9}}` returns `1`.                                                                                                                                                                                                                                                       |
+| `roundEven `                    | <p>Returns the nearest integer, rounding ties to even.<br><code>{{roundEven 10.5}}</code> returns <code>10 {{roundEven 11.5}}</code> returns <code>12</code>.</p>                                                                                                                                                                                                      |
+| `sqrt`                          | <p>Returns the square root of a number as type <em>float64</em>.<br><code>{{sqrt 49}}</code> returns <code>7, {{sqrt 12.34 | printf "%.4f"}} returns 3.5128</code></p>                                                                                                                                                                                                 |
 
 #### This section's snippets:
 
-* `{{$d := randInt 10}}` Stores random _int_ into variable `$d` \(a random number from 0-9\).
-* To demonstrate rounding float to 2 decimal places. `{{div (round (mult 12.3456 100)) 100}}` returns 12.35 `{{div (roundFloor (mult  12.3456 100)) 100}}` returns 12.34
+* `{{$d := randInt 10}}` Stores random _int_ into variable `$d` (a random number from 0-9).
+* To demonstrate rounding float to 2 decimal places.\
+  `{{div (round (mult 12.3456 100)) 100}}` returns 12.35\
+  `{{div (roundFloor (mult  12.3456 100)) 100}}` returns 12.34
 
 ### Message functions
 
-| Function | Description |
-| :--- | :--- |
-| `addMessageReactions channel messageID emojis...` | Same as `addReactions` or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channel's ID or its name. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
-| `addReactions "👍" "👎" ...` | Adds each emoji as a reaction to the message that triggered the command \(recognizes Unicode emojis and `emojiName:emojiID`\). |
-| `addResponseReactions "👍" "👎" ...` | Adds each emoji as a reaction to the response message \(recognizes Unicode emojis and `emojiName:emojiID`\). |
-| `complexMessage "content" args "embed" args "file" args`  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file \(max 100 000 characters ca100kB\). Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
-| `complexMessageEdit "content" args "embed" args` | Special case for `editMessage` function - either if `complexMessage` is involved or works even with regular message. Has two parameters `"content"` and `"embed"` to edit regular text part or embed part. If `"embed"` is set to `nil`, it deletes whole embed. Example in this section's [Snippets](templates.md#this-sections-snippets-6). |
-| `deleteAllMessageReactions channel messageID (emojis...)` | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. `emojis` argument is optional and works like it's described for the function `deleteMessageReaction`. |
-| `deleteMessageReaction channel messageID userID emojis...` | Deletes reaction\(s\) from a message. `channel` can be ID, "name" or `nil`.  `emojis` argument can be up to 10 emojis, syntax is `emojiName` for Unicode/Discord's default emojis and `emojiName:emojiID` for custom emotes.   Example: `{{deleteMessageReaction nil (index .Args 1) .User.ID "👍" "👎"}}` will delete current user's reactions with thumbsUp/Down emotes from current running channel's message which ID is given to command as first argument `(index .Args 1)`. Also usable with [Reaction trigger](templates.md#reaction). |
-| `deleteMessage channel messageID (delay)` | Deletes message with given `messageID` from `channel`. Channel can be either `nil`, channel's ID or its name. `(delay)` is optional and like following two delete functions, it defaults to 10 seconds, max being 1 day or 86400 seconds. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
-| `deleteResponse (delay)` | Deletes the response after a certain time from optional `delay` argument \(max 86400 seconds = 1 day\). Defaults to 10 seconds. |
-| `deleteTrigger (delay)` | Deletes the trigger after a certain time from optional `delay` argument  \(max 86400 seconds = 1 day\). Defaults to 10 seconds. |
-| `editMessage channel messageID newMessageContent` | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-6). |
-| `editMessageNoEscape channel messageID newMessageContent` | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`. |
-| `getMessage channelID messageID` | Returns a [Message ](templates.md#message)object. |
-| `sendDM "message here"` | Sends the user a direct message, only one DM can be sent per custom command \(accepts embed objects\). YAG will only DM triggering user. |
-| `sendMessage channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name". |
-| `sendMessageNoEscape channel message` | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions \(e.g. role mentions or @here/@everyone\). |
-| `sendMessageRetID channel message` | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-6). |
-| `sendMessageNoEscapeRetID channel message` | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use. |
+| Function                                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `addMessageReactions channel messageID emojis...`          | Same as `addReactions `or `addResponseReactions`, but can be used on any messages using its ID. `channel` can be either `nil`, channel's ID or its name. Example in section's [Snippets](templates.md#this-sections-snippets-6).                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `addReactions "👍" "👎" ...`                               | Adds each emoji as a reaction to the message that triggered the command (recognizes Unicode emojis and `emojiName:emojiID`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `addResponseReactions "👍" "👎" ...`                       | Adds each emoji as a reaction to the response message (recognizes Unicode emojis and `emojiName:emojiID`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `complexMessage "content" args "embed" args "file" args `  | `complexMessage` creates a _so-called_ bundle of different message fields for `sendMessage...` functions to send them out all together. Its arguments need to be preceded by predefined keys `"content"` for regular text, `"embed"` for embed arguments created by `cembed` or `sdict`, `"file"` for printing out content as a file (max 100 000 characters ca100kB). Example in this section's [Snippets](templates.md#this-sections-snippets-6).                                                                                                                                                                                                  |
+| `complexMessageEdit "content" args "embed" args`           | Special case for `editMessage` function - either if `complexMessage` is involved or works even with regular message. Has two parameters `"content"` and `"embed"` to edit regular text part or embed part. If `"embed"` is set to `nil`, it deletes whole embed. Example in this section's [Snippets](templates.md#this-sections-snippets-6).                                                                                                                                                                                                                                                                                                        |
+| `deleteAllMessageReactions channel messageID (emojis...)`  | Deletes all reactions pointed message has. `channel` can be ID, "name" or `nil`. `emojis `argument is optional and works like it's described for the function `deleteMessageReaction`.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `deleteMessageReaction channel messageID userID emojis...` | <p>Deletes reaction(s) from a message. <code>channel</code> can be ID, "name" or <code>nil</code>. <br><code>emojis </code>argument can be up to 10 emojis, syntax is <code>emojiName</code> for Unicode/Discord's default emojis and <code>emojiName:emojiID</code> for custom emotes.  <br>Example: <code>{{deleteMessageReaction nil (index .Args 1) .User.ID "👍" "👎"}}</code> will delete current user's reactions with thumbsUp/Down emotes from current running channel's message which ID is given to command as first argument <code>(index .Args 1)</code>.<br>Also usable with <a href="templates.md#reaction">Reaction trigger</a>.</p> |
+| `deleteMessage channel messageID (delay)`                  | Deletes message with given `messageID `from `channel`. Channel can be either `nil`, channel's ID or its name. `(delay)` is optional and like following two delete functions, it defaults to 10 seconds, max being 1 day or 86400 seconds. Example in section's [Snippets](templates.md#this-sections-snippets-6).                                                                                                                                                                                                                                                                                                                                    |
+| `deleteResponse (delay)`                                   | Deletes the response after a certain time from optional `delay` argument (max 86400 seconds = 1 day). Defaults to 10 seconds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `deleteTrigger (delay)`                                    | Deletes the trigger after a certain time from optional `delay` argument  (max 86400 seconds = 1 day). Defaults to 10 seconds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `editMessage channel messageID newMessageContent`          | Edits the message in channel, channel can be either `nil`, channel's ID or "name". Light example in section's [Snippets](templates.md#this-sections-snippets-6).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `editMessageNoEscape channel messageID newMessageContent`  | Edits the message in channel and has same logic in escaping characters as `sendMessageNoEscape`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `getMessage channelID messageID`                           | Returns a [Message ](templates.md#message)object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `sendDM "message here"`                                    | Sends the user a direct message, only one DM can be sent per custom command (accepts embed objects). YAG will only DM triggering user.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `sendMessage channel message`                              | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel's "name".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `sendMessageNoEscape channel message`                      | Sends `message (string or embed)` in `channel`, channel can be either `nil`, the channel ID or the channel "name". Doesn't escape mentions (e.g. role mentions or @here/@everyone).                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `sendMessageRetID channel message`                         | Same as `sendMessage`, but also returns messageID to assigned variable for later use. Example in section's [Snippets](templates.md#this-sections-snippets-6).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `sendMessageNoEscapeRetID channel message`                 | Same as `sendMessageNoEscape`, but also returns messageID to assigned variable for later use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 #### This section's snippets:
 
-* Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message. &gt;
+*   Sends message to current channel `nil` and gets messageID to variable `$x`. Also adds reactions to this message. After 5 seconds, deletes that message. >
 
-  `{{$x := sendMessageRetID nil "Hello there!"}} {{addMessageReactions nil $x "👍" "👎"}} {{deleteMessage nil $x 5}}`
-
-* To demonstrate `sleep` and slightly also `editMessage` functions. &gt; `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 3}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
+    `{{$x := sendMessageRetID nil "Hello there!"}} {{addMessageReactions nil $x "👍" "👎"}} {{deleteMessage nil $x 5}}`
+* To demonstrate `sleep` and slightly also `editMessage` functions. >\
+  `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 3}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
 * To demonstrate usage of `complexMessage` with `sendMessage`. `{{sendMessage nil (complexMessage "content" "Who rules?" "embed" (cembed "description" "YAGPDB of course!" "color" 0x89aa00) "file" "Here we print something nice - you all are doing awesome!")}}`
-* To demonstrate usage of `complexMessageEdit` with `editMessage`. `{{$mID := sendMessageRetID nil (complexMessage "content" "You know what is..." "embed" (cembed "title" "FUN!?" "color" 0xaa8900))}} {{sleep 3}} {{editMessage nil $mID (complexMessageEdit "embed" (cembed "title" "YAGPDB!" "color" 0x89aa00) "content" "Yes, it's always working with...")}}{{sleep 3}}{{editMessage nil $mID (complexMessageEdit "embed" nil "content" "Embed deleted, goodbye YAG!")}}{{deleteMessage nil $mID 3}}`
+* To demonstrate usage of `complexMessageEdit` with `editMessage`.\
+  `{{$mID := sendMessageRetID nil (complexMessage "content" "You know what is..." "embed" (cembed "title" "FUN!?" "color" 0xaa8900))}} {{sleep 3}} {{editMessage nil $mID (complexMessageEdit "embed" (cembed "title" "YAGPDB!" "color" 0x89aa00) "content" "Yes, it's always working with...")}}{{sleep 3}}{{editMessage nil $mID (complexMessageEdit "embed" nil "content" "Embed deleted, goodbye YAG!")}}{{deleteMessage nil $mID 3}}`
 
 ### Mentions
 
-| Function | Description |
-| :--- | :--- |
-| `mentionEveryone` | Mentions `@everyone`. |
-| `mentionHere` | Mentions `@here`. |
-| `mentionRoleName "rolename"` | Mentions the first role found with the provided name \(case-insensitive\). |
-| `mentionRoleID roleID` | Mentions the role found with the provided ID. |
+| Function                     | Description                                                              |
+| ---------------------------- | ------------------------------------------------------------------------ |
+| `mentionEveryone`            | Mentions `@everyone`.                                                    |
+| `mentionHere`                | Mentions `@here`.                                                        |
+| `mentionRoleName "rolename"` | Mentions the first role found with the provided name (case-insensitive). |
+| `mentionRoleID roleID`       | Mentions the role found with the provided ID.                            |
 
 #### This section's snippets:
 
 * `<@{{.User.ID}}>` Outputs a mention to the user that called the command and is the same as `{{.User.Mention}}`
-* `<@###########>` Mentions the user that has the ID \#\#\#\#\#\# \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
-* `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& \(See [How to get IDs](templates.md#how-to-get-ids) to get ID\).
-* `<@&##########>` Mentions the role with ID \#\#\#\#\#\#\#\# \([listroles](../commands/all-commands.md#listroles) command gives roleIDs\). This is usable for example with `{{sendMessageNoEscape nil "Welcome to role <@&11111111...>"}}`. Mentioning that role has to be enabled server- side in Discord.
+* `<@###########>` Mentions the user that has the ID ###### (See [How to get IDs](templates.md#how-to-get-ids) to get ID).
+* `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& (See [How to get IDs](templates.md#how-to-get-ids) to get ID).
+* `<@&##########>` Mentions the role with ID ######## ([listroles](../commands/all-commands.md#listroles) command gives roleIDs). This is usable for example with `{{sendMessageNoEscape nil "Welcome to role <@&11111111...>"}}`. Mentioning that role has to be enabled server- side in Discord.
 
 ### Role functions
 
-| Function | Description |
-| :--- | :--- |
-| `addRoleID roleID` | Adds the role with the given ID to the user that triggered the command \(use the `listroles` command for a list of roles\). |
-| `addRoleName roleName` | Adds the role with given name to the user that triggered the command \(use the `listroles` command for a list of roles\). |
-| `getRole role` | Returns a [role object](https://discord.com/developers/docs/topics/permissions#role-object) of type _\*discordgo.Role._ `role`  can be either role's ID or role's name. |
-| `giveRoleID userID roleID` | Gives a role by ID to the target. |
-| `giveRoleName userID "roleName"` | Gives a role by name to the target. |
-| `hasRoleID roleID` | Returns true if the user has the role with the specified ID \(use the listroles command for a list of roles\). |
-| `hasRoleName "rolename"` | Returns true if the user has the role with the specified name \(case-insensitive\). |
-| `removeRoleID roleID (delay)` | Removes the role with the given ID from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
-| `removeRoleName roleName (delay)` | Removes the role with given name from the user that triggered the command \(use the listroles command for a list of roles\). `Delay` is optional argument in seconds. |
-| `setRoles userID roles` | Overwrites the roles of the given user using the slice of roles provided, which should be a slice of role IDs. IDs can be ints or strings. Example: `{{setRoles .User.ID cslice}}` would clear the roles of the triggering user. |
-| `takeRoleID userID roleID (delay)` | Takes away a role by ID from the target. `Delay` is optional argument in seconds. |
-| `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds. |
-| `targetHasRoleID userID roleID` | Returns true if the given user has the role with the specified ID \(use the listroles command for a list of roles\). Example in section's [Snippets](templates.md#this-sections-snippets-8). |
-| `targetHasRoleName userID "roleName"` | Returns true if the given user has the role with the specified name \(case-insensitive\). |
+| Function                                 | Description                                                                                                                                                                                                                      |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `addRoleID roleID`                       | Adds the role with the given ID to the user that triggered the command (use the `listroles `command for a list of roles).                                                                                                        |
+| `addRoleName roleName`                   | Adds the role with given name to the user that triggered the command (use the `listroles `command for a list of roles).                                                                                                          |
+| `getRole role`                           | Returns a [role object](https://discord.com/developers/docs/topics/permissions#role-object) of type _\*discordgo.Role. _`role`  can be either role's ID or role's name.                                                          |
+| `giveRoleID userID roleID`               | Gives a role by ID to the target.                                                                                                                                                                                                |
+| `giveRoleName userID "roleName"`         | Gives a role by name to the target.                                                                                                                                                                                              |
+| `hasRoleID roleID`                       | Returns true if the user has the role with the specified ID (use the listroles command for a list of roles).                                                                                                                     |
+| `hasRoleName "rolename"`                 | Returns true if the user has the role with the specified name (case-insensitive).                                                                                                                                                |
+| `removeRoleID roleID (delay)`            | Removes the role with the given ID from the user that triggered the command (use the listroles command for a list of roles). `Delay `is optional argument in seconds.                                                            |
+| `removeRoleName roleName (delay)`        | Removes the role with given name from the user that triggered the command (use the listroles command for a list of roles). `Delay `is optional argument in seconds.                                                              |
+| `setRoles userID roles`                  | Overwrites the roles of the given user using the slice of roles provided, which should be a slice of role IDs. IDs can be ints or strings. Example: `{{setRoles .User.ID cslice}}` would clear the roles of the triggering user. |
+| `takeRoleID userID roleID (delay)`       | Takes away a role by ID from the target. `Delay `is optional argument in seconds.                                                                                                                                                |
+| `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay `is optional argument in seconds.                                                                                                                                              |
+| `targetHasRoleID userID roleID`          | Returns true if the given user has the role with the specified ID (use the listroles command for a list of roles). Example in section's [Snippets](templates.md#this-sections-snippets-8).                                       |
+| `targetHasRoleName userID "roleName"`    | Returns true if the given user has the role with the specified name (case-insensitive).                                                                                                                                          |
 
 #### This section's snippets:
 
-* To demonstrate usage of `targetHasRoleID`. &gt;  `{{$x := (userArg (index .Args 1)).ID}} {{if targetHasRoleID $x ############}} Has the Role! {{else}} Does not have the role! {{end}}`
+* To demonstrate usage of `targetHasRoleID`. > \
+  `{{$x := (userArg (index .Args 1)).ID}} {{if targetHasRoleID $x ############}} Has the Role! {{else}} Does not have the role! {{end}}`
 
 ### Current User
 
-| Function | Description |
-| :--- | :--- |
-| `currentUserCreated` |  Returns value of type _time.Time_ and shows when the current user was created. |
-| `currentUserAgeHuman` |  The account age of the current user in more human readable format  \(Eg:`3 days 2 hours`\). |
-| `currentUserAgeMinutes` |  The account age of the current user in minutes. |
+| Function                | Description                                                                                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `currentUserCreated`    |  Returns value of type _time.Time_ and shows when the current user was created.                                 |
+| `currentUserAgeHuman`   | <p> The account age of the current user in more human readable format <br>(Eg:<code>3 days 2 hours</code>).</p> |
+| `currentUserAgeMinutes` |  The account age of the current user in minutes.                                                                |
 
 ### Miscellaneous
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>adjective</code>
-      </td>
-      <td style="text-align:left">Returns a random adjective.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>cembed &quot;list of embed values&quot;</code>
-      </td>
-      <td style="text-align:left">Function to generate embed inside custom command. <a href="../others/custom-embeds.md#embeds-in-custom-commands">More in-depth here</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>cslice, sdict</code>
-      </td>
-      <td style="text-align:left">These functions are covered in their own section <a href="templates.md#custom-types">here</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dict key1 value1 key2 value2 ...</code>
-      </td>
-      <td style="text-align:left">Creates an unordered collection of key-value pairs, a dictionary so to
-        say. The number of parameters to form key-value pairs must be even. Example
-        <a
-        href="https://docs.yagpdb.xyz/reference/custom-command-examples#dictionary-example">here</a>. Keys and values can be of any type. Key is not restricted to <em>string </em>only
-          as in case with <code>sdict</code>. <code>dict </code>also has helper methods
-          .Del, .Get and .Set and they function the same way as <code>sdict</code> ones
-          discussed <a href="templates.md#templates-sdict">here</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>exec &quot;command&quot; &quot;args&quot; &quot;args&quot; &quot;args&quot; ...</code>
-      </td>
-      <td style="text-align:left">
-        <p>Executes a YAGPDB command (e.g. roll, kick etc) in a custom command. Exec
-          can be run max 5 times per command. If real command returns an embed - <code>exec</code> will
-          return raw data of type embed, so you can use embed fields for better formatting
-          - e.g. <code>{{$resp := exec &quot;whois&quot;}} {{$resp.Title}} Joined at &gt; {{(index $resp.Fields 4).Value}}</code> will
-          return the title (username#discriminator) and &quot;Joined at&quot; field&apos;s
-          value from <code>whois</code> command. <b>NB!</b> This will not work for un/nn
-          commands!</p>
-        <p></p>
-        <p>exec syntax is <code>exec &quot;command&quot; arguments</code> - this means
-          you format it the same way as you would type the command regularly, just
-          without the prefix, e.g. if you want to clear 2 messages and avoiding the
-          pinned message &gt; <code>{{exec &quot;clear 2 -nopin&quot;}}</code>, where <code>&quot;command&quot;</code> part
-          is whole <code>&quot;clear 2 -nopin&quot;</code>. If you change that number
-          inside CC somewhere then you have to use <code>arguments</code> part of exec
-          formatting &gt; <code>{{$x := 2}} {{exec &quot;clear&quot; $x &quot;-nopin&quot;}}</code> Here <code>&quot;clear&quot;</code> is
-          the <code>&quot;command&quot;</code> and it is followed by <code>arguments</code>,
-          one variable <code>$x</code> and one string <code>&quot;-nopin&quot;</code>.
-          Last example is the same as <code>{{exec (joinStr &quot; &quot; &quot;clear&quot; $x &quot;-nopin&quot;)}}</code>(also
-          notice the space in <code>joinStr</code> separator).</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>execAdmin &quot;command&quot; &quot;args&quot; &quot;args&quot; &quot;args&quot; ...</code>
-      </td>
-      <td style="text-align:left">Functions same way as <code>exec</code> but effectively runs the command
-        as the bot user (YAGPDB). This has essentially the same effect as if a
-        user with the same permissions and roles as YAGPDB ran the command: for
-        example, if YAGPDB had ban members permission but the user which ran the
-        command did not, <code>{{exec &quot;ban&quot; 12345}}</code> would error
-        due to insufficient permissions but <code>{{execAdmin &quot;ban&quot; 12345}}</code> would
-        succeed.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>hasPrefix string prefix</code>
-      </td>
-      <td style="text-align:left"><code>hasPrefix</code> tests whether the given <code>string </code>begins
-        with <code>prefix </code>and returns <em>bool</em>. Example &gt; <code>{{hasPrefix &quot;YAGPDB&quot; &quot;YAG&quot;}}</code> returns <code>true</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>hasSuffix string suffix</code>
-      </td>
-      <td style="text-align:left">
-        <p>hasSuffix tests whether the given <code>string </code>ends with <code>suffix </code>and
-          returns <em>bool</em>.</p>
-        <p>Example &gt; <code>{{hasSuffix &quot;YAGPDB&quot; &quot;YAG&quot;}}</code> returns <code>false</code>.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>humanizeThousands arg</code>
-      </td>
-      <td style="text-align:left">This function places comma to separate groups of thousands of a number. <code>arg </code>can
-        be <em>int</em> or <em>string</em>, has to be a whole number, e.g. <code>{{humanizeThousands &quot;1234567890&quot;}}</code> will
-        return <code>1,234,567,890</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>in list value</code>
-      </td>
-      <td style="text-align:left">Returns <em>bool</em> true/false whether case-sensitive value is in list/<em>slice</em>. <code>{{ in (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot; }}</code> returns <code>false</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>index arg ...keys</code>
-      </td>
-      <td style="text-align:left">
-        <p>Returns the result of indexing its first argument by the following arguments.
-          Each indexed item must be a <em>map</em>, <em>slice </em>or <em>array</em>.</p>
-        <p></p>
-        <p>Example: <code>{{index .Args 1}}</code> returns first argument after trigger
-          which is always at position 0.</p>
-        <p></p>
-        <p>More than one positional keys can be used, in pseudo-code:</p>
-        <p><code>index X 0 1</code> is equivalent to calling <code>index (index X 0) 1</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>inFold list value</code>
-      </td>
-      <td style="text-align:left">Same as <code>in</code>, but is case-insensitive. <code>{{inFold (cslice &quot;YAGPDB&quot; &quot;is cool&quot;) &quot;yagpdb&quot;}}</code> returns <code>true</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>kindOf value (flag)</code>
-      </td>
-      <td style="text-align:left">This function helps to determine what kind of data type we are dealing
-        with. <code>flag</code> part is a <em>bool </em> and if set as <b>true </b>(<b>false </b>is
-        optional)<b> </b>returns the value where given <code>value</code> points
-        to. Example: <code>{{kindOf cembed false}} {{kindOf cembed true}} </code>will
-        return <code>ptr </code>and <code>struct</code>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>len arg</code>
-      </td>
-      <td style="text-align:left">
-        <p>Returns the integer length of its argument. arg can be an <em>array</em>, <em>slice</em>, <em>map</em>,
-          or <em>string.</em>
-        </p>
-        <p><code>{{ len (cslice 1 2 3) }}</code>
-        </p>
-        <p>returns <code>3</code>.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>noun</code>
-      </td>
-      <td style="text-align:left">Returns a random noun.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>parseArgs required_args error_message ...carg</code>
-      </td>
-      <td style="text-align:left">
-        <p>Checks the arguments for a specific type. Has methods <code>.Get</code> and <code>.IsSet</code>.</p>
-        <p><code><br />carg &quot;type&quot; &quot;name&quot;</code> is required by <code>parseArgs</code> and
-          it defines the type of argument for <code>parseArgs</code>.</p>
-        <p></p>
-        <p><a href="https://docs.yagpdb.xyz/commands/custom-commands#require-arguments">More in depth here</a> and
-          an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>range slice/array</code>
-      </td>
-      <td style="text-align:left">Iterates (loops) over the given <em>slice </em>or <em>array </em>and sets
-        successive elements as active data (the dot) to be further handled inside
-        the <code>range</code> action. Example usage <a href="custom-command-examples.md#range-example">here</a>.
-        <a
-        href="templates.md#range-action">More in-depth here</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>sendTemplate channel templateName data</code>
-      </td>
-      <td style="text-align:left">
-        <p>Function sends a formulated template to another channel.
-          <br />Channel is like always either name, number or nil; and returns messageID.</p>
-        <p>Example: <code>{{define &quot;logsTemplate&quot;}}This text will output on different channel, you can also use functions like {{currentTime}}. {{.TemplateArgs}} would be additional data sent out. {{end}}</code>
-        </p>
-        <p>Now we call that &quot;logs&quot; in the same custom command.<code>{{sendTemplate &quot;logs&quot; &quot;logsTemplate&quot; &quot;YAG rules!&quot;}}</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>sendTemplateDM templateName data</code>
-      </td>
-      <td style="text-align:left">Works the same way as function above. Only channel&apos;s name is not
-        in the arguments. YAGPDB <b>will only </b>DM the triggering user.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>seq start stop</code>
-      </td>
-      <td style="text-align:left">Creates a new <em>slice</em> of type <em>int</em>, beginning from start number,
-        increasing in sequence and ending at stop (not included). <code>{{seq -4 2}}</code> returns
-        a <em>slice</em>  <code>[ -4 -3 -2 -1 0 1 ]</code>. Sequence&apos;s max length
-        is 10 000.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>sort slice (...args)</code>
-      </td>
-      <td style="text-align:left">
-        <p>Sorts a slice with optional arguments. Numbers are sorted before strings.
-          Arguments are presented in a <code>sdict</code> as keys having bool values.
-          Example &gt; <code>{{sort (cslice &quot;YAGPDB&quot; 42 &quot;Alphabet&quot; 111 33.3) (sdict &quot;reverse&quot; true &quot;subslices&quot; true &quot;emptyslices&quot; false)}}</code>would
-          return<code> [111 42 33.3 YAGPDB Alphabet]</code>
-        </p>
-        <p>Argument keys:</p>
-        <p><code>&quot;reverse&quot;</code> reverses the order if <code>true</code>.</p>
-        <p><code>&quot;subslices&quot;</code> makes the function return a set of subslices
-          based on input type/kind if <code>true</code>.</p>
-        <p><code>&quot;Emptyslices&quot;</code> returns all possible slices if <code>true</code>,
-          helpful for indexing.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>shuffle list</code>
-      </td>
-      <td style="text-align:left">Returns a shuffled, randomized version of a list/<em>slice</em>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>sleep seconds</code>
-      </td>
-      <td style="text-align:left">Pauses execution of template&apos;s action-structure inside custom command
-        for max 60 seconds combined. Argument<code>seconds</code>is an integer
-        (whole number). Example in <a href="templates.md#miscellaneous-snippets">Snippets</a>.</td>
-    </tr>
-  </tbody>
-</table>
+| Function                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `adjective`                                     | Returns a random adjective.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `cembed "list of embed values"`                 | Function to generate embed inside custom command. [More in-depth here](../others/custom-embeds.md#embeds-in-custom-commands).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `cslice, sdict`                                 | These functions are covered in their own section [here](templates.md#custom-types).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `dict key1 value1 key2 value2 ...`              | Creates an unordered collection of key-value pairs, a dictionary so to say. The number of parameters to form key-value pairs must be even. Example [here](https://docs.yagpdb.xyz/reference/custom-command-examples#dictionary-example). Keys and values can be of any type. Key is not restricted to _string _only as in case with `sdict`. `dict `also has helper methods .Del, .Get and .Set and they function the same way as `sdict` ones discussed [here](templates.md#templates-sdict).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `exec "command" "args" "args" "args" ...`       | <p>Executes a YAGPDB command (e.g. roll, kick etc) in a custom command. Exec can be run max 5 times per command. If real command returns an embed - <code>exec</code> will return raw data of type embed, so you can use embed fields for better formatting - e.g. <code>{{$resp := exec "whois"}} {{$resp.Title}} Joined at > {{(index $resp.Fields 4).Value}}</code> will return the title (username#discriminator) and "Joined at" field's value from <code>whois</code> command. <strong>NB!</strong> This will not work for un/nn commands!</p><p></p><p>exec syntax is <code>exec "command" arguments</code> - this means you format it the same way as you would type the command regularly, just without the prefix, e.g. if you want to clear 2 messages and avoiding the pinned message > <code>{{exec "clear 2 -nopin"}}</code>, where <code>"command"</code> part is whole <code>"clear 2 -nopin"</code>. If you change that number inside CC somewhere then you have to use <code>arguments</code> part of exec formatting > <code>{{$x := 2}} {{exec "clear" $x "-nopin"}}</code> Here <code>"clear"</code> is the <code>"command"</code> and it is followed by <code>arguments</code>, one variable <code>$x</code> and one string <code>"-nopin"</code>. Last example is the same as <code>{{exec (joinStr " " "clear" $x "-nopin")}}</code>(also notice the space in <code>joinStr</code> separator).</p> |
+| `execAdmin "command" "args" "args" "args" ...`  | Functions same way as `exec` but effectively runs the command as the bot user (YAGPDB). This has essentially the same effect as if a user with the same permissions and roles as YAGPDB ran the command: for example, if YAGPDB had ban members permission but the user which ran the command did not, `{{exec "ban" 12345}}` would error due to insufficient permissions but `{{execAdmin "ban" 12345}}` would succeed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `hasPrefix string prefix`                       | `hasPrefix` tests whether the given `string `begins with `prefix `and returns _bool_. Example > `{{hasPrefix "YAGPDB" "YAG"}}` returns `true`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `hasSuffix string suffix`                       | <p>hasSuffix tests whether the given <code>string </code>ends with <code>suffix </code>and returns <em>bool</em>.</p><p>Example > <code>{{hasSuffix "YAGPDB" "YAG"}}</code> returns <code>false</code>.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `humanizeThousands arg`                         | This function places comma to separate groups of thousands of a number. `arg `can be _int_ or _string_, has to be a whole number, e.g. `{{humanizeThousands "1234567890"}}` will return `1,234,567,890`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `in list value`                                 | Returns _bool_ true/false whether case-sensitive value is in list/_slice_. `{{ in (cslice "YAGPDB" "is cool") "yagpdb" }}` returns `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `index arg ...keys`                             | <p>Returns the result of indexing its first argument by the following arguments. Each indexed item must be a <em>map</em>, <em>slice </em>or <em>array</em>. </p><p></p><p>Example:  <code>{{index .Args 1}}</code> returns first argument after trigger which is always at position 0. </p><p></p><p>More than one positional keys can be used, in pseudo-code: </p><p><code>index X 0 1</code> is equivalent to calling <code>index (index X 0) 1</code></p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `inFold list value`                             | Same as `in`, but is case-insensitive. `{{inFold (cslice "YAGPDB" "is cool") "yagpdb"}}` returns `true`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `kindOf value (flag)`                           | This function helps to determine what kind of data type we are dealing with. `flag` part is a _bool _ and if set as **true **(**false **is optional)** **returns the value where given `value` points to. Example: `{{kindOf cembed false}} {{kindOf cembed true}} `will return `ptr `and `struct`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `len arg`                                       | <p>Returns the integer length of its argument. arg can be an <em>array</em>, <em>slice</em>, <em>map</em>, or <em>string.</em></p><p><code>{{ len (cslice 1 2 3) }}</code></p><p>returns <code>3</code>.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `noun`                                          | Returns a random noun.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `parseArgs required_args error_message ...carg` | <p>Checks the arguments for a specific type. Has methods <code>.Get</code> and <code>.IsSet</code>. </p><p><code></code><br><code>carg "type" "name"</code> is required by <code>parseArgs</code> and it defines the type of argument for <code>parseArgs</code>. </p><p></p><p><a href="https://docs.yagpdb.xyz/commands/custom-commands#require-arguments">More in depth here</a> and an example in <a href="custom-command-examples.md#parseargs-example">Custom Command Examples.</a></p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `range slice/array`                             | Iterates (loops) over the given _slice _or _array _and sets successive elements as active data (the dot) to be further handled inside the `range` action. Example usage [here](custom-command-examples.md#range-example). [More in-depth here](templates.md#range-action).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `sendTemplate channel templateName data`        | <p>Function sends a formulated template to another channel.<br>Channel is like always either name, number or nil; and returns messageID.</p><p>Example: <code>{{define "logsTemplate"}}This text will output on different channel, you can also use functions like {{currentTime}}. {{.TemplateArgs}} would be additional data sent out. {{end}}</code></p><p>Now we call that "logs" in the same custom command.<code>{{sendTemplate "logs" "logsTemplate" "YAG rules!"}}</code></p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `sendTemplateDM templateName data`              | Works the same way as function above. Only channel's name is not in the arguments. YAGPDB **will only **DM the triggering user.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `seq start stop`                                | Creates a new _slice_ of type _int_, beginning from start number, increasing in sequence and ending at stop (not included). `{{seq -4 2}}` returns a _slice_ `[ -4 -3 -2 -1 0 1 ]`. Sequence's max length is 10 000.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `sort slice (...args)`                          | <p>Sorts a slice with optional arguments. Numbers are sorted before strings. Arguments are presented in a <code>sdict</code> as keys having bool values. Example > <code>{{sort (cslice "YAGPDB" 42 "Alphabet" 111 33.3) (sdict "reverse" true "subslices" true "emptyslices" false)}}</code>would return<code> [111 42 33.3 YAGPDB Alphabet]</code></p><p>Argument keys: </p><p><code>"reverse"</code> reverses the order if <code>true</code>.</p><p><code>"subslices"</code> makes the function return a set of subslices based on input type/kind if <code>true</code>.</p><p><code>"Emptyslices"</code> returns all possible slices if <code>true</code>, helpful for indexing.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `shuffle list`                                  | Returns a shuffled, randomized version of a list/_slice_.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `sleep seconds`                                 | Pauses execution of template's action-structure inside custom command for max 60 seconds combined. Argument`seconds`is an integer (whole number). Example in [Snippets](templates.md#miscellaneous-snippets).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ### ExecCC
 
@@ -1208,50 +537,11 @@ With regular expression patterns - when using quotes you have to "double-escape"
 `execCC` calls are limited to 1 / CC for non-premium users and 10 / CC for premium users.
 {% endhint %}
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>execCC ccID channel delay data</code>
-      </td>
-      <td style="text-align:left">Function that executes another custom command specified by <code>ccID,</code>max
-        recursion depth is 2 (using <code>.StackDepth</code> shows the current depth)
-        and it&apos;s rate-limited strictly at max 10 delayed custom commands executed
-        per channel per minute, if you go over that it will be simply thrown away.
-        Argument <code>channel</code> can be <code>nil</code>, channel&apos;s ID or
-        name. The<code>delay</code> argument is execution delay of another CC is
-        in seconds. The <code>data</code> argument is content that you pass to the
-        other executed custom command. To retrieve that <code>data </code>you use <code>.ExecData</code>.
-        This example is important &gt; <a href="https://docs.yagpdb.xyz/reference/custom-command-examples#countdown-example-exec-cc">execCC example</a> also
-        next snippet which shows you same thing run using the same custom command
-        &gt; <a href="templates.md#this-sections-snippets-9">Snippets</a>.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>scheduleUniqueCC ccID channel delay key data</code>
-      </td>
-      <td style="text-align:left">
-        <p>Same as <code>execCC</code>except there can only be 1 scheduled cc execution
-          per server per key, if key already exists then it is overwritten with the
-          new data and delay (as above, in seconds).</p>
-        <p>An example would be a mute command that schedules the unmute action sometime
-          in the future. However, let&apos;s say you use the unmute command again
-          on the same user, you would want to override the last scheduled unmute
-          to the new one. This can be used for that.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>cancelScheduledUniqueCC ccID key</code>
-      </td>
-      <td style="text-align:left">Cancels a previously scheduled custom command execution using <code>scheduleUniqueCC </code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Function                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `execCC ccID channel delay data`               | Function that executes another custom command specified by `ccID,`max recursion depth is 2 (using `.StackDepth` shows the current depth) and it's rate-limited strictly at max 10 delayed custom commands executed per channel per minute, if you go over that it will be simply thrown away. Argument `channel` can be `nil`, channel's ID or name. The`delay` argument is execution delay of another CC is in seconds. The `data` argument is content that you pass to the other executed custom command. To retrieve that `data `you use `.ExecData`. This example is important > [execCC example](https://docs.yagpdb.xyz/reference/custom-command-examples#countdown-example-exec-cc) also next snippet which shows you same thing run using the same custom command > [Snippets](templates.md#this-sections-snippets-9). |
+| `scheduleUniqueCC ccID channel delay key data` | <p>Same as <code>execCC</code>except there can only be 1 scheduled cc execution per server per key, if key already exists then it is overwritten with the new data and delay (as above, in seconds).</p><p>An example would be a mute command that schedules the unmute action sometime in the future. However, let's say you use the unmute command again on the same user, you would want to override the last scheduled unmute to the new one. This can be used for that.</p>                                                                                                                                                                                                                                                                                                                                               |
+| `cancelScheduledUniqueCC ccID key`             | Cancels a previously scheduled custom command execution using `scheduleUniqueCC `                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 #### This section's snippets:
 
@@ -1278,292 +568,115 @@ With regular expression patterns - when using quotes you have to "double-escape"
 Ticket functions are limited to 1 call per custom command for both normal and premium guilds.
 {% endhint %}
 
-| **Function** | **Description** |
-| :--- | :--- |
-| `createTicket author topic` | Creates a new ticket with the author and topic provided. Author can be `nil` \(to use the triggering member\); user ID in form of a string or an integer; a user struct; or a member struct. The topic must be a string. Returns a [template ticket](templates.md#template-ticket) struct on success. |
+| **Function**                | **Description**                                                                                                                                                                                                                                                                                     |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `createTicket author topic` | Creates a new ticket with the author and topic provided. Author can be `nil` (to use the triggering member); user ID in form of a string or an integer; a user struct; or a member struct. The topic must be a string. Returns a [template ticket](templates.md#template-ticket) struct on success. |
 
 #### Template Ticket
 
-| **Field** | **Description** |
-| :--- | :--- |
-| .AuthorID | Author ID of the ticket. |
-| .AuthorUsernameDiscrim | The Discord tag of the author of the ticket, formatted like `username#discrim`. |
-| .ChannelID | Channel ID of the ticket. |
-| .ClosedAt | Time that the ticket was closed, of type _null.Time._ This is, for the most part, useless in custom commands. |
-| .CreatedAt | Time that the ticket was created. |
-| .GuildID | Guild ID of the ticket. |
-| .LocalID | The ticket ID. |
-| .LogsID | Log ID of the ticket. |
-| .Title | Title of the ticket. |
+| **Field**              | **Description**                                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------- |
+| .AuthorID              | Author ID of the ticket.                                                                                      |
+| .AuthorUsernameDiscrim | The Discord tag of the author of the ticket, formatted like `username#discrim`.                               |
+| .ChannelID             | Channel ID of the ticket.                                                                                     |
+| .ClosedAt              | Time that the ticket was closed, of type _null.Time._ This is, for the most part, useless in custom commands. |
+| .CreatedAt             | Time that the ticket was created.                                                                             |
+| .GuildID               | Guild ID of the ticket.                                                                                       |
+| .LocalID               | The ticket ID.                                                                                                |
+| .LogsID                | Log ID of the ticket.                                                                                         |
+| .Title                 | Title of the ticket.                                                                                          |
 
 ## Database
 
 You have access to a basic set of Database functions, this is almost a key value store ordered by the key and value combined.
 
-You can have max 50 \* user\_count \(or 500 \* user\_count for premium\) values in the database, if you go above this all new write functions will fail, this value is also cached so it won't be detected immediately when you go above nor immediately when you're under again.
+You can have max 50 \* user\_count (or 500 \* user\_count for premium) values in the database, if you go above this all new write functions will fail, this value is also cached so it won't be detected immediately when you go above nor immediately when you're under again.
 
 Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches any single character; a percent sign `(%)` matches any sequence of zero or more characters.
 
 Keys can be max 256 bytes long and has to be strings or numbers. Values can be anything, but if their serialized representation exceeds 100kB an error will be raised.
 
-You can just pass a `userID`of 0 to make it global \(or any other number, but 0 is safe\).  
-  
-There can be 10 database interactions per CC, out of which dbTop/BottomEntries, dbCount, dbGetPattern, and dbDelMultiple may only be run twice. \(50,10 for premium users\).  
-  
+You can just pass a `userID`of 0 to make it global (or any other number, but 0 is safe).\
+\
+There can be 10 database interactions per CC, out of which dbTop/BottomEntries, dbCount, dbGetPattern, and dbDelMultiple may only be run twice. (50,10 for premium users).
+
+Learning resources cover database [more in-depth](https://learn.yagpdb.xyz/intermediate/custom-command-database).\
+\
 [Example here](custom-command-examples.md#database-example).
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Function</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>dbBottomEntries pattern amount nSkip</code>
-      </td>
-      <td style="text-align:left">Returns <code>amount (max 100)</code>top entries from the database, sorted
-        by the value in a ascending order.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbCount (userID|key|query)</code>
-      </td>
-      <td style="text-align:left">
-        <p>Returns the count of all database entries which are not expired. Optional
-          arguments: if <code>userID</code> is given, counts entries for that userID;
-          if <code>key</code>, only those keys are counted; and if <code>query</code> is
-          provided, it should be a sdict with the following options:</p>
-        <ul>
-          <li><code>userID</code> - only counts entries with that user ID, defaults to
-            counting entries with any user ID</li>
-          <li><code>pattern</code> - only counts entries with names matching the pattern
-            given, defaults to counting entries with any name.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbDel userID key</code>
-      </td>
-      <td style="text-align:left">Deletes the specified key for the specified value from the database.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbDelByID userID ID</code>
-      </td>
-      <td style="text-align:left">Deletes database entry by its ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbDelMultiple query amount skip</code>
-      </td>
-      <td style="text-align:left">
-        <p>Deletes <code>amount (max 100)</code> entries from the database matching
-          the criteria provided. <code>query</code> should be a sdict with the following
-          options:</p>
-        <ul>
-          <li><code>userID</code> - only deletes entries with the user ID provided, defaults
-            to deleting entries with any ID.</li>
-          <li><code>pattern</code> - only deletes entries with a name matching the pattern
-            given.</li>
-          <li><code>reverse</code> - if true, starts deleting entries with the lowest
-            values first; otherwise starts deleting entries with the highest values
-            first. Default is <code>false</code>.</li>
-        </ul>
-        <p>Returns the number of rows that got deleted or an error.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbGet userID key </code>
-      </td>
-      <td style="text-align:left">Retrieves a value from the database for the specified user, this returns
-        DBEntry object.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbGetPattern userID pattern amount nSkip</code>
-      </td>
-      <td style="text-align:left">Retrieves up to<code>amount (max 100)</code>entries from the database
-        in ascending order.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbGetPatternReverse userID pattern amount nSkip</code>
-      </td>
-      <td style="text-align:left">Retrieves<code>amount (max 100)</code>entries from the database in descending
-        order.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbIncr userID key incrBy </code>
-      </td>
-      <td style="text-align:left">Increments the value for specified key for the specified user, if there
-        was no value then it will be set to <code>incrBy . </code>Also returns the
-        entry&apos;s current, increased value.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbRank query userID key</code>
-      </td>
-      <td style="text-align:left">
-        <p>Returns the rank of the entry specified by the user ID and key provided
-          in the set of entries matching the criteria provided. <code>query</code> specifies
-          the set of entries that should be considered, and should be a sdict with
-          the following options:</p>
-        <ul>
-          <li><code>userID</code> - only includes entries with that user ID, defaults
-            to including entries with any user ID</li>
-          <li><code>pattern</code> - only includes database&apos;s <code>key</code> entries
-            with names matching the pattern given, defaults to counting entries with
-            any name</li>
-          <li><code>reverse</code> - if true, entries with lower value have higher rank;
-            otherwise entries with higher value have higher rank. Default is <code>false</code>.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbSet userID key value</code>
-      </td>
-      <td style="text-align:left">Sets the value for the specified <code>key</code> for the specific <code>userID</code> to
-        the specified <code>value</code>. <code>userID</code> can be any number of
-        type <em>int64</em>.
-        <br />
-        <br />Values are stored either as of type <em>float64 </em>(for numbers, oct
-        or hex) or as varying type in bytes (for <em>slices</em>, <em>maps</em>, <em>strings </em>etc)
-        depending on input argument.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbSetExpire userID key value ttl</code>
-      </td>
-      <td style="text-align:left">Same as <code>dbSet </code>but with an expiration in seconds.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbTopEntries pattern amount nSkip</code>
-      </td>
-      <td style="text-align:left">Returns <code>amount (max 100)</code>top entries from the database, sorted
-        by the value in a descending order.</td>
-    </tr>
-  </tbody>
-</table>
+| Function                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dbBottomEntries pattern amount nSkip`            | Returns `amount (max 100)`top entries from the database, sorted by the value in a ascending order.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `dbCount (userID\|key\|query)`                    | <p>Returns the count of all database entries which are not expired. Optional arguments: if <code>userID</code> is given, counts entries for that userID; if <code>key</code>, only those keys are counted; and if <code>query</code> is provided, it should be a sdict with the following options:</p><ul><li><code>userID</code> - only counts entries with that user ID, defaults to counting entries with any user ID</li><li><code>pattern</code> - only counts entries with names matching the pattern given, defaults to counting entries with any name.</li></ul>                                                                                                                                                                    |
+| `dbDel userID key`                                | Deletes the specified key for the specified value from the database.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `dbDelByID userID ID`                             | Deletes database entry by its ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `dbDelMultiple query amount skip`                 | <p>Deletes <code>amount (max 100)</code> entries from the database matching the criteria provided. <code>query</code>  should be a sdict with the following options:</p><ul><li><code>userID</code> - only deletes entries with the user ID provided, defaults to deleting entries with any ID.</li><li><code>pattern</code> - only deletes entries with a name matching the pattern given.</li><li><code>reverse</code> - if true, starts deleting entries with the lowest values first; otherwise starts deleting entries with the highest values first. Default is <code>false</code>.</li></ul><p>Returns the number of rows that got deleted or an error.</p>                                                                          |
+| `dbGet userID key `                               | Retrieves a value from the database for the specified user, this returns DBEntry object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `dbGetPattern userID pattern amount nSkip`        | Retrieves up to`amount (max 100)`entries from the database in ascending order.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `dbGetPatternReverse userID pattern amount nSkip` | Retrieves`amount (max 100)`entries from the database in descending order.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `dbIncr userID key incrBy `                       | Increments the value for specified key for the specified user, if there was no value then it will be set to `incrBy . `Also returns the entry's current, increased value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `dbRank query userID key`                         | <p>Returns the rank of the entry specified by the user ID and key provided in the set of entries matching the criteria provided. <code>query</code> specifies the set of entries that should be considered, and should be a sdict with the following options:</p><ul><li><code>userID</code> - only includes entries with that user ID, defaults to including entries with any user ID</li><li><code>pattern</code> - only includes database's <code>key</code> entries with names matching the pattern given, defaults to counting entries with any name</li><li><code>reverse</code> - if true, entries with lower value have higher rank; otherwise entries with higher value have higher rank. Default is <code>false</code>.</li></ul> |
+| `dbSet userID key value`                          | <p>Sets the value for the specified <code>key</code> for the specific <code>userID</code> to the specified <code>value</code>. <code>userID</code> can be any number of type <em>int64</em>.  <br><br>Values are stored either as of type <em>float64 </em>(for numbers, oct or hex) or as varying type in bytes (for <em>slices</em>, <em>maps</em>, <em>strings </em>etc) depending on input argument.</p>                                                                                                                                                                                                                                                                                                                                |
+| `dbSetExpire userID key value ttl`                | Same as `dbSet `but with an expiration in seconds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `dbTopEntries pattern amount nSkip`               | Returns `amount (max 100)`top entries from the database, sorted by the value in a descending order.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 {% hint style="info" %}
-**Note about saving numbers into database:** As stated above, database stores numbers as type _float64_. If you save a large number into database like an _int64_ \(which IDs are\), the value will be truncated. To avoid this behavior, you can stringify the number before saving and convert it back to its original type when retrieving it. Example: `{{$v := .User.ID}} {{dbSet 0 "userid" (str $v)}} {{$fromDB := toInt (dbGet 0 "user_id").Value}}`
+**Note about saving numbers into database: **As stated above, database stores numbers as type _float64_. If you save a large number into database like an _int64_ (which IDs are), the value will be truncated. To avoid this behavior, you can stringify the number before saving and convert it back to its original type when retrieving it. Example: `{{$v := .User.ID}} {{dbSet 0 "userid" (str $v)}} {{$fromDB := toInt (dbGet 0 "user_id").Value}}`
 
-`dict` key values are also retrieved as _int64,_ so to use them for indexing one has to e.g. `index $x (toInt64 0)`
+`dict `key values are also retrieved as _int64, _so to use them for indexing one has to e.g. `index $x (toInt64 0)`
 {% endhint %}
 
 ### DBEntry
 
-| Fields | Description |
-| :--- | :--- |
-| .ID | ID of the entry. |
-| .GuildID | ID of the server. |
-| .UserID | ID of the user. |
-| .User | [user object](templates.md#user). |
-| .CreatedAt | When this entry was created. |
+| Fields     | Description                       |
+| ---------- | --------------------------------- |
+| .ID        | ID of the entry.                  |
+| .GuildID   | ID of the server.                 |
+| .UserID    | ID of the user.                   |
+| .User      | [user object](templates.md#user). |
+| .CreatedAt | When this entry was created.      |
 | .UpdatedAt | When this entry was last updated. |
-| .ExpiresAt | When entry will expire. |
-| .Key | The key of the entry. |
-| .Value | The value of the entry. |
+| .ExpiresAt | When entry will expire.           |
+| .Key       | The key of the entry.             |
+| .Value     | The value of the entry.           |
 
 ## Conditional branching
 
-Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.  
+Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.\
 
 
 {% hint style="success" %}
-`eq` , though often used with 2 arguments \(`eq x y`\) can actually be used with more than 2. If there are more than 2 arguments, it checks whether the first argument is equal to any one of the following arguments. This behaviour is unique to `eq`.
+`eq` , though often used with 2 arguments (`eq x y`) can actually be used with more than 2. If there are more than 2 arguments, it checks whether the first argument is equal to any one of the following arguments. This behaviour is unique to `eq`.
 {% endhint %}
 
 {% hint style="info" %}
-Comparison operators always require the same type: i.e comparing `1.23` and `1` would throw **`incompatible types for comparison`** error as they are not the same type \(one is float, the other int\). To fix this, you should convert both to the same type -&gt; for example, `toFloat 1`.
+Comparison operators always require the same type: i.e comparing `1.23` and `1` would throw **`incompatible types for comparison` **error as they are not the same type (one is float, the other int). To fix this, you should convert both to the same type -> for example, `toFloat 1`.
 {% endhint %}
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Case</th>
-      <th style="text-align:left">Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">if</td>
-      <td style="text-align:left">
-        <p><code>{{if (condition)}} output {{end}}</code>
-        </p>
-        <p>Initialization statement can also be inside <code>if</code> statement with
-          conditional statement, limiting the initialized scope to that <code>if</code> statement.
-          <br
-          /><code>{{$x := 24}} <br />{{if eq ($x := 42) 42}} Inside: {{$x}} {{end}} <br />Outside: {{$x}}</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">else if</td>
-      <td style="text-align:left">
-        <p><code>{{if (condition)}} output1 {{else if (condition)}} output2 {{end}}</code>
-        </p>
-        <p>You can have as many<code>else if</code>statements as many different conditionals
-          you have.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">else</td>
-      <td style="text-align:left"><code>{{if (condition)}} output1 {{else}} output2 {{end}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">not</td>
-      <td style="text-align:left"><code>{{if not (condition)}} output {{end}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">and</td>
-      <td style="text-align:left"><code>{{if and (cond1) (cond2) (cond3)}} output {{end}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">or</td>
-      <td style="text-align:left"><code>{{if or (cond1) (cond2) (cond3)}} output {{end}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Equal: eq</td>
-      <td style="text-align:left"><code>{{if eq .Channel.ID ########}} output {{end}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Not equal: ne</td>
-      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{ne $x $y}}</code> returns <code>true</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Less than: lt</td>
-      <td style="text-align:left"><code>{{if lt (len .Args) 5}} output {{end}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Less than or equal: le</td>
-      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{le $x $y}}</code> returns <code>true</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Greater than: gt</td>
-      <td style="text-align:left"><code>{{if gt (len .Args) 1}} output {{end}}</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Greater than or equal: ge</td>
-      <td style="text-align:left"><code>{{$x := 7}} {{$y := 8}} {{ge $x $y}}</code> returns <code>false</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Case                      | Example                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| if                        | <p><code>{{if (condition)}} output {{end}}</code></p><p>Initialization statement can also be inside <code>if</code> statement with conditional statement, limiting the initialized scope to that <code>if</code> statement. <br><code>{{$x := 24}} </code><br><code>{{if eq ($x := 42) 42}} Inside: {{$x}} {{end}} </code><br><code>Outside: {{$x}}</code></p> |
+| else if                   | <p><code>{{if (condition)}} output1 {{else if (condition)}} output2 {{end}}</code></p><p>You can have as many<code>else if</code>statements as many different conditionals you have.</p>                                                                                                                                                                       |
+| else                      | `{{if (condition)}} output1 {{else}} output2 {{end}}`                                                                                                                                                                                                                                                                                                          |
+| not                       | `{{if not (condition)}} output {{end}}`                                                                                                                                                                                                                                                                                                                        |
+| and                       | `{{if and (cond1) (cond2) (cond3)}} output {{end}}`                                                                                                                                                                                                                                                                                                            |
+| or                        | `{{if or (cond1) (cond2) (cond3)}} output {{end}}`                                                                                                                                                                                                                                                                                                             |
+| Equal: eq                 | `{{if eq .Channel.ID ########}} output {{end}}`                                                                                                                                                                                                                                                                                                                |
+| Not equal: ne             | `{{$x := 7}} {{$y := 8}} {{ne $x $y}}` returns `true`                                                                                                                                                                                                                                                                                                          |
+| Less than: lt             | `{{if lt (len .Args) 5}} output {{end}}`                                                                                                                                                                                                                                                                                                                       |
+| Less than or equal: le    | `{{$x := 7}} {{$y := 8}} {{le $x $y}}` returns `true`                                                                                                                                                                                                                                                                                                          |
+| Greater than: gt          | `{{if gt (len .Args) 1}} output {{end}}`                                                                                                                                                                                                                                                                                                                       |
+| Greater than or equal: ge | `{{$x := 7}} {{$y := 8}} {{ge $x $y}}` returns `false`                                                                                                                                                                                                                                                                                                         |
 
 ## Range action
 
 `range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.
 
-Affected dot inside `range` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `range` control structure directly, these fields do not exists and template will error out. Getting those values inside `range` and also `with` action would need `$.User.ID` for example.  
-  
-`range` on slices/arrays provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.  
-  
-Like `if`, `range`is concluded with`{{end}}`action and declared variable scope inside `range` extends to that point.  
+Affected dot inside `range` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `range` control structure directly, these fields do not exists and template will error out. Getting those values inside `range` and also `with` action would need `$.User.ID` for example.\
+\
+`range` on slices/arrays provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.\
+\
+Like `if`, `range`is concluded with`{{end}}`action and declared variable scope inside `range `extends to that point.\
 
 
 ```go
@@ -1579,19 +692,19 @@ Like `if`, `range`is concluded with`{{end}}`action and declared variable scope i
 ```
 
 {% hint style="danger" %}
-**Custom command response was longer than 2k \(contact an admin on the server...\)**  
-This is quite common error users will get whilst using range. Simple example to reproduce it:  
-_{{ range seq 0 1000 }}  
-{{ $x := . }}  
-{{ end }}  
-HELLO!_  
-This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _{{- $x := . -}}_
+**Custom command response was longer than 2k (contact an admin on the server...)**\
+****This is quite common error users will get whilst using range. Simple example to reproduce it:\
+_{{ range seq 0 1000 }}_\
+_{{ $x := . }}_\
+_{{ end }}_\
+_HELLO!_\
+__This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _{{- $x := . -}}_
 {% endhint %}
 
 ## With action
 
-`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{else}}` is used, that branch is executed instead.   
-  
+`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{else}}` is used, that branch is executed instead. \
+\
 Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure directly, these fields do not exists and template will error out. Getting those values inside `with` and also `range` action would need `$.User.ID` for example.
 
 Like `if` and `range` actions, `with` is concluded using `{{end}}` and variable scope extends to that point.
@@ -1612,12 +725,14 @@ Outer-scope $x len however: {{ len $x }}
 
 * `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only respond if the member has a role with name "funrole" .
 * `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}`Assuming your trigger is a command, will display your first input if input was given.
-* `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` if ChannelID is \#\#\#\#\#.
-* `{{if ne .User.ID #######}} YAG! {{end}}`Will ignore if user ID equal to \#\#\#\#\# uses command.
+* `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` if ChannelID is #####.
+* `{{if ne .User.ID #######}} YAG! {{end}}`Will ignore if user ID equal to ##### uses command.
 * `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
-* `{{$a := (exec "catfact")}}` Saves the response of the `catfact` ****command to variable `$a`. 
-* `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the arguments after trigger to a variable `$allArgs`. 
-* `{{/* this is a comment */}}`For commenting something inside a template, use this syntax. May contain newlines. Comments do not nest and they start and end at the delimiters. 
-* To trim spaces, for example &gt;`{{- /* this is a multi-line  comment with whitespace trimmed from  preceding and following text */ -}}`  Using`{{- ... -}}` is also handy inside`range` actions, because whitespaces and newlines are rendered there as output.
-* To demonstrate sleep and slightly also editMessage functions. &gt; `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 5}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
-
+* `{{$a := (exec "catfact")}}` Saves the response of the `catfact`** **command to variable `$a`.&#x20;
+* `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the arguments after trigger to a variable `$allArgs`.&#x20;
+* `{{/* this is a comment */}}`For commenting something inside a template, use this syntax. May contain newlines. Comments do not nest and they start and end at the delimiters.&#x20;
+* To trim spaces, for example >`{{- /* this is a multi-line `\
+  `comment with whitespace trimmed from  preceding and following text */ -}} `\
+  Using`{{- ... -}} `is also handy inside`range `actions, because whitespaces and newlines are rendered there as output.
+* To demonstrate sleep and slightly also editMessage functions. >\
+  `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 5}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`

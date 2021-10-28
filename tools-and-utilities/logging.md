@@ -2,7 +2,7 @@
 
 ## General Settings
 
-![](../.gitbook/assets/capture%20%287%29.PNG)
+![](<../.gitbook/assets/Capture (7).PNG>)
 
 #### Enable/disable username logging
 
@@ -12,9 +12,9 @@ This will log username changes of your server members. You can then check them w
 
 This will log nickname changes of your server members. You can then check them with the `nickname` or the `whois` command.
 
-#### Allow members with _Manage Messages_ permissions to view the deleted messages
+#### Allow members with _Manage Messages _permissions to view the deleted messages
 
-This will allow members with _Manage Messages_ permissions to use the `-undelete` command to view the deleted messages.
+This will allow members with _Manage Messages _permissions to use the `-undelete` command to view the deleted messages.
 
 #### Allow everyone to view deleted messages
 
@@ -26,9 +26,8 @@ This will disable message logs in these channels when the automoderator is trigg
 
 ## Public message logs on this server
 
-![](../.gitbook/assets/capture%20%282%29.PNG)
+![](<../.gitbook/assets/Capture (8).PNG>)
 
-This is well you can find all the message logs on the server. It includes those created automatically for moderation commands, and also those created manually with the `-logs` command.
+Here you can find all the message logs on the server. It includes those created automatically for moderation commands, and also those created manually with the `-logs` command.
 
 You can choose to view and delete these message logs. You can also delete specific messages in each of the logs.
-
