@@ -6,7 +6,7 @@ Custom commands - abbreviated as CCs, allow you to create your own commands. The
 
 To create your first custom command, go to the control panel and select your server. There you click on Commands and Custom Commands.&#x20;
 
-![The Custom Command Page](<../.gitbook/assets/image (4).png>)
+![The Custom Command Page](../.gitbook/assets/image\_custom\_commands.png)
 
 ### Trigger Types
 
@@ -27,7 +27,7 @@ As you might have seen, there is an option called _Case sensitive_. This option 
 
 You can restrict or block custom commands to specific roles or channels. For this you have to select the corresponding checkbox and select the roles/channels you want it to apply too.
 
-![This custom command can be executed by people that either have Coll Dog, Guy-in-charge or both.](<../.gitbook/assets/image (6).png>)
+![This custom command can be executed by people that either have Coll Dog, Guy-in-charge or both.](../.gitbook/assets/image\_custom\_commands\_restrictions.png)
 
 {% hint style="warning" %}
 If you select the**`Require at least one of the`**or**`Only run in the `**Options, make sure to always have a role/channel selected otherwise the bot won't respond to your commands.
@@ -93,7 +93,7 @@ Available types and options are:
 * **channel - **channel mentions, will have the type of Channel (see [templates ](../reference/templates.md#channel)for more info).
 * **member** - accepts userID/mention. Gives guild's member struct (object) to use later with .Member methods, like .JoinedAt. (see [templates ](../reference/templates.md#member)for more info).
 * **role** - matches an id or name of a role and returns a _\*discordgo.Role _type [role object](https://discord.com/developers/docs/topics/permissions#role-object).
-* **duration** - converts given integer number starting from minutes or string with modifier (s, m, h, w etc)  to type Duration - e.g. 10 is 10m0s and 123s is 2m3s. Has additional options after the name for min and max range of duration presented in nanoseconds.
+* **duration** - converts given integer number starting from minutes or string with modifier (s, m, h, w etc)  to type Duration - e.g. 10 is 10m0s and 123s is 2m3s (the raw integer output of duration is in nanoseconds - so 5s would be 5000000000). Has additional options after the name for min and max range of duration presented in nanoseconds.
 
 To access the parsed args you use the "**Get**" method on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
 
