@@ -52,7 +52,7 @@ For matching a specific character, you put them in square brackets.
 
 This will match A, B and C: `([abc])`
 
-This will match every character from a-Z: `([a-Z])`
+This will match every character from A-z: `([A-z])`
 
 This will match every number: `([0-9])`
 {% endtab %}
