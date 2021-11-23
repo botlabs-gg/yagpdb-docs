@@ -634,17 +634,17 @@ Learning resources cover database [more in-depth](https://learn.yagpdb.xyz/inter
 
 ### DBEntry
 
-| **Fields** | **Description**                                                                                                       |
-| ---------- | --------------------------------------------------------------------------------------------------------------------- |
-| .ID        | ID of the entry.                                                                                                      |
-| .GuildID   | ID of the server.                                                                                                     |
-| .UserID    | ID of the user.                                                                                                       |
-| .User      | User object of type_ discordgo.User _having only .ID field, .Mention is still usable with correct userID field entry. |
-| .CreatedAt | When this entry was created.                                                                                          |
-| .UpdatedAt | When this entry was last updated.                                                                                     |
-| .ExpiresAt | When entry will expire.                                                                                               |
-| .Key       | The key of the entry.                                                                                                 |
-| .Value     | The value of the entry.                                                                                               |
+| **Fields** | **Description**                                                                                                         |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| .ID        | ID of the entry.                                                                                                        |
+| .GuildID   | ID of the server.                                                                                                       |
+| .UserID    | Value of `userID `argument or ID of the user if for example `.User.ID` was used for `dbSet`.                            |
+| .User      | User object of type_ discordgo.User _having only `.ID` field, .Mention is still usable with correct userID field entry. |
+| .CreatedAt | When this entry was created.                                                                                            |
+| .UpdatedAt | When this entry was last updated.                                                                                       |
+| .ExpiresAt | When entry will expire.                                                                                                 |
+| .Key       | The key of the entry.                                                                                                   |
+| .Value     | The value of the entry.                                                                                                 |
 
 ## Conditional branching
 
