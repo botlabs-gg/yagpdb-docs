@@ -262,7 +262,9 @@ Custom Types section discusses functions that initialize values carrying those _
 {{ $x := sdict "k" "v" }}
 {{ $y := $x }}
 {{ $y.Set "k" "v2" }} {{/* modify $y */}}
-{{ $x }} {{/* k has value v2 on $x as well - that is, modifying $y changed $x too. */}}
+{{ $x }}
+{{/* k has value v2 on $x as well - 
+that is, modifying $y changed $x too. */}}
 ```
 
 If this behaviour is undesirable, copy the slice/dictionary via `cslice.AppendSlice` or a `range` + `Set` call .
