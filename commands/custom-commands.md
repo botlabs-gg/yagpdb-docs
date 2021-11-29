@@ -84,16 +84,16 @@ The execution will stop at wherever you placed "**parseArgs**" if incorrect args
 
 Available types and options are:
 
+* **channel - **channel id/mention, will have the type of _\*templates.CtxChannel_ (see [templates ](../reference/templates.md#channel)for more info). Threads are not supported
+* **duration** - converts given integer number starting from minutes or string with modifier (s, m, h, w etc)  to type Duration - e.g. 10 is 10m0s and 123s is 2m3s (type _time.Duration_ is represented as an _int64_ nanosecond count - so 5s would be 5000000000). Has additional options after the name for min and max range of duration presented in nanoseconds.
+* **float - **decimal numbers, you can also optionally specify min and max after the name similar to **int**. It is parsed as _float64 _datatype.
 * **int - **whole numbers, you can also optionally specify min and max after the name. For example\
   `{{carg "int" "integer" 2 9}}` required argument has to be a number from 2 to 9.
-* **float - **decimal numbers, you can also optionally specify min and max after the name similar to **int**. It is parsed as _float64 _datatype.
+* **member** - accepts userID/mention. Gives guild's member struct (object) to use later with .Member methods, like .JoinedAt. (see [templates ](../reference/templates.md#member)for more info).
+* **role** - matches an id or name of a role and returns a _\*discordgo.Role _type [role object](https://discord.com/developers/docs/topics/permissions#role-object).
 * **string - **text.
 * **user - **user mentions, will have the type of User (see [templates ](../reference/templates.md#user)for more info).
 * **userid - **user IDs, this user may not exist at all, both mentions and plain IDs are accepted, will have the type of _int64_.
-* **channel - **channel id/mention, will have the type of _\*templates.CtxChannel_ (see [templates ](../reference/templates.md#channel)for more info). Threads are not supported
-* **member** - accepts userID/mention. Gives guild's member struct (object) to use later with .Member methods, like .JoinedAt. (see [templates ](../reference/templates.md#member)for more info).
-* **role** - matches an id or name of a role and returns a _\*discordgo.Role _type [role object](https://discord.com/developers/docs/topics/permissions#role-object).
-* **duration** - converts given integer number starting from minutes or string with modifier (s, m, h, w etc)  to type Duration - e.g. 10 is 10m0s and 123s is 2m3s (type _time.Duration_ is represented as an _int64_ nanosecond count - so 5s would be 5000000000). Has additional options after the name for min and max range of duration presented in nanoseconds.
 
 To access the parsed args you use the "**Get**" method on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
 
