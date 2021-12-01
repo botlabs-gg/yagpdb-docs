@@ -1296,6 +1296,32 @@ Create <Group:Text>
 [-skip Number of roles to skip:Whole number]
 ```
 
+### RoleMenu EditOption
+
+**Aliases:** edit
+
+Allows you to reassign the emoji of an option, tip: use ResetReactions afterwards.
+
+To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
+
+**Usage:**
+
+```
+EditOption <Message ID:Whole number>
+```
+
+### RoleMenu Listgroups
+
+**Aliases:** list/groups
+
+Lists all role groups.
+
+**Usage:**
+
+```
+Listgroups
+```
+
 ### RoleMenu Remove
 
 Removes a rolemenu from a message. The message won't be deleted and the bot will not do anything with reactions on that message
@@ -1306,6 +1332,20 @@ To get the id of a message you have to turn on developer mode in discord's appea
 
 ```
 Remove <Message ID:Whole number>
+```
+
+### RoleMenu ResetReactions
+
+**Aliases:** reset
+
+Removes all reactions on the specified menu message and re-adds them. Can be used to fix the order after updating it.
+
+To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
+
+**Usage:**
+
+```
+ResetReactions <Message ID:Whole number>
 ```
 
 ### RoleMenu Update
@@ -1325,34 +1365,6 @@ Update <Message ID:Whole number>
 ```
 [-nodm Disable DM:Switch]
 [-rr Remove role on reaction removed:Switch]
-```
-
-### RoleMenu ResetReactions
-
-**Aliases:** reset
-
-Removes all reactions on the specified menu message and re-adds them. Can be used to fix the order after updating it.
-
-To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
-
-**Usage:**
-
-```
-ResetReactions <Message ID:Whole number>
-```
-
-### RoleMenu EditOption
-
-**Aliases:** edit
-
-Allows you to reassign the emoji of an option, tip: use ResetReactions afterwards.
-
-To get the id of a message you have to turn on developer mode in discord's appearances settings then right click the message and copy id.
-
-**Usage:**
-
-```
-EditOption <Message ID:Whole number>
 ```
 
 ## Tickets 🎫
