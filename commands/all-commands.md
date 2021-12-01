@@ -1100,7 +1100,7 @@ EditWarning <Id:Whole number> <NewMessage:Text>
 
 ### DelWarning
 
-**Aliases:** dw
+**Aliases:** dw/delwarn/deletewarning
 
 Deletes a warning, id is the first number of each warning from the warnings command
 
