@@ -608,7 +608,7 @@ You can just pass a `userID`of 0 to make it global (or any other number, but 0 i
 \
 There can be 10 database interactions per CC, out of which dbTop/BottomEntries, dbCount, dbGetPattern, and dbDelMultiple may only be run twice. (50,10 for premium users).
 
-Learning resources cover database [more in-depth](https://learn.yagpdb.xyz/intermediate/custom-command-database).\
+Learning resources covers database [more in-depth](https://learn.yagpdb.xyz/intermediate/custom-command-database).\
 \
 [Example here](custom-command-examples.md#database-example).
 
@@ -651,6 +651,7 @@ Learning resources cover database [more in-depth](https://learn.yagpdb.xyz/inter
 ## Conditional branching
 
 Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.\
+Learning resources covers conditional branching [more in depth](https://learn.yagpdb.xyz/beginner/control\_flow\_1).\
 
 
 {% hint style="success" %}
