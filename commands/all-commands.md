@@ -1029,9 +1029,13 @@ Reports a member to the server's staff
 Report <User:Mention/ID> <Reason:Text>
 ```
 
+
+
 ### Clean
 
-**Aliases:** clear/cl\
+**Aliases:** clear/cl
+
+[Will not delete messages older than 2 weeks.](https://discord.com/developers/docs/resources/channel#bulk-delete-messages)\
 \
 Delete the last number of messages from chat, optionally filtering by user, max age and regex or ignoring pinned messages.\
 **Warning:** Using `clean <userId> <amount>` does not work. This is because the user ID is interpreted as the amount. As it is over the limit of 100, it is treated as invalid. You can use `clean <amount> <userId>` instead or mention the user. Specify a regex with "-r regex\_here" and max age with "-ma 1h10m" You can invert the regex match (i.e. only clear messages that do not match the given regex) by supplying the `-im` flag.\
