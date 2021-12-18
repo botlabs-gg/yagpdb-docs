@@ -15,7 +15,7 @@ To create your first custom command, go to the control panel and select your ser
 * **Contains**: When a message contains your trigger.
 * **Regex**: This trigger allows you to use a regex pattern. (Refer to the [Regex page](../reference/regex.md) for help).
 * **Exact match**: When the entire message equals your trigger.
-* **Reaction: **CC is triggered by reactions.
+* **Reaction:** CC is triggered by reactions.
 * **Hourly interval**: This wi~~l~~l trigger after specified time given in hours. User can exclude certain hours and also weekdays. Channel must be selected for this trigger to work.
 * **Minute interval**: Like hourly interval, the specified time is just in minutes starting from 5 min as minimum.
 
@@ -30,7 +30,7 @@ You can restrict or block custom commands to specific roles or channels. For thi
 ![This custom command can be executed by people that either have Coll Dog, Guy-in-charge or both.](../.gitbook/assets/image\_custom\_commands\_restrictions.png)
 
 {% hint style="warning" %}
-If you select the**`Require at least one of the`**or**`Only run in the `**Options, make sure to always have a role/channel selected otherwise the bot won't respond to your commands.
+If you select the**`Require at least one of the`**or**`Only run in the`** Options, make sure to always have a role/channel selected otherwise the bot won't respond to your commands.
 {% endhint %}
 
 ### Restrictions and limitations
@@ -55,8 +55,8 @@ Some basic coding knowledge may be required to use some of these features.&#x20;
 
 If you wish to do anything more than a _"Type in a command" -> "Make the bot say something._ Such as assigning people roles, getting information on the person calling the command, writing messages in other channels, and many others. It is recommended that you check out this page:
 
-{% content-ref url="../reference/templates.md" %}
-[templates.md](../reference/templates.md)
+{% content-ref url="../reference/templates/" %}
+[templates](../reference/templates/)
 {% endcontent-ref %}
 
 ### Require arguments
@@ -84,16 +84,16 @@ The execution will stop at wherever you placed "**parseArgs**" if incorrect args
 
 Available types and options are:
 
-* **channel - **channel id/mention, will have the type of _\*templates.CtxChannel_ (see [templates ](../reference/templates.md#channel)for more info). Threads are not supported
+* **channel -** channel id/mention, will have the type of _\*templates.CtxChannel_ (see [templates ](../reference/templates/#channel)for more info). Threads are not supported
 * **duration** - converts given integer number starting from minutes or string with modifier (s, m, h, w etc)  to type Duration - e.g. 10 is 10m0s and 123s is 2m3s (type _time.Duration_ is represented as an _int64_ nanosecond count - so 5s would be 5000000000). Has additional options after the name for min and max range of duration presented in nanoseconds.
-* **float - **decimal numbers, you can also optionally specify min and max after the name similar to **int**. It is parsed as _float64 _datatype.
-* **int - **whole numbers, you can also optionally specify min and max after the name. For example\
+* **float -** decimal numbers, you can also optionally specify min and max after the name similar to **int**. It is parsed as _float64_ datatype.
+* **int -** whole numbers, you can also optionally specify min and max after the name. For example\
   `{{carg "int" "integer" 2 9}}` required argument has to be a number from 2 to 9.
-* **member** - accepts userID/mention. Gives guild's member struct (object) to use later with .Member methods, like .JoinedAt. (see [templates ](../reference/templates.md#member)for more info).
-* **role** - matches an id or name of a role and returns a _\*discordgo.Role _type [role object](https://discord.com/developers/docs/topics/permissions#role-object).
-* **string - **text.
-* **user - **user mentions, will have the type of User (see [templates ](../reference/templates.md#user)for more info).
-* **userid - **user IDs, this user may not exist at all, both mentions and plain IDs are accepted, will have the type of _int64_.
+* **member** - accepts userID/mention. Gives guild's member struct (object) to use later with .Member methods, like .JoinedAt. (see [templates ](../reference/templates/#member)for more info).
+* **role** - matches an id or name of a role and returns a _\*discordgo.Role_ type [role object](https://discord.com/developers/docs/topics/permissions#role-object).
+* **string -** text.
+* **user -** user mentions, will have the type of User (see [templates ](../reference/templates/#user)for more info).
+* **userid -** user IDs, this user may not exist at all, both mentions and plain IDs are accepted, will have the type of _int64_.
 
 To access the parsed args you use the "**Get**" method on the returned object from **parseArgs**, this function takes in the argument index starting from 0.
 
@@ -115,7 +115,7 @@ Example usage of optional args:
 
 ### The Message template
 
-You can fetch a message by ID or use the [trigger message](../reference/templates.md#message) and get some information about it. Message returns the following things that you can access with it:\
+You can fetch a message by ID or use the [trigger message](../reference/templates/#message) and get some information about it. Message returns the following things that you can access with it:\
 
 
 #### Message
@@ -124,11 +124,11 @@ You can fetch a message by ID or use the [trigger message](../reference/template
 | -------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | .Message.ID          | Int                                                                                 | ID of the message                                                                           |
 | .Message.ChannelID   | Int                                                                                 | Channel id this message is in                                                               |
-| .Message.Author      | [User Object](../reference/templates.md#user)                                       | Author of the message (User object)                                                         |
+| .Message.Author      | [User Object](../reference/templates/#user)                                         | Author of the message (User object)                                                         |
 | .Message.Timestamp   | String                                                                              | Timestamp of the message (use .Message.Timestamp.Parse for a time object, otherwise string) |
 | .Message.Attachments | Array of [Attachments](https://docs.yagpdb.xyz/commands/custom-commands#attachment) | Attachments to this message (slice of attachment objects)                                   |
 | .Message.Embeds      | Array of [Embeds](../others/custom-embeds.md#embeds-in-custom-commands)             | Embeds on this message (slice of embed objects)                                             |
-| .Message.Mentions    | Array of [User Object](../reference/templates.md#user)                              | Users this message mentions                                                                 |
+| .Message.Mentions    | Array of [User Object](../reference/templates/#user)                                | Users this message mentions                                                                 |
 | .Message.Reactions   | Array of [Reactions](https://docs.yagpdb.xyz/commands/custom-commands#reaction)     | Reactions on this message (only available form getMessage)                                  |
 | .Message.Content     | String                                                                              | Text content on this message                                                                |
 

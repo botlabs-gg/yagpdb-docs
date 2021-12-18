@@ -27,7 +27,7 @@ Do **NOT** set the require role to the role you are assigning. You generally wil
 
 **Require role**: Requires a person to have a certain role in order for them to give themselves this role.\
 **Ignore role**: Ignore any person who has this role.\
-**Group: **Put the role in a role group (will be explained more further down).
+**Group:** Put the role in a role group (will be explained more further down).
 
 ## Role Groups
 
@@ -90,7 +90,7 @@ Refer back to the [optional features ](self-assignable-roles.md#optional-feature
 ## Role Menu
 
 {% hint style="danger" %}
-Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT **work if you have not done so.&#x20;
+Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT** work if you have not done so.&#x20;
 {% endhint %}
 
 The role menu makes it possible to have people assign roles by adding reactions to a message.
@@ -114,7 +114,7 @@ After you type in the command, you will be taken through the setup process. If y
 ### Step by step tutorial
 
 {% hint style="danger" %}
-Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT **work if you have not done so. All switches and flags (nodm, rr, etc...) start with hyphen symbol `-`, not your prefix.
+Make sure you created your [role commands ](self-assignable-roles.md#roles)and assigned them a [role group](self-assignable-roles.md#role-groups) before starting. Role menu will **NOT** work if you have not done so. All switches and flags (nodm, rr, etc...) start with hyphen symbol `-`, not your prefix.
 {% endhint %}
 
 Once you've made your role commands and assigned them to a role group,\
@@ -122,7 +122,7 @@ go to the channel in Discord where you want the role menu to be created. There y
 
 ![](../.gitbook/assets/sar1.PNG)
 
-As you can see the bot started creating the menu. It'll ask you to add the emoji for a role. In this case the role is the **Female **role. I'll react on the message with emote I want associated with the female role.&#x20;
+As you can see the bot started creating the menu. It'll ask you to add the emoji for a role. In this case the role is the **Female** role. I'll react on the message with emote I want associated with the female role.&#x20;
 
 ![](../.gitbook/assets/sar2.PNG)
 
@@ -130,7 +130,7 @@ As you can see the bot started creating the menu. It'll ask you to add the emoji
 Make sure to react on the original message (The one with the other reaction) If you add it to the other message of the bot, it won't do anything.
 {% endhint %}
 
-Now the bot wants you to react on the **first **message for the next role, in this case the **Male **role.
+Now the bot wants you to react on the **first** message for the next role, in this case the **Male** role.
 
 ![Note: Male reaction was on the same message as the female reaction message](../.gitbook/assets/sar3.PNG)
 
@@ -143,7 +143,7 @@ To create a custom message for your role menu like event role menu you saw above
 
 ### Disabling DM confirmation
 
-If you do not want the bot to send you a DM when you are given or removed from a role, type in the following command `-rolemenu update (message id) -nodm `
+If you do not want the bot to send you a DM when you are given or removed from a role, type in the following command `-rolemenu update (message id) -nodm`&#x20;
 
 After you have finish editing or creating your role menu, it will display whether DM notifications are enabled or not.
 

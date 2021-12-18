@@ -10,7 +10,7 @@ Basic Automoderator is fine for setting up a simple automod system, but for more
 
 ## Introduction
 
-Basic Automoderator can be configured through different predefined **rules. **Within these rules, you can set different options to customize it to what you like. For those of you who are familiar with AutomodV2, rules are similar to rulesets, except they have less options.
+Basic Automoderator can be configured through different predefined **rules.** Within these rules, you can set different options to customize it to what you like. For those of you who are familiar with AutomodV2, rules are similar to rulesets, except they have less options.
 
 ## Rules
 
@@ -75,7 +75,7 @@ As we can see, the two options are **Number of messages** and **Within (seconds)
 
 ![Options for mass mention](<../.gitbook/assets/image (12).png>)
 
-As we can see, there is only one option for this rule if we take out ignored roles / channels and violations. This is **Mention threshold - **which is how many mentions a user would need to mention _in a single message_ for this ruleset to be triggered.&#x20;
+As we can see, there is only one option for this rule if we take out ignored roles / channels and violations. This is **Mention threshold -** which is how many mentions a user would need to mention _in a single message_ for this ruleset to be triggered.&#x20;
 
 {% hint style="danger" %}
 This ruleset will not trigger if you mention the _same_ person, only if you mention different people. For example, if we had the threshold as `2` and we mentioned `Jonas747` twice, it would not trigger. However, if we mentioned `Jonas747` _and_  `YAGPDB`, it would trigger.

@@ -20,7 +20,7 @@ Choose the Channel that you want to bot to post the announcement in.
 
 ### Announcement Message
 
-Write the message that you want to announcement to say. The streaming announcements accept most [templates](../reference/templates.md), but have some additional special templates:
+Write the message that you want to announcement to say. The streaming announcements accept most [templates](../reference/templates/), but have some additional special templates:
 
 * `{{ .URL }}` outputs the URL of the stream.
 * `{{ .Game }}` outputs the current game.

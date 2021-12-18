@@ -1,11 +1,11 @@
 # Autorole
 
 {% hint style="info" %}
-Make sure that the bot has permission to manage roles **and **that the role the bot is assigning is below the highest role the bot has.&#x20;
+Make sure that the bot has permission to manage roles **and** that the role the bot is assigning is below the highest role the bot has.&#x20;
 {% endhint %}
 
 {% hint style="warning" %}
-**Warning: **Be careful when using autorole to automatically give new members roles. Discord's in-built new member verification only works on members with no roles, rendering it useless if members are given roles right after they join.&#x20;
+**Warning:** Be careful when using autorole to automatically give new members roles. Discord's in-built new member verification only works on members with no roles, rendering it useless if members are given roles right after they join.&#x20;
 {% endhint %}
 
 ![](../.gitbook/assets/Autorole.PNG)

@@ -6,7 +6,7 @@ Custom Embeds with the `-customembed` command don't work in custom commands. If 
 
 ## The `customembed` command
 
-One method of sending an embed with YAGPDB is using the command `customembed `(or for short, `ce`).&#x20;
+One method of sending an embed with YAGPDB is using the command `customembed` (or for short, `ce`).&#x20;
 
 ### Create embeds by hand
 
@@ -73,7 +73,7 @@ First off, I start creating my embed by defining it in a variable called `embed`
 Next, we'll take a look at this more lavish example:
 
 {% hint style="success" %}
-To make your code readable, especially for large embeds,** indents** may be used, as YAGPDB's templating system allows this sort of formatting.
+To make your code readable, especially for large embeds, **indents** may be used, as YAGPDB's templating system allows this sort of formatting.
 {% endhint %}
 
 {% code title="Custom Command "embed"" %}
@@ -150,7 +150,7 @@ Discord uses color decimal. SpyColor is a good tool to pick colors, or convert h
 
 ![An example of getting the colour decimal value using SpyColor](<../.gitbook/assets/Capture (6).PNG>)
 
-## The `simpleembed `command
+## The `simpleembed` command
 
 Simple embeds are easier to use than custom embeds as they do not require any knowledge of json. Their downside is that they don't support all Discord embed fields from the embed structure, for example fields. You can create a simple embed with the `simpleembed` command, `se` for short.
 
@@ -185,5 +185,5 @@ You can play around with this command a bit, it's really easy to use.&#x20;
 {% hint style="info" %}
 Simple embeds can be used in custom commands:
 
-`{{execAdmin "se" "-desc" "This is my description"}} `
+`{{execAdmin "se" "-desc" "This is my description"}}`&#x20;
 {% endhint %}

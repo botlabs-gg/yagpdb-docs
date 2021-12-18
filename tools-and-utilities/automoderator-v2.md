@@ -36,16 +36,16 @@ Every time a rule is triggered, a log will be posted with the Date, User, Rule, 
 
 In each rule sets you have several options
 
-* **Name: **You can edit the name of your rule
+* **Name:** You can edit the name of your rule
 * **Enable rule set:** You can toggle the rule set on and off&#x20;
 * **Ruleset scoped condition:** Assigned conditions that will apply to every rule\` in the rule set.&#x20;
-* **Create a new rule: **Create a new rule in the ruleset
+* **Create a new rule:** Create a new rule in the ruleset
 
 ## Rule Setting&#x20;
 
 ![Each rule will have a combination of Trigger, Condition, and Effects. ](../.gitbook/assets/AutoMod2.0.PNG)
 
-**Triggers: **A variety of different parameters that can configured to trigger the rule. Multiple parameters can be set but only one needs to activate to trigger the rule. \
+**Triggers:** A variety of different parameters that can configured to trigger the rule. Multiple parameters can be set but only one needs to activate to trigger the rule. \
 **Conditions**: Restrictions or parameters set to limit who can trigger the rule. Multiple conditions can be set and all must be valid in order to allow the trigger.\
 **Effects**: The effect that the rule will cause. Multiple effects can be added and all of them will be activated whenever the trigger is activated
 
@@ -53,7 +53,7 @@ In each rule sets you have several options
 
 When you create a violation, you will need to assign it a name. Each violation name will act like a key which has its own separate count.&#x20;
 
-**Example: **If you have two violation names`links `and `badName`, `+violation` with the name `links` will increment the `links` violation counter for that user while `badName` will remains the same.
+**Example:** If you have two violation names`links` and `badName`, `+violation` with the name `links` will increment the `links` violation counter for that user while `badName` will remains the same.
 
 Then you can set up a rule with the  `x violations in y minutes` trigger so that when someone increments the counter `x times within y minutes`, the rule will trigger. Using this you can set up tiered punishments where repeated violations causes stricter punishments.
 
@@ -64,14 +64,14 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### **All caps**
 
 * Triggers when a message contains more than x% of just capitalized letters.
-  * **Min number of all caps: **Min number of caps needed to trigger
-  * **Percentage of all caps: **Percent of the message needed to be made up of caps.&#x20;
+  * **Min number of all caps:** Min number of caps needed to trigger
+  * **Percentage of all caps:** Percent of the message needed to be made up of caps.&#x20;
 * Both condition needs to be met to cause the trigger.&#x20;
 
 #### **Message mentions**
 
 * Triggers when a message includes more than x unique mentions&#x20;
-  * **Threshold: **The number of unique mentions needed to trigger the rule.
+  * **Threshold:** The number of unique mentions needed to trigger the rule.
 
 #### **Any links**
 
@@ -80,15 +80,15 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### **X violation in Y minutes**
 
 * Triggers when a user has more than x violations within y minutes.
-  * **Violation name: **The violation key that we need to check&#x20;
+  * **Violation name:** The violation key that we need to check&#x20;
   * **Number of violation:** The "x" number of violation needed to trigger the rule
-  * **Within (minutes): **The "y" number of minutes that the violation needs to occur within.&#x20;
-  * **Ignore if a higher violation trigger of this name was activated:  **Will be ignore if another violation trigger was activated that was higher up in punishment. Such as a ban violation if this was a kick violation.&#x20;
+  * **Within (minutes):** The "y" number of minutes that the violation needs to occur within.&#x20;
+  * **Ignore if a higher violation trigger of this name was activated:**  Will be ignore if another violation trigger was activated that was higher up in punishment. Such as a ban violation if this was a kick violation.&#x20;
 
 #### Word blacklist
 
 * Triggers on messages containing words in the specified list
-  * **List: **The list you want the rule to check against
+  * **List:** The list you want the rule to check against
 
 #### Word whitelist
 
@@ -116,10 +116,10 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### **X channel message in Y seconds**
 
 * Triggers when a channel has more than x messages in y seconds.
-  * **Messages: **Number of "X" messages needed to trigger the rule
-  * **Within (seconds): **The "Y" number of seconds that the word needs to occur within.
+  * **Messages:** Number of "X" messages needed to trigger the rule
+  * **Within (seconds):** The "Y" number of seconds that the word needs to occur within.
 
-#### X user **message **in Y seconds
+#### X user **message** in Y seconds
 
 * Triggers when a user has more than x messages in y seconds in a single channel.
   * **Messages:** Number of "X" messages needed to trigger the rule
@@ -176,7 +176,7 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### Join username matches regex
 
 * Triggers when a member's username matches the provided regex
-  * **Regex: **The regex to trigger the rule
+  * **Regex:** The regex to trigger the rule
 
 #### Join username not matching regex
 
@@ -201,28 +201,28 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 #### **Ignore roles**
 
-* Ignore users with at** **least one of these roles from this rule
-  * **Role: **The list of roles to ignore.&#x20;
+* Ignore users with at **** least one of these roles from this rule
+  * **Role:** The list of roles to ignore.&#x20;
 
 #### **Require roles**
 
-* Require at** **least one of these roles on the user to trigger the rule
-  * **Role: **The list of roles to ignore.&#x20;
+* Require at **** least one of these roles on the user to trigger the rule
+  * **Role:** The list of roles to ignore.&#x20;
 
 #### **Ignore channels**
 
 * Ignore the following channels
-  * **Channel: **The list of channels to ignore.&#x20;
+  * **Channel:** The list of channels to ignore.&#x20;
 
 #### **Whitelist channels**
 
 * Only check the following channel
-  * **Channel: **The list of channels** **to check.&#x20;
+  * **Channel:** The list of channels **** to check.&#x20;
 
 #### **Account age above**
 
 * Ignore users whose accounts age is less than the specified threshold
-  * **Age in minutes: **The age specified to check upon
+  * **Age in minutes:** The age specified to check upon
 
 #### **Account age below**
 
@@ -247,15 +247,15 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 * Only trigger on bots
 
-#### **Ignore categories **
+#### **Ignore categories**&#x20;
 
 * Ignore channels in the following categories
-  * **Categories: **The list of categories to check
+  * **Categories:** The list of categories to check
 
-#### **Active in categories **
+#### **Active in categories**&#x20;
 
 * Only check channels in the following categories
-  * **Categories: **The list of categories to check
+  * **Categories:** The list of categories to check
 
 ### Effect Types
 
@@ -267,8 +267,8 @@ Effects with ability to add custom messages are capped to 150 characters.
 
 #### **+Violation**
 
-* Adds a violation** **(use with violation trigger)
-  * **Name: **The violation key you are adding a violation too.
+* Adds a violation **** (use with violation trigger)
+  * **Name:** The violation key you are adding a violation too.
 
 #### **Kick user**
 
@@ -281,7 +281,7 @@ Effects with ability to add custom messages are capped to 150 characters.
 #### **Mute user**
 
 * Mutes the user
-  * **Duration (Minute): **Duration to mute the user for.
+  * **Duration (Minute):** Duration to mute the user for.
 
 #### **Warn user**
 
@@ -300,17 +300,17 @@ Effects with ability to add custom messages are capped to 150 characters.
 There are some limitations you need to be aware of when using Automoderator V2, which are listed below.
 
 {% hint style="info" %}
-**Note: **'Normal' here means a normal server without YAGPDB Premium, 'Premium' means one with YAGPDB Premium.
+**Note:** 'Normal' here means a normal server without YAGPDB Premium, 'Premium' means one with YAGPDB Premium.
 {% endhint %}
 
-* **Max message-based triggers: **20 for normal, 100 for premium.
-* **Max violation triggers: **20 for normal, 100 for premium.
-* **Max total rules: **25 for normal, 150 for premium.
-* **Max lists: **5 for normal, 25 for premium.
-* **Max rule parts: **This means the maximum amount of triggers, conditions, and effect in total you may have per rule. These will be truncated if they go over the limit.\
+* **Max message-based triggers:** 20 for normal, 100 for premium.
+* **Max violation triggers:** 20 for normal, 100 for premium.
+* **Max total rules:** 25 for normal, 150 for premium.
+* **Max lists:** 5 for normal, 25 for premium.
+* **Max rule parts:** This means the maximum amount of triggers, conditions, and effect in total you may have per rule. These will be truncated if they go over the limit.\
   __\
   __20 for both normal and premium.
-* **Max rulesets: **10 for normal, 25 for premium.
+* **Max rulesets:** 10 for normal, 25 for premium.
 
 ## Automoderator 1.0 to 2.0
 

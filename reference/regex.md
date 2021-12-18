@@ -12,23 +12,23 @@ More about general concepts > [http://www.regular-expressions.info](http://www.r
 {% tab title="Match" %}
 You can match a word by putting it between two brackets.
 
-_As example, this will only match the word "Dinosaur": _`(Dinosaur)`
+_As example, this will only match the word "Dinosaur":_ `(Dinosaur)`
 {% endtab %}
 
 {% tab title="Don't match" %}
 Using `?:` after opening parenthesis of a capturing group creates a non-capturing group. Useful for example with template function `reFindAllSubmatches`.
 
-_This will not sub-match the words "red, blue, green": _\
-__``{{ reFindAllSubmatches `(?:color=)(red|blue|green)` "color=red beautiful" }} ``
+_This will not sub-match the words "red, blue, green":_ \
+__``{{ reFindAllSubmatches `(?:color=)(red|blue|green)` "color=red beautiful" }}``&#x20;
 
-To clarify more - it will not show `dateid, `because it's a whole match:\
+To clarify more - it will not show `dateid,` because it's a whole match:\
 ``{{ slice (index (reFindAllSubmatches `(?:dateid=)([0-9]{5})` "dateid=12345") 0) 1 }}``
 {% endtab %}
 
 {% tab title="Match A or B" %}
 You may also want to catch multiple options, for that we use a _"Vertical bar"_ or also known as a _"Pipe"_ between linux users.
 
-_As example, this will match if either "Cat" or "Dog" is present: _`(Cat|Dog)`
+_As example, this will match if either "Cat" or "Dog" is present:_ `(Cat|Dog)`
 {% endtab %}
 {% endtabs %}
 

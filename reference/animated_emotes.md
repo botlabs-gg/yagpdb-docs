@@ -47,4 +47,4 @@ To use the emotes as text-form entry inside a custom command: \<a:name:id>
 
 
 
-If you want to contribute to this database, just ping **Michdi#1602 **on the support server. YAGPDB needs to be on the server where you store the emojis.
+If you want to contribute to this database, just ping **Michdi#1602** on the support server. YAGPDB needs to be on the server where you store the emojis.

@@ -4,7 +4,7 @@
 
 ![](../.gitbook/assets/Rep.PNG)
 
-Reputation is not enabled by default. To enable it, please go to the [control panel](https://yagpdb.xyz/manage) and check_ Reputation enabled._
+Reputation is not enabled by default. To enable it, please go to the [control panel](https://yagpdb.xyz/manage) and check _Reputation enabled._
 
 #### Enable giving rep when someone says "thanks @user"?
 
@@ -44,7 +44,7 @@ Users with this role cannot participate in the point system which they can be gi
 
 ## Reputation logs
 
-Besides using the command `-replog` , you can also check the logs from the control panel. Specify a user ID to check the logs affecting the points of the user. See [How to get IDs](../reference/templates.md#how-to-get-ids) to get more information on getting the user ID.
+Besides using the command `-replog` , you can also check the logs from the control panel. Specify a user ID to check the logs affecting the points of the user. See [How to get IDs](../reference/templates/#how-to-get-ids) to get more information on getting the user ID.
 
 ## Reset all user's reputation
 

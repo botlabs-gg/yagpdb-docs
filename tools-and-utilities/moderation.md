@@ -4,7 +4,7 @@
 
 The moderation features YAGPDB provides are:
 
-* **Mod log **that logs all moderation actions
+* **Mod log** that logs all moderation actions
 * Generation of a **message log** for all mod action
   * For example: if you use the `-ban` command, the bot will also log the last 100 messages in the channel the command was executed, including deleted messages.
 * **Kick and ban commands**

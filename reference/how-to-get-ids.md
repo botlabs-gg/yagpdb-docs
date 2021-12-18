@@ -6,7 +6,7 @@
 
 **Role IDs**: Use the `listroles`command.
 
-**Emote IDs: **
+**Emote IDs:**&#x20;
 
 If it is a **custom emote**, adding a \ in front of the emote such as `\:yag:` will display the name along with the ID such as  `<:yag:277569741932068864>`. On an Android device remove backslash and enclose `:yag:` inside back-ticks `` `:yag:`. ``
 

@@ -12,9 +12,9 @@ This will log username changes of your server members. You can then check them w
 
 This will log nickname changes of your server members. You can then check them with the `nickname` or the `whois` command.
 
-#### Allow members with _Manage Messages _permissions to view the deleted messages
+#### Allow members with _Manage Messages_ permissions to view the deleted messages
 
-This will allow members with _Manage Messages _permissions to use the `-undelete` command to view the deleted messages.
+This will allow members with _Manage Messages_ permissions to use the `-undelete` command to view the deleted messages.
 
 #### Allow everyone to view deleted messages
 

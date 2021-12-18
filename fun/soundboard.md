@@ -11,7 +11,7 @@ Choose to require users to have a role in order to play this sound.
 ### Upload file
 
 {% hint style="info" %}
-Do **NOT **fill in the URL if you are going uploaded from local files, and vice versa.
+Do **NOT** fill in the URL if you are going uploaded from local files, and vice versa.
 {% endhint %}
 
 You have two options to upload sounds:
@@ -21,7 +21,7 @@ You have two options to upload sounds:
 
 #### Upload with local files
 
-Click on _Choose file _and_ _select an audio file to upload. All types of sound files, including videos with sound tracks, are supported.
+Click on _Choose file_ and __ select an audio file to upload. All types of sound files, including videos with sound tracks, are supported.
 
 #### Specify a URL
 
@@ -33,7 +33,7 @@ This has to be the direct link to the media file, and not a YouTube link. A dire
 
 ### Finish
 
-Click on _Upload/Download _after you are done with the previous steps. You should see a _Success_ notification when the upload is completed. Check the status of the sound under _Existing sounds_._ _Wait for several minutes, and press _Save_ again if the status does not show _Ready_.
+Click on _Upload/Download_ after you are done with the previous steps. You should see a _Success_ notification when the upload is completed. Check the status of the sound under _Existing sounds_. __ Wait for several minutes, and press _Save_ again if the status does not show _Ready_.
 
 ![An example of a successfully uploaded sound](<../.gitbook/assets/Capture (4).PNG>)
 
@@ -43,4 +43,4 @@ You can check for an available list of sounds with the `-soundboard` command. Th
 
 ## Deleting sounds
 
-You can delete sounds from the control panel. Look for the desired sound name under _Existing sounds _and press _Delete _to remove it from the list.
+You can delete sounds from the control panel. Look for the desired sound name under _Existing sounds_ and press _Delete_ to remove it from the list.

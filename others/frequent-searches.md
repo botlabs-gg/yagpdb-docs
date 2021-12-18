@@ -16,7 +16,7 @@ Go to [yagpdb.xyz](https://yagpdb.xyz), click on **Add to server** and follow th
    Make sure that YAGPDB is online - [Discord might be having issues](https://status.discordapp.com) or YAGPDB might be restarting (see [#downtime-announcements](https://discordapp.com/channels/166207328570441728/465887983657287686) in the Discord server).\
 
 4. **Check your command settings** \
-   If none of this works, make sure that all YAGPDB commands are enabled by visiting the [control panel](https://yagpdb.xyz), logging in and selecting your server, clicking on **Core **and **Command Settings**. Make sure that **All commands enabled?** is checked and that there are no command overrides blocking the commands.
+   If none of this works, make sure that all YAGPDB commands are enabled by visiting the [control panel](https://yagpdb.xyz), logging in and selecting your server, clicking on **Core** and **Command Settings**. Make sure that **All commands enabled?** is checked and that there are no command overrides blocking the commands.
 
 ![](../.gitbook/assets/unknown.png)
 
@@ -36,8 +36,8 @@ The prefix is what the bot responds to for commands. The default prefix is `-` (
 ## How do I set up role menus/role reactions/self-assignable roles?
 
 There are multiple guides for this. These are our picks: \
-**Video: **[**https://www.youtube.com/watch?v=IaTfJ4vqHhc**](https://www.youtube.com/watch?v=IaTfJ4vqHhc)\
-**Documentation (Text): **[https://docs.yagpdb.xyz/self-assignable-roles](https://docs.yagpdb.xyz/self-assignable-roles)&#x20;
+**Video:** [**https://www.youtube.com/watch?v=IaTfJ4vqHhc**](https://www.youtube.com/watch?v=IaTfJ4vqHhc)\
+**Documentation (Text):** [https://docs.yagpdb.xyz/self-assignable-roles](https://docs.yagpdb.xyz/self-assignable-roles)&#x20;
 
 If you are still having difficulties setting up a role menu, you should read / watch the guide again. If you still can't figure it out, you can ask specific questions in #help. Questions if someone can set it up for you will be ignored.&#x20;
 
@@ -48,7 +48,7 @@ If you are still having difficulties setting up a role menu, you should read / w
 
 ## Bot responds with "Missing a required role" when I try to use my rolemenu
 
-This is a mistake many people make. Go back to the control panel and make sure that no role command/group has set a **required role. **If one role is set, set it to none:
+This is a mistake many people make. Go back to the control panel and make sure that no role command/group has set a **required role.** If one role is set, set it to none:
 
 ![](../.gitbook/assets/rolee.PNG)
 
@@ -58,7 +58,7 @@ The bot can only assign roles that are below it in the role hierarchy, check tha
 
 ## How do I unban people?
 
-You can unban people through Discord. YAGPDB also has an `unban` command. You can also use `-ban <user> -d 1s`- it "bans" for 1 second and unbans, effectively unbanning a given user. Be careful with this, as latter is a "hack" / workaround and not our real `unban `command.
+You can unban people through Discord. YAGPDB also has an `unban` command. You can also use `-ban <user> -d 1s`- it "bans" for 1 second and unbans, effectively unbanning a given user. Be careful with this, as latter is a "hack" / workaround and not our real `unban` command.
 
 ## How do I enable developer mode?
 

@@ -98,7 +98,7 @@ The `parseArgs` template can check if specific arguments are given. If not, it w
 * `user` (user mentions as type user)
 * `userid` (mentions or the user's ID, as integer)
 * `channel` (channel mention or ID, as type channel)
-* `role `(role name or ID, as type _\*discordgo.Role_)
+* `role` (role name or ID, as type _\*discordgo.Role_)
 * `duration` (duration as integer or string with optional time modifier - s,m,h, etc...)
 * `member` (mentions or the user's ID, as type member)
 
@@ -239,7 +239,7 @@ With YAGPDB's database system, I made a command to have users count from 0 and k
 
 Trigger type: `Regex` Trigger: `\A`
 
-`BE SURE TO RESTRICT THE COMMAND TO A SINGLE CHANNEL `
+`BE SURE TO RESTRICT THE COMMAND TO A SINGLE CHANNEL`&#x20;
 
 ```go
 {{/* If you are not doing (no twice msg in a row)  or (role assignment for latest user)  you can remove counter_user and by extension everything to do with $lastUser*/}}
@@ -324,7 +324,7 @@ Trigger type: `Command` Trigger: `giveRoleName`
 
 ### Broadcast command
 
-> By **GryTrean#8957 **\
+> By **GryTrean#8957** \
 > Updated by: **Timcampy#5636**
 
 This command lets the bot send a message to another channel. It uses embeds so you can see `sdict`(dictionary but with only string keys), `sendMessage`, and `cembed`in action.
