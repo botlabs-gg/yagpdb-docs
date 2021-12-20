@@ -419,6 +419,30 @@ _HELLO!_\
 __This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _{{- $x := . -}}_
 {% endhint %}
 
+## Tickets
+
+{% hint style="warning" %}
+Ticket functions are limited to 1 call per custom command for both normal and premium guilds.
+{% endhint %}
+
+| **Function**                | **Description**                                                                                                                                                                                                                                                                           |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `createTicket author topic` | Creates a new ticket with the author and topic provided. Author can be `nil` (to use the triggering member); user ID in form of a string or an integer; a user struct; or a member struct. The topic must be a string. Returns a [template ticket](./#template-ticket) struct on success. |
+
+#### Template Ticket
+
+| **Field**              | **Description**                                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------- |
+| .AuthorID              | Author ID of the ticket.                                                                                      |
+| .AuthorUsernameDiscrim | The Discord tag of the author of the ticket, formatted like `username#discrim`.                               |
+| .ChannelID             | Channel ID of the ticket.                                                                                     |
+| .ClosedAt              | Time that the ticket was closed, of type _null.Time._ This is, for the most part, useless in custom commands. |
+| .CreatedAt             | Time that the ticket was created.                                                                             |
+| .GuildID               | Guild ID of the ticket.                                                                                       |
+| .LocalID               | The ticket ID.                                                                                                |
+| .LogsID                | Log ID of the ticket.                                                                                         |
+| .Title                 | Title of the ticket.                                                                                          |
+
 ## With action
 
 `with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{else}}` is used, that branch is executed instead. \
