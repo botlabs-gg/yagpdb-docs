@@ -4,6 +4,16 @@ description: Functions are underappreciated. In general, not just in templates. 
 
 # Functions
 
+### Channel
+
+| **Function**                                                           | **Description**                                                                                                                                                                                                                                                                                                               |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><code>editChannelName</code> <br><code>channel "newName"</code></p> | Function edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. `"newName"` has to be of type _string_. For example  >`{{editChannelName nil (joinStr "" "YAG - " (randInt 1000))}}`                                                          |
+| `editChannelTopic channel "newTopic"`                                  | <p>Function edits channel's topic/description. <code>channel</code> can be either ID, "name" or even <code>nil</code> if triggered in that channel name change is intended to happen.  <code>"newTopic"</code> has to be of type <em>string</em>. For example ></p><p><code>{{editChannelTopic nil "YAG is cool"}}</code></p> |
+| `getChannel channel`                                                   | Function returns full channel object of given `channel` argument which can be either its ID, name or `nil` for triggering channel, and is of type _\*dstate.ChannelState_. For example > `{{(getChannel nil).Name}}` returns the name of the channel command was triggered in.                                                |
+| `getChannelOrThread channel`                                           | Returns type_\*templates.CtxChannel_ corresponding to [Channel](./#channel) object.                                                                                                                                                                                                                                           |
+| `getThread channel`                                                    | Returns type _\*templates.CtxChannel_ corresponding to [Channel](./#channel) object.                                                                                                                                                                                                                                          |
+
 ### Current User
 
 | **Function**            | **Description**                                                                                                 |
