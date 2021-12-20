@@ -43,7 +43,7 @@ description: Functions are underappreciated. In general, not just in templates. 
 {{ else }} FUN'S OVER! {{ end }}
 ```
 
-### Math functions
+### Math
 
 | **Function**                    | **Description**                                                                                                                                                                                                                                                                                                                                                        |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -69,6 +69,15 @@ description: Functions are underappreciated. In general, not just in templates. 
   `{{div (round (mult 12.3456 100)) 100}}` returns 12.35\
   `{{div (roundFloor (mult  12.3456 100)) 100}}` returns 12.34
 
+### Member
+
+| **Function**               | **Description**                                                                                                                                                        |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `editNickname "newNick"`   | Edits triggering user's nickname, argument has to be of type _string_. YAGPDB's highest role has to be above the highest role of the member.                           |
+| `getMember mention/userID` | <p>Function returns Member object having above methods. </p><p><code>{{(getMember .User.ID).JoinedAt}}</code> <br>is the same as <code>{{.Member.JoinedAt}}</code></p> |
+| `onlineCount`              | Returns the count of online users/members on current server.                                                                                                           |
+| `onlineCountBots`          | <p><strong>DEPRECATED.</strong> This will no longer work properly and will likely be removed in a future update.<br><br>Returns the count of online bots.</p>          |
+
 ### Mentions
 
 | **Function**                 | **Description**                                                          |
@@ -85,7 +94,7 @@ description: Functions are underappreciated. In general, not just in templates. 
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& (See [How to get IDs](./#how-to-get-ids) to get ID).
 * `<@&##########>` Mentions the role with ID ######## ([listroles](../../commands/all-commands.md#listroles) command gives roleIDs). This is usable for example with `{{sendMessageNoEscape nil "Welcome to role <@&11111111...>"}}`. Mentioning that role has to be enabled server- side in Discord.
 
-### Message functions
+### Message
 
 | **Function**                                               | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -230,7 +239,7 @@ Ticket functions are limited to 1 call per custom command for both normal and pr
 | .LogsID                | Log ID of the ticket.                                                                                         |
 | .Title                 | Title of the ticket.                                                                                          |
 
-### Time functions
+### Time
 
 | **Function**                                           | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -279,7 +288,7 @@ Discord Timestamp Styles referenced [here](https://discord.com/developers/docs/r
 **Tip:** You can convert a Unicode code point back to its string equivalent using `printf "%c"`.  For example, `printf "%c" 99` would result in the string `c` as `99` is the Unicode code point for `c`.`printf` is briefly covered later on in the next section, further documentation can be found [here.](https://golang.org/pkg/fmt/) Cheat sheet [here](https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/).
 {% endhint %}
 
-### User functions
+### User
 
 | **Function**                  | **Description**                                                                                                                                                                                                                                                                                                              |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

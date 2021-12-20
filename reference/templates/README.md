@@ -95,14 +95,9 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .Member.Roles    | A _slice_ of role IDs that the member has.                                                                                 |
 | .Member.User     | Underlying user on which the member is based on.                                                                           |
 
-| **Function**               | **Description**                                                                                                                                                        |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `editNickname "newNick"`   | Edits triggering user's nickname, argument has to be of type _string_. YAGPDB's highest role has to be above the highest role of the member.                           |
-| `getMember mention/userID` | <p>Function returns Member object having above methods. </p><p><code>{{(getMember .User.ID).JoinedAt}}</code> <br>is the same as <code>{{.Member.JoinedAt}}</code></p> |
-| `onlineCount`              | Returns the count of online users/members on current server.                                                                                                           |
-| `onlineCountBots`          | <p><strong>DEPRECATED.</strong> This will no longer work properly and will likely be removed in a future update.<br><br>Returns the count of online bots.</p>          |
-
 [Member object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-member-object).
+
+User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#member).
 
 ## User
 
@@ -122,7 +117,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 [User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
 
-User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#user-functions).
+User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#user).
 
 ## Channel
 
@@ -215,7 +210,7 @@ Time in general uses Golang's time package library > [https://golang.org/pkg/tim
 | .TimeMinute   | Variable of _time.Duration_ type and returns 1 minute > `1m0s`.                                             |
 | .TimeSecond   | Variable of _time.Duration_ type and returns 1 second > `1s`.                                               |
 
-Time functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#time-functions).
+Time functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#time).
 
 ## Conditional branching
 
