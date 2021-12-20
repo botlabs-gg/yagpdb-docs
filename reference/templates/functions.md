@@ -14,14 +14,6 @@ description: Functions are underappreciated. In general, not just in templates. 
 | `getChannelOrThread channel`                                           | Returns type_\*templates.CtxChannel_ corresponding to [Channel](./#channel) object.                                                                                                                                                                                                                                           |
 | `getThread channel`                                                    | Returns type _\*templates.CtxChannel_ corresponding to [Channel](./#channel) object.                                                                                                                                                                                                                                          |
 
-### Current User
-
-| **Function**            | **Description**                                                                                                 |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `currentUserCreated`    |  Returns value of type _time.Time_ and shows when the current user was created.                                 |
-| `currentUserAgeHuman`   | <p> The account age of the current user in more human readable format <br>(Eg:<code>3 days 2 hours</code>).</p> |
-| `currentUserAgeMinutes` |  The account age of the current user in minutes.                                                                |
-
 ### ExecCC
 
 {% hint style="warning" %}
@@ -302,9 +294,12 @@ Discord Timestamp Styles referenced [here](https://discord.com/developers/docs/r
 
 | **Function**                  | **Description**                                                                                                                                                                                                                                                                                                              |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `userArg mention/userID`      | <p>Function that can be used to retrieve .User object from a mention or userID.</p><p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user. Explained more in <a href="functions.md#user-sections-snippets">this section's snippets</a>.</p>                                                                 |
-| `pastUsernames userID offset` | <p>Returns a <em>slice</em> of type <em>[ ]*logs.CCNameChange</em> having fields .Name and .Time of previous 15 usernames and skips <code>offset</code> number in that list.</p><p><code>{{range pastUsernames .User.ID 0}}</code> <br><code>{{.Name}} - {{.Time.Format "Jan _2 2006"}}</code> <br><code>{{end}}</code> </p> |
+| `currentUserAgeHuman`         | <p>The account age of the current user in more human readable format <br>(Eg:<code>3 days 2 hours</code>).</p>                                                                                                                                                                                                               |
+| `currentUserAgeMinutes`       | The account age of the current user in minutes.                                                                                                                                                                                                                                                                              |
+| `currentUserCreated`          | Returns value of type _time.Time_ and shows when the current user was created.                                                                                                                                                                                                                                               |
 | `pastNicknames userID offset` | Same as `pastUsernames`.                                                                                                                                                                                                                                                                                                     |
+| `pastUsernames userID offset` | <p>Returns a <em>slice</em> of type <em>[ ]*logs.CCNameChange</em> having fields .Name and .Time of previous 15 usernames and skips <code>offset</code> number in that list.</p><p><code>{{range pastUsernames .User.ID 0}}</code> <br><code>{{.Name}} - {{.Time.Format "Jan _2 2006"}}</code> <br><code>{{end}}</code> </p> |
+| `userArg mention/userID`      | <p>Function that can be used to retrieve .User object from a mention or userID.</p><p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user. Explained more in <a href="functions.md#user-sections-snippets">this section's snippets</a>.</p>                                                                 |
 
 #### User section's snippets:
 
