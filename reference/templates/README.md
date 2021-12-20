@@ -350,7 +350,8 @@ Deleting key "color1" {{ $x.Del "color1" }} and whole sdict: **{{ $x }}**
 
 ## Database
 
-You have access to a basic set of Database functions, this is almost a key value store ordered by the key and value combined.
+You have access to a basic set of Database functions having return of type _\*customcommands.LightDBEntry_ called here [DBEntry](./#dbentry). \
+This is almost a key value store ordered by the key and value combined.
 
 You can have max 50 \* user\_count (or 500 \* user\_count for premium) values in the database, if you go above this all new write functions will fail, this value is also cached so it won't be detected immediately when you go above nor immediately when you're under again.
 
