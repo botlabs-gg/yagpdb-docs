@@ -279,4 +279,14 @@ Discord Timestamp Styles referenced [here](https://discord.com/developers/docs/r
 **Tip:** You can convert a Unicode code point back to its string equivalent using `printf "%c"`.  For example, `printf "%c" 99` would result in the string `c` as `99` is the Unicode code point for `c`.`printf` is briefly covered later on in the next section, further documentation can be found [here.](https://golang.org/pkg/fmt/) Cheat sheet [here](https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/).
 {% endhint %}
 
-##
+### User functions
+
+| **Function**                  | **Description**                                                                                                                                                                                                                                                                                                              |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `userArg mention/userID`      | <p>Function that can be used to retrieve .User object from a mention or userID.</p><p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user. Explained more in <a href="functions.md#this-sections-snippets">this section's snippets</a>.</p>                                                                 |
+| `pastUsernames userID offset` | <p>Returns a <em>slice</em> of type <em>[ ]*logs.CCNameChange</em> having fields .Name and .Time of previous 15 usernames and skips <code>offset</code> number in that list.</p><p><code>{{range pastUsernames .User.ID 0}}</code> <br><code>{{.Name}} - {{.Time.Format "Jan _2 2006"}}</code> <br><code>{{end}}</code> </p> |
+| `pastNicknames userID offset` | Same as `pastUsernames`.                                                                                                                                                                                                                                                                                                     |
+
+#### User section's snippets:
+
+`{{(userArg .Guild.OwnerID).String}}` this template's action-structure returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument (what it does, explained in [templates section](./#guild-server)). The parentheses surrounding them make `userArg` function return `.User` as [.User object](./#user) which is handled further by `.String` method (ref.`.User.String`), giving a result like > `YAGPDB#8760`.

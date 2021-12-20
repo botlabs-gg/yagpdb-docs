@@ -120,17 +120,9 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 | .UsernameHasInvite    | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                                       |
 | .RealUsername         | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored.          |
 
-| **Function**                  | **Description**                                                                                                                                                                                                                                                                                                              |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `userArg mention/userID`      | <p>Function that can be used to retrieve .User object from a mention or userID.</p><p><code>{{(userArg .User.ID).Mention}}</code> mentions triggering user. Explained more in <a href="./#this-sections-snippets">this section's snippets</a>.</p>                                                                           |
-| `pastUsernames userID offset` | <p>Returns a <em>slice</em> of type <em>[ ]*logs.CCNameChange</em> having fields .Name and .Time of previous 15 usernames and skips <code>offset</code> number in that list.</p><p><code>{{range pastUsernames .User.ID 0}}</code> <br><code>{{.Name}} - {{.Time.Format "Jan _2 2006"}}</code> <br><code>{{end}}</code> </p> |
-| `pastNicknames userID offset` | Same as `pastUsernames`.                                                                                                                                                                                                                                                                                                     |
-
 [User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
 
-#### This section's snippets:
-
-`{{(userArg .Guild.OwnerID).String}}` this template's action-structure returns Guild/Server owner's username and discriminator as of type _string_. First, `userArg` function is given `.Guild.OwnerID` as argument (what it does, explained below). The parentheses surrounding them make `userArg` function return `.User` as .User object which is handled further by `.String` method (ref.`.User.String`), giving a result like > `YAGPDB#8760`.
+User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#user-functions).
 
 ## Channel
 
