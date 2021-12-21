@@ -194,20 +194,6 @@ This is available and part of the dot when reaction trigger type is used.
 [Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).\
 [Emoji object in Discord documentation.](https://discord.com/developers/docs/resources/emoji)
 
-## Time
-
-Time in general uses Golang's time package library > [https://golang.org/pkg/time/#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here > [https://gobyexample.com/time](https://gobyexample.com/time).
-
-| **Field**     | **Description**                                                                                             |
-| ------------- | ----------------------------------------------------------------------------------------------------------- |
-| .DiscordEpoch | Gives you Discord Epoch time in _time.Time._ `{{.DiscordEpoch.Unix}}` would return in seconds > 1420070400. |
-| .UnixEpoch    | Gives you Unix Epoch time in _time.Time._                                                                   |
-| .TimeHour     | Variable of _time.Duration_ type and returns 1 hour > `1h0m0s`.                                             |
-| .TimeMinute   | Variable of _time.Duration_ type and returns 1 minute > `1m0s`.                                             |
-| .TimeSecond   | Variable of _time.Duration_ type and returns 1 second > `1s`.                                               |
-
-Time functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#time).
-
 ## Conditional branching
 
 Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.\
@@ -422,6 +408,20 @@ Ticket functions are limited to 1 call per custom command for both normal and pr
 | .LocalID               | The ticket ID.                                                                                                |
 | .LogsID                | Log ID of the ticket.                                                                                         |
 | .Title                 | Title of the ticket.                                                                                          |
+
+## Time
+
+Time in general uses Golang's time package library > [https://golang.org/pkg/time/#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here > [https://gobyexample.com/time](https://gobyexample.com/time).
+
+| **Field**     | **Description**                                                                                             |
+| ------------- | ----------------------------------------------------------------------------------------------------------- |
+| .DiscordEpoch | Gives you Discord Epoch time in _time.Time._ `{{.DiscordEpoch.Unix}}` would return in seconds > 1420070400. |
+| .UnixEpoch    | Gives you Unix Epoch time in _time.Time._                                                                   |
+| .TimeHour     | Variable of _time.Duration_ type and returns 1 hour > `1h0m0s`.                                             |
+| .TimeMinute   | Variable of _time.Duration_ type and returns 1 minute > `1m0s`.                                             |
+| .TimeSecond   | Variable of _time.Duration_ type and returns 1 second > `1s`.                                               |
+
+Time functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#time).
 
 ## With action
 
