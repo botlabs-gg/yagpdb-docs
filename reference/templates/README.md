@@ -97,7 +97,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 [Member object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-member-object).
 
-User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#member).
+Member functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#member).
 
 ## User
 
