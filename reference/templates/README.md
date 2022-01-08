@@ -301,11 +301,12 @@ Type of variable: **{{ printf "%T" $x }}**
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `sdict "key1" value1 "key2" value2 ...` | <p>Like dict function, creating a <em>templates.SDict</em> type map, key must be of type <em>string</em>. Can be used for example in <code>cembed</code>. If only one argument is passed to <code>sdict</code> function having type <em>map[string]interface{};</em> for example .ExecData and data retrieved from database can be of such type if <code>sdict</code> was used, it is converted to a new <em>sdict</em>.</p><p></p><p>Example: <code>sdict "one" 1 "two" 2 "three" (cslice 3 4) "five" 5.5</code> returns unordered <code>map[five:5.5 one:1 three:[3 4] two:2]</code>, having length of four and index positions are its keys. Notice that thanks to type <em>interface{}</em> value, <em>templates.SmDict</em> elements' inherent type does not change.</p> |
 
-| **Method**       | **Description**                                                                             |
-| ---------------- | ------------------------------------------------------------------------------------------- |
-| .Del "key"       | Deletes given key from _sdict_.                                                             |
-| .Get "key"       | Retrieves given key from _sdict_.                                                           |
-| .Set "key" value | Changes/sets given key to a new value or creates new one, if no such key exists in _sdict_. |
+| **Method**       | **Description**                                                                                                                              |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Del "key"       | Deletes given key from _sdict_.                                                                                                              |
+| .Get "key"       | Retrieves given key from _sdict_.                                                                                                            |
+| \~ .HasKey "key" | Returns _bool_ true/false regarding whether the key is set or not e.g. `{{(sdict "YAGPDB" "is cool").HasKey "YAGPDB"}}` would return `true`. |
+| .Set "key" value | Changes/sets given key to a new value or creates new one, if no such key exists in _sdict_.                                                  |
 
 ```go
 Creating sdict: {{ $x := sdict "color1" "green" "color2" "red" }} **{{ $x }}**
