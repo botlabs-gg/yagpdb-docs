@@ -459,5 +459,3 @@ Outer-scope $x len however: {{ len $x }}
 * To trim spaces, for example >`{{- /* this is a multi-line` \
   `comment with whitespace trimmed from  preceding and following text */ -}}` \
   Using`{{- ... -}}` is also handy inside`range` actions, because whitespaces and newlines are rendered there as output.
-* To demonstrate sleep and slightly also editMessage functions. >\
-  `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 5}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
