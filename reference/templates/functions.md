@@ -204,13 +204,8 @@ description: Functions are underappreciated. In general, not just in templates. 
 | `setRoles userID roles`                  | Overwrites the roles of the given user using the slice of roles provided, which should be a slice of role IDs. IDs can be ints or strings. Example: `{{setRoles .User.ID cslice}}` would clear the roles of the triggering user. |
 | `takeRoleID userID roleID (delay)`       | Takes away a role by ID from the target. `Delay` is optional argument in seconds.                                                                                                                                                |
 | `takeRoleName userID "roleName" (delay)` | Takes away a role by name from the target. `Delay` is optional argument in seconds.                                                                                                                                              |
-| `targetHasRoleID userID roleID`          | Returns true if the given user has the role with the specified ID (use the listroles command for a list of roles). Example in section's [Snippets](functions.md#role-sections-snippets).                                         |
+| `targetHasRoleID userID roleID`          | Returns true if the given user has the role with the specified ID (use the listroles command for a list of roles). Example in section's Snippets.                                                                                |
 | `targetHasRoleName userID "roleName"`    | Returns true if the given user has the role with the specified name (case-insensitive).                                                                                                                                          |
-
-#### Role section's snippets:
-
-* To demonstrate usage of `targetHasRoleID`. > \
-  `{{$x := (userArg (index .Args 1)).ID}} {{if targetHasRoleID $x ############}} Has the Role! {{else}} Does not have the role! {{end}}`
 
 ### String manipulation
 
