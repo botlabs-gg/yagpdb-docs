@@ -305,7 +305,7 @@ Type of variable: **{{ printf "%T" $x }}**
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | .Del "key"       | Deletes given key from _sdict_.                                                                                                              |
 | .Get "key"       | Retrieves given key from _sdict_.                                                                                                            |
-| \~ .HasKey "key" | Returns _bool_ true/false regarding whether the key is set or not e.g. `{{(sdict "YAGPDB" "is cool").HasKey "YAGPDB"}}` would return `true`. |
+| .HasKey "key"    | Returns _bool_ true/false regarding whether the key is set or not e.g. `{{(sdict "YAGPDB" "is cool").HasKey "YAGPDB"}}` would return `true`. |
 | .Set "key" value | Changes/sets given key to a new value or creates new one, if no such key exists in _sdict_.                                                  |
 
 ```go
