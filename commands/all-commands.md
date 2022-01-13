@@ -858,6 +858,18 @@ Maintenance command, used to test command queueing
 sleep
 ```
 
+### State Botmember/Guild/Member
+
+Responds with state debug info
+
+**Usage:**&#x20;
+
+```
+state botmember
+state guild
+state member
+```
+
 ### Stateinfo
 
 Responds with state debug info
