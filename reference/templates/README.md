@@ -27,7 +27,10 @@ so make sure no "smart-quotes" are being used.
 
 The dot (also known as cursor) `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context. \
 \
-From official docs > "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.\
+For example .User is a Discord User object/structure of current context, meaning triggering user. To get user object for other users, functions `getMember`, `userArg` would help. Same applies to other **Fields** with dot prefix. If it is mentioned as a **Method** (.Append for type _cslice for example_) or is part of dot struct (.User.Bot) then it can not be used alone in context and always belongs to assigned parent, `{{ .Bot }}` would return `<no value>`.\
+\
+From official docs > "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.
+
 \
 `$` has a special significance in templates, it is set to the [starting value of a dot](https://golang.org/pkg/text/template/#hdr-Variables). This means you have access to the global context from anywhere - e.g., inside `range`/`with` actions. `$` for global context would cease to work if you redefine it inside template, to recover it `{{ $ := .  }}`.\
 \
