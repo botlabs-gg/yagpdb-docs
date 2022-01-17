@@ -27,7 +27,7 @@ so make sure no "smart-quotes" are being used.
 
 The dot (also known as cursor) `{{ . }}`  encompasses all active data available for use in the templating system, in other words it always refers to current context. \
 \
-For example .User is a Discord User object/structure of current context, meaning the triggering user. To get user object for other users, functions `getMember`, `userArg` would help. Same meaning of object/struct applies to other **Fields** with dot prefix. If it is mentioned as a **Method** (.Append for type _cslice for example_) or is part of dot struct (.User.Bot) then it can not be used alone in context and always belongs to assigned parent, `{{ .Bot }}` would return `<no value>`.\
+For example .User is a Discord User object/structure of current context, meaning the triggering user. To get user object for other users, functions `getMember`, `userArg` would help. Same meaning of object/struct applies to other **Fields** with dot prefix. If it is mentioned as a **Method** (for example, .Append for type _cslice_) or as a field on a struct (for example, .User.Bot) then it can not be used alone in template context and always belongs on a parent value. That is, `{{.Bot}}` would return `<no value>` whereas `{{.User.Bot}}` returns _bool_ true/false.\
 \
 From official docs > "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.\
 \
