@@ -104,7 +104,7 @@ description: Functions are underappreciated. In general, not just in templates. 
 | `editNickname "newNick"`   | Edits triggering user's nickname, argument has to be of type _string_. YAGPDB's highest role has to be above the highest role of the member.                           |
 | `getMember mention/userID` | <p>Function returns Member object having above methods. </p><p><code>{{(getMember .User.ID).JoinedAt}}</code> <br>is the same as <code>{{.Member.JoinedAt}}</code></p> |
 | `onlineCount`              | Returns the count of online users/members on current server.                                                                                                           |
-| `onlineCountBots`          | <p><strong>DEPRECATED.</strong> This will no longer work properly and will likely be removed in a future update.<br><br>Returns the count of online bots.</p>          |
+| `onlineCountBots`          | <p><strong>(deprecated)</strong> This will no longer work properly and will likely be removed in a future update.<br><br>Returns the count of online bots.</p>         |
 
 ### Mentions
 
