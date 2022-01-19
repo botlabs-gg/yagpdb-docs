@@ -451,7 +451,6 @@ Outer-scope $x len however: {{ len $x }}
 ## Miscellaneous snippets
 
 * `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only respond if the member has a role with name "funrole" .
-* `{{if gt (len .Args) 0}} {{index .Args 1}} {{end}}`Assuming your trigger is a command, will display your first input if input was given.
 * `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` if ChannelID is #####.
 * `{{if ne .User.ID #######}} YAG! {{end}}`Will ignore if user ID equal to ##### uses command.
 * `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
