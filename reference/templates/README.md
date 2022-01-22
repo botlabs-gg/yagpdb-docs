@@ -417,7 +417,7 @@ Ticket functions are limited to 1 call per custom command for both normal and pr
 
 ## Time
 
-Time in general uses Golang's time package library > [https://golang.org/pkg/time/#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here > [https://gobyexample.com/time](https://gobyexample.com/time).
+Time and duration types use Golang's time package library and its methods > [https://golang.org/pkg/time/#time](https://golang.org/pkg/time/#Time) and also this although slightly different syntax all applies here > [https://gobyexample.com/time](https://gobyexample.com/time).
 
 | **Field**     | **Description**                                                                                             |
 | ------------- | ----------------------------------------------------------------------------------------------------------- |
