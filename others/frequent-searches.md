@@ -62,15 +62,7 @@ You can unban people through Discord. YAGPDB also has an `unban` command. You ca
 
 ## How do I enable developer mode?
 
-Go to Settings -> Appearances and click the developer mode button
-
-![](../.gitbook/assets/qQ5MGHr.png)
-
-## How can I bookmark the control panel or documentation page?
-
-Follow these steps here:
-
-{% embed url="http://support.pathable.com/knowledgebase/articles/482434-bookmark-site-on-a-mobile-device" %}
+Go to Settings -> Advanced and click the developer mode slider.
 
 
 
