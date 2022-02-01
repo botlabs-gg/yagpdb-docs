@@ -110,7 +110,7 @@ Banned words only work on words - meaning not phrases. This translates to "you c
 
 ![Unique options for Banned websites](<../.gitbook/assets/image (14).png>)
 
-There are also two options that you can set for this rule - `Google safebrowsing` integration and `Banned sites`. The former is again a simple checkbox. This automatically detects sites that contain malware using Google safebrowsing in addition to the ones provided.
+There are also three options that you can set for this rule - `Google safebrowsing` integration, `Scam link protection` and `Banned sites`. The first two are simple checkbox-sliders and they automatically detect sites that contain malware using Google safebrowsing or Scam link APIs by SinkingYachts and BitFlow, in addition to the ones provided.
 
 The **Banned websites** option is a simple list of all the **hosts** you wish to ban, again separated by either spaces or newlines. Note that here, you cannot ban specific subdomains and not the whole site - `google.com` would ban `fun.google.com`. Note the lack of the https protocol in front of the site. To ban `google.com`, we simply banned `google.com`, not `https://google.com`.
 
