@@ -173,6 +173,18 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 * Triggers when a member has a nickname not containing words in the specified list (This is currently very easy to circumvent at the moment, and will likely be improved in the future)
   * **List:** The list you want the rule to check against
 
+#### x user attachments in y seconds
+
+* Triggers when a user has more than x attachments within y seconds in a single channel
+  * **Messages:** Number of "X" attachments needed to trigger the rule
+  * **Within (seconds):** The "Y" number of seconds that the attachment needs to occur within
+
+#### x channel attachments in y seconds
+
+* Triggers when a channel has more than x attachments within y seconds
+  * **Messages:** Number of "x" attachments needed to trigger the rule
+  * **Within (seconds):** The "y" number of seconds that the attachment needs to occur within
+
 #### Join username matches regex
 
 * Triggers when a member's username matches the provided regex
@@ -195,7 +207,23 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 #### Join username invite
 
-* &#x20;Triggers when a member joins with a username that contains a server invite
+* Triggers when a member joins with a username that contains a server invite
+
+#### New member
+
+* Triggers when a new member joins
+
+#### Message without attachments
+
+* Triggers when a message does not contain an attachment
+
+#### Message with attachments
+
+* Triggers when a message contains an attachment
+
+#### Flagged Scam links
+
+* Triggers on messages that have scam links flagged by SinkingYachts and BitFlow AntiPhishing APIs
 
 ### Condition Types
 
