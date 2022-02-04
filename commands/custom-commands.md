@@ -115,10 +115,10 @@ Example usage of optional args:
 
 ### The Message template
 
-You can fetch a message by ID or use the [trigger message](../reference/templates/#message) and get some information about it. Message returns the following things that you can access with it:\
+You can fetch a message by ID or use the [trigger message](../reference/templates/#message) and get some information about it. Some fields message object has are as follows:\
 
 
-#### Message
+Message
 
 | Field                | Type                                                                                | Description                                                                                 |
 | -------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
