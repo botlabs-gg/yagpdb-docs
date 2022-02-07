@@ -114,6 +114,8 @@ description: Functions are underappreciated. In general, not just in templates. 
 | `mentionRoleID roleID`       | Mentions the role found with the provided ID.                            |
 | `mentionRoleName "rolename"` | Mentions the first role found with the provided name (case-insensitive). |
 
+There is also .Mention method available for role structs/objects.
+
 #### Mentions section's snippets:
 
 * `<@{{.User.ID}}>` Outputs a mention to the user that called the command and is the same as `{{.User.Mention}}`
