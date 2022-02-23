@@ -122,24 +122,35 @@ User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/fu
 
 ## Channel
 
-| **Field**          | **Description**                                                                                                                |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| .Channel.Bitrate   | Bitrate used; only set on voice channels.                                                                                      |
-| .Channel.GuildID   | Guild ID of the channel.                                                                                                       |
-| .Channel.ID        | The ID of the channel.                                                                                                         |
-| .Channel.IsPrivate | Whether the channel is private.                                                                                                |
-| .Channel.IsThread  | Whether the channel is a thread.                                                                                               |
-| .Channel.Mention   | Mentions the channel object.                                                                                                   |
-| .Channel.Name      | The name of the channel.                                                                                                       |
-| .Channel.NSFW      | Outputs whether this channel is NSFW or not.                                                                                   |
-| .Channel.ParentID  | The ID of the channel's parent (category), returns 0 if none.                                                                  |
-| .Channel.Position  | Channel position from top-down.                                                                                                |
-| .Channel.Topic     | The topic of the channel.                                                                                                      |
-| .Channel.Type      | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types) |
+| **Field**                     | **Description**                                                                                                                |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| .Channel.Bitrate              | Bitrate used; only set on voice channels.                                                                                      |
+| .Channel.GuildID              | Guild ID of the channel.                                                                                                       |
+| .Channel.ID                   | The ID of the channel.                                                                                                         |
+| .Channel.IsPrivate            | Whether the channel is private.                                                                                                |
+| .Channel.IsThread             | Whether the channel is a thread.                                                                                               |
+| .Channel.Mention              | Mentions the channel object.                                                                                                   |
+| .Channel.Name                 | The name of the channel.                                                                                                       |
+| .Channel.NSFW                 | Outputs whether this channel is NSFW or not.                                                                                   |
+| .Channel.ParentID             | The ID of the channel's parent (category), returns 0 if none.                                                                  |
+| .Channel.Position             | Channel position from top-down.                                                                                                |
+| .Channel.PermissionOverwrites | A slice of permission overwrite structures applicable to the channel.                                                          |
+| .Channel.Topic                | The topic of the channel.                                                                                                      |
+| .Channel.Type                 | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types) |
 
 [Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
 
 Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#channel).
+
+### Permission Overwrite
+
+| Field     | Description                                               |
+| --------- | --------------------------------------------------------- |
+| **Field** | **Description**                                           |
+| .ID       | Role or user ID that the permission overwrite applies to. |
+| .Type     | Type of the overwrite; one of 0 (role) or 1 (member.)     |
+| .Allow    | Bit set of permissions that have been explicitly allowed. |
+| .Deny     | Bit set of permissions that have been explicitly denied.  |
 
 ## Message
 
@@ -279,7 +290,7 @@ Note that this performs a shallow copy, not a deep copy - if you want the latter
 
 #### This section's snippets:
 
-* To demonstrate .StringSlice `{{(cslice currentTime.Month 42 "YAPGDB").StringSlice}}` will return a slice `[February YAGPDB]`. If the flag would have been set to true - {{...).StringSlice true}}, all elements in that slice were not strings and `<no value>` is returned.
+* To demonstrate .StringSlice `{{(cslice currentTime.Month 42 "YAPGDB").StringSlice}}` will return a slice `[February YAGPDB]`. If the flag would have been set to true - \{{...).StringSlice true\}}, all elements in that slice were not strings and `<no value>` is returned.
 
 General example:
 
@@ -385,11 +396,11 @@ Like `if`, `range`is concluded with`{{end}}`action and declared variable scope i
 {% hint style="danger" %}
 **Custom command response was longer than 2k (contact an admin on the server...)**\
 ****This is quite common error users will get whilst using range. Simple example to reproduce it:\
-_{{ range seq 0 1000 }}_\
-_{{ $x := . }}_\
-_{{ end }}_\
+_\{{ range seq 0 1000 \}}_\
+_\{{ $x := . \}}_\
+_\{{ end \}}_\
 _HELLO!_\
-__This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _{{- $x := . -}}_
+__This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _\{{- $x := . -\}}_
 {% endhint %}
 
 ## Tickets
