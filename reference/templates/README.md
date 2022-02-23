@@ -144,9 +144,8 @@ Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates
 
 ### Permission Overwrite
 
-| Field     | Description                                               |
-| --------- | --------------------------------------------------------- |
 | **Field** | **Description**                                           |
+| --------- | --------------------------------------------------------- |
 | .ID       | Role or user ID that the permission overwrite applies to. |
 | .Type     | Type of the overwrite; one of 0 (role) or 1 (member.)     |
 | .Allow    | Bit set of permissions that have been explicitly allowed. |
