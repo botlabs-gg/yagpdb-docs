@@ -122,34 +122,25 @@ User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/fu
 
 ## Channel
 
-| **Field**                     | **Description**                                                                                                                |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| .Channel.Bitrate              | Bitrate used; only set on voice channels.                                                                                      |
-| .Channel.GuildID              | Guild ID of the channel.                                                                                                       |
-| .Channel.ID                   | The ID of the channel.                                                                                                         |
-| .Channel.IsPrivate            | Whether the channel is private.                                                                                                |
-| .Channel.IsThread             | Whether the channel is a thread.                                                                                               |
-| .Channel.Mention              | Mentions the channel object.                                                                                                   |
-| .Channel.Name                 | The name of the channel.                                                                                                       |
-| .Channel.NSFW                 | Outputs whether this channel is NSFW or not.                                                                                   |
-| .Channel.ParentID             | The ID of the channel's parent (category), returns 0 if none.                                                                  |
-| .Channel.Position             | Channel position from top-down.                                                                                                |
-| .Channel.PermissionOverwrites | A slice of permission overwrite structures applicable to the channel.                                                          |
-| .Channel.Topic                | The topic of the channel.                                                                                                      |
-| .Channel.Type                 | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types) |
+| **Field**                     | **Description**                                                                                                                                 |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Channel.Bitrate              | Bitrate used; only set on voice channels.                                                                                                       |
+| .Channel.GuildID              | Guild ID of the channel.                                                                                                                        |
+| .Channel.ID                   | The ID of the channel.                                                                                                                          |
+| .Channel.IsPrivate            | Whether the channel is private.                                                                                                                 |
+| .Channel.IsThread             | Whether the channel is a thread.                                                                                                                |
+| .Channel.Mention              | Mentions the channel object.                                                                                                                    |
+| .Channel.Name                 | The name of the channel.                                                                                                                        |
+| .Channel.NSFW                 | Outputs whether this channel is NSFW or not.                                                                                                    |
+| .Channel.ParentID             | The ID of the channel's parent (category), returns 0 if none.                                                                                   |
+| .Channel.Position             | Channel position from top-down.                                                                                                                 |
+| .Channel.PermissionOverwrites | A slice of [permission overwrite](https://discord.com/developers/docs/resources/channel#overwrite-object) structures applicable to the channel. |
+| .Channel.Topic                | The topic of the channel.                                                                                                                       |
+| .Channel.Type                 | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types)                  |
 
 [Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
 
 Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#channel).
-
-### Permission Overwrite
-
-| **Field** | **Description**                                           |
-| --------- | --------------------------------------------------------- |
-| .ID       | Role or user ID that the permission overwrite applies to. |
-| .Type     | Type of the overwrite; one of 0 (role) or 1 (member.)     |
-| .Allow    | Bit set of permissions that have been explicitly allowed. |
-| .Deny     | Bit set of permissions that have been explicitly denied.  |
 
 ## Message
 
