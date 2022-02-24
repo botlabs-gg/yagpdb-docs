@@ -35,11 +35,12 @@ From official docs > "Execution of the template walks the structure and sets the
 \
 `$` also denotes the beginning of a variable, which maybe be initialized inside a template action. So data passed around template pipeline can be initialized using syntax > `$variable := value`. Previously declared variable can also be assigned with new data > `$variable = value`, it has to have a white-space before it or control panel will error out. Variable scope extends to the `end` action of the control structure (`if`, `with`, or `range`) in which it is declared, or to the end of custom command if there are no control structures - call it global scope.&#x20;
 
-| **Field**   | **Description**                                                                                                              |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| .CCID       | The ID of currently executing custom command in type of _int64_.                                                             |
-| .CCRunCount | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes. |
-| .IsPremium  | Returns boolean true/false whether guild is premium of YAGPDB or not.                                                        |
+| **Field**     | **Description**                                                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| .CCID         | The ID of currently executing custom command in type of _int64_.                                                                                       |
+| .CCRunCount   | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes.                           |
+| \~ .CCTrigger | If trigger type has a printable trigger, prints out its name. For example, if trigger type is `regex` and trigger is set to `\A`, it would print `\A`. |
+| .IsPremium    | Returns boolean true/false whether guild is premium of YAGPDB or not.                                                                                  |
 
 ## Pipes
 
