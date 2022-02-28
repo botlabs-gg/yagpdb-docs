@@ -4,6 +4,10 @@ description: Functions are underappreciated. In general, not just in templates. 
 
 # Functions
 
+{% hint style="info" %}
+Every function having both cases possible for an argumen - ID/name, then this name is handled case insensitive, for example `getRole "yagpdb"` and `getRole "yAgPdB"` would have same response even if server has both of these roles, so using ID is better.
+{% endhint %}
+
 ### Channel
 
 | **Function**                                                           | **Description**                                                                                                                                                                                                                                                                                                                |
