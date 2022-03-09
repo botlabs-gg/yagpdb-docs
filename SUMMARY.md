@@ -37,6 +37,7 @@
 * [Templates](reference/templates/README.md)
   * [Functions](reference/templates/functions.md)
 * [Custom Commands Examples](reference/custom-command-examples.md)
+* [Custom Embeds](reference/custom-embeds.md)
 * [How to Get IDs](reference/how-to-get-ids.md)
 * [Using RegEx](reference/regex.md)
 * [Animated Emotes](reference/animated\_emotes.md)
@@ -45,4 +46,3 @@
 
 * [Acknowledgement](others/acknowledgement.md)
 * [Frequent Searches](others/frequent-searches.md)
-* [Custom Embeds](others/custom-embeds.md)

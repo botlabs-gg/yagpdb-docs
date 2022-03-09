@@ -127,7 +127,7 @@ Message
 | .Message.Author      | [User Object](../reference/templates/#user)                                         | Author of the message (User object)                                                         |
 | .Message.Timestamp   | String                                                                              | Timestamp of the message (use .Message.Timestamp.Parse for a time object, otherwise string) |
 | .Message.Attachments | Array of [Attachments](https://docs.yagpdb.xyz/commands/custom-commands#attachment) | Attachments to this message (slice of attachment objects)                                   |
-| .Message.Embeds      | Array of [Embeds](../others/custom-embeds.md#embeds-in-custom-commands)             | Embeds on this message (slice of embed objects)                                             |
+| .Message.Embeds      | Array of [Embeds](../reference/custom-embeds.md#embeds-in-custom-commands)          | Embeds on this message (slice of embed objects)                                             |
 | .Message.Mentions    | Array of [User Object](../reference/templates/#user)                                | Users this message mentions                                                                 |
 | .Message.Reactions   | Array of [Reactions](https://docs.yagpdb.xyz/commands/custom-commands#reaction)     | Reactions on this message (only available form getMessage)                                  |
 | .Message.Content     | String                                                                              | Text content on this message                                                                |

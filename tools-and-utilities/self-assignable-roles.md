@@ -98,7 +98,7 @@ The role menu makes it possible to have people assign roles by adding reactions 
 ![Example of a role menu](<../.gitbook/assets/aa (2).PNG>)
 
 {% hint style="info" %}
-If you'd like to create a message like the above to create a rolemenu on, take a look at the [Custom Embeds](../others/custom-embeds.md) chapter.
+If you'd like to create a message like the above to create a rolemenu on, take a look at the [Custom Embeds](../reference/custom-embeds.md) chapter.
 {% endhint %}
 
 {% hint style="warning" %}
