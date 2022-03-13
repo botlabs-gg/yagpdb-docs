@@ -8,6 +8,8 @@ description: Functions are underappreciated. In general, not just in templates. 
 Every function having both cases possible for an argument - ID/name, then this name is handled case insensitive, for example `getRole "yagpdb"` and `getRole "yAgPdB"` would have same responses even if server has both of these roles, so using IDs is better.
 {% endhint %}
 
+Predefined global functions from Golang's template package are [here](https://pkg.go.dev/text/template#hdr-Functions).
+
 ### Channel
 
 | **Function**                                                           | **Description**                                                                                                                                                                                                                                                                                                                |
