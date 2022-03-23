@@ -481,6 +481,12 @@ Outer-scope $x len however: {{ len $x }}
 {{ with false }}
     not executed
 {{ else if eq $x "42" }}
+    x is 42, dot is unaffected {{ .User.Mention }}
+{{ else if eq $x "43" }}
+    x is not 43, so this is not executed
+{{ else }}
+    branch above already executed, so else branch is not
+{{ end }}
 ```
 
 ## While action
