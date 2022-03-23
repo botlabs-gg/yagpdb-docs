@@ -459,6 +459,34 @@ To check for a specific error, one can use the `Error` method. All errors have a
 {{ end }}
 ```
 
+## While action
+
+`while` iterates as long as the specified condition is true, or more generally evaluates to a non-empty value. The dot (`.`) is not affected, unlike the `range` action. Analogous to `range`, `while` introduces a new scope which is concluded by the `end` action.
+
+```go
+{{/* efficiently search for an element in a sorted slice using binary search */}}
+{{ $xs := cslice 1 3 5 6 6 8 10 12 }}
+{{ $needle := 8 }}
+
+{{ $lo := 0 }}
+{{ $hi := sub (len $xs) 1 }}
+{{ $found := false }}
+{{/* it's possible to combine multiple conditions using logical operators */}}
+{{ while and (le $lo $hi) (not $found) }}
+	{{- $mid := div (add $lo $hi) 2 }}
+	{{- $elem := index $xs $mid }}
+	{{- if lt $elem $needle }}
+		{{- $lo = add $mid 1 }}
+	{{- else if eq $elem $needle }}
+		{{- print "found at index " $mid }}
+		{{- $found = true }}
+	{{- else }}
+		{{- $hi = sub $mid 1 }}
+	{{- end -}}
+{{ end }}
+{{ if not $found }} not found {{ end }}
+```
+
 ## With action
 
 `with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when an `else` or `else if` action is used, execution moves on to those branches instead, similar to an `if` action. \
@@ -487,34 +515,6 @@ Outer-scope $x len however: {{ len $x }}
 {{ else }}
     branch above already executed, so else branch is not
 {{ end }}
-```
-
-## While action
-
-`while` iterates as long as the specified condition is true, or more generally evaluates to a non-empty value. The dot (`.`) is not affected, unlike the `range` action. Analogous to `range`, `while` introduces a new scope which is concluded by the `end` action.
-
-```go
-{{/* efficiently search for an element in a sorted slice using binary search */}}
-{{ $xs := cslice 1 3 5 6 6 8 10 12 }}
-{{ $needle := 8 }}
-
-{{ $lo := 0 }}
-{{ $hi := sub (len $xs) 1 }}
-{{ $found := false }}
-{{/* it's possible to combine multiple conditions using logical operators */}}
-{{ while and (le $lo $hi) (not $found) }}
-	{{- $mid := div (add $lo $hi) 2 }}
-	{{- $elem := index $xs $mid }}
-	{{- if lt $elem $needle }}
-		{{- $lo = add $mid 1 }}
-	{{- else if eq $elem $needle }}
-		{{- print "found at index " $mid }}
-		{{- $found = true }}
-	{{- else }}
-		{{- $hi = sub $mid 1 }}
-	{{- end -}}
-{{ end }}
-{{ if not $found }} not found {{ end }}
 ```
 
 ## Miscellaneous snippets
