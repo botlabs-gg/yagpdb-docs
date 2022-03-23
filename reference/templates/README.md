@@ -433,9 +433,26 @@ Time and duration types use Golang's time package library and its methods > [htt
 
 Time functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#time).
 
+## Try-catch action
+
+Multiple template functions have the possibility of returning an error upon failure. For example, `dbSet` can return a short write error if the size of the database entry exceeds some threshold.&#x20;
+
+While it is possible to write code that simply ignores the possibility of such issues occuring (letting the error stop the code completely), there are times at which one may wish to write more robust code that handles such errors gracefully. The `try`-`catch` construct enables this possibility.
+
+Similar to an `if` action with an associated `else` branch, the `try`-`catch` construct is composed of two blocks: the `try` branch and the `catch` branch. First, the code in the `try` branch is ran, and if an error is raised by a function during execution, the `catch` branch is executed instead with the context (`.`) set to the offending error.
+
+```go
+{{ try }}
+    {{ $items := (dbGet 0 "some_entry").Value }}
+    {{ dbSet 0 "some_entry" ($items.Append 1) }} {{/* can return error */}}
+    Successfully saved to database!
+{{ catch }}
+    
+```
+
 ## With action
 
-`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when `{{else}}` is used, that branch is executed instead. \
+`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when an `else` or `else if` action is used, execution moves on to those branches instead, similar to an `if` action. \
 \
 Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure directly, these fields do not exists and template will error out. Getting those values inside `with` and also `range` action would need `$.User.ID` for example.
 
@@ -451,6 +468,38 @@ but len $z is `{{ len $z }}` {{ end }}
 Outer-scope $x len however: {{ len $x }}
 {{/* when there's no value, dot is unaffected */}}
 {{ with false }} dot is unaffected {{ else }} printing here {{ .CCID }} {{ end }}
+{{/* using else-if chain is possible */}}
+{{ with false }}
+    not executed
+{{ else if eq $x "42" }}
+```
+
+## While action
+
+`while` iterates as long as the specified condition is true, or more generally evaluates to a non-empty value. The dot (`.`) is not affected, unlike the `range` action. Analogous to `range`, `while` introduces a new scope which is concluded by the `end` action.
+
+```go
+{{/* efficiently search for an element in a sorted slice using binary search */}}
+{{ $xs := cslice 1 3 5 6 6 8 10 12 }}
+{{ $needle := 8 }}
+
+{{ $lo := 0 }}
+{{ $hi := sub (len $xs) 1 }}
+{{ $found := false }}
+{{/* it's possible to combine multiple conditions using logical operators */}}
+{{ while and (le $lo $hi) (not $found) }}
+	{{- $mid := div (add $lo $hi) 2 }}
+	{{- $elem := index $xs $mid }}
+	{{- if lt $elem $needle }}
+		{{- $lo = add $mid 1 }}
+	{{- else if eq $elem $needle }}
+		{{- print "found at index " $mid }}
+		{{- $found = true }}
+	{{- else }}
+		{{- $hi = sub $mid 1 }}
+	{{- end -}}
+{{ end }}
+{{ if not $found }} not found {{ end }}
 ```
 
 ## Miscellaneous snippets
