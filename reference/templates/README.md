@@ -162,7 +162,7 @@ Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates
 | .Message.MentionRoles                | The roles mentioned in the message, returned as a slice of type _discordgo.IDSlice._                                                                          |
 | .Message.Mentions                    | Users this message mentions, returned as a slice of type _\[]\*discordgo.User._                                                                               |
 | .Message.Pinned                      | Whether this message is pinned.                                                                                                                               |
-| .Message.Reactions                   | Reactions on this message (only available from getMessage).                                                                                                   |
+| .Message.Reactions                   | Reactions on this message, returned as a slice of type _\[]\*discordgo.MessageReactions_.                                                                     |
 | .Message.ReferencedMessage           | Message object associated by message\_reference, like a message that was replied to.                                                                          |
 | .Message.Timestamp                   | Timestamp of the message in type _discordgo.Timestamp_ (use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_). |
 | .Message.Tts                         | Whether the message is text-to-speech. \*                                                                                                                     |
