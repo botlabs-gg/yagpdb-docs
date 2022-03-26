@@ -201,6 +201,125 @@ This is available and part of the dot when reaction trigger type is used.
 [Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).\
 [Emoji object in Discord documentation.](https://discord.com/developers/docs/resources/emoji)
 
+## Actions
+
+### Range
+
+`range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.
+
+Affected dot inside `range` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `range` control structure directly, these fields do not exists and template will error out. Getting those values inside `range` and also `with` action would need `$.User.ID` for example.\
+\
+`range` on slices/arrays provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.\
+\
+Like `if`, `range`is concluded with`{{end}}`action and declared variable scope inside `range` extends to that point.\
+
+
+```go
+{{/* range over a slice */}}
+{{ range $index, $element := cslice "YAGPDB" "IS COOL!" }}
+{{ $index }} : {{ $element }} {{ end }}
+{{/* range on a map */}}
+{{ range $key, $value := dict "SO" "SAY" "WE" "ALL!" }}
+{{ $key }} : {{ $value }} {{ end }}
+{{/* range with else and variable scope */}}
+{{ range seq 1 1 }} no output {{ else }} output here {{ end }}
+{{ $x := 42 }} {{ range $x := seq 2 4 }} {{ $x }} {{ end }} {{ $x }}
+```
+
+{% hint style="danger" %}
+**Custom command response was longer than 2k (contact an admin on the server...)**\
+****This is quite common error users will get whilst using range. Simple example to reproduce it:\
+_\{{ range seq 0 1000 \}}_\
+_\{{ $x := . \}}_\
+_\{{ end \}}_\
+_HELLO!_\
+__This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _\{{- $x := . -\}}_
+{% endhint %}
+
+### Try-catch
+
+Multiple template functions have the possibility of returning an error upon failure. For example, `dbSet` can return a short write error if the size of the database entry exceeds some threshold.&#x20;
+
+While it is possible to write code that simply ignores the possibility of such issues occuring (letting the error stop the code completely), there are times at which one may wish to write more robust code that handles such errors gracefully. The `try`-`catch` construct enables this possibility.
+
+Similar to an `if` action with an associated `else` branch, the `try`-`catch` construct is composed of two blocks: the `try` branch and the `catch` branch. First, the code in the `try` branch is ran, and if an error is raised by a function during execution, the `catch` branch is executed instead with the context (`.`) set to the offending error.
+
+To check for a specific error, one can use the `Error` method. All errors have a method `Error` which is specified to return a message describing the reason that the error was thrown. When used in conjunction with a comparison function, more granular error-checking can be achieved.
+
+```go
+{{ try }}
+    {{ $items := (dbGet 0 "some_entry").Value }}
+    {{ dbSet 0 "some_entry" ($items.Append 1) }} {{/* can return error */}}
+    Successfully saved to database!
+{{ catch }}
+    {{/* in catch block, context (.) is set to the error */}}
+    {{ if eq .Error "short write" }}
+        Database value too large, resetting...
+        {{ dbSet 0 "some_entry" "" }}
+    {{ else }}
+        Some other error occurred: {{ .Error }}
+    {{ end }}
+{{ end }}
+```
+
+### While
+
+`while` iterates as long as the specified condition is true, or more generally evaluates to a non-empty value. The dot (`.`) is not affected, unlike the `range` action. Analogous to `range`, `while` introduces a new scope which is concluded by the `end` action.
+
+```go
+{{/* efficiently search for an element in a sorted slice using binary search */}}
+{{ $xs := cslice 1 3 5 6 6 8 10 12 }}
+{{ $needle := 8 }}
+
+{{ $lo := 0 }}
+{{ $hi := sub (len $xs) 1 }}
+{{ $found := false }}
+{{/* it's possible to combine multiple conditions using logical operators */}}
+{{ while and (le $lo $hi) (not $found) }}
+	{{- $mid := div (add $lo $hi) 2 }}
+	{{- $elem := index $xs $mid }}
+	{{- if lt $elem $needle }}
+		{{- $lo = add $mid 1 }}
+	{{- else if eq $elem $needle }}
+		{{- print "found at index " $mid }}
+		{{- $found = true }}
+	{{- else }}
+		{{- $hi = sub $mid 1 }}
+	{{- end -}}
+{{ end }}
+{{ if not $found }} not found {{ end }}
+```
+
+### With
+
+`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when an `else` or `else if` action is used, execution moves on to those branches instead, similar to an `if` action. \
+\
+Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure directly, these fields do not exists and template will error out. Getting those values inside `with` and also `range` action would need `$.User.ID` for example.
+
+Like `if` and `range` actions, `with` is concluded using `{{end}}` and variable scope extends to that point.
+
+```go
+{{/* Shows the scope and how dot is affected by object's value in pipeline */}}
+{{ $x := "42" }} {{ with and ($z:= seq 0 5) ($x := seq 0 10) }} 
+len $x: `{{ len $x }}` 
+{{/* "and" function uses $x as last value for dot */}}
+same as len dot: `{{ len . }}` 
+but len $z is `{{ len $z }}` {{ end }}
+Outer-scope $x len however: {{ len $x }}
+{{/* when there's no value, dot is unaffected */}}
+{{ with false }} dot is unaffected {{ else }} printing here {{ .CCID }} {{ end }}
+{{/* using else-if chain is possible */}}
+{{ with false }}
+    not executed
+{{ else if eq $x "42" }}
+    x is 42, dot is unaffected {{ .User.Mention }}
+{{ else if eq $x "43" }}
+    x is not 43, so this is not executed
+{{ else }}
+    branch above already executed, so else branch is not
+{{ end }}
+```
+
 ## Conditional branching
 
 Branching using `if` action's pipeline and comparison operators - these operators don't need to be inside `if` branch. `if` statements always need to have an enclosing `end`.\
@@ -362,39 +481,6 @@ Learning resources covers database [more in-depth](https://learn.yagpdb.xyz/inte
 | .Key       | The key of the entry.                                                                                                   |
 | .Value     | The value of the entry.                                                                                                 |
 
-## Range action
-
-`range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.
-
-Affected dot inside `range` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `range` control structure directly, these fields do not exists and template will error out. Getting those values inside `range` and also `with` action would need `$.User.ID` for example.\
-\
-`range` on slices/arrays provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.\
-\
-Like `if`, `range`is concluded with`{{end}}`action and declared variable scope inside `range` extends to that point.\
-
-
-```go
-{{/* range over a slice */}}
-{{ range $index, $element := cslice "YAGPDB" "IS COOL!" }}
-{{ $index }} : {{ $element }} {{ end }}
-{{/* range on a map */}}
-{{ range $key, $value := dict "SO" "SAY" "WE" "ALL!" }}
-{{ $key }} : {{ $value }} {{ end }}
-{{/* range with else and variable scope */}}
-{{ range seq 1 1 }} no output {{ else }} output here {{ end }}
-{{ $x := 42 }} {{ range $x := seq 2 4 }} {{ $x }} {{ end }} {{ $x }}
-```
-
-{% hint style="danger" %}
-**Custom command response was longer than 2k (contact an admin on the server...)**\
-****This is quite common error users will get whilst using range. Simple example to reproduce it:\
-_\{{ range seq 0 1000 \}}_\
-_\{{ $x := . \}}_\
-_\{{ end \}}_\
-_HELLO!_\
-__This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _\{{- $x := . -\}}_
-{% endhint %}
-
 ## Tickets
 
 {% hint style="warning" %}
@@ -432,90 +518,6 @@ Time and duration types use Golang's time package library and its methods > [htt
 | .TimeSecond   | Variable of _time.Duration_ type and returns 1 second > `1s`.                                               |
 
 Time functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#time).
-
-## Try-catch action
-
-Multiple template functions have the possibility of returning an error upon failure. For example, `dbSet` can return a short write error if the size of the database entry exceeds some threshold.&#x20;
-
-While it is possible to write code that simply ignores the possibility of such issues occuring (letting the error stop the code completely), there are times at which one may wish to write more robust code that handles such errors gracefully. The `try`-`catch` construct enables this possibility.
-
-Similar to an `if` action with an associated `else` branch, the `try`-`catch` construct is composed of two blocks: the `try` branch and the `catch` branch. First, the code in the `try` branch is ran, and if an error is raised by a function during execution, the `catch` branch is executed instead with the context (`.`) set to the offending error.
-
-To check for a specific error, one can use the `Error` method. All errors have a method `Error` which is specified to return a message describing the reason that the error was thrown. When used in conjunction with a comparison function, more granular error-checking can be achieved.
-
-```go
-{{ try }}
-    {{ $items := (dbGet 0 "some_entry").Value }}
-    {{ dbSet 0 "some_entry" ($items.Append 1) }} {{/* can return error */}}
-    Successfully saved to database!
-{{ catch }}
-    {{/* in catch block, context (.) is set to the error */}}
-    {{ if eq .Error "short write" }}
-        Database value too large, resetting...
-        {{ dbSet 0 "some_entry" "" }}
-    {{ else }}
-        Some other error occurred: {{ .Error }}
-    {{ end }}
-{{ end }}
-```
-
-## While action
-
-`while` iterates as long as the specified condition is true, or more generally evaluates to a non-empty value. The dot (`.`) is not affected, unlike the `range` action. Analogous to `range`, `while` introduces a new scope which is concluded by the `end` action.
-
-```go
-{{/* efficiently search for an element in a sorted slice using binary search */}}
-{{ $xs := cslice 1 3 5 6 6 8 10 12 }}
-{{ $needle := 8 }}
-
-{{ $lo := 0 }}
-{{ $hi := sub (len $xs) 1 }}
-{{ $found := false }}
-{{/* it's possible to combine multiple conditions using logical operators */}}
-{{ while and (le $lo $hi) (not $found) }}
-	{{- $mid := div (add $lo $hi) 2 }}
-	{{- $elem := index $xs $mid }}
-	{{- if lt $elem $needle }}
-		{{- $lo = add $mid 1 }}
-	{{- else if eq $elem $needle }}
-		{{- print "found at index " $mid }}
-		{{- $found = true }}
-	{{- else }}
-		{{- $hi = sub $mid 1 }}
-	{{- end -}}
-{{ end }}
-{{ if not $found }} not found {{ end }}
-```
-
-## With action
-
-`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when an `else` or `else if` action is used, execution moves on to those branches instead, similar to an `if` action. \
-\
-Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure directly, these fields do not exists and template will error out. Getting those values inside `with` and also `range` action would need `$.User.ID` for example.
-
-Like `if` and `range` actions, `with` is concluded using `{{end}}` and variable scope extends to that point.
-
-```go
-{{/* Shows the scope and how dot is affected by object's value in pipeline */}}
-{{ $x := "42" }} {{ with and ($z:= seq 0 5) ($x := seq 0 10) }} 
-len $x: `{{ len $x }}` 
-{{/* "and" function uses $x as last value for dot */}}
-same as len dot: `{{ len . }}` 
-but len $z is `{{ len $z }}` {{ end }}
-Outer-scope $x len however: {{ len $x }}
-{{/* when there's no value, dot is unaffected */}}
-{{ with false }} dot is unaffected {{ else }} printing here {{ .CCID }} {{ end }}
-{{/* using else-if chain is possible */}}
-{{ with false }}
-    not executed
-{{ else if eq $x "42" }}
-    x is 42, dot is unaffected {{ .User.Mention }}
-{{ else if eq $x "43" }}
-    x is not 43, so this is not executed
-{{ else }}
-    branch above already executed, so else branch is not
-{{ end }}
-```
 
 ## Miscellaneous snippets
 
