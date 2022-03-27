@@ -47,7 +47,9 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 ## Context Data
 
-Context Data is everything "pre-loaded" to a running custom command, into the dot `{{ . }}`. Every object, like .User is current object in the context, here .User is the triggering user object. All fields the context-data object has, like .User.Mention can be applied to another object of same type.
+Context data refers to information accessible via the dot, `{{ . }}`. The accessible data ranges from useful constants to information regarding the environment in which the custom command was executed, such as the user that ran it, the channel it was ran in, and so on.&#x20;
+
+Fields documented as accessible on specific structures, like the context user `.User`, are usable on all values that share the same type. That is, given a user `$user`, `$user.ID` is a valid construction that yields the ID of the user. Similarly, provided a channel `$channel`, `$channel.Name` gives the name of the channel.
 
 | **Field**   | **Description**                                                                                                                                        |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -208,6 +210,8 @@ This is available and part of the dot when reaction trigger type is used.
 User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#user).
 
 ## Actions
+
+Actions, or elements enclosed in double braces `{{ }}`, are what makes templates dynamic. Without them, templates would be no more than static text. In this section, we introduce several special kinds of actions which affect the control flow of the program. For example, iteration actions like `range` and `while` permit statements to be executed multiple times, while conditional actions like `if` and `with` allow for alteration of what statements are ran or are not ran.
 
 ### Range
 
