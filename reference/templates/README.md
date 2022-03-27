@@ -29,7 +29,13 @@ The dot (also known as cursor) `{{ . }}`  encompasses all active data available 
 \
 For example .User is a Discord User object/structure of current context, meaning the triggering user. To get user object for other users, functions `getMember`, `userArg` would help. Same meaning of object/struct applies to other **Fields** with dot prefix. If it is mentioned as a **Method** (for example, .Append for type _cslice_) or as a field on a struct (for example, .User.Bot) then it can not be used alone in template context and always belongs on a parent value. That is, `{{.Bot}}` would return `<no value>` whereas `{{.User.Bot}}` returns _bool_ true/false. Another good example is .Reaction.Emoji.MessageFormat, here you can use .MessageFormat every time you get emoji structure of type _discordgo.Emoji_, either using reaction triggers or for example .Guild.Emojis.\
 \
-From official docs > "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.\
+From official docs > "Execution of the template walks the structure and sets the cursor, represented by a period `.` and called "dot", to the value at the current location in the structure as execution proceeds." All following fields/methods/objects like User/Guild/Member/Channel etc are all part of that dot-structure and there are some more in tables below.
+
+For commenting something inside a template, use this syntax: `{{/* this is a comment */}}`. May contain newlines. Comments do not nest and they start and end at the delimiters.
+
+To trim spaces use hyphens after/before curyl brackets, for example >`{{- /* this is a multi-line` \
+`comment with whitespace trimmed from  preceding and following text */ -}}` \
+Using`{{- ... -}}` is also handy inside`range` actions, because whitespaces and newlines are rendered there as output.\
 \
 `$` has a special significance in templates, it is set to the [starting value of a dot](https://golang.org/pkg/text/template/#hdr-Variables). This means you have access to the global context from anywhere - e.g., inside `range`/`with` actions. `$` for global context would cease to work if you redefine it inside template, to recover it `{{ $ := .  }}`.\
 \
@@ -159,7 +165,7 @@ Member functions are covered [here](https://docs.yagpdb.xyz/reference/templates/
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | .Args        | List of everything that is passed to .Message.Content. .Args is a _slice_ of type _string_.                                                                                                                                                                                 |
 | .Cmd         | .Cmd is of type _string_ and shows all arguments that trigger custom command, part of .Args. Starting from `{{index .Args 0}}`.                                                                                                                                             |
-| .CmdArgs     | List of all the arguments passed after `.Cmd` (`.Cmd` is the actual trigger) `.CmdArgs` is a _slice_ of type _string_. Examples in [misc. snippets](./#miscellaneous-snippets).                                                                                             |
+| .CmdArgs     | List of all the arguments passed after `.Cmd` (`.Cmd` is the actual trigger) `.CmdArgs` is a _slice_ of type _string_. For example `{{$allArgs := (joinStr " " .CmdArgs)}}` saves all the arguments after trigger to a variable `$allArgs`.                                 |
 | .StrippedMsg | "Strips" or cuts off the triggering part of the message and prints out everything else after that. Bear in mind, when using regex as trigger, for example `"day"` and input message is `"Have a nice day my dear YAG!"` output will be `"my dear YAG!"`  - rest is cut off. |
 
 \* denotes field that will not have proper return when using `getMessage` function.
@@ -528,16 +534,3 @@ Time and duration types use Golang's time package library and its methods > [htt
 | .TimeSecond   | Variable of _time.Duration_ type and returns 1 second > `1s`.                                               |
 
 Time functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#time).
-
-## Miscellaneous snippets
-
-* `{{if hasRoleName "funrole"}} Has role funrole {{end}}`This will only respond if the member has a role with name "funrole" .
-* `{{if eq .Channel.ID #######}} YAG! {{end}}`Will only show `YAG!` if ChannelID is #####.
-* `{{if ne .User.ID #######}} YAG! {{end}}`Will ignore if user ID equal to ##### uses command.
-* `{{addReactions .CmdArgs}}` Adds the emoji following a trigger as reactions.
-* `{{$a := (exec "catfact")}}` Saves the response of the `catfact` **** command to variable `$a`.&#x20;
-* `{{$allArgs := (joinStr " " .CmdArgs)}}` Saves all the arguments after trigger to a variable `$allArgs`.&#x20;
-* `{{/* this is a comment */}}`For commenting something inside a template, use this syntax. May contain newlines. Comments do not nest and they start and end at the delimiters.&#x20;
-* To trim spaces, for example >`{{- /* this is a multi-line` \
-  `comment with whitespace trimmed from  preceding and following text */ -}}` \
-  Using`{{- ... -}}` is also handy inside`range` actions, because whitespaces and newlines are rendered there as output.
