@@ -35,13 +35,6 @@ From official docs > "Execution of the template walks the structure and sets the
 \
 `$` also denotes the beginning of a variable, which maybe be initialized inside a template action. So data passed around template pipeline can be initialized using syntax > `$variable := value`. Previously declared variable can also be assigned with new data > `$variable = value`, it has to have a white-space before it or control panel will error out. Variable scope extends to the `end` action of the control structure (`if`, `with`, `range`, `etc.`) in which it is declared, or to the end of custom command if there are no control structures - call it global scope.&#x20;
 
-| **Field**   | **Description**                                                                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| .CCID       | The ID of currently executing custom command in type of _int64_.                                                                                       |
-| .CCRunCount | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes.                           |
-| .CCTrigger  | If trigger type has a printable trigger, prints out its name. For example, if trigger type is `regex` and trigger is set to `\A`, it would print `\A`. |
-| .IsPremium  | Returns boolean true/false whether guild is premium of YAGPDB or not.                                                                                  |
-
 ## Pipes
 
 A powerful component of templates is the ability to stack actions - like function calls, together - chaining one after another. This is done by using pipes `|`. Borrowed from Unix pipes, the concept is simple: each pipeline’s output becomes the input of the following pipe. One limitation of the pipes is that they can only work with a single value and that value becomes the last parameter of the next pipeline. \
@@ -52,7 +45,40 @@ A powerful component of templates is the ability to stack actions - like functio
 Pipes are useful in select cases to shorten code and in some cases improve readability, but they **should not be overused**. In most cases, pipes are unnecessary and cause a dip in readability that helps nobody.
 {% endhint %}
 
-## Guild / Server
+## Context Data
+
+Context Data is everything "pre-loaded" to a running custom command, into the dot `{{ . }}`. Every object, like .User is current object in the context, here .User is the triggering user object. All fields the context-data object has, like .User.Mention can be applied to another object of same type.
+
+| **Field**   | **Description**                                                                                                                                        |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| .CCID       | The ID of currently executing custom command in type of _int64_.                                                                                       |
+| .CCRunCount | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes.                           |
+| .CCTrigger  | If trigger type has a printable trigger, prints out its name. For example, if trigger type is `regex` and trigger is set to `\A`, it would print `\A`. |
+| .IsPremium  | Returns boolean true/false whether guild is premium of YAGPDB or not.                                                                                  |
+
+### Channel
+
+| **Field**                     | **Description**                                                                                                                                 |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Channel.Bitrate              | Bitrate used; only set on voice channels.                                                                                                       |
+| .Channel.GuildID              | Guild ID of the channel.                                                                                                                        |
+| .Channel.ID                   | The ID of the channel.                                                                                                                          |
+| .Channel.IsPrivate            | Whether the channel is private.                                                                                                                 |
+| .Channel.IsThread             | Whether the channel is a thread.                                                                                                                |
+| .Channel.Mention              | Mentions the channel object.                                                                                                                    |
+| .Channel.Name                 | The name of the channel.                                                                                                                        |
+| .Channel.NSFW                 | Outputs whether this channel is NSFW or not.                                                                                                    |
+| .Channel.ParentID             | The ID of the channel's parent (category), returns 0 if none.                                                                                   |
+| .Channel.Position             | Channel position from top-down.                                                                                                                 |
+| .Channel.PermissionOverwrites | A slice of [permission overwrite](https://discord.com/developers/docs/resources/channel#overwrite-object) structures applicable to the channel. |
+| .Channel.Topic                | The topic of the channel.                                                                                                                       |
+| .Channel.Type                 | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types)                  |
+
+[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
+
+Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#channel).
+
+### Guild / Server
 
 | **Field**                          | **Description**                                                                                                                                                                                                                                                            |
 | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -87,7 +113,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 [Guild object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-object).
 
-## Member
+### Member
 
 | **Field**        | **Description**                                                                                                            |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -101,49 +127,7 @@ Pipes are useful in select cases to shorten code and in some cases improve reada
 
 Member functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#member).
 
-## User
-
-| **Field**             | **Description**                                                                                                                                           |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| .User                 | The user's username together with discriminator.                                                                                                          |
-| .User.Avatar          | The user's avatar [hash](https://discord.com/developers/docs/reference#image-formatting).                                                                 |
-| .User.AvatarURL "256" | <p>Gives the URL for user's avatar, argument "256" is the size of the picture <br>and can increase/decrease twofold (e.g. 512, 1024 or 128, 64 etc.).</p> |
-| .User.Bot             | Determines whether the target user is a bot - if yes, it will return `true`.                                                                              |
-| .User.Discriminator   | The user's discriminator (The four digits after a person's username).                                                                                     |
-| .User.ID              | The user's ID.                                                                                                                                            |
-| .User.Mention         | Mentions user.                                                                                                                                            |
-| .User.String          | The user's username together with discriminator as _string_ type.                                                                                         |
-| .User.Username        | The user's username.                                                                                                                                      |
-| .UsernameHasInvite    | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                                       |
-| .RealUsername         | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored.          |
-
-[User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
-
-User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#user).
-
-## Channel
-
-| **Field**                     | **Description**                                                                                                                                 |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| .Channel.Bitrate              | Bitrate used; only set on voice channels.                                                                                                       |
-| .Channel.GuildID              | Guild ID of the channel.                                                                                                                        |
-| .Channel.ID                   | The ID of the channel.                                                                                                                          |
-| .Channel.IsPrivate            | Whether the channel is private.                                                                                                                 |
-| .Channel.IsThread             | Whether the channel is a thread.                                                                                                                |
-| .Channel.Mention              | Mentions the channel object.                                                                                                                    |
-| .Channel.Name                 | The name of the channel.                                                                                                                        |
-| .Channel.NSFW                 | Outputs whether this channel is NSFW or not.                                                                                                    |
-| .Channel.ParentID             | The ID of the channel's parent (category), returns 0 if none.                                                                                   |
-| .Channel.Position             | Channel position from top-down.                                                                                                                 |
-| .Channel.PermissionOverwrites | A slice of [permission overwrite](https://discord.com/developers/docs/resources/channel#overwrite-object) structures applicable to the channel. |
-| .Channel.Topic                | The topic of the channel.                                                                                                                       |
-| .Channel.Type                 | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types)                  |
-
-[Channel object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#channel-object).
-
-Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#channel).
-
-## Message
+### Message
 
 | **Field**                            | **Description**                                                                                                                                               |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -186,7 +170,7 @@ Message functions are covered [here](https://docs.yagpdb.xyz/reference/templates
 More information about the `Message` object can be found [here](../../commands/custom-commands.md#the-message-template).
 {% endhint %}
 
-## Reaction
+### Reaction
 
 This is available and part of the dot when reaction trigger type is used.
 
@@ -200,6 +184,28 @@ This is available and part of the dot when reaction trigger type is used.
 
 [Reaction object in Discord documentation](https://discordapp.com/developers/docs/resources/channel#reaction-object).\
 [Emoji object in Discord documentation.](https://discord.com/developers/docs/resources/emoji)
+
+
+
+### User
+
+| **Field**             | **Description**                                                                                                                                           |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .User                 | The user's username together with discriminator.                                                                                                          |
+| .User.Avatar          | The user's avatar [hash](https://discord.com/developers/docs/reference#image-formatting).                                                                 |
+| .User.AvatarURL "256" | <p>Gives the URL for user's avatar, argument "256" is the size of the picture <br>and can increase/decrease twofold (e.g. 512, 1024 or 128, 64 etc.).</p> |
+| .User.Bot             | Determines whether the target user is a bot - if yes, it will return `true`.                                                                              |
+| .User.Discriminator   | The user's discriminator (The four digits after a person's username).                                                                                     |
+| .User.ID              | The user's ID.                                                                                                                                            |
+| .User.Mention         | Mentions user.                                                                                                                                            |
+| .User.String          | The user's username together with discriminator as _string_ type.                                                                                         |
+| .User.Username        | The user's username.                                                                                                                                      |
+| .UsernameHasInvite    | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                                       |
+| .RealUsername         | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored.          |
+
+[User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
+
+User functions are covered [here](https://docs.yagpdb.xyz/reference/templates/functions#user).
 
 ## Actions
 
