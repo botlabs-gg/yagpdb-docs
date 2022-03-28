@@ -77,8 +77,8 @@ Fields documented as accessible on specific structures, like the context user `.
 | .Channel.Name                 | The name of the channel.                                                                                                                        |
 | .Channel.NSFW                 | Outputs whether this channel is NSFW or not.                                                                                                    |
 | .Channel.ParentID             | The ID of the channel's parent (category), returns 0 if none.                                                                                   |
-| .Channel.Position             | Channel position from top-down.                                                                                                                 |
 | .Channel.PermissionOverwrites | A slice of [permission overwrite](https://discord.com/developers/docs/resources/channel#overwrite-object) structures applicable to the channel. |
+| .Channel.Position             | Channel position from top-down.                                                                                                                 |
 | .Channel.Topic                | The topic of the channel.                                                                                                                       |
 | .Channel.Type                 | The type of the channel. [Explained here.](https://discord.com/developers/docs/resources/channel#channel-object-channel-types)                  |
 
