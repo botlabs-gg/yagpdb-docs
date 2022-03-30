@@ -287,7 +287,7 @@ _HELLO!_\
 __This will happen because of whitespaces and newlines, so make sure you one-line the range or trim spaces, in this context _\{{- $x := . -\}}_
 {% endhint %}
 
-### \~Try-catch
+### Try-catch
 
 Multiple template functions have the possibility of returning an error upon failure. For example, `dbSet` can return a short write error if the size of the database entry exceeds some threshold.&#x20;
 
@@ -313,7 +313,7 @@ To check for a specific error, one can use the `Error` method. All errors have a
 {{ end }}
 ```
 
-### \~While
+### While
 
 `while` iterates as long as the specified condition is true, or more generally evaluates to a non-empty value. The dot (`.`) is not affected, unlike the `range` action. Analogous to `range`, `while` introduces a new scope which is concluded by the `end` action.
 
