@@ -12,7 +12,7 @@ The streaming role will be **automatically removed** from a member that is not s
 
 ![](../.gitbook/assets/Streaming.PNG)
 
-Steaming notification is triggered based on your Discord streaming status (When you go purple, AKA steaming). You can either have announcements, be assigned the streaming role or both.&#x20;
+Steaming notification is triggered based on your Discord streaming status (When you go purple, AKA streaming). You can either have announcements, be assigned the streaming role or both.&#x20;
 
 ### **Announce Channel**
 
