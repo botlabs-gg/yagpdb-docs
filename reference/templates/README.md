@@ -260,7 +260,7 @@ Comparison operators always require the same type: i.e comparing `1.23` and `1` 
 
 Affected dot inside `range` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `range` control structure directly, these fields do not exists and template will error out. Getting those values inside `range` and also `with` action would need `$.User.ID` for example.\
 \
-`range` on slices/arrays provides both the index and element for each entry; range on map iterates over key/element pairs. If a range action initializes a variable, that variable is set to the successive elements of the iteration. Range can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.\
+`range` on slices/arrays provides both the index and element for each entry; `range` on map iterates over key/element pairs. If a `range` action initializes a variable, that variable is set to the successive elements of the iteration. `range` can also declare two variables, separated by a comma and set by index and element or key and element pair. In case of only one variable, it is assigned the element.\
 \
 Like `if`, `range`is concluded with`{{end}}`action and declared variable scope inside `range` extends to that point.\
 
