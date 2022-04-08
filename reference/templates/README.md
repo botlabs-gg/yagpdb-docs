@@ -315,7 +315,7 @@ To check for a specific error, one can use the `Error` method. All errors have a
 
 ### While
 
-`while` iterates as long as the specified condition is true, or more generally evaluates to a non-empty value. The dot (`.`) is not affected, unlike the `range` action. Analogous to `range`, `while` introduces a new scope which is concluded by the `end` action.
+`while` iterates as long as the specified condition is true, or more generally evaluates to a non-empty value. The dot (`.`) is not affected, unlike with the `range` action. Analogous to `range`, `while` introduces a new scope which is concluded by the `end` action.
 
 ```go
 {{/* efficiently search for an element in a sorted slice using binary search */}}
@@ -343,7 +343,7 @@ To check for a specific error, one can use the `Error` method. All errors have a
 
 ### With
 
-`with` lets you assign and carry pipeline value with its type as a dot `.` inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when an `else` or `else if` action is used, execution moves on to those branches instead, similar to an `if` action. \
+`with` lets you assign and carry pipeline value with its type as a dot (`.`) inside that control structure, it's like a shorthand. If the value of the pipeline is empty, dot is unaffected and when an `else` or `else if` action is used, execution moves on to those branches instead, similar to the `if` action. \
 \
 Affected dot inside `with` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `with` control structure directly, these fields do not exists and template will error out. Getting those values inside `with` and also `range` action would need `$.User.ID` for example.
 
