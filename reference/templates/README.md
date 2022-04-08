@@ -203,7 +203,7 @@ This is available and part of the dot when reaction trigger type is used.
 | .User.Avatar          | The user's avatar [hash](https://discord.com/developers/docs/reference#image-formatting).                                                                 |
 | .User.AvatarURL "256" | <p>Gives the URL for user's avatar, argument "256" is the size of the picture <br>and can increase/decrease twofold (e.g. 512, 1024 or 128, 64 etc.).</p> |
 | .User.Bot             | Determines whether the target user is a bot - if yes, it will return `true`.                                                                              |
-| .User.Discriminator   | The user's discriminator (The four digits after a person's username).                                                                                     |
+| .User.Discriminator   | The user's discriminator/tag (The four digits after a person's username).                                                                                 |
 | .User.ID              | The user's ID.                                                                                                                                            |
 | .User.Mention         | Mentions user.                                                                                                                                            |
 | .User.String          | The user's username together with discriminator as _string_ type.                                                                                         |
