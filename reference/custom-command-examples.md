@@ -470,7 +470,3 @@ Trigger type: `Command` Trigger: `bigemote`
 {{ end }}
 ```
 
-{% hint style="info" %}
-You want your custom command here? Post it in the [Support Server ](https://discord.gg/GcpyYh3)and we'll review it.
-{% endhint %}
-
