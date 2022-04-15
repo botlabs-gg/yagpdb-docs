@@ -297,20 +297,17 @@ While it is possible to write code that simply ignores the possibility of such i
 
 Similar to an `if` action with an associated `else` branch, the `try`-`catch` construct is composed of two blocks: the `try` branch and the `catch` branch. First, the code in the `try` branch is ran, and if an error is raised by a function during execution, the `catch` branch is executed instead with the context (`.`) set to the offending error.
 
-To check for a specific error, one can use the `Error` method. All errors have a method `Error` which is specified to return a message describing the reason that the error was thrown. When used in conjunction with a comparison function, more granular error-checking can be achieved.
+To check for a specific error, one can compare the result of the `Error` method with a predetermined message. (For context, all errors have a method `Error` which is specified to return a message describing the reason that the error was thrown.) For example, the following example has different behavior depending on whether "Reaction blocked" is in the message of the error caught.
 
 ```go
 {{ try }}
-    {{ $items := (dbGet 0 "some_entry").Value }}
-    {{ dbSet 0 "some_entry" ($items.Append 1) }} {{/* can return error */}}
-    Successfully saved to database!
+    {{ addReactions "👋" }}
+    added reactions successfully
 {{ catch }}
-    {{/* in catch block, context (.) is set to the error */}}
-    {{ if eq .Error "short write" }}
-        Database value too large, resetting...
-        {{ dbSet 0 "some_entry" "" }}
+    {{ if in .Error "Reaction blocked" }}
+        user blocked YAG :(
     {{ else }}
-        Some other error occurred: {{ .Error }}
+        different issue occurred: {{ .Error }}
     {{ end }}
 {{ end }}
 ```
