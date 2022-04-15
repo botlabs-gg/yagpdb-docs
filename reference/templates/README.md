@@ -373,6 +373,126 @@ Outer-scope $x len however: {{ len $x }}
 {{ end }}
 ```
 
+## Associated Templates
+
+Templates (i.e., custom command programs) may also define additional helper templates that may be invoked from the main template. Technically speaking, these helper templates are referred to as _associated templates_. Associated templates may be used to create reusable procedures accepting parameters and outputting values, similar to functions in other programming languages.
+
+### Definition
+
+To define an associated template, use the `define` action. It has the following syntax:
+
+```go
+{{ define "template_name" }}
+    {{/* associated template body */}}
+{{ end }}
+```
+
+{% hint style="warning" %}
+**Warning:** Template definitions must be at the top level of the custom command program; in other words, they cannot be nested in other actions (for example, an if action.) That is, the following custom command is invalid:
+
+```go
+{{ if $cond }}
+    {{ define "hi" }} hi! {{ end }}
+{{ end }}
+```
+{% endhint %}
+
+The template name can be any string constant; however, it cannot be a variable, even if said variable references a value of string type. As for the body of the associated template body, it can be anything that is a standalone, syntactically valid template program. Note that the first criterion precludes using variables defined outside of the associated template; that is, the following custom command is invalid, as the body of the associated template references a variable (`$name`) defined in an outer scope:
+
+```go
+{{ $name := "YAG" }}
+{{ define "hello" }}
+    Hello, {{ $name }}!
+{{ end }}
+```
+
+If accessing the value of `$name` is desired, then it needs to be passed as part of the context when executing the associated template.&#x20;
+
+Within the body of an associated template, the variable `$` and the context dot (`.`) both initially refer to the data passed as context during execution. Consequently, any data on the original context that needs to be accessed must be explicitly provided as part of the context data. For example, if one wishes to access `.User.Username` in an associated template body, it is necessary to pass `.User.Username` as part of the context data when executing said template.
+
+To return a value from an associated template, use the `return` action. Encountering a `return` action will cause execution of the associated template to end immediately and control to be returned to the caller. For example, below is an associated template that always returns `1`:
+
+```go
+{{ define "getOne" }} {{ return 1 }} {{ end }}
+```
+
+Note that it is not necessary for a value to be returned; `{{ return }}` by itself is completely valid.
+
+{% hint style="success" %}
+**Note:** Since all custom commands are themselves templates, using a `return` action at the top level is perfectly valid, and will result in execution of the custom command being stopped at the point the `return` is encountered.
+
+```go
+{{ if not .CmdArgs }}
+    no arguments passed
+    {{ return }} {{/* anything beyond this point is not executed */}}
+{{ end }}
+{{ $firstArg := index .CmdArgs 0 }}
+{{/* safe since .CmdArgs is guaranteed to be non-empty here */}}
+```
+{% endhint %}
+
+### Execution
+
+To execute a custom command, one of three methods may be used: `template`, `block`, or `execTemplate`.
+
+#### Template action
+
+`template` is a function-like action that executes the associated template with the name provided, ignoring its return value. Note that the name of the template to execute must be a string constant; similar to `define` actions, a variable referencing a value of string type is invalid. Data to use as the context may optionally be provided following the name.
+
+{% hint style="info" %}
+While `template` is function-like, it is not an actual function, leading to certain quirks; notably, it must be used alone, not part of another action (like a variable declaration), and the data argument need not be parenthesized. Due to this, it is recommended that `execTemplate`, which has much more intuitive behavior, be used instead of the `template` action if at possible.
+{% endhint %}
+
+Below is an example of the `template` action in action:
+
+```go
+{{ define "sayHi" }}
+    {{ if . }}
+        hi there, {{ . }}
+    {{ else }}
+        hi there!
+    {{ end }}
+{{ end }}
+{{ template "sayHi" }} {{/* hi there! */}}
+{{ template "sayHi" "YAG" }} {{/* hi there, YAG */}}
+```
+
+Astute readers may have noticed that there is extra whitespace outputted in the previous example. This is due to the fact that whitespace is considered as part of output in associated template definitions (and actions in general.) If outputting whitespace is undesirable, use trim markers: `{{- ... -}}`.
+
+#### Block action
+
+`block` has a structure similar to that of a `define` action. It is equivalent to a `define` action followed by a `template` action:
+
+```go
+{{ $name := "YAG" }}
+{{ block "sayHi" $name }}
+    hi there, {{ . }}
+{{ end }}
+
+{{/* equivalent to above */}}
+{{ define "sayHi" }}
+    hi there, {{ . }}
+{{ end }}
+{{ template "sayHi" $name }}
+```
+
+#### execTemplate function
+
+Finally, `execTemplate` is essentially the same as the `template` action, but provides access to the return value of the template and may be used as part of another action. Below is an example using `execTemplate`:
+
+```go
+{{ define "factorial" }}
+    {{- $n := 1 }}
+    {{- range seq 2 (add . 1) }}
+        {{- $n = mult $n . }}
+    {{- end }}
+    {{- return $n -}}
+{{ end }}
+
+{{ $fac := execTemplate "factorial" 5 }}
+2 * 5! = {{ mult $fac 2 }}
+```
+
 ## Custom Types
 
 Golang has built-in primitive data types (_int_, _string_, _bool_, _float64_, ...) and built-in composite data types (_array_, _slice_, _map_, ...) which also are used in custom commands. \
