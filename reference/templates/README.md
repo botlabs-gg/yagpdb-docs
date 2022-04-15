@@ -375,7 +375,7 @@ Outer-scope $x len however: {{ len $x }}
 
 ## Associated Templates
 
-Templates (i.e., custom command programs) may also define additional helper templates that may be invoked from the main template. Technically speaking, these helper templates are referred to as _associated templates_. Associated templates may be used to create reusable procedures accepting parameters and outputting values, similar to functions in other programming languages.
+Templates (i.e., custom command programs) may also define additional helper templates that may be invoked from the main template. Technically speaking, these helper templates are referred to as _associated templates_. Associated templates can be used to create reusable procedures accepting parameters and outputting values, similar to functions in other programming languages.
 
 ### Definition
 
