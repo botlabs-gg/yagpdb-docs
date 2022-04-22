@@ -139,7 +139,7 @@ Member functions are covered [here](https://docs.yagpdb.xyz/reference/templates/
 
 | **Field**                            | **Description**                                                                                                                                               |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| .Message.Attachments                 | Attachments of this message (_slice_ of attachment objects).                                                                                                  |
+| .Message.Attachments                 | Attachments of this message (_slice_ of [attachment](https://discord.com/developers/docs/resources/channel#attachment-object) objects).                       |
 | .Message.Author                      | Author of the message ([User](./#user) object).                                                                                                               |
 | .Message.ChannelID                   | Channel ID this message is in.                                                                                                                                |
 | .Message.Content                     | Text content of this message.                                                                                                                                 |
