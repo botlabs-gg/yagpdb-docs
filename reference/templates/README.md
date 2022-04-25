@@ -57,12 +57,13 @@ Context data refers to information accessible via the dot, `{{ . }}`. The access
 
 Fields documented as accessible on specific structures, like the context user `.User`, are usable on all values that share the same type. That is, given a user `$user`, `$user.ID` is a valid construction that yields the ID of the user. Similarly, provided a channel `$channel`, `$channel.Name` gives the name of the channel.
 
-| **Field**   | **Description**                                                                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| .CCID       | The ID of currently executing custom command in type of _int64_.                                                                                       |
-| .CCRunCount | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes.                           |
-| .CCTrigger  | If trigger type has a printable trigger, prints out its name. For example, if trigger type is `regex` and trigger is set to `\A`, it would print `\A`. |
-| .IsPremium  | Returns boolean true/false whether guild is premium of YAGPDB or not.                                                                                  |
+| **Field**     | **Description**                                                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| .CCID         | The ID of currently executing custom command in type of _int64_.                                                                                       |
+| .CCRunCount   | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes.                           |
+| .CCTrigger    | If trigger type has a printable trigger, prints out its name. For example, if trigger type is `regex` and trigger is set to `\A`, it would print `\A`. |
+| .IsPremium    | Returns boolean true/false whether guild is premium of YAGPDB or not.                                                                                  |
+| .ServerPrefix | Returns server's command-prefix.                                                                                                                       |
 
 ### Channel
 
