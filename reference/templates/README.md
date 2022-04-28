@@ -126,12 +126,17 @@ Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates
 
 | **Field**        | **Description**                                                                                                              |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| .Member.Avatar   | Member’s avatar hash, if it is custom per server, then custom avatar hash.                                                   |
 | .Member.GuildID  | The guild ID on which the member exists.                                                                                     |
 | .Member.JoinedAt | When member joined the guild/server of type _discordgo.Timestamp_. Method `.Parse` will convert this to of type _time.Time_. |
 | .Member.Nick     | The nickname for this member.                                                                                                |
 | .Member.Pending  | Returns _bool_ true/false, whether member is pending behind Discord's screening process.                                     |
 | .Member.Roles    | A _slice_ of role IDs that the member has.                                                                                   |
 | .Member.User     | Underlying user object on which the member is based on.                                                                      |
+
+| Method                  | Description                                                                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Member.AvatarURL "256" | Gives the URL for member’s avatar, argument “256” is the size of the picture and increases/decreses twofold (e.g. 512, 1024 or 128, 64 etc.). |
 
 [Member object in Discord documentation](https://discordapp.com/developers/docs/resources/guild#guild-member-object).
 
@@ -199,19 +204,22 @@ This is available and part of the dot when reaction trigger type is used.
 
 ### User
 
-| **Field**             | **Description**                                                                                                                                           |
+| **Field**           | **Description**                                                                                                                                  |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| .User               | The user's username together with discriminator.                                                                                                 |
+| .User.Avatar        | The user's avatar [hash](https://discord.com/developers/docs/reference#image-formatting).                                                        |
+| .User.Bot           | Determines whether the target user is a bot - if yes, it will return `true`.                                                                     |
+| .User.Discriminator | The user's discriminator/tag (The four digits after a person's username).                                                                        |
+| .User.ID            | The user's ID.                                                                                                                                   |
+| .User.Mention       | Mentions user.                                                                                                                                   |
+| .User.String        | The user's username together with discriminator as _string_ type.                                                                                |
+| .User.Username      | The user's username.                                                                                                                             |
+| .UsernameHasInvite  | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                              |
+| .RealUsername       | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored. |
+
+| Method                | Description                                                                                                                                               |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| .User                 | The user's username together with discriminator.                                                                                                          |
-| .User.Avatar          | The user's avatar [hash](https://discord.com/developers/docs/reference#image-formatting).                                                                 |
 | .User.AvatarURL "256" | <p>Gives the URL for user's avatar, argument "256" is the size of the picture <br>and can increase/decrease twofold (e.g. 512, 1024 or 128, 64 etc.).</p> |
-| .User.Bot             | Determines whether the target user is a bot - if yes, it will return `true`.                                                                              |
-| .User.Discriminator   | The user's discriminator/tag (The four digits after a person's username).                                                                                 |
-| .User.ID              | The user's ID.                                                                                                                                            |
-| .User.Mention         | Mentions user.                                                                                                                                            |
-| .User.String          | The user's username together with discriminator as _string_ type.                                                                                         |
-| .User.Username        | The user's username.                                                                                                                                      |
-| .UsernameHasInvite    | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                                       |
-| .RealUsername         | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored.          |
 
 [User object in Discord documentation](https://discordapp.com/developers/docs/resources/user#user-object).
 
