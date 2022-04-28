@@ -10,6 +10,10 @@ Every function having both cases possible for an argument - ID/name, then this n
 
 ### Channel
 
+{% hint style="info" %}
+The ratelimit for editing a channel is 2 requests per 10 minutes per channel.
+{% endhint %}
+
 | **Function**                                                           | **Description**                                                                                                                                                                                                                                                                                                                |
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <p><code>editChannelName</code> <br><code>channel "newName"</code></p> | Function edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. `"newName"` has to be of type _string_. For example  >`{{editChannelName nil (joinStr "" "YAG - " (randInt 1000))}}`                                                           |
