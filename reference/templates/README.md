@@ -134,7 +134,7 @@ Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates
 | .Member.Roles    | A _slice_ of role IDs that the member has.                                                                                   |
 | .Member.User     | Underlying user object on which the member is based on.                                                                      |
 
-| Method                  | Description                                                                                                                                   |
+| **Method**              | **Description**                                                                                                                               |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | .Member.AvatarURL "256" | Gives the URL for member’s avatar, argument “256” is the size of the picture and increases/decreses twofold (e.g. 512, 1024 or 128, 64 etc.). |
 
@@ -217,7 +217,7 @@ This is available and part of the dot when reaction trigger type is used.
 | .UsernameHasInvite  | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                              |
 | .RealUsername       | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored. |
 
-| Method                | Description                                                                                                                                               |
+| **Method**            | **Description**                                                                                                                                           |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | .User.AvatarURL "256" | <p>Gives the URL for user's avatar, argument "256" is the size of the picture <br>and can increase/decrease twofold (e.g. 512, 1024 or 128, 64 etc.).</p> |
 
