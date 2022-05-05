@@ -380,6 +380,16 @@ Cat Facts
 CatFact
 ```
 
+### DadJoke
+
+Generates a dad joke using the API from icanhazdadjoke.
+
+**Usage:**
+
+```
+DadJoke
+```
+
 ### DogFact
 
 **Aliases:** dog/dogfacts
@@ -1000,6 +1010,10 @@ Unban <User:Mention/ID> [Reason:Text]
 ### Kick
 
 Kicks a member
+
+```
+[-cl cl:Whole number - Messages to delete]
+```
 
 **Usage:**
 
