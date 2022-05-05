@@ -317,11 +317,43 @@ Effects with ability to add custom messages are capped to 150 characters.
 
 #### **Set Nickname**
 
-*   Sets the nickname of the user
+* Sets the nickname of the user
+  * **New Nickname (empty for removal):** Set a new nickname for the user, if you leave it empty, it will reset the nickname.
 
-    * **New Nickname (empty for removal):** Set a new nickname for the user, if you leave it empty, it will reset the nickname.
+#### **Reset violations**
 
+* Resets the violations of a user.
+  * Name
 
+#### **Delete multiple messages**
+
+* Deletes a certain number of the users last messages in this channel.
+  * Number of messages
+  * Max age (seconds)
+
+#### **Give role**
+
+* Gives the specified role to the user, optionally with a duration after which the role is removed from the user.
+  * Duration in seconds, 0 for permanent
+  * Role
+
+#### **Enable Channel slowmode**
+
+* Enables Discord's builtin slowmode in the channel for the specified duration, or forever.
+  * Duration in seconds, 0 for permanent
+  * Ratelimit in seconds between messages per user
+
+#### **Remove role**
+
+* Removes the specified role from the user, optionally with a duration after which the role is added back to the user.
+  * Duration in seconds, 0 for permanent
+  * Role
+
+#### **Send Message**
+
+* Sends the message on the channel the rule was triggered
+  * Custom message
+  * Ping user committing the infraction
 
 ## Limitations
 
