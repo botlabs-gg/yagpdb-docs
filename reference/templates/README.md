@@ -62,7 +62,9 @@ Fields documented as accessible on specific structures, like the context user `.
 | .CCID         | The ID of currently executing custom command in type of _int64_.                                                                                       |
 | .CCRunCount   | Shows run count of triggered custom command, although this is not going to be 100% accurate as it's cached up to 30 minutes.                           |
 | .CCTrigger    | If trigger type has a printable trigger, prints out its name. For example, if trigger type is `regex` and trigger is set to `\A`, it would print `\A`. |
+| .DomainRegex  | Returns string value of in-built domain-matching regular expression.                                                                                   |
 | .IsPremium    | Returns boolean true/false whether guild is premium of YAGPDB or not.                                                                                  |
+| .LinkRegex    | Returns string value of in-built link-matching regular expression.                                                                                     |
 | .ServerPrefix | Returns server's command-prefix.                                                                                                                       |
 
 ### Channel
