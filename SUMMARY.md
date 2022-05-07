@@ -37,6 +37,7 @@
 * [Templates](reference/templates/README.md)
   * [Functions](reference/templates/functions.md)
 * [Custom Commands Examples](reference/custom-command-examples.md)
+* [Custom Commands Limits](reference/custom-commands-limits.md)
 * [Custom Embeds](reference/custom-embeds.md)
 * [How to Get IDs](reference/how-to-get-ids.md)
 * [Using RegEx](reference/regex.md)
