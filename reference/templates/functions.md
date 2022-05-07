@@ -224,7 +224,7 @@ There is also .Mention method available for role structs/objects.
 ### String manipulation
 
 {% hint style="info" %}
-All regexp functions are limited to 10 calls per CC.
+All regexp functions are limited to 10 different pattern calls per CC.
 {% endhint %}
 
 | **Function**                                         | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
