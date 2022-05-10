@@ -16,7 +16,7 @@ The ratelimit for editing a channel is 2 requests per 10 minutes per channel.
 
 | **Function**                                                           | **Description**                                                                                                                                                                                                                                                                                                                |
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <p><code>editChannelName</code> <br><code>channel "newName"</code></p> | Function edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. `"newName"` has to be of type _string_. For example  >`{{editChannelName nil (joinStr "" "YAG - " (randInt 1000))}}`                                                           |
+| <p><code>editChannelName</code> <br><code>channel "newName"</code></p> | Function edits channel's name. `channel` can be either ID, "name" or even `nil` if triggered in that channel name change is intended to happen. `"newName"` has to be of type _string_. For example  >`{{editChannelName nil (print "YAG - " (randInt 1000))}}`                                                                |
 | `editChannelTopic channel "newTopic"`                                  | <p>Function edits channel's topic/description. <code>channel</code> can be either ID, "name" or <code>nil</code> if triggered in that channel where name change is intended to happen.  <code>"newTopic"</code> has to be of type <em>string</em>. For example ></p><p><code>{{editChannelTopic nil "YAG is cool"}}</code></p> |
 | `getChannel channel`                                                   | Function returns full channel object of given `channel` argument which can be either its ID, name or `nil` for triggering channel, and is of type _\*templates.CtxChannel_. For example > `{{(getChannel nil).Name}}` returns the name of the channel command was triggered in.                                                |
 | `getChannelOrThread channel`                                           | Returns type_\*templates.CtxChannel_ corresponding to [Channel](./#channel) object.                                                                                                                                                                                                                                            |
@@ -68,13 +68,13 @@ The ratelimit for editing a channel is 2 requests per 10 minutes per channel.
 {{ $ctr := 0 }} {{ $yourCCID := .CCID }}
 {{ if .ExecData }}
     {{ $ctr = add .ExecData.number 1 }}
-    {{ $yag = joinStr "" $yag $ctr }} {{ .ExecData.YAGPDB }}
+    {{ $yag = print $yag $ctr }} {{ .ExecData.YAGPDB }}
 {{ else }} 
     So, someone rules.
-    {{ $ctr = add $ctr 1 }} {{ $yag = joinStr "" $yag 1 }}
+    {{ $ctr = add $ctr 1 }} {{ $yag = print $yag 1 }}
 {{ end }}
 {{ if lt $ctr 5 }}
-    {{ execCC $yourCCID nil 10 (sdict "YAGPDB" $yag "number" $ctr) }}
+    {{ execCC $yourCCID nil 3 (sdict "YAGPDB" $yag "number" $ctr) }}
 {{ else }} FUN'S OVER! {{ end }}
 ```
 
@@ -259,7 +259,7 @@ With regular expression patterns - when using quotes you have to "double-escape"
   `{{$x := "Hello, World, YAGPDB, here!"}} {{range $k, $v := (split $x ", ")}}Word {{$k}}: __{{$v}}__ {{end}}`
 * To demonstrate usage of `reFindAll`. > \
   `Before regex: {{$msg := "1 YAGPDB and over 100000 servers conquered."}} {{$re2 := reFindAll "[0-9]+" $msg}} {{$msg}}`  \
-  `After regex matches: {{joinStr " " "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
+  `After regex matches: {{println "Only" (index $re2 0) "YAGPDB and already" (index $re2 1) "servers captured."}}`
 
 ### Time
 
