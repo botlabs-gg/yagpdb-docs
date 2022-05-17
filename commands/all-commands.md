@@ -531,6 +531,18 @@ TopServers [Skip:Whole number - Entries to skip]
 [-id serverID:Whole number]
 ```
 
+### OwlDictionary
+
+**Aliases:** owldict/owl
+
+Get the definition of an English word using the Owlbot API.
+
+**Usage:**
+
+```
+OwlDictionary <Query:Text - Word to search for>
+```
+
 ### TakeRep
 
 **Aliases:** -/tr/trep/-rep
