@@ -51,7 +51,6 @@ description: >-
 * **onlineCountBots:** 1 call per cc -> counter key "online\_bots"
 * **editNickname:** 2 calls per cc -> counter key "edit\_nick"
 * **Append/AppendSlice limit:** 10k size limit of resulting slice
-* **userArg:** 5 calls per cc -> counter key "commands\_user\_arg"
 * **exec/execAdmin:** 5 calls per cc -> no key
 * **deleteResponse/deleteMessage/deleteTrigger max delay:** 86400s
 * **take/removeRoleID/Name max delay:** int64 limit (292 years)
