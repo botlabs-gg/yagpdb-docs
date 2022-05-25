@@ -34,7 +34,7 @@ Trigger type: `Join message in server channel`
 
 ```go
 {{if .UsernameHasInvite}}
-{{ $silent := (execAdmin "ban" .User.ID "ad blocked") }}
+{{$silent := execAdmin "ban" .User.ID "ad blocked"}}
 {{else}}
 {{/* Replace this with your normal join message or leave it as it is */}}
 {{end}}
@@ -122,7 +122,7 @@ This example consists of two custom commands, and after copy/paste `REPLACE-WITH
  (carg "string" "countdown-message")}}
 
 {{$t := currentTime.Add ($args.Get 0)}}
-{{$mID := sendMessageRetID nil (joinStr  "" "countdown starting..." $t.String)}}
+{{$mID := sendMessageRetID nil (print "countdown starting... " $t.String)}}
 {{execCC REPLACE-WITH-NEXT-CC-ID nil 0 (sdict "MessageID" $mID "T" $t "Message" ($args.Get 1)) }}
 ```
 
@@ -130,7 +130,7 @@ Second part of the custom commands, here we see, how `data`-part of exeCC was ma
 
 ```go
 {{$timeLeft := .ExecData.T.Sub currentTime}}
-{{$cntDownMessageHeader := joinStr "" "Countdown Timer: " .ExecData.Message}}
+{{$cntDownMessageHeader := print "Countdown Timer: " .ExecData.Message}}
 {{$formattedTimeLeft := humanizeDurationSeconds $timeLeft}}
 
 {{$t := .ExecData.T}}
@@ -142,13 +142,13 @@ Second part of the custom commands, here we see, how `data`-part of exeCC was ma
     {{$timeLeft := $t.Sub currentTime}}
     {{$formattedTimeLeft := humanizeDurationSeconds $timeLeft}}
 
-    {{editMessage nil $mID (joinStr "" $cntDownMessageHeader "\nTime left: " $formattedTimeLeft " seconds")}}
+    {{editMessage nil $mID (print $cntDownMessageHeader "\nTime left: " $formattedTimeLeft " seconds")}}
     {{if gt $timeLeft $ts}} {{sleep 1}} {{end}}
   {{end}}
-  {{editMessage nil  .ExecData.MessageID (joinStr "" $cntDownMessageHeader "\nTime left: **ENDED**")}}
+  {{editMessage nil  .ExecData.MessageID (print $cntDownMessageHeader "\nTime left: **ENDED**")}}
 {{else}}
-    {{editMessage nil .ExecData.MessageID (joinStr "" $cntDownMessageHeader "\nTime left: " $formattedTimeLeft)}}
-    {{execCC REPLACE-WITH-CURRENT-CC-ID nil 10 .ExecData}}
+    {{editMessage nil .ExecData.MessageID (print $cntDownMessageHeader "\nTime left: " $formattedTimeLeft)}}
+    {{execCC .CCID nil 10 .ExecData}}
 {{end}}
 ```
 
@@ -165,14 +165,14 @@ This is a simple note taking system containing 3 separate custom commands. Also 
   (carg "string" "key")
   (carg "string" "value")}}
 
-{{dbSet .User.ID (joinStr "" "notes_" ($args.Get 0)) ($args.Get 1)}}
+{{dbSet .User.ID (print "notes_" ($args.Get 0)) ($args.Get 1)}}
 Saved `{{$args.Get 0}}` as `{{$args.Get 1}}`
 ```
 
 #### Get note:
 
 ```go
-{{$key := joinStr "" "notes_"  .StrippedMsg}}
+{{$key := print "notes_"  .StrippedMsg}}
 {{$note := dbGet .User.ID $key}}
 {{if $note}}
 
@@ -211,7 +211,7 @@ With YAGPDB's database system, you can now add cooldowns to you custom commands.
 
 {{/* CREATING VARIABLES DO NOT TOUCH */}}
 {{$id := 0}}
-{{$key := joinStr "" "cooldown_" $name}}
+{{$key := print "cooldown_" $name}}
 {{if eq $isGlobal 0}}
 {{$id = .User.ID}}
 {{end}}
