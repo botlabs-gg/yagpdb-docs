@@ -78,13 +78,13 @@ To make your code readable, especially for large embeds, **indents** may be used
 
 {% code title="Custom Command "embed"" %}
 ```go
-{{ $advice := (execAdmin "advice") }}
-{{ $topic := (execAdmin "topic") }}
-{{ $catfact := (execAdmin "catfact") }}
-{{ $avatar := (joinStr "" "https://cdn.discordapp.com/avatars/" (toString .User.ID) "/" .User.Avatar ".png") }}
+{{ $advice := execAdmin "advice" }}
+{{ $topic := execAdmin "topic" }}
+{{ $catfact := execAdmin "catfact" }}
+{{ $avatar := print "https://cdn.discordapp.com/avatars/" .User.ID "/" .User.Avatar ".png" }}
 
 {{$embed := cembed 
-    "title" (joinStr "" "Hello there, "  .User.Username "!") 
+    "title" (print "Hello there, "  .User.Username "!") 
     "description" "This is an embed in a custom command. To see the code behind it, do `-cc embed`." 
     "color" 4645612 
     "fields" (cslice 
@@ -107,12 +107,12 @@ To make your code readable, especially for large embeds, **indents** may be used
 		"icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/2fa57b425415134d4f8b279174131ad6.png") 
     "timestamp" .Member.JoinedAt
 }}
-
+{{ $embed }}
 {{ sendMessage nil $embed }}
 ```
 {% endcode %}
 
-In this example, we can ignore lines 1 to 4. I'm just defining some variables there which I am later using in my embed. Line 6 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `joinStr` to join two strings (text snippets) together. This is the case because I want to use the `.User.Username` template. cembed takes Strings, so it would convert `{{ .User.Username }}` into {{ .User.Username }} instead of the username of the user. The syntax of `joinStr` is `joinStr "seperator" "string1" "string2"...`, so we're first setting the separator to nothing and then joining our strings "Hello there, ", the username and an exclamation mark.\
+In this example, we can ignore lines 1 to 4. I'm just defining some variables there which I am later using in my embed. Line 6 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `joinStr` to join two strings (text snippets) together. This is the case because I want to use the `.User.Username` template. cembed takes Strings, so it would convert `{{ .User.Username }}` into \{{ .User.Username \}} instead of the username of the user. The syntax of `joinStr` is `joinStr "seperator" "string1" "string2"...`, so we're first setting the separator to nothing and then joining our strings "Hello there, ", the username and an exclamation mark.\
 Next, we have the description. We can use markdown of Discord in here. After that object, I define the color. The color is given as integer and you can convert a hex color to it [here](https://www.binaryhexconverter.com/hex-to-decimal-converter).
 
 Up next, I have added some fields. This is a bit more difficult, but doable if you have understood it once. Let's break it down in this example:
