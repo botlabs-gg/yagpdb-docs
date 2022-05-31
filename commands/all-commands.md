@@ -613,12 +613,16 @@ Rep [User:User]c
 
 ### TopRep
 
-Shows top 15 rep on the server
+Shows rep leaderboard on the server
 
 **Usage:**
 
 ```
 TopRep [Offset:Whole number]
+```
+
+```
+[-user user:Mention/ID - User to search for in the leaderboard]
 ```
 
 ### Sentiment
