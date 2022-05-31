@@ -217,6 +217,10 @@ Schedules a reminder, example: 'remindme 1h30min are you alive still?'
 Remindme <Time:Duration> <Message:Text>
 ```
 
+```
+[-channel channel:Channel]
+```
+
 ### ResetPastNames
 
 Reset your past usernames/nicknames.
