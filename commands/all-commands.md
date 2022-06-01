@@ -1007,11 +1007,14 @@ Bans a member, specify a duration with -d and specify number of days of messages
 **Usage:**
 
 ```
-Ban <User:Mention/ID> [Reason:Text]
+Ban <User:Mention/ID> <Duration:Duration> <Reason:Text>
+Ban <User:Mention/ID> <Reason:Text> <Duration:Duration>
+Ban <User:Mention/ID> <Duration:Duration>
+Ban <User:Mention/ID> <Reason:Text>
+Ban <User:Mention/ID>
 ```
 
 ```
-[-d Duration:Duration]
 [-ddays Days:Whole number]
 ```
 
