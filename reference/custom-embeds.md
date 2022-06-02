@@ -83,7 +83,7 @@ To make your code readable, especially for large embeds, **indents** may be used
 {{ $catfact := execAdmin "catfact" }}
 {{ $avatar := print "https://cdn.discordapp.com/avatars/" .User.ID "/" .User.Avatar ".png" }}
 
-{{$embed := cembed 
+{{ $embed := cembed 
     "title" (print "Hello there, "  .User.Username "!") 
     "description" "This is an embed in a custom command. To see the code behind it, do `-cc embed`." 
     "color" 4645612 
