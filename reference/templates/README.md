@@ -153,7 +153,7 @@ Member functions are covered [here](https://docs.yagpdb.xyz/reference/templates/
 | .Message.Author                      | Author of the message ([User](./#user) object).                                                                                                               |
 | .Message.ChannelID                   | Channel ID this message is in.                                                                                                                                |
 | .Message.Content                     | Text content of this message.                                                                                                                                 |
-| .Message.ContentWithMentionsReplaced | .ContentWithMentionsReplaced will replace all <@ID> mentions with the username of the mention.                                                                |
+| .Message.ContentWithMentionsReplaced | Replaces all <@ID> mentions with the username of the mention.                                                                                                 |
 | .Message.EditedTimestamp             | The time at which the last edit of the message occurred, if it has been edited. As with .Message.Timestamp, it is of type _discordgo.Timestamp._              |
 | .Message.Embeds                      | Embeds of this message (_slice_ of embed objects).                                                                                                            |
 | .Message.GuildID                     | Guild ID in which the message is.                                                                                                                             |

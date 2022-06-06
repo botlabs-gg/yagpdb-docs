@@ -84,7 +84,8 @@ To make your code readable, especially for large embeds, **indents** may be used
 {{ $avatar := print "https://cdn.discordapp.com/avatars/" .User.ID "/" .User.Avatar ".png" }}
 
 {{ $embed := cembed 
-    "title" (print "Hello there, "  .User.Username "!") 
+    "title" (print "Hello there, "  .User.Username "!")
+    "url" (.User.AvatarURL "512")
     "description" "This is an embed in a custom command. To see the code behind it, do `-cc embed`." 
     "color" 4645612 
     "fields" (cslice 
