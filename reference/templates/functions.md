@@ -127,7 +127,7 @@ Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches
 | `mentionRoleID roleID`       | Mentions the role found with the provided ID.                            |
 | `mentionRoleName "rolename"` | Mentions the first role found with the provided name (case-insensitive). |
 
-There is also .Mention method available for role structs/objects.
+There is also .Mention method available for channel, role, user structs/objects.
 
 #### Mentions section's snippets:
 
