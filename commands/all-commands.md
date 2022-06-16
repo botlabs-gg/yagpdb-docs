@@ -1080,6 +1080,30 @@ Unmutes a member
 Unmute <User:User Mention> [Reason:Text]
 ```
 
+### Timeout
+
+Timeout a member
+
+**Usage:**
+
+```
+Timeout <User:Mention/ID> <Duration:Duration> <Reason:Text>
+Timeout <User:Mention/ID> <Reason:Text> <Duration:Duration>
+Timeout <User:Mention/ID> <Duration:Duration>
+Timeout <User:Mention/ID> <Reason:Text>
+Timeout <User:Mention/ID>
+```
+
+### RemoveTimeout
+
+Removes a member's timeout
+
+**Usage:**
+
+```
+RemoveTimeout <User:Mention/ID> [Reason:Text]
+```
+
 ### Report
 
 Reports a member to the server's staff
