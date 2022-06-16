@@ -521,6 +521,18 @@ HowLongToBeat <Game-Title:Text>
 [-p p:Switch - Paginated output]
 ```
 
+### Inspire
+
+**Aliases:** insp
+
+Shows 'inspirational' quotes from inspirobot.me...
+
+**Usage:**
+
+```
+Inspire
+```
+
 ### TopServers
 
 Responds with the top 15 servers I'm on
