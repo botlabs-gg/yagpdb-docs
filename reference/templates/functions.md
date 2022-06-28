@@ -82,6 +82,10 @@ Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches
 
 ### Math
 
+{% hint style="info" %}
+Boolean logic (and, not, or) and comparison operators (eq, gt, lt, etc.) are covered in [conditional branching](https://docs.yagpdb.xyz/reference/templates#if-conditional-branching).
+{% endhint %}
+
 | **Function**                    | **Description**                                                                                                                                                                                                                                                                                                                |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `add x y z ...`                 | Returns x + y + z + ...,  detects first number's type - is it _int_ or _float_ and based on that adds. (use `toFloat` on the first argument to force floating point math.)`{{add 5 4 3 2 -1}}` sums all these numbers and returns `13`.                                                                                        |
