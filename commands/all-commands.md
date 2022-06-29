@@ -101,6 +101,18 @@ CustomCommands
 [-color Use syntax highlighting (GO):Switch]
 ```
 
+### CustomEmbed
+
+**Aliases:** ce
+
+Creates an embed from what you give it in json form: [https://docs.yagpdb.xyz/others/custom-embeds](https://docs.yagpdb.xyz/others/custom-embeds) Example: `-ce {"title": "hello", "description": "wew"}`
+
+**Usage:**
+
+```
+CustomEmbed <Json:Text>
+```
+
 ### DelReminder
 
 **Aliases:** rmreminder
@@ -256,6 +268,34 @@ Settimezone [Timezone:Text]
 ```
 [-u Display current:Switch]
 [-d Delete TZ record:Switch]
+```
+
+### SimpleEmbed
+
+**Aliases:** se
+
+A more simpler version of CustomEmbed, controlled completely using switches.
+
+**Usage:**
+
+```
+SimpleEmbed
+```
+
+```
+[-channel :Channel - Optional channel to send in]
+[-content :Text - Text content for the message]
+[-title :Text]
+[-desc :Text - Text in the 'description' field]
+[-color :Text - Either hex code or name]
+[-url :Text - Url of this embed]
+[-thumbnail :Text - Url to a thumbnail]
+[-image :Text - Url to an image]
+[-author :Text - The text in the 'author' field]
+[-authoricon :Text - Url to a icon for the 'author' field]
+[-authorurl :Text - Url of the 'author' field]
+[-footer :Text - Text content for the footer]
+[-footericon :Text - Url to a icon for the 'footer' field]
 ```
 
 ### Stats&#x20;
@@ -436,46 +476,6 @@ Roll dices, specify nothing for 6 sides, specify a number for max sides, or rpg 
 Roll <Sides:Whole number>
 Roll <RPG Dice:Text>
 Roll
-```
-
-### CustomEmbed
-
-**Aliases:** ce
-
-Creates an embed from what you give it in json form: [https://docs.yagpdb.xyz/others/custom-embeds](https://docs.yagpdb.xyz/others/custom-embeds) Example: `-ce {"title": "hello", "description": "wew"}`
-
-**Usage:**
-
-```
-CustomEmbed <Json:Text>
-```
-
-### SimpleEmbed
-
-**Aliases:** se
-
-A more simpler version of CustomEmbed, controlled completely using switches.
-
-**Usage:**
-
-```
-SimpleEmbed
-```
-
-```
-[-channel :Channel - Optional channel to send in]
-[-content :Text - Text content for the message]
-[-title :Text]
-[-desc :Text - Text in the 'description' field]
-[-color :Text - Either hex code or name]
-[-url :Text - Url of this embed]
-[-thumbnail :Text - Url to a thumbnail]
-[-image :Text - Url to an image]
-[-author :Text - The text in the 'author' field]
-[-authoricon :Text - Url to a icon for the 'author' field]
-[-authorurl :Text - Url of the 'author' field]
-[-footer :Text - Text content for the footer]
-[-footericon :Text - Url to a icon for the 'footer' field]
 ```
 
 ### WouldYouRather
@@ -1082,6 +1082,8 @@ Unmute <User:User Mention> [Reason:Text]
 
 ### Timeout
 
+**Aliases:** to
+
 Timeout a member
 
 **Usage:**
@@ -1095,6 +1097,8 @@ Timeout <User:Mention/ID>
 ```
 
 ### RemoveTimeout
+
+**Aliases:** untimeout/cleartimeout/deltimeout/rto
 
 Removes a member's timeout
 
@@ -1236,11 +1240,7 @@ Gives a role to the specified member, with optional expiry
 **Usage:**
 
 ```
-GiveRole <User:Mention/ID> <Role:Text>
-```
-
-```
-[-d Duration:Duration]
+GiveRole <User:Mention/ID> <Role:Text> [Duration:Duration]
 ```
 
 ### TakeRole
