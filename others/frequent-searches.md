@@ -2,7 +2,7 @@
 
 ## How do I invite YAGPDB to my server?
 
-Go to [yagpdb.xyz](https://yagpdb.xyz), click on **Add to server** and follow the instructions on your screen. Afterwards, you can start managing it there by selecting the server from the dropdown in the top right corner.&#x20;
+Go to [yagpdb.xyz](https://yagpdb.xyz/), click on **Add to server** and follow the instructions on your screen. Afterwards, you can start managing it there by selecting the server from the dropdown in the top right corner.&#x20;
 
 ## Why isn't YAGPDB responding to anything?
 
@@ -13,10 +13,10 @@ Go to [yagpdb.xyz](https://yagpdb.xyz), click on **Add to server** and follow th
    Check the channel settings to see if YAGPDB has read and write permissions for the channel. **Please double check this**, this is the most common reason why YAGPDB isn't responding. \
 
 3. &#x20;**Ensure YAGPDB is visibly online**\
-   Make sure that YAGPDB is online - [Discord might be having issues](https://status.discordapp.com) or YAGPDB might be restarting (see [#downtime-announcements](https://discordapp.com/channels/166207328570441728/465887983657287686) in the Discord server).\
+   Make sure that YAGPDB is online - [Discord might be having issues](https://status.discordapp.com/) or YAGPDB might be restarting (see [#downtime-announcements](https://discordapp.com/channels/166207328570441728/465887983657287686) in the Discord server).\
 
 4. **Check your command settings** \
-   If none of this works, make sure that all YAGPDB commands are enabled by visiting the [control panel](https://yagpdb.xyz), logging in and selecting your server, clicking on **Core** and **Command Settings**. Make sure that **All commands enabled?** is checked and that there are no command overrides blocking the commands.
+   If none of this works, make sure that all YAGPDB commands are enabled by visiting the [control panel](https://yagpdb.xyz/), logging in and selecting your server, clicking on **Core** and **Command Settings**. Make sure that **All commands enabled?** is checked and that there are no command overrides blocking the commands.
 
 ![](../.gitbook/assets/unknown.png)
 

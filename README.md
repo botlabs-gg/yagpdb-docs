@@ -19,7 +19,7 @@ The documentation page is also synchronized to [Github](https://github.com/botla
 
 ## Learning Center
 
-This is another work in progress site, located [here](https://learn.yagpdb.xyz) and tries to introduce you everything you need to know about coding in YAGPDB in step-by-step fashion.
+This is another work in progress site, located [here](https://learn.yagpdb.xyz/) and tries to introduce you everything you need to know about coding in YAGPDB in step-by-step fashion.
 
 ## Supporting the bot
 
