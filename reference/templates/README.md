@@ -19,8 +19,9 @@ This `{{ ... }}` syntax of having two curly brackets aka braces around context i
 
 {% hint style="info" %}
 Templating system uses standard ASCII quotation marks:\
-0x22 > `"` for straight double quotes, 0x27 > `'`for apostrophes and 0x60 `` ` `` for backticks; \
-so make sure no "smart-quotes" are being used.
+0x22 > `"` for straight double quotes, 0x27 > `'`for apostrophes and 0x60 `` ` `` for backticks/back quotes; so make sure no "smart-quotes" are being used.
+
+The difference between back quotes and double quotes in string literals is covered [here](https://go.dev/ref/spec#String\_literals).
 {% endhint %}
 
 ## The Dot and Variables
