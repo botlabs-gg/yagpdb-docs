@@ -1,5 +1,9 @@
 # Custom Embeds
 
+{% hint style="danger" %}
+Embeds have limits, summarised [here](https://discord.com/developers/docs/resources/channel#embed-object-embed-limits).
+{% endhint %}
+
 {% hint style="warning" %}
 Custom Embeds with the `-customembed` command don't work in custom commands. If you want to know how you can use embeds in custom commands, scroll down to [Embeds in Custom Commands](https://docs.yagpdb.xyz/custom-embeds#embeds-in-custom-commands).
 {% endhint %}
