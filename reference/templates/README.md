@@ -273,7 +273,9 @@ Comparison operators always require the same type: i.e comparing `1.23` and `1` 
 
 `range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.
 
-To skip execution of a single iteration and jump to the next iteration, the `continue` action may be used. Likewise, if one wishes to skip all remaining iterations, the `break` action may be used.
+{% hint style="info" %}
+To skip execution of a single iteration and jump to the next iteration, the `{{continue}}` action may be used. Likewise, if one wishes to skip all remaining iterations, the `{{break}}` action may be used. These both are usable also inside `while` action.
+{% endhint %}
 
 Affected dot inside `range` is important because methods mentioned above in this documentation:`.Server.ID`, `.Message.Content` etc are all already using the dot on the pipeline and if they are not carried over to the `range` control structure directly, these fields do not exists and template will error out. Getting those values inside `range` and also `with` action would need `$.User.ID` for example.\
 \
