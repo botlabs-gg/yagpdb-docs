@@ -628,15 +628,15 @@ Learning resources covers database [more in-depth](https://learn.yagpdb.xyz/inte
 
 | **Fields** | **Description**                                                                                                         |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
-| .ID        | ID of the entry.                                                                                                        |
-| .GuildID   | ID of the server.                                                                                                       |
-| .UserID    | Value of `userID` argument or ID of the user if for example `.User.ID` was used for `dbSet`.                            |
+| .ID        | ID of the entry of type _int64_.                                                                                        |
+| .GuildID   | ID of the server of type _int64_.                                                                                       |
+| .UserID    | Value of type _int64_ for `userID` argument or ID of the user if for example `.User.ID` was used for `dbSet`.           |
 | .User      | User object of type _discordgo.User_ having only `.ID` field, .Mention is still usable with correct userID field entry. |
-| .CreatedAt | When this entry was created.                                                                                            |
-| .UpdatedAt | When this entry was last updated.                                                                                       |
-| .ExpiresAt | When entry will expire.                                                                                                 |
-| .Key       | The key of the entry.                                                                                                   |
-| .Value     | The value of the entry.                                                                                                 |
+| .CreatedAt | When this entry was created, of type _time.Time_.                                                                       |
+| .UpdatedAt | When this entry was last updated, of type _time.Time_.                                                                  |
+| .ExpiresAt | When entry will expire, of type _time.Time_.                                                                            |
+| .Key       | The key of the entry, of type _string_.                                                                                 |
+| .Value     | The value of the entry. All numbers will get returned as _float64_ and other set values are of  varying types.          |
 
 ## Tickets
 
