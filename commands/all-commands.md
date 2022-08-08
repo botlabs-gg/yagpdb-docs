@@ -1010,6 +1010,10 @@ Yagstatus
 
 ## Moderation 👮
 
+{% hint style="info" %}
+All auto-moderation commands `automod ...` affect Automoderator v2.
+{% endhint %}
+
 ### Ban
 
 **Aliases:** banid
