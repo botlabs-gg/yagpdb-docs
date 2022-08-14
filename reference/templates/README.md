@@ -130,15 +130,16 @@ Channel functions are covered [here](https://docs.yagpdb.xyz/reference/templates
 
 ### Member
 
-| **Field**        | **Description**                                                                                                              |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| .Member.Avatar   | Member’s avatar hash, if it is custom per server, then custom avatar hash.                                                   |
-| .Member.GuildID  | The guild ID on which the member exists.                                                                                     |
-| .Member.JoinedAt | When member joined the guild/server of type _discordgo.Timestamp_. Method `.Parse` will convert this to of type _time.Time_. |
-| .Member.Nick     | The nickname for this member.                                                                                                |
-| .Member.Pending  | Returns _bool_ true/false, whether member is pending behind Discord's screening process.                                     |
-| .Member.Roles    | A _slice_ of role IDs that the member has.                                                                                   |
-| .Member.User     | Underlying user object on which the member is based on.                                                                      |
+| **Field**                | **Description**                                                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| .Member.Avatar           | Member’s avatar hash, if it is custom per server, then custom avatar hash.                                                   |
+| .Member.GuildID          | The guild ID on which the member exists.                                                                                     |
+| .Member.JoinedAt         | When member joined the guild/server of type _discordgo.Timestamp_. Method `.Parse` will convert this to of type _time.Time_. |
+| .Member.Nick             | The nickname for this member.                                                                                                |
+| .Member.Pending          | Returns _bool_ true/false, whether member is pending behind Discord's screening process.                                     |
+| .Member.Roles            | A _slice_ of role IDs that the member has.                                                                                   |
+| .Member.TimeoutExpiresAt | Returns _time.Time_ when member’s time out expires. Time is in the past or `nil` if the user is not timed out.               |
+| .Member.User             | Underlying user object on which the member is based on.                                                                      |
 
 | **Method**              | **Description**                                                                                                                               |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
