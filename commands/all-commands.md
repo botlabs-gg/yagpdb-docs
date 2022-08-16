@@ -99,6 +99,7 @@ CustomCommands
 ```
 [-file Sends responses in a file:Switch]
 [-color Use syntax highlighting (GO):Switch]
+[-raw raw:Switch - Force raw output]
 ```
 
 ### CustomEmbed
@@ -488,6 +489,10 @@ Get presented with 2 options.
 
 ```
 WouldYouRather
+```
+
+```
+[-raw raw:Switch - Raw output]
 ```
 
 ### Xkcd
