@@ -349,7 +349,9 @@ Effects with ability to add custom messages are capped to 150 characters.
 
 * Sends the message on the channel the rule was triggered
   * Custom message
+  * Delete sent message after x seconds (0 for non-deletion):
   * Ping user committing the infraction
+  * Channel to send message in (Leave None to send message in same channel):
 
 ## Limitations
 
