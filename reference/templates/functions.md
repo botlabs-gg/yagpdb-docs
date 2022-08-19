@@ -223,7 +223,7 @@ There is also .Mention method available for channel, role, user structs/objects.
 ### Role functions
 
 {% hint style="info" %}
-In all role role functions where userID is required as argument to target a user, it can also be full user object.
+In all role functions where userID is required as argument to target a user, it can also be full user object.
 {% endhint %}
 
 | **Function**                             | **Description**                                                                                                                                                                                                                  |
