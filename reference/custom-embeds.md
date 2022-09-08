@@ -104,7 +104,7 @@ To make your code readable, especially for large embeds, **indents** may be used
 	(sdict 
 		"name" "YAGPDB.xyz!" 
 		"url" "https://yagpdb.xyz/manage" 
-		"icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/2fa57b425415134d4f8b279174131ad6.png") 
+		"icon_url" (.BotUser.AvatarURL "512")  )
     "thumbnail" (sdict "url" $avatar) 
     "footer" 
 	(sdict 
