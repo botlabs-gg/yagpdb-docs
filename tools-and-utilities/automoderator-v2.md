@@ -14,8 +14,6 @@ A simple way to have it is to keep all the basic stuff (invites, spam mentions, 
 
 Automod V2 is a completely new auto-moderator system made from the ground up. When starting out you will need to create a new ruleset.
 
-If you'd rather watch a video, we made a short basic intro on [YouTube](https://www.youtube.com/watch?v=5dfjYJShzyw%E2%80%8B).
-
 #### Rulesets
 
 Rulesets are how you will group your auto moderation rules, you will need one to start out. A ruleset can be toggled on or off in the control panel with the `-automod toggle <ruleset name>` command.
