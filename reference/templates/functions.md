@@ -150,6 +150,7 @@ There is also .Mention method available for channel, role, user structs/objects.
 * `<@###########>` Mentions the user that has the ID ###### (See [How to get IDs](./#how-to-get-ids) to get ID).
 * `<#&&&&&&&&&&&>` Mentions the channel that has ID &&&&&& (See [How to get IDs](./#how-to-get-ids) to get ID).
 * `<@&##########>` Mentions the role with ID ######## ([listroles](../../commands/all-commands.md#listroles) command gives roleIDs). This is usable for example with `{{sendMessageNoEscape nil "Welcome to role <@&11111111...>"}}`. Mentioning that role has to be enabled server- side in Discord.
+* `</cmdName:cmdID>` Mentions a slash command, and makes it clickable and interactive with proper arguments e.g. `</howlongtobeat:842397645104087061>`.
 
 ### Message
 
