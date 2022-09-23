@@ -133,6 +133,8 @@ Boolean logic (and, not, or) and comparison operators (eq, gt, lt, etc.) are cov
 | `onlineCount`                               | Returns the count of online users/members on current server.                                                                                                                                   |
 | `targetHasPermissions` memberID arg         | Returns true/false on whether targeted member has the permission bit _int64_.                                                                                                                  |
 
+Permissions are covered [here](https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags). For example to get permission bit for "use application commands" `{{bitwiseLeftShift 1 32}}` would return _int64_ `4294967296`.
+
 ### Mentions
 
 | **Function**                 | **Description**                                                          |
