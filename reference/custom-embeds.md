@@ -86,6 +86,7 @@ To make your code readable, especially for large embeds, **indents** may be used
 {{ $topic := execAdmin "topic" }}
 {{ $catfact := execAdmin "catfact" }}
 {{ $avatar := print "https://cdn.discordapp.com/avatars/" .User.ID "/" .User.Avatar ".png" }}
+{{ $botAvatar := .BotUser.AvatarURL "512" }}
 
 {{ $embed := cembed 
     "title" (print "Hello there, "  .User.Username "!")
@@ -105,11 +106,12 @@ To make your code readable, especially for large embeds, **indents** may be used
 		"name" "YAGPDB.xyz!" 
 		"url" "https://yagpdb.xyz/manage" 
 		"icon_url" (.BotUser.AvatarURL "512")  )
-    "thumbnail" (sdict "url" $avatar) 
+    "thumbnail" (sdict "url" $avatar)
+    "image" (sdict "url" $botAvatar)
     "footer" 
 	(sdict 
 		"text" "YAGPDB.xyz since" 
-		"icon_url" "https://cdn.discordapp.com/avatars/204255221017214977/2fa57b425415134d4f8b279174131ad6.png") 
+		"icon_url" $botAvatar) 
     "timestamp" .Member.JoinedAt
 }}
 {{/* this line is here to show raw cembed output */}} {{ $embed }}
