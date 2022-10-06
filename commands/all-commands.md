@@ -538,6 +538,22 @@ Shows 'inspirational' quotes from inspirobot.me...
 Inspire
 ```
 
+```
+[-mindfulness mindfulness:Switch - Generates Mindful Quotes!]
+```
+
+### Forex
+
+**Aliases:** Money
+
+convert value from one currency for another.
+
+**Usage:**
+
+```
+Forex <Amount:Whole number> <From:Text> <To:Text>
+```
+
 ### TopServers
 
 Responds with the top 15 servers I'm on
