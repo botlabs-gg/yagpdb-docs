@@ -91,7 +91,7 @@ Available types and options are:
   `{{carg "int" "integer" 2 9}}` required argument has to be a number from 2 to 9.
 * **member** - accepts userID/mention. Gives guild's member struct (object) to use later with .Member methods, like .JoinedAt. (see [templates ](../reference/templates/#member)for more info).
 * **role** - matches an id or name of a role and returns a _\*discordgo.Role_ type [role object](https://discord.com/developers/docs/topics/permissions#role-object).
-* **string -** text.
+* **string -** text. If string-type is the last or only `carg` in `parseArgs` definition, it will take all arguments starting from that point.
 * **user -** user mentions, will have the type of User (see [templates ](../reference/templates/#user)for more info).
 * **userid -** user IDs, this user may not exist at all, both mentions and plain IDs are accepted, will have the type of _int64_.
 
