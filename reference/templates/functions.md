@@ -45,7 +45,7 @@ The ratelimit for editing a channel is 2 requests per 10 minutes per channel.
 Patterns are basic PostgreSQL patterns, not Regexp: An underscore `(_)`  matches any single character; a percent sign `(%)` matches any sequence of zero or more characters.
 
 {% hint style="info" %}
-**Note about saving numbers into database:** As stated above, database stores numbers as type _float64_. If you save a large number into database like an _int64_ (which IDs are), the value will be truncated. To avoid this behavior, you can stringify the number before saving and convert it back to its original type when retrieving it. Example: `{{$v := .User.ID}} {{dbSet 0 "userid" (str $v)}} {{$fromDB := toInt (dbGet 0 "user_id").Value}}`
+**Note about saving numbers into database:** As stated above, database stores numbers as type _float64_. If you save a large number into database like an _int64_ (which IDs are), the value will be truncated. To avoid this behavior, you can convert the number to type _string_ before saving and later back to its original type when retrieving it. Example: `{{$v := .User.ID}} {{dbSet 0 "userid" (str $v)}} {{$fromDB := toInt (dbGet 0 "user_id").Value}}`
 
 `dict` key values are also retrieved as _int64,_ so to use them for indexing one has to e.g. `index $x (toInt64 0)`
 {% endhint %}
