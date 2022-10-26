@@ -497,7 +497,7 @@ Trim markers: `{{- ... -}}`were used in above example because whitespace is cons
 
 #### execTemplate function
 
-Finally, `execTemplate` is essentially the same as the `template` action, but provides access to the return value of the template and may be used as part of another action. Below is an example using `execTemplate`:
+`execTemplate` is essentially the same as the `template` action, but it provides access to the return value of the template and may be used as part of another action. Below is an example using `execTemplate`:
 
 ```go
 {{ define "factorial" }}
