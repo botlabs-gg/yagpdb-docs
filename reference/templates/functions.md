@@ -188,7 +188,7 @@ There is also .Mention method available for channel, role, user structs/objects.
   `{{$x := sendMessageRetID nil "Hello"}} {{sleep 3}} {{editMessage nil $x "There"}} {{sleep 3}} {{sendMessage nil "We all know, that"}} {{sleep 3}} YAGPDB rules!`
 * To demonstrate usage of `complexMessage` with `sendMessage`. `{{sendMessage nil (complexMessage "reply" .Message.ID "content" "Who rules?" "embed" (cembed "description" "YAGPDB of course!" "color" 0x89aa00) "file" "Here we print something nice - you all are doing awesome!" "filename" currentTime.Weekday)}}`
 * To demonstrate usage of `complexMessageEdit` with `editMessage`.\
-  `{{$mID := sendMessageRetID nil (complexMessage "content" "You know what is..." "embed" (cembed "title" "FUN!?" "color" 0xaa8900))}} {{sleep 3}} {{editMessage nil $mID (complexMessageEdit "embed" (cembed "title" "YAGPDB!" "color" 0x89aa00) "content" "Yes, it's always working with...")}}{{sleep 3}}{{editMessage nil $mID (complexMessageEdit "embed" nil "content" "Embed deleted, goodbye YAG!")}}{{deleteMessage nil $mID 3}}`
+  `{{$mID := sendMessageRetID nil (complexMessage "content" "You know what is..." "embed" (cembed "title" "FUN!?" "color" 0xaa8900))}} {{sleep 3}} {{editMessage nil $mID (complexMessageEdit "embed" (cembed "title" "YAGPDB!" "color" 0x89aa00) "content" "Yes, it's always working with...")}}{{sleep 3}}{{editMessage nil $mID (complexMessageEdit "embed" nil` "content" "Will delete this message in a sec, goodbye YAG!"`)}}{{deleteMessage nil $mID 3}}`
 
 ### Miscellaneous
 
