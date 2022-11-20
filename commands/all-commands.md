@@ -8,7 +8,7 @@ Text arguments containing multiple words needs be to put in quotes ("arg here") 
 
 For example with the poll command if you want the question to have multiple words: `-poll "what's your favourite colour" red blue green2`
 
-Most Debug & Maintenance commands, or commands without any meaningful description are meant for bot owner or serverAdmin only!
+Some commands are unavailable to users, including server owners and admins on the public instance of YAGPDB. Bot Owner Only commands are restricted to the user who hosts and owns their own instance of the bot. Bot Admin Only commands require the user to have the configured `YAGPDB_ADMIN_ROLE` in the self-hosted bot.
 
 ## General ℹ️
 
@@ -132,7 +132,7 @@ DelReminder <ID:Whole number>
 
 ### Fixscheduledccs
 
-???
+Corrects the next run time of interval CCs globally, fixes issues arising from missed executions due to downtime. Bot Admin Only
 
 **Usage:**
 
@@ -758,7 +758,7 @@ Packs
 
 ### Allocstat
 
-Memory statistics.
+Memory statistics. Bot Admin Only
 
 **Usage:**
 
@@ -768,7 +768,7 @@ allocstat
 
 ### Banserver
 
-;))
+Bans the specified server from using the bot. YAGPDB will leave the server, and leave whenever invited back. Bot Owner Only
 
 **Usage:**
 
@@ -778,7 +778,7 @@ banserver <server:Whole number>
 
 ### Ccreqs
 
-Returns the number of concurrent requests currently going on
+Returns the number of concurrent requests currently going on. Bot Admin Only
 
 **Usage:**
 
@@ -788,7 +788,7 @@ ccreqs
 
 ### Createinvite
 
-Maintenance command, creates a invite for the specified server
+Maintenance command, creates an invite for the specified server. Bot Admin Only
 
 **Usage:**
 
@@ -800,7 +800,7 @@ createinvite <server:Whole number>
 
 **Aliases:** cshard
 
-Shows the current shard this server is on (or the one specified
+Shows the current shard this server is on (or the one specified)
 
 **Usage:**
 
@@ -810,7 +810,7 @@ CurrentShard [serverid:Whole number]
 
 ### Dcallvoice
 
-Disconnects from all the voice channels the bot is in
+Disconnects from all the voice channels the bot is in. Bot Admin Only
 
 **Usage:**
 
@@ -822,7 +822,7 @@ dcallvoice
 
 **Aliases:** findservers
 
-Looks for a server by server name or the servers a user owns
+Looks for a server by server name or the servers a user owns. Bot Admin Only
 
 **Usage:**
 
@@ -839,7 +839,7 @@ findserver
 
 **Aliases:** gpc
 
-Generates premium codes
+Generates premium codes. Bot Owner Only
 
 **Usage:**
 
@@ -849,7 +849,7 @@ generatepremiumcode <Duration:Duration> <NumCodes:Whole number> <Message:Text>
 
 ### Globalrl
 
-Tests the global ratelimit functionality
+Tests the global ratelimit functionality. Bot Owner Only
 
 **Usage:**
 
@@ -869,7 +869,7 @@ IsGuildUnavailable <guildid:Whole number>
 
 ### Leaveserver
 
-;))
+Causes YAGPDB to leave the specified server. The bot may still be invited back with full functionality restored. Bot Owner Only
 
 **Usage:**
 
@@ -877,9 +877,19 @@ IsGuildUnavailable <guildid:Whole number>
 leaveserver <server:Whole number>
 ```
 
+### Listflags
+
+Lists feature flags for the current, or optional provided guild. Bot Owner Only
+
+**Usage:**
+
+```
+listflags [server:Whole number]
+```
+
 ### Memstats
 
-;))
+Full memory statistics. Bot Owner Only
 
 **Usage:**
 
@@ -889,7 +899,7 @@ memstats
 
 ### Roledbg
 
-Debug debug debug autorole assignment
+Returns count of autorole assignments currently being processed
 
 **Usage:**
 
@@ -899,7 +909,7 @@ Roledbg
 
 ### Setstatus
 
-Sets the bot's status and streaming url
+Sets the bot's status and optional streaming url. Bot Admin Only
 
 **Usage:**
 
@@ -913,7 +923,7 @@ setstatus [status:Text]
 
 ### Sleep
 
-Maintenance command, used to test command queueing
+Maintenance command, used to test command queueing. Bot Admin Only
 
 **Usage:**
 
@@ -923,7 +933,7 @@ sleep
 
 ### State Botmember/Guild/Member
 
-Responds with state debug info
+Responds with state debug info. Bot Admin Only
 
 **Usage:**&#x20;
 
@@ -945,7 +955,7 @@ stateinfo
 
 ### Testreddit
 
-Tests the reddit feeds in this server by checking the specified post
+Tests the reddit feeds in this server by checking the specified post. Bot Owner Only
 
 **Usage:**
 
@@ -955,7 +965,7 @@ testreddit <post-id:Text>
 
 ### Toggledbg
 
-Toggles Debug Logging
+Toggles Debug Logging. Restarting the bot will always reset debug logging. Bot Owner Only
 
 **Usage:**
 
@@ -999,7 +1009,7 @@ topgames
 
 ### Unbanserver
 
-;))
+Removes the bot ban from the specified server. Bot Owner Only
 
 **Usage:**
 
