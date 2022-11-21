@@ -98,7 +98,6 @@ To make your code readable, especially for large embeds, **indents** may be used
         (sdict "name" "Topic" "value" $topic "inline" false) 
         (sdict "name" "Cat Fact" "value" $catfact "inline" false) 
         (sdict "name" "Member Count" "value" (toString .Guild.MemberCount) "inline" true) 
-        (sdict "name" "Guild Region" "value" .Guild.Region "inline" true) 
         (sdict "name" "Guild ID" "value" (toString .Guild.ID) "inline" true)
     ) 
     "author" 
