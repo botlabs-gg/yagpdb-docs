@@ -130,9 +130,9 @@ DelReminder <ID:Whole number>
 [-a All:Switch]
 ```
 
-### Fixscheduledccs
+### fixscheduledccs
 
-???
+Corrects the next run time of interval CCs globally, fixes issues arising from missed executions due to downtime. Bot Admin Only
 
 **Usage:**
 
@@ -546,12 +546,24 @@ Inspire
 
 **Aliases:** Money
 
-convert value from one currency for another.
+💱 convert value from one currency to another.
 
 **Usage:**
 
 ```
-Forex <Amount:Whole number> <From:Text> <To:Text>
+Forex <Amount:Decimal number> <From:Text> <To:Text>
+```
+
+### Roast
+
+**Aliases:** insult
+
+Sends a random roast
+
+**Usage:**
+
+```
+Roast [Target:User]
 ```
 
 ### TopServers
@@ -756,9 +768,9 @@ Packs
 
 ## Debug & Maintenance 🖥
 
-### Allocstat
+### allocstat
 
-Memory statistics.
+Memory statistics. Bot Admin Only
 
 **Usage:**
 
@@ -766,9 +778,9 @@ Memory statistics.
 allocstat
 ```
 
-### Banserver
+### banserver
 
-;))
+Bans the specified server from using the bot. YAGPDB will leave the server, and leave whenever invited back. Bot Owner Only
 
 **Usage:**
 
@@ -776,9 +788,9 @@ allocstat
 banserver <server:Whole number>
 ```
 
-### Ccreqs
+### ccreqs
 
-Returns the number of concurrent requests currently going on
+Returns the number of concurrent requests currently going on. Bot Admin Only
 
 **Usage:**
 
@@ -786,9 +798,9 @@ Returns the number of concurrent requests currently going on
 ccreqs
 ```
 
-### Createinvite
+### createinvite
 
-Maintenance command, creates a invite for the specified server
+Maintenance command, creates an invite for the specified server. Bot Admin Only
 
 **Usage:**
 
@@ -808,9 +820,9 @@ Shows the current shard this server is on (or the one specified
 CurrentShard [serverid:Whole number]
 ```
 
-### Dcallvoice
+### dcallvoice
 
-Disconnects from all the voice channels the bot is in
+Disconnects from all the voice channels the bot is in. Bot Admin Only
 
 **Usage:**
 
@@ -818,11 +830,11 @@ Disconnects from all the voice channels the bot is in
 dcallvoice
 ```
 
-### Findserver
+### findserver
 
 **Aliases:** findservers
 
-Looks for a server by server name or the servers a user owns
+Looks for a server by server name or the servers a user owns. Bot Admin Only
 
 **Usage:**
 
@@ -835,11 +847,11 @@ findserver
 [-user user:Mention/ID]
 ```
 
-### Generatepremiumcode
+### generatepremiumcode
 
 **Aliases:** gpc
 
-Generates premium codes
+Generates premium codes. Bot Owner Only
 
 **Usage:**
 
@@ -847,9 +859,9 @@ Generates premium codes
 generatepremiumcode <Duration:Duration> <NumCodes:Whole number> <Message:Text>
 ```
 
-### Globalrl
+### globalrl
 
-Tests the global ratelimit functionality
+Tests the global ratelimit functionality. Bot Owner Only
 
 **Usage:**
 
@@ -867,9 +879,9 @@ Returns wether the specified guild is unavilable or not
 IsGuildUnavailable <guildid:Whole number>
 ```
 
-### Leaveserver
+### leaveserver
 
-;))
+Causes YAGPDB to leave the specified server. The bot may still be invited back with full functionality restored. Bot Owner Only
 
 **Usage:**
 
@@ -877,9 +889,19 @@ IsGuildUnavailable <guildid:Whole number>
 leaveserver <server:Whole number>
 ```
 
-### Memstats
+### listflags
 
-;))
+Lists feature flags for the current, or optional provided guild. Bot Owner Only
+
+**Usage:**
+
+```
+listflags
+```
+
+### memstats
+
+Full memory statistics. Bot Owner Only
 
 **Usage:**
 
@@ -889,7 +911,7 @@ memstats
 
 ### Roledbg
 
-Debug debug debug autorole assignment
+Returns count of autorole assignments currently being processed
 
 **Usage:**
 
@@ -897,9 +919,9 @@ Debug debug debug autorole assignment
 Roledbg
 ```
 
-### Setstatus
+### setstatus
 
-Sets the bot's status and streaming url
+Sets the bot's status and optional streaming url. Bot Admin Only
 
 **Usage:**
 
@@ -911,9 +933,9 @@ setstatus [status:Text]
 [-url url:Text]
 ```
 
-### Sleep
+### sleep
 
-Maintenance command, used to test command queueing
+Maintenance command, used to test command queueing. Bot Admin Only
 
 **Usage:**
 
@@ -921,19 +943,21 @@ Maintenance command, used to test command queueing
 sleep
 ```
 
-### State Botmember/Guild/Member
+### state botmember/guild/member
 
-Responds with state debug info
+Responds with state debug info. Bot Admin Only
 
 **Usage:**&#x20;
 
 ```
 state botmember
 state guild
+
 state member
+[-fetch fetch:Switch - fetch the member if not in state]
 ```
 
-### Stateinfo
+### stateinfo
 
 Responds with state debug info
 
@@ -943,9 +967,9 @@ Responds with state debug info
 stateinfo
 ```
 
-### Testreddit
+### testreddit
 
-Tests the reddit feeds in this server by checking the specified post
+Tests the reddit feeds in this server by checking the specified post. Bot Owner Only
 
 **Usage:**
 
@@ -953,9 +977,9 @@ Tests the reddit feeds in this server by checking the specified post
 testreddit <post-id:Text>
 ```
 
-### Toggledbg
+### toggledbg
 
-Toggles Debug Logging
+Toggles Debug Logging. Restarting the bot will always reset debug logging. Bot Owner Only
 
 **Usage:**
 
@@ -963,7 +987,7 @@ Toggles Debug Logging
 toggledbg
 ```
 
-### Topcommands
+### topcommands
 
 Shows command usage stats
 
@@ -973,7 +997,7 @@ Shows command usage stats
 topcommands [hours:Whole number]
 ```
 
-### Topevents
+### topevents
 
 Shows gateway event processing stats for all or one shard
 
@@ -983,7 +1007,7 @@ Shows gateway event processing stats for all or one shard
 topevents [shard:Whole number]
 ```
 
-### Topgames
+### topgames
 
 Shows the top games on this server
 
@@ -997,9 +1021,9 @@ topgames
 [-all all:Switch]
 ```
 
-### Unbanserver
+### unbanserver
 
-;))
+Removes the bot ban from the specified server. Bot Owner Only
 
 **Usage:**
 
