@@ -1,6 +1,6 @@
 # Custom Commands
 
-Custom commands - abbreviated as CCs, allow you to create your own commands. The CC-system in YAGPDB is quite complex and can be used for some advanced stuff, but even CCs are still limited and if your use case is very specific, consider trying or building another bot. Additional reading [here](https://learn.yagpdb.xyz/the-custom-command-interface). Custom Commands have also limits and they are covered [here](https://learn.yagpdb.xyz/other/custom-command-limits).
+Custom commands - abbreviated as CCs, allow you to create your own commands. The CC-system in YAGPDB is quite complex and can be used for some advanced stuff, but even CCs are still limited and if your use case is very specific, consider trying or building another bot. Additional reading [here](https://learn.yagpdb.xyz/the-custom-command-interface). Custom Commands have also limits and they are covered [here](https://docs.yagpdb.xyz/reference/custom-commands-limits).
 
 ## Custom Commands
 
