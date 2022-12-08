@@ -275,7 +275,8 @@ Settimezone [Timezone:Text]
 
 **Aliases:** se
 
-A more simpler version of CustomEmbed, controlled completely using switches.
+A more simpler version of CustomEmbed, controlled completely using switches.\
+You can edit existing messages by supplying the `-message` flag.
 
 **Usage:**
 
@@ -285,6 +286,7 @@ SimpleEmbed
 
 ```
 [-channel :Channel - Optional channel to send in]
+[-message message:Whole number - Optional message ID to edit]
 [-content :Text - Text content for the message]
 [-title :Text]
 [-desc :Text - Text in the 'description' field]
