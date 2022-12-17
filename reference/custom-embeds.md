@@ -80,7 +80,7 @@ Next, we'll take a look at this more lavish example:
 To make your code readable, especially for large embeds, **indents** may be used, as YAGPDB's templating system allows this sort of formatting.
 {% endhint %}
 
-{% code title="Custom Command "embed"" %}
+{% code title="Custom Command "embed"" lineNumbers="true" %}
 ```go
 {{ $advice := execAdmin "advice" }}
 {{ $topic := execAdmin "topic" }}
@@ -118,7 +118,7 @@ To make your code readable, especially for large embeds, **indents** may be used
 ```
 {% endcode %}
 
-In this example, we can ignore lines 1 to 4. I'm just defining some variables there which I am later using in my embed. Line 6 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `print` to join two strings (text snippets) together.\
+In this example, we can ignore lines 1 to 5. I'm just defining some variables there which I am later using in my embed. One thing to notice is the two ways of getting user's avatar URL for variables `$avatar` and `$botAvatar`. Line 7 starts with our already known definition of the embed. Then I start with the first object, the title. Notice how I use `print` to join two strings (text snippets) together.\
 \
 Next, we have the description. We can use markdown of Discord in here. After that object, I define the color. The color is given as integer and you can convert a hex color to it [here](https://www.binaryhexconverter.com/hex-to-decimal-converter).
 
@@ -166,6 +166,8 @@ Simple embeds work with switches, here is a list of them all:
 | Switch      | Description                                 |
 | ----------- | ------------------------------------------- |
 | -channel    | Optional channel to send in.                |
+| -message    | Optional message ID to edit.                |
+| -content    | Text content for the message.               |
 | -title      | Title field.                                |
 | -desc       | Description field.                          |
 | -color      | Color field, either in hex or a color name. |
@@ -174,6 +176,7 @@ Simple embeds work with switches, here is a list of them all:
 | -image      | URL to an image.                            |
 | -author     | Author field.                               |
 | -authoricon | URL for the icon in 'author' field.         |
+| -authorurl  | Url of the 'author' field                   |
 | -footer     | Footer field.                               |
 | -footericon | URL to an image for footer icon field.      |
 
