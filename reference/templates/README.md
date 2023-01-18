@@ -649,7 +649,7 @@ Learning resources covers database [more in-depth](https://learn.yagpdb.xyz/inte
 ## Tickets
 
 {% hint style="warning" %}
-Ticket functions are limited to 1 call per custom command for both normal and premium guilds.
+Ticket functions are limited to 1 call per custom command for both normal and premium guilds and limited to max 10 open tickets per user.
 {% endhint %}
 
 | **Function**                | **Description**                                                                                                                                                                                                                                                                           |
