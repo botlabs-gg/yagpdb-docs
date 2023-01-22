@@ -154,31 +154,32 @@ Member functions are covered [here](https://docs.yagpdb.xyz/reference/templates/
 
 ### Message
 
-| **Field**                            | **Description**                                                                                                                                               |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| .Message.Attachments                 | Attachments of this message (_slice_ of [attachment](https://discord.com/developers/docs/resources/channel#attachment-object) objects).                       |
-| .Message.Author                      | Author of the message ([User](./#user) object).                                                                                                               |
-| .Message.ChannelID                   | Channel ID this message is in.                                                                                                                                |
-| .Message.Content                     | Text content of this message.                                                                                                                                 |
-| .Message.ContentWithMentionsReplaced | Replaces all <@ID> mentions with the username of the mention.                                                                                                 |
-| .Message.EditedTimestamp             | The time at which the last edit of the message occurred, if it has been edited. As with .Message.Timestamp, it is of type _discordgo.Timestamp._              |
-| .Message.Embeds                      | Embeds of this message (_slice_ of embed objects).                                                                                                            |
-| .Message.GuildID                     | Guild ID in which the message is.                                                                                                                             |
-| .Message.ID                          | ID of the message.                                                                                                                                            |
-| .Message.Link                        | Discord link to the message. \*                                                                                                                               |
-| .Message.Member                      | [Member object](./#member). \*                                                                                                                                |
-| .Message.MentionEveryone             | Whether the message mentions everyone, returns _bool_ true/false.                                                                                             |
-| .Message.MentionRoles                | The roles mentioned in the message, returned as a slice of type _discordgo.IDSlice._                                                                          |
-| .Message.Mentions                    | Users this message mentions, returned as a slice of type _\[]\*discordgo.User._                                                                               |
-| .Message.MessageReference            | MessageReference contains reference data sent with crossposted or reply messages. Has fields MessageID, ChannelID and GuildID.                                |
-| .Message.Pinned                      | Whether this message is pinned, returns _bool_ true/false.                                                                                                    |
-| .Message.Reactions                   | Reactions on this message, returned as a slice of type _\[]\*discordgo.MessageReactions_.                                                                     |
-| .Message.Reference                   | Reference returns MessageReference of given message.                                                                                                          |
-| .Message.ReferencedMessage           | Message object associated by message\_reference, like a message that was replied to.                                                                          |
-| .Message.Timestamp                   | Timestamp of the message in type _discordgo.Timestamp_ (use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_). |
-| .Message.TTS                         | Whether the message is text-to-speech. \*                                                                                                                     |
-| .Message.Type                        | The [type](https://discordapp.com/developers/docs/resources/channel#message-object-message-types) of the message.                                             |
-| .Message.WebhookID                   | If the message is generated by a webhook, this is the webhook's id                                                                                            |
+| **Field**                                | **Description**                                                                                                                                               |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Message.Attachments                     | Attachments of this message (_slice_ of [attachment](https://discord.com/developers/docs/resources/channel#attachment-object) objects).                       |
+| .Message.Author                          | Author of the message ([User](./#user) object).                                                                                                               |
+| .Message.ChannelID                       | Channel ID this message is in.                                                                                                                                |
+| .Message.Content                         | Text content of this message.                                                                                                                                 |
+| .Message.ContentWithMentionsReplaced     | Replaces all <@ID> mentions with the username of the mention.                                                                                                 |
+| .Message.ContentWithMoreMentionsReplaced | Works the same way as above, but removes mentions also from roleIDs and more.                                                                                 |
+| .Message.EditedTimestamp                 | The time at which the last edit of the message occurred, if it has been edited. As with .Message.Timestamp, it is of type _discordgo.Timestamp._              |
+| .Message.Embeds                          | Embeds of this message (_slice_ of embed objects).                                                                                                            |
+| .Message.GuildID                         | Guild ID in which the message is.                                                                                                                             |
+| .Message.ID                              | ID of the message.                                                                                                                                            |
+| .Message.Link                            | Discord link to the message. \*                                                                                                                               |
+| .Message.Member                          | [Member object](./#member). \*                                                                                                                                |
+| .Message.MentionEveryone                 | Whether the message mentions everyone, returns _bool_ true/false.                                                                                             |
+| .Message.MentionRoles                    | The roles mentioned in the message, returned as a slice of type _discordgo.IDSlice._                                                                          |
+| .Message.Mentions                        | Users this message mentions, returned as a slice of type _\[]\*discordgo.User._                                                                               |
+| .Message.MessageReference                | MessageReference contains reference data sent with crossposted or reply messages. Has fields MessageID, ChannelID and GuildID.                                |
+| .Message.Pinned                          | Whether this message is pinned, returns _bool_ true/false.                                                                                                    |
+| .Message.Reactions                       | Reactions on this message, returned as a slice of type _\[]\*discordgo.MessageReactions_.                                                                     |
+| .Message.Reference                       | Reference returns MessageReference of given message.                                                                                                          |
+| .Message.ReferencedMessage               | Message object associated by message\_reference, like a message that was replied to.                                                                          |
+| .Message.Timestamp                       | Timestamp of the message in type _discordgo.Timestamp_ (use .Message.Timestamp.Parse to get type _time.Time_ and .Parse.String method returns type _string_). |
+| .Message.TTS                             | Whether the message is text-to-speech. \*                                                                                                                     |
+| .Message.Type                            | The [type](https://discordapp.com/developers/docs/resources/channel#message-object-message-types) of the message.                                             |
+| .Message.WebhookID                       | If the message is generated by a webhook, this is the webhook's id                                                                                            |
 
 | Field        | Description                                                                                                                                                                                                                                                                 |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
