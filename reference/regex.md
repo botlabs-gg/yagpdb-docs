@@ -72,7 +72,5 @@ If you still do not know what Regex are or want to know more. Check out the chea
 
 ## Great tools for writing and testing Regex
 
-{% embed url="https://regex-golang.appspot.com/" %}
-
 {% embed url="https://regex101.com/" %}
 
