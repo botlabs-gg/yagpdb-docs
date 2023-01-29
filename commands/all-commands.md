@@ -10,6 +10,8 @@ For example with the poll command if you want the question to have multiple word
 
 Most Debug & Maintenance commands, or commands without any meaningful description are meant for bot owner or serverAdmin only!
 
+If commands are denoted with an accent, tilde `~`, they are not yet deployed in actual YAGPDB bot or have been disabled in main bot,  but are still in master code branch.
+
 ## General ℹ️
 
 ### Help
@@ -166,7 +168,7 @@ Creates a log of the last messages in the current channel. This includes deleted
 Logs [Count:Whole number]
 ```
 
-### Nicknames
+### \~Nicknames
 
 **Aliases:** nn
 
@@ -341,7 +343,7 @@ Undelete
 [-channel channel:Channel - Optional target channel]
 ```
 
-### Usernames
+### \~Usernames
 
 **Aliases:** unames/un
 
