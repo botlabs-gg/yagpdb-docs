@@ -236,7 +236,7 @@ Remindme <Time:Duration> <Message:Text>
 [-channel channel:Channel]
 ```
 
-### ResetPastNames
+### \~ResetPastNames
 
 Reset your past usernames/nicknames.
 
