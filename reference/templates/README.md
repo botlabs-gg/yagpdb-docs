@@ -83,7 +83,8 @@ Fields documented as accessible on specific structures, like the context user `.
 | .Channel.IsThread             | Whether the channel is a thread.                                                                                                                |
 | .Channel.Mention              | Mentions the channel object.                                                                                                                    |
 | .Channel.Name                 | The name of the channel.                                                                                                                        |
-| .Channel.NSFW                 | Outputs whether this channel is NSFW or not.                                                                                                    |
+| .Channel.NSFW                 | <p>Outputs whether this channel is NSFW or </p><p>not.</p>                                                                                      |
+| .Channel.OwnerID              | The ID of the creator of threads as _int64_. Returns `0` for normal channels.                                                                   |
 | .Channel.ParentID             | The ID of the channel's parent (category), returns 0 if none.                                                                                   |
 | .Channel.PermissionOverwrites | A slice of [permission overwrite](https://discord.com/developers/docs/resources/channel#overwrite-object) structures applicable to the channel. |
 | .Channel.Position             | Channel position from top-down.                                                                                                                 |
