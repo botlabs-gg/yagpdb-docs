@@ -35,7 +35,7 @@ There are two things available across all rules, which we will talk about here.
 
 Violations are important in both Basic Automoderator and AutomodV2 (if you wish to transition to it later). In Basic Automoderator, **violations** are used to keep track of how many infractions a user has, with an optional expiry time. This is very useful for doing an action after several violations have occurred, such as muting the user if, say, they have spammed three times in a row.
 
-![Violation options (shared for all rules)](<../.gitbook/assets/image (9).png>)
+![Violation options (shared for all rules)](<../.gitbook/assets/image (9) (1).png>)
 
 In every rule, you can configure giving violations after an optional expiry time, and act on them if the violations for a given user have gone past a defined amount. The three actions available are:
 

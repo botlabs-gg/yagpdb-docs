@@ -118,24 +118,23 @@ Make sure you created your [role commands ](self-assignable-roles.md#roles)and a
 {% endhint %}
 
 Once you've made your role commands and assigned them to a role group,\
-go to the channel in Discord where you want the role menu to be created. There you type `-rolemenu create (role group name)` (in my example, the role group name is "Gender").
+go to the channel in Discord where you want the role menu to be created. There you type `-rolemenu create (role group name)` (in this example, the role group name is "Sports").
 
-![](../.gitbook/assets/sar1.PNG)
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
-As you can see the bot started creating the menu. It'll ask you to add the emoji for a role. In this case the role is the **Female** role. I'll react on the message with emote I want associated with the female role.&#x20;
+As you can see, the bot started creating the menu, and has asked you to add the emoji for the first role, **Soccer**. I'll react on the message with my emoji of choice:&#x20;
 
-![](../.gitbook/assets/sar2.PNG)
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-{% hint style="warning" %}
-Make sure to react on the original message (The one with the other reaction) If you add it to the other message of the bot, it won't do anything.
-{% endhint %}
+Now the bot wants you to react with the emoji for the second role, **Hockey:**
 
-Now the bot wants you to react on the **first** message for the next role, in this case the **Male** role.
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-![Note: Male reaction was on the same message as the female reaction message](../.gitbook/assets/sar3.PNG)
+And similar for the final role, **Basketball:**
 
-From now on people can start using the menu by clicking on the specific reaction. \
-The unnecessary message will be automatically deleted in a couple of minutes.
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+And we're done — people can start using the menu by clicking on the reaction associated with their desired role. The setup message will be automatically deleted in a couple of minutes, but you can also delete it manually if you so desire.
 
 ### Custom message
 
