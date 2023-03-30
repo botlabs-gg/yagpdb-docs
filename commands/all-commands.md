@@ -132,6 +132,16 @@ DelReminder <ID:Whole number>
 [-a All:Switch]
 ```
 
+### Evalcc
+
+executes custom command code (up to 1k characters)
+
+**Usage:**
+
+```
+Evalcc <code:Text>
+```
+
 ### fixscheduledccs
 
 Corrects the next run time of interval CCs globally, fixes issues arising from missed executions due to downtime. Bot Admin Only
