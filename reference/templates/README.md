@@ -223,12 +223,15 @@ This is available and part of the dot when reaction trigger type is used.
 | .User.Avatar        | The user's avatar [hash](https://discord.com/developers/docs/reference#image-formatting).                                                        |
 | .User.Bot           | Determines whether the target user is a bot - if yes, it will return `true`.                                                                     |
 | .User.Discriminator | The user's discriminator/tag (The four digits after a person's username).                                                                        |
+| .User.Globalname    | User's global username from the new naming system.                                                                                               |
 | .User.ID            | The user's ID.                                                                                                                                   |
 | .User.Mention       | Mentions user.                                                                                                                                   |
 | .User.String        | The user's username together with discriminator as _string_ type.                                                                                |
 | .User.Username      | The user's username.                                                                                                                             |
 | .UsernameHasInvite  | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                              |
 | .RealUsername       | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored. |
+
+
 
 | **Method**            | **Description**                                                                                                                                           |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -256,26 +259,11 @@ Learning resources covers conditional branching [more in depth](https://learn.ya
 Comparison operators always require the same type: i.e comparing `1.23` and `1` would throw **`incompatible types for comparison`** error as they are not the same type (one is float, the other int). To fix this, you should convert both to the same type -> for example, `toFloat 1`.
 {% endhint %}
 
-| **Case** | **Example**                                                                                                                                                                                                                                                                                                                                                    |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| if       | <p><code>{{if (condition)}} output {{end}}</code></p><p>Initialization statement can also be inside <code>if</code> statement with conditional statement, limiting the initialized scope to that <code>if</code> statement. <br><code>{{$x := 24}}</code> <br><code>{{if eq ($x := 42) 42}} Inside: {{$x}} {{end}}</code> <br><code>Outside: {{$x}}</code></p> |
-| else if  | <p><code>{{if (condition)}} output1 {{else if (condition)}} output2 {{end}}</code></p><p>You can have as many<code>else if</code>statements as many different conditionals you have.</p>                                                                                                                                                                       |
-| else     | `{{if (condition)}} output1 {{else}} output2 {{end}}`                                                                                                                                                                                                                                                                                                          |
+<table data-header-hidden><thead><tr><th width="162.36591270099146">Case</th><th width="464.01896847105303">Example</th></tr></thead><tbody><tr><td><strong>Case</strong></td><td><strong>Example</strong></td></tr><tr><td>if</td><td><p><code>{{if (condition)}} output {{end}}</code></p><p>Initialization statement can also be inside <code>if</code> statement with conditional statement, limiting the initialized scope to that <code>if</code> statement. <br><code>{{$x := 24}}</code> <br><code>{{if eq ($x := 42) 42}} Inside: {{$x}} {{end}}</code> <br><code>Outside: {{$x}}</code></p></td></tr><tr><td>else if</td><td><p><code>{{if (condition)}} output1 {{else if (condition)}} output2 {{end}}</code></p><p>You can have as many<code>else if</code>statements as many different conditionals you have.</p></td></tr><tr><td>else</td><td><code>{{if (condition)}} output1 {{else}} output2 {{end}}</code></td></tr></tbody></table>
 
-| **Boolean Logic** |                                                     |
-| ----------------- | --------------------------------------------------- |
-| and               | `{{if and (cond1) (cond2) (cond3)}} output {{end}}` |
-| not               | `{{if not (condition)}} output {{end}}`             |
-| or                | `{{if or (cond1) (cond2) (cond3)}} output {{end}}`  |
+<table data-header-hidden><thead><tr><th width="162.36591270099146">Case</th><th width="464.01896847105303">Example</th></tr></thead><tbody><tr><td><strong>Boolean Logic</strong></td><td></td></tr><tr><td>and</td><td><code>{{if and (cond1) (cond2) (cond3)}} output {{end}}</code></td></tr><tr><td>not</td><td><code>{{if not (condition)}} output {{end}}</code></td></tr><tr><td>or</td><td><code>{{if or (cond1) (cond2) (cond3)}} output {{end}}</code></td></tr></tbody></table>
 
-| **Comparison operators**    |                                                        |
-| --------------------------- | ------------------------------------------------------ |
-| Equal: `eq`                 | `{{if eq .Channel.ID ########}} output {{end}}`        |
-| Not equal: `ne`             | `{{$x := 7}} {{$y := 8}} {{ne $x $y}}` returns `true`  |
-| Less than: `lt`             | `{{if lt (len .Args) 5}} output {{end}}`               |
-| Less than or equal: `le`    | `{{$x := 7}} {{$y := 8}} {{le $x $y}}` returns `true`  |
-| Greater than: `gt`          | `{{if gt (len .Args) 1}} output {{end}}`               |
-| Greater than or equal: `ge` | `{{$x := 7}} {{$y := 8}} {{ge $x $y}}` returns `false` |
+<table data-header-hidden><thead><tr><th width="162.36591270099146">Case</th><th width="464.01896847105303">Example</th></tr></thead><tbody><tr><td><strong>Comparison operators</strong></td><td></td></tr><tr><td>Equal: <code>eq</code></td><td><code>{{if eq .Channel.ID ########}} output {{end}}</code></td></tr><tr><td>Not equal: <code>ne</code></td><td><code>{{$x := 7}} {{$y := 8}} {{ne $x $y}}</code> returns <code>true</code></td></tr><tr><td>Less than: <code>lt</code></td><td><code>{{if lt (len .Args) 5}} output {{end}}</code></td></tr><tr><td>Less than or equal: <code>le</code></td><td><code>{{$x := 7}} {{$y := 8}} {{le $x $y}}</code> returns <code>true</code></td></tr><tr><td>Greater than: <code>gt</code></td><td><code>{{if gt (len .Args) 1}} output {{end}}</code></td></tr><tr><td>Greater than or equal: <code>ge</code></td><td><code>{{$x := 7}} {{$y := 8}} {{ge $x $y}}</code> returns <code>false</code></td></tr></tbody></table>
 
 ### Range
 
