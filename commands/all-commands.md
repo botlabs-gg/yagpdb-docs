@@ -1263,7 +1263,7 @@ Deletes a warning, id is the first number of each warning from the warnings comm
 **Usage:**
 
 ```
-DelWarning <Id:Whole number>
+DelWarning <Id:Whole number> [Reason:Text]
 ```
 
 ### ClearWarnings
@@ -1275,7 +1275,7 @@ Clears the warnings of a user
 **Usage:**
 
 ```
-ClearWarnings <User:Mention/ID>
+ClearWarnings <User:Mention/ID> [Reason:Text]
 ```
 
 ### TopWarnings
