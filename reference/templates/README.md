@@ -226,7 +226,7 @@ This is available and part of the dot when reaction trigger type is used.
 | .User.Globalname    | User's global username from the new naming system.                                                                                               |
 | .User.ID            | The user's ID.                                                                                                                                   |
 | .User.Mention       | Mentions user.                                                                                                                                   |
-| .User.String        | The user's username together with discriminator as _string_ type.                                                                                |
+| .User.String        | The user's username, with legacy discriminator if available, as _string_ type.                                                                   |
 | .User.Username      | The user's username.                                                                                                                             |
 | .UsernameHasInvite  | Only works with join and leave messages (not join dms). It will determine does the username contain an invite link.                              |
 | .RealUsername       | Only works with join and leave messages (not join DMs). This can be used to send the real username to a staff channel when invites are censored. |
