@@ -688,26 +688,14 @@ TopRep [Offset:Whole number]
 [-user user:Mention/ID - User to search for in the leaderboard]
 ```
 
-### Sentiment
-
-**Aliases:** sent
-
-Does sentiment analysis on a message or your last 5 messages longer than 3 words
-
-**Usage:**
-
-```
-Sentiment [text:Text]
-```
-
 ### 8Ball
 
-Wisdom
+Ask the magic 8ball a question
 
 **Usage:**
 
 ```
-8Ball <What to ask:Text>
+8Ball [Question:Text]
 ```
 
 ### Soundboard
