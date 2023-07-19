@@ -594,16 +594,16 @@ TopServers [Skip:Whole number - Entries to skip]
 [-id serverID:Whole number]
 ```
 
-### OwlDictionary
+### dictionary
 
-**Aliases:** owldict/owl
+**Aliases:** owldict/owl/dict
 
-Get the definition of an English word using the Owlbot API.
+Get the definition of an English word using the dictionaryapi.dev
 
 **Usage:**
 
 ```
-OwlDictionary <Query:Text - Word to search for>
+dictionary <Query:Text - Word to search for>
 ```
 
 ### TakeRep
@@ -1198,6 +1198,7 @@ Clean <User:User Mention> <Num:Whole number>
 [-nopin nopin:Switch - Ignore pinned messages]
 [-a a:Switch - Only remove messages with attachments]
 [-to to:Whole number - Stop at this msg ID]
+[-from from:Whole number - Start at this msg ID]]
 ```
 
 ### Reason
