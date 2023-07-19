@@ -1,4 +1,4 @@
-# Automoderator V2
+# Advanced Automoderator
 
 {% hint style="info" %}
 #### Tips
@@ -12,7 +12,7 @@ A simple way to have it is to keep all the basic stuff (invites, spam mentions, 
 
 ![](../.gitbook/assets/AutoMod2.0\_2.PNG)
 
-Automod V2 is a completely new auto-moderator system made from the ground up. When starting out you will need to create a new ruleset.
+Advanced Automoderator is a completely new auto-moderator system made from the ground up. When starting out you will need to create a new ruleset.
 
 #### Rulesets
 
@@ -223,12 +223,12 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 
 #### **Ignore roles**
 
-* Ignore users with at **** least one of these roles from this rule
+* Ignore users with at least one of these roles from this rule
   * **Role:** The list of roles to ignore.&#x20;
 
 #### **Require roles**
 
-* Require at **** least one of these roles on the user to trigger the rule
+* Require at least one of these roles on the user to trigger the rule
   * **Role:** The list of roles to ignore.&#x20;
 
 #### **Ignore channels**
@@ -239,7 +239,7 @@ Then you can set up a rule with the  `x violations in y minutes` trigger so that
 #### **Whitelist channels**
 
 * Only check the following channel
-  * **Channel:** The list of channels **** to check.&#x20;
+  * **Channel:** The list of channels to check.&#x20;
 
 #### **Account age above**
 
@@ -289,7 +289,7 @@ Effects with ability to add custom messages are capped to 150 characters.
 
 #### **+Violation**
 
-* Adds a violation **** (use with violation trigger)
+* Adds a violation (use with violation trigger)
   * **Name:** The violation key you are adding a violation too.
 
 #### **Kick user**
@@ -353,7 +353,7 @@ Effects with ability to add custom messages are capped to 150 characters.
 
 ## Limitations
 
-There are some limitations you need to be aware of when using Automoderator V2, which are listed below.
+There are some limitations you need to be aware of when using Advanced Automoderator, which are listed below.
 
 {% hint style="info" %}
 **Note:** 'Normal' here means a normal server without YAGPDB Premium, 'Premium' means one with YAGPDB Premium.
@@ -364,8 +364,8 @@ There are some limitations you need to be aware of when using Automoderator V2, 
 * **Max total rules:** 25 for normal, 150 for premium.
 * **Max lists:** 5 for normal, 25 for premium.
 * **Max rule parts:** This means the maximum amount of triggers, conditions, and effect in total you may have per rule. These will be truncated if they go over the limit.\
-  __\
-  __20 for both normal and premium.
+  \
+  20 for both normal and premium.
 * **Max rulesets:** 10 for normal, 25 for premium.
 
 ## Automoderator 1.0 to 2.0
