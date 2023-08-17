@@ -158,6 +158,7 @@ Member functions are covered [here](https://docs.yagpdb.xyz/reference/templates/
 
 | **Field**                            | **Description**                                                                                                                                               |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Message.Activity                    | Represents the activity sent with a message, such as a game invite, of type _\*discordgo.MessageActivity_. Sent with Rich Presence-related chat embeds.       |
 | .Message.Attachments                 | Attachments of this message (_slice_ of [attachment](https://discord.com/developers/docs/resources/channel#attachment-object) objects).                       |
 | .Message.Author                      | Author of the message ([User](./#user) object).                                                                                                               |
 | .Message.ChannelID                   | Channel ID this message is in.                                                                                                                                |
