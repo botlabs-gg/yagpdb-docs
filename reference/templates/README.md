@@ -296,8 +296,12 @@ Like `if`, `range`is concluded with`{{end}}`action and declared variable scope i
 
 {% hint style="danger" %}
 **Custom command response was longer than 2k (contact an admin on the server...)**\
+or \
+**Failed executing template: response grew too big (>25k)**
+
+\
 This is quite common error users will get whilst using range. Simple example to reproduce it:\
-_\{{ range seq 0 1000 \}}_\
+_\{{ range seq 0 10000 \}}_\
 _\{{ $x := . \}}_\
 _\{{ end \}}_\
 _HELLO!_\
