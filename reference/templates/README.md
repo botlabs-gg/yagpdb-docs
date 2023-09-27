@@ -272,7 +272,7 @@ Comparison operators always require the same type: i.e comparing `1.23` and `1` 
 
 ### Range
 
-`range`iterates over element values in variety of data structures in pipeline - slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.
+`range`iterates over element values in variety of data structures in pipeline - integers, slices/arrays, maps or channels. The dot `.` is set to successive elements of those data structures and output will follow execution. If the value of pipeline has zero length, nothing is output or if an `{{else}}` action is used, that section will be executed.
 
 {% hint style="info" %}
 To skip execution of a single iteration and jump to the next iteration, the `{{continue}}` action may be used. Likewise, if one wishes to skip all remaining iterations, the `{{break}}` action may be used. These both are usable also inside `while` action.
@@ -285,9 +285,11 @@ Affected dot inside `range` is important because methods mentioned above in this
 Like `if`, `range`is concluded with`{{end}}`action and declared variable scope inside `range` extends to that point.\
 
 
-```go
-{{/* range over a slice */}}
-{{ range $index, $element := cslice "YAGPDB" "IS COOL!" }}
+<pre class="language-go"><code class="lang-go">{{/* range over an integer */}}
+{{range 2}}{{.}}{{end}}
+{{range $k, $v := toInt64 2}}{{$k}}{{$v}}{{end}}
+<strong>{{/* range over a slice */}}
+</strong>{{ range $index, $element := cslice "YAGPDB" "IS COOL!" }}
 {{ $index }} : {{ $element }} {{ end }}
 {{/* range on a map */}}
 {{ range $key, $value := dict "SO" "SAY" "WE" "ALL!" }}
@@ -295,7 +297,7 @@ Like `if`, `range`is concluded with`{{end}}`action and declared variable scope i
 {{/* range with else and variable scope */}}
 {{ range seq 1 1 }} no output {{ else }} output here {{ end }}
 {{ $x := 42 }} {{ range $x := seq 2 4 }} {{ $x }} {{ end }} {{ $x }}
-```
+</code></pre>
 
 {% hint style="danger" %}
 **Custom command response was longer than 2k (contact an admin on the server...)**\
