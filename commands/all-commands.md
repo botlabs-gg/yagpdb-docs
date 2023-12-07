@@ -923,7 +923,7 @@ Roledbg
 
 ### setstatus
 
-Sets the bot's status and optional streaming url. Bot Admin Only
+Sets the bot's presence type, status text, online status, and optional streaming URL. Bot Admin Only
 
 **Usage:**
 
@@ -932,7 +932,9 @@ setstatus [status:Text]
 ```
 
 ```
-[-url url:Text]
+[-url url:Text - The URL to the stream. Must be on twitch.tv or youtube.com. Activity type will always be streaming if this is set.]
+[-type type:Text - Set activity type. Allowed values are 'playing', 'streaming', 'listening', 'watching', 'custom', 'competing'. Defaults to custom status]
+[-status status:Text - Set online status. Allowed values are 'online', 'idle', 'dnd', 'offline'. Defaults to online]
 ```
 
 ### sleep
