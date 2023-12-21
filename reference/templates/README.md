@@ -645,6 +645,7 @@ Learning resources covers database [more in-depth](https://learn.yagpdb.xyz/inte
 | .ExpiresAt | When entry will expire, of type _time.Time_.                                                                            |
 | .Key       | The key of the entry, of type _string_.                                                                                 |
 | .Value     | The value of the entry. All numbers will get returned as _float64_ and other set values are of  varying types.          |
+| .ValueSize | Returns the entry’s value size in bytes.                                                                                |
 
 ## Tickets
 
