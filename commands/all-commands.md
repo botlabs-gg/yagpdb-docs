@@ -768,6 +768,16 @@ Lists all available packs.
 Packs
 ```
 
+### Trivia
+
+Asks a random question, you have got 30 seconds to answer!
+
+**Usage:**
+
+```
+Trivia
+```
+
 ## Debug & Maintenance 🖥
 
 ### allocstat
