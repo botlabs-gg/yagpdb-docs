@@ -80,7 +80,7 @@ Fields documented as accessible on specific structures, like the context user `.
 | .Channel.Bitrate              | Bitrate used; only set on voice channels.                                                                                                       |
 | .Channel.GuildID              | Guild ID of the channel.                                                                                                                        |
 | .Channel.ID                   | The ID of the channel.                                                                                                                          |
-| .Channel.IsPrivate            | Whether the channel is private.                                                                                                                 |
+| .Channel.IsPrivate            | Whether the channel is created for DM.                                                                                                          |
 | .Channel.IsThread             | Whether the channel is a thread.                                                                                                                |
 | .Channel.Mention              | Mentions the channel object.                                                                                                                    |
 | .Channel.Name                 | The name of the channel.                                                                                                                        |
