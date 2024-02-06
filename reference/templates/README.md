@@ -77,9 +77,12 @@ Fields documented as accessible on specific structures, like the context user `.
 
 | **Field**                     | **Description**                                                                                                                                 |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| .Channel.AppliedTags          | All tags applied to a forum channel post as _int64_ slice.                                                                                      |
+| .Channel.AvailableTags        | All tags available for forum channel posts as _int64_ slice.                                                                                    |
 | .Channel.Bitrate              | Bitrate used; only set on voice channels.                                                                                                       |
 | .Channel.GuildID              | Guild ID of the channel.                                                                                                                        |
 | .Channel.ID                   | The ID of the channel.                                                                                                                          |
+| .Channel.IsForum              | Whether the channel is a forum channel.                                                                                                         |
 | .Channel.IsPrivate            | Whether the channel is created for DM.                                                                                                          |
 | .Channel.IsThread             | Whether the channel is a thread.                                                                                                                |
 | .Channel.Mention              | Mentions the channel object.                                                                                                                    |
