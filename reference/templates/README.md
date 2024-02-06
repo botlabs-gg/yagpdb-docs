@@ -77,8 +77,8 @@ Fields documented as accessible on specific structures, like the context user `.
 
 | **Field**                     | **Description**                                                                                                                                 |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| .Channel.AppliedTags          | All tags applied to a forum channel post as _int64_ slice.                                                                                      |
-| .Channel.AvailableTags        | All tags available for forum channel posts as _int64_ slice.                                                                                    |
+| .Channel.AppliedTags          | All tags applied to a forum channel post as _int64_ slice of tag IDs.                                                                           |
+| .Channel.AvailableTags        | All tags available for forum channel posts as a slice of _discordgo.ForumTag_.                                                                  |
 | .Channel.Bitrate              | Bitrate used; only set on voice channels.                                                                                                       |
 | .Channel.GuildID              | Guild ID of the channel.                                                                                                                        |
 | .Channel.ID                   | The ID of the channel.                                                                                                                          |
