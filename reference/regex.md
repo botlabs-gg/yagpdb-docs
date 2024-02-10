@@ -2,7 +2,7 @@
 
 Full RE2 syntax reference at > [https://github.com/google/re2/wiki/Syntax](https://github.com/google/re2/wiki/Syntax)\
 Go RegExp doc at > [https://golang.org/pkg/regexp/](https://golang.org/pkg/regexp/)\
-More about general concepts > [http://www.regular-expressions.info](http://www.regular-expressions.info)
+More about general concepts > [https://www.regular-expressions.info/](https://www.regular-expressions.info/)
 
 ## Basic Regex
 
@@ -19,7 +19,7 @@ _As example, this will only match the word "Dinosaur":_ `(Dinosaur)`
 Using `?:` after opening parenthesis of a capturing group creates a non-capturing group. Useful for example with template function `reFindAllSubmatches`.
 
 _This will not sub-match the words "red, blue, green":_ \
-__``{{ reFindAllSubmatches `(?:color=)(red|blue|green)` "color=red beautiful" }}``&#x20;
+``{{ reFindAllSubmatches `(?:color=)(red|blue|green)` "color=red beautiful" }}``&#x20;
 
 To clarify more - it will not show `dateid,` because it's a whole match:\
 ``{{ slice (index (reFindAllSubmatches `(?:dateid=)([0-9]{5})` "dateid=12345") 0) 1 }}``
