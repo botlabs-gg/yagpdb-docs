@@ -190,16 +190,6 @@ Shows past nicknames of a user. Only shows up to the last 25 nicknames.
 Nicknames [User:User]
 ```
 
-### Ping
-
-Shows the latency from the bot to the discord servers. Note that high latencies can be the fault of ratelimits and the bot itself, it's not a absolute metric.
-
-**Usage:**
-
-```
-Ping
-```
-
 ### Poll
 
 Create very simple reaction poll. Example: `poll "favorite color?" blue red pink`
@@ -580,20 +570,6 @@ Sends a random roast
 Roast [Target:User]
 ```
 
-### TopServers
-
-Responds with the top 15 servers I'm on
-
-**Usage:**
-
-```
-TopServers [Skip:Whole number - Entries to skip]
-```
-
-```
-[-id serverID:Whole number]
-```
-
 ### dictionary
 
 **Aliases:** owldict/owl/dict
@@ -921,6 +897,16 @@ Full memory statistics. Bot Owner Only
 memstats
 ```
 
+### Ping
+
+Shows the latency from the bot to the discord servers. Note that high latencies can be the fault of ratelimits and the bot itself, it's not a absolute metric.
+
+**Usage:**
+
+```
+Ping
+```
+
 ### Roledbg
 
 Returns count of autorole assignments currently being processed
@@ -989,6 +975,20 @@ Tests the reddit feeds in this server by checking the specified post. Bot Owner 
 
 ```
 testreddit <post-id:Text>
+```
+
+### TopServers
+
+Responds with the top 15 servers I'm on
+
+**Usage:**
+
+```
+TopServers [Skip:Whole number - Entries to skip]
+```
+
+```
+[-id serverID:Whole number]
 ```
 
 ### toggledbg
