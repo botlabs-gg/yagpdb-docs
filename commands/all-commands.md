@@ -786,6 +786,16 @@ Returns the number of concurrent requests currently going on. Bot Admin Only
 ccreqs
 ```
 
+### cleardm
+
+clears the DM chat with a user, owner only command.
+
+**Usage:**
+
+```
+cleardm <Target:User>
+```
+
 ### createinvite
 
 Maintenance command, creates an invite for the specified server. Bot Admin Only
