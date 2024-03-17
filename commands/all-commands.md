@@ -1357,7 +1357,7 @@ Toggle <ruleset name:Text>
 
 **Aliases:** log
 
-Shows the log of the last triggered automod rules, optionally filtering by user
+Shows the log of the last triggered automod rules (only from Automoderator v2), optionally filtering by user
 
 **Usage:**
 
@@ -1373,7 +1373,7 @@ Logs [skip:Whole number]
 
 **Aliases:**  Violations/ViolationLogs/VLogs/VLog
 
-Lists Violations of specified user /n old flag posts oldest violations in first page ( from oldest to newest ).
+Lists Violations of specified user /n old flag posts oldest violations (only from Automoderator v2) in first page ( from oldest to newest ).
 
 **Usage:**
 
@@ -1389,7 +1389,7 @@ ListViolations <User:Mention/ID> [Page Number:Whole number]
 
 **Aliases:**  ViolationsCount/VCount
 
-Lists Violations summary in entire server or of specified user optionally filtered by max violation age. Specify number of violations to skip while fetching using -skip flag ; max entries fetched 500.
+Lists Violations summary in entire server or of specified user optionally filtered by max violation age. Specify number of violations (only from Automoderator v2) to skip while fetching using -skip flag ; max entries fetched 500.
 
 **Usage:**
 
@@ -1406,7 +1406,7 @@ ListViolationsCount [User:Mention/ID]
 
 **Aliases:**  DelViolation/DelV/DV
 
-Deletes a Violation with the specified ID. ID is the first number of each Violation in the ListViolations command.
+Deletes a Violation with the specified ID. ID is the first number of each Violation (only from Automoderator v2) in the ListViolations command.
 
 **Usage:**
 
@@ -1418,7 +1418,7 @@ DeleteViolation <ID:Whole number>
 
 **Aliases:**  ClearV/ClrViolations/ClrV
 
-Clears Violations of specified user optionally filtered by Name, Min/Max age and other conditions. By default, more recent violations are preferentially cleared.
+Clears Violations of specified user optionally filtered by Name, Min/Max age and other conditions. By default, more recent violations (only from Automoderator v2) are preferentially cleared.
 
 **Usage:**
 
