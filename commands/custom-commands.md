@@ -63,7 +63,7 @@ If you wish to do anything more than a _"Type in a command" -> "Make the bot say
 
 As of v1.12 there's a simple set of functions available for you to manage arguments, they are:
 
-```
+```go
 {{$args := parseArgs num-required-args "Custom usage text when invalid args provided"
     (carg "int" "name of arg1")
     (carg "string" "name of arg2")
@@ -78,7 +78,7 @@ The execution will stop at wherever you placed "**parseArgs**" if incorrect args
 
 "**carg**" has the following syntax:
 
-```
+```go
 {{carg "type" "name" additional-options-depending-on-type}}
 ```
 
@@ -101,7 +101,7 @@ Method "**IsSet**" will return a boolean true or false depending on whether the 
 
 Example usage of optional args:
 
-```
+```go
 {{$args := parseArgs 1 "Custom usage text when invalid args provided"
     (carg "int" "name of arg1")
     (carg "string" "name of arg2 (optional)")
