@@ -521,7 +521,7 @@ Trim markers: `{{- ... -}}`were used in above example because whitespace is cons
 
 ## Custom Types
 
-Golang has built-in primitive data types (_int_, _string_, _bool_, _float64_, ...) and built-in composite data types (_array_, _slice_, _map_, ...) which also are used in custom commands. \
+Golang has built-in primitive data types (_int_, _string_, _bool_, _float64_, ...) and built-in composite data types (_array_, _slice_, _map_, ...). Arrays, while listed here, are not available as a valid datatype for custom commands. \
 \
 YAGPDB's templating "engine" has currently two user-defined, custom data types - _templates.Slice_ and _templates.SDict_. There are other custom data types used like _discordgo.Timestamp_, but these are outside of the main code of YAGPDB, so not explained here further. Type _time.Time_ is covered in its own [section](./#time).\
 \
