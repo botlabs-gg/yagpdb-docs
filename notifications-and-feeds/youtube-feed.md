@@ -1,6 +1,6 @@
-# Youtube Feed
+# YouTube Feed
 
-## Youtube Feed
+## YouTube Feed
 
 {% hint style="info" %}
 Do **NOT** fill in both the Channel ID and the Channel URL.
@@ -12,8 +12,8 @@ Do **NOT** fill in both the Channel ID and the Channel URL.
 
 To get notifications from a YouTube channel, simply go to the YouTuber's channel and input either the ID or the Username in their respective field of the followings:
 
-* Youtube Channel ID&#x20;
-* Youtube Channel Username
+* YouTube Channel ID&#x20;
+* YouTube Channel Username
 
 If your channel looks like this  `youtube.com/user/h3h3Productions` then you would go into the username line and type in h3h3Productions.\
 If your channel looks like this   `youtube.com/channel/UCt-ERbX-2yA6cAqfdKOlUwQ` then you would go into the ID line and type in UCt-ERbX-2yA6cAqfdKOlUwQ.
